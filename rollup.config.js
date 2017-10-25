@@ -10,7 +10,7 @@ export default {
     { file: pkg.main, format: 'cjs' },
     { file: pkg.module, format: 'es' },
   ],
-  external: ['react', 'react-dom', 'prop-types', 'material-ui', 'classnames'],
+  external: ['react', 'react-dom', 'prop-types', 'material-ui', 'classnames', 'moment'],
   plugins: [
     resolve({
       extensions: ['.js', '.jsx'],
