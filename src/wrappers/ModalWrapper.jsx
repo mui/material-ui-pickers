@@ -11,6 +11,8 @@ export default class ModalWrapper extends PureComponent {
     format: PropTypes.string.isRequired,
     onAccept: PropTypes.func.isRequired,
     onDismiss: PropTypes.func.isRequired,
+    allowClear: PropTypes.bool,
+    onClear: PropTypes.func.isRequired,
     dialogContentClassName: PropTypes.string,
     invalidLabel: PropTypes.string,
   }
@@ -19,6 +21,7 @@ export default class ModalWrapper extends PureComponent {
     dialogContentClassName: '',
     invalidLabel: undefined,
     value: new Date(),
+    allowClear: false,
   }
 
   state = {
@@ -39,6 +42,11 @@ export default class ModalWrapper extends PureComponent {
     this.props.onDismiss();
   }
 
+  handleClear = () => {
+    this.togglePicker();
+    this.props.onClear();
+  }
+
   render() {
     const {
       value,
@@ -47,6 +55,8 @@ export default class ModalWrapper extends PureComponent {
       dialogContentClassName,
       onAccept,
       onDismiss,
+      allowClear,
+      onClear,
       invalidLabel,
       ...other
     } = this.props;
@@ -65,6 +75,8 @@ export default class ModalWrapper extends PureComponent {
           open={this.state.open}
           onAccept={this.handleAccept}
           onDismiss={this.handleDismiss}
+          allowClear={allowClear}
+          onClear={this.handleClear}
           dialogContentClassName={dialogContentClassName}
         >
           { children }
