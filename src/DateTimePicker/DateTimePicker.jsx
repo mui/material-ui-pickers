@@ -28,6 +28,7 @@ export class DateTimePicker extends Component {
     rightArrowIcon: PropTypes.string,
     dateRangeIcon: PropTypes.string,
     timeIcon: PropTypes.string,
+    renderDay: PropTypes.func,
   }
 
   static defaultProps = {
@@ -41,6 +42,7 @@ export class DateTimePicker extends Component {
     rightArrowIcon: undefined,
     dateRangeIcon: undefined,
     timeIcon: undefined,
+    renderDay: undefined,
   }
 
   state = {
@@ -84,6 +86,7 @@ export class DateTimePicker extends Component {
       rightArrowIcon,
       dateRangeIcon,
       timeIcon,
+      renderDay,
     } = this.props;
 
     return (
@@ -125,6 +128,7 @@ export class DateTimePicker extends Component {
             disableFuture={disableFuture}
             leftArrowIcon={leftArrowIcon}
             rightArrowIcon={rightArrowIcon}
+            renderDay={renderDay}
           />
         </View>
 
