@@ -26,7 +26,7 @@ export default class DateTextField extends PureComponent {
     keyboard: PropTypes.bool,
     InputProps: PropTypes.shape(),
     keyboardIcon: PropTypes.node,
-    invalidDateMessage: PropTypes.string,
+    invaliddatemessage: PropTypes.string,
   }
 
   static defaultProps = {
@@ -39,7 +39,7 @@ export default class DateTextField extends PureComponent {
     keyboard: false,
     mask: undefined,
     keyboardIcon: 'event',
-    invalidDateMessage: 'Invalid Date Format',
+    invaliddatemessage: 'Invalid Date Format',
   }
 
   getDisplayDate = (props) => {
@@ -76,10 +76,10 @@ export default class DateTextField extends PureComponent {
   }
 
   handleChange = (e) => {
-    const { format, invalidDateMessage } = this.props;
+    const { format, invaliddatemessage } = this.props;
     const oldValue = moment(this.state.value);
     const newValue = moment(e.target.value, format, true);
-    const error = newValue.isValid() ? '' : invalidDateMessage;
+    const error = newValue.isValid() ? '' : invaliddatemessage;
 
     this.setState({
       displayValue: e.target.value,
