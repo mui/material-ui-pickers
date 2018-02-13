@@ -101,20 +101,20 @@ export class Calendar extends Component {
 
     switch (keycode(event)) {
       case 'up':
-        this.moveToDay(addDays(date, 7));
+        this.moveToDay(addDays(date, -7));
         break;
       case 'down':
         this.moveToDay(addDays(date, 7));
         break;
       case 'left':
         theme.direction === 'ltr'
-          ? this.moveToDay(addDays(date, 1))
+          ? this.moveToDay(addDays(date, -1))
           : this.moveToDay(addDays(date, 1));
         break;
       case 'right':
         theme.direction === 'ltr'
           ? this.moveToDay(addDays(date, 1))
-          : this.moveToDay(addDays(date, 1));
+          : this.moveToDay(addDays(date, -1));
         break;
       default:
         // if keycode is not handled, stop execution
