@@ -27,7 +27,7 @@ export class TimePicker extends Component {
 
   state = {
     isHourViewShown: true,
-    meridiemMode: this.props.date.hours() >= 12 ? 'pm' : 'am',
+    meridiemMode: this.props.date.getHours() >= 12 ? 'pm' : 'am',
   }
 
   setMeridiemMode = mode => () => {
