@@ -65,6 +65,7 @@ class DateTextField extends PureComponent {
     minDateMessage: 'Date should not be before minimal date',
     maxDateMessage: 'Date should not be after maximal date',
     TextFieldComponent: TextField,
+    tabIndexIconButton: 0,
   }
 
   getDisplayDate = (props) => {
@@ -250,7 +251,7 @@ class DateTextField extends PureComponent {
       localInputProps.endAdornment = (
         <InputAdornment position="end">
           <IconButton onClick={this.openPicker} tabIndex={tabIndexIconButton}>
-              <Icon> {keyboardIcon} </Icon>
+            <Icon> {keyboardIcon} </Icon>
           </IconButton>
         </InputAdornment>
       );
