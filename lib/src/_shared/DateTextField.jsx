@@ -41,6 +41,7 @@ class DateTextField extends PureComponent {
     invalidDateMessage: PropTypes.string,
     clearable: PropTypes.bool,
     TextFieldComponent: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+    tabIndexIconButton: PropTypes.number,
   }
 
   static defaultProps = {
@@ -248,7 +249,9 @@ class DateTextField extends PureComponent {
     if (keyboard) {
       localInputProps.endAdornment = (
         <InputAdornment position="end">
-          <IconButton onClick={this.openPicker} tabIndex={tabIndexIconButton}> <Icon> {keyboardIcon} </Icon> </IconButton>
+          <IconButton onClick={this.openPicker} tabIndex={tabIndexIconButton}>
+              <Icon> {keyboardIcon} </Icon>
+          </IconButton>
         </InputAdornment>
       );
     }
