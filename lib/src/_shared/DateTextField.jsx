@@ -231,6 +231,7 @@ class DateTextField extends PureComponent {
       maxDateMessage,
       minDateMessage,
       TextFieldComponent,
+      tabIndexIconButton,
       ...other
     } = this.props;
     const { displayValue, error } = this.state;
@@ -247,7 +248,7 @@ class DateTextField extends PureComponent {
     if (keyboard) {
       localInputProps.endAdornment = (
         <InputAdornment position="end">
-          <IconButton onClick={this.openPicker}> <Icon> {keyboardIcon} </Icon> </IconButton>
+          <IconButton onClick={this.openPicker} tabIndex={tabIndexIconButton}> <Icon> {keyboardIcon} </Icon> </IconButton>
         </InputAdornment>
       );
     }
