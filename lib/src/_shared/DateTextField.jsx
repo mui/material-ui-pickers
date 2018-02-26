@@ -41,6 +41,7 @@ class DateTextField extends PureComponent {
     invalidDateMessage: PropTypes.string,
     clearable: PropTypes.bool,
     TextFieldComponent: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+    tabIndexIconButton: PropTypes.number,
   }
 
   static defaultProps = {
@@ -64,6 +65,7 @@ class DateTextField extends PureComponent {
     minDateMessage: 'Date should not be before minimal date',
     maxDateMessage: 'Date should not be after maximal date',
     TextFieldComponent: TextField,
+    tabIndexIconButton: 0,
   }
 
   getDisplayDate = (props) => {
@@ -231,6 +233,7 @@ class DateTextField extends PureComponent {
       maxDateMessage,
       minDateMessage,
       TextFieldComponent,
+      tabIndexIconButton,
       ...other
     } = this.props;
     const { displayValue, error } = this.state;
@@ -247,7 +250,9 @@ class DateTextField extends PureComponent {
     if (keyboard) {
       localInputProps.endAdornment = (
         <InputAdornment position="end">
-          <IconButton onClick={this.openPicker}> <Icon> {keyboardIcon} </Icon> </IconButton>
+          <IconButton onClick={this.openPicker} tabIndex={tabIndexIconButton}>
+            <Icon> {keyboardIcon} </Icon>
+          </IconButton>
         </InputAdornment>
       );
     }
