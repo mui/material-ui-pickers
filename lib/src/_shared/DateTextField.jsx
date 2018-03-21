@@ -106,6 +106,7 @@ export class DateTextField extends PureComponent {
 
   getError = (value, props = this.props) => {
     const {
+      format,
       utils,
       maxDate,
       minDate,
@@ -116,25 +117,30 @@ export class DateTextField extends PureComponent {
       invalidDateMessage,
     } = props;
 
-    if (!utils.isValid(value)) {
-      // if null - do not show error
-      if (utils.isNull(value)) {
-        return '';
-      }
+    let date;
+    if (typeof (value) === 'string') {
+      date = utils.parse(value, format);
+    } else {
+      date = value;
+    }
 
+    if (value &&
+        typeof (value) === 'string' &&
+        utils.format(date, format).toLowerCase() !== value.toLowerCase()
+    ) {
       return invalidDateMessage;
     }
 
     if (
-      (maxDate && utils.isAfter(value, maxDate)) ||
-      (disableFuture && utils.isAfter(value, utils.endOfDay(utils.date())))
+      (maxDate && utils.isAfter(date, maxDate)) ||
+      (disableFuture && utils.isAfter(date, utils.endOfDay(utils.date())))
     ) {
       return maxDateMessage;
     }
 
     if (
-      (minDate && utils.isBefore(value, minDate)) ||
-      (disablePast && utils.isBefore(value, utils.startOfDay(utils.date())))
+      (minDate && utils.isBefore(date, minDate)) ||
+      (disablePast && utils.isBefore(date, utils.startOfDay(utils.date())))
     ) {
       return minDateMessage;
     }
@@ -145,7 +151,7 @@ export class DateTextField extends PureComponent {
   updateState = (props = this.props) => ({
     value: props.value,
     displayValue: this.getDisplayDate(props),
-    error: this.getError(props.utils.date(props.value), props),
+    error: this.getError(props.value, props),
   })
 
   state = this.updateState()
@@ -187,12 +193,13 @@ export class DateTextField extends PureComponent {
     }
 
     const oldValue = utils.date(this.state.value);
-    const newValue = utils.parse(e.target.value, format);
+    const displayValue = e.target.value;
+    const newValue = utils.parse(displayValue, format);
 
-    const error = this.getError(newValue);
+    const error = this.getError(displayValue);
 
     this.setState({
-      displayValue: e.target.value,
+      displayValue,
       value: error ? newValue : oldValue,
       error,
     }, () => {
