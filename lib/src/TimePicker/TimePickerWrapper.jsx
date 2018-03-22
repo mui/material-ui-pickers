@@ -35,13 +35,13 @@ export class TimePickerWrapper extends PickerBase {
   render() {
     const { date } = this.state;
     const {
-      value, format, autoOk, onChange, utils, ampm, ...other
+      format, autoOk, onChange, utils, ampm, ...other
     } = this.props;
 
     return (
       <ModalWrapper
         ref={this.getRef}
-        value={value}
+        value={this.getValue()}
         format={this.getFormat()}
         onClear={this.handleClear}
         onAccept={this.handleAccept}

@@ -44,6 +44,16 @@ export default class PickerBase extends PureComponent {
 
   getRef = (node) => { this.wrapper = node; }
 
+  getValue = () => {
+    const { value, utils } = this.props;
+
+    if (value && typeof (value) === 'string') {
+      return utils.date(value);
+    }
+
+    return value;
+  }
+
   handleClear = () => {
     this.props.onChange(null);
   }
