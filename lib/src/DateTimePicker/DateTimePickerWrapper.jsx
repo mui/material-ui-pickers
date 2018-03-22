@@ -106,7 +106,7 @@ export class DateTimePickerWrapper extends PickerBase {
     return (
       <ModalWrapper
         ref={this.getRef}
-        value={value}
+        value={this.getValue()}
         format={this.getFormat()}
         onAccept={this.handleAccept}
         onChange={this.handleTextFieldChange}
