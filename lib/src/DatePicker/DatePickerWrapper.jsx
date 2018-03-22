@@ -62,7 +62,6 @@ export class DatePickerWrapper extends PickerBase {
   render() {
     const { date } = this.state;
     const {
-      value,
       format,
       autoOk,
       onChange,
@@ -86,7 +85,7 @@ export class DatePickerWrapper extends PickerBase {
     return (
       <ModalWrapper
         ref={this.getRef}
-        value={value}
+        value={this.getValue()}
         format={format}
         onClear={this.handleClear}
         onAccept={this.handleAccept}
