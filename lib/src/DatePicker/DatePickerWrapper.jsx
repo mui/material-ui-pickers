@@ -79,6 +79,7 @@ export class DatePickerWrapper extends PickerBase {
       maxDate,
       disablePast,
       disableFuture,
+      value,
       ...other
     } = this.props;
 
