@@ -20,6 +20,7 @@ export interface DatePickerWrapperProps extends PickerBaseProps,
     renderDay?: RenderDay;
     utils?: Utils;
     shouldDisableDate?: (day: MaterialUiPickersDate) => boolean;
+    pickerRef?:(e: Element) => void;
 }
 
 declare const DatePickerWrapper: ComponentClass<DatePickerWrapperProps>;
