@@ -3,7 +3,7 @@ import { Fragment, Component } from 'react';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import Icon from '@material-ui/core/Icon';
-import InputAdornment from '@material-ui/core/Input/InputAdornment';
+import InputAdornment from '@material-ui/core/InputAdornment';
 import DateTimePickerWrapper  from '../../src/DateTimePicker';
 import * as classNames from 'classnames'
 import { Moment } from 'moment'
