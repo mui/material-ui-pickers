@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import withStyles from 'material-ui/styles/withStyles';
+import withStyles from '@material-ui/core/styles/withStyles';
 
 import ClockPointer from './ClockPointer';
 import * as clockType from '../constants/clock-types';
@@ -159,4 +159,3 @@ const styles = theme => ({
 });
 
 export default withStyles(styles, { name: 'MuiPickersClock' })(Clock);
-

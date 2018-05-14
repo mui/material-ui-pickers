@@ -4,7 +4,7 @@ import Icon from 'material-ui/Icon';
 import InputAdornment from 'material-ui/Input/InputAdornment';
 import TextField from 'material-ui/TextField';
 import IconButton from 'material-ui/IconButton';
-import withStyles from 'material-ui/styles/withStyles';
+import withStyles from '@material-ui/core/styles/withStyles';
 
 import DomainPropTypes from '../constants/prop-types';
 import MaskedInput from './MaskedInput';

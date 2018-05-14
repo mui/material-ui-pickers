@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import DatePicker from 'material-ui-pickers/DatePicker';
 
 import Button from 'material-ui/Button';
-import withStyles from 'material-ui/styles/withStyles';
+import withStyles from '@material-ui/core/styles/withStyles';
 
 class ControllingProgrammaticallyExample extends PureComponent {
   static propTypes = {

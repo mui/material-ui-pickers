@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import withStyles from 'material-ui/styles/withStyles';
+import withStyles from '@material-ui/core/styles/withStyles';
 import withTheme from 'material-ui/styles/withTheme';
 import Paper from 'material-ui/Paper';
 import Tabs from 'material-ui/Tabs';
