@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypesTable from '_shared/PropTypesTable';
 import SourcablePanel from '_shared/SourcablePanel';
-import { Typography } from 'material-ui';
+import Typography from '@material-ui/core/Typography';
 
 const DateTimePickerDemo = () => (
   <div>
@@ -35,4 +35,3 @@ const DateTimePickerDemo = () => (
 );
 
 export default DateTimePickerDemo;
-

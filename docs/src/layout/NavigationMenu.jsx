@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { List } from 'material-ui';
+import List from '@material-ui/core/List';
 import { withRouter } from 'react-router-dom';
 import NavItem from './NavItem';
 
@@ -72,4 +72,3 @@ NavigationMenu.propTypes = {
 };
 
 export default withRouter(NavigationMenu);
-

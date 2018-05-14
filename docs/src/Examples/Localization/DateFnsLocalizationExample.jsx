@@ -2,7 +2,10 @@ import React, { PureComponent } from 'react';
 import DatePicker from 'material-ui-pickers/DatePicker';
 import DateFnsUtils from 'material-ui-pickers/utils/date-fns-utils';
 import MuiPickersUtilsProvider from 'material-ui-pickers/utils/MuiPickersUtilsProvider';
-import { Icon, IconButton, Menu, MenuItem } from 'material-ui';
+import Icon from '@material-ui/core/Icon'
+import IconButton from '@material-ui/core/IconButton'
+import Menu from '@material-ui/core/Menu'
+import MenuItem from '@material-ui/core/MenuItem'
 
 import frLocale from 'date-fns/locale/fr';
 import ruLocale from 'date-fns/locale/ru';
