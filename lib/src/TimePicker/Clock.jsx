@@ -159,4 +159,3 @@ const styles = theme => ({
 });
 
 export default withStyles(styles, { name: 'MuiPickersClock' })(Clock);
-

@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ListItem, withStyles } from 'material-ui';
-import Collapse from 'material-ui/transitions/Collapse';
-import Button from 'material-ui/Button';
+import ListItem from '@material-ui/core/ListItem';
+import withStyles from '@material-ui/core/styles/withStyles';
+import Collapse from '@material-ui/core/Collapse';
+import Button from '@material-ui/core/Button';
 import { NavLink } from 'react-router-dom';
 
 const styles = theme => ({

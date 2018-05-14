@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Code from '_shared/Code';
-import { Typography, withStyles } from 'material-ui';
+import Typography from '@material-ui/core/Typography';
+import withStyles from '@material-ui/core/styles/withStyles';
 
 // eslint-disable-next-line
 import quickStartCode from '!raw-loader!Examples/CodeSnippets/QuickStart';
@@ -60,4 +61,3 @@ const styles = {
 };
 
 export default withStyles(styles)(Usage);
-
