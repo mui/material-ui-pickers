@@ -1,8 +1,8 @@
 import React, { PureComponent, Fragment } from 'react';
 import { DateTimePicker } from 'material-ui-pickers';
-import IconButton from '@material-ui/core/IconButton'
-import Icon from '@material-ui/core/Icon'
-import InputAdornment from '@material-ui/core/InputAdornment'
+import IconButton from '@material-ui/core/IconButton';
+import Icon from '@material-ui/core/Icon';
+import InputAdornment from '@material-ui/core/InputAdornment';
 
 export default class CustomDateTimePicker extends PureComponent {
   state = {

@@ -30,7 +30,7 @@
     "jss-preset-default": "^4.3.0",
     "jss-rtl": "^0.2.3",
     "luxon": "^1.2.0",
-    "material-ui": "^1.0.0-beta.43",
+    "@material-ui/core": "v1.0.0-rc.0",
     "material-ui-pickers-jalali-utils": "^0.4.0",
     "moment": "^2.22.1",
     "moment-jalaali": "^0.7.2",

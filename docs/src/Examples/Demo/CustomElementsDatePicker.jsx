@@ -5,8 +5,8 @@ import classNames from 'classnames';
 import moment from 'moment';
 
 import { DatePicker } from 'material-ui-pickers';
-import IconButton from '@material-ui/core/IconButton'
-import withStyles from '@material-ui/core/styles/withStyles'
+import IconButton from '@material-ui/core/IconButton';
+import withStyles from '@material-ui/core/styles/withStyles';
 
 import isValid from 'date-fns/isValid';
 import format from 'date-fns/format';
