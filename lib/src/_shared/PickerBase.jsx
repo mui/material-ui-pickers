@@ -16,10 +16,37 @@ export default class PickerBase extends PureComponent {
   }
 
   getValidDateOrCurrent = (props = this.props) => {
-    const { utils, value } = props;
-    const date = utils.date(value);
+    const {
+      utils,
+      value,
+      minDate,
+      maxDate,
+    } = props;
 
-    return utils.isValid(date) && value !== null ? date : utils.date();
+
+    // value is selected, use this date if valid
+    if (value != null) {
+      return utils.isValid(value) ? utils.date(value) : utils.date();
+    }
+    // value is not selected so determine bounding date
+    const today = utils.date();
+    const minDateTDate = utils.date(minDate);
+    const maxDateTDate = utils.date(maxDate);
+
+    if (utils.isAfter(today, minDateTDate) && utils.isBefore(today, maxDateTDate)) {
+      return today;
+    }
+
+    if (utils.isAfter(minDateTDate, today)) {
+      return minDateTDate;
+    }
+
+    if (utils.isBefore(maxDateTDate, today)) {
+      return maxDateTDate;
+    }
+
+    // should we even get here? If so, should we throw?
+    return today;
   }
 
   state = {
