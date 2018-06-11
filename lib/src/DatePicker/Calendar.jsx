@@ -28,6 +28,7 @@ export class Calendar extends Component {
     shouldDisableDate: PropTypes.func,
     initialFocusedDate: PropTypes.bool,
     utils: PropTypes.object.isRequired,
+    allowKeyboardControl: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -39,8 +40,20 @@ export class Calendar extends Component {
     rightArrowIcon: undefined,
     renderDay: undefined,
     initialFocusedDate: true,
+    allowKeyboardControl: false,
     shouldDisableDate: () => false,
   };
+
+  static getDerivedStateFromProps(nextProps, state) {
+    if (!nextProps.utils.isEqual(nextProps.date, state.lastDate)) {
+      return {
+        lastDate: nextProps.date,
+        currentMonth: nextProps.utils.getStartOfMonth(nextProps.date),
+      };
+    }
+
+    return null;
+  }
 
   state = {
     currentMonth: this.props.utils.getStartOfMonth(this.props.date),
@@ -63,12 +76,6 @@ export class Calendar extends Component {
         shouldDisableDate: this.shouldDisableDate,
       }));
     }
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      currentMonth: this.props.utils.getStartOfMonth(nextProps.date),
-    });
   }
 
   onDateSelect = (day) => {
@@ -205,12 +212,7 @@ export class Calendar extends Component {
       );
 
       if (renderDay) {
-        dayComponent = renderDay(
-          day,
-          selectedDate,
-          dayInCurrentMonth,
-          dayComponent,
-        );
+        dayComponent = renderDay(day, selectedDate, dayInCurrentMonth, dayComponent);
       }
 
       return (
@@ -229,11 +231,14 @@ export class Calendar extends Component {
 
   render() {
     const { currentMonth } = this.state;
-    const { classes, utils } = this.props;
+    const { classes, utils, allowKeyboardControl } = this.props;
 
     return (
       <Fragment>
-        <EventListener target="window" onKeyDown={this.handleKeyDown} />
+        {
+          allowKeyboardControl &&
+            <EventListener target="window" onKeyDown={this.handleKeyDown} />
+        }
 
         <CalendarHeader
           currentMonth={currentMonth}
@@ -245,7 +250,12 @@ export class Calendar extends Component {
           utils={utils}
         />
 
-        <div className={classes.calendar}>{this.renderWeeks()}</div>
+        <div
+          autoFocus /* eslint-disable-line */ // Autofocus required for getting work keyboard navigation feature
+          className={classes.calendar}
+        >
+          {this.renderWeeks()}
+        </div>
       </Fragment>
     );
   }
