@@ -35,7 +35,6 @@ export class DateTimePicker extends Component {
     ampm: PropTypes.bool,
     shouldDisableDate: PropTypes.func,
     animateYearScrolling: PropTypes.bool,
-    initialFocusedDate: PropTypes.bool,
     fadeTimeout: PropTypes.number.isRequired,
     classes: PropTypes.object.isRequired,
   }
@@ -53,7 +52,6 @@ export class DateTimePicker extends Component {
     ampm: true,
     shouldDisableDate: undefined,
     animateYearScrolling: false,
-    initialFocusedDate: true,
   }
 
   state = {
@@ -119,7 +117,6 @@ export class DateTimePicker extends Component {
       utils,
       ampm,
       shouldDisableDate,
-      initialFocusedDate,
       animateYearScrolling,
       fadeTimeout,
       classes,
@@ -174,7 +171,6 @@ export class DateTimePicker extends Component {
               renderDay={renderDay}
               utils={utils}
               shouldDisableDate={shouldDisableDate}
-              initialFocusedDate={initialFocusedDate}
             />
           </View>
 
