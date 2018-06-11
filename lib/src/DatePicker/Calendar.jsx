@@ -26,6 +26,7 @@ export class Calendar extends Component {
     renderDay: PropTypes.func,
     theme: PropTypes.object.isRequired,
     shouldDisableDate: PropTypes.func,
+    initialFocusedDate: PropTypes.bool,
     utils: PropTypes.object.isRequired,
   };
 
@@ -37,11 +38,13 @@ export class Calendar extends Component {
     leftArrowIcon: undefined,
     rightArrowIcon: undefined,
     renderDay: undefined,
+    initialFocusedDate: true,
     shouldDisableDate: () => false,
   };
 
   state = {
     currentMonth: this.props.utils.getStartOfMonth(this.props.date),
+    shouldFocusDate: this.props.initialFocusedDate,
   };
 
   componentDidMount() {
@@ -70,6 +73,8 @@ export class Calendar extends Component {
 
   onDateSelect = (day) => {
     const { date, utils } = this.props;
+
+    this.setState({ shouldFocusDate: true });
 
     const withHours = utils.setHours(day, utils.getHours(date));
     const withMinutes = utils.setMinutes(withHours, utils.getMinutes(date));
@@ -177,21 +182,23 @@ export class Calendar extends Component {
 
   renderDays = (week) => {
     const { date, renderDay, utils } = this.props;
+    const { currentMonth, shouldFocusDate } = this.state;
 
     const selectedDate = utils.startOfDay(date);
-    const currentMonthNumber = utils.getMonth(this.state.currentMonth);
+    const currentMonthNumber = utils.getMonth(currentMonth);
     const now = utils.date();
 
     return week.map((day) => {
       const disabled = this.shouldDisableDate(day);
       const dayInCurrentMonth = utils.getMonth(day) === currentMonthNumber;
+      const isSelectedDate = utils.isSameDay(selectedDate, day) && shouldFocusDate;
 
       let dayComponent = (
         <Day
           current={utils.isSameDay(day, now)}
           hidden={!dayInCurrentMonth}
           disabled={disabled}
-          selected={utils.isSameDay(selectedDate, day)}
+          selected={isSelectedDate}
         >
           {utils.getDayText(day)}
         </Day>
