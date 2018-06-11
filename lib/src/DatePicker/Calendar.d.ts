@@ -20,6 +20,7 @@ export interface CalendarProps {
     onChange: (date: MaterialUiPickersDate) => void;
     disablePast?: boolean;
     disableFuture?: boolean;
+    initialFocusedDate?: boolean;
     leftArrowIcon?: ReactNode;
     rightArrowIcon?: ReactNode;
     renderDay?: RenderDay;

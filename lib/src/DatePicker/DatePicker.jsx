@@ -141,4 +141,3 @@ export class DatePicker extends PureComponent {
 }
 
 export default withUtils()(DatePicker);
-
