@@ -2758,6 +2758,17 @@
             "computed": false
           }
         },
+        "initialFocusedDate": {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "Props to disable initial focused date",
+          "defaultValue": {
+            "value": "true",
+            "computed": false
+          }
+        },
         "adornmentPosition": {
           "type": {
             "name": "enum",
