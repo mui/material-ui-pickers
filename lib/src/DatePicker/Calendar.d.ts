@@ -25,6 +25,7 @@ export interface CalendarProps {
     renderDay?: RenderDay;
     utils?: Utils<MaterialUiPickersDate>;
     shouldDisableDate?: (day: MaterialUiPickersDate) => boolean;
+    shouldFocusDateInitially?: boolean;
 }
 
 declare const Calendar: ComponentClass<CalendarProps>;
