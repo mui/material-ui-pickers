@@ -3,13 +3,12 @@ import PropTypes from 'prop-types';
 
 import ModalWrapper from '../wrappers/ModalWrapper';
 import TimePicker from './TimePicker';
-import withUtils from '../_shared/WithUtils';
 import DomainPropTypes from '../constants/prop-types';
 import BasePicker from '../_shared/BasePicker';
 
 export const TimePickerWrapper = (props) => {
   const {
-    value, format, autoOk, onChange, utils, ampm, fadeTimeout, forwardedRef, ...other
+    value, format, autoOk, onChange, ampm, fadeTimeout, forwardedRef, seconds, ...other
   } = props;
 
   return (
@@ -23,6 +22,7 @@ export const TimePickerWrapper = (props) => {
           handleDismiss,
           handleSetTodayDate,
           handleTextFieldChange,
+          isAccepted,
           pick12hOr24hFormat,
         }) => (
           <ModalWrapper
@@ -34,14 +34,15 @@ export const TimePickerWrapper = (props) => {
             onChange={handleTextFieldChange}
             onDismiss={handleDismiss}
             onSetToday={handleSetTodayDate}
+            isAccepted={isAccepted}
             {...other}
           >
             <TimePicker
               date={date}
               onChange={handleChange}
-              utils={utils}
               ampm={ampm}
               fadeTimeout={fadeTimeout}
+              seconds={seconds}
             />
           </ModalWrapper>
         )
@@ -51,7 +52,6 @@ export const TimePickerWrapper = (props) => {
 };
 
 TimePickerWrapper.propTypes = {
-  utils: PropTypes.object.isRequired,
   /** DateTimepicker value */
   value: DomainPropTypes.date,
   /** Date format string for input */
@@ -64,6 +64,8 @@ TimePickerWrapper.propTypes = {
   ampm: PropTypes.bool,
   /** Switching hour/minutes animation timeout in milliseconds (set 0 to disable) */
   fadeTimeout: PropTypes.number,
+  /** Show the seconds view */
+  seconds: PropTypes.bool,
   forwardedRef: PropTypes.func,
 };
 
@@ -74,7 +76,9 @@ TimePickerWrapper.defaultProps = {
   ampm: true,
   fadeTimeout: 400,
   forwardedRef: undefined,
+  seconds: false,
 };
 
-const WithUtils = withUtils()(TimePickerWrapper);
-export default React.forwardRef((props, ref) => <WithUtils {...props} forwardedRef={ref} />);
+export default React.forwardRef((props, ref) => (
+  <TimePickerWrapper {...props} forwardedRef={ref} />
+));

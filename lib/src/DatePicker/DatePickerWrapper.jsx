@@ -5,21 +5,20 @@ import ModalWrapper from '../wrappers/ModalWrapper';
 import DatePicker from './DatePicker';
 import DomainPropTypes from '../constants/prop-types';
 import BasePicker from '../_shared/BasePicker';
-import withUtils from '../_shared/WithUtils';
 
 export const DatePickerWrapper = (props) => {
   const {
+    allowKeyboardControl,
     animateYearScrolling,
     autoOk,
     disableFuture,
     disablePast,
     format,
+    forwardedRef,
     labelFunc,
     leftArrowIcon,
     maxDate,
-    maxDateMessage,
     minDate,
-    minDateMessage,
     onChange,
     openToYearSelection,
     renderDay,
@@ -43,38 +42,38 @@ export const DatePickerWrapper = (props) => {
           handleDismiss,
           handleSetTodayDate,
           handleTextFieldChange,
+          isAccepted,
         }) => (
           <ModalWrapper
-            ref={forwardedRef}
-            value={value}
+            disableFuture={disableFuture}
+            disablePast={disablePast}
             format={format}
-            onClear={handleClear}
+            labelFunc={labelFunc}
+            maxDate={maxDate}
+            minDate={minDate}
             onAccept={handleAccept}
             onChange={handleTextFieldChange}
+            onClear={handleClear}
             onDismiss={handleDismiss}
             onSetToday={handleSetTodayDate}
-            labelFunc={labelFunc}
-            minDate={minDate}
-            maxDate={maxDate}
-            disablePast={disablePast}
-            disableFuture={disableFuture}
-            minDateMessage={minDateMessage}
-            maxDateMessage={maxDateMessage}
+            ref={forwardedRef}
+            value={value}
+            isAccepted={isAccepted}
             {...other}
           >
             <DatePicker
-              date={date}
-              onChange={handleChange}
+              allowKeyboardControl={allowKeyboardControl}
               animateYearScrolling={animateYearScrolling}
-              openToYearSelection={openToYearSelection}
-              leftArrowIcon={leftArrowIcon}
-              rightArrowIcon={rightArrowIcon}
-              renderDay={renderDay}
-              utils={utils}
-              minDate={minDate}
-              maxDate={maxDate}
-              disablePast={disablePast}
+              date={date}
               disableFuture={disableFuture}
+              disablePast={disablePast}
+              leftArrowIcon={leftArrowIcon}
+              maxDate={maxDate}
+              minDate={minDate}
+              onChange={handleChange}
+              openToYearSelection={openToYearSelection}
+              renderDay={renderDay}
+              rightArrowIcon={rightArrowIcon}
               shouldDisableDate={shouldDisableDate}
               shouldFocusDateInitially={shouldFocusDateInitially}
             />
@@ -86,17 +85,12 @@ export const DatePickerWrapper = (props) => {
 };
 
 DatePickerWrapper.propTypes = {
-  utils: PropTypes.object.isRequired,
   /** Datepicker value */
   value: DomainPropTypes.date,
   /** Min selectable date */
   minDate: DomainPropTypes.date,
-  /** Error message displaying if date is before minimal date */
-  minDateMessage: PropTypes.string,
   /** Max selectable date */
   maxDate: DomainPropTypes.date,
-  /** Error message displaying if date is after maximal date */
-  maxDateMessage: PropTypes.string,
   /** Date format string for input */
   format: PropTypes.string,
   /** Callback firing when date accepted */
@@ -121,6 +115,8 @@ DatePickerWrapper.propTypes = {
   renderDay: PropTypes.func,
   /** Disable specific date */
   shouldDisableDate: PropTypes.func,
+  /** Enables keyboard listener for moving between days in calendar */
+  allowKeyboardControl: PropTypes.bool,
   forwardedRef: PropTypes.func,
   shouldFocusDateInitially: PropTypes.bool,
 };
@@ -135,16 +131,17 @@ DatePickerWrapper.defaultProps = {
   disablePast: false,
   animateYearScrolling: false,
   openToYearSelection: false,
+  allowKeyboardControl: true,
   leftArrowIcon: 'keyboard_arrow_left',
   rightArrowIcon: 'keyboard_arrow_right',
   renderDay: undefined,
   labelFunc: undefined,
   shouldDisableDate: undefined,
-  minDateMessage: undefined,
-  maxDateMessage: undefined,
   forwardedRef: undefined,
   shouldFocusDateInitially: true,
 };
 
-const WithUtils = withUtils()(DatePickerWrapper);
-export default React.forwardRef((props, ref) => <WithUtils {...props} forwardedRef={ref} />);
+export default React.forwardRef((props, ref) => (
+  <DatePickerWrapper {...props} forwardedRef={ref} />
+));
+

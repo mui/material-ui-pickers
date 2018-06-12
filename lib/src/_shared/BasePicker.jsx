@@ -5,6 +5,8 @@ import withHandlers from 'recompose/withHandlers';
 import withRenderProps from 'recompose/withRenderProps';
 import withState from 'recompose/withState';
 
+import withUtils from '../_shared/WithUtils';
+
 const getValidDateOrCurrent = ({ utils, value }) => {
   const date = utils.date(value);
 
@@ -12,8 +14,10 @@ const getValidDateOrCurrent = ({ utils, value }) => {
 };
 
 export const BasePickerHoc = compose(
+  withUtils(),
   setDisplayName('BasePicker'),
   withState('date', 'changeDate', getValidDateOrCurrent),
+  withState('isAccepted', 'handleAcceptedChange', false),
   lifecycle({
     componentDidUpdate(prevProps) {
       if (prevProps.value !== this.props.value) {
@@ -42,12 +46,14 @@ export const BasePickerHoc = compose(
     handleChange: ({
       autoOk,
       changeDate,
-      date,
       onChange,
+      handleAcceptedChange,
     }) => (newDate, isFinish = true) => {
       changeDate(newDate, () => {
         if (isFinish && autoOk) {
-          onChange(date);
+          onChange(newDate);
+          // pass down accept true, and make it false in the next tick
+          handleAcceptedChange(true, () => handleAcceptedChange(false));
         }
       });
     },

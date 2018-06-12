@@ -70,6 +70,12 @@ const getError = (value, props) => {
 };
 
 export class DateTextField extends PureComponent {
+  static updateState = props => ({
+    value: props.value,
+    displayValue: getDisplayDate(props),
+    error: getError(props.utils.date(props.value), props),
+  });
+
   static propTypes = {
     classes: PropTypes.shape({}).isRequired,
     value: PropTypes.oneOfType([
@@ -93,9 +99,9 @@ export class DateTextField extends PureComponent {
     /** Input mask, used in keyboard mode read more <a href="https://github.com/text-mask/text-mask/blob/master/componentDocumentation.md#readme">here</a> */
     mask: PropTypes.any,
     /** Error message, shown if date is less then minimal date */
-    minDateMessage: PropTypes.string,
+    minDateMessage: PropTypes.node,
     /** Error message, shown if date is more then maximal date */
-    maxDateMessage: PropTypes.string,
+    maxDateMessage: PropTypes.node,
     /** Error message, shown if date is invalid */
     invalidLabel: PropTypes.string,
     /** Message displaying in text field, if null passed */
@@ -109,7 +115,7 @@ export class DateTextField extends PureComponent {
     /** enables/disable automatic opening of the picker when the user clicks enter */
     disableOpenOnEnter: PropTypes.bool,
     /** Message, appearing when date cannot be parsed */
-    invalidDateMessage: PropTypes.string,
+    invalidDateMessage: PropTypes.node,
     /** Component that should replace the default Material-UI TextField */
     TextFieldComponent: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
     /** Props to pass to keyboard input adornment */
@@ -149,11 +155,6 @@ export class DateTextField extends PureComponent {
     shouldFocusDateInitially: true,
   }
 
-  static updateState = props => ({
-    value: props.value,
-    displayValue: getDisplayDate(props),
-    error: getError(props.utils.date(props.value), props),
-  });
 
   state = DateTextField.updateState(this.props)
 
@@ -210,10 +211,10 @@ export class DateTextField extends PureComponent {
   }
 
   handleBlur = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
+    if (this.props.keyboard) {
+      e.preventDefault();
+      e.stopPropagation();
 
-    if (e.target.tagName.toLowerCase() === 'input') {
       this.commitUpdates(e.target.value);
     }
   };
@@ -302,9 +303,13 @@ export class DateTextField extends PureComponent {
         <InputAdornment
           position={adornmentPosition}
           {...InputAdornmentProps}
-          disabled={disabled}
         >
-          <IconButton onClick={this.openPicker}> <Icon> {keyboardIcon} </Icon> </IconButton>
+          <IconButton
+            disabled={disabled}
+            onClick={this.openPicker}
+          >
+            <Icon> {keyboardIcon} </Icon>
+          </IconButton>
         </InputAdornment>
       );
     }

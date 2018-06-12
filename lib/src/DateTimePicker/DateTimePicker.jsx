@@ -17,20 +17,26 @@ import withUtils from '../_shared/WithUtils';
 
 export class DateTimePicker extends Component {
   static propTypes = {
-    date: PropTypes.object.isRequired,
-    onChange: PropTypes.func.isRequired,
+    allowKeyboardControl: PropTypes.bool,
+    ampm: PropTypes.bool,
+    animateYearScrolling: PropTypes.bool,
     autoSubmit: PropTypes.bool,
-    openTo: PropTypes.oneOf(Object.keys(viewType).map(key => viewType[key])).isRequired,
-    disablePast: PropTypes.bool,
-    disableFuture: PropTypes.bool,
-    minDate: DomainPropTypes.date.isRequired,
-    maxDate: DomainPropTypes.date.isRequired,
-    showTabs: PropTypes.bool,
-    leftArrowIcon: PropTypes.node,
-    rightArrowIcon: PropTypes.node,
+    classes: PropTypes.object.isRequired,
+    date: PropTypes.object.isRequired,
     dateRangeIcon: PropTypes.node,
-    timeIcon: PropTypes.node,
+    disableFuture: PropTypes.bool,
+    disablePast: PropTypes.bool,
+    fadeTimeout: PropTypes.number.isRequired,
+    leftArrowIcon: PropTypes.node,
+    maxDate: DomainPropTypes.date.isRequired,
+    minDate: DomainPropTypes.date.isRequired,
+    onChange: PropTypes.func.isRequired,
+    openTo: PropTypes.oneOf(Object.keys(viewType).map(key => viewType[key])).isRequired,
     renderDay: PropTypes.func,
+    rightArrowIcon: PropTypes.node,
+    shouldDisableDate: PropTypes.func,
+    showTabs: PropTypes.bool,
+    timeIcon: PropTypes.node,
     utils: PropTypes.object.isRequired,
     ampm: PropTypes.bool,
     shouldDisableDate: PropTypes.func,
@@ -41,19 +47,21 @@ export class DateTimePicker extends Component {
   }
 
   static defaultProps = {
-    autoSubmit: true,
-    disablePast: false,
-    disableFuture: false,
-    showTabs: true,
-    leftArrowIcon: undefined,
-    rightArrowIcon: undefined,
-    dateRangeIcon: undefined,
-    timeIcon: undefined,
-    renderDay: undefined,
+    allowKeyboardControl: false,
     ampm: true,
+    animateYearScrolling: false,
+    autoSubmit: true,
+    dateRangeIcon: undefined,
+    disableFuture: false,
+    disablePast: false,
+    leftArrowIcon: undefined,
+    renderDay: undefined,
+    rightArrowIcon: undefined,
     shouldDisableDate: undefined,
     animateYearScrolling: false,
     shouldFocusDateInitially: true,
+    showTabs: true,
+    timeIcon: undefined,
   }
 
   state = {
@@ -123,6 +131,7 @@ export class DateTimePicker extends Component {
       animateYearScrolling,
       fadeTimeout,
       classes,
+      allowKeyboardControl,
     } = this.props;
 
     return (
@@ -163,6 +172,7 @@ export class DateTimePicker extends Component {
 
           <View view={viewType.DATE} selected={openView}>
             <Calendar
+              allowKeyboardControl={allowKeyboardControl}
               date={date}
               minDate={minDate}
               maxDate={maxDate}

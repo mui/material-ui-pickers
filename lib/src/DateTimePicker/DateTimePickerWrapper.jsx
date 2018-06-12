@@ -1,13 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import compose from 'recompose/compose';
 import withStyles from '@material-ui/core/styles/withStyles';
 
 import DomainPropTypes from '../constants/prop-types';
 import ModalWrapper from '../wrappers/ModalWrapper';
 import DateTimePicker from './DateTimePicker';
 import BasePicker from '../_shared/BasePicker';
-import withUtils from '../_shared/WithUtils';
 
 export const DateTimePickerWrapper = (props) => {
   const {
@@ -27,13 +25,13 @@ export const DateTimePickerWrapper = (props) => {
     dateRangeIcon,
     timeIcon,
     renderDay,
-    utils,
     ampm,
     shouldDisableDate,
     shouldFocusDateInitially,
     animateYearScrolling,
     fadeTimeout,
     forwardedRef,
+    allowKeyboardControl,
     ...other
   } = props;
 
@@ -48,6 +46,7 @@ export const DateTimePickerWrapper = (props) => {
           handleDismiss,
           handleSetTodayDate,
           handleTextFieldChange,
+          isAccepted,
           pick12hOr24hFormat,
         }) => (
           <ModalWrapper
@@ -64,9 +63,11 @@ export const DateTimePickerWrapper = (props) => {
             onDismiss={handleDismiss}
             onSetToday={handleSetTodayDate}
             value={value}
+            isAccepted={isAccepted}
             {...other}
           >
             <DateTimePicker
+              allowKeyboardControl={allowKeyboardControl}
               ampm={ampm}
               animateYearScrolling={animateYearScrolling}
               autoSubmit={autoSubmit}
@@ -95,7 +96,6 @@ export const DateTimePickerWrapper = (props) => {
 };
 
 DateTimePickerWrapper.propTypes = {
-  utils: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
   /** DateTimepicker value */
   value: DomainPropTypes.date,
@@ -137,6 +137,8 @@ DateTimePickerWrapper.propTypes = {
   openTo: PropTypes.oneOf(['year', 'date', 'hour', 'minutes']),
   /** Switching hour/minutes animation timeout in milliseconds (set 0 to disable) */
   fadeTimeout: PropTypes.number,
+  /** Enables keyboard listener for moving between days in calendar */
+  allowKeyboardControl: PropTypes.bool,
   forwardedRef: PropTypes.func,
   shouldFocusDateInitially: PropTypes.bool,
 };
@@ -163,6 +165,7 @@ DateTimePickerWrapper.defaultProps = {
   fadeTimeout: 400,
   forwardedRef: undefined,
   shouldFocusDateInitially: true,
+  allowKeyboardControl: true,
 };
 
 const styles = {
@@ -171,9 +174,5 @@ const styles = {
   },
 };
 
-const EnhancedWrapper = compose(
-  withUtils(),
-  withStyles(styles, { name: 'MuiPickerDTPickerModal' }),
-)(DateTimePickerWrapper);
-
+const EnhancedWrapper = withStyles(styles, { name: 'MuiPickerDTPickerModal' })(DateTimePickerWrapper);
 export default React.forwardRef((props, ref) => <EnhancedWrapper {...props} forwardedRef={ref} />);
