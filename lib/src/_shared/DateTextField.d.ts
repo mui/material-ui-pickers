@@ -24,6 +24,7 @@ export interface DateTextFieldProps extends Omit<TextFieldProps, 'onChange' | 'v
     invalidDateMessage?: string;
     clearable?: boolean;
     TextFieldComponent?: React.ComponentType<TextFieldProps>;
+    shouldFocusDateInitially?: boolean;
 }
 
 declare const DateTextField: ComponentClass<DateTextFieldProps>;

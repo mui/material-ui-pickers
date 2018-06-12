@@ -25,6 +25,7 @@ export const DatePickerWrapper = (props) => {
     renderDay,
     rightArrowIcon,
     shouldDisableDate,
+    shouldFocusDateInitially,
     forwardedRef,
     utils,
     value,
@@ -75,6 +76,7 @@ export const DatePickerWrapper = (props) => {
               disablePast={disablePast}
               disableFuture={disableFuture}
               shouldDisableDate={shouldDisableDate}
+              shouldFocusDateInitially={shouldFocusDateInitially}
             />
           </ModalWrapper>
         )
@@ -120,6 +122,7 @@ DatePickerWrapper.propTypes = {
   /** Disable specific date */
   shouldDisableDate: PropTypes.func,
   forwardedRef: PropTypes.func,
+  shouldFocusDateInitially: PropTypes.bool,
 };
 
 DatePickerWrapper.defaultProps = {
@@ -140,8 +143,8 @@ DatePickerWrapper.defaultProps = {
   minDateMessage: undefined,
   maxDateMessage: undefined,
   forwardedRef: undefined,
+  shouldFocusDateInitially: true,
 };
 
 const WithUtils = withUtils()(DatePickerWrapper);
 export default React.forwardRef((props, ref) => <WithUtils {...props} forwardedRef={ref} />);
-

@@ -24,6 +24,7 @@ export class DatePicker extends PureComponent {
     renderDay: PropTypes.func,
     utils: PropTypes.object.isRequired,
     shouldDisableDate: PropTypes.func,
+    shouldFocusDateInitially: PropTypes.bool,
   }
 
   static defaultProps = {
@@ -38,6 +39,7 @@ export class DatePicker extends PureComponent {
     rightArrowIcon: undefined,
     renderDay: undefined,
     shouldDisableDate: undefined,
+    shouldFocusDateInitially: true,
   }
 
   state = {
@@ -80,6 +82,7 @@ export class DatePicker extends PureComponent {
       renderDay,
       utils,
       shouldDisableDate,
+      shouldFocusDateInitially,
     } = this.props;
     const { showYearSelection } = this.state;
 
@@ -129,6 +132,7 @@ export class DatePicker extends PureComponent {
                 renderDay={renderDay}
                 utils={utils}
                 shouldDisableDate={shouldDisableDate}
+                shouldFocusDateInitially={shouldFocusDateInitially}
               />
         }
       </Fragment>
@@ -137,4 +141,3 @@ export class DatePicker extends PureComponent {
 }
 
 export default withUtils()(DatePicker);
-

@@ -30,6 +30,7 @@ export const DateTimePickerWrapper = (props) => {
     utils,
     ampm,
     shouldDisableDate,
+    shouldFocusDateInitially,
     animateYearScrolling,
     fadeTimeout,
     forwardedRef,
@@ -82,6 +83,7 @@ export const DateTimePickerWrapper = (props) => {
               renderDay={renderDay}
               rightArrowIcon={rightArrowIcon}
               shouldDisableDate={shouldDisableDate}
+              shouldFocusDateInitially={shouldFocusDateInitially}
               showTabs={showTabs}
               timeIcon={timeIcon}
             />
@@ -136,6 +138,7 @@ DateTimePickerWrapper.propTypes = {
   /** Switching hour/minutes animation timeout in milliseconds (set 0 to disable) */
   fadeTimeout: PropTypes.number,
   forwardedRef: PropTypes.func,
+  shouldFocusDateInitially: PropTypes.bool,
 };
 
 DateTimePickerWrapper.defaultProps = {
@@ -159,6 +162,7 @@ DateTimePickerWrapper.defaultProps = {
   animateYearScrolling: false,
   fadeTimeout: 400,
   forwardedRef: undefined,
+  shouldFocusDateInitially: true,
 };
 
 const styles = {
@@ -173,4 +177,3 @@ const EnhancedWrapper = compose(
 )(DateTimePickerWrapper);
 
 export default React.forwardRef((props, ref) => <EnhancedWrapper {...props} forwardedRef={ref} />);
-
