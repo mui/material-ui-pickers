@@ -25,7 +25,6 @@ export const DatePickerWrapper = (props) => {
     rightArrowIcon,
     shouldDisableDate,
     shouldFocusDateInitially,
-    forwardedRef,
     utils,
     value,
     ...other
