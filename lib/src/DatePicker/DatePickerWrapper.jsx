@@ -24,6 +24,7 @@ export const DatePickerWrapper = (props) => {
     renderDay,
     rightArrowIcon,
     shouldDisableDate,
+    onSelectMonth,
     value,
     ...other
   } = props;
@@ -72,6 +73,7 @@ export const DatePickerWrapper = (props) => {
               renderDay={renderDay}
               rightArrowIcon={rightArrowIcon}
               shouldDisableDate={shouldDisableDate}
+              onSelectMonth={onSelectMonth}
             />
           </ModalWrapper>
         )
@@ -114,6 +116,7 @@ DatePickerWrapper.propTypes = {
   /** Enables keyboard listener for moving between days in calendar */
   allowKeyboardControl: PropTypes.bool,
   forwardedRef: PropTypes.func,
+  onSelectMonth: PropTypes.func,
 };
 
 DatePickerWrapper.defaultProps = {
