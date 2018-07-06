@@ -24,6 +24,8 @@ export const DatePickerWrapper = (props) => {
     renderDay,
     rightArrowIcon,
     shouldDisableDate,
+    shouldFocusDateInitially,
+    utils,
     value,
     ...other
   } = props;
@@ -72,6 +74,7 @@ export const DatePickerWrapper = (props) => {
               renderDay={renderDay}
               rightArrowIcon={rightArrowIcon}
               shouldDisableDate={shouldDisableDate}
+              shouldFocusDateInitially={shouldFocusDateInitially}
             />
           </ModalWrapper>
         )
@@ -114,6 +117,7 @@ DatePickerWrapper.propTypes = {
   /** Enables keyboard listener for moving between days in calendar */
   allowKeyboardControl: PropTypes.bool,
   forwardedRef: PropTypes.func,
+  shouldFocusDateInitially: PropTypes.bool,
 };
 
 DatePickerWrapper.defaultProps = {
@@ -133,6 +137,7 @@ DatePickerWrapper.defaultProps = {
   labelFunc: undefined,
   shouldDisableDate: undefined,
   forwardedRef: undefined,
+  shouldFocusDateInitially: true,
 };
 
 export default React.forwardRef((props, ref) => (

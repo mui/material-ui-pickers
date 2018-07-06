@@ -125,6 +125,7 @@ export class DateTextField extends PureComponent {
     adornmentPosition: PropTypes.oneOf(['start', 'end']),
     /** Callback firing when date that applied in the keyboard is invalid  */
     onError: PropTypes.func,
+    shouldFocusDateInitially: PropTypes.bool,
   }
 
   static defaultProps = {
@@ -153,6 +154,7 @@ export class DateTextField extends PureComponent {
     TextFieldComponent: TextField,
     InputAdornmentProps: {},
     adornmentPosition: 'end',
+    shouldFocusDateInitially: true,
   }
 
   state = DateTextField.updateState(this.props)
@@ -285,6 +287,7 @@ export class DateTextField extends PureComponent {
       onClear,
       onClick,
       TextFieldComponent,
+      shouldFocusDateInitially,
       utils,
       value,
       ...other

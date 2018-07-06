@@ -24,6 +24,7 @@ export interface DateTimePickerProps {
   renderDay?: RenderDay;
   utils?: Utils<MaterialUiPickersDate>;
   shouldDisableDate?: (day: MaterialUiPickersDate) => boolean;
+  shouldFocusDateInitially?: boolean;
 }
 
 declare const DateTimePicker: ComponentClass<DateTimePickerProps>;

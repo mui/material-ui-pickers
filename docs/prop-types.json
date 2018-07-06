@@ -251,6 +251,17 @@
             "computed": false
           }
         },
+        "shouldFocusDateInitially": {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "Props to disable initial focused date",
+          "defaultValue": {
+            "value": "true",
+            "computed": false
+          }
+        },
         "utils": {
           "type": {
             "name": "object"

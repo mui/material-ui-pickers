@@ -40,6 +40,7 @@ export default class ModalWrapper extends PureComponent {
     onSetToday: PropTypes.func,
     children: PropTypes.node.isRequired,
     dialogContentClassName: PropTypes.string,
+    shouldFocusDateInitially: PropTypes.bool,
     isAccepted: PropTypes.bool.isRequired,
   }
 
@@ -61,6 +62,7 @@ export default class ModalWrapper extends PureComponent {
     onOpen: undefined,
     onClose: undefined,
     onSetToday: undefined,
+    shouldFocusDateInitially: true,
   }
 
   state = {
@@ -152,6 +154,7 @@ export default class ModalWrapper extends PureComponent {
       onOpen,
       onClose,
       onSetToday,
+      shouldFocusDateInitially,
       isAccepted,
       ...other
     } = this.props;

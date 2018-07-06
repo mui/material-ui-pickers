@@ -23,6 +23,7 @@ export interface DateTimePickerWrapperProps extends BasePickerProps, Omit<ModalW
   timeIcon?: ReactNode;
   renderDay?: RenderDay;
   shouldDisableDate?: (day: MaterialUiPickersDate) => boolean;
+  shouldFocusDateInitially?: boolean;
 }
 
 declare const DateTimePickerWrapper: ComponentClass<DateTimePickerWrapperProps>;
