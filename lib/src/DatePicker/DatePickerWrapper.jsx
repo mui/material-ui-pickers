@@ -26,6 +26,7 @@ export const DatePickerWrapper = (props) => {
     shouldDisableDate,
     value,
     multi,
+    range,
     ...other
   } = props;
 
@@ -74,6 +75,7 @@ export const DatePickerWrapper = (props) => {
               rightArrowIcon={rightArrowIcon}
               shouldDisableDate={shouldDisableDate}
               multi={multi}
+              range={range}
             />
           </ModalWrapper>
         )
@@ -118,6 +120,8 @@ DatePickerWrapper.propTypes = {
   forwardedRef: PropTypes.func,
   /** Enables selecting multiple dates **/
   multi: PropTypes.bool,
+  /** Enables selecting a range of dates **/
+  range: PropTypes.bool,
 };
 
 DatePickerWrapper.defaultProps = {
@@ -138,6 +142,7 @@ DatePickerWrapper.defaultProps = {
   shouldDisableDate: undefined,
   forwardedRef: undefined,
   multi: false,
+  range: false,
 };
 
 export default React.forwardRef((props, ref) => (
