@@ -28,6 +28,7 @@ export class Calendar extends Component {
     shouldDisableDate: PropTypes.func,
     utils: PropTypes.object.isRequired,
     allowKeyboardControl: PropTypes.bool,
+    multi: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -40,6 +41,7 @@ export class Calendar extends Component {
     renderDay: undefined,
     allowKeyboardControl: false,
     shouldDisableDate: () => false,
+    multi: false,
   };
 
   state = {
@@ -77,12 +79,23 @@ export class Calendar extends Component {
   }
 
   onDateSelect = (day, isFinish = true) => {
-    const { date, utils } = this.props;
+    const { date, utils, multi } = this.props;
 
     const withHours = utils.setHours(day, utils.getHours(date[0]));
     const withMinutes = utils.setMinutes(withHours, utils.getMinutes(date[0]));
+    let finalDates = [ withMinutes ]
 
-    this.props.onChange([ withMinutes ], isFinish);
+    if (multi) {
+      let i = date.findIndex(o => utils.isEqual(o, day))
+      if (i === -1) {
+        finalDates = date.concat(withMinutes)
+      } else {
+        finalDates = [ ...date ]
+        finalDates.splice(i, 1)
+      }
+    }
+
+    this.props.onChange(finalDates, isFinish);
   };
 
   handleChangeMonth = (newMonth) => {

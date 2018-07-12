@@ -25,6 +25,7 @@ export const DatePickerWrapper = (props) => {
     rightArrowIcon,
     shouldDisableDate,
     value,
+    multi,
     ...other
   } = props;
 
@@ -72,6 +73,7 @@ export const DatePickerWrapper = (props) => {
               renderDay={renderDay}
               rightArrowIcon={rightArrowIcon}
               shouldDisableDate={shouldDisableDate}
+              multi={multi}
             />
           </ModalWrapper>
         )
@@ -114,6 +116,8 @@ DatePickerWrapper.propTypes = {
   /** Enables keyboard listener for moving between days in calendar */
   allowKeyboardControl: PropTypes.bool,
   forwardedRef: PropTypes.func,
+  /** Enables selecting multiple dates **/
+  multi: PropTypes.bool,
 };
 
 DatePickerWrapper.defaultProps = {
@@ -133,6 +137,7 @@ DatePickerWrapper.defaultProps = {
   labelFunc: undefined,
   shouldDisableDate: undefined,
   forwardedRef: undefined,
+  multi: false,
 };
 
 export default React.forwardRef((props, ref) => (

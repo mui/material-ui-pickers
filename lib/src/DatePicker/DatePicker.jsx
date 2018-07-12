@@ -25,6 +25,7 @@ export class DatePicker extends PureComponent {
     utils: PropTypes.object.isRequired,
     shouldDisableDate: PropTypes.func,
     allowKeyboardControl: PropTypes.bool,
+    multi: PropTypes.bool,
   }
 
   static defaultProps = {
@@ -40,6 +41,7 @@ export class DatePicker extends PureComponent {
     rightArrowIcon: undefined,
     renderDay: undefined,
     shouldDisableDate: undefined,
+    multi: false,
   }
 
   state = {
@@ -83,6 +85,7 @@ export class DatePicker extends PureComponent {
       utils,
       shouldDisableDate,
       allowKeyboardControl,
+      multi,
     } = this.props;
     const { showYearSelection } = this.state;
 
@@ -133,6 +136,7 @@ export class DatePicker extends PureComponent {
                 utils={utils}
                 shouldDisableDate={shouldDisableDate}
                 allowKeyboardControl={allowKeyboardControl}
+                multi={multi}
               />
         }
       </Fragment>
