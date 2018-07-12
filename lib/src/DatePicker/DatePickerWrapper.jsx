@@ -82,7 +82,7 @@ export const DatePickerWrapper = (props) => {
 
 DatePickerWrapper.propTypes = {
   /** Datepicker value */
-  value: DomainPropTypes.date,
+  value: DomainPropTypes.dateRange,
   /** Min selectable date */
   minDate: DomainPropTypes.date,
   /** Max selectable date */
@@ -117,7 +117,7 @@ DatePickerWrapper.propTypes = {
 };
 
 DatePickerWrapper.defaultProps = {
-  value: new Date(),
+  value: [ new Date() ],
   format: 'MMMM Do',
   autoOk: false,
   minDate: '1900-01-01',

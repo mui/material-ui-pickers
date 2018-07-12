@@ -14,7 +14,7 @@ import { findClosestEnabledDate } from '../_helpers/date-utils';
 /* eslint-disable no-unused-expressions */
 export class Calendar extends Component {
   static propTypes = {
-    date: PropTypes.object.isRequired,
+    date: DomainPropTypes.dateRange.isRequired,
     minDate: DomainPropTypes.date,
     maxDate: DomainPropTypes.date,
     classes: PropTypes.object.isRequired,
@@ -43,14 +43,14 @@ export class Calendar extends Component {
   };
 
   state = {
-    currentMonth: this.props.utils.getStartOfMonth(this.props.date),
+    currentMonth: this.props.utils.getStartOfMonth(this.props.date[this.props.date.length - 1]),
   };
 
   static getDerivedStateFromProps(nextProps, state) {
     if (!nextProps.utils.isEqual(nextProps.date, state.lastDate)) {
       return {
         lastDate: nextProps.date,
-        currentMonth: nextProps.utils.getStartOfMonth(nextProps.date),
+        currentMonth: nextProps.utils.getStartOfMonth(nextProps.date[nextProps.date.length - 1]),
       };
     }
 
@@ -62,26 +62,27 @@ export class Calendar extends Component {
       date, minDate, maxDate, utils, disableFuture, disablePast,
     } = this.props;
 
-    if (this.shouldDisableDate(date)) {
+    date.forEach(day =>
+      this.shouldDisableDate(day) &&
       this.onDateSelect(findClosestEnabledDate({
-        date,
+        day,
         utils,
         minDate,
         maxDate,
         disablePast,
         disableFuture,
         shouldDisableDate: this.shouldDisableDate,
-      }), false);
-    }
+      }), false)
+    );
   }
 
   onDateSelect = (day, isFinish = true) => {
     const { date, utils } = this.props;
 
-    const withHours = utils.setHours(day, utils.getHours(date));
-    const withMinutes = utils.setMinutes(withHours, utils.getMinutes(date));
+    const withHours = utils.setHours(day, utils.getHours(date[0]));
+    const withMinutes = utils.setMinutes(withHours, utils.getMinutes(date[0]));
 
-    this.props.onChange(withMinutes, isFinish);
+    this.props.onChange([ withMinutes ], isFinish);
   };
 
   handleChangeMonth = (newMonth) => {
@@ -185,7 +186,7 @@ export class Calendar extends Component {
   renderDays = (week) => {
     const { date, renderDay, utils } = this.props;
 
-    const selectedDate = utils.startOfDay(date);
+    const selectedDate = date.map(utils.startOfDay);
     const currentMonthNumber = utils.getMonth(this.state.currentMonth);
     const now = utils.date();
 
@@ -198,7 +199,7 @@ export class Calendar extends Component {
           current={utils.isSameDay(day, now)}
           hidden={!dayInCurrentMonth}
           disabled={disabled}
-          selected={utils.isSameDay(selectedDate, day)}
+          selected={selectedDate.some(o => utils.isSameDay(o, day))}
         >
           {utils.getDayText(day)}
         </Day>

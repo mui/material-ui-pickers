@@ -8,7 +8,7 @@ import DomainPropTypes from '../constants/prop-types';
 export default class ModalWrapper extends PureComponent {
   static propTypes = {
     /** Picker value */
-    value: DomainPropTypes.date,
+    value: DomainPropTypes.dateRange,
     /** Format string */
     invalidLabel: PropTypes.node,
     /** Function for dynamic rendering label (date, invalidLabel) => string */
@@ -47,7 +47,7 @@ export default class ModalWrapper extends PureComponent {
   static defaultProps = {
     dialogContentClassName: '',
     invalidLabel: undefined,
-    value: new Date(),
+    value: [ new Date() ],
     labelFunc: undefined,
     okLabel: 'OK',
     cancelLabel: 'Cancel',

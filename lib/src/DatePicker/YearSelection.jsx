@@ -8,7 +8,7 @@ import Year from './Year';
 
 export class YearSelection extends PureComponent {
   static propTypes = {
-    date: PropTypes.shape({}).isRequired,
+    date: DomainPropTypes.dateRange.isRequired,
     minDate: DomainPropTypes.date.isRequired,
     maxDate: DomainPropTypes.date.isRequired,
     classes: PropTypes.object.isRequired,
@@ -30,7 +30,7 @@ export class YearSelection extends PureComponent {
   onYearSelect = (year) => {
     const { date, onChange, utils } = this.props;
 
-    const newDate = utils.setYear(date, year);
+    const newDate = date.map(o => utils.setYear(o, year));
     onChange(newDate);
   }
 
@@ -55,7 +55,7 @@ export class YearSelection extends PureComponent {
     const {
       minDate, maxDate, date, classes, disablePast, disableFuture, utils,
     } = this.props;
-    const currentYear = utils.getYear(date);
+    const currentYear = utils.getYear(date[date.length - 1]);
 
     return (
       <div className={classes.container}>

@@ -12,11 +12,12 @@ import withUtils from '../_shared/WithUtils';
 
 const getDisplayDate = (props) => {
   const {
-    utils, value, format, invalidLabel, emptyLabel, labelFunc,
+    utils, format, invalidLabel, emptyLabel, labelFunc,
   } = props;
+  const value = utils.ensureArray(props.value);
 
-  const isEmpty = value === null;
-  const date = utils.date(value);
+  const isEmpty = value.length < 1;
+  const date = value.map(utils.date);
 
   if (labelFunc) {
     return labelFunc(isEmpty ? null : date, invalidLabel);
@@ -26,8 +27,8 @@ const getDisplayDate = (props) => {
     return emptyLabel;
   }
 
-  return utils.isValid(date)
-    ? utils.format(date, format)
+  return date.every(utils.isValid)
+    ? date.map(o => utils.format(o, format)).join(', ')
     : invalidLabel;
 };
 
@@ -43,25 +44,27 @@ const getError = (value, props) => {
     invalidDateMessage,
   } = props;
 
-  if (!utils.isValid(value)) {
+  if (!value.every(utils.isValid)) {
     // if null - do not show error
-    if (utils.isNull(value)) {
+    if (value.every(utils.isNull)) {
       return '';
     }
 
     return invalidDateMessage;
   }
 
+  let endOfDay = utils.endOfDay(utils.date())
   if (
-    (maxDate && utils.isAfter(value, maxDate)) ||
-    (disableFuture && utils.isAfter(value, utils.endOfDay(utils.date())))
+    (maxDate && value.some(o => utils.isAfter(o, maxDate))) ||
+    (disableFuture && value.some(o => utils.isAfter(o, endOfDay)))
   ) {
     return maxDateMessage;
   }
 
+  let startOfDay = utils.startOfDay(utils.date())
   if (
-    (minDate && utils.isBefore(value, minDate)) ||
-    (disablePast && utils.isBefore(value, utils.startOfDay(utils.date())))
+    (minDate && value.some(o => utils.isBefore(o, minDate))) ||
+    (disablePast && value.some(o => utils.isBefore(o, startOfDay)))
   ) {
     return minDateMessage;
   }
@@ -71,19 +74,14 @@ const getError = (value, props) => {
 
 export class DateTextField extends PureComponent {
   static updateState = props => ({
-    value: props.value,
+    value: props.utils.ensureArray(props.value),
     displayValue: getDisplayDate(props),
-    error: getError(props.utils.date(props.value), props),
+    error: getError(props.utils.ensureArray(props.value).map(props.utils.date), props),
   });
 
   static propTypes = {
     classes: PropTypes.shape({}).isRequired,
-    value: PropTypes.oneOfType([
-      PropTypes.object,
-      PropTypes.string,
-      PropTypes.number,
-      PropTypes.instanceOf(Date),
-    ]),
+    value: DomainPropTypes.dateRange,
     minDate: DomainPropTypes.date,
     maxDate: DomainPropTypes.date,
     disablePast: PropTypes.bool,
@@ -131,7 +129,7 @@ export class DateTextField extends PureComponent {
     disabled: false,
     invalidLabel: 'Unknown',
     emptyLabel: '',
-    value: new Date(),
+    value: [ new Date() ],
     labelFunc: undefined,
     format: undefined,
     InputProps: undefined,
@@ -190,8 +188,8 @@ export class DateTextField extends PureComponent {
       return;
     }
 
-    const oldValue = utils.date(this.state.value);
-    const newValue = utils.parse(value, format);
+    const oldValue = this.state.value.map(utils.date);
+    const newValue = value.split(', ').map(o => utils.parse(o, format));
     const error = getError(newValue, this.props);
 
     this.setState({
@@ -200,11 +198,11 @@ export class DateTextField extends PureComponent {
       value: error ? newValue : oldValue,
     }, () => {
       if (!error && !utils.isEqual(newValue, oldValue)) {
-        this.props.onChange(newValue);
+        this.props.onChange(newValue.length > 1 ? newValue : newValue[0]);
       }
 
       if (error && onError) {
-        onError(newValue, error);
+        onError(newValue.length > 1 ? newValue : newValue[0], error);
       }
     });
   }
@@ -223,7 +221,7 @@ export class DateTextField extends PureComponent {
 
   handleChange = (e) => {
     const { utils, format } = this.props;
-    const parsedValue = utils.parse(e.target.value, format);
+    const parsedValue = e.target.value.split(', ').map(o => utils.parse(o, format));
 
     this.setState({
       displayValue: e.target.value,

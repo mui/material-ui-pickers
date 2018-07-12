@@ -7,10 +7,10 @@ import withState from 'recompose/withState';
 
 import withUtils from '../_shared/WithUtils';
 
-const getValidDateOrCurrent = ({ utils, value }) => {
-  const date = utils.date(value);
+const getValidDateOrCurrent = ({ utils, value, autoSelectToday }) => {
+  const date = utils.ensureArray(value).map(utils.date);
 
-  return utils.isValid(date) && value !== null ? date : utils.date();
+  return date.every(utils.isValid) && value.length !== 0 ? date : [ utils.date() ];
 };
 
 export const BasePickerHoc = compose(
@@ -20,7 +20,7 @@ export const BasePickerHoc = compose(
   withState('isAccepted', 'handleAcceptedChange', false),
   lifecycle({
     componentDidUpdate(prevProps) {
-      if (prevProps.value !== this.props.value) {
+      if (!this.props.utils.isEqual(prevProps.value, this.props.value)) {
         this.props.changeDate(getValidDateOrCurrent(this.props));
       }
     },
@@ -28,7 +28,7 @@ export const BasePickerHoc = compose(
   withHandlers({
     handleClear: ({ onChange }) => () => onChange(null),
     handleAccept: ({ onChange, date }) => () => onChange(date),
-    handleSetTodayDate: ({ changeDate, utils }) => () => changeDate(utils.date()),
+    handleSetTodayDate: ({ changeDate, utils }) => () => changeDate([ utils.date() ]),
     handleTextFieldChange: ({ changeDate, onChange }) => (date) => {
       if (date === null) {
         this.handleClear();
