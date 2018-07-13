@@ -12,7 +12,7 @@ import withUtils from '../_shared/WithUtils';
 
 const getDisplayDate = (props) => {
   const {
-    utils, format, invalidLabel, emptyLabel, labelFunc,
+    utils, format, invalidLabel, emptyLabel, labelFunc, formatSeperator
   } = props;
   const value = utils.ensureArray(props.value);
 
@@ -28,7 +28,7 @@ const getDisplayDate = (props) => {
   }
 
   return date.every(utils.isValid)
-    ? date.map(o => utils.format(o, format)).join(', ')
+    ? date.map(o => utils.format(o, format)).join(formatSeperator)
     : invalidLabel;
 };
 
@@ -123,6 +123,8 @@ export class DateTextField extends PureComponent {
     adornmentPosition: PropTypes.oneOf(['start', 'end']),
     /** Callback firing when date that applied in the keyboard is invalid  */
     onError: PropTypes.func,
+    /** String to join multiple values **/
+    formatSeperator: PropTypes.string,
   }
 
   static defaultProps = {
@@ -151,6 +153,7 @@ export class DateTextField extends PureComponent {
     TextFieldComponent: TextField,
     InputAdornmentProps: {},
     adornmentPosition: 'end',
+    formatSeperator: ', ',
   }
 
   state = DateTextField.updateState(this.props)
@@ -176,6 +179,7 @@ export class DateTextField extends PureComponent {
       utils,
       format,
       onError,
+      formatSeperator,
     } = this.props;
 
     if (value === '') {
@@ -189,7 +193,7 @@ export class DateTextField extends PureComponent {
     }
 
     const oldValue = this.state.value.map(utils.date);
-    const newValue = value.split(', ').map(o => utils.parse(o, format));
+    const newValue = value.split(formatSeperator).map(o => utils.parse(o, format));
     const error = getError(newValue, this.props);
 
     this.setState({
@@ -220,8 +224,8 @@ export class DateTextField extends PureComponent {
   };
 
   handleChange = (e) => {
-    const { utils, format } = this.props;
-    const parsedValue = e.target.value.split(', ').map(o => utils.parse(o, format));
+    const { utils, format, formatSeperator, } = this.props;
+    const parsedValue = e.target.value.split(formatSeperator).map(o => utils.parse(o, format));
 
     this.setState({
       displayValue: e.target.value,
@@ -285,6 +289,7 @@ export class DateTextField extends PureComponent {
       TextFieldComponent,
       utils,
       value,
+      formatSeperator,
       ...other
     } = this.props;
 

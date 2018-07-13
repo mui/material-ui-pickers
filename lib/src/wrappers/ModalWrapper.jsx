@@ -42,6 +42,7 @@ export default class ModalWrapper extends PureComponent {
     dialogContentClassName: PropTypes.string,
     isAccepted: PropTypes.bool.isRequired,
     container: PropTypes.node,
+    formatSeperator: PropTypes.string,
   }
 
   static defaultProps = {
@@ -63,6 +64,7 @@ export default class ModalWrapper extends PureComponent {
     onClose: undefined,
     onSetToday: undefined,
     container: undefined,
+    formatSeperator: ', ',
   }
 
   state = {
@@ -156,6 +158,7 @@ export default class ModalWrapper extends PureComponent {
       onSetToday,
       isAccepted,
       container,
+      formatSeperator,
       ...other
     } = this.props;
 
@@ -169,6 +172,7 @@ export default class ModalWrapper extends PureComponent {
           invalidLabel={invalidLabel}
           labelFunc={labelFunc}
           clearable={clearable}
+          formatSeperator={formatSeperator}
           {...other}
         />
 

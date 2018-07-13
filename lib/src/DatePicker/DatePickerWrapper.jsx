@@ -28,6 +28,7 @@ export const DatePickerWrapper = (props) => {
     multi,
     range,
     autoSelectToday,
+    formatSeperator,
     ...other
   } = props;
 
@@ -59,6 +60,7 @@ export const DatePickerWrapper = (props) => {
             ref={forwardedRef}
             value={value}
             isAccepted={isAccepted}
+            formatSeperator={formatSeperator}
             {...other}
           >
             <DatePicker
@@ -125,6 +127,8 @@ DatePickerWrapper.propTypes = {
   range: PropTypes.bool,
   /** Automatically select today's date if value is invalid **/
   autoSelectToday: PropTypes.bool,
+  /** String to join multiple values **/
+  formatSeperator: PropTypes.string,
 };
 
 DatePickerWrapper.defaultProps = {
@@ -147,6 +151,7 @@ DatePickerWrapper.defaultProps = {
   multi: false,
   range: false,
   autoSelectToday: true,
+  formatSeperator: ', ',
 };
 
 export default React.forwardRef((props, ref) => (
