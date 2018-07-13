@@ -38,7 +38,7 @@ export const TimePickerWrapper = (props) => {
             {...other}
           >
             <TimePicker
-              date={date}
+              date={date[0] || date}
               onChange={handleChange}
               ampm={ampm}
               fadeTimeout={fadeTimeout}
