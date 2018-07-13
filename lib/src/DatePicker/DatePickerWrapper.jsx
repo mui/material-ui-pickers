@@ -27,11 +27,12 @@ export const DatePickerWrapper = (props) => {
     value,
     multi,
     range,
+    autoSelectToday,
     ...other
   } = props;
 
   return (
-    <BasePicker {...props}>
+    <BasePicker autoSelectToday={ autoSelectToday } {...props}>
       {
         ({
           date,
@@ -122,6 +123,8 @@ DatePickerWrapper.propTypes = {
   multi: PropTypes.bool,
   /** Enables selecting a range of dates **/
   range: PropTypes.bool,
+  /** Automatically select today's date if value is invalid **/
+  autoSelectToday: PropTypes.bool,
 };
 
 DatePickerWrapper.defaultProps = {
@@ -143,6 +146,7 @@ DatePickerWrapper.defaultProps = {
   forwardedRef: undefined,
   multi: false,
   range: false,
+  autoSelectToday: true,
 };
 
 export default React.forwardRef((props, ref) => (

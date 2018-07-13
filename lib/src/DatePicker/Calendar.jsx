@@ -47,14 +47,16 @@ export class Calendar extends Component {
   };
 
   state = {
-    currentMonth: this.props.utils.getStartOfMonth(this.props.date[this.props.date.length - 1]),
+    currentMonth: this.props.utils.getStartOfMonth(
+      this.props.date.length > 0 ? this.props.date[this.props.date.length - 1] : this.props.utils.date()),
   };
 
   static getDerivedStateFromProps(nextProps, state) {
     if (!nextProps.utils.isEqual(nextProps.date, state.lastDate)) {
       return {
         lastDate: nextProps.date,
-        currentMonth: nextProps.utils.getStartOfMonth(nextProps.date[nextProps.date.length - 1]),
+        currentMonth: nextProps.utils.getStartOfMonth(
+          nextProps.date.length > 0 ? nextProps.date[nextProps.date.length - 1] : nextProps.utils.date()),
       };
     }
 

@@ -10,7 +10,12 @@ import withUtils from '../_shared/WithUtils';
 const getValidDateOrCurrent = ({ utils, value, autoSelectToday }) => {
   const date = utils.ensureArray(value).map(utils.date);
 
-  return date.every(utils.isValid) && value.length !== 0 ? date : [ utils.date() ];
+  if (date.every(utils.isValid) && date.length !== 0)
+    return date;
+  else if (autoSelectToday)
+    return [ utils.date() ];
+  else
+    return [];
 };
 
 export const BasePickerHoc = compose(
