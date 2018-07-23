@@ -16,15 +16,16 @@ const getDisplayDate = (props) => {
   } = props;
   const value = utils.ensureArray(props.value);
 
-  const isEmpty = value.length < 1;
-  const date = value.map(utils.date);
+  const isEmpty = value == null || value.length < 1 || (value.length == 1 && value[0] == null);
 
-  if (labelFunc) {
-    return labelFunc(isEmpty ? null : date, invalidLabel);
-  }
+  const date = value.map(utils.date);
 
   if (isEmpty) {
     return emptyLabel;
+  }
+
+  if (labelFunc) {
+    return labelFunc(date, invalidLabel);
   }
 
   return date.every(utils.isValid)
