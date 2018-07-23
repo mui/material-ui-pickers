@@ -28,13 +28,12 @@ export const DatePickerWrapper = (props) => {
     value,
     multi,
     range,
-    autoSelectToday,
     formatSeperator,
     ...other
   } = props;
 
   return (
-    <BasePicker autoSelectToday={ autoSelectToday } {...props}>
+    <BasePicker {...props}>
       {
         ({
           date,
@@ -128,8 +127,6 @@ DatePickerWrapper.propTypes = {
   multi: PropTypes.bool,
   /** Enables selecting a range of dates **/
   range: PropTypes.bool,
-  /** Automatically select today's date if value is invalid **/
-  autoSelectToday: PropTypes.bool,
   /** String to join multiple values **/
   formatSeperator: PropTypes.string,
 };
@@ -154,7 +151,6 @@ DatePickerWrapper.defaultProps = {
   forwardedRef: undefined,
   multi: false,
   range: false,
-  autoSelectToday: true,
   formatSeperator: ', ',
 };
 
