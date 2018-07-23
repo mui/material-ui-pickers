@@ -8,10 +8,14 @@ import withState from 'recompose/withState';
 import withUtils from '../_shared/WithUtils';
 
 const getInitialDate = ({ utils, value, initialFocusedDate }) => {
-  const initialDate = value || initialFocusedDate || utils.date();
-  const date = utils.date(initialDate);
+  const date = utils.ensureArray(value || initialFocusedDate).map(utils.date);
 
-  return utils.isValid(date) ? date : utils.date();
+  if (date.every(utils.isValid) && date.length !== 0)
+    return date;
+  else if (initialFocusedDate === false)
+    return [];
+  else
+    return [ utils.date() ];
 };
 
 export const BasePickerHoc = compose(
@@ -21,7 +25,7 @@ export const BasePickerHoc = compose(
   withState('isAccepted', 'handleAcceptedChange', false),
   lifecycle({
     componentDidUpdate(prevProps) {
-      if (prevProps.value !== this.props.value) {
+      if (!this.props.utils.isEqual(prevProps.value, this.props.value)) {
         this.props.changeDate(getInitialDate(this.props));
       }
     },
@@ -29,7 +33,7 @@ export const BasePickerHoc = compose(
   withHandlers({
     handleClear: ({ onChange }) => () => onChange(null),
     handleAccept: ({ onChange, date }) => () => onChange(date),
-    handleSetTodayDate: ({ changeDate, utils }) => () => changeDate(utils.date()),
+    handleSetTodayDate: ({ changeDate, utils }) => () => changeDate([ utils.date() ]),
     handleTextFieldChange: ({ changeDate, onChange }) => (date) => {
       if (date === null) {
         onChange(null);
@@ -62,4 +66,3 @@ export const BasePickerHoc = compose(
 );
 
 export default withRenderProps(BasePickerHoc);
-

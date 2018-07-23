@@ -8,7 +8,7 @@ import DomainPropTypes from '../constants/prop-types';
 export default class ModalWrapper extends PureComponent {
   static propTypes = {
     /** Picker value */
-    value: DomainPropTypes.date,
+    value: DomainPropTypes.dateRange,
     /** Format string */
     invalidLabel: PropTypes.node,
     /** Function for dynamic rendering label (date, invalidLabel) => string */
@@ -42,12 +42,13 @@ export default class ModalWrapper extends PureComponent {
     dialogContentClassName: PropTypes.string,
     isAccepted: PropTypes.bool.isRequired,
     container: PropTypes.node,
+    formatSeperator: PropTypes.string,
   }
 
   static defaultProps = {
     dialogContentClassName: '',
     invalidLabel: undefined,
-    value: new Date(),
+    value: [ new Date() ],
     labelFunc: undefined,
     okLabel: 'OK',
     cancelLabel: 'Cancel',
@@ -63,6 +64,7 @@ export default class ModalWrapper extends PureComponent {
     onClose: undefined,
     onSetToday: undefined,
     container: undefined,
+    formatSeperator: ', ',
   }
 
   state = {
@@ -156,6 +158,7 @@ export default class ModalWrapper extends PureComponent {
       onSetToday,
       isAccepted,
       container,
+      formatSeperator,
       ...other
     } = this.props;
 
@@ -169,6 +172,7 @@ export default class ModalWrapper extends PureComponent {
           invalidLabel={invalidLabel}
           labelFunc={labelFunc}
           clearable={clearable}
+          formatSeperator={formatSeperator}
           {...other}
         />
 

@@ -21,7 +21,7 @@ export class DateTimePicker extends Component {
     animateYearScrolling: PropTypes.bool,
     autoSubmit: PropTypes.bool,
     classes: PropTypes.object.isRequired,
-    date: PropTypes.object.isRequired,
+    date: DomainPropTypes.dateRange.isRequired,
     dateRangeIcon: PropTypes.node,
     disableFuture: PropTypes.bool,
     disablePast: PropTypes.bool,
@@ -125,7 +125,7 @@ export class DateTimePicker extends Component {
     return (
       <Fragment>
         <DatetimePickerHeader
-          date={date}
+          date={date[0] || date}
           openView={openView}
           meridiemMode={meridiemMode}
           setMeridiemMode={this.setMeridiemMode}
@@ -147,7 +147,7 @@ export class DateTimePicker extends Component {
         <div className={classes.viewContainer}>
           <View selected={openView === viewType.YEAR}>
             <YearSelection
-              date={date}
+              date={date[0] || date}
               minDate={minDate}
               maxDate={maxDate}
               onChange={this.handleYearChange}
@@ -176,7 +176,7 @@ export class DateTimePicker extends Component {
 
           <View selected={openView === viewType.HOUR || openView === viewType.MINUTES}>
             <TimePickerView
-              date={date}
+              date={date[0] || date}
               type={openView}
               onHourChange={this.handleHourChange}
               onMinutesChange={this.handleChange}

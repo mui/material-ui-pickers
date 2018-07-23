@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import withStyles from '@material-ui/core/styles/withStyles';
 import IconButton from '@material-ui/core/IconButton';
+import { fade } from '@material-ui/core/styles/colorManipulator';
 
 class Day extends PureComponent {
   static propTypes = {
@@ -23,17 +24,18 @@ class Day extends PureComponent {
 
   render() {
     const {
-      children, classes, disabled, hidden, current, selected, ...other
+      children, classes, disabled, hidden, current, selected,
+      prelighted, highlighted, leftCap, rightCap, ...other
     } = this.props;
 
     const className = classnames(classes.day, {
       [classes.hidden]: hidden,
       [classes.current]: current,
-      [classes.selected]: selected,
+      [classes.selected]: selected || highlighted,
       [classes.disabled]: disabled,
     });
 
-    return (
+    const icon = (
       <IconButton
         className={className}
         tabIndex={hidden || disabled ? -1 : 0}
@@ -42,6 +44,21 @@ class Day extends PureComponent {
         <span> {children} </span>
       </IconButton>
     );
+
+    if (highlighted || prelighted) {
+      return (
+        <div className={classnames({
+          [classes.leftCap]: leftCap,
+          [classes.rightCap]: rightCap,
+          [classes.prelighted]: prelighted,
+          [classes.highlighted]: highlighted,
+        })}>
+          {icon}
+        </div>
+      );
+    } else {
+      return icon;
+    }
   }
 }
 
@@ -73,6 +90,20 @@ const styles = theme => ({
   disabled: {
     pointerEvents: 'none',
     color: theme.palette.text.hint,
+  },
+  prelighted: {
+    backgroundColor: fade(theme.palette.action.active, theme.palette.action.hoverOpacity),
+  },
+  highlighted: {
+    backgroundColor: theme.palette.primary.main,
+  },
+  leftCap: {
+    borderTopLeftRadius: '50%',
+    borderBottomLeftRadius: '50%',
+  },
+  rightCap: {
+    borderTopRightRadius: '50%',
+    borderBottomRightRadius: '50%',
   },
 });
 

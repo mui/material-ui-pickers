@@ -10,7 +10,7 @@ import withUtils from '../_shared/WithUtils';
 
 export class DatePicker extends PureComponent {
   static propTypes = {
-    date: PropTypes.object.isRequired,
+    date: DomainPropTypes.dateRange.isRequired,
     minDate: DomainPropTypes.date,
     maxDate: DomainPropTypes.date,
     onChange: PropTypes.func.isRequired,
@@ -25,6 +25,8 @@ export class DatePicker extends PureComponent {
     utils: PropTypes.object.isRequired,
     shouldDisableDate: PropTypes.func,
     allowKeyboardControl: PropTypes.bool,
+    multi: PropTypes.bool,
+    range: PropTypes.bool,
   }
 
   static defaultProps = {
@@ -40,6 +42,8 @@ export class DatePicker extends PureComponent {
     rightArrowIcon: undefined,
     renderDay: undefined,
     shouldDisableDate: undefined,
+    multi: false,
+    range: false,
   }
 
   state = {
@@ -47,7 +51,7 @@ export class DatePicker extends PureComponent {
   }
 
   get date() {
-    return this.props.utils.startOfDay(this.props.date);
+    return this.props.date.map(this.props.utils.startOfDay);
   }
 
   get minDate() {
@@ -83,6 +87,8 @@ export class DatePicker extends PureComponent {
       utils,
       shouldDisableDate,
       allowKeyboardControl,
+      multi,
+      range,
     } = this.props;
     const { showYearSelection } = this.state;
 
@@ -93,14 +99,14 @@ export class DatePicker extends PureComponent {
             variant="subheading"
             onClick={this.openYearSelection}
             selected={showYearSelection}
-            label={utils.getYearText(this.date)}
+            label={utils.getYearText(this.date[this.date.length - 1])}
           />
 
           <ToolbarButton
             variant="display1"
             onClick={this.openCalendar}
             selected={!showYearSelection}
-            label={utils.getDatePickerHeaderText(this.date)}
+            label={utils.getDatePickerHeaderText(this.date[this.date.length - 1])}
           />
         </PickerToolbar>
 
@@ -133,6 +139,8 @@ export class DatePicker extends PureComponent {
                 utils={utils}
                 shouldDisableDate={shouldDisableDate}
                 allowKeyboardControl={allowKeyboardControl}
+                multi={multi}
+                range={range}
               />
         }
       </Fragment>

@@ -16,7 +16,7 @@ import withUtils from '../_shared/WithUtils';
 /* eslint-disable no-unused-expressions */
 export class Calendar extends Component {
   static propTypes = {
-    date: PropTypes.object.isRequired,
+    date: DomainPropTypes.dateRange.isRequired,
     minDate: DomainPropTypes.date,
     maxDate: DomainPropTypes.date,
     classes: PropTypes.object.isRequired,
@@ -30,6 +30,8 @@ export class Calendar extends Component {
     shouldDisableDate: PropTypes.func,
     utils: PropTypes.object.isRequired,
     allowKeyboardControl: PropTypes.bool,
+    multi: PropTypes.bool,
+    range: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -42,18 +44,22 @@ export class Calendar extends Component {
     renderDay: undefined,
     allowKeyboardControl: false,
     shouldDisableDate: () => false,
+    multi: false,
+    range: false,
   };
 
   state = {
     slideDirection: 'left',
-    currentMonth: this.props.utils.getStartOfMonth(this.props.date),
+    currentMonth: this.props.utils.getStartOfMonth(
+      this.props.date.length > 0 ? this.props.date[this.props.date.length - 1] : this.props.utils.date()),
   };
 
   static getDerivedStateFromProps(nextProps, state) {
     if (!nextProps.utils.isEqual(nextProps.date, state.lastDate)) {
       return {
         lastDate: nextProps.date,
-        currentMonth: nextProps.utils.getStartOfMonth(nextProps.date),
+        currentMonth: nextProps.utils.getStartOfMonth(
+          nextProps.date.length > 0 ? nextProps.date[nextProps.date.length - 1] : nextProps.utils.date()),
       };
     }
 
@@ -65,22 +71,45 @@ export class Calendar extends Component {
       date, minDate, maxDate, utils, disableFuture, disablePast,
     } = this.props;
 
-    if (this.shouldDisableDate(date)) {
+    date.forEach(day =>
+      this.shouldDisableDate(day) &&
       this.onDateSelect(findClosestEnabledDate({
-        date,
+        day,
         utils,
         minDate,
         maxDate,
         disablePast,
         disableFuture,
         shouldDisableDate: this.shouldDisableDate,
-      }), false);
-    }
+      }), false)
+    );
   }
 
   onDateSelect = (day, isFinish = true) => {
-    const { date, utils } = this.props;
-    this.props.onChange(utils.mergeDateAndTime(day, date), isFinish);
+    const { date, utils, multi, range } = this.props;
+
+    let newDate = day
+    if (date.length > 0) {
+      newDate = utils.mergeDateAndTime(day, date[0]);
+    }
+
+    if (multi) {
+      let i = date.findIndex(o => utils.isEqual(o, day))
+      if (i === -1) {
+        newDate = date.concat(newDate)
+      } else {
+        newDate = [ ...date ]
+        newDate.splice(i, 1)
+      }
+    } else if (range && date.length === 1) {
+      newDate = utils.isAfter(newDate, date[0])
+        ? [ date[0], newDate ]
+        : [ newDate, date[0] ];
+    } else {
+      newDate = [ newDate ]
+    }
+
+    this.props.onChange(newDate, isFinish);
   };
 
   handleChangeMonth = (newMonth, slideDirection) => {
@@ -184,9 +213,10 @@ export class Calendar extends Component {
   }
 
   renderDays = (week) => {
-    const { date, renderDay, utils } = this.props;
+    const { date, renderDay, utils, range } = this.props;
+    const { hover } = this.state;
 
-    const selectedDate = utils.startOfDay(date);
+    const selectedDate = date.map(utils.startOfDay);
     const currentMonthNumber = utils.getMonth(this.state.currentMonth);
     const now = utils.date();
 
@@ -194,12 +224,24 @@ export class Calendar extends Component {
       const disabled = this.shouldDisableDate(day);
       const dayInCurrentMonth = utils.getMonth(day) === currentMonthNumber;
 
+      let additionalProps;
+
+      if (range) {
+        additionalProps = {
+          prelighted: date.length === 1 && utils.isBetween(day, date[0], hover),
+          highlighted: date.length > 1 && utils.isBetween(day, date[0], date[1]),
+          leftCap: utils.isEqual(day, Math.min(date[0], date[1] || hover)),
+          rightCap: utils.isEqual(day, Math.max(date[0], date[1] || hover)),
+        }
+      }
+
       let dayComponent = (
         <Day
           current={utils.isSameDay(day, now)}
           hidden={!dayInCurrentMonth}
           disabled={disabled}
-          selected={utils.isSameDay(selectedDate, day)}
+          selected={selectedDate.some(o => utils.isSameDay(o, day))}
+          {...additionalProps}
         >
           {utils.getDayText(day)}
         </Day>
@@ -216,6 +258,7 @@ export class Calendar extends Component {
           dayInCurrentMonth={dayInCurrentMonth}
           disabled={disabled}
           onSelect={this.onDateSelect}
+          onMouseEnter={e => this.setState({ hover: day })}
         >
           {dayComponent}
         </DayWrapper>
