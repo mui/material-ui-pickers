@@ -7,26 +7,26 @@ import withState from 'recompose/withState';
 
 import withUtils from '../_shared/WithUtils';
 
-const getValidDateOrCurrent = ({ utils, value, autoSelectToday }) => {
-  const date = utils.ensureArray(value).map(utils.date);
+const getInitialDate = ({ utils, value, initialFocusedDate }) => {
+  const date = utils.ensureArray(value || initialFocusedDate).map(utils.date);
 
   if (date.every(utils.isValid) && date.length !== 0)
     return date;
-  else if (autoSelectToday)
-    return [ utils.date() ];
-  else
+  else if (initialFocusedDate === false)
     return [];
+  else
+    return [ utils.date() ];
 };
 
 export const BasePickerHoc = compose(
   withUtils(),
   setDisplayName('BasePicker'),
-  withState('date', 'changeDate', getValidDateOrCurrent),
+  withState('date', 'changeDate', getInitialDate),
   withState('isAccepted', 'handleAcceptedChange', false),
   lifecycle({
     componentDidUpdate(prevProps) {
       if (!this.props.utils.isEqual(prevProps.value, this.props.value)) {
-        this.props.changeDate(getValidDateOrCurrent(this.props));
+        this.props.changeDate(getInitialDate(this.props));
       }
     },
   }),
@@ -36,7 +36,7 @@ export const BasePickerHoc = compose(
     handleSetTodayDate: ({ changeDate, utils }) => () => changeDate([ utils.date() ]),
     handleTextFieldChange: ({ changeDate, onChange }) => (date) => {
       if (date === null) {
-        this.handleClear();
+        onChange(null);
       } else {
         changeDate(date, () => onChange(date));
       }
@@ -66,4 +66,3 @@ export const BasePickerHoc = compose(
 );
 
 export default withRenderProps(BasePickerHoc);
-
