@@ -31,7 +31,7 @@ export class YearSelection extends PureComponent {
     const { date, onChange, utils } = this.props;
 
     const newDate = utils.setYear(date, year);
-    onChange(newDate);
+    onChange(utils.mergeDateAndTime(newDate, date));
   }
 
   getSelectedYearRef = (ref) => {
