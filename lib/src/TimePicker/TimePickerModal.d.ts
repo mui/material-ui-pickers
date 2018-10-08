@@ -5,10 +5,8 @@ import { BasePickerProps } from '../_shared/BasePicker'
 import { Omit } from '@material-ui/core'
 import { MaterialUiPickersDate } from '../typings/date';
 
-export interface TimePickerModalProps extends
-  BasePickerProps,
-  Omit<ModalWrapperProps, 'onChange' | 'value'>
-{ }
+export type TimePickerModalProps = BasePickerProps & Omit<ModalWrapperProps, 'onChange' | 'value'> & {
+}
 
 declare const TimePickerModal: ComponentClass<TimePickerModalProps>;
 

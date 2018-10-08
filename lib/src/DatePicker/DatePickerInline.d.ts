@@ -8,12 +8,9 @@ import { Omit } from '@material-ui/core'
 import { BaseDatePickerProps } from './DatePicker';
 import { InlineWrapperProps } from '../wrappers/InlineWrapper';
 
-export interface DatePickerInlineProps extends
-  BasePickerProps,
-  BaseDatePickerProps,
-  Omit<InlineWrapperProps, 'onChange' | 'value'> {
-    onlyCalendar?: boolean
-  }
+export type DatePickerInlineProps = BasePickerProps & BaseDatePickerProps & Omit<InlineWrapperProps, 'onChange' | 'value'> & {
+  onlyCalendar?: boolean
+}
 
 declare const DatePickerInline: ComponentClass<DatePickerInlineProps>;
 
