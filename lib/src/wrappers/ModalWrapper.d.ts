@@ -3,7 +3,7 @@ import { DateTextFieldProps } from '../_shared/DateTextField';
 import { DialogProps } from '@material-ui/core/Dialog';
 import { MaterialUiPickersDate } from '../typings/date';
 
-export interface ModalWrapperProps extends Partial<DateTextFieldProps> {
+export type ModalWrapperProps = Partial<DateTextFieldProps> & {
     onAccept?: () => void;
     onDismiss?: () => void;
     onClear?: () => void;

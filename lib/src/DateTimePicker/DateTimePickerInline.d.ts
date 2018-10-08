@@ -9,10 +9,8 @@ import { BasePickerProps } from '../_shared/BasePicker'
 import { Omit } from '@material-ui/core'
 import { BaseDateTimePickerProps } from './DateTimePicker';
 
-export interface DateTimePickerInlineProps extends
-  BasePickerProps,
-  BaseDateTimePickerProps,
-  Omit<InlineWrapperProps, 'onChange' | 'value'> {}
+export type DateTimePickerInlineProps = BasePickerProps & BaseDateTimePickerProps & Omit<InlineWrapperProps, 'onChange' | 'value'> & {
+}
 
 declare const DateTimePickerInline: ComponentClass<DateTimePickerInlineProps>;
 
