@@ -67,6 +67,7 @@ export class InlineWrapper extends PureComponent {
 
   close = () => {
     this.setState({ anchorEl: null });
+    this.props.handleAccept();
     if (this.props.onClose) {
       this.props.onClose();
     }
