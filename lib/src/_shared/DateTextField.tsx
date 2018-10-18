@@ -75,9 +75,8 @@ const getError = (
   return '';
 };
 
-export interface DateTextFieldProps
-  extends WithUtilsProps,
-    Omit<TextFieldProps, 'onError' | 'onChange' | 'value'> {
+export type DateTextFieldProps = WithUtilsProps & Omit<TextFieldProps, 'onError' | 'onChange' | 'value'> &
+     {
   value: DateType;
   minDate?: DateType;
   minDateMessage?: React.ReactNode;
