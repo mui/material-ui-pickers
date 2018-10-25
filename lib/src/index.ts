@@ -7,4 +7,4 @@ export {
   InlineDateTimePicker,
 } from './DateTimePicker';
 
-export { default as MuiPickersUtilsProvider } from './MuiPickersUtilsProvider';
+export { default as MuiPickersUtilsProvider } from './utils/MuiPickersUtilsProvider';

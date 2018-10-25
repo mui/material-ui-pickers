@@ -2,7 +2,7 @@ import { shallow, ShallowWrapper } from 'enzyme'; // required to use just shallo
 import * as React from 'react';
 import MuiPickersUtilsProvider, {
   MuiPickersUtilsProviderProps,
-} from '../../MuiPickersUtilsProvider';
+} from '../../utils/MuiPickersUtilsProvider';
 import DateFnsUtils from '../../utils/date-fns-utils';
 
 describe('MuiPickersUtilsProvider', () => {

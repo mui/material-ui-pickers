@@ -1,6 +1,6 @@
 import { Omit } from '@material-ui/core';
 import * as React from 'react';
-import { MuiPickersContextConsumer } from '../MuiPickersUtilsProvider';
+import { MuiPickersContextConsumer } from '../utils/MuiPickersUtilsProvider';
 import { MaterialUiPickersDate } from '../typings/date';
 import { Utils } from '../typings/utils';
 
