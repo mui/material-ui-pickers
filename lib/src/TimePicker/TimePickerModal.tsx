@@ -21,9 +21,11 @@ export const TimePickerModal: React.SFC<TimePickerModalProps> = props => {
     ampm,
     forwardedRef,
     seconds,
+    PickerComponent,
     ...other
   } = props;
 
+  const ThePickerComponent = PickerComponent!;
   return (
     <BasePicker {...props}>
       {({
@@ -50,7 +52,7 @@ export const TimePickerModal: React.SFC<TimePickerModalProps> = props => {
           format={pick12hOr24hFormat(utils.time12hFormat, utils.time24hFormat)}
           {...other}
         >
-          <TimePicker
+          <ThePickerComponent
             date={date}
             onChange={handleChange}
             ampm={ampm}
@@ -76,6 +78,7 @@ export const TimePickerModal: React.SFC<TimePickerModalProps> = props => {
   /** Show the seconds view */
   seconds: PropTypes.bool,
   forwardedRef: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
+  PickerComponent: DomainPropTypes.component,
 };
 
 TimePickerModal.defaultProps = {
@@ -85,6 +88,7 @@ TimePickerModal.defaultProps = {
   ampm: true,
   forwardedRef: undefined,
   seconds: false,
+  PickerComponent: TimePicker,
 };
 
 export default React.forwardRef((props: TimePickerModalProps, ref) => (

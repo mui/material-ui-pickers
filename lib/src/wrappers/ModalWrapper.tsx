@@ -5,7 +5,7 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import DateTextField, { DateTextFieldProps } from '../_shared/DateTextField';
 import ModalDialog from '../_shared/ModalDialog';
-import DomainPropTypes from '../constants/prop-types';
+import DomainPropTypes, {ComponentType} from '../constants/prop-types';
 
 export interface ModalWrapperProps extends Partial<DateTextFieldProps> {
   onAccept?: () => void;
@@ -23,6 +23,7 @@ export interface ModalWrapperProps extends Partial<DateTextFieldProps> {
   container?: React.ReactNode;
   DialogProps?: Partial<Omit<DialogPropsType, 'classes'>>;
   isAccepted?: boolean;
+  PickerComponent?: ComponentType;
 }
 
 export default class ModalWrapper extends React.PureComponent<

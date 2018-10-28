@@ -37,9 +37,11 @@ export const DateTimePickerInline: React.SFC<
     animateYearScrolling,
     forwardedRef,
     allowKeyboardControl,
+    PickerComponent,
     ...other
   } = props;
 
+  const ThePickerComponent = PickerComponent!;
   return (
     <BasePicker {...props} autoOk>
       {({
@@ -67,7 +69,7 @@ export const DateTimePickerInline: React.SFC<
           )}
           {...other}
         >
-          <DateTimePicker
+          <ThePickerComponent
             allowKeyboardControl={allowKeyboardControl}
             ampm={ampm}
             animateYearScrolling={animateYearScrolling}
@@ -116,6 +118,7 @@ export const DateTimePickerInline: React.SFC<
   openTo: PropTypes.oneOf(['year', 'date', 'hour', 'minutes']),
   allowKeyboardControl: PropTypes.bool,
   forwardedRef: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
+  PickerComponent: DomainPropTypes.component,
 };
 
 (DateTimePickerInline as any).defaultProps = {
@@ -140,6 +143,7 @@ export const DateTimePickerInline: React.SFC<
   animateYearScrolling: false,
   forwardedRef: undefined,
   allowKeyboardControl: true,
+  PickerComponent: DateTimePicker,
 };
 
 export default React.forwardRef((props: DateTimePickerInlineProps, ref) => (

@@ -20,9 +20,11 @@ export const TimePickerInline: React.SFC<TimePickerInlineProps> = props => {
     ampm,
     forwardedRef,
     seconds,
+    PickerComponent,
     ...other
   } = props;
 
+  const ThePickerComponent = PickerComponent!;
   return (
     <BasePicker {...props} autoOk>
       {({
@@ -43,7 +45,7 @@ export const TimePickerInline: React.SFC<TimePickerInlineProps> = props => {
           format={pick12hOr24hFormat(utils.time12hFormat, utils.time24hFormat)}
           {...other}
         >
-          <TimePicker
+          <ThePickerComponent
             date={date}
             onChange={handleChange}
             ampm={ampm}
@@ -62,6 +64,7 @@ export const TimePickerInline: React.SFC<TimePickerInlineProps> = props => {
   ampm: PropTypes.bool,
   seconds: PropTypes.bool,
   forwardedRef: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
+  PickerComponent: DomainPropTypes.component,
 };
 
 TimePickerInline.defaultProps = {
@@ -70,6 +73,7 @@ TimePickerInline.defaultProps = {
   format: undefined,
   forwardedRef: undefined,
   seconds: false,
+  PickerComponent: TimePicker,
 };
 
 export default React.forwardRef((props: TimePickerInlineProps, ref) => (

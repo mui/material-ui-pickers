@@ -38,9 +38,11 @@ export const DateTimePickerModal: React.SFC<
     animateYearScrolling,
     forwardedRef,
     allowKeyboardControl,
+    PickerComponent,
     ...other
   } = props;
 
+  const ThePickerComponent = PickerComponent!;
   return (
     <BasePicker {...props}>
       {({
@@ -74,7 +76,7 @@ export const DateTimePickerModal: React.SFC<
           )}
           {...other}
         >
-          <DateTimePicker
+          <ThePickerComponent
             allowKeyboardControl={allowKeyboardControl}
             ampm={ampm}
             animateYearScrolling={animateYearScrolling}
@@ -147,6 +149,7 @@ export const DateTimePickerModal: React.SFC<
   /** Enables keyboard listener for moving between days in calendar */
   allowKeyboardControl: PropTypes.bool,
   forwardedRef: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
+  PickerComponent: DomainPropTypes.component,
 };
 
 (DateTimePickerModal as any).defaultProps = {
@@ -171,6 +174,7 @@ export const DateTimePickerModal: React.SFC<
   animateYearScrolling: false,
   forwardedRef: undefined,
   allowKeyboardControl: true,
+  PickerComponent: DateTimePicker,
 };
 
 export default React.forwardRef((props: DateTimePickerModalProps, ref) => (

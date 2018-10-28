@@ -32,9 +32,11 @@ export const DatePickerModal: React.SFC<DatePickerModalProps> = props => {
     rightArrowIcon,
     shouldDisableDate,
     value,
+    PickerComponent,
     ...other
   } = props;
 
+  const ThePickerComponent = PickerComponent!;
   return (
     <BasePicker {...props}>
       {({
@@ -65,7 +67,7 @@ export const DatePickerModal: React.SFC<DatePickerModalProps> = props => {
           isAccepted={isAccepted}
           {...other}
         >
-          <DatePicker
+          <ThePickerComponent
             date={date}
             allowKeyboardControl={allowKeyboardControl}
             animateYearScrolling={animateYearScrolling}
@@ -128,6 +130,7 @@ export const DatePickerModal: React.SFC<DatePickerModalProps> = props => {
   /** Enables keyboard listener for moving between days in calendar */
   allowKeyboardControl: PropTypes.bool,
   forwardedRef: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
+  PickerComponent: DomainPropTypes.component,
 };
 
 DatePickerModal.defaultProps = {
@@ -148,6 +151,7 @@ DatePickerModal.defaultProps = {
   labelFunc: undefined,
   shouldDisableDate: undefined,
   forwardedRef: undefined,
+  PickerComponent: DatePicker,
 };
 
 export default React.forwardRef((props: DatePickerModalProps, ref) => (

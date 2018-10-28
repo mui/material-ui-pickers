@@ -7,7 +7,7 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import EventListener from 'react-event-listener';
 import DateTextField, { DateTextFieldProps } from '../_shared/DateTextField';
-import DomainPropTypes from '../constants/prop-types';
+import DomainPropTypes, {ComponentType} from '../constants/prop-types';
 
 export interface InlineWrapperProps extends Partial<DateTextFieldProps> {
   onOpen?: () => void;
@@ -16,6 +16,7 @@ export interface InlineWrapperProps extends Partial<DateTextFieldProps> {
   PopoverProps?: Partial<PopoverPropsType>;
   isAccepted: boolean;
   onlyCalendar: boolean;
+  PickerComponent?: ComponentType;
 }
 
 export class InlineWrapper extends React.PureComponent<

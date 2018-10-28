@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import { Omit } from '@material-ui/core';
 import BasePicker, { BasePickerProps } from '../_shared/BasePicker';
-import DomainPropTypes from '../constants/prop-types';
+import DomainPropTypes, {ComponentType} from '../constants/prop-types';
 import InlineWrapper, { InlineWrapperProps } from '../wrappers/InlineWrapper';
 import Calendar from './components/Calendar';
 import DatePicker, { BaseDatePickerProps } from './DatePicker';
@@ -21,6 +21,7 @@ export interface DatePickerInlineProps
       | 'onlyCalendar'
     > {
   onlyCalendar?: boolean;
+  OnlyCalendarComponent?: ComponentType,
 }
 
 export const DatePickerInline: React.SFC<DatePickerInlineProps> = props => {
@@ -44,11 +45,12 @@ export const DatePickerInline: React.SFC<DatePickerInlineProps> = props => {
     value,
     autoOk,
     onlyCalendar,
+    PickerComponent,
+    OnlyCalendarComponent,
     ...other
   } = props;
 
-  const ComponentToShow = onlyCalendar ? Calendar : DatePicker;
-
+  const ComponentToShow = onlyCalendar ? OnlyCalendarComponent! : PickerComponent!;
   return (
     <BasePicker {...props} autoOk>
       {({
@@ -114,6 +116,8 @@ export const DatePickerInline: React.SFC<DatePickerInlineProps> = props => {
   allowKeyboardControl: PropTypes.bool,
   forwardedRef: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
   autoOk: PropTypes.bool,
+  PickerComponent: DomainPropTypes.component,
+  OnlyCalendarComponent: DomainPropTypes.component,
 };
 
 DatePickerInline.defaultProps = {
@@ -135,6 +139,8 @@ DatePickerInline.defaultProps = {
   forwardedRef: undefined,
   autoOk: undefined,
   onlyCalendar: false,
+  PickerComponent: DatePicker,
+  OnlyCalendarComponent: Calendar,
 };
 
 export default React.forwardRef((props: DatePickerInlineProps, ref) => (
