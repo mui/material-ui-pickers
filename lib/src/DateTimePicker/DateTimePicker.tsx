@@ -18,7 +18,7 @@ import { withUtils, WithUtilsProps } from '../_shared/WithUtils';
 import DateTimePickerView, {
   DateTimePickerViewType,
 } from '../constants/DateTimePickerView';
-import DomainPropTypes from '../constants/prop-types';
+import DomainPropTypes, {ComponentType} from '../constants/prop-types';
 import { BaseDatePickerProps } from '../DatePicker/DatePicker';
 import { MaterialUiPickersDate } from '../typings/date';
 
@@ -30,7 +30,7 @@ export interface BaseDateTimePickerProps
   openTo?: DateTimePickerViewType;
   dateRangeIcon?: React.ReactNode;
   timeIcon?: React.ReactNode;
-  ViewContainerComponent?: string | React.ComponentType<any>;
+  ViewContainerComponent?: ComponentType;
 }
 
 export interface DateTimePickerProps
@@ -79,11 +79,7 @@ export class DateTimePicker extends React.Component<
     showTabs: PropTypes.bool,
     timeIcon: PropTypes.node,
     utils: PropTypes.object.isRequired,
-    ViewContainerComponent: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.func,
-      PropTypes.object,
-    ]),
+    ViewContainerComponent: DomainPropTypes.component,
   };
 
   public static defaultProps = {
