@@ -29,7 +29,7 @@ Then teach pickers which library to use with `MuiPickerUtilsProvider`. This comp
 import MomentUtils from 'material-ui-pickers/utils/moment-utils';
 import DateFnsUtils from 'material-ui-pickers/utils/date-fns-utils';
 import LuxonUtils from 'material-ui-pickers/utils/luxon-utils';
-import { MuiPickersUtilsProvider } from 'material-ui-pickers';
+import MuiPickersUtilsProvider from 'material-ui-pickers/MuiPickersUtilsProvider';
 
 function App() {
   return (
