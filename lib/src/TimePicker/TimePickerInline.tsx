@@ -35,6 +35,8 @@ export const TimePickerInline: React.SFC<TimePickerInlineProps> = props => {
         isAccepted,
         pick12hOr24hFormat,
         handleAccept,
+        handleClear,
+        handleSetTodayDate,
       }) => (
         <InlineWrapper
           innerRef={forwardedRef}
@@ -43,6 +45,8 @@ export const TimePickerInline: React.SFC<TimePickerInlineProps> = props => {
           isAccepted={isAccepted}
           handleAccept={handleAccept}
           format={pick12hOr24hFormat(utils.time12hFormat, utils.time24hFormat)}
+          onSetToday={handleSetTodayDate}
+          onClear={handleClear}
           {...other}
         >
           <TimePicker
