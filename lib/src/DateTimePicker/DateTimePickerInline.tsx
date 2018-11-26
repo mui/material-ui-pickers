@@ -52,6 +52,8 @@ export const DateTimePickerInline: React.SFC<
         isAccepted,
         pick12hOr24hFormat,
         handleAccept,
+        handleClear,
+        handleSetTodayDate,
       }) => (
         <InlineWrapper
           innerRef={forwardedRef}
@@ -67,6 +69,8 @@ export const DateTimePickerInline: React.SFC<
             utils.dateTime12hFormat,
             utils.dateTime24hFormat
           )}
+          onSetToday={handleSetTodayDate}
+          onClear={handleClear}
           {...other}
         >
           <DateTimePicker
