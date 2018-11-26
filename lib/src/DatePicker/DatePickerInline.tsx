@@ -52,6 +52,8 @@ export const DatePickerInline: React.SFC<DatePickerInlineProps> = props => {
         handleChange,
         handleTextFieldChange,
         handleAccept,
+        handleSetTodayDate,
+        handleClear,
       }) => (
         <InlineWrapper
           disableFuture={disableFuture}
@@ -65,6 +67,8 @@ export const DatePickerInline: React.SFC<DatePickerInlineProps> = props => {
           value={value}
           isAccepted={isAccepted}
           handleAccept={handleAccept}
+          onSetToday={handleSetTodayDate}
+          onClear={handleClear}
           {...other}
         >
           <ComponentToShow
