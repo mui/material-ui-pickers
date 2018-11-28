@@ -1,6 +1,4 @@
-import Popover, {
-  PopoverProps as PopoverPropsType,
-} from '@material-ui/core/Popover';
+import Popover, { PopoverProps as PopoverPropsType } from '@material-ui/core/Popover';
 import withStyles, { WithStyles } from '@material-ui/core/styles/withStyles';
 import keycode from 'keycode';
 import * as PropTypes from 'prop-types';
@@ -126,9 +124,7 @@ export class InlineWrapper extends React.PureComponent<
 
     return (
       <React.Fragment>
-        {isOpen && (
-          <EventListener target="window" onKeyDown={this.handleKeyDown} />
-        )}
+        {isOpen && <EventListener target="window" onKeyDown={this.handleKeyDown} />}
 
         <DateTextField
           value={value}
@@ -162,7 +158,7 @@ export class InlineWrapper extends React.PureComponent<
   }
 }
 
-const styles = {
+export const styles = {
   popoverPaper: {
     maxWidth: 310,
     minWidth: 290,

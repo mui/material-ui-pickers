@@ -7,9 +7,7 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { ExtendMui } from '../typings/extendMui';
 
-export interface PickerToolbarProps
-  extends ExtendMui<ToolbarProps>,
-    WithStyles<typeof styles> {
+export interface PickerToolbarProps extends ExtendMui<ToolbarProps>, WithStyles<typeof styles> {
   children: React.ReactNodeArray;
 }
 
@@ -37,7 +35,7 @@ PickerToolbar.defaultProps = {
   className: '',
 };
 
-const styles = (theme: Theme) =>
+export const styles = (theme: Theme) =>
   createStyles({
     toolbar: {
       display: 'flex',

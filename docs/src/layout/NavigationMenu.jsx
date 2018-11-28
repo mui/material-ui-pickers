@@ -54,16 +54,8 @@ class NavigationMenu extends React.Component {
           : false;
 
       return (
-        <NavItem
-          key={href || title}
-          title={title}
-          depth={depth}
-          href={href}
-          open={open}
-        >
-          {children &&
-            children.length > 0 &&
-            children.map(this.mapNavigation(depth + 1))}
+        <NavItem key={href || title} title={title} depth={depth} href={href} open={open}>
+          {children && children.length > 0 && children.map(this.mapNavigation(depth + 1))}
         </NavItem>
       );
     };

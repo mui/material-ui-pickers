@@ -6,9 +6,7 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { ExtendMui } from '../typings/extendMui';
 
-export interface ToolbarButtonProps
-  extends ExtendMui<TypographyProps>,
-    WithStyles<typeof styles> {
+export interface ToolbarButtonProps extends ExtendMui<TypographyProps>, WithStyles<typeof styles> {
   selected: boolean;
   label: string;
 }
@@ -42,7 +40,7 @@ ToolbarButton.defaultProps = {
   className: '',
 };
 
-const styles = (theme: Theme) => ({
+export const styles = (theme: Theme) => ({
   toolbarBtn: {
     cursor: 'pointer',
     color: 'rgba(255, 255, 255, 0.54)',
@@ -52,6 +50,4 @@ const styles = (theme: Theme) => ({
   },
 });
 
-export default withStyles(styles, { name: 'MuiPickersToolbarButton' })(
-  ToolbarButton
-);
+export default withStyles(styles, { name: 'MuiPickersToolbarButton' })(ToolbarButton);

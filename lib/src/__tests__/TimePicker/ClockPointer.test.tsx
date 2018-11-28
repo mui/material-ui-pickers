@@ -1,9 +1,6 @@
 import { ShallowWrapper } from 'enzyme';
 import * as React from 'react';
-import {
-  ClockPointer,
-  ClockPointerProps,
-} from '../../TimePicker/components/ClockPointer';
+import { ClockPointer, ClockPointerProps } from '../../TimePicker/components/ClockPointer';
 import { shallow } from '../test-utils';
 
 describe('ClockPointer', () => {
@@ -11,13 +8,7 @@ describe('ClockPointer', () => {
 
   beforeEach(() => {
     component = shallow(
-      <ClockPointer
-        classes={{} as any}
-        value={1}
-        hasSelected
-        isInner
-        type="hours"
-      />
+      <ClockPointer classes={{} as any} value={1} hasSelected isInner type="hours" />
     );
   });
 

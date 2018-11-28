@@ -220,9 +220,7 @@ describe('Luxon utils', () => {
     const weekdaysEn = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
     const weekdaysDe = ['M', 'D', 'M', 'D', 'F', 'S', 'S'];
     expect(luxonUtil.getWeekdays()).toEqual(weekdaysEn);
-    expect(luxonUtilDe.getWeekdays()).toEqual(
-      hasFullICU() ? weekdaysDe : weekdaysEn
-    );
+    expect(luxonUtilDe.getWeekdays()).toEqual(hasFullICU() ? weekdaysDe : weekdaysEn);
   });
 
   it('Should get the weeks of a month', () => {
@@ -247,15 +245,9 @@ describe('Luxon utils', () => {
   });
 
   it('Should get a range of years', () => {
-    const years = [2016, 2017, 2018].map(year =>
-      luxonUtil.date(new Date(year, 0))
-    );
+    const years = [2016, 2017, 2018].map(year => luxonUtil.date(new Date(year, 0)));
 
-    expect(luxonUtil.getYearRange(years[0], years[2])).toEqual([
-      years[0],
-      years[1],
-      years[2],
-    ]);
+    expect(luxonUtil.getYearRange(years[0], years[2])).toEqual([years[0], years[1], years[2]]);
     // expect(luxonUtil.getYearRange(years[0], years[0])).toEqual([]);
   });
 
@@ -271,9 +263,7 @@ describe('Luxon utils', () => {
     const now = luxonUtil.date(new Date(2018, 0));
 
     expect(luxonUtil.getCalendarHeaderText(now)).toBe('January 2018');
-    expect(luxonUtilDe.getCalendarHeaderText(now)).toBe(
-      hasFullICU() ? 'Januar 2018' : 'M01 2018'
-    );
+    expect(luxonUtilDe.getCalendarHeaderText(now)).toBe(hasFullICU() ? 'Januar 2018' : 'M01 2018');
   });
 
   it('Should get the date picker header text', () => {
@@ -289,9 +279,7 @@ describe('Luxon utils', () => {
     const now = luxonUtil.date(new Date(2018, 2));
 
     expect(luxonUtil.getDateTimePickerHeaderText(now)).toBe('Mar 1');
-    expect(luxonUtilDe.getDateTimePickerHeaderText(now)).toBe(
-      hasFullICU() ? 'März 1' : 'M03 1'
-    );
+    expect(luxonUtilDe.getDateTimePickerHeaderText(now)).toBe(hasFullICU() ? 'März 1' : 'M03 1');
   });
 
   it('Should get the day text', () => {

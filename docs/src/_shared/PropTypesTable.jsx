@@ -35,12 +35,9 @@ class PropTypesTable extends React.PureComponent {
 
         <Typography variant="body1" gutterBottom>
           <strong> Note: </strong>
-          Any prop not recognized by the pickers and their sub-components are
-          passed down to material-ui&nbsp;
-          <a
-            className="link"
-            href="https://material-ui-next.com/api/text-field/#props"
-          >
+          Any prop not recognized by the pickers and their sub-components are passed down to
+          material-ui&nbsp;
+          <a className="link" href="https://material-ui-next.com/api/text-field/#props">
             TextField{' '}
           </a>
           component.
@@ -69,9 +66,7 @@ class PropTypesTable extends React.PureComponent {
                       {propsDoc[prop].required ? `${prop} *` : prop}
                     </TableCell>
 
-                    <TableCell className={classes.type}>
-                      {propsDoc[prop].type.name}
-                    </TableCell>
+                    <TableCell className={classes.type}>{propsDoc[prop].type.name}</TableCell>
 
                     <TableCell className={classes.description}>
                       <span

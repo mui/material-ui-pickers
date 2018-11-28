@@ -10,14 +10,9 @@ import { withUtils, WithUtilsProps } from '../../_shared/WithUtils';
 import { MaterialUiPickersDate } from '../../typings/date';
 import SlideTransition, { SlideDirection } from './SlideTransition';
 
-export interface CalendarHeaderProps
-  extends WithUtilsProps,
-    WithStyles<typeof styles, true> {
+export interface CalendarHeaderProps extends WithUtilsProps, WithStyles<typeof styles, true> {
   currentMonth: object;
-  onMonthChange: (
-    date: MaterialUiPickersDate,
-    direction: SlideDirection
-  ) => void;
+  onMonthChange: (date: MaterialUiPickersDate, direction: SlideDirection) => void;
   leftArrowIcon?: React.ReactNode;
   rightArrowIcon?: React.ReactNode;
   disablePrevMonth?: boolean;
@@ -39,10 +34,8 @@ export const CalendarHeader: React.SFC<CalendarHeaderProps> = ({
 }) => {
   const rtl = theme.direction === 'rtl';
 
-  const selectNextMonth = () =>
-    onMonthChange(utils.getNextMonth(currentMonth), 'left');
-  const selectPreviousMonth = () =>
-    onMonthChange(utils.getPreviousMonth(currentMonth), 'right');
+  const selectNextMonth = () => onMonthChange(utils.getNextMonth(currentMonth), 'left');
+  const selectPreviousMonth = () => onMonthChange(utils.getPreviousMonth(currentMonth), 'right');
 
   return (
     <div>
@@ -110,7 +103,7 @@ CalendarHeader.defaultProps = {
   disableNextMonth: false,
 };
 
-const styles = (theme: Theme) =>
+export const styles = (theme: Theme) =>
   createStyles({
     switchHeader: {
       display: 'flex',

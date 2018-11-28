@@ -67,9 +67,7 @@ export default class BasicUsage extends Component {
           <DateTimePicker
             okLabel="تأیید"
             cancelLabel="لغو"
-            labelFunc={date =>
-              date ? date.format('jYYYY/jMM/jDD hh:mm A') : ''
-            }
+            labelFunc={date => (date ? date.format('jYYYY/jMM/jDD hh:mm A') : '')}
             value={selectedDate}
             onChange={this.handleDateChange}
           />

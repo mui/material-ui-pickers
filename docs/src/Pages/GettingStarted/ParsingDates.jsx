@@ -7,15 +7,14 @@ const ParsingDates = () => (
       Parsing dates
     </Typography>
 
-    <Typography gutterBottom>
-      Material-UI pickers rely on the date management library when the date
-      should be parsed. For any prop-types, that accept actually the date (e.g.
-      <span className="inline-code">minDate</span>,
-      <span className="inline-code">maxDate</span>) accept string, number, Date
-      object and so on.
+    <Typography gutterBottom variant="body1">
+      Material-UI pickers rely on the date management library when the date should be parsed. For
+      any prop-types, that accept actually the date (e.g.
+      <span className="inline-code"> minDate </span>,<span className="inline-code"> maxDate </span>)
+      accept string, number, Date object and so on.
     </Typography>
 
-    <Typography>
+    <Typography variant="body1">
       Find more information about parsing dates in docs for your library:
     </Typography>
 
@@ -26,20 +25,16 @@ const ParsingDates = () => (
         </a>
       </li>
       <li>
-        <a href="https://moment.github.io/luxon/docs/manual/parsing.html">
-          luxon
-        </a>
+        <a href="https://moment.github.io/luxon/docs/manual/parsing.html">luxon</a>
       </li>
       <li>
         <a href="https://momentjs.com/docs/#/parsing/">moment</a>
       </li>
     </ul>
 
-    <Typography gutterBottom>
-      Pass any value to the picker, and if it won`t be parsed as expected feel
-      free to open issue on our
-      <a href="https://github.com/dmtrKovalenko/material-ui-pickers">github</a>
-      😎
+    <Typography gutterBottom variant="h6">
+      Pass any value to the picker, and if it won`t be parsed as expected feel free to open issue on
+      our <a href="https://github.com/dmtrKovalenko/material-ui-pickers">github</a> 😎
     </Typography>
   </div>
 );

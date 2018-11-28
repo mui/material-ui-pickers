@@ -11,9 +11,7 @@ export interface MuiPickersUtilsProviderProps {
   moment?: any;
 }
 
-export default class MuiPickersUtilsProvider extends React.Component<
-  MuiPickersUtilsProviderProps
-> {
+export default class MuiPickersUtilsProvider extends React.Component<MuiPickersUtilsProviderProps> {
   public static propTypes: any = {
     utils: PropTypes.func.isRequired,
     locale: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),

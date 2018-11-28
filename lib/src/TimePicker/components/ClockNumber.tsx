@@ -82,7 +82,7 @@ export class ClockNumber extends React.Component<ClockNumberProps> {
   }
 }
 
-const styles = (theme: Theme) => {
+export const styles = (theme: Theme) => {
   const size = theme.spacing.unit * 4;
 
   return createStyles({
@@ -96,10 +96,7 @@ const styles = (theme: Theme) => {
       justifyContent: 'center',
       alignItems: 'center',
       borderRadius: '50%',
-      color:
-        theme.palette.type === 'light'
-          ? theme.palette.text.primary
-          : theme.palette.text.hint,
+      color: theme.palette.type === 'light' ? theme.palette.text.primary : theme.palette.text.hint,
     },
     selected: {
       color: theme.palette.common.white,

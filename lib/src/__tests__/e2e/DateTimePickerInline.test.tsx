@@ -35,9 +35,7 @@ describe('e2e - DateTimePickerInline', () => {
   });
 
   it('Should close on popover close request', () => {
-    const popoverOnClose = (component
-      .find('WithStyles(Popover)')
-      .props() as PopoverProps).onClose;
+    const popoverOnClose = (component.find('WithStyles(Popover)').props() as PopoverProps).onClose;
     if (!popoverOnClose) {
       throw new Error('expected popoverOnClose');
     }

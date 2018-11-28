@@ -4,9 +4,7 @@ import * as React from 'react';
 import { Omit } from '@material-ui/core';
 import BasePicker, { BasePickerProps } from '../_shared/BasePicker';
 import DomainPropTypes from '../constants/prop-types';
-import InlineWrapper, {
-  OuterInlineWrapperProps,
-} from '../wrappers/InlineWrapper';
+import InlineWrapper, { OuterInlineWrapperProps } from '../wrappers/InlineWrapper';
 import TimePicker, { BaseTimePickerProps } from './TimePicker';
 
 export interface TimePickerInlineProps
@@ -15,15 +13,7 @@ export interface TimePickerInlineProps
     Omit<OuterInlineWrapperProps, 'onChange' | 'value'> {}
 
 export const TimePickerInline: React.SFC<TimePickerInlineProps> = props => {
-  const {
-    value,
-    format,
-    onChange,
-    ampm,
-    forwardedRef,
-    seconds,
-    ...other
-  } = props;
+  const { value, format, onChange, ampm, forwardedRef, seconds, ...other } = props;
 
   return (
     <BasePicker mergePreviousDateOnChange autoOk {...props}>
@@ -45,12 +35,7 @@ export const TimePickerInline: React.SFC<TimePickerInlineProps> = props => {
           format={pick12hOr24hFormat(utils.time12hFormat, utils.time24hFormat)}
           {...other}
         >
-          <TimePicker
-            date={date}
-            onChange={handleChange}
-            ampm={ampm}
-            seconds={seconds}
-          />
+          <TimePicker date={date} onChange={handleChange} ampm={ampm} seconds={seconds} />
         </InlineWrapper>
       )}
     </BasePicker>

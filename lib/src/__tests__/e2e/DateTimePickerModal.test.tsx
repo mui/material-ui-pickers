@@ -5,8 +5,7 @@ import DateTimePickerModal, {
 } from '../../DateTimePicker/DateTimePickerModal';
 import { mount, utilsToUse } from '../test-utils';
 
-const format =
-  process.env.UTILS === 'luxon' ? 'MM/dd/yyyy hh:mm' : 'MM/DD/YYYY HH:mm';
+const format = process.env.UTILS === 'luxon' ? 'MM/dd/yyyy hh:mm' : 'MM/DD/YYYY HH:mm';
 
 describe('e2e - DateTimePickerModal', () => {
   let component: ReactWrapper<DateTimePickerModalProps>;
@@ -35,10 +34,7 @@ describe('e2e - DateTimePickerModal', () => {
     component.setProps({ value: '2018-01-01T00:00:00.000Z' });
     component.update(); // make additional react tick to update text field
 
-    const expectedString = utilsToUse.format(
-      utilsToUse.date('2018-01-01T00:00:00.000Z'),
-      format
-    );
+    const expectedString = utilsToUse.format(utilsToUse.date('2018-01-01T00:00:00.000Z'), format);
 
     expect(component.find('input').props().value).toBe(expectedString);
   });
@@ -92,9 +88,7 @@ describe('e2e - DateTimePickerModal keyboard', () => {
   });
 
   it('Should apply keyboard input', () => {
-    component
-      .find('input')
-      .simulate('change', { target: { value: '02/01/2018 00:00' } });
+    component.find('input').simulate('change', { target: { value: '02/01/2018 00:00' } });
     component.find('input').simulate('blur');
 
     expect(onChangeMock).toHaveBeenCalled();

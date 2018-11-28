@@ -12,8 +12,8 @@ const DateTimePickerDemo = () => (
       This component is not from material design guidelines.
     </Typography>
     <Typography variant="body1">
-      Its a combination of date & time picker and allows that uses the modal to
-      select both date and time with one control.
+      Its a combination of date & time picker and allows that uses the modal to select both date and
+      time with one control.
     </Typography>
 
     <SourcablePanel
@@ -31,8 +31,7 @@ const DateTimePickerDemo = () => (
       sourceFile="Components/DateTimePicker/CustomDateTimePicker.example.jsx"
       description={
         <Typography variant="body1" gutterBottom>
-          Applied mostly all customization, that available for date & time
-          pickers
+          Applied mostly all customization, that available for date & time pickers
         </Typography>
       }
     />

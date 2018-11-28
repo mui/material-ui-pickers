@@ -1,9 +1,6 @@
 import { ShallowWrapper } from 'enzyme';
 import * as React from 'react';
-import {
-  YearSelection,
-  YearSelectionProps,
-} from '../../DatePicker/components/YearSelection';
+import { YearSelection, YearSelectionProps } from '../../DatePicker/components/YearSelection';
 import { shallow, utilsToUse } from '../test-utils';
 
 describe('YearSelection', () => {

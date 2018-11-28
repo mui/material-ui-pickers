@@ -7,6 +7,7 @@ interface AppState {
   direction: 'rtl' | 'ltr';
   theme: 'light' | 'dark';
 }
+
 class App extends React.Component<{}, AppState> {
   state: AppState = {
     direction: 'ltr',
@@ -40,10 +41,7 @@ class App extends React.Component<{}, AppState> {
   render() {
     return (
       <MuiThemeProvider theme={this.createMuiTheme()}>
-        <Layout
-          toggleDirection={this.toggleDirection}
-          toggleThemeType={this.toggleTheme}
-        >
+        <Layout toggleDirection={this.toggleDirection} toggleThemeType={this.toggleTheme}>
           <Router />
         </Layout>
       </MuiThemeProvider>

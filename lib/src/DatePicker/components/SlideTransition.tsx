@@ -23,9 +23,7 @@ const SlideTransition: React.SFC<SlideTransitionProps> = ({
   transKey,
   slideDirection,
 }) => (
-  <TransitionGroup
-    className={classnames(classes.transitionContainer, className)}
-  >
+  <TransitionGroup className={classnames(classes.transitionContainer, className)}>
     <CSSTransition
       key={transKey}
       mountOnEnter
@@ -55,7 +53,7 @@ SlideTransition.defaultProps = {
   className: undefined,
 };
 
-const styles = (theme: Theme) => {
+export const styles = (theme: Theme) => {
   const slideTransition = theme.transitions.create('transform', {
     duration: animationDuration,
     easing: 'cubic-bezier(0.35, 0.8, 0.4, 1)',

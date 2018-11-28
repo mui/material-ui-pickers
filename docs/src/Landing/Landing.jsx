@@ -24,18 +24,9 @@ class Demo extends Component {
     return (
       <div>
         <Toolbar color="primary" className={classes.appToolbar}>
-          <img
-            alt="Material-UI logo"
-            className={classes.materialUILogo}
-            src={MuiLogo}
-          />
+          <img alt="Material-UI logo" className={classes.materialUILogo} src={MuiLogo} />
 
-          <Typography
-            variant="h4"
-            color="inherit"
-            className="title text-light"
-            gutterBottom
-          >
+          <Typography variant="h4" color="inherit" className="title text-light" gutterBottom>
             Material-UI Pickers
           </Typography>
           <Typography
@@ -45,8 +36,7 @@ class Demo extends Component {
             gutterBottom
             className="text-light"
           >
-            Accessible, customizable, delightful date & time pickers for
-            @material-ui/core
+            Accessible, customizable, delightful date & time pickers for @material-ui/core
           </Typography>
 
           <Link to="/installation">
@@ -66,17 +56,11 @@ class Demo extends Component {
           </Typography>
 
           <Typography align="center" gutterBottom>
-            Material-UI-pickers is a MIT licensed open source project. We are
-            intent on code quality and project maintain. Entirely thanks to our
-            awesome bakers.
+            Material-UI-pickers is a MIT licensed open source project. We are intent on code quality
+            and project maintain. Entirely thanks to our awesome bakers.
           </Typography>
 
-          <Typography
-            align="center"
-            className={classes.sponsorHeader}
-            variant="h5"
-            gutterBottom
-          >
+          <Typography align="center" className={classes.sponsorHeader} variant="h5" gutterBottom>
             Our awesome sponsors via{' '}
             <a className="link" href="https://www.patreon.com/user?u=9897423">
               {' '}

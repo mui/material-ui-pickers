@@ -10,9 +10,7 @@ describe('DateTimePickerModal', () => {
   let component: ShallowWrapper<DateTimePickerModalProps>;
 
   beforeEach(() => {
-    component = shallow(
-      <DateTimePickerModal variant="filled" value={null} onChange={jest.fn()} />
-    );
+    component = shallow(<DateTimePickerModal variant="filled" value={null} onChange={jest.fn()} />);
   });
 
   it('Should renders', () => {

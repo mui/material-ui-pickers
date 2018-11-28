@@ -16,10 +16,7 @@ export interface BasePickerRenderArgs {
   handleChange: (date: MaterialUiPickersDate, isFinish?: boolean) => void;
   handleTextFieldChange: (date: MaterialUiPickersDate | null) => void;
   handleAcceptedChange: (isAccepted: boolean, callback?: any) => void;
-  pick12hOr24hFormat: (
-    default12hFormat: string,
-    default24hFormat: string
-  ) => string;
+  pick12hOr24hFormat: (default12hFormat: string, default24hFormat: string) => string;
 }
 
 export interface BasePickerProps {
@@ -47,20 +44,14 @@ export interface OuterBasePickerProps extends BasePickerProps, WithUtilsProps {
   children: (options: BasePickerRenderArgs) => React.ReactNode;
 }
 
-const getInitialDate = ({
-  utils,
-  value,
-  initialFocusedDate,
-}: OuterBasePickerProps) => {
+const getInitialDate = ({ utils, value, initialFocusedDate }: OuterBasePickerProps) => {
   const initialDate = value || initialFocusedDate || utils.date();
   const date = utils.date(initialDate);
 
   return utils.isValid(date) ? date : utils.date();
 };
 
-export class BasePicker extends React.Component<
-  OuterBasePickerProps & WithUtilsProps
-> {
+export class BasePicker extends React.Component<OuterBasePickerProps & WithUtilsProps> {
   public state = {
     date: getInitialDate(this.props),
     isAccepted: false,
@@ -87,8 +78,7 @@ export class BasePicker extends React.Component<
 
   public handleAccept = () => this.props.onChange(this.state.date);
 
-  public handleSetTodayDate = () =>
-    this.handleChange(this.props.utils.date(), false);
+  public handleSetTodayDate = () => this.handleChange(this.props.utils.date(), false);
 
   public handleTextFieldChange = (date: MaterialUiPickersDate) => {
     const { onChange, utils, mergePreviousDateOnChange } = this.props;
@@ -104,10 +94,7 @@ export class BasePicker extends React.Component<
     }
   };
 
-  public pick12hOr24hFormat = (
-    default12hFormat: string,
-    default24hFormat: string
-  ): string => {
+  public pick12hOr24hFormat = (default12hFormat: string, default24hFormat: string): string => {
     const { format, ampm } = this.props;
     if (format) {
       return format;

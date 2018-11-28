@@ -20,8 +20,7 @@ export class ClockPointer extends React.Component<ClockPointerProps> {
     hasSelected: PropTypes.bool.isRequired,
     isInner: PropTypes.bool.isRequired,
     innerRef: PropTypes.any,
-    type: PropTypes.oneOf(Object.keys(ClockType).map(key => ClockType[key]))
-      .isRequired,
+    type: PropTypes.oneOf(Object.keys(ClockType).map(key => ClockType[key])).isRequired,
   };
 
   public static getDerivedStateFromProps = (
@@ -82,7 +81,7 @@ export class ClockPointer extends React.Component<ClockPointerProps> {
   }
 }
 
-const styles = (theme: Theme) =>
+export const styles = (theme: Theme) =>
   createStyles({
     pointer: {
       width: 2,

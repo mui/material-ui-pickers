@@ -10,9 +10,7 @@ describe('DateTimePickerView', () => {
   let component: ShallowWrapper<DateTimePickerViewProps>;
 
   beforeEach(() => {
-    component = shallow(
-      <DateTimePickerView selected={true}>foo</DateTimePickerView>
-    );
+    component = shallow(<DateTimePickerView selected={true}>foo</DateTimePickerView>);
   });
 
   it('Should renders', () => {

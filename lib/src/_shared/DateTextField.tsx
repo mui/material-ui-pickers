@@ -1,10 +1,7 @@
 import Icon from '@material-ui/core/Icon';
 import IconButton from '@material-ui/core/IconButton';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import TextField, {
-  BaseTextFieldProps,
-  StandardTextFieldProps,
-} from '@material-ui/core/TextField';
+import TextField, { BaseTextFieldProps, StandardTextFieldProps } from '@material-ui/core/TextField';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
@@ -39,10 +36,7 @@ const getDisplayDate = ({
   return utils.isValid(date) ? utils.format(date, format) : invalidLabel;
 };
 
-const getError = (
-  value: MaterialUiPickersDate,
-  props: DateTextFieldProps
-): React.ReactNode => {
+const getError = (value: MaterialUiPickersDate, props: DateTextFieldProps): React.ReactNode => {
   const {
     utils,
     maxDate,
