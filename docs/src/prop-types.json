@@ -901,6 +901,28 @@
       "required": false,
       "type": { "name": "ReactNode" }
     },
+    "dateRangeIcon": {
+      "defaultValue": null,
+      "description": "Date tab icon",
+      "name": "dateRangeIcon",
+      "parent": {
+        "fileName": "/Users/dmitrijkovalenko/dev/material-ui-pickers/lib/src/DatePicker/DateTimePicker.tsx",
+        "name": "BaseDateTimePickerProps"
+      },
+      "required": false,
+      "type": { "name": "ReactNode" }
+    },
+    "timeIcon": {
+      "defaultValue": null,
+      "description": "Time tab icon",
+      "name": "timeIcon",
+      "parent": {
+        "fileName": "/Users/dmitrijkovalenko/dev/material-ui-pickers/lib/src/DatePicker/DateTimePicker.tsx",
+        "name": "BaseDateTimePickerProps"
+      },
+      "required": false,
+      "type": { "name": "ReactNode" }
+    },
     "renderDay": {
       "defaultValue": null,
       "description": "Custom renderer for day",
