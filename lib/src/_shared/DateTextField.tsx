@@ -1,13 +1,12 @@
 import Icon from '@material-ui/core/Icon';
 import IconButton from '@material-ui/core/IconButton';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import TextField, { BaseTextFieldProps, StandardTextFieldProps } from '@material-ui/core/TextField';
+import TextField, { BaseTextFieldProps, TextFieldProps } from '@material-ui/core/TextField';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-import { FilledInputProps } from '@material-ui/core/FilledInput';
 import { InputProps as InputPropsType } from '@material-ui/core/Input';
-import { OutlinedInputProps } from '@material-ui/core/OutlinedInput';
+import { MaskedInputProps } from 'react-text-mask';
 import DomainPropTypes, { DateType } from '../constants/prop-types';
 import { MaterialUiPickersDate } from '../typings/date';
 import { ExtendMui } from '../typings/extendMui';
@@ -78,12 +77,9 @@ export interface DateTextFieldProps
   extends WithUtilsProps,
     ExtendMui<BaseTextFieldProps, 'onError' | 'onChange' | 'value'> {
   // Properly extend different variants from mui textfield
-  variant?: 'outlined' | 'standard' | 'filled';
-  InputProps?: Partial<InputPropsType | OutlinedInputProps | FilledInputProps>;
-  inputProps?:
-    | InputPropsType['inputProps']
-    | OutlinedInputProps['inputProps']
-    | FilledInputProps['inputProps'];
+  variant?: TextFieldProps['variant'];
+  InputProps?: Partial<TextFieldProps>;
+  inputProps?: TextFieldProps['inputMode'];
   value: DateType;
   minDate?: DateType;
   /** Error message, shown if date is less then minimal date */
@@ -94,7 +90,7 @@ export interface DateTextFieldProps
   /** Error message, shown if date is more then maximal date */
   maxDateMessage?: React.ReactNode;
   /** Input mask, used in keyboard mode read more <a href="https://github.com/text-mask/text-mask/blob/master/componentDocumentation.md#readme">here</a> */
-  mask?: any;
+  mask?: MaskedInputProps['mask'];
   pipe?: any;
   keepCharPositions?: boolean;
   onChange: (date: MaterialUiPickersDate) => void;
@@ -119,7 +115,7 @@ export interface DateTextFieldProps
   clearable?: boolean;
   /** Component that should replace the default Material-UI TextField */
   TextFieldComponent?:
-    | React.ComponentType<StandardTextFieldProps>
+    | React.ComponentType<TextFieldProps>
     | React.ReactType<React.HTMLAttributes<any>>;
   /** Props to pass to keyboard input adornment */
   InputAdornmentProps?: object;
@@ -368,7 +364,7 @@ export class DateTextField extends React.PureComponent<DateTextFieldProps> {
       );
     }
 
-    const Component = TextFieldComponent!;
+    const Component = TextFieldComponent! as React.ComponentType<any>;
     const inputProps = {
       ...localInputProps,
       ...InputProps,

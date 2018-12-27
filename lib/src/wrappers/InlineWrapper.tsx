@@ -8,14 +8,18 @@ import DateTextField, { DateTextFieldProps } from '../_shared/DateTextField';
 import DomainPropTypes from '../constants/prop-types';
 
 export interface OuterInlineWrapperProps extends Partial<DateTextFieldProps> {
+  /** On open callback */
   onOpen?: () => void;
+  /** On close callback */
   onClose?: () => void;
+  /** Dialog props passed to material-ui Dialog */
   PopoverProps?: Partial<PopoverPropsType>;
 }
 
 export interface InlineWrapperProps extends OuterInlineWrapperProps {
   handleAccept: () => void;
   isAccepted: boolean;
+  /** Show only calendar for datepicker in popover mode */
   onlyCalendar: boolean;
 }
 
@@ -23,17 +27,11 @@ export class InlineWrapper extends React.PureComponent<
   InlineWrapperProps & WithStyles<typeof styles>
 > {
   public static propTypes: any = {
-    /** Show only calendar for datepicker in popover mode */
     onlyCalendar: PropTypes.bool,
-    /** Picker value */
     value: DomainPropTypes.date,
-    /** On open callback [(e: Event) => void] */
     onOpen: PropTypes.func,
-    /** On close callback [(e: Event) => void] */
     onClose: PropTypes.func,
-    /** Format string */
     format: PropTypes.string,
-    /** Dialog props passed to material-ui Dialog */
     PopoverProps: PropTypes.object,
     labelFunc: PropTypes.func,
     onClear: PropTypes.func,
@@ -61,6 +59,10 @@ export class InlineWrapper extends React.PureComponent<
   public static getDerivedStateFromProps(nextProps: InlineWrapperProps) {
     // only if accept = true close the popover
     if (nextProps.isAccepted) {
+      if (nextProps.onClose) {
+        nextProps.onClose();
+      }
+
       return {
         anchorEl: null,
       };
@@ -82,7 +84,11 @@ export class InlineWrapper extends React.PureComponent<
 
   public close = () => {
     this.setState({ anchorEl: null });
-    this.props.handleAccept();
+
+    if (this.props.value !== null) {
+      this.props.handleAccept();
+    }
+
     if (this.props.onClose) {
       this.props.onClose();
     }
@@ -161,10 +167,9 @@ export class InlineWrapper extends React.PureComponent<
 export const styles = {
   popoverPaper: {
     maxWidth: 310,
-    minWidth: 290,
+    minWidth: 300,
     paddingBottom: 8,
   },
 };
 
-// @ts-ignore
 export default withStyles(styles)(InlineWrapper);
