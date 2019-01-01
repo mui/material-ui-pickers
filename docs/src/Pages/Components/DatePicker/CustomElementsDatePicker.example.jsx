@@ -70,7 +70,6 @@ class CustomElements extends PureComponent {
 
   render() {
     const { selectedDate } = this.state;
-    console.log(selectedDate);
 
     return (
       <div className="picker">
