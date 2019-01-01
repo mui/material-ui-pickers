@@ -99,6 +99,7 @@ class Layout extends Component<LayoutProps> {
               {Object.keys(utilsMap).map((option, index) => (
                 <MenuItem
                   key={option}
+                  className={classes.utilsMenuItem}
                   selected={index === this.state.selectedIndex}
                   onClick={event => this.handleUtilsChange(event, index)}
                 >
@@ -193,6 +194,9 @@ const styles = (theme: Theme) =>
         width: 'calc(100% - 250px)',
         left: 250,
       },
+    },
+    utilsMenuItem: {
+      textTransform: 'capitalize',
     },
     main: {
       marginTop: 55,
