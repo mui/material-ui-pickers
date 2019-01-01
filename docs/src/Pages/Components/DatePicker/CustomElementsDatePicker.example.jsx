@@ -25,7 +25,7 @@ class CustomElements extends PureComponent {
   };
 
   handleWeekChange = date => {
-    this.setState({ selectedDate: startOfWeek(date) });
+    this.setState({ selectedDate: startOfWeek(cloneCrossUtils(date)) });
   };
 
   formatWeekSelectLabel = (date, invalidLabel) => {
@@ -70,6 +70,7 @@ class CustomElements extends PureComponent {
 
   render() {
     const { selectedDate } = this.state;
+    console.log(selectedDate);
 
     return (
       <div className="picker">
