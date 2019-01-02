@@ -10,7 +10,7 @@ import DateTimePicker, { BaseDateTimePickerProps } from './DateTimePicker';
 export interface DateTimePickerModalProps
   extends BasePickerProps,
     BaseDateTimePickerProps,
-    Omit<ModalWrapperProps, 'onChange' | 'value'> {}
+    Omit<ModalWrapperProps, 'onChange' | 'value' | 'format'> {}
 
 export const DateTimePickerModal: React.SFC<DateTimePickerModalProps> = props => {
   const {

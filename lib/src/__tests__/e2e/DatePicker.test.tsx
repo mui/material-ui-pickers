@@ -65,7 +65,6 @@ describe('e2e -- DatePicker keyboard input', () => {
         mask={[/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/]}
         value={'2018-01-01T00:00:00.000Z'}
         onChange={onChangeMock}
-        TextFieldComponent="input"
         InputAdornmentProps={{
           disableTypography: true,
         }}

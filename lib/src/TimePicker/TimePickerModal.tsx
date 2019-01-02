@@ -10,7 +10,7 @@ import TimePicker, { BaseTimePickerProps } from './TimePicker';
 export interface TimePickerModalProps
   extends BasePickerProps,
     BaseTimePickerProps,
-    Omit<ModalWrapperProps, 'onChange' | 'value'> {}
+    Omit<ModalWrapperProps, 'onChange' | 'value' | 'format'> {}
 
 export const TimePickerModal: React.SFC<TimePickerModalProps> = props => {
   const { value, format, autoOk, onChange, ampm, forwardedRef, seconds, ...other } = props;

@@ -10,7 +10,7 @@ import DateTimePicker, { BaseDateTimePickerProps } from './DateTimePicker';
 export interface DateTimePickerInlineProps
   extends BasePickerProps,
     BaseDateTimePickerProps,
-    Omit<OuterInlineWrapperProps, 'onChange' | 'value'> {}
+    Omit<OuterInlineWrapperProps, 'onChange' | 'value' | 'format'> {}
 
 export const DateTimePickerInline: React.SFC<DateTimePickerInlineProps> = props => {
   const {
