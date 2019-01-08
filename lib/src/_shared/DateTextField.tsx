@@ -13,6 +13,7 @@ import DomainPropTypes, { DateType } from '../constants/prop-types';
 import { MaterialUiPickersDate } from '../typings/date';
 import { ExtendMui } from '../typings/extendMui';
 import MaskedInput from './MaskedInput';
+import MuiIcon from './MuiIcon';
 import { withUtils, WithUtilsProps } from './WithUtils';
 
 const getDisplayDate = ({
@@ -360,7 +361,7 @@ export class DateTextField extends React.PureComponent<DateTextFieldProps> {
       localInputProps[`${adornmentPosition}Adornment`] = (
         <InputAdornment position={adornmentPosition!} {...InputAdornmentProps}>
           <IconButton disabled={disabled} onClick={this.openPicker}>
-            <Icon>{keyboardIcon}</Icon>
+            <MuiIcon icon={keyboardIcon} />
           </IconButton>
         </InputAdornment>
       );

@@ -7,6 +7,7 @@ import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
+import MuiIcon from '../../_shared/MuiIcon';
 import DateTimePickerView, { DateTimePickerViewType } from '../../constants/DateTimePickerView';
 
 const viewToTabIndex = (openView: DateTimePickerViewType) => {
@@ -51,8 +52,8 @@ export const DateTimePickerTabs: React.SFC<DateTimePickerTabsProps> = props => {
         className={classes.tabs}
         indicatorColor={indicatorColor}
       >
-        <Tab value="date" icon={<Icon>{dateRangeIcon}</Icon>} />
-        <Tab value="time" icon={<Icon>{timeIcon}</Icon>} />
+        <Tab value="date" icon={<MuiIcon icon={dateRangeIcon} />} />
+        <Tab value="time" icon={<MuiIcon icon={timeIcon} />} />
       </Tabs>
     </Paper>
   );

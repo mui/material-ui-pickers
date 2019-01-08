@@ -78,6 +78,7 @@
     "@date-io/luxon": "^0.0.2",
     "@date-io/moment": "^0.0.2",
     "@material-ui/core": "^3.8.2",
+    "@material-ui/icons": "^3.0.2",
     "@types/classnames": "^2.2.7",
     "@types/enzyme": "^3.1.15",
     "@types/enzyme-adapter-react-16": "^1.0.3",
