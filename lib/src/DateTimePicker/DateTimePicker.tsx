@@ -79,15 +79,9 @@ export class DateTimePicker extends React.Component<DateTimePickerProps, DateTim
     ampm: true,
     animateYearScrolling: false,
     autoSubmit: true,
-    dateRangeIcon: undefined,
     disableFuture: false,
     disablePast: false,
-    leftArrowIcon: undefined,
-    renderDay: undefined,
-    rightArrowIcon: undefined,
-    shouldDisableDate: undefined,
     showTabs: true,
-    timeIcon: undefined,
     ViewContainerComponent: 'div',
   };
 

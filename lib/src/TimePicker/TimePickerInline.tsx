@@ -54,8 +54,6 @@ export const TimePickerInline: React.SFC<TimePickerInlineProps> = props => {
 TimePickerInline.defaultProps = {
   ampm: true,
   value: new Date(),
-  format: undefined,
-  forwardedRef: undefined,
   seconds: false,
 };
 

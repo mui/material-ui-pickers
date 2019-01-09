@@ -49,10 +49,6 @@ const SlideTransition: React.SFC<SlideTransitionProps> = ({
   innerRef: PropTypes.any,
 };
 
-SlideTransition.defaultProps = {
-  className: undefined,
-};
-
 export const styles = (theme: Theme) => {
   const slideTransition = theme.transitions.create('transform', {
     duration: animationDuration,

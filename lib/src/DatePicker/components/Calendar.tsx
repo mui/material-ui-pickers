@@ -66,9 +66,6 @@ export class Calendar extends React.Component<CalendarProps, CalendarState> {
     maxDate: '2100-01-01',
     disablePast: false,
     disableFuture: false,
-    leftArrowIcon: undefined,
-    rightArrowIcon: undefined,
-    renderDay: undefined,
     allowKeyboardControl: false,
     shouldDisableDate: () => false,
   };

@@ -42,7 +42,7 @@ export class ClockPointer extends React.Component<ClockPointerProps> {
 
   public state = {
     toAnimateTransform: false,
-    previousType: undefined, // eslint-disable-line
+    previousType: undefined,
   };
 
   public getAngleStyle = () => {

@@ -59,23 +59,13 @@ export default class ModalWrapper extends React.PureComponent<ModalWrapperProps>
   };
 
   public static defaultProps = {
-    invalidLabel: undefined,
     value: new Date(),
-    labelFunc: undefined,
     okLabel: 'OK',
     cancelLabel: 'Cancel',
     clearLabel: 'Clear',
     todayLabel: 'Today',
     clearable: false,
     showTodayButton: false,
-    format: undefined,
-    onAccept: undefined,
-    onDismiss: undefined,
-    onClear: undefined,
-    onOpen: undefined,
-    onClose: undefined,
-    onSetToday: undefined,
-    DialogProps: undefined,
     isAccepted: false,
   };
 

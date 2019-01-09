@@ -60,10 +60,8 @@ export const TimePickerModal: React.SFC<TimePickerModalProps> = props => {
 
 TimePickerModal.defaultProps = {
   value: new Date(),
-  format: undefined,
   autoOk: false,
   ampm: true,
-  forwardedRef: undefined,
   seconds: false,
 };
 

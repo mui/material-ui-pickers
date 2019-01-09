@@ -46,15 +46,8 @@ export class InlineWrapper extends React.PureComponent<
 
   public static defaultProps = {
     value: new Date(),
-    labelFunc: undefined,
     onlyCalendar: false,
-    format: undefined,
-    onClear: undefined,
-    onOpen: undefined,
-    onClose: undefined,
-    PopoverProps: undefined,
     isAccepted: false,
-    keyboard: undefined,
   };
 
   public static getDerivedStateFromProps(nextProps: InlineWrapperProps) {

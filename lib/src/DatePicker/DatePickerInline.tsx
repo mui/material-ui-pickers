@@ -104,22 +104,13 @@ export const DatePickerInline: React.SFC<DatePickerInlineProps> = props => {
 
 DatePickerInline.defaultProps = {
   value: new Date(),
-  format: undefined,
   minDate: '1900-01-01',
   maxDate: '2100-01-01',
-  initialFocusedDate: undefined,
   disableFuture: false,
   disablePast: false,
   animateYearScrolling: false,
   openToYearSelection: false,
   allowKeyboardControl: true,
-  leftArrowIcon: undefined,
-  rightArrowIcon: undefined,
-  renderDay: undefined,
-  labelFunc: undefined,
-  shouldDisableDate: undefined,
-  forwardedRef: undefined,
-  autoOk: undefined,
   onlyCalendar: false,
 };
 

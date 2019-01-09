@@ -66,13 +66,8 @@ export class DatePicker extends React.PureComponent<DatePickerProps & WithUtilsP
     disablePast: false,
     disableFuture: false,
     allowKeyboardControl: false,
-    animateYearScrolling: undefined,
     openToYearSelection: false,
     children: null,
-    leftArrowIcon: undefined,
-    rightArrowIcon: undefined,
-    renderDay: undefined,
-    shouldDisableDate: undefined,
   };
 
   public state = {

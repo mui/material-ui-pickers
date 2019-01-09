@@ -148,7 +148,6 @@ export const DateTimePickerModal: React.SFC<DateTimePickerModalProps> = props =>
 
 DateTimePickerModal.defaultProps = {
   value: new Date(),
-  format: undefined,
   autoOk: false,
   autoSubmit: true,
   openTo: 'date',
@@ -156,17 +155,9 @@ DateTimePickerModal.defaultProps = {
   disablePast: false,
   minDate: '1900-01-01',
   maxDate: '2100-01-01',
-  initialFocusedDate: undefined,
   showTabs: true,
-  leftArrowIcon: undefined,
-  rightArrowIcon: undefined,
-  dateRangeIcon: undefined,
-  timeIcon: undefined,
-  renderDay: undefined,
   ampm: true,
-  shouldDisableDate: undefined,
   animateYearScrolling: false,
-  forwardedRef: undefined,
   allowKeyboardControl: true,
 };
 

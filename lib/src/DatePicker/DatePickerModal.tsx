@@ -109,22 +109,14 @@ export const DatePickerModal: React.SFC<DatePickerModalProps> = props => {
 
 DatePickerModal.defaultProps = {
   value: new Date(),
-  format: undefined,
   autoOk: false,
   minDate: '1900-01-01',
   maxDate: '2100-01-01',
-  initialFocusedDate: undefined,
   disableFuture: false,
   disablePast: false,
   animateYearScrolling: false,
   openToYearSelection: false,
   allowKeyboardControl: true,
-  leftArrowIcon: undefined,
-  rightArrowIcon: undefined,
-  renderDay: undefined,
-  labelFunc: undefined,
-  shouldDisableDate: undefined,
-  forwardedRef: undefined,
 };
 
 export default React.forwardRef((props: DatePickerModalProps, ref) => (
