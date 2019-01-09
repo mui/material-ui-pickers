@@ -47,9 +47,6 @@
     "react-transition-group": "^2.5.2",
     "tslib": "^1.9.3"
   },
-  "optionalDependencies": {
-    "@material-ui/icons": "^3.0.2"
-  },
   "size-limit": [
     {
       "path": "build/dist/material-ui-pickers.esm.js",
