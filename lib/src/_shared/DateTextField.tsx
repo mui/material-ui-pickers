@@ -9,7 +9,7 @@ import InputAdornment, {
 import TextField, { BaseTextFieldProps, TextFieldProps } from '@material-ui/core/TextField';
 import { MaskedInputProps } from 'react-text-mask';
 import { getDisplayDate, getError } from '../_helpers/text-field-helper';
-import DomainPropTypes, { DateType } from '../constants/prop-types';
+import { DateType, DomainPropTypes } from '../constants/prop-types';
 import { MaterialUiPickersDate } from '../typings/date';
 import { ExtendMui } from '../typings/extendMui';
 import { KeyboardIcon } from './icons/KeyboardIcon';
@@ -90,7 +90,6 @@ export class DateTextField extends React.PureComponent<DateTextFieldProps> {
     onClick: PropTypes.func.isRequired,
     clearable: PropTypes.bool,
     utils: PropTypes.object.isRequired,
-    disabled: PropTypes.bool,
     InputProps: PropTypes.shape({}),
     mask: PropTypes.any,
     minDateMessage: PropTypes.node,
@@ -115,7 +114,6 @@ export class DateTextField extends React.PureComponent<DateTextFieldProps> {
     disabled: false,
     invalidLabel: 'Unknown',
     emptyLabel: '',
-    value: new Date(),
     keyboard: false,
     keyboardIcon: <KeyboardIcon />,
     disableOpenOnEnter: false,

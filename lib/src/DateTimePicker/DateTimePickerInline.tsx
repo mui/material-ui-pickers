@@ -1,8 +1,6 @@
-import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
 import BasePicker, { BasePickerProps } from '../_shared/BasePicker';
-import DomainPropTypes from '../constants/prop-types';
 import { ExtendWrapper } from '../wrappers/ExtendWrapper';
 import InlineWrapper, { OuterInlineWrapperProps } from '../wrappers/InlineWrapper';
 import DateTimePicker, { BaseDateTimePickerProps } from './DateTimePicker';
@@ -86,46 +84,6 @@ export const DateTimePickerInline: React.SFC<DateTimePickerInlineProps> = props 
       )}
     </BasePicker>
   );
-};
-
-(DateTimePickerInline as any).propTypes = {
-  value: DomainPropTypes.date,
-  format: PropTypes.string,
-  onChange: PropTypes.func.isRequired,
-  autoOk: PropTypes.bool,
-  autoSubmit: PropTypes.bool,
-  disableFuture: PropTypes.bool,
-  disablePast: PropTypes.bool,
-  minDate: DomainPropTypes.date,
-  maxDate: DomainPropTypes.date,
-  initialFocusedDate: DomainPropTypes.date,
-  showTabs: PropTypes.bool,
-  leftArrowIcon: PropTypes.node,
-  rightArrowIcon: PropTypes.node,
-  dateRangeIcon: PropTypes.node,
-  timeIcon: PropTypes.node,
-  renderDay: PropTypes.func,
-  ampm: PropTypes.bool,
-  shouldDisableDate: PropTypes.func,
-  animateYearScrolling: PropTypes.bool,
-  openTo: PropTypes.oneOf(['year', 'date', 'hour', 'minutes']),
-  allowKeyboardControl: PropTypes.bool,
-  forwardedRef: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
-};
-
-(DateTimePickerInline as any).defaultProps = {
-  value: new Date(),
-  autoOk: false,
-  autoSubmit: true,
-  openTo: 'date',
-  disableFuture: false,
-  disablePast: false,
-  minDate: '1900-01-01',
-  maxDate: '2100-01-01',
-  showTabs: true,
-  ampm: true,
-  animateYearScrolling: false,
-  allowKeyboardControl: true,
 };
 
 export default React.forwardRef((props: DateTimePickerInlineProps, ref) => (

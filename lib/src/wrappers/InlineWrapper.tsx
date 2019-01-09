@@ -6,7 +6,6 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import EventListener from 'react-event-listener';
 import DateTextField, { DateTextFieldProps } from '../_shared/DateTextField';
-import DomainPropTypes from '../constants/prop-types';
 
 export interface OuterInlineWrapperProps extends Omit<DateTextFieldProps, 'utils' | 'onClick'> {
   /** On open callback */
@@ -29,19 +28,9 @@ export class InlineWrapper extends React.PureComponent<
 > {
   public static propTypes: any = {
     onlyCalendar: PropTypes.bool,
-    value: DomainPropTypes.date,
     onOpen: PropTypes.func,
     onClose: PropTypes.func,
-    format: PropTypes.string,
     PopoverProps: PropTypes.object,
-    labelFunc: PropTypes.func,
-    onClear: PropTypes.func,
-    isAccepted: PropTypes.bool,
-    handleAccept: PropTypes.func.isRequired,
-    children: PropTypes.node.isRequired,
-    keyboard: PropTypes.bool,
-    classes: PropTypes.object.isRequired,
-    innerRef: PropTypes.any,
   };
 
   public static defaultProps = {

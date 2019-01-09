@@ -41,7 +41,6 @@ const SlideTransition: React.SFC<SlideTransitionProps> = ({
 );
 
 (SlideTransition as any).propTypes = {
-  classes: PropTypes.shape({}).isRequired,
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
   slideDirection: PropTypes.oneOf(['left', 'right']).isRequired,
