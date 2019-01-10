@@ -7,6 +7,7 @@ import classnames from 'classnames';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import EventListener from 'react-event-listener';
+import { DIALOG_WIDTH } from '../constants/dimensions';
 
 export interface ModalDialogProps extends DialogProps {
   onAccept: () => void;
@@ -108,13 +109,12 @@ ModalDialog.displayName = 'ModalDialog';
   onSetToday: PropTypes.func.isRequired,
 };
 
-const dialogWidth = 310;
 const dialogHeight = 405;
 const dialogHeightWithTabs = 455;
 
 export const styles = createStyles({
   dialogRoot: {
-    minWidth: dialogWidth,
+    minWidth: DIALOG_WIDTH,
     minHeight: dialogHeight,
   },
   dialog: {
