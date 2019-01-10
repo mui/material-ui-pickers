@@ -46,6 +46,7 @@ export const styles = (theme: Theme) =>
     },
     timeHeader: {
       height: 65,
+      minWidth: 155,
       display: 'flex',
       justifyContent: 'flex-end',
       alignItems: 'flex-end',
