@@ -92,23 +92,6 @@ export const ModalDialog: React.SFC<ModalDialogProps & WithStyles<typeof styles>
   </Dialog>
 );
 
-ModalDialog.displayName = 'ModalDialog';
-(ModalDialog as any).propTypes = {
-  children: PropTypes.node.isRequired,
-  onKeyDownInner: PropTypes.func.isRequired,
-  onAccept: PropTypes.func.isRequired,
-  onDismiss: PropTypes.func.isRequired,
-  onClear: PropTypes.func.isRequired,
-  classes: PropTypes.object.isRequired,
-  okLabel: PropTypes.node.isRequired,
-  cancelLabel: PropTypes.node.isRequired,
-  clearLabel: PropTypes.node.isRequired,
-  clearable: PropTypes.bool.isRequired,
-  todayLabel: PropTypes.node.isRequired,
-  showTodayButton: PropTypes.bool.isRequired,
-  onSetToday: PropTypes.func.isRequired,
-};
-
 const dialogHeight = 405;
 const dialogHeightWithTabs = 455;
 
