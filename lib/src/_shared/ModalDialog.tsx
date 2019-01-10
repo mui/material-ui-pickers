@@ -4,7 +4,6 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import { createStyles, WithStyles, withStyles } from '@material-ui/core/styles';
 import classnames from 'classnames';
-import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import EventListener from 'react-event-listener';
 import { DIALOG_WIDTH } from '../constants/dimensions';
@@ -91,6 +90,8 @@ export const ModalDialog: React.SFC<ModalDialogProps & WithStyles<typeof styles>
     </DialogActions>
   </Dialog>
 );
+
+ModalDialog.displayName = 'ModalDialog';
 
 const dialogHeight = 405;
 const dialogHeightWithTabs = 455;
