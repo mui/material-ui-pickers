@@ -1,3 +1,4 @@
+import { Omit } from '@material-ui/core';
 import Popover, { PopoverProps as PopoverPropsType } from '@material-ui/core/Popover';
 import withStyles, { WithStyles } from '@material-ui/core/styles/withStyles';
 import keycode from 'keycode';
@@ -5,9 +6,9 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import EventListener from 'react-event-listener';
 import DateTextField, { DateTextFieldProps } from '../_shared/DateTextField';
-import DomainPropTypes from '../constants/prop-types';
+import { DIALOG_WIDTH } from '../constants/dimensions';
 
-export interface OuterInlineWrapperProps extends Partial<DateTextFieldProps> {
+export interface OuterInlineWrapperProps extends Omit<DateTextFieldProps, 'utils' | 'onClick'> {
   /** On open callback */
   onOpen?: () => void;
   /** On close callback */
@@ -28,32 +29,15 @@ export class InlineWrapper extends React.PureComponent<
 > {
   public static propTypes: any = {
     onlyCalendar: PropTypes.bool,
-    value: DomainPropTypes.date,
     onOpen: PropTypes.func,
     onClose: PropTypes.func,
-    format: PropTypes.string,
     PopoverProps: PropTypes.object,
-    labelFunc: PropTypes.func,
-    onClear: PropTypes.func,
-    isAccepted: PropTypes.bool,
-    handleAccept: PropTypes.func.isRequired,
-    children: PropTypes.node.isRequired,
-    keyboard: PropTypes.bool,
-    classes: PropTypes.object.isRequired,
-    innerRef: PropTypes.any,
   };
 
   public static defaultProps = {
     value: new Date(),
-    labelFunc: undefined,
     onlyCalendar: false,
-    format: undefined,
-    onClear: undefined,
-    onOpen: undefined,
-    onClose: undefined,
-    PopoverProps: undefined,
     isAccepted: false,
-    keyboard: undefined,
   };
 
   public static getDerivedStateFromProps(nextProps: InlineWrapperProps) {
@@ -166,8 +150,7 @@ export class InlineWrapper extends React.PureComponent<
 
 export const styles = {
   popoverPaper: {
-    maxWidth: 310,
-    minWidth: 300,
+    width: DIALOG_WIDTH,
     paddingBottom: 8,
   },
 };

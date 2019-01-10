@@ -41,10 +41,12 @@ export const styles = (theme: Theme) =>
     },
     dateHeader: {
       height: 60,
+      minWidth: 110,
       marginRight: 4,
     },
     timeHeader: {
       height: 65,
+      minWidth: 155,
       display: 'flex',
       justifyContent: 'flex-end',
       alignItems: 'flex-end',
@@ -136,16 +138,9 @@ export const DateTimePickerHeader: React.SFC<DateTimePickerHeaderProps> = ({
   date: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
   meridiemMode: PropTypes.string.isRequired,
-  openView: PropTypes.string.isRequired,
-  onOpenViewChange: PropTypes.func.isRequired,
-  setMeridiemMode: PropTypes.func.isRequired,
   utils: PropTypes.object.isRequired,
   ampm: PropTypes.bool,
   innerRef: PropTypes.any,
-};
-
-DateTimePickerHeader.defaultProps = {
-  ampm: true,
 };
 
 export default withStyles(styles, { name: 'MuiPickerDTHeader' })(withUtils()(DateTimePickerHeader));

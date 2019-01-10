@@ -8,7 +8,7 @@ import { Theme } from '@material-ui/core';
 import { IconButtonProps } from '@material-ui/core/IconButton';
 import { findClosestEnabledDate } from '../../_helpers/date-utils';
 import { withUtils, WithUtilsProps } from '../../_shared/WithUtils';
-import DomainPropTypes, { DateType } from '../../constants/prop-types';
+import { DateType, DomainPropTypes } from '../../constants/prop-types';
 import { MaterialUiPickersDate } from '../../typings/date';
 import CalendarHeader from './CalendarHeader';
 import Day from './Day';
@@ -47,14 +47,10 @@ export class Calendar extends React.Component<CalendarProps, CalendarState> {
     date: PropTypes.object.isRequired,
     minDate: DomainPropTypes.date,
     maxDate: DomainPropTypes.date,
-    classes: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
     disablePast: PropTypes.bool,
     disableFuture: PropTypes.bool,
-    leftArrowIcon: PropTypes.node,
-    rightArrowIcon: PropTypes.node,
     renderDay: PropTypes.func,
-    theme: PropTypes.object.isRequired,
     shouldDisableDate: PropTypes.func,
     utils: PropTypes.object.isRequired,
     allowKeyboardControl: PropTypes.bool,
@@ -66,18 +62,14 @@ export class Calendar extends React.Component<CalendarProps, CalendarState> {
     maxDate: '2100-01-01',
     disablePast: false,
     disableFuture: false,
-    leftArrowIcon: undefined,
-    rightArrowIcon: undefined,
-    renderDay: undefined,
-    allowKeyboardControl: false,
-    shouldDisableDate: () => false,
+    allowKeyboardControl: true,
   };
 
   public static getDerivedStateFromProps(nextProps: CalendarProps, state: CalendarState) {
     if (!nextProps.utils.isEqual(nextProps.date, state.lastDate)) {
       return {
         lastDate: nextProps.date,
-        currentMonth: nextProps.utils.getStartOfMonth(nextProps.date),
+        currentMonth: nextProps.utils.startOfMonth(nextProps.date),
       };
     }
 
@@ -86,11 +78,11 @@ export class Calendar extends React.Component<CalendarProps, CalendarState> {
 
   public state: CalendarState = {
     slideDirection: 'left',
-    currentMonth: this.props.utils.getStartOfMonth(this.props.date),
+    currentMonth: this.props.utils.startOfMonth(this.props.date),
   };
 
   public componentDidMount() {
-    const { date, minDate, maxDate, utils, disablePast } = this.props;
+    const { date, minDate, maxDate, utils, disablePast, disableFuture } = this.props;
 
     if (this.shouldDisableDate(date)) {
       const closestEnabledDate = findClosestEnabledDate({
@@ -99,7 +91,7 @@ export class Calendar extends React.Component<CalendarProps, CalendarState> {
         minDate,
         maxDate,
         disablePast: Boolean(disablePast),
-        disableFuture: Boolean(disablePast),
+        disableFuture: Boolean(disableFuture),
         shouldDisableDate: this.shouldDisableDate,
       });
 
@@ -130,7 +122,7 @@ export class Calendar extends React.Component<CalendarProps, CalendarState> {
     const { utils, disablePast, minDate } = this.props;
     const now = utils.date();
     return !utils.isBefore(
-      utils.getStartOfMonth(disablePast && utils.isAfter(now, minDate) ? now : utils.date(minDate)),
+      utils.startOfMonth(disablePast && utils.isAfter(now, minDate) ? now : utils.date(minDate)),
       this.state.currentMonth
     );
   };
@@ -139,9 +131,7 @@ export class Calendar extends React.Component<CalendarProps, CalendarState> {
     const { utils, disableFuture, maxDate } = this.props;
     const now = utils.date();
     return !utils.isAfter(
-      utils.getStartOfMonth(
-        disableFuture && utils.isBefore(now, maxDate) ? now : utils.date(maxDate)
-      ),
+      utils.startOfMonth(disableFuture && utils.isBefore(now, maxDate) ? now : utils.date(maxDate)),
       this.state.currentMonth
     );
   };
