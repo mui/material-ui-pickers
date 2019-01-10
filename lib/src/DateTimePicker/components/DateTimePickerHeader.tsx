@@ -41,6 +41,7 @@ export const styles = (theme: Theme) =>
     },
     dateHeader: {
       height: 60,
+      minWidth: 110,
       marginRight: 4,
     },
     timeHeader: {
