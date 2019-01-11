@@ -7,15 +7,12 @@ import darkStyle from 'react-syntax-highlighter/dist/styles/prism/darcula';
 // @ts-ignore
 import jsx from 'react-syntax-highlighter/dist/languages/prism/jsx';
 // @ts-ignore
-import markup from 'react-syntax-highlighter/dist/languages/prism/bash';
-// @ts-ignore
 import typescript from 'react-syntax-highlighter/dist/languages/prism/typescript';
 // @ts-ignore
 import SyntaxHighlighter, { registerLanguage } from 'react-syntax-highlighter/dist/prism-light';
 import { ThemeContext } from '../App';
 
 registerLanguage('jsx', jsx);
-registerLanguage('markup', markup);
 registerLanguage('typescript', typescript);
 
 const styles = (theme: Theme) => ({
