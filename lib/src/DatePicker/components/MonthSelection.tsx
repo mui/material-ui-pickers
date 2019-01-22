@@ -92,7 +92,6 @@ export class MonthSelection extends React.PureComponent<MonthSelectionProps> {
 
 export const styles = createStyles({
   container: {
-    height: 300,
     width: 310,
     display: 'flex',
     flexWrap: 'wrap',

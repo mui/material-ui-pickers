@@ -66,6 +66,7 @@ export const styles = (theme: Theme) =>
       justifyContent: 'center',
       cursor: 'pointer',
       outline: 'none',
+      height: 75,
       '&:focus': {
         color: theme.palette.primary.main,
         fontWeight: theme.typography.fontWeightMedium,
@@ -73,7 +74,6 @@ export const styles = (theme: Theme) =>
     },
     selected: {
       color: theme.palette.primary.main,
-      // fontSize: theme.typography.h6.fontSize,
       fontWeight: theme.typography.fontWeightMedium,
     },
     disabled: {
