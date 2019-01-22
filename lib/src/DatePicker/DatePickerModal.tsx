@@ -29,6 +29,8 @@ export const DatePickerModal: React.SFC<DatePickerModalProps> = props => {
     rightArrowIcon,
     shouldDisableDate,
     value,
+    year,
+    month,
     ...other
   } = props;
 
@@ -48,7 +50,7 @@ export const DatePickerModal: React.SFC<DatePickerModalProps> = props => {
         <ModalWrapper
           disableFuture={disableFuture}
           disablePast={disablePast}
-          format={format || utils.dateFormat}
+          format={format || (year ? 'yyyy' : month ? 'yyyy MMMM' : utils.dateFormat)} // Move yyyy to date-utils constant
           labelFunc={labelFunc}
           maxDate={maxDate}
           minDate={minDate}
@@ -76,6 +78,8 @@ export const DatePickerModal: React.SFC<DatePickerModalProps> = props => {
             renderDay={renderDay}
             rightArrowIcon={rightArrowIcon}
             shouldDisableDate={shouldDisableDate}
+            year={year}
+            month={month}
           />
         </ModalWrapper>
       )}
