@@ -1,12 +1,12 @@
-import * as React from 'react';
-import * as PropTypes from 'prop-types';
-import { withUtils, WithUtilsProps } from '../../_shared/WithUtils';
-import { MaterialUiPickersDate } from '../../typings/date';
 import { IUtils } from '@date-io/core/IUtils';
 import { createStyles, WithStyles, withStyles } from '@material-ui/core/styles';
+import * as PropTypes from 'prop-types';
+import * as React from 'react';
+import { withUtils, WithUtilsProps } from '../../_shared/WithUtils';
+import { MaterialUiPickersDate } from '../../typings/date';
 import Month from './Month';
 
-//Move to utils
+// Move to utils
 import { setMonth, startOfYear } from 'date-fns';
 import { DateType, DomainPropTypes } from '../../constants/prop-types';
 
