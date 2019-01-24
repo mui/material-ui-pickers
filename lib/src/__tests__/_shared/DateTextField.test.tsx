@@ -72,7 +72,12 @@ describe('DateTextField keyboard mode', () => {
   });
 
   it('Should spread properties onto the InputAdornmentButton', () => {
-    expect(component.find('WithStyles(IconButton)').props()['aria-label']).toBe('bar');
+    expect(
+      component
+        .render()
+        .find('button')
+        .attr('aria-label')
+    ).toBe('bar');
   });
 });
 
