@@ -1,5 +1,6 @@
 import * as React from 'react';
 import BasePicker, { BasePickerProps } from '../_shared/BasePicker';
+import DatePickerView from '../constants/DatePickerView';
 import { ExtendWrapper } from '../wrappers/ExtendWrapper';
 import ModalWrapper, { ModalWrapperProps } from '../wrappers/ModalWrapper';
 import DatePicker, { BaseDatePickerProps } from './DatePicker';
@@ -29,8 +30,7 @@ export const DatePickerModal: React.SFC<DatePickerModalProps> = props => {
     rightArrowIcon,
     shouldDisableDate,
     value,
-    year,
-    month,
+    availableViews = [DatePickerView.YEAR, DatePickerView.MONTH, DatePickerView.DAY],
     openTo,
     ...other
   } = props;
@@ -51,7 +51,15 @@ export const DatePickerModal: React.SFC<DatePickerModalProps> = props => {
         <ModalWrapper
           disableFuture={disableFuture}
           disablePast={disablePast}
-          format={format || (year ? 'yyyy' : month ? 'yyyy MMMM' : utils.dateFormat)} // Move yyyy to date-utils constant
+          format={
+            format ||
+            // Move yyyy to date-utils constant
+            (availableViews.length === 1 && availableViews[0] === DatePickerView.YEAR
+              ? 'yyyy'
+              : availableViews[availableViews.length - 1] === DatePickerView.MONTH
+                ? 'yyyy MMMM'
+                : utils.dateFormat)
+          }
           labelFunc={labelFunc}
           maxDate={maxDate}
           minDate={minDate}
@@ -79,8 +87,7 @@ export const DatePickerModal: React.SFC<DatePickerModalProps> = props => {
             renderDay={renderDay}
             rightArrowIcon={rightArrowIcon}
             shouldDisableDate={shouldDisableDate}
-            year={year}
-            month={month}
+            availableViews={availableViews}
             openTo={openTo}
           />
         </ModalWrapper>
