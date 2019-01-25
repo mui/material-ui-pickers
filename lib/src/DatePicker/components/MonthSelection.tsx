@@ -20,13 +20,20 @@ export interface MonthSelectionProps extends WithUtilsProps, WithStyles<typeof s
 }
 
 // Move to utils
-const getMonthsOfYear = (
+const getMonthArray = (
   utils: IUtils<MaterialUiPickersDate>,
   year: Date
-): [MaterialUiPickersDate] =>
-  Array(11)
-    .fill(null)
-    .reduce(prev => [...prev, utils.getNextMonth(prev[prev.length - 1])], [startOfYear(year)]);
+): MaterialUiPickersDate[] => {
+  const firstMonth = startOfYear(year);
+  const monthArray = [firstMonth];
+
+  while (monthArray.length < 12) {
+    const prevMonth = monthArray[monthArray.length - 1];
+    monthArray.push(utils.getNextMonth(prevMonth));
+  }
+
+  return monthArray;
+};
 
 export class MonthSelection extends React.PureComponent<MonthSelectionProps> {
   public static propTypes: any = {
@@ -69,7 +76,7 @@ export class MonthSelection extends React.PureComponent<MonthSelectionProps> {
 
     return (
       <div className={classes.container}>
-        {getMonthsOfYear(utils, date).map(month => {
+        {getMonthArray(utils, date).map(month => {
           const monthNumber = utils.getMonth(month);
           const monthText = utils.format(month, 'MMM');
 

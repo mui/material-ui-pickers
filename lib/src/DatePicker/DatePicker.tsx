@@ -24,7 +24,9 @@ export interface BaseDatePickerProps {
   disableFuture?: boolean;
   /** To animate scrolling to current year (with scrollIntoView) */
   animateYearScrolling?: boolean;
-  /** Open datepicker from year selection */
+  /** Initial view to show when date picker is open */
+  openTo?: DatePickerView;
+  /** @deprecated use openTo instead */
   openToYearSelection?: boolean;
   /** Left arrow icon */
   leftArrowIcon?: React.ReactNode;
@@ -66,11 +68,13 @@ export class DatePicker extends React.PureComponent<DatePickerProps & WithUtilsP
   };
 
   public state: DatePickerState = {
-    openView: Boolean(this.props.openToYearSelection || this.props.year)
-      ? DatePickerView.YEAR
-      : this.props.month
-        ? DatePickerView.MONTH
-        : DatePickerView.CALENDAR,
+    openView:
+      this.props.openTo ||
+      (Boolean(this.props.openToYearSelection || this.props.year)
+        ? DatePickerView.YEAR
+        : this.props.month
+          ? DatePickerView.MONTH
+          : DatePickerView.DAY),
   };
 
   get date() {
@@ -109,7 +113,7 @@ export class DatePicker extends React.PureComponent<DatePickerProps & WithUtilsP
   };
 
   public openCalendar = () => {
-    this.setState({ openView: DatePickerView.CALENDAR });
+    this.setState({ openView: DatePickerView.DAY });
   };
 
   public openMonthSelection = () => {
@@ -149,7 +153,7 @@ export class DatePicker extends React.PureComponent<DatePickerProps & WithUtilsP
               <ToolbarButton
                 variant="h4"
                 onClick={this.openCalendar}
-                selected={openView === DatePickerView.CALENDAR}
+                selected={openView === DatePickerView.DAY}
                 label={utils.getDatePickerHeaderText(this.date)}
               />
             )}
@@ -187,7 +191,7 @@ export class DatePicker extends React.PureComponent<DatePickerProps & WithUtilsP
             disableFuture={disableFuture}
           />
         )}
-        {openView === DatePickerView.CALENDAR && (
+        {openView === DatePickerView.DAY && (
           <Calendar
             date={this.date}
             onChange={onChange}

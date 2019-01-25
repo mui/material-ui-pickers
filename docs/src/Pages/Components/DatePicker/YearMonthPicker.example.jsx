@@ -41,7 +41,7 @@ export default class YearMonthPicker extends PureComponent {
         <div className="picker">
           <DatePicker
             month
-            openToYearSelection
+            openTo="year"
             label="Year and Month"
             helperText="Start from year selection"
             value={selectedDate}

@@ -31,6 +31,7 @@ export const DatePickerModal: React.SFC<DatePickerModalProps> = props => {
     value,
     year,
     month,
+    openTo,
     ...other
   } = props;
 
@@ -80,6 +81,7 @@ export const DatePickerModal: React.SFC<DatePickerModalProps> = props => {
             shouldDisableDate={shouldDisableDate}
             year={year}
             month={month}
+            openTo={openTo}
           />
         </ModalWrapper>
       )}

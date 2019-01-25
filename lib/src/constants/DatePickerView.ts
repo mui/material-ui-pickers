@@ -3,7 +3,7 @@ enum DatePickerView {
 
   MONTH = 'month',
 
-  CALENDAR = 'calendar',
+  DAY = 'day',
 }
 
 export default DatePickerView;
