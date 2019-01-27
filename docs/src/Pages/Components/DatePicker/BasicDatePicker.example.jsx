@@ -17,6 +17,7 @@ export default class BasicDatePicker extends PureComponent {
       <Fragment>
         <div className="picker">
           <DatePicker
+            id="basic-datepicker"
             label="Basic example"
             value={selectedDate}
             onChange={this.handleDateChange}
@@ -27,10 +28,10 @@ export default class BasicDatePicker extends PureComponent {
         <div className="picker">
           <DatePicker
             autoOk
+            id="clearable-datepicker"
             label="Clearable"
             clearable
             disableFuture
-            maxDateMessage="Date must be less than today"
             value={selectedDate}
             onChange={this.handleDateChange}
           />
@@ -38,9 +39,9 @@ export default class BasicDatePicker extends PureComponent {
 
         <div className="picker">
           <DatePicker
+            id="today-datepicker"
             label="With today button"
             showTodayButton
-            maxDateMessage="Date must be less than today"
             value={selectedDate}
             onChange={this.handleDateChange}
           />

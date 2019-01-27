@@ -9,7 +9,6 @@
     "@date-io/moment": "^1.0.1",
     "@material-ui/core": "^3.9.0",
     "@material-ui/icons": "^3.0.2",
-    "@types/jest": "^23.3.13",
     "@types/luxon": "^1.10.2",
     "@types/moment-jalaali": "^0.7.4",
     "@types/node": "^10.12.18",
