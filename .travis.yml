@@ -5,11 +5,20 @@ node_js:
 before_install:
   - cd lib
 
-env:
-  - CMD='test:date-fns'
-  - CMD='test:luxon'
-  - CMD='test:moment'
-  - CMD='build:analyze'
-  - CMD='lint'
+jobs:
+  include:
+    - stage: test
+      env:
+        - CMD='test:date-fns'
+        - CMD='test:luxon'
+        - CMD='test:moment'
+        - CMD='build:analyze'
+        - CMD='lint'
+      script: npm run $CMD
 
-script: npm run $CMD
+    - stage: e2e
+      script:
+        - cd ..
+        - npm start
+        - npx wait-on http://localhost:3002
+        - npm run e2e:run
