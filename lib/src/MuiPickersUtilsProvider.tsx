@@ -1,8 +1,9 @@
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-const { Consumer, Provider } = React.createContext(null as any);
-export const MuiPickersContextConsumer = Consumer;
+export const MuiPickersContext = React.createContext(null as any);
+// TODO remove in v3.0
+export const MuiPickersContextConsumer = MuiPickersContext.Consumer;
 
 export interface MuiPickersUtilsProviderProps {
   utils: any;
@@ -37,6 +38,6 @@ export default class MuiPickersUtilsProvider extends React.Component<MuiPickersU
   };
 
   public render() {
-    return <Provider value={this.state.utils} children={this.props.children} />;
+    return <MuiPickersContext.Provider value={this.state.utils} children={this.props.children} />;
   }
 }
