@@ -16,7 +16,7 @@ export function Regression() {
     style: { margin: '0 10px' },
     leftArrowIcon: <LeftArrowIcon data-arrow="left" />,
     rightArrowIcon: <RightArrowIcon data-arrow="right" />,
-    renderDay: createRegressionDayRenderer(utils),
+    renderDay: createRegressionDayRenderer(utils!),
     KeyboardButtonProps: {
       className: 'keyboard-btn',
     },
