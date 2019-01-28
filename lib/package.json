@@ -118,7 +118,9 @@
     "typescript": "^3.2.4"
   },
   "jest": {
-    "setupTestFrameworkScriptFile": "<rootDir>/src/__tests__/setup.js",
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/__tests__/setup.js"
+    ],
     "testRegex": "./src/__tests__/.*\\.test\\.(js|tsx)$",
     "testURL": "http://localhost/",
     "collectCoverage": true,

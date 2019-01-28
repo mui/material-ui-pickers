@@ -60,7 +60,7 @@ class CustomDateTimePicker extends PureComponent {
             onChange={this.handleDateChange}
             format={this.props.getFormatString({
               moment: 'YYYY/MM/DD hh:mm A',
-              dateFns: 'yyyy/MM/dd hh:mm A',
+              dateFns: 'yyyy/MM/dd hh:mm a',
             })}
             disableOpenOnEnter
             mask={[
