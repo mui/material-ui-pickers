@@ -1,7 +1,9 @@
+import { IUtils } from '@date-io/core/IUtils';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
+import { MaterialUiPickersDate } from './typings/date';
 
-export const MuiPickersContext = React.createContext(null as any);
+export const MuiPickersContext = React.createContext<IUtils<MaterialUiPickersDate> | null>(null);
 // TODO remove in v3.0
 export const MuiPickersContextConsumer = MuiPickersContext.Consumer;
 
