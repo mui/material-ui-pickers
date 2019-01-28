@@ -20,6 +20,5 @@ jobs:
       script:
         - cd ..
         - npm ci
-        - npm start
-        - npx wait-on http://localhost:3002
-        - npm run e2e:run
+        - lerna run build
+        - lerna run serve & npx wait-on http://localhost:3002 && npm run e2e:run -- --record
