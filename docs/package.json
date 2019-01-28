@@ -24,7 +24,7 @@
     "formik": "^1.4.3",
     "jss-rtl": "^0.2.3",
     "luxon": "^1.10.0",
-    "material-ui-pickers-dev": "*",
+    "material-ui-pickers": "*",
     "moment": "^2.24.0",
     "moment-jalaali": "^0.8.3",
     "raw-loader": "^0.5.1",
