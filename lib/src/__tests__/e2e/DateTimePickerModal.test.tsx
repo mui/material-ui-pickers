@@ -5,7 +5,7 @@ import DateTimePickerModal, {
 } from '../../DateTimePicker/DateTimePickerModal';
 import { mount, utilsToUse } from '../test-utils';
 
-const format = process.env.UTILS === 'luxon' ? 'MM/dd/yyyy hh:mm' : 'MM/DD/YYYY HH:mm';
+const format = process.env.UTILS === 'moment' ? 'MM/DD/YYYY HH:mm' : 'MM/dd/yyyy hh:mm';
 
 describe('e2e - DateTimePickerModal', () => {
   let component: ReactWrapper<DateTimePickerModalProps>;
