@@ -2,6 +2,14 @@ language: node_js
 node_js:
   - "10"
 
+cache:
+  # cache both npm modules and Cypress binary
+  directories:
+    - ~/.npm
+    - ~/.cache
+  override:
+    - npm ci
+
 before_install:
   - cd lib
 
@@ -21,4 +29,4 @@ jobs:
         - cd ..
         - npm ci
         - lerna run build
-        - lerna run serve & npx wait-on http://localhost:3002 && npm run e2e:run -- --record
+        - lerna run serve & npx wait-on http://localhost:3002 && npm run e2e:run
