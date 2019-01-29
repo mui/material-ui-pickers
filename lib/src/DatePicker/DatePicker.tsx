@@ -6,7 +6,7 @@ import * as React from 'react';
 import PickerToolbar from '../_shared/PickerToolbar';
 import ToolbarButton from '../_shared/ToolbarButton';
 import { withUtils, WithUtilsProps } from '../_shared/WithUtils';
-import DatePickerView from '../constants/DatePickerView';
+import DatePickerView, { DatePickerViewType } from '../constants/DatePickerView';
 import { DateType } from '../constants/prop-types';
 import { MaterialUiPickersDate } from '../typings/date';
 import Calendar, { RenderDay } from './components/Calendar';
@@ -28,9 +28,9 @@ export interface BaseDatePickerProps {
    * @default ['year', 'month', 'day']
    * Array of views to show, possible values: ['year'] | ['year', 'month'] | ['year', 'month', 'day']
    */
-  availableViews?: DatePickerView[];
+  availableViews?: DatePickerViewType[];
   /** Initial view to show when date picker is open */
-  openTo?: DatePickerView;
+  openTo?: DatePickerViewType;
   /** @deprecated use openTo instead */
   openToYearSelection?: boolean;
   /** Left arrow icon */
@@ -61,7 +61,7 @@ interface DefaultBaseDatePickerProps {
 type PropsWithDefaults = DatePickerProps & DefaultBaseDatePickerProps;
 
 interface DatePickerState {
-  openView: DatePickerView;
+  openView: DatePickerViewType;
 }
 
 export class DatePicker extends React.PureComponent<DatePickerProps> {

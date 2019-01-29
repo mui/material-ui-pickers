@@ -1,7 +1,7 @@
 import { IUtils } from '@date-io/core/IUtils';
 import * as React from 'react';
 import BasePicker, { BasePickerProps } from '../_shared/BasePicker';
-import DatePickerView from '../constants/DatePickerView';
+import DatePickerView, { DatePickerViewType } from '../constants/DatePickerView';
 import { MaterialUiPickersDate } from '../typings/date';
 import { ExtendWrapper } from '../wrappers/ExtendWrapper';
 import ModalWrapper, { ModalWrapperProps } from '../wrappers/ModalWrapper';
@@ -14,7 +14,7 @@ export interface DatePickerModalProps
 
 const getFormat = (
   format: string | undefined,
-  availableViews: DatePickerView[],
+  availableViews: DatePickerViewType[],
   utils: IUtils<MaterialUiPickersDate>
 ) =>
   format ||

@@ -38,14 +38,14 @@ export class MonthSelection extends React.PureComponent<MonthSelectionProps> {
   public shouldDisableMonth = (month: Date) => {
     const { utils, disablePast, disableFuture, minDate, maxDate } = this.props;
     const now = utils.date();
-    const isBeforeMin = utils.isBefore(
-      month,
-      utils.startOfMonth(disablePast && utils.isAfter(now, minDate) ? now : utils.date(minDate))
+    const minMonth = utils.startOfMonth(
+      disablePast && utils.isAfter(now, minDate) ? now : utils.date(minDate)
     );
-    const isAfterMax = utils.isAfter(
-      month,
-      utils.startOfMonth(disableFuture && utils.isBefore(now, maxDate) ? now : utils.date(maxDate))
+    const maxMonth = utils.startOfMonth(
+      disableFuture && utils.isBefore(now, maxDate) ? now : utils.date(maxDate)
     );
+    const isBeforeMin = utils.isBefore(month, minMonth);
+    const isAfterMax = utils.isAfter(month, maxMonth);
     return isBeforeMin || isAfterMax;
   };
 
