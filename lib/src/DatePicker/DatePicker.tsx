@@ -187,7 +187,7 @@ export class DatePicker extends React.PureComponent<DatePickerProps> {
               variant="h4"
               onClick={this.openMonthSelection}
               selected={openView === DatePickerView.MONTH}
-              label={utils.format(this.date, 'MMMM')} // Add getMonthText to utils
+              label={utils.getMonthText(this.date)}
             />
           )}
         </PickerToolbar>

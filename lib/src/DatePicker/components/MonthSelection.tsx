@@ -1,14 +1,10 @@
-import { IUtils } from '@date-io/core/IUtils';
 import { createStyles, WithStyles, withStyles } from '@material-ui/core/styles';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { withUtils, WithUtilsProps } from '../../_shared/WithUtils';
+import { DateType, DomainPropTypes } from '../../constants/prop-types';
 import { MaterialUiPickersDate } from '../../typings/date';
 import Month from './Month';
-
-// Move to utils
-import { setMonth, startOfYear } from 'date-fns';
-import { DateType, DomainPropTypes } from '../../constants/prop-types';
 
 export interface MonthSelectionProps extends WithUtilsProps, WithStyles<typeof styles> {
   date: MaterialUiPickersDate;
@@ -18,22 +14,6 @@ export interface MonthSelectionProps extends WithUtilsProps, WithStyles<typeof s
   disablePast?: boolean | null | undefined;
   disableFuture?: boolean | null | undefined;
 }
-
-// Move to utils
-const getMonthArray = (
-  utils: IUtils<MaterialUiPickersDate>,
-  year: Date
-): MaterialUiPickersDate[] => {
-  const firstMonth = startOfYear(year);
-  const monthArray = [firstMonth];
-
-  while (monthArray.length < 12) {
-    const prevMonth = monthArray[monthArray.length - 1];
-    monthArray.push(utils.getNextMonth(prevMonth));
-  }
-
-  return monthArray;
-};
 
 export class MonthSelection extends React.PureComponent<MonthSelectionProps> {
   public static propTypes: any = {
@@ -49,10 +29,9 @@ export class MonthSelection extends React.PureComponent<MonthSelectionProps> {
   };
 
   public onMonthSelect = (month: number) => {
-    const { date, onChange } = this.props;
+    const { date, onChange, utils } = this.props;
 
-    // Move to utils
-    const newDate = setMonth(date, month);
+    const newDate = utils.setMonth(date, month);
     onChange(newDate);
   };
 
@@ -76,7 +55,7 @@ export class MonthSelection extends React.PureComponent<MonthSelectionProps> {
 
     return (
       <div className={classes.container}>
-        {getMonthArray(utils, date).map(month => {
+        {utils.getMonthArray(date).map(month => {
           const monthNumber = utils.getMonth(month);
           const monthText = utils.format(month, 'MMM');
 
