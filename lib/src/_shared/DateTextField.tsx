@@ -1,85 +1,28 @@
-import Icon from '@material-ui/core/Icon';
-import IconButton from '@material-ui/core/IconButton';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import TextField, { BaseTextFieldProps, TextFieldProps } from '@material-ui/core/TextField';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
+import IconButton, { IconButtonProps as MuiIconButtonProps } from '@material-ui/core/IconButton';
 import { InputProps as InputPropsType } from '@material-ui/core/Input';
+import InputAdornment, {
+  InputAdornmentProps as MuiInputAdornmentProps,
+} from '@material-ui/core/InputAdornment';
+import TextField, { BaseTextFieldProps, TextFieldProps } from '@material-ui/core/TextField';
 import { MaskedInputProps } from 'react-text-mask';
-import DomainPropTypes, { DateType } from '../constants/prop-types';
+import { getDisplayDate, getError } from '../_helpers/text-field-helper';
+import { DateType, DomainPropTypes } from '../constants/prop-types';
 import { MaterialUiPickersDate } from '../typings/date';
 import { ExtendMui } from '../typings/extendMui';
+import { KeyboardIcon } from './icons/KeyboardIcon';
 import MaskedInput from './MaskedInput';
 import { withUtils, WithUtilsProps } from './WithUtils';
-
-const getDisplayDate = ({
-  utils,
-  value,
-  format,
-  invalidLabel,
-  emptyLabel,
-  labelFunc,
-}: DateTextFieldProps) => {
-  const isEmpty = value === null;
-  const date = utils.date(value);
-
-  if (labelFunc) {
-    return labelFunc(isEmpty ? null : date, invalidLabel!);
-  }
-
-  if (isEmpty) {
-    return emptyLabel;
-  }
-
-  return utils.isValid(date) ? utils.format(date, format) : invalidLabel;
-};
-
-const getError = (value: MaterialUiPickersDate, props: DateTextFieldProps): React.ReactNode => {
-  const {
-    utils,
-    maxDate,
-    minDate,
-    disablePast,
-    disableFuture,
-    maxDateMessage,
-    minDateMessage,
-    invalidDateMessage,
-  } = props;
-
-  if (!utils.isValid(value)) {
-    // if null - do not show error
-    if (utils.isNull(value)) {
-      return '';
-    }
-
-    return invalidDateMessage;
-  }
-
-  if (
-    (maxDate && utils.isAfter(value, utils.endOfDay(utils.date(maxDate)))) ||
-    (disableFuture && utils.isAfter(value, utils.endOfDay(utils.date())))
-  ) {
-    return maxDateMessage;
-  }
-
-  if (
-    (minDate && utils.isBefore(value, utils.startOfDay(utils.date(minDate)))) ||
-    (disablePast && utils.isBefore(value, utils.startOfDay(utils.date())))
-  ) {
-    return minDateMessage;
-  }
-
-  return '';
-};
 
 export interface DateTextFieldProps
   extends WithUtilsProps,
     ExtendMui<BaseTextFieldProps, 'onError' | 'onChange' | 'value'> {
   // Properly extend different variants from mui textfield
   variant?: TextFieldProps['variant'];
-  InputProps?: Partial<TextFieldProps>;
-  inputProps?: TextFieldProps['inputMode'];
+  InputProps?: TextFieldProps['InputProps'];
+  inputProps?: TextFieldProps['inputProps'];
   value: DateType;
   minDate?: DateType;
   /** Error message, shown if date is less then minimal date */
@@ -118,9 +61,11 @@ export interface DateTextFieldProps
     | React.ComponentType<TextFieldProps>
     | React.ReactType<React.HTMLAttributes<any>>;
   /** Props to pass to keyboard input adornment */
-  InputAdornmentProps?: object;
+  InputAdornmentProps?: Partial<MuiInputAdornmentProps>;
+  /** Props to pass to keyboard adornment button */
+  KeyboardButtonProps?: Partial<MuiIconButtonProps>;
   /** Specifies position of keyboard button adornment */
-  adornmentPosition?: 'start' | 'end';
+  adornmentPosition?: MuiInputAdornmentProps['position'];
   onClick: (e: React.SyntheticEvent) => void;
   /* Callback firing when date that applied in the keyboard is invalid **/
   onError?: (newValue: MaterialUiPickersDate, error: React.ReactNode) => void;
@@ -147,7 +92,6 @@ export class DateTextField extends React.PureComponent<DateTextFieldProps> {
     onClick: PropTypes.func.isRequired,
     clearable: PropTypes.bool,
     utils: PropTypes.object.isRequired,
-    disabled: PropTypes.bool,
     InputProps: PropTypes.shape({}),
     mask: PropTypes.any,
     minDateMessage: PropTypes.node,
@@ -161,6 +105,7 @@ export class DateTextField extends React.PureComponent<DateTextFieldProps> {
     invalidDateMessage: PropTypes.node,
     TextFieldComponent: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
     InputAdornmentProps: PropTypes.object,
+    KeyboardButtonProps: PropTypes.object,
     adornmentPosition: PropTypes.oneOf(['start', 'end']),
     onError: PropTypes.func,
     onInputChange: PropTypes.func,
@@ -172,51 +117,43 @@ export class DateTextField extends React.PureComponent<DateTextFieldProps> {
     disabled: false,
     invalidLabel: 'Unknown',
     emptyLabel: '',
-    value: new Date(),
-    labelFunc: undefined,
-    format: undefined,
-    InputProps: undefined,
     keyboard: false,
-    mask: undefined,
-    keyboardIcon: 'event',
+    keyboardIcon: <KeyboardIcon />,
     disableOpenOnEnter: false,
     invalidDateMessage: 'Invalid Date Format',
     clearable: false,
-    onBlur: undefined,
-    onClear: undefined,
     disablePast: false,
     disableFuture: false,
-    onError: undefined,
-    onInputChange: undefined,
-    minDate: '1900-01-01',
-    maxDate: '2100-01-01',
+    minDate: new Date('1900-01-01'),
+    maxDate: new Date('2100-01-01'),
     minDateMessage: 'Date should not be before minimal date',
     maxDateMessage: 'Date should not be after maximal date',
     TextFieldComponent: TextField,
     InputAdornmentProps: {},
-    adornmentPosition: 'end',
-    pipe: undefined,
+    KeyboardButtonProps: {},
+    adornmentPosition: 'end' as MuiInputAdornmentProps['position'],
     keepCharPositions: false,
   };
 
-  public static updateState = (props: DateTextFieldProps) => ({
+  public static getStateFromProps = (props: DateTextFieldProps) => ({
     value: props.value,
     displayValue: getDisplayDate(props),
     error: getError(props.utils.date(props.value), props),
   });
 
-  public state = DateTextField.updateState(this.props);
+  public state = DateTextField.getStateFromProps(this.props);
 
   public componentDidUpdate(prevProps: DateTextFieldProps) {
+    const { utils } = this.props;
     if (
-      !this.props.utils.isEqual(this.props.value, prevProps.value) ||
+      !utils.isEqual(utils.date(this.props.value), utils.date(prevProps.value)) ||
       prevProps.format !== this.props.format ||
       prevProps.maxDate !== this.props.maxDate ||
       prevProps.minDate !== this.props.minDate ||
       prevProps.emptyLabel !== this.props.emptyLabel ||
       prevProps.utils !== this.props.utils
     ) {
-      this.setState(DateTextField.updateState(this.props));
+      this.setState(DateTextField.getStateFromProps(this.props));
     }
   }
 
@@ -225,7 +162,7 @@ export class DateTextField extends React.PureComponent<DateTextFieldProps> {
 
     if (value === '') {
       if (this.props.value === null) {
-        this.setState(DateTextField.updateState(this.props));
+        this.setState(DateTextField.getStateFromProps(this.props));
       } else if (clearable && onClear) {
         onClear();
       }
@@ -324,6 +261,7 @@ export class DateTextField extends React.PureComponent<DateTextFieldProps> {
       invalidDateMessage,
       invalidLabel,
       keyboard,
+      KeyboardButtonProps,
       keyboardIcon,
       labelFunc,
       mask,
@@ -357,8 +295,8 @@ export class DateTextField extends React.PureComponent<DateTextFieldProps> {
     if (keyboard) {
       localInputProps[`${adornmentPosition}Adornment`] = (
         <InputAdornment position={adornmentPosition!} {...InputAdornmentProps}>
-          <IconButton disabled={disabled} onClick={this.openPicker}>
-            <Icon> {keyboardIcon} </Icon>
+          <IconButton disabled={disabled} onClick={this.openPicker} {...KeyboardButtonProps}>
+            {keyboardIcon}
           </IconButton>
         </InputAdornment>
       );
@@ -388,5 +326,4 @@ export class DateTextField extends React.PureComponent<DateTextFieldProps> {
   }
 }
 
-// @ts-ignore ts requires to duplicate proptypes of textfield
 export default withUtils()(DateTextField);

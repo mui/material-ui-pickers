@@ -1,10 +1,13 @@
 import React, { PureComponent, Fragment } from 'react';
 import { DateTimePicker } from 'material-ui-pickers';
-import { IconButton, Icon, InputAdornment } from '@material-ui/core';
+import { IconButton, InputAdornment } from '@material-ui/core';
+import { withUtilsService } from '_shared/UtilsServiceContext';
+import AlarmIcon from '@material-ui/icons/AddAlarm';
+import SnoozeIcon from '@material-ui/icons/Snooze';
 
-export default class CustomDateTimePicker extends PureComponent {
+class CustomDateTimePicker extends PureComponent {
   state = {
-    selectedDate: new Date('2018-01-01T18:54'),
+    selectedDate: new Date('2019-01-01T18:54'),
     clearedDate: null,
   };
 
@@ -29,16 +32,17 @@ export default class CustomDateTimePicker extends PureComponent {
             autoSubmit={false}
             allowKeyboardControl={false}
             disableFuture
+            minDate={new Date('2018-01-01')}
             value={selectedDate}
             onChange={this.handleDateChange}
             helperText="Hardcoded helper text"
-            leftArrowIcon={<Icon> add_alarm </Icon>}
-            rightArrowIcon={<Icon> snooze </Icon>}
+            leftArrowIcon={<AlarmIcon />}
+            rightArrowIcon={<SnoozeIcon />}
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
                   <IconButton>
-                    <Icon>add_alarm</Icon>
+                    <AlarmIcon />
                   </IconButton>
                 </InputAdornment>
               ),
@@ -54,7 +58,10 @@ export default class CustomDateTimePicker extends PureComponent {
             minDate={new Date('2018-01-01T00:00')}
             value={selectedDate}
             onChange={this.handleDateChange}
-            format="yyyy/MM/dd hh:mm A"
+            format={this.props.getFormatString({
+              moment: 'YYYY/MM/DD hh:mm A',
+              dateFns: 'yyyy/MM/dd hh:mm a',
+            })}
             disableOpenOnEnter
             mask={[
               /\d/,
@@ -92,3 +99,5 @@ export default class CustomDateTimePicker extends PureComponent {
     );
   }
 }
+
+export default withUtilsService(CustomDateTimePicker);

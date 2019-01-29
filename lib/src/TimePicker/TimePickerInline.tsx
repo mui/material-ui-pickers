@@ -1,16 +1,14 @@
-import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-import { Omit } from '@material-ui/core';
 import BasePicker, { BasePickerProps } from '../_shared/BasePicker';
-import DomainPropTypes from '../constants/prop-types';
+import { ExtendWrapper } from '../wrappers/ExtendWrapper';
 import InlineWrapper, { OuterInlineWrapperProps } from '../wrappers/InlineWrapper';
 import TimePicker, { BaseTimePickerProps } from './TimePicker';
 
 export interface TimePickerInlineProps
   extends BasePickerProps,
     BaseTimePickerProps,
-    Omit<OuterInlineWrapperProps, 'onChange' | 'value'> {}
+    ExtendWrapper<OuterInlineWrapperProps> {}
 
 export const TimePickerInline: React.SFC<TimePickerInlineProps> = props => {
   const { value, format, onChange, ampm, forwardedRef, seconds, ...other } = props;
@@ -40,23 +38,6 @@ export const TimePickerInline: React.SFC<TimePickerInlineProps> = props => {
       )}
     </BasePicker>
   );
-};
-
-(TimePickerInline as any).propTypes = {
-  value: DomainPropTypes.date,
-  format: PropTypes.string,
-  onChange: PropTypes.func.isRequired,
-  ampm: PropTypes.bool,
-  seconds: PropTypes.bool,
-  forwardedRef: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
-};
-
-TimePickerInline.defaultProps = {
-  ampm: true,
-  value: new Date(),
-  format: undefined,
-  forwardedRef: undefined,
-  seconds: false,
 };
 
 export default React.forwardRef((props: TimePickerInlineProps, ref) => (

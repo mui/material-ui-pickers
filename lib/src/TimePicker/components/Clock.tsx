@@ -16,10 +16,9 @@ export interface ClockProps extends WithStyles<typeof styles> {
   children: Array<React.ReactElement<any>>;
 }
 
-export class Clock extends React.PureComponent<ClockProps> {
+export class Clock extends React.Component<ClockProps> {
   public static propTypes: any = {
     type: PropTypes.oneOf(Object.keys(ClockType).map(key => ClockType[key])).isRequired,
-    classes: PropTypes.object.isRequired,
     value: PropTypes.number.isRequired,
     onChange: PropTypes.func.isRequired,
     children: PropTypes.arrayOf(PropTypes.node).isRequired,

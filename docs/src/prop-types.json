@@ -218,7 +218,7 @@
         "name": "DateTextFieldProps"
       },
       "required": false,
-      "type": { "name": "any" }
+      "type": { "name": "(string | RegExp)[] | ((value: string) => (string | RegExp)[])" }
     },
     "minDateMessage": {
       "defaultValue": null,
@@ -318,7 +318,7 @@
       },
       "required": false,
       "type": {
-        "name": "\"symbol\" | \"object\" | \"style\" | \"title\" | \"time\" | \"link\" | \"menu\" | \"dialog\" | \"text\" | \"a\" | \"abbr\" | \"address\" | \"area\" | \"article\" | \"aside\" | \"audio\" | \"b\" | \"base\" | \"bdi\" | ... 154 more ... | FunctionComponent<...>"
+        "name": "\"symbol\" | \"object\" | \"style\" | \"title\" | \"time\" | \"link\" | \"menu\" | \"dialog\" | \"text\" | \"a\" | \"abbr\" | \"address\" | \"area\" | \"article\" | \"aside\" | \"audio\" | \"b\" | \"base\" | \"bdi\" | ... 156 more ... | FunctionComponent<...>"
       }
     },
     "InputAdornmentProps": {
@@ -330,7 +330,18 @@
         "name": "DateTextFieldProps"
       },
       "required": false,
-      "type": { "name": "object" }
+      "type": { "name": "Partial<InputAdornmentProps>" }
+    },
+    "KeyboardButtonProps": {
+      "defaultValue": null,
+      "description": "Props to pass to keyboard adornment button",
+      "name": "KeyboardButtonProps",
+      "parent": {
+        "fileName": "/Users/dmitrijkovalenko/dev/material-ui-pickers/lib/src/_shared/DateTextField.tsx",
+        "name": "DateTextFieldProps"
+      },
+      "required": false,
+      "type": { "name": "Partial<IconButtonProps>" }
     },
     "adornmentPosition": {
       "defaultValue": null,
@@ -530,7 +541,7 @@
         "name": "DateTextFieldProps"
       },
       "required": false,
-      "type": { "name": "any" }
+      "type": { "name": "(string | RegExp)[] | ((value: string) => (string | RegExp)[])" }
     },
     "minDateMessage": {
       "defaultValue": null,
@@ -630,7 +641,7 @@
       },
       "required": false,
       "type": {
-        "name": "\"symbol\" | \"object\" | \"style\" | \"title\" | \"time\" | \"link\" | \"menu\" | \"dialog\" | \"text\" | \"a\" | \"abbr\" | \"address\" | \"area\" | \"article\" | \"aside\" | \"audio\" | \"b\" | \"base\" | \"bdi\" | ... 154 more ... | FunctionComponent<...>"
+        "name": "\"symbol\" | \"object\" | \"style\" | \"title\" | \"time\" | \"link\" | \"menu\" | \"dialog\" | \"text\" | \"a\" | \"abbr\" | \"address\" | \"area\" | \"article\" | \"aside\" | \"audio\" | \"b\" | \"base\" | \"bdi\" | ... 156 more ... | FunctionComponent<...>"
       }
     },
     "InputAdornmentProps": {
@@ -642,7 +653,18 @@
         "name": "DateTextFieldProps"
       },
       "required": false,
-      "type": { "name": "object" }
+      "type": { "name": "Partial<InputAdornmentProps>" }
+    },
+    "KeyboardButtonProps": {
+      "defaultValue": null,
+      "description": "Props to pass to keyboard adornment button",
+      "name": "KeyboardButtonProps",
+      "parent": {
+        "fileName": "/Users/dmitrijkovalenko/dev/material-ui-pickers/lib/src/_shared/DateTextField.tsx",
+        "name": "DateTextFieldProps"
+      },
+      "required": false,
+      "type": { "name": "Partial<IconButtonProps>" }
     },
     "adornmentPosition": {
       "defaultValue": null,
@@ -834,7 +856,7 @@
       "type": { "name": "boolean" }
     },
     "showTabs": {
-      "defaultValue": null,
+      "defaultValue": { "value": "true" },
       "description": "Show or hide tabs switching between date and time",
       "name": "showTabs",
       "parent": {
@@ -1007,7 +1029,7 @@
         "name": "DateTextFieldProps"
       },
       "required": false,
-      "type": { "name": "any" }
+      "type": { "name": "(string | RegExp)[] | ((value: string) => (string | RegExp)[])" }
     },
     "minDateMessage": {
       "defaultValue": null,
@@ -1107,7 +1129,7 @@
       },
       "required": false,
       "type": {
-        "name": "\"symbol\" | \"object\" | \"style\" | \"title\" | \"time\" | \"link\" | \"menu\" | \"dialog\" | \"text\" | \"a\" | \"abbr\" | \"address\" | \"area\" | \"article\" | \"aside\" | \"audio\" | \"b\" | \"base\" | \"bdi\" | ... 154 more ... | FunctionComponent<...>"
+        "name": "\"symbol\" | \"object\" | \"style\" | \"title\" | \"time\" | \"link\" | \"menu\" | \"dialog\" | \"text\" | \"a\" | \"abbr\" | \"address\" | \"area\" | \"article\" | \"aside\" | \"audio\" | \"b\" | \"base\" | \"bdi\" | ... 156 more ... | FunctionComponent<...>"
       }
     },
     "InputAdornmentProps": {
@@ -1119,7 +1141,18 @@
         "name": "DateTextFieldProps"
       },
       "required": false,
-      "type": { "name": "object" }
+      "type": { "name": "Partial<InputAdornmentProps>" }
+    },
+    "KeyboardButtonProps": {
+      "defaultValue": null,
+      "description": "Props to pass to keyboard adornment button",
+      "name": "KeyboardButtonProps",
+      "parent": {
+        "fileName": "/Users/dmitrijkovalenko/dev/material-ui-pickers/lib/src/_shared/DateTextField.tsx",
+        "name": "DateTextFieldProps"
+      },
+      "required": false,
+      "type": { "name": "Partial<IconButtonProps>" }
     },
     "adornmentPosition": {
       "defaultValue": null,
