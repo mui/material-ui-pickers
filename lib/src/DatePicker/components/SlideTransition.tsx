@@ -29,6 +29,7 @@ const SlideTransition: React.SFC<SlideTransitionProps> = ({
     exit: classes.slideExit,
     exitActive: classes['slideExitActiveLeft-' + slideDirection],
   };
+
   return (
     <TransitionGroup
       className={clsx(classes.transitionContainer, className)}
