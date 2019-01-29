@@ -68,12 +68,18 @@ export class Calendar extends React.Component<CalendarProps, CalendarState> {
     const { utils, date: nextDate } = nextProps;
 
     if (!utils.isEqual(nextDate, state.lastDate)) {
+      const nextMonth = utils.getMonth(nextDate);
+      const lastMonth = utils.getMonth(state.lastDate || nextDate);
+
       return {
         lastDate: nextDate,
-        slideDirection: utils.isBefore(utils.startOfMonth(nextDate), state.lastDate)
-          ? 'right'
-          : 'left',
         currentMonth: nextProps.utils.startOfMonth(nextDate),
+        // prettier-ignore
+        slideDirection: nextMonth === lastMonth
+          ? state.slideDirection
+          : nextMonth > lastMonth
+            ? 'left'
+            : 'right'
       };
     }
 
@@ -114,10 +120,13 @@ export class Calendar extends React.Component<CalendarProps, CalendarState> {
   };
 
   public validateMinMaxDate = (day: MaterialUiPickersDate) => {
-    const { minDate, maxDate, utils } = this.props;
+    const { minDate, maxDate, utils, disableFuture, disablePast } = this.props;
+    const now = utils.date();
 
     return Boolean(
-      (minDate && utils.isBeforeDay(day, utils.date(minDate))) ||
+      (disableFuture && utils.isAfterDay(day, now)) ||
+        (disablePast && utils.isBeforeDay(day, now)) ||
+        (minDate && utils.isBeforeDay(day, utils.date(minDate))) ||
         (maxDate && utils.isAfterDay(day, utils.date(maxDate)))
     );
   };
