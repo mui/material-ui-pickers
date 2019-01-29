@@ -65,10 +65,15 @@ export class Calendar extends React.Component<CalendarProps, CalendarState> {
   };
 
   public static getDerivedStateFromProps(nextProps: CalendarProps, state: CalendarState) {
-    if (!nextProps.utils.isEqual(nextProps.date, state.lastDate)) {
+    const { utils, date: nextDate } = nextProps;
+
+    if (!utils.isEqual(nextDate, state.lastDate)) {
       return {
-        lastDate: nextProps.date,
-        currentMonth: nextProps.utils.startOfMonth(nextProps.date),
+        lastDate: nextDate,
+        slideDirection: utils.isBefore(utils.startOfMonth(nextDate), state.lastDate)
+          ? 'right'
+          : 'left',
+        currentMonth: nextProps.utils.startOfMonth(nextDate),
       };
     }
 
