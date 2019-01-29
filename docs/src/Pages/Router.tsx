@@ -15,7 +15,7 @@ import Installation from './GettingStarted/Installation';
 import Usage from './GettingStarted/Usage';
 import ParsingDates from './GettingStarted/ParsingDates';
 import Landing from '../Landing/Landing';
-import Formik from './Guides/Formik';
+import FormIntegration from './Guides/FormIntegration';
 import { Regression } from './Regression/Regression';
 
 export default () => (
@@ -29,7 +29,7 @@ export default () => (
 
     <Route path="/guides/css-overrides" component={CssOverrides} />
     <Route path="/guides/formats" component={FormatCustomization} />
-    <Route path="/guides/formik-integration" component={Formik} />
+    <Route path="/guides/form-integration" component={FormIntegration} />
 
     <Route path="/guides/controlling-programmatically" component={ControllingProgrammatically} />
     <Route path="/guides/static-pickers" component={StaticPickers} />
