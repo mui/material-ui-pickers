@@ -84,10 +84,10 @@ export class TimePickerView extends React.PureComponent<TimePickerViewProps> {
   };
 
   public render() {
-    const { ampm, type } = this.props;
+    const { ampm, type, minutesStep } = this.props;
     const viewProps = this.getViewProps();
 
-    return <Clock type={type} ampm={ampm} {...viewProps} />;
+    return <Clock type={type} ampm={ampm} minutesStep={minutesStep} {...viewProps} />;
   }
 }
 

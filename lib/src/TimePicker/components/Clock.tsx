@@ -44,7 +44,7 @@ export class Clock extends React.Component<ClockProps> {
 
     const value =
       this.props.type === ClockType.SECONDS || this.props.type === ClockType.MINUTES
-        ? getMinutes(offsetX, offsetY)
+        ? getMinutes(offsetX, offsetY, this.props.minutesStep)
         : getHours(offsetX, offsetY, Boolean(this.props.ampm));
 
     this.props.onChange(value, isFinish);
