@@ -24,8 +24,8 @@ export class MonthSelection extends React.PureComponent<MonthSelectionProps> {
   };
 
   public static defaultProps = {
-    minDate: '1900-01-01',
-    maxDate: '2100-01-01',
+    minDate: new Date('1900-01-01'),
+    maxDate: new Date('2100-01-01'),
   };
 
   public onMonthSelect = (month: number) => {
@@ -38,15 +38,17 @@ export class MonthSelection extends React.PureComponent<MonthSelectionProps> {
   public shouldDisableMonth = (month: Date) => {
     const { utils, disablePast, disableFuture, minDate, maxDate } = this.props;
     const now = utils.date();
-    const minMonth = utils.startOfMonth(
-      disablePast && utils.isAfter(now, minDate) ? now : utils.date(minDate)
+    const utilMinDate = utils.date(minDate);
+    const utilMaxDate = utils.date(maxDate);
+    const firstEnabledMonth = utils.startOfMonth(
+      disablePast && utils.isAfter(now, utilMinDate) ? now : utilMinDate
     );
-    const maxMonth = utils.startOfMonth(
-      disableFuture && utils.isBefore(now, maxDate) ? now : utils.date(maxDate)
+    const lastEnabledMonth = utils.startOfMonth(
+      disableFuture && utils.isBefore(now, utilMaxDate) ? now : utilMaxDate
     );
-    const isBeforeMin = utils.isBefore(month, minMonth);
-    const isAfterMax = utils.isAfter(month, maxMonth);
-    return isBeforeMin || isAfterMax;
+    const isBeforeFirstEnabled = utils.isBefore(month, firstEnabledMonth);
+    const isAfterLastEnabled = utils.isAfter(month, lastEnabledMonth);
+    return isBeforeFirstEnabled || isAfterLastEnabled;
   };
 
   public render() {

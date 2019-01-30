@@ -30,8 +30,8 @@ export default class YearMonthPicker extends PureComponent {
             availableViews={['year', 'month']}
             label="Year and Month"
             helperText="With min and max"
-            minDate="2018-03-01"
-            maxDate="2018-06-01"
+            minDate={new Date('2018-03-01')}
+            maxDate={new Date('2018-06-01')}
             value={selectedDate}
             onChange={this.handleDateChange}
             animateYearScrolling

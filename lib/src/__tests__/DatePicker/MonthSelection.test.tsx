@@ -11,10 +11,8 @@ describe('MonthSelection', () => {
     component = shallow(
       <MonthSelection
         classes={{} as any}
-        disablePast
-        disableFuture
-        minDate="03-01-2017"
-        maxDate="05-01-2017"
+        minDate={new Date('03-01-2017')}
+        maxDate={new Date('05-01-2017')}
         date={utilsToUse.date('04-01-2017')}
         onChange={jest.fn()}
         utils={utilsToUse}
