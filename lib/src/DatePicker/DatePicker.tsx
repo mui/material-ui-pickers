@@ -28,7 +28,7 @@ export interface BaseDatePickerProps {
    * @default ['year', 'month', 'day']
    * Array of views to show, possible values: ['year'] | ['year', 'month'] | ['year', 'month', 'day']
    */
-  availableViews?: DatePickerViewType[];
+  availableViews: DatePickerViewType[];
   /** Initial view to show when date picker is open */
   openTo?: DatePickerViewType;
   /** @deprecated use openTo instead */
@@ -54,12 +54,6 @@ export interface DatePickerProps
   onChange: (date: MaterialUiPickersDate, isFinished?: boolean) => void;
 }
 
-interface DefaultBaseDatePickerProps {
-  availableViews: DatePickerView[];
-}
-
-type PropsWithDefaults = DatePickerProps & DefaultBaseDatePickerProps;
-
 interface DatePickerState {
   openView: DatePickerViewType;
 }
@@ -76,20 +70,13 @@ export class DatePicker extends React.PureComponent<DatePickerProps> {
     availableViews: [DatePickerView.YEAR, DatePickerView.MONTH, DatePickerView.DAY],
   };
 
-  public state: DatePickerState;
-
-  constructor(props: DatePickerProps) {
-    super(props);
-
-    const { availableViews, openTo, openToYearSelection } = this.props as PropsWithDefaults;
-    this.state = {
-      openView:
-        openTo ||
-        (Boolean(openToYearSelection)
-          ? DatePickerView.YEAR
-          : availableViews[availableViews.length - 1]),
-    };
-  }
+  public state: DatePickerState = {
+    openView:
+      this.props.openTo ||
+      (Boolean(this.props.openToYearSelection)
+        ? DatePickerView.YEAR
+        : this.props.availableViews[this.props.availableViews.length - 1]),
+  };
 
   get date() {
     return this.props.date;
@@ -104,12 +91,12 @@ export class DatePicker extends React.PureComponent<DatePickerProps> {
   }
 
   get isYearOnly() {
-    const { availableViews } = this.props as PropsWithDefaults;
+    const { availableViews } = this.props;
     return availableViews.length === 1 && availableViews[0] === DatePickerView.YEAR;
   }
 
   get isYearAndMonth() {
-    const { availableViews } = this.props as PropsWithDefaults;
+    const { availableViews } = this.props;
     return (
       availableViews.length === 2 &&
       availableViews[availableViews.length - 1] === DatePickerView.MONTH

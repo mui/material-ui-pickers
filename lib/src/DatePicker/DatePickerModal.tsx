@@ -44,7 +44,7 @@ export const DatePickerModal: React.SFC<DatePickerModalProps> = props => {
     rightArrowIcon,
     shouldDisableDate,
     value,
-    availableViews = [DatePickerView.YEAR, DatePickerView.MONTH, DatePickerView.DAY],
+    availableViews,
     openTo,
     ...other
   } = props;
@@ -100,6 +100,10 @@ export const DatePickerModal: React.SFC<DatePickerModalProps> = props => {
       )}
     </BasePicker>
   );
+};
+
+DatePickerModal.defaultProps = {
+  availableViews: [DatePickerView.YEAR, DatePickerView.MONTH, DatePickerView.DAY],
 };
 
 export default React.forwardRef((props: DatePickerModalProps, ref) => (
