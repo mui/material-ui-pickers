@@ -1,13 +1,12 @@
 import { IconButton, InputAdornment } from '@material-ui/core';
 import { ReactWrapper } from 'enzyme';
 import * as React from 'react';
-import { DatePickerProps } from '../../DatePicker/DatePicker';
 import DatePickerModal, { DatePickerModalProps } from '../../DatePicker/DatePickerModal';
 import { mount, utilsToUse } from '../test-utils';
 
 describe('e2e -- DatePickerModal keyboard input', () => {
   const onChangeMock = jest.fn();
-  let component: ReactWrapper<DatePickerProps>;
+  let component: ReactWrapper<DatePickerModalProps>;
 
   beforeEach(() => {
     component = mount(
