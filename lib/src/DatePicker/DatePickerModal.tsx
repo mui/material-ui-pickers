@@ -89,7 +89,7 @@ export const DatePickerModal: React.SFC<DatePickerModalProps> = props => {
 };
 
 DatePickerModal.defaultProps = {
-  views: ['year', 'month', 'day'],
+  views: ['year', 'day'],
 };
 
 export default React.forwardRef((props: DatePickerModalProps, ref) => (

@@ -1,8 +1,9 @@
-import createStyles from '@material-ui/core/styles/createStyles';
-import withStyles, { WithStyles } from '@material-ui/core/styles/withStyles';
 import clsx from 'clsx';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
+
+import createStyles from '@material-ui/core/styles/createStyles';
+import withStyles, { WithStyles } from '@material-ui/core/styles/withStyles';
 import { isYearAndMonthViews, isYearOnlyView } from '../_helpers/date-utils';
 import PickerToolbar from '../_shared/PickerToolbar';
 import ToolbarButton from '../_shared/ToolbarButton';
@@ -25,13 +26,10 @@ export interface BaseDatePickerProps {
   disableFuture?: boolean;
   /** To animate scrolling to current year (with scrollIntoView) */
   animateYearScrolling?: boolean;
-  /**
-   * @default ['year', 'month', 'day']
-   * Array of views to show, possible values: ['year'] | ['year', 'month'] | ['year', 'month', 'day']
-   */
-  views?: DatePickerViewType[];
+  /** Array of views to show. Order year -> month -> day */
+  views?: Array<'year' | 'month' | 'day'>;
   /** Initial view to show when date picker is open */
-  openTo?: DatePickerViewType;
+  openTo?: 'year' | 'month' | 'day';
   /** @deprecated use openTo instead */
   openToYearSelection?: boolean;
   /** Left arrow icon */
@@ -70,6 +68,7 @@ export class DatePicker extends React.PureComponent<DatePickerProps> {
     minDate: new Date('1900-01-01'),
     maxDate: new Date('2100-01-01'),
     openToYearSelection: false,
+    views: ['year', 'month'] as DatePickerViewType[],
   };
 
   public state: DatePickerState = {
@@ -93,11 +92,11 @@ export class DatePicker extends React.PureComponent<DatePickerProps> {
   }
 
   get isYearOnly() {
-    return isYearAndMonthViews(this.props.views!);
+    return isYearOnlyView(this.props.views!);
   }
 
   get isYearAndMonth() {
-    return isYearOnlyView(this.props.views!);
+    return isYearAndMonthViews(this.props.views!);
   }
 
   public handleYearSelect = (date: MaterialUiPickersDate) => {
