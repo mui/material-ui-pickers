@@ -28,7 +28,7 @@ export interface BaseDatePickerProps {
    * @default ['year', 'month', 'day']
    * Array of views to show, possible values: ['year'] | ['year', 'month'] | ['year', 'month', 'day']
    */
-  availableViews?: DatePickerViewType[];
+  views?: DatePickerViewType[];
   /** Initial view to show when date picker is open */
   openTo?: DatePickerViewType;
   /** @deprecated use openTo instead */
@@ -67,7 +67,7 @@ export class DatePicker extends React.PureComponent<DatePickerProps> {
     minDate: new Date('1900-01-01'),
     maxDate: new Date('2100-01-01'),
     openToYearSelection: false,
-    availableViews: [DatePickerView.YEAR, DatePickerView.MONTH, DatePickerView.DAY],
+    views: [DatePickerView.YEAR, DatePickerView.MONTH, DatePickerView.DAY],
   };
 
   public state: DatePickerState = {
@@ -75,7 +75,7 @@ export class DatePicker extends React.PureComponent<DatePickerProps> {
       this.props.openTo ||
       (Boolean(this.props.openToYearSelection)
         ? DatePickerView.YEAR
-        : this.props.availableViews![this.props.availableViews!.length - 1]),
+        : this.props.views![this.props.views!.length - 1]),
   };
 
   get date() {
@@ -91,16 +91,13 @@ export class DatePicker extends React.PureComponent<DatePickerProps> {
   }
 
   get isYearOnly() {
-    const { availableViews } = this.props;
-    return availableViews!.length === 1 && availableViews![0] === DatePickerView.YEAR;
+    const { views } = this.props;
+    return views!.length === 1 && views![0] === DatePickerView.YEAR;
   }
 
   get isYearAndMonth() {
-    const { availableViews } = this.props;
-    return (
-      availableViews!.length === 2 &&
-      availableViews![availableViews!.length - 1] === DatePickerView.MONTH
-    );
+    const { views } = this.props;
+    return views!.length === 2 && views![views!.length - 1] === DatePickerView.MONTH;
   }
 
   public handleYearSelect = (date: MaterialUiPickersDate) => {

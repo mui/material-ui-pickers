@@ -14,13 +14,13 @@ export interface DatePickerModalProps
 
 const getFormat = (
   format: string | undefined,
-  availableViews: DatePickerViewType[],
+  views: DatePickerViewType[],
   utils: IUtils<MaterialUiPickersDate>
 ) =>
   format ||
-  (availableViews.length === 1 && availableViews[0] === DatePickerView.YEAR
+  (views.length === 1 && views[0] === DatePickerView.YEAR
     ? utils.yearFormat
-    : availableViews[availableViews.length - 1] === DatePickerView.MONTH
+    : views[views.length - 1] === DatePickerView.MONTH
       ? utils.yearMonthFormat
       : utils.dateFormat);
 
@@ -44,7 +44,7 @@ export const DatePickerModal: React.SFC<DatePickerModalProps> = props => {
     rightArrowIcon,
     shouldDisableDate,
     value,
-    availableViews,
+    views,
     openTo,
     ...other
   } = props;
@@ -65,7 +65,7 @@ export const DatePickerModal: React.SFC<DatePickerModalProps> = props => {
         <ModalWrapper
           disableFuture={disableFuture}
           disablePast={disablePast}
-          format={getFormat(format, availableViews!, utils)}
+          format={getFormat(format, views!, utils)}
           labelFunc={labelFunc}
           maxDate={maxDate}
           minDate={minDate}
@@ -93,7 +93,7 @@ export const DatePickerModal: React.SFC<DatePickerModalProps> = props => {
             renderDay={renderDay}
             rightArrowIcon={rightArrowIcon}
             shouldDisableDate={shouldDisableDate}
-            availableViews={availableViews}
+            views={views}
             openTo={openTo}
           />
         </ModalWrapper>
@@ -103,7 +103,7 @@ export const DatePickerModal: React.SFC<DatePickerModalProps> = props => {
 };
 
 DatePickerModal.defaultProps = {
-  availableViews: [DatePickerView.YEAR, DatePickerView.MONTH, DatePickerView.DAY],
+  views: [DatePickerView.YEAR, DatePickerView.MONTH, DatePickerView.DAY],
 };
 
 export default React.forwardRef((props: DatePickerModalProps, ref) => (

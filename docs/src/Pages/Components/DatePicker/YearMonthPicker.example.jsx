@@ -17,7 +17,7 @@ export default class YearMonthPicker extends PureComponent {
       <Fragment>
         <div className="picker">
           <DatePicker
-            availableViews={['year']}
+            views={['year']}
             label="Year only"
             value={selectedDate}
             onChange={this.handleDateChange}
@@ -27,7 +27,7 @@ export default class YearMonthPicker extends PureComponent {
 
         <div className="picker">
           <DatePicker
-            availableViews={['year', 'month']}
+            views={['year', 'month']}
             label="Year and Month"
             helperText="With min and max"
             minDate={new Date('2018-03-01')}
@@ -40,7 +40,7 @@ export default class YearMonthPicker extends PureComponent {
 
         <div className="picker">
           <DatePicker
-            availableViews={['year', 'month']}
+            views={['year', 'month']}
             openTo="year"
             label="Year and Month"
             helperText="Start from year selection"
