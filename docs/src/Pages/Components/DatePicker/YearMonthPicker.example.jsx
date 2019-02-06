@@ -34,7 +34,6 @@ export default class YearMonthPicker extends PureComponent {
             maxDate={new Date('2018-06-01')}
             value={selectedDate}
             onChange={this.handleDateChange}
-            animateYearScrolling
           />
         </div>
 
@@ -46,7 +45,6 @@ export default class YearMonthPicker extends PureComponent {
             helperText="Start from year selection"
             value={selectedDate}
             onChange={this.handleDateChange}
-            animateYearScrolling
           />
         </div>
       </Fragment>

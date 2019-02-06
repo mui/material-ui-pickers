@@ -3,6 +3,7 @@ import withStyles, { WithStyles } from '@material-ui/core/styles/withStyles';
 import clsx from 'clsx';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
+import { isYearAndMonthViews, isYearOnlyView } from '../_helpers/date-utils';
 import PickerToolbar from '../_shared/PickerToolbar';
 import ToolbarButton from '../_shared/ToolbarButton';
 import { withUtils, WithUtilsProps } from '../_shared/WithUtils';
@@ -72,6 +73,7 @@ export class DatePicker extends React.PureComponent<DatePickerProps> {
   };
 
   public state: DatePickerState = {
+    // TODO in v3 remove openToYearSelection
     openView:
       this.props.openTo || this.props.openToYearSelection!
         ? 'year'
@@ -91,13 +93,11 @@ export class DatePicker extends React.PureComponent<DatePickerProps> {
   }
 
   get isYearOnly() {
-    const { views } = this.props;
-    return views!.length === 1 && views![0] === 'year';
+    return isYearAndMonthViews(this.props.views!);
   }
 
   get isYearAndMonth() {
-    const { views } = this.props;
-    return views!.length === 2 && views![views!.length - 1] === 'month';
+    return isYearOnlyView(this.props.views!);
   }
 
   public handleYearSelect = (date: MaterialUiPickersDate) => {
@@ -115,11 +115,12 @@ export class DatePicker extends React.PureComponent<DatePickerProps> {
   };
 
   public handleMonthSelect = (date: MaterialUiPickersDate) => {
-    if (this.props.views!.includes('day')) {
-      return this.openCalendar();
-    }
+    const isFinish = !this.props.views!.includes('day');
+    this.props.onChange(date, isFinish);
 
-    this.props.onChange(date, true);
+    if (!isFinish) {
+      this.openCalendar();
+    }
   };
 
   public openYearSelection = () => {
