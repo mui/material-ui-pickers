@@ -68,7 +68,7 @@ export class DatePicker extends React.PureComponent<DatePickerProps> {
     minDate: new Date('1900-01-01'),
     maxDate: new Date('2100-01-01'),
     openToYearSelection: false,
-    views: ['year', 'month'] as DatePickerViewType[],
+    views: ['year', 'day'] as DatePickerViewType[],
   };
 
   public state: DatePickerState = {
