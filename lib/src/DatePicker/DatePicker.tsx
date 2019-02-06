@@ -6,8 +6,8 @@ import * as React from 'react';
 import PickerToolbar from '../_shared/PickerToolbar';
 import ToolbarButton from '../_shared/ToolbarButton';
 import { withUtils, WithUtilsProps } from '../_shared/WithUtils';
-import DatePickerView, { DatePickerViewType } from '../constants/DatePickerView';
-import { DateType } from '../constants/prop-types';
+import { DatePickerViewType } from '../constants/DatePickerView';
+import { DateType, DomainPropTypes } from '../constants/prop-types';
 import { MaterialUiPickersDate } from '../typings/date';
 import Calendar, { RenderDay } from './components/Calendar';
 import MonthSelection from './components/MonthSelection';
@@ -59,7 +59,9 @@ interface DatePickerState {
 }
 
 export class DatePicker extends React.PureComponent<DatePickerProps> {
-  public static propTypes = {
+  public static propTypes: any = {
+    views: PropTypes.arrayOf(DomainPropTypes.datePickerView),
+    openTo: DomainPropTypes.datePickerView,
     openToYearSelection: PropTypes.bool,
   };
 
@@ -67,15 +69,13 @@ export class DatePicker extends React.PureComponent<DatePickerProps> {
     minDate: new Date('1900-01-01'),
     maxDate: new Date('2100-01-01'),
     openToYearSelection: false,
-    views: [DatePickerView.YEAR, DatePickerView.MONTH, DatePickerView.DAY],
   };
 
   public state: DatePickerState = {
     openView:
-      this.props.openTo ||
-      (Boolean(this.props.openToYearSelection)
-        ? DatePickerView.YEAR
-        : this.props.views![this.props.views!.length - 1]),
+      this.props.openTo || this.props.openToYearSelection!
+        ? 'year'
+        : this.props.views![this.props.views!.length - 1],
   };
 
   get date() {
@@ -92,12 +92,12 @@ export class DatePicker extends React.PureComponent<DatePickerProps> {
 
   get isYearOnly() {
     const { views } = this.props;
-    return views!.length === 1 && views![0] === DatePickerView.YEAR;
+    return views!.length === 1 && views![0] === 'year';
   }
 
   get isYearAndMonth() {
     const { views } = this.props;
-    return views!.length === 2 && views![views!.length - 1] === DatePickerView.MONTH;
+    return views!.length === 2 && views![views!.length - 1] === 'month';
   }
 
   public handleYearSelect = (date: MaterialUiPickersDate) => {
@@ -107,7 +107,7 @@ export class DatePicker extends React.PureComponent<DatePickerProps> {
       return;
     }
 
-    if (this.isYearAndMonth) {
+    if (this.props.views!.includes('month')) {
       return this.openMonthSelection();
     }
 
@@ -115,19 +115,23 @@ export class DatePicker extends React.PureComponent<DatePickerProps> {
   };
 
   public handleMonthSelect = (date: MaterialUiPickersDate) => {
+    if (this.props.views!.includes('day')) {
+      return this.openCalendar();
+    }
+
     this.props.onChange(date, true);
   };
 
   public openYearSelection = () => {
-    this.setState({ openView: DatePickerView.YEAR });
+    this.setState({ openView: 'year' });
   };
 
   public openCalendar = () => {
-    this.setState({ openView: DatePickerView.DAY });
+    this.setState({ openView: 'day' });
   };
 
   public openMonthSelection = () => {
-    this.setState({ openView: DatePickerView.MONTH });
+    this.setState({ openView: 'month' });
   };
 
   public render() {
@@ -152,7 +156,7 @@ export class DatePicker extends React.PureComponent<DatePickerProps> {
           <ToolbarButton
             variant={this.isYearOnly ? 'h3' : 'subtitle1'}
             onClick={this.isYearOnly ? undefined : this.openYearSelection}
-            selected={openView === DatePickerView.YEAR}
+            selected={openView === 'year'}
             label={utils.getYearText(this.date)}
           />
 
@@ -161,7 +165,7 @@ export class DatePicker extends React.PureComponent<DatePickerProps> {
               <ToolbarButton
                 variant="h4"
                 onClick={this.openCalendar}
-                selected={openView === DatePickerView.DAY}
+                selected={openView === 'day'}
                 label={utils.getDatePickerHeaderText(this.date)}
               />
             )}
@@ -170,7 +174,7 @@ export class DatePicker extends React.PureComponent<DatePickerProps> {
             <ToolbarButton
               variant="h4"
               onClick={this.openMonthSelection}
-              selected={openView === DatePickerView.MONTH}
+              selected={openView === 'month'}
               label={utils.getMonthText(this.date)}
             />
           )}
@@ -178,7 +182,7 @@ export class DatePicker extends React.PureComponent<DatePickerProps> {
 
         {this.props.children}
 
-        {openView === DatePickerView.YEAR && (
+        {openView === 'year' && (
           <YearSelection
             date={this.date}
             onChange={this.handleYearSelect}
@@ -189,7 +193,7 @@ export class DatePicker extends React.PureComponent<DatePickerProps> {
             animateYearScrolling={animateYearScrolling}
           />
         )}
-        {openView === DatePickerView.MONTH && (
+        {openView === 'month' && (
           <MonthSelection
             date={this.date}
             onChange={this.handleMonthSelect}
@@ -199,7 +203,7 @@ export class DatePicker extends React.PureComponent<DatePickerProps> {
             disableFuture={disableFuture}
           />
         )}
-        {openView === DatePickerView.DAY && (
+        {openView === 'day' && (
           <Calendar
             date={this.date}
             onChange={onChange}
