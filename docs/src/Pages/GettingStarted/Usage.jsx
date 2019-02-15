@@ -32,19 +32,6 @@ const Usage = ({ classes }) => (
     <Typography variant="h4" gutterBottom>
       Interactive example
     </Typography>
-
-    <iframe
-      title="codesandbox"
-      src={`https://codesandbox.io/embed/${sandBoxId}?hidenavigation=1&fontsize=14&view=preview`}
-      style={{
-        width: '100%',
-        height: 650,
-        border: 0,
-        borderRadius: 4,
-        overflow: 'hidden',
-      }}
-      sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
-    />
   </div>
 );
 

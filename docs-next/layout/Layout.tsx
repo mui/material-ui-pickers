@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import clsx from 'clsx';
 import Hidden from '@material-ui/core/Hidden';
 import Drawer from '@material-ui/core/Drawer';
-import { withRouter, RouteComponentProps } from 'react-router-dom';
+import { withRouter, WithRouterProps } from 'next/router';
 import {
   AppBar,
   Toolbar,
@@ -18,20 +18,69 @@ import {
 
 import Github from '../_shared/svgIcons/GithubIcon';
 import DrawerMenu from './DrawerMenu';
-import { utilsMap, UtilsLib } from '../App';
+import { utilsMap, UtilsLib } from '../utils/utilsService';
 
 import MenuIcon from '@material-ui/icons/Menu';
 import SettingsIcon from '@material-ui/icons/Settings';
 import TextDirectionLtrIcon from '@material-ui/icons/FormatTextdirectionLToR';
 import TextDirectionRtLIcon from '@material-ui/icons/FormatTextdirectionRToL';
 import LightbulbOutlineIcon from '../_shared/svgIcons/LightbulbIcon';
+import { createOverrides } from './overrides';
 
-interface LayoutProps extends RouteComponentProps, WithStyles<typeof styles, true> {
+interface LayoutProps extends WithRouterProps, WithStyles<typeof styles, true> {
   toggleThemeType: () => void;
   toggleDirection: () => void;
   onChangeUtils: (lib: UtilsLib) => void;
-  children: React.ReactChild;
 }
+
+const styles = (theme: Theme) =>
+  createStyles({
+    '@global': createOverrides(theme),
+    flex: {
+      flex: 1,
+    },
+    menuButton: {
+      marginLeft: -12,
+      marginRight: 20,
+    },
+    appBar: {
+      // boxShadow: 'unset',
+      [theme.breakpoints.up('md')]: {
+        width: 'calc(100% - 250px)',
+        left: 250,
+      },
+    },
+    utilsMenuItem: {
+      textTransform: 'capitalize',
+    },
+    main: {
+      marginTop: 55,
+      padding: '20px',
+      minHeight: 'calc(100vh - 55px)',
+      [theme.breakpoints.up('md')]: {
+        minHeight: 'calc(100vh - 64px)',
+        marginLeft: 250,
+      },
+    },
+    content: {
+      [theme.breakpoints.up('lg')]: {
+        maxWidth: 960,
+        margin: '0 auto',
+      },
+    },
+    landingMain: {
+      padding: 0,
+      maxWidth: '100vw',
+      marginLeft: 0,
+      marginRight: 0,
+    },
+    landingAppBar: {
+      left: 0,
+      right: 0,
+      width: '100vw',
+      boxShadow: 'unset',
+    },
+  });
 
 class Layout extends Component<LayoutProps> {
   state = {
@@ -48,7 +97,7 @@ class Layout extends Component<LayoutProps> {
     this.setState({ anchorEl: event.currentTarget });
   };
 
-  handleUtilsChange = (event: React.MouseEvent<any>, index: number) => {
+  handleUtilsChange = (e: React.MouseEvent<any>, index: number) => {
     this.props.onChangeUtils(Object.keys(utilsMap)[index] as UtilsLib);
     this.setState({ selectedIndex: index, anchorEl: null });
   };
@@ -67,8 +116,8 @@ class Layout extends Component<LayoutProps> {
 
   render() {
     const { anchorEl } = this.state;
-    const { classes, toggleThemeType, toggleDirection, theme, location } = this.props;
-    const isLanding = location.pathname === '/';
+    const { classes, toggleThemeType, toggleDirection, theme, router } = this.props;
+    const isLanding = (router || location).pathname === '/';
 
     return (
       <React.Fragment>
@@ -124,6 +173,7 @@ class Layout extends Component<LayoutProps> {
                 {theme.direction === 'rtl' ? <TextDirectionLtrIcon /> : <TextDirectionRtLIcon />}
               </IconButton>
             </Tooltip>
+
             <Tooltip title="Github" enterDelay={300}>
               <IconButton
                 color="inherit"
@@ -178,59 +228,5 @@ class Layout extends Component<LayoutProps> {
     );
   }
 }
-
-const styles = (theme: Theme) =>
-  createStyles({
-    '@global': {
-      body: {
-        backgroundColor: theme.palette.background.default,
-      },
-    },
-    flex: {
-      flex: 1,
-    },
-    menuButton: {
-      marginLeft: -12,
-      marginRight: 20,
-    },
-    appBar: {
-      // boxShadow: 'unset',
-      [theme.breakpoints.up('md')]: {
-        width: 'calc(100% - 250px)',
-        left: 250,
-      },
-    },
-    utilsMenuItem: {
-      textTransform: 'capitalize',
-    },
-    main: {
-      marginTop: 55,
-      padding: '20px',
-      minHeight: 'calc(100vh - 55px)',
-      [theme.breakpoints.up('md')]: {
-        marginTop: 64,
-        minHeight: 'calc(100vh - 64px)',
-        marginLeft: 250,
-      },
-    },
-    content: {
-      [theme.breakpoints.up('lg')]: {
-        maxWidth: 960,
-        margin: '0 auto',
-      },
-    },
-    landingMain: {
-      padding: 0,
-      maxWidth: '100vw',
-      marginLeft: 0,
-      marginRight: 0,
-    },
-    landingAppBar: {
-      left: 0,
-      right: 0,
-      width: '100vw',
-      boxShadow: 'unset',
-    },
-  });
 
 export default withStyles(styles, { withTheme: true })(withRouter(Layout));

@@ -16,9 +16,10 @@ yarn-error.log*
 # coverage
 coverage
 
-# Optional npm cache directory
+# Cache directory
 .npm
 cypress
+.next
 
 # Optional eslint cache
 .eslintcache

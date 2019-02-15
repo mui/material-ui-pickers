@@ -1,4 +1,16 @@
-import { UtilsLib } from '../App';
+import MomentUtils from '@date-io/moment';
+import LuxonUtils from '@date-io/luxon';
+import DayJsUtils from '@date-io/dayjs';
+import DateFnsUtils from '@date-io/date-fns';
+
+export const utilsMap = {
+  moment: MomentUtils,
+  luxon: LuxonUtils,
+  dayjs: DayJsUtils,
+  'date-fns': DateFnsUtils,
+};
+
+export type UtilsLib = keyof typeof utilsMap;
 
 export const createUtilsService = (lib: UtilsLib) => ({
   getFormatString(formats: { moment: string; dateFns: string; dayjs?: string; luxon?: string }) {

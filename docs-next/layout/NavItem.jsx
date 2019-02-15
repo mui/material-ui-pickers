@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { ListItem, withStyles, Collapse } from '@material-ui/core';
 
 import Button from '@material-ui/core/Button';
-import { NavLink } from 'react-router-dom';
+import Link from 'next/link';
 
 const styles = theme => ({
   listItem: {
@@ -60,9 +60,9 @@ class NavItem extends React.Component {
         <ListItem disableGutters className={classes.listItem} {...props}>
           <Button
             disableRipple
-            component={NavLink}
+            href={href}
+            component={Link}
             activeClassName={classes.selected}
-            to={href}
             onClick={this.handleClick}
             style={style}
             classes={{
@@ -86,6 +86,7 @@ class NavItem extends React.Component {
         >
           {title}
         </Button>
+
         <Collapse in={this.state.open} unmountOnExit component="ul" className={classes.collapse}>
           {children}
         </Collapse>

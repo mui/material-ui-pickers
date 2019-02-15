@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { List } from '@material-ui/core';
-import { withRouter } from 'react-router-dom';
 import NavItem from './NavItem';
 
 const navItems = [
@@ -49,9 +48,7 @@ class NavigationMenu extends React.Component {
     return ({ title, children, href }) => {
       const { location } = this.props;
       const open =
-        children && children.length > 0
-          ? children.some(item => item.href === location.pathname)
-          : false;
+        children && children.length > 0 ? children.some(item => item.href === true) : false;
 
       return (
         <NavItem key={href || title} title={title} depth={depth} href={href} open={open}>
@@ -66,8 +63,4 @@ class NavigationMenu extends React.Component {
   }
 }
 
-NavigationMenu.propTypes = {
-  location: PropTypes.object.isRequired,
-};
-
-export default withRouter(NavigationMenu);
+export default NavigationMenu;
