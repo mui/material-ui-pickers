@@ -18,9 +18,9 @@ class SourcablePanel extends PureComponent {
     sourceExpanded: false,
   };
 
-  getSource = () => require(`!raw-loader!../Pages/${this.props.sourceFile}`);
+  getSource = () => require(`!raw-loader!../pages/${this.props.sourceFile}`);
 
-  getComponent = () => require(`../Pages/${this.props.sourceFile}`).default;
+  getComponent = () => require(`../pages/${this.props.sourceFile}`).default;
 
   toggleSource = () => {
     this.setState({ sourceExpanded: !this.state.sourceExpanded });
@@ -38,10 +38,12 @@ class SourcablePanel extends PureComponent {
           {title}
         </Typography>
 
-        {description}
+        <Typography variant="subtitle1" gutterBottom>
+          {description}
+        </Typography>
 
         <Collapse key="code" in={sourceExpanded}>
-          <Code className={classes.source} text={this.getSource()} />
+          <Code className={classes.source} children={this.getSource()} />
         </Collapse>
 
         <div className={classes.pickers}>
@@ -57,8 +59,8 @@ class SourcablePanel extends PureComponent {
 
 const styles = theme => ({
   exampleTitle: {
-    marginTop: '40px',
-    marginBottom: '20px',
+    marginTop: 40,
+    marginBottom: 8,
     '@media(max-width: 600px)': {
       marginLeft: 5,
     },

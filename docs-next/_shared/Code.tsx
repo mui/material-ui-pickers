@@ -10,7 +10,7 @@ import jsx from 'react-syntax-highlighter/dist/languages/prism/jsx';
 import typescript from 'react-syntax-highlighter/dist/languages/prism/typescript';
 // @ts-ignore
 import SyntaxHighlighter, { registerLanguage } from 'react-syntax-highlighter/dist/prism-light';
-import { ThemeContext } from '../App';
+import { ThemeContext } from '../layout/PageWithContext';
 
 registerLanguage('jsx', jsx);
 registerLanguage('typescript', typescript);
@@ -37,18 +37,18 @@ const styles = (theme: Theme) => ({
 });
 
 type CodeProps = {
-  text: string;
+  children: string;
   withMargin?: boolean;
   language?: 'jsx' | 'typescript' | 'markup';
 } & WithStyles<typeof styles>;
 
-const Code: React.SFC<CodeProps> = ({ classes, language, text, withMargin }) => {
+const Code: React.SFC<CodeProps> = ({ classes, language, children, withMargin }) => {
   return (
     <div className={clsx(classes.root, { [classes.margin]: withMargin })}>
       <ThemeContext.Consumer>
         {theme => (
           <SyntaxHighlighter language={language} style={theme === 'light' ? lightStyle : darkStyle}>
-            {text}
+            {children}
           </SyntaxHighlighter>
         )}
       </ThemeContext.Consumer>

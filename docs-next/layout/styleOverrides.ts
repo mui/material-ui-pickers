@@ -21,8 +21,9 @@ export const createOverrides = (theme: Theme): StyleRules => ({
     margin: '32px 0 16px',
   },
   h5: theme.typography.h5,
-  h6: theme.typography.h2,
+  h6: theme.typography.h6,
   p: {
+    lineHeight: 1.4,
     color: theme.palette.text.primary,
   },
   a: {
@@ -33,11 +34,14 @@ export const createOverrides = (theme: Theme): StyleRules => ({
     padding: '12px 18px',
     overflow: 'auto',
     borderRadius: 4,
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: 'white !important',
+  },
+  ul: {
+    color: theme.palette.text.primary,
   },
   code: {
-    fontSize: 14,
-    lineHeight: 1.6,
+    fontSize: 16,
+    lineHeight: 1.4,
     fontFamily: "Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace",
     color: theme.palette.type === 'dark' ? theme.palette.text.primary : 'black',
     whiteSpace: 'pre',

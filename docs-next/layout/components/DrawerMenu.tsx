@@ -11,7 +11,7 @@ import {
 } from '@material-ui/core';
 
 import NavigationMenu from './NavigationMenu';
-import { version } from '../../package.json';
+import { version } from '../../../package.json';
 
 const DrawerMenu: React.SFC<WithStyles<typeof styles>> = ({ classes }) => (
   <div className={classes.drawerRoot}>
@@ -25,6 +25,7 @@ const DrawerMenu: React.SFC<WithStyles<typeof styles>> = ({ classes }) => (
       <a
         target="_blank"
         rel="noopener noreferrer"
+        style={{ textDecoration: 'none' }}
         href="https://github.com/dmtrKovalenko/material-ui-pickers/releases"
       >
         <Typography variant="caption" className={classes.headerLink}>
@@ -50,6 +51,8 @@ const styles = (theme: Theme) =>
       alignItems: 'flex-start',
     },
     headerLink: {
+      cursor: 'pointer',
+      textDecoration: 'none',
       transition: 'color .2s ease-in-out',
       '&:hover': {
         color: theme.palette.primary.dark,

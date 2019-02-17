@@ -1,3 +1,7 @@
+import PageMeta from '../../_shared/PageMeta'
+
+<PageMeta title="Installation" />
+
 ## Installation
 
 Available as [npm package](https://www.npmjs.com/package/material-ui-pickers)
@@ -15,7 +19,7 @@ We are providing interfaces for [moment](https://momentjs.com/), [date-fns 2](ht
 
 Note that we support only `v2` versions of date-fns.
 
-```sh
+```
 npm i @date-io/date-fns date-fns@next
 // or
 npm i @date-io/moment moment
@@ -28,3 +32,23 @@ npm i -s @date-io/dayjs dayjs
 Teach pickers how to use one of that library using `MuiPickersUtilsProvider`. This component takes an utils
 property, and makes it available down the React tree thanks to React context. It should
 preferably be used at the root of your component tree.
+
+```jsx
+import { MuiPickersUtilsProvider } from 'material-ui-pickers';
+
+// pick utils
+import MomentUtils from '@date-io/moment';
+import DateFnsUtils from '@date-io/date-fns';
+import LuxonUtils from '@date-io/luxon';
+
+function App() {
+  return (
+    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+      <Root />
+    </MuiPickersUtilsProvider>
+  );
+}
+
+ReactDOM.render(<App />, document.querySelector('#app'));
+
+```

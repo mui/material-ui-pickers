@@ -7,9 +7,9 @@ const navItems = [
   {
     title: 'Getting Started',
     children: [
-      { title: 'Installation', href: '/installation' },
-      { title: 'Usage', href: '/usage' },
-      { title: 'Parsing dates', href: '/parsing' },
+      { title: 'Installation', href: '/getting-started/installation' },
+      { title: 'Usage', href: '/getting-started/usage' },
+      { title: 'Parsing dates', href: '/getting-started/parsing' },
     ],
   },
   {

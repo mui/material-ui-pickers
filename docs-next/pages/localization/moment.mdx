@@ -1,0 +1,17 @@
+import SourcablePanel from '_shared/SourcablePanel';
+import { DateTimePicker } from 'material-ui-pickers';
+
+## Localization with moment
+
+Moment localization relying on the global moment object used.
+
+It is also possible to pass configured global moment with selected locale, default timezone, etc.
+Also pass selected locale as string to the provider to make pickers rerenders automatically on
+locale change.
+
+<SourcablePanel
+  title="Example"
+  sourceFile="localization/Moment.example.jsx"
+  description="Note: Any picker in component tree will be rerendered automatically on locale change"
+/>
+

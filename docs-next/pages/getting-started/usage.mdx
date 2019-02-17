@@ -1,3 +1,6 @@
+import NoSsr from '@material-ui/core/NoSsr';
+import Code from '../../_shared/Code';
+
 ## Usage
 
 Material-UI-pickers rely only on material-ui controls and the date-management lib you have
@@ -5,49 +8,43 @@ choose. Please note that all components are controlled, thats means that its req
 
 #### Quick start
 
-```js
-import React, { PureComponent } from 'react';
-// choose utils of your library
-import DateFnsUtils from '@date-io/date-fns';
+```jsx
+import React, { useState } from "react";
+import DateFnsUtils from "@date-io/date-fns"; // choose your lib
 import {
-  TimePicker,
   DatePicker,
-  DateTimePicker,
+  TimePicker,
+  DateTimePicker
   MuiPickersUtilsProvider,
-} from 'material-ui-pickers';
+} from "material-ui-pickers";
 
-export default class App extends PureComponent {
-  state = {
-    selectedDate: new Date(),
-  };
+function App() {
+  const [selectedDate, handleDateChange] = useState(new Date());
 
-  handleDateChange = date => {
-    this.setState({ selectedDate: date });
-  };
-
-  render() {
-    const { selectedDate } = this.state;
-
-    return (
-      <MuiPickersUtilsProvider utils={DateFnsUtils}>
-        <DatePicker value={selectedDate} onChange={this.handleDateChange} />
-        <TimePicker value={selectedDate} onChange={this.handleDateChange} />
-        <DateTimePicker value={selectedDate} onChange={this.handleDateChange} />
-      </MuiPickersUtilsProvider>
-    );
-  }
+  return (
+    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+      <div className="pickers">
+        <DatePicker value={selectedDate} onChange={handleDateChange} />
+        <TimePicker value={selectedDate} onChange={handleDateChange} />
+        <DateTimePicker value={selectedDate} onChange={handleDateChange} />
+      </div>
+    </MuiPickersUtilsProvider>
+  );
 }
+
 ```
 
-<iframe
-  title="codesandbox"
-  src={`https://codesandbox.io/embed/${'q9l2j10wr4'}?hidenavigation=1&fontsize=14&view=preview`}
-  style={{
-    width: '100%',
-    height: 650,
-    border: 0,
-    borderRadius: 4,
-    overflow: 'hidden',
-  }}
-  sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
-/>
+<NoSsr>
+  <iframe
+    title="codesandbox"
+    src={`https://codesandbox.io/embed/${'q9l2j10wr4'}?hidenavigation=1&fontsize=14&view=preview`}
+    style={{
+      width: '100%',
+      height: 650,
+      border: 0,
+      borderRadius: 4,
+      overflow: 'hidden',
+    }}
+    sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+  />
+</NoSsr>

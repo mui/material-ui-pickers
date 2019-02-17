@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router';
 
 import DateFnsLocalization from './Localization/Date-fns/DateFnsLocalization';
-import MomentLocalization from './Localization/Moment/MomentLocalization';
+import MomentLocalization from '../../../docs-next/pages/localization/MomentLocalization';
 import PersianCalendar from './Localization/Persian/PersianCalendar';
 import DatePickerDemo from './Components/DatePicker/DatePickerDemo';
 import TimePickerDemo from './Components/TimePicker/TimePickerDemo';

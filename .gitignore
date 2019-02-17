@@ -4,6 +4,7 @@ node_modules
 # build
 dist
 build
+.material-ui-pickers.dev.build
 
 # logs
 logs

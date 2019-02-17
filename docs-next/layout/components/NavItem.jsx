@@ -48,7 +48,6 @@ class NavItem extends React.Component {
 
   render() {
     const { href, title, children, classes, depth, ...props } = this.props;
-
     const style = { paddingLeft: `${(depth + 1) * 16}px` };
 
     if (depth === 0) {
@@ -58,19 +57,17 @@ class NavItem extends React.Component {
     if (href) {
       return (
         <ListItem disableGutters className={classes.listItem} {...props}>
-          <Button
-            disableRipple
-            href={href}
-            component={Link}
-            activeClassName={classes.selected}
-            onClick={this.handleClick}
-            style={style}
-            classes={{
-              root: classes.button,
-            }}
-          >
-            {title}
-          </Button>
+          <Link href={href}>
+            <Button
+              disableRipple
+              activeClassName={classes.selected}
+              onClick={this.handleClick}
+              style={style}
+              className={classes.button}
+            >
+              {title}
+            </Button>
+          </Link>
         </ListItem>
       );
     }

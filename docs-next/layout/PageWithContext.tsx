@@ -1,12 +1,13 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import { MuiThemeProvider, Theme, createMuiTheme } from '@material-ui/core';
 import JssProvider from 'react-jss/lib/JssProvider';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
 import { UtilsContext } from '../_shared/UtilsServiceContext';
-import { createUtilsService, UtilsLib } from '../utils/utilsService';
+import { createUtilsService, UtilsLib, utilsMap } from '../utils/utilsService';
 import Layout from './Layout';
-import getPageContext, { PageContext } from '../utils/getPageContext';
+import { PageContext } from '../utils/getPageContext';
+import { MuiPickersUtilsProvider } from 'material-ui-pickers';
 
 type ThemeType = 'light' | 'dark';
 type Direction = Theme['direction'];
@@ -31,7 +32,7 @@ type Props = {
 };
 
 export const PageWithContexts: React.SFC<Props> = ({ children, pageContext }) => {
-  const [utils, setUtils] = useState<UtilsLib>('date-fns');
+  const [lib, setLib] = useState<UtilsLib>('date-fns');
   const [theme, setTheme] = useState<ThemeType>('light');
   const [direction, setDirection] = useState<Direction>('ltr');
 
@@ -51,21 +52,21 @@ export const PageWithContexts: React.SFC<Props> = ({ children, pageContext }) =>
         theme={createCustomMuiTheme(theme, direction)}
         sheetsManager={pageContext.sheetsManager}
       >
-        {/* <MuiPickersUtilsProvider utils={utilsMap[this.state.utils]}> */}
-        <ThemeContext.Provider value={theme}>
-          <UtilsContext.Provider value={createUtilsService(utils)}>
-            <CssBaseline />
+        <MuiPickersUtilsProvider utils={utilsMap[lib]}>
+          <ThemeContext.Provider value={theme}>
+            <UtilsContext.Provider value={createUtilsService(lib)}>
+              <CssBaseline />
 
-            <Layout
-              onChangeUtils={setUtils}
-              toggleDirection={setBodyDirection}
-              toggleThemeType={() => setTheme(theme === 'light' ? 'dark' : 'light')}
-            >
-              {children}
-            </Layout>
-          </UtilsContext.Provider>
-        </ThemeContext.Provider>
-        {/* </MuiPickersUtilsProvider> */}
+              <Layout
+                onChangeUtils={setLib}
+                toggleDirection={setBodyDirection}
+                toggleThemeType={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+              >
+                {children}
+              </Layout>
+            </UtilsContext.Provider>
+          </ThemeContext.Provider>
+        </MuiPickersUtilsProvider>
       </MuiThemeProvider>
     </JssProvider>
   );

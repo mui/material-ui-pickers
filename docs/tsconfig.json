@@ -16,5 +16,10 @@
     "noEmit": true,
     "jsx": "preserve"
   },
-  "include": ["src"]
+  "include": [
+    "src",
+    "../docs-next/pages/localization/MomentLocalization.example.jsx",
+    "../docs-next/pages/localization/MomentLocalization.jsx",
+    "../docs-next/_shared/SourcablePanel.jsx"
+  ]
 }
