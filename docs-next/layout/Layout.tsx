@@ -54,8 +54,8 @@ const styles = (theme: Theme) =>
       textTransform: 'capitalize',
     },
     main: {
-      marginTop: 55,
       padding: '20px',
+      paddingTop: 55,
       minHeight: 'calc(100vh - 55px)',
       [theme.breakpoints.up('md')]: {
         minHeight: 'calc(100vh - 64px)',

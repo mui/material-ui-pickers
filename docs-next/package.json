@@ -42,7 +42,8 @@
     "react-jss": "^8.6.1",
     "react-syntax-highlighter": "^10.1.2",
     "react-text-mask": "^5.4.3",
-    "remark-highlight.js": "^5.1.0"
+    "remark-slug": "^5.1.1",
+    "unist-util-visit": "^1.4.0"
   },
   "devDependencies": {
     "@mapbox/rehype-prism": "^0.3.1",

@@ -18,7 +18,7 @@ export const createOverrides = (theme: Theme): StyleRules => ({
   },
   h4: {
     ...theme.typography.h4,
-    margin: '32px 0 16px',
+    margin: '32px 0 8px',
   },
   h5: theme.typography.h5,
   h6: theme.typography.h6,
@@ -48,5 +48,23 @@ export const createOverrides = (theme: Theme): StyleRules => ({
     wordSpacing: 'normal',
     wordBreak: 'normal',
     wordWrap: 'normal',
+  },
+  'h1, h2, h3, h4, h5': {
+    position: 'relative',
+    '& a.anchor-link': {
+      position: 'absolute',
+      top: -66,
+    },
+    '& a.anchor-link-style': {
+      visibility: 'hidden',
+      marginLeft: 4,
+      fontSize: '80%',
+      textDecoration: 'none',
+      color: theme.palette.text.secondary,
+      fontFamily: '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto',
+    },
+    '&:hover a.anchor-link-style': {
+      visibility: 'visible',
+    },
   },
 });

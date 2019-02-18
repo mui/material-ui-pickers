@@ -20,6 +20,11 @@
     "src",
     "../docs-next/pages/localization/MomentLocalization.example.jsx",
     "../docs-next/pages/localization/MomentLocalization.jsx",
-    "../docs-next/_shared/SourcablePanel.jsx"
+    "../docs-next/_shared/SourcablePanel.jsx",
+    "../docs-next/pages/api/datepicker/CustomElementsDatePicker.example.jsx",
+    "../docs-next/pages/api/datepicker/InlineDatePicker.example.jsx",
+    "../docs-next/pages/api/datepicker/YearMonthPicker.example.jsx",
+    "../docs-next/pages/api/datepicker/KeyboardDatePicker.example.jsx",
+    "../docs-next/pages/api/BasicDatePicker.example.jsx"
   ]
 }

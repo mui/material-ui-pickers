@@ -7,13 +7,6 @@ import CodeIcon from '@material-ui/icons/Code';
 import { Typography, IconButton, withStyles, Collapse } from '@material-ui/core';
 
 class SourcablePanel extends PureComponent {
-  static propTypes = {
-    classes: PropTypes.object.isRequired,
-    title: PropTypes.string.isRequired,
-    description: PropTypes.node,
-    sourceFile: PropTypes.string.isRequired,
-  };
-
   state = {
     sourceExpanded: false,
   };
@@ -34,10 +27,6 @@ class SourcablePanel extends PureComponent {
 
     return (
       <React.Fragment>
-        <Typography variant="h4" className={classes.exampleTitle}>
-          {title}
-        </Typography>
-
         <Typography variant="subtitle1" gutterBottom>
           {description}
         </Typography>
@@ -59,7 +48,6 @@ class SourcablePanel extends PureComponent {
 
 const styles = theme => ({
   exampleTitle: {
-    marginTop: 40,
     marginBottom: 8,
     '@media(max-width: 600px)': {
       marginLeft: 5,

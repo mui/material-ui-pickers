@@ -26,8 +26,6 @@ function DateFnsLocalizationExample() {
   }, []);
 
   const selectLocale = useCallback(locale => {
-    moment.locale(locale);
-
     setLocale(locale);
     setAnchorEl(null);
   }, []);

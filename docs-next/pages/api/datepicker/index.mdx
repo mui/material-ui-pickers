@@ -1,0 +1,42 @@
+import SourcablePanel from '_shared/SourcablePanel'
+
+## Date picker
+
+Date pickers use a dialog window or an inline popover to select a single date.
+The selected day is indicated by a filled circle. The current day is indicated by a different
+color and type weight.
+
+<SourcablePanel
+  title="Basic usage"
+  sourceFile="api/datepicker/BasicDatePicker.example.jsx"
+/>
+
+<SourcablePanel
+  title="Keyboard input"
+  sourceFile="api/datepicker/KeyboardDatePicker.example.jsx"
+  description="It is recommended to use keyboard input with mask for better desktop experience"
+/>
+
+### Different views
+
+It is also allowed to combine `year`, `month` and `date` selection views.
+Thus you can easily create
+- Year picker
+- Month picker
+- Month + year picker
+
+<SourcablePanel
+  title={null}
+  sourceFile="api/datepicker/ViewsDatePicker.example.jsx"
+/>
+
+<SourcablePanel
+  title="Inline mode"
+  sourceFile="api/datepicker/InlineDatePicker.example.jsx"
+/>
+
+<SourcablePanel
+  title="Customization"
+  sourceFile="api/datepicker/CustomDay.example.jsx"
+  description="It is allowed to hardly customize displaying of dates. Thus you can add badges or fully change displaying of day."
+/>
