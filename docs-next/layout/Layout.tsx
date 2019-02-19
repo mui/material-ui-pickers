@@ -44,7 +44,6 @@ const styles = (theme: Theme) =>
       marginRight: 20,
     },
     appBar: {
-      // boxShadow: 'unset',
       [theme.breakpoints.up('md')]: {
         width: 'calc(100% - 250px)',
         left: 250,

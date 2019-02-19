@@ -18,9 +18,7 @@ export const ThemeContext = React.createContext<ThemeType>('light');
 const createCustomMuiTheme = (theme: ThemeType, direction: Theme['direction']) => {
   return createMuiTheme({
     direction,
-    typography: {
-      useNextVariants: true,
-    },
+    typography: {},
     palette: {
       type: theme,
     },

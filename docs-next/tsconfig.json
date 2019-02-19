@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "jsx": "preserve",
@@ -15,6 +16,9 @@
     "sourceMap": true,
     "strict": true,
     "target": "esnext",
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "paths": {
+      "material-ui-pickers": ["./material-ui-pickers-build"]
+    }
   }
 }
