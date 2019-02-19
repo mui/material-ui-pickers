@@ -21,9 +21,9 @@
     "@material-ui/icons": "^3.0.2",
     "@types/luxon": "^1.11.0",
     "@types/next": "^8.0.1",
+    "@types/prismjs": "^1.9.1",
     "@types/react": "^16.8.3",
     "@types/react-jss": "^8.6.2",
-    "@types/react-syntax-highlighter": "^10.1.0",
     "@types/styled-jsx": "^2.2.8",
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-typescript": "^1.1.1",
@@ -41,7 +41,6 @@
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
     "react-jss": "^8.6.1",
-    "react-syntax-highlighter": "^10.1.2",
     "react-text-mask": "^5.4.3",
     "remark-slug": "^5.1.1",
     "unist-util-visit": "^1.4.0"

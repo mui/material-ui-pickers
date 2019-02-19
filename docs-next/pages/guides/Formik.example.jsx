@@ -37,7 +37,7 @@ const FormikExample = () => {
             </Grid>
 
             <Grid item xs={12} sm={12} style={{ margin: '24px' }}>
-              <Code text={JSON.stringify({ errors, values }, null, 2)} />
+              <Code children={JSON.stringify({ errors, values }, null, 2)} />
             </Grid>
           </Grid>
         </Form>

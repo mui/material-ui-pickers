@@ -2,7 +2,6 @@ import React from 'react';
 import App from 'next/app';
 import { PageWithContexts } from '../layout/PageWithContext';
 import getPageContext from '../utils/getPageContext';
-import 'prismjs/themes/prism.css';
 
 class MyApp extends App {
   pageContext = getPageContext();

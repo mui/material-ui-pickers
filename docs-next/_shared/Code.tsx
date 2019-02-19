@@ -1,19 +1,8 @@
 import React from 'react';
 import clsx from 'clsx';
 import { withStyles, Theme, WithStyles } from '@material-ui/core/styles';
-import lightStyle from 'react-syntax-highlighter/dist/styles/prism/prism';
-import darkStyle from 'react-syntax-highlighter/dist/styles/prism/darcula';
-
-// @ts-ignore
-import jsx from 'react-syntax-highlighter/dist/languages/prism/jsx';
-// @ts-ignore
-import typescript from 'react-syntax-highlighter/dist/languages/prism/typescript';
-// @ts-ignore
-import SyntaxHighlighter, { registerLanguage } from 'react-syntax-highlighter/dist/prism-light';
 import { ThemeContext } from '../layout/PageWithContext';
-
-registerLanguage('jsx', jsx);
-registerLanguage('typescript', typescript);
+import { highlight } from '../utils/prism';
 
 const styles = (theme: Theme) => ({
   root: {
@@ -42,16 +31,13 @@ type CodeProps = {
   language?: 'jsx' | 'typescript' | 'markup';
 } & WithStyles<typeof styles>;
 
-const Code: React.SFC<CodeProps> = ({ classes, language, children, withMargin }) => {
+const Code: React.SFC<CodeProps> = ({ classes, language = 'jsx', children, withMargin }) => {
+  const highlightedCode = highlight(children, language);
   return (
     <div className={clsx(classes.root, { [classes.margin]: withMargin })}>
-      <ThemeContext.Consumer>
-        {theme => (
-          <SyntaxHighlighter language={language} style={theme === 'light' ? lightStyle : darkStyle}>
-            {children}
-          </SyntaxHighlighter>
-        )}
-      </ThemeContext.Consumer>
+      <pre>
+        <code dangerouslySetInnerHTML={{ __html: highlightedCode }} />
+      </pre>
     </div>
   );
 };

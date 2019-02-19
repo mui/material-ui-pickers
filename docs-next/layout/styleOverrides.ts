@@ -34,7 +34,7 @@ export const createOverrides = (theme: Theme): StyleRules => ({
     padding: '12px 18px',
     overflow: 'auto',
     borderRadius: 4,
-    backgroundColor: 'white !important',
+    backgroundColor: theme.palette.background.paper + ' !important',
   },
   ul: {
     color: theme.palette.text.primary,
@@ -48,6 +48,7 @@ export const createOverrides = (theme: Theme): StyleRules => ({
     wordSpacing: 'normal',
     wordBreak: 'normal',
     wordWrap: 'normal',
+    backgroundColor: theme.palette.background.paper + ' !important',
   },
   'h1, h2, h3, h4, h5': {
     position: 'relative',

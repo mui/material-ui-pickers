@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Document, { Head, Main, NextScript, NextDocumentContext } from 'next/document';
 import flush from 'styled-jsx/server';
 import { PageContext } from '../utils/getPageContext';
+import { prismThemes } from '../utils/prism';
 
 class MyDocument extends Document {
   static getInitialProps = (ctx: NextDocumentContext) => {
@@ -55,7 +56,7 @@ class MyDocument extends Document {
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
           />
-          {/* <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism.css" rel="stylesheet" /> */}
+          <link data-prism="true" href={prismThemes.light} rel="stylesheet" />
         </Head>
         <body>
           <Main />

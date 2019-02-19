@@ -1,16 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { MuiThemeProvider, Theme, createMuiTheme } from '@material-ui/core';
 import JssProvider from 'react-jss/lib/JssProvider';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
+import Layout from './Layout';
 import { UtilsContext } from '../_shared/UtilsServiceContext';
 import { createUtilsService, UtilsLib, utilsMap } from '../utils/utilsService';
-import Layout from './Layout';
 import { PageContext } from '../utils/getPageContext';
 import { MuiPickersUtilsProvider } from 'material-ui-pickers';
+import { setPrismTheme } from '../utils/prism';
 
-type ThemeType = 'light' | 'dark';
-type Direction = Theme['direction'];
+export type ThemeType = 'light' | 'dark';
+export type Direction = Theme['direction'];
 
 export const ThemeContext = React.createContext<ThemeType>('light');
 
@@ -36,12 +37,25 @@ export const PageWithContexts: React.SFC<Props> = ({ children, pageContext }) =>
   const [theme, setTheme] = useState<ThemeType>('light');
   const [direction, setDirection] = useState<Direction>('ltr');
 
-  const setBodyDirection = () => {
-    const newDirection = direction === 'ltr' ? 'rtl' : 'ltr';
-    document.body.dir = newDirection;
+  const setBodyDirection = useCallback(
+    () => {
+      const newDirection = direction === 'ltr' ? 'rtl' : 'ltr';
+      document.body.dir = newDirection;
 
-    setDirection(newDirection);
-  };
+      setDirection(newDirection);
+    },
+    [direction]
+  );
+
+  const toggleTheme = useCallback(
+    () => {
+      const newTheme = theme === 'light' ? 'dark' : 'light';
+
+      setTheme(newTheme);
+      setPrismTheme(newTheme);
+    },
+    [theme]
+  );
 
   return (
     <JssProvider
@@ -58,12 +72,11 @@ export const PageWithContexts: React.SFC<Props> = ({ children, pageContext }) =>
               <CssBaseline />
 
               <Layout
+                children={children}
                 onChangeUtils={setLib}
+                toggleThemeType={toggleTheme}
                 toggleDirection={setBodyDirection}
-                toggleThemeType={() => setTheme(theme === 'light' ? 'dark' : 'light')}
-              >
-                {children}
-              </Layout>
+              />
             </UtilsContext.Provider>
           </ThemeContext.Provider>
         </MuiPickersUtilsProvider>
