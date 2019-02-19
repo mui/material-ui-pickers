@@ -28,7 +28,7 @@ export default class DateFnsLocalizationExample extends PureComponent {
         <div className="picker">
           <DatePicker
             clearable
-            label="Localization done right"
+            helperText="Localization done right"
             format="d MMM yyyy"
             value={selectedDate}
             onChange={this.handleDateChange}

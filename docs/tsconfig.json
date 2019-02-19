@@ -29,6 +29,10 @@
     "../docs-next/pages/api/timepicker/KeyboardTimePicker.example.jsx",
     "../docs-next/pages/api/timepicker/SecondsTimePicker.example.jsx",
     "../docs-next/pages/api/timepicker/InlineTimePicker.example.jsx",
-    "../docs-next/pages/api/timepicker/BasicTimePicker.jsx"
+    "../docs-next/pages/api/timepicker/BasicTimePicker.jsx",
+    "../docs-next/pages/guides/StaticPickers.example.jsx",
+    "src/Pages/Guides/Formats/.example.jsx",
+    "../docs-next/pages/guides/Formik.example.jsx",
+    "../docs-next/pages/guides/ControllingProgrammatically.example.jsx"
   ]
 }

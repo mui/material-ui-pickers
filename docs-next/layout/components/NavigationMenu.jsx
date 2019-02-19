@@ -31,14 +31,14 @@ const navItems = [
   {
     title: 'Guides',
     children: [
-      { title: 'Form integration', href: '/guides/formik-integration' },
+      { title: 'Form integration', href: '/guides/form-integration' },
       { title: 'CSS overrides', href: '/guides/css-overrides' },
       { title: 'Global format customization', href: '/guides/formats' },
       {
         title: 'Open pickers programmatically',
         href: '/guides/controlling-programmatically',
       },
-      { title: 'Static picker`s components', href: '/guides/static-pickers' },
+      { title: 'Static picker`s components', href: '/guides/static-components' },
     ],
   },
 ];

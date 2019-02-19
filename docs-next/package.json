@@ -30,6 +30,7 @@
     "clsx": "^1.0.2",
     "date-fns": "^2.0.0-alpha.27",
     "dayjs": "^1.8.6",
+    "formik": "^1.5.1",
     "luxon": "^1.11.2",
     "moment": "^2.24.0",
     "moment-jalaali": "^0.8.3",
