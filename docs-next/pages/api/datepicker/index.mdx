@@ -1,4 +1,4 @@
-import SourcablePanel from '_shared/SourcablePanel'
+import Example from '_shared/Example'
 
 ## Date picker
 
@@ -6,18 +6,20 @@ Date pickers use a dialog window or an inline popover to select a single date.
 The selected day is indicated by a filled circle. The current day is indicated by a different
 color and type weight.
 
-<SourcablePanel
+#### Basic usage
+
+<Example
   title="Basic usage"
   sourceFile="api/datepicker/BasicDatePicker.example.jsx"
 />
 
-<SourcablePanel
-  title="Keyboard input"
-  sourceFile="api/datepicker/KeyboardDatePicker.example.jsx"
-  description="It is recommended to use keyboard input with mask for better desktop experience"
-/>
+#### Keyboard Input
 
-### Different views
+It is recommended to use keyboard input with mask for better desktop experience. More information about [mask](https://github.com/insin/inputmask-core#pattern)
+
+<Example sourceFile="api/datepicker/KeyboardDatePicker.example.jsx" />
+
+#### Different views
 
 It is also allowed to combine `year`, `month` and `date` selection views.
 Thus you can easily create
@@ -25,18 +27,14 @@ Thus you can easily create
 - Month picker
 - Month + year picker
 
-<SourcablePanel
-  title={null}
-  sourceFile="api/datepicker/ViewsDatePicker.example.jsx"
-/>
+<Example sourceFile="api/datepicker/ViewsDatePicker.example.jsx" />
 
-<SourcablePanel
-  title="Inline mode"
-  sourceFile="api/datepicker/InlineDatePicker.example.jsx"
-/>
+#### Inline mode
 
-<SourcablePanel
-  title="Customization"
-  sourceFile="api/datepicker/CustomDay.example.jsx"
-  description="It is allowed to hardly customize displaying of dates. Thus you can add badges or fully change displaying of day."
-/>
+<Example sourceFile="api/datepicker/InlineDatePicker.example.jsx" />
+
+#### Customization
+
+It is allowed to hardly customize displaying of dates. Thus you can add badges or fully change displaying of day.
+
+<Example sourceFile="api/datepicker/CustomDay.example.jsx" />

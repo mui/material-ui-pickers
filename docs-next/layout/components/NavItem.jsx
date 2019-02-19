@@ -4,6 +4,8 @@ import { ListItem, withStyles, Collapse } from '@material-ui/core';
 
 import Button from '@material-ui/core/Button';
 import Link from 'next/link';
+import clsx from 'clsx';
+import { withRouter } from 'next/router';
 
 const styles = theme => ({
   listItem: {
@@ -18,6 +20,7 @@ const styles = theme => ({
     justifyContent: 'flex-start',
     textTransform: 'none',
     width: '100%',
+    textAlign: 'left',
     ...theme.typography.body1,
   },
   selected: {
@@ -47,7 +50,7 @@ class NavItem extends React.Component {
   };
 
   render() {
-    const { href, title, children, classes, depth, ...props } = this.props;
+    const { href, title, children, classes, depth, router, ...props } = this.props;
     const style = { paddingLeft: `${(depth + 1) * 16}px` };
 
     if (depth === 0) {
@@ -59,11 +62,11 @@ class NavItem extends React.Component {
         <ListItem disableGutters className={classes.listItem} {...props}>
           <Link href={href}>
             <Button
-              disableRipple
-              activeClassName={classes.selected}
               onClick={this.handleClick}
               style={style}
-              className={classes.button}
+              className={clsx(classes.button, {
+                [classes.selected]: router.pathname === href,
+              })}
             >
               {title}
             </Button>
@@ -105,4 +108,4 @@ NavItem.defaultProps = {
   depth: 0,
 };
 
-export default withStyles(styles)(NavItem);
+export default withStyles(styles)(withRouter(NavItem));

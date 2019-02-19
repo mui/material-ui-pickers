@@ -53,7 +53,7 @@ export const createOverrides = (theme: Theme): StyleRules => ({
     position: 'relative',
     '& a.anchor-link': {
       position: 'absolute',
-      top: -66,
+      top: -80,
     },
     '& a.anchor-link-style': {
       visibility: 'hidden',

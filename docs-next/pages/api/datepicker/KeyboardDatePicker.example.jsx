@@ -38,8 +38,8 @@ class KeyboardDatePicker extends PureComponent {
               dateFns: 'MM/dd/yyyy',
             })}
             placeholder="10/10/2018"
-            // handle clearing outside => pass plain array if you are not controlling value outside
             mask={value =>
+              // handle clearing outside if value can be changed outside of the component
               value ? [/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/] : []
             }
             value={selectedDate}

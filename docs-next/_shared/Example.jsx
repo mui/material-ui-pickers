@@ -6,7 +6,7 @@ import { withUtilsService } from './UtilsServiceContext';
 import CodeIcon from '@material-ui/icons/Code';
 import { Typography, IconButton, withStyles, Collapse } from '@material-ui/core';
 
-class SourcablePanel extends PureComponent {
+class Example extends PureComponent {
   state = {
     sourceExpanded: false,
   };
@@ -85,4 +85,4 @@ const styles = theme => ({
   },
 });
 
-export default withStyles(styles)(SourcablePanel);
+export default withStyles(styles)(Example);

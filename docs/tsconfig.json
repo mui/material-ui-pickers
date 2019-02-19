@@ -25,6 +25,10 @@
     "../docs-next/pages/api/datepicker/InlineDatePicker.example.jsx",
     "../docs-next/pages/api/datepicker/YearMonthPicker.example.jsx",
     "../docs-next/pages/api/datepicker/KeyboardDatePicker.example.jsx",
-    "../docs-next/pages/api/BasicDatePicker.example.jsx"
+    "../docs-next/pages/api/BasicDatePicker.example.jsx",
+    "../docs-next/pages/api/timepicker/KeyboardTimePicker.example.jsx",
+    "../docs-next/pages/api/timepicker/SecondsTimePicker.example.jsx",
+    "../docs-next/pages/api/timepicker/InlineTimePicker.example.jsx",
+    "../docs-next/pages/api/timepicker/BasicTimePicker.jsx"
   ]
 }

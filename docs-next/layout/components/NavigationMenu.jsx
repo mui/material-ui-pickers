@@ -25,7 +25,7 @@ const navItems = [
     children: [
       { title: 'Date Picker', href: '/api/datepicker' },
       { title: 'Time Picker', href: '/api/timepicker' },
-      { title: 'Date & Time Picker', href: '/api/datetimepicker' },
+      { title: 'Date & Time Picker', href: '/api/datetime-picker' },
     ],
   },
   {
