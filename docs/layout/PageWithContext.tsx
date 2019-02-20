@@ -18,7 +18,9 @@ export const ThemeContext = React.createContext<ThemeType>('light');
 const createCustomMuiTheme = (theme: ThemeType, direction: Theme['direction']) => {
   return createMuiTheme({
     direction,
-    typography: {},
+    typography: {
+      useNextVariants: true,
+    },
     palette: {
       type: theme,
     },
@@ -35,25 +37,19 @@ export const PageWithContexts: React.SFC<Props> = ({ children, pageContext }) =>
   const [theme, setTheme] = useState<ThemeType>('light');
   const [direction, setDirection] = useState<Direction>('ltr');
 
-  const setBodyDirection = useCallback(
-    () => {
-      const newDirection = direction === 'ltr' ? 'rtl' : 'ltr';
-      document.body.dir = newDirection;
+  const setBodyDirection = useCallback(() => {
+    const newDirection = direction === 'ltr' ? 'rtl' : 'ltr';
+    document.body.dir = newDirection;
 
-      setDirection(newDirection);
-    },
-    [direction]
-  );
+    setDirection(newDirection);
+  }, [direction]);
 
-  const toggleTheme = useCallback(
-    () => {
-      const newTheme = theme === 'light' ? 'dark' : 'light';
+  const toggleTheme = useCallback(() => {
+    const newTheme = theme === 'light' ? 'dark' : 'light';
 
-      setTheme(newTheme);
-      setPrismTheme(newTheme);
-    },
-    [theme]
-  );
+    setTheme(newTheme);
+    setPrismTheme(newTheme);
+  }, [theme]);
 
   return (
     <JssProvider

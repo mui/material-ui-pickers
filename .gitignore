@@ -4,7 +4,9 @@ node_modules
 # build
 dist
 build
-material-ui-pickers-build
+
+# TO REMOVE
+docs-old
 
 # logs
 logs

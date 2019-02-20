@@ -4,6 +4,7 @@ const withImages = require('next-images');
 const withTypescript = require('@zeit/next-typescript');
 const rehypePrism = require('@mapbox/rehype-prism');
 const headings = require('./utils/anchor-autolink');
+const withTM = require('next-transpile-modules');
 const slug = require('remark-slug');
 
 const withMDX = require('@zeit/next-mdx')({
@@ -17,9 +18,12 @@ const withMDX = require('@zeit/next-mdx')({
 module.exports = withCSS(
   withImages(
     withTypescript(
-      withMDX({
-        pageExtensions: ['js', 'jsx', 'md', 'mdx'],
-      })
+      withMDX(
+        withTM({
+          pageExtensions: ['js', 'jsx', 'md', 'mdx'],
+          transpileModules: ['material-ui-pickers'],
+        })
+      )
     )
   )
 );

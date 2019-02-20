@@ -5,9 +5,6 @@ module.exports = {
       'babel-plugin-module-resolver',
       {
         root: ['./'],
-        alias: {
-          'material-ui-pickers': './.material-ui-pickers.dev.build/dist/material-ui-pickers.esm.js',
-        },
       },
     ],
   ],

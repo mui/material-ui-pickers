@@ -1,38 +1,24 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "baseUrl": ".",
     "allowJs": true,
-    "skipDefaultLibCheck": true,
-    "lib": ["es6", "dom"],
-    "skipLibCheck": false,
-    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
+    "jsx": "preserve",
+    "lib": ["dom", "es2017"],
     "module": "esnext",
     "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
     "noEmit": true,
-    "jsx": "preserve"
-  },
-  "include": [
-    "src",
-    "../docs-next/pages/localization/MomentLocalization.example.jsx",
-    "../docs-next/pages/localization/MomentLocalization.jsx",
-    "../docs-next/_shared/SourcablePanel.jsx",
-    "../docs-next/pages/api/datepicker/CustomElementsDatePicker.example.jsx",
-    "../docs-next/pages/api/datepicker/InlineDatePicker.example.jsx",
-    "../docs-next/pages/api/datepicker/YearMonthPicker.example.jsx",
-    "../docs-next/pages/api/datepicker/KeyboardDatePicker.example.jsx",
-    "../docs-next/pages/api/BasicDatePicker.example.jsx",
-    "../docs-next/pages/api/timepicker/KeyboardTimePicker.example.jsx",
-    "../docs-next/pages/api/timepicker/SecondsTimePicker.example.jsx",
-    "../docs-next/pages/api/timepicker/InlineTimePicker.example.jsx",
-    "../docs-next/pages/api/timepicker/BasicTimePicker.jsx",
-    "../docs-next/pages/guides/StaticPickers.example.jsx",
-    "src/Pages/Guides/Formats/.example.jsx",
-    "../docs-next/pages/guides/Formik.example.jsx",
-    "../docs-next/pages/guides/ControllingProgrammatically.example.jsx"
-  ]
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "preserveConstEnums": true,
+    "removeComments": false,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "strict": true,
+    "target": "esnext",
+    "resolveJsonModule": true,
+    "paths": {
+      "material-ui-pickers": ["./material-ui-pickers-build"]
+    }
+  }
 }
