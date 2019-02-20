@@ -20,7 +20,12 @@ module.exports = withCSS(
     withTypescript(
       withMDX(
         withTM({
-          pageExtensions: ['js', 'jsx', 'md', 'mdx'],
+          webpack: config => {
+            config.resolve.modules.push(__dirname);
+            return config;
+          },
+
+          pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
           transpileModules: ['material-ui-pickers'],
         })
       )

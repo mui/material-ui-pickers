@@ -14,6 +14,7 @@ import PatreonSponsors from '../_shared/PatreonSponsors';
 // @ts-ignore
 import PickersLogo from '../assets/pickers-logo.png';
 import { Theme } from '@material-ui/core';
+import { PageMeta } from '_shared/PageMeta';
 
 const styles = (theme: Theme) =>
   createStyles({
@@ -86,6 +87,11 @@ const Landing: React.SFC<WithStyles<typeof styles>> = ({ classes }) => {
 
   return (
     <div>
+      <PageMeta
+        title="Material-UI Pickers"
+        description="Accessible, customizable, delightful date & time pickers for @material-ui/core"
+      />
+
       <Toolbar color="primary" className={classes.appToolbar}>
         <Paper elevation={8} className={classes.logoContainer}>
           <img alt="Material-UI logo" className={classes.logo} src={PickersLogo} />
