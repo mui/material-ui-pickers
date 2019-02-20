@@ -1,6 +1,6 @@
 {
   "build/dist/material-ui-pickers.esm.js": {
-    "bundled": 115398,
+    "bundled": 115392,
     "minified": 67034,
     "gzipped": 15647,
     "treeshaked": {
@@ -14,12 +14,12 @@
     }
   },
   "build/dist/material-ui-pickers.umd.js": {
-    "bundled": 224698,
+    "bundled": 225005,
     "minified": 98396,
     "gzipped": 25684
   },
   "build/dist/material-ui-pickers.umd.min.js": {
-    "bundled": 203961,
+    "bundled": 203962,
     "minified": 92093,
     "gzipped": 24334
   }

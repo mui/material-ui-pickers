@@ -1,9 +1,11 @@
 import React, { useState, useCallback } from 'react';
-import { MuiThemeProvider, Theme, createMuiTheme } from '@material-ui/core';
+import { MuiThemeProvider, Theme, createMuiTheme, jssPreset } from '@material-ui/core';
 import JssProvider from 'react-jss/lib/JssProvider';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
 import Layout from './Layout';
+import rtl from 'jss-rtl';
+import { create } from 'jss';
 import { UtilsContext } from '../_shared/UtilsServiceContext';
 import { createUtilsService, UtilsLib, utilsMap } from '../utils/utilsService';
 import { PageContext } from '../utils/getPageContext';
@@ -14,6 +16,9 @@ export type ThemeType = 'light' | 'dark';
 export type Direction = Theme['direction'];
 
 export const ThemeContext = React.createContext<ThemeType>('light');
+
+// @ts-ignore Configure JSS
+const jss = create({ plugins: [...jssPreset().plugins, rtl()] });
 
 const createCustomMuiTheme = (theme: ThemeType, direction: Theme['direction']) => {
   return createMuiTheme({
@@ -53,6 +58,7 @@ export const PageWithContexts: React.SFC<Props> = ({ children, pageContext }) =>
 
   return (
     <JssProvider
+      jss={jss}
       registry={pageContext.sheetsRegistry}
       generateClassName={pageContext.generateClassName}
     >
