@@ -2,6 +2,7 @@ import Code from '_shared/Code.tsx'
 import Example from '_shared/Example'
 import PageMeta from '_shared/PageMeta'
 import utilsInterfaceCode from '!raw-loader!@date-io/core/IUtils.d.ts';
+import * as FormatsExample from './Formats.example'
 
 <PageMeta title="Formats" />
 
@@ -16,7 +17,7 @@ MuiPickersProvider.
 #### Patched french pickers
 You can use ES6 class syntax or override values with a help of .prototype property
 
-<Example sourceFile="guides/Formats.example.jsx" />
+<Example source={FormatsExample} />
 
 #### Utils interface
 *Note* TDate - date object passed from state (moment, native Date or Luxon`s DateTime)

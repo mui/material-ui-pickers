@@ -1,4 +1,3 @@
-// @ts-check
 import React, { PureComponent, useState, useCallback } from 'react';
 import moment from 'moment';
 import 'moment/locale/fr';

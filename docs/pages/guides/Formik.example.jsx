@@ -2,7 +2,7 @@ import React from 'react';
 import { DatePicker } from 'material-ui-pickers';
 import { Formik, Form, Field } from 'formik';
 import Code from '../../_shared/Code';
-import Grid from '@material-ui/core/Grid';
+import { Grid } from '@material-ui/core';
 
 const DatePickerField = ({ field, form, ...other }) => {
   const currentError = form.errors[field.name];

@@ -105,7 +105,7 @@ const Landing: React.SFC<WithStyles<typeof styles>> = ({ classes }) => {
           Accessible, customizable, delightful date & time pickers for @material-ui/core
         </Typography>
 
-        <Link href="/getting-started/installation">
+        <Link prefetch href="/getting-started/installation">
           <Button variant="contained" className={classes.getStarted} onClick={scrollToContent}>
             Get Started
           </Button>

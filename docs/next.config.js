@@ -6,6 +6,9 @@ const rehypePrism = require('@mapbox/rehype-prism');
 const headings = require('./utils/anchor-autolink');
 const withTM = require('next-transpile-modules');
 const slug = require('remark-slug');
+const webpack = require('webpack');
+const multi = require('multi-loader');
+const withBundleAnalyzer = require('@zeit/next-bundle-analyzer');
 
 const withMDX = require('@zeit/next-mdx')({
   extension: /\.(md|mdx)?$/,
@@ -15,19 +18,58 @@ const withMDX = require('@zeit/next-mdx')({
   },
 });
 
-module.exports = withCSS(
-  withImages(
-    withTypescript(
-      withMDX(
-        withTM({
-          webpack: config => {
-            config.resolve.modules.push(__dirname);
-            return config;
-          },
+module.exports = withBundleAnalyzer(
+  withCSS(
+    withImages(
+      withTypescript(
+        withMDX(
+          withTM({
+            webpack: config => {
+              if (config.optimization.splitChunks.cacheGroups) {
+                // split all date libs to separate chunk
+                config.optimization.splitChunks.cacheGroups.dateLibs = {
+                  name: 'commons',
+                  chunks: 'all',
+                  test: /(luxon|moment|date-fns|dayjs)/,
+                };
+                // move all pickers code to not duplicate it in each chunk
+                config.optimization.splitChunks.cacheGroups.pickers = {
+                  name: 'pickers',
+                  chunks: 'all',
+                  test: /[\\\/]node_modules[\\\/]material-ui-pickers[\\\/]/,
+                };
+              }
 
-          pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
-          transpileModules: ['material-ui-pickers'],
-        })
+              // Process examples to inject raw code strings
+              config.module.rules.push({
+                test: /\.example\.(js|mjs|jsx)$/,
+                include: [path.resolve(__dirname, 'pages')],
+                use: { loader: path.resolve(__dirname, 'loaders', 'example-loader.js') },
+              });
+
+              // Resolve roots also for mdx pages
+              config.resolve.modules.push(__dirname);
+              config.plugins.push(new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/));
+
+              return config;
+            },
+            target: process.env.IS_NOW ? 'serverless' : 'server',
+            pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
+            transpileModules: process.env.IS_NOW ? [] : ['material-ui-pickers'],
+            analyzeServer: ['server', 'both'].includes(process.env.BUNDLE_ANALYZE),
+            analyzeBrowser: ['browser', 'both'].includes(process.env.BUNDLE_ANALYZE),
+            bundleAnalyzerConfig: {
+              server: {
+                analyzerMode: 'static',
+                reportFilename: '../../.next/bundle/server.html',
+              },
+              browser: {
+                analyzerMode: 'static',
+                reportFilename: '../.next/bundle/client.html',
+              },
+            },
+          })
+        )
       )
     )
   )

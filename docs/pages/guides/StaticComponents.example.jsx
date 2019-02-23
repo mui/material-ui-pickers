@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import Paper from '@material-ui/core/Paper';
+import { Paper } from '@material-ui/core/';
 
 import DateFnsUtils from '@date-io/date-fns';
 import { BasePicker, MuiPickersUtilsProvider, TimePickerView, Calendar } from 'material-ui-pickers';

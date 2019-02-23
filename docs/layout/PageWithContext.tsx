@@ -1,7 +1,6 @@
 import React, { useState, useCallback } from 'react';
-import { MuiThemeProvider, Theme, createMuiTheme, jssPreset } from '@material-ui/core';
+import { MuiThemeProvider, Theme, createMuiTheme, jssPreset, CssBaseline } from '@material-ui/core';
 import JssProvider from 'react-jss/lib/JssProvider';
-import CssBaseline from '@material-ui/core/CssBaseline';
 
 import Layout from './Layout';
 import rtl from 'jss-rtl';
@@ -33,13 +32,18 @@ const createCustomMuiTheme = (theme: ThemeType, direction: Theme['direction']) =
 };
 
 type Props = {
-  pageContext: PageContext;
   children: React.ReactChild;
+  pageContext: PageContext;
+  initialTheme?: ThemeType;
 };
 
-export const PageWithContexts: React.SFC<Props> = ({ children, pageContext }) => {
+export const PageWithContexts: React.SFC<Props> = ({
+  children,
+  pageContext,
+  initialTheme = 'light',
+}) => {
   const [lib, setLib] = useState<UtilsLib>('date-fns');
-  const [theme, setTheme] = useState<ThemeType>('light');
+  const [theme, setTheme] = useState<ThemeType>(initialTheme);
   const [direction, setDirection] = useState<Direction>('ltr');
 
   const setBodyDirection = useCallback(() => {
@@ -54,6 +58,7 @@ export const PageWithContexts: React.SFC<Props> = ({ children, pageContext }) =>
 
     setTheme(newTheme);
     setPrismTheme(newTheme);
+    document.cookie = `theme=${newTheme}`;
   }, [theme]);
 
   return (

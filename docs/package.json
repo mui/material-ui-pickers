@@ -1,5 +1,5 @@
 {
-  "name": "docs",
+  "name": "material-ui-pickers-docs",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -25,6 +25,7 @@
     "@types/react": "^16.8.3",
     "@types/react-jss": "^8.6.2",
     "@types/styled-jsx": "^2.2.8",
+    "@zeit/next-bundle-analyzer": "^0.1.2",
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-typescript": "^1.1.1",
     "clsx": "^1.0.2",
@@ -36,7 +37,9 @@
     "material-ui-pickers": "*",
     "moment": "^2.24.0",
     "moment-jalaali": "^0.8.3",
+    "multi-loader": "^0.1.0",
     "next": "^8.0.1",
+    "next-cookies": "^1.1.0",
     "next-images": "^1.0.4",
     "next-transpile-modules": "^2.0.0",
     "prismjs": "^1.15.0",
@@ -44,7 +47,9 @@
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
     "react-jss": "^8.6.1",
+    "react-loadable": "^5.5.0",
     "remark-slug": "^5.1.1",
+    "safe-json-stringify": "^1.2.0",
     "unist-util-visit": "^1.4.0"
   },
   "devDependencies": {

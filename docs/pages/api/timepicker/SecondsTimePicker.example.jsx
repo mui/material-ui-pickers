@@ -27,10 +27,10 @@ export default class BasicUsage extends PureComponent {
 
         <div className="picker">
           <TimePicker
-            ampm={false}
             seconds
+            ampm={false}
             format="HH:mm:ss"
-            label="24 hours with seconds"
+            label="24 hours"
             value={selectedDate}
             onChange={this.handleDateChange}
           />

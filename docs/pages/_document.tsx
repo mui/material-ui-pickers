@@ -1,15 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import cookies from 'next-cookies';
 import Document, { Head, Main, NextScript, NextDocumentContext } from 'next/document';
 import flush from 'styled-jsx/server';
 import { PageContext } from '../utils/getPageContext';
 import { prismThemes } from '../utils/prism';
+import { ThemeType } from 'layout/PageWithContext';
 
-class MyDocument extends Document {
+class MyDocument extends Document<{ theme?: ThemeType }> {
   static getInitialProps = (ctx: NextDocumentContext) => {
     // Render app and page and get the context of the page with collected side effects.
     let pageContext: PageContext | undefined;
 
+    const { theme } = cookies(ctx);
     const page = ctx.renderPage(Component => {
       const WrappedComponent = (props: any) => {
         pageContext = props.pageContext;
@@ -31,6 +34,7 @@ class MyDocument extends Document {
 
     return {
       ...page,
+      theme,
       pageContext,
       // Styles fragment is rendered after the app and page rendering finish.
       styles: (
@@ -43,6 +47,7 @@ class MyDocument extends Document {
   };
 
   render() {
+    const { theme = 'light' } = this.props;
     return (
       <html lang="en" dir="ltr">
         <Head>
@@ -55,7 +60,7 @@ class MyDocument extends Document {
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
           />
-          <link data-prism="true" href={prismThemes.light} rel="stylesheet" />
+          <link data-prism="true" href={prismThemes[theme]} rel="stylesheet" />
 
           <meta name="theme-color" content="3f51b5" />
           <link rel="manifest" href="/static/manifest.json" />

@@ -1,5 +1,4 @@
-import Button from '@material-ui/core/Button';
-import withStyles from '@material-ui/core/styles/withStyles';
+import { Button, withStyles } from '@material-ui/core';
 import { InlineDatePicker } from 'material-ui-pickers';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';

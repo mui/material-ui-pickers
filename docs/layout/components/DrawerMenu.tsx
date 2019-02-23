@@ -16,7 +16,7 @@ import { version } from 'material-ui-pickers/package.json';
 const DrawerMenu: React.SFC<WithStyles<typeof styles>> = ({ classes }) => (
   <div className={classes.drawerRoot}>
     <Toolbar className={classes.drawerToolbar}>
-      <Link href="/">
+      <Link prefetch href="/">
         <Typography variant="subtitle1" className={classes.headerLink}>
           Material-UI pickers
         </Typography>

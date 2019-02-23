@@ -1,6 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
-import { withStyles, Theme, WithStyles } from '@material-ui/core/styles';
+import { withStyles, Theme, WithStyles } from '@material-ui/core';
 import { highlight } from '../utils/prism';
 
 const styles = (theme: Theme) => ({

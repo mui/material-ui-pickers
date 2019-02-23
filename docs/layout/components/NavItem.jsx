@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ListItem, withStyles, Collapse } from '@material-ui/core';
+import { ListItem, withStyles, Collapse, Button } from '@material-ui/core';
 
-import Button from '@material-ui/core/Button';
 import Link from 'next/link';
 import clsx from 'clsx';
 import { withRouter } from 'next/router';
@@ -60,7 +59,7 @@ class NavItem extends React.Component {
     if (href) {
       return (
         <ListItem disableGutters className={classes.listItem} {...props}>
-          <Link href={href}>
+          <Link prefetch href={href}>
             <Button
               onClick={this.handleClick}
               style={style}

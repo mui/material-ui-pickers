@@ -1,26 +1,28 @@
 import React from 'react';
 import App from 'next/app';
-import { PageWithContexts } from '../layout/PageWithContext';
+import { PageWithContexts, ThemeType } from '../layout/PageWithContext';
 import getPageContext from '../utils/getPageContext';
+import cookies from 'next-cookies';
 
-class MyApp extends App {
+class MyApp extends App<{ theme: ThemeType }> {
   pageContext = getPageContext();
 
   static async getInitialProps({ Component, ctx }: any) {
     let pageProps = {};
+    const { theme } = cookies(ctx);
 
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx);
     }
 
-    return { pageProps };
+    return { theme, pageProps };
   }
 
   render() {
-    const { Component, pageProps } = this.props;
+    const { Component, pageProps, theme } = this.props;
 
     return (
-      <PageWithContexts pageContext={this.pageContext}>
+      <PageWithContexts initialTheme={theme} pageContext={this.pageContext}>
         <Component pageContext={this.pageContext} {...pageProps} />
       </PageWithContexts>
     );

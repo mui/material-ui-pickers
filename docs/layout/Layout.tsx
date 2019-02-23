@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import clsx from 'clsx';
-import Hidden from '@material-ui/core/Hidden';
-import Drawer from '@material-ui/core/Drawer';
 import { withRouter, WithRouterProps } from 'next/router';
 import {
+  Hidden,
+  Drawer,
   AppBar,
   Toolbar,
   IconButton,
