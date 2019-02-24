@@ -1,6 +1,5 @@
 import { InlineDatePicker } from 'material-ui-pickers';
 import React, { Fragment, PureComponent } from 'react';
-import { withUtilsService } from '../../../_shared/UtilsServiceContext';
 
 class InlineDatePickerDemo extends PureComponent {
   state = {
@@ -54,4 +53,4 @@ class InlineDatePickerDemo extends PureComponent {
   }
 }
 
-export default withUtilsService(InlineDatePickerDemo);
+export default InlineDatePickerDemo;

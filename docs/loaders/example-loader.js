@@ -4,7 +4,7 @@ const nextBabelLoader = require('next/dist/build/webpack/loaders/next-babel-load
 
 module.exports = function exampleLoader(source) {
   const escapedRawSource = safeJsonStringify(source.replace(/'/g, '"'));
-  const sourceWithExportedRaw = source + `\nexport const raw = '${escapedRawSource}'`;
+  const sourceWithExportedRaw = source + `\nexport const raw = ${escapedRawSource}`;
 
   nextBabelLoader.call(this, sourceWithExportedRaw);
 };

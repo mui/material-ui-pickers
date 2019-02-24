@@ -26,13 +26,11 @@ function Example({ classes, source }: Props) {
   const [expanded, setExpanded] = useState(false);
   // make each component rerender on utils change
   const Component = withUtilsService(source.default);
-  // remove quotes outside the component
-  const rawSource = source.raw.substr(1, source.raw.length - 1);
 
   return (
     <>
       <Collapse key="code" in={expanded}>
-        {source.raw && <Code children={rawSource} />}
+        {source.raw && <Code children={source.raw} />}
       </Collapse>
 
       <div className={classes.pickers}>
