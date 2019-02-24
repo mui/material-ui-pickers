@@ -7,7 +7,6 @@ const headings = require('./utils/anchor-autolink');
 const withTM = require('next-transpile-modules');
 const slug = require('remark-slug');
 const webpack = require('webpack');
-const multi = require('multi-loader');
 const withBundleAnalyzer = require('@zeit/next-bundle-analyzer');
 
 const withMDX = require('@zeit/next-mdx')({
