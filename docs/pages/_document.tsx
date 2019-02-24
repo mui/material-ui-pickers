@@ -82,6 +82,23 @@ class MyDocument extends Document<{ theme?: ThemeType }> {
             sizes="192x192"
             href="/static/android-icon-192x192.png"
           />
+
+          {process.env.NODE_ENV === 'production' && (
+            <>
+              <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115548316-2" />
+              <script
+                dangerouslySetInnerHTML={{
+                  __html: `
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+
+                    gtag('config', 'UA-115548316-2');
+                  `,
+                }}
+              />
+            </>
+          )}
         </Head>
         <body>
           <Main />

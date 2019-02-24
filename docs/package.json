@@ -39,7 +39,7 @@
     "moment-jalaali": "^0.8.3",
     "multi-loader": "^0.1.0",
     "next": "^8.0.1",
-    "next-cookies": "^1.1.0",
+    "next-cookies": "1.1.0",
     "next-images": "^1.0.4",
     "next-transpile-modules": "^2.0.0",
     "prismjs": "^1.15.0",
