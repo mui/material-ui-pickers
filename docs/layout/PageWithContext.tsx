@@ -10,6 +10,7 @@ import { createUtilsService, UtilsLib, utilsMap } from '../utils/utilsService';
 import { PageContext } from '../utils/getPageContext';
 import { MuiPickersUtilsProvider } from 'material-ui-pickers';
 import { setPrismTheme } from '../utils/prism';
+import orange from '@material-ui/core/colors/deepOrange';
 
 export type ThemeType = 'light' | 'dark';
 export type Direction = Theme['direction'];
@@ -26,6 +27,10 @@ const createCustomMuiTheme = (theme: ThemeType, direction: Theme['direction']) =
       useNextVariants: true,
     },
     palette: {
+      primary: {
+        main: theme === 'dark' ? '#fdd835' : '#43a047',
+      },
+      secondary: orange,
       type: theme,
     },
   });
