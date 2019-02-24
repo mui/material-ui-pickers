@@ -1,20 +1,19 @@
 import React from 'react';
 import Link from 'next/link';
 import {
+  Button,
+  createStyles,
+  Paper,
+  Theme,
   Toolbar,
   Typography,
   withStyles,
-  Button,
-  Paper,
   WithStyles,
-  createStyles,
 } from '@material-ui/core';
-import PatreonSponsors from '../_shared/PatreonSponsors';
 
-// @ts-ignore
-import PickersLogo from '../assets/pickers-logo.png';
-import { Theme } from '@material-ui/core';
-import { PageMeta } from '_shared/PageMeta';
+import Logo from '_shared/svgIcons/Logo';
+import PageMeta from '_shared/PageMeta';
+import PatreonSponsors from '_shared/PatreonSponsors';
 
 const styles = (theme: Theme) =>
   createStyles({
@@ -22,12 +21,22 @@ const styles = (theme: Theme) =>
       flex: 1,
     },
     logoContainer: {
+      backgroundColor: 'white',
       margin: '20px 0 64px',
       borderRadius: '50%',
-      padding: '4px 4px 0',
+      padding: 12,
     },
     logo: {
-      maxHeight: 200,
+      backgroundColor: theme.palette.primary.main,
+      borderRadius: '50%',
+      zIndex: 50,
+      overflow: 'hidden',
+
+      '& svg': {
+        position: 'relative',
+        left: 17,
+        top: 19,
+      },
     },
     menuButton: {
       marginLeft: -12,
@@ -41,12 +50,15 @@ const styles = (theme: Theme) =>
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      color: theme.palette.common.white,
+      color: theme.palette.getContrastText(theme.palette.primary.main),
       padding: '100px 20px',
       minHeight: 'calc(75vh - 55px)',
     },
     getStarted: {
       marginTop: '10px',
+    },
+    landingTypography: {
+      color: theme.palette.getContrastText(theme.palette.primary.main),
     },
     main: {
       backgroundColor: theme.palette.background.default,
@@ -74,17 +86,6 @@ const styles = (theme: Theme) =>
   });
 
 const Landing: React.SFC<WithStyles<typeof styles>> = ({ classes }) => {
-  const scrollToContent = () => {
-    const contentEl = document.getElementById('content');
-
-    if (contentEl) {
-      contentEl.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-      });
-    }
-  };
-
   return (
     <div>
       <PageMeta
@@ -94,19 +95,21 @@ const Landing: React.SFC<WithStyles<typeof styles>> = ({ classes }) => {
 
       <Toolbar color="primary" className={classes.appToolbar}>
         <Paper elevation={8} className={classes.logoContainer}>
-          <img alt="Material-UI logo" className={classes.logo} src={PickersLogo} />
+          <div className={classes.logo}>
+            <Logo />
+          </div>
         </Paper>
 
-        <Typography variant="h4" color="inherit" className="title text-light" gutterBottom>
+        <Typography variant="h4" className={classes.landingTypography} gutterBottom>
           Material-UI Pickers
         </Typography>
 
-        <Typography variant="h5" align="center" color="inherit" gutterBottom className="text-light">
+        <Typography variant="h5" className={classes.landingTypography} gutterBottom>
           Accessible, customizable, delightful date & time pickers for @material-ui/core
         </Typography>
 
         <Link prefetch href="/getting-started/installation">
-          <Button variant="contained" className={classes.getStarted} onClick={scrollToContent}>
+          <Button variant="contained" className={classes.getStarted}>
             Get Started
           </Button>
         </Link>
