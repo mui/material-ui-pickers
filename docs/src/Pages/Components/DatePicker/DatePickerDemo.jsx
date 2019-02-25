@@ -37,6 +37,11 @@ const DatePickerDemo = () => (
     />
 
     <SourcablePanel
+      title="Inline advanced mode"
+      sourceFile="Components/DatePicker/InlineDatePickerAdvanced.example.jsx"
+    />
+
+    <SourcablePanel
       title="Custom day element"
       sourceFile="Components/DatePicker/CustomElementsDatePicker.example.jsx"
       description={

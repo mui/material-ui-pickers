@@ -231,6 +231,17 @@
       "required": false,
       "type": { "name": "(day: any) => boolean" }
     },
+    "monthSelectable": {
+      "defaultValue": null,
+      "description": "Force selectable month picker",
+      "name": "monthSelectable",
+      "parent": {
+        "fileName": "/Users/dmitrijkovalenko/dev/material-ui-pickers/lib/src/DatePicker/DatePicker.tsx",
+        "name": "BaseDatePickerProps"
+      },
+      "required": false,
+      "type": { "name": "(day: any) => boolean" }
+    },
     "mask": {
       "defaultValue": null,
       "description": "Input mask, used in keyboard mode read more <a href=\"https://github.com/text-mask/text-mask/blob/master/componentDocumentation.md#readme\">here</a>",
