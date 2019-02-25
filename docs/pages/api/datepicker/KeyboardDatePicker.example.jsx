@@ -1,6 +1,5 @@
 import React, { Fragment, PureComponent } from 'react';
 import { DatePicker } from 'material-ui-pickers';
-import { withUtilsService } from '../../../_shared/UtilsServiceContext';
 
 class KeyboardDatePicker extends PureComponent {
   state = {
@@ -53,4 +52,4 @@ class KeyboardDatePicker extends PureComponent {
   }
 }
 
-export default withUtilsService(KeyboardDatePicker);
+export default KeyboardDatePicker;

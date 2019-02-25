@@ -10,6 +10,7 @@ import {
   WithStyles,
   createStyles,
   Theme,
+  Tooltip,
 } from '@material-ui/core';
 
 type Props = {
@@ -30,13 +31,21 @@ function Example({ classes, source }: Props) {
   return (
     <>
       <Collapse key="code" in={expanded}>
-        {source.raw && <Code children={source.raw} />}
+        <div className={classes.codeContainer}>
+          <IconButton className={classes.sourceBtn} onClick={() => setExpanded(!expanded)}>
+            <CodeIcon />
+          </IconButton>
+
+          {source.raw && <Code children={source.raw} />}
+        </div>
       </Collapse>
 
       <div className={classes.pickers}>
-        <IconButton className={classes.sourceBtn} onClick={() => setExpanded(!expanded)}>
-          <CodeIcon />
-        </IconButton>
+        <Tooltip title="Show/Hide the source">
+          <IconButton className={classes.sourceBtn} onClick={() => setExpanded(!expanded)}>
+            <CodeIcon />
+          </IconButton>
+        </Tooltip>
 
         <Component />
       </div>
@@ -73,6 +82,9 @@ const styles = (theme: Theme) =>
           marginBottom: 32,
         },
       },
+    },
+    codeContainer: {
+      position: 'relative',
     },
     sourceBtn: {
       position: 'absolute',

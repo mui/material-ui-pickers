@@ -1,23 +1,19 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-
-import { DatePicker } from 'material-ui-pickers';
-import { IconButton, withStyles } from '@material-ui/core';
-
 import isValid from 'date-fns/isValid';
 import format from 'date-fns/format';
 import isSameDay from 'date-fns/isSameDay';
 import startOfWeek from 'date-fns/startOfWeek';
 import endOfWeek from 'date-fns/endOfWeek';
 import isWithinInterval from 'date-fns/isWithinInterval';
-import cloneCrossUtils from '../../../utils/helpers';
+import { DatePicker } from 'material-ui-pickers';
+import { IconButton, withStyles } from '@material-ui/core';
+
+// this guy required only on the docs site to work with dynamic date library
+import cloneCrossUtils from 'utils/helpers';
 
 class CustomElements extends PureComponent {
-  static propTypes = {
-    classes: PropTypes.object.isRequired,
-  };
-
   state = {
     selectedDate: new Date(),
   };
