@@ -43,6 +43,7 @@ export interface BaseDatePickerProps {
   /** Disable specific date */
   shouldDisableDate?: (day: MaterialUiPickersDate) => boolean;
   initialFocusedDate?: DateType;
+  monthSelectable?: boolean;
 }
 
 export interface DatePickerProps
@@ -62,6 +63,7 @@ export class DatePicker extends React.PureComponent<DatePickerProps> {
     views: PropTypes.arrayOf(DomainPropTypes.datePickerView),
     openTo: DomainPropTypes.datePickerView,
     openToYearSelection: PropTypes.bool,
+    monthSelectable: PropTypes.bool,
   };
 
   public static defaultProps = {
@@ -69,6 +71,7 @@ export class DatePicker extends React.PureComponent<DatePickerProps> {
     maxDate: new Date('2100-01-01'),
     openToYearSelection: false,
     views: ['year', 'day'] as DatePickerViewType[],
+    monthSelectable: false,
   };
 
   public state: DatePickerState = {
@@ -97,6 +100,10 @@ export class DatePicker extends React.PureComponent<DatePickerProps> {
 
   get isYearAndMonth() {
     return isYearAndMonthViews(this.props.views!);
+  }
+
+  get isMonthSelectable() {
+    return this.props.monthSelectable;
   }
 
   public handleYearSelect = (date: MaterialUiPickersDate) => {
@@ -160,8 +167,18 @@ export class DatePicker extends React.PureComponent<DatePickerProps> {
             label={utils.getYearText(this.date)}
           />
 
+          {this.isMonthSelectable && (
+            <ToolbarButton
+              variant="h4"
+              onClick={this.openMonthSelection}
+              selected={openView === 'month'}
+              label={utils.getMonthText(this.date)}
+            />
+          )}
+
           {!this.isYearOnly &&
-            !this.isYearAndMonth && (
+            !this.isYearAndMonth &&
+            !this.isMonthSelectable && (
               <ToolbarButton
                 variant="h4"
                 onClick={this.openCalendar}
@@ -169,6 +186,15 @@ export class DatePicker extends React.PureComponent<DatePickerProps> {
                 label={utils.getDatePickerHeaderText(this.date)}
               />
             )}
+
+          {this.isMonthSelectable && (
+            <ToolbarButton
+              variant="h4"
+              onClick={this.openCalendar}
+              selected={openView === 'day'}
+              label={utils.getDayText(this.date)}
+            />
+          )}
 
           {this.isYearAndMonth && (
             <ToolbarButton
