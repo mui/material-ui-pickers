@@ -5,7 +5,7 @@ const Logo: React.FC<{ theme: Theme }> = ({ theme }) => {
   return (
     <svg width="200px" height="200px" viewBox="0 0 40 40" version="1.1">
       <defs />
-      <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+      <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
         <rect
           id="Rectangle"
           fill={theme.palette.primary.dark}

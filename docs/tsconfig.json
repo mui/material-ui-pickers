@@ -16,6 +16,7 @@
     "sourceMap": true,
     "strict": true,
     "target": "esnext",
+    "checkJs": true,
     "resolveJsonModule": true,
     "paths": {
       "material-ui-pickers": ["./material-ui-pickers-build"]

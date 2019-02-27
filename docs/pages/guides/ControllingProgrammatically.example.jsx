@@ -1,49 +1,37 @@
+import PropTypes from 'prop-types';
+import React, { PureComponent, useState, useCallback, useRef } from 'react';
 import { Button, withStyles } from '@material-ui/core';
 import { InlineDatePicker } from 'material-ui-pickers';
-import PropTypes from 'prop-types';
-import React, { PureComponent } from 'react';
 
-class ControllingProgrammaticallyExample extends PureComponent {
-  static propTypes = {
-    classes: PropTypes.object.isRequired,
-  };
+function ControllingProgrammaticallyExample(props) {
+  const pickerRef = useRef(null);
+  const [selectedDate, handleDateChange] = useState('2018-01-01T00:00:00.000Z');
 
-  state = {
-    selectedDate: new Date(),
-  };
+  const openPicker = useCallback(
+    e => {
+      if (pickerRef.current) {
+        pickerRef.current.open(e);
+      }
+    },
+    [pickerRef.current]
+  );
 
-  handleDateChange = date => {
-    this.setState({ selectedDate: date });
-  };
+  return (
+    <div className={props.classes.container}>
+      <Button onClick={openPicker}> Open picker </Button>
 
-  openPicker = e => {
-    // do not pass Event for default pickers
-    this.picker.open(e);
-  };
-
-  render() {
-    const { selectedDate } = this.state;
-
-    return (
-      <div className={this.props.classes.container}>
-        <Button onClick={this.openPicker}> Open picker </Button>
-
-        <div className="picker">
-          <InlineDatePicker
-            clearable
-            label="Open me from button"
-            format="d MMM yyyy"
-            value={selectedDate}
-            onChange={this.handleDateChange}
-            ref={node => {
-              console.log(node); // check console to view the api of wrapper
-              this.picker = node;
-            }}
-          />
-        </div>
+      <div className="picker">
+        <InlineDatePicker
+          clearable
+          label="Open me from button"
+          format="d MMM yyyy"
+          value={selectedDate}
+          onChange={handleDateChange}
+          ref={pickerRef}
+        />
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 const styles = {

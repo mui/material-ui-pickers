@@ -10,6 +10,7 @@ const styles = (theme: Theme) => ({
     fontSize: '1em',
     color: theme.palette.text.primary,
     padding: 10,
+    paddingBottom: 0,
     backgroundColor: theme.palette.background.paper,
 
     '& pre': {
