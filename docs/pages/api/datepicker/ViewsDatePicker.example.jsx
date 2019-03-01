@@ -30,8 +30,8 @@ function YearMonthPicker(props) {
 
       <div className="picker">
         <InlineDatePicker
-          views={['year', 'month']}
           openTo="year"
+          views={['year', 'month']}
           label="Year and Month"
           helperText="Start from year selection"
           value={selectedDate}

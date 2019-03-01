@@ -28,7 +28,7 @@ function Regression() {
         This page is using for the automate regression of material-ui-pickers.
       </Typography>
 
-      <Typography align="center" variant="h4" gutterBottom>
+      <Typography align="center" variant="h4" component="span" gutterBottom>
         DatePicker
       </Typography>
 
