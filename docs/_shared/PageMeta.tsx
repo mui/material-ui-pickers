@@ -23,13 +23,16 @@ export function PageMeta({ title, component, router, description }: PageMetaProp
       <title>{title}</title>
 
       <meta name="twitter:card" content="summary" />
-      <meta name="og:image" content={LOGO_URL} />
       <meta name="twitter:image" content={LOGO_URL} />
       <meta name="description" content={description} />
       <meta name="og:description" content={description} />
       <meta name="twitter:description" content={description} />
 
-      {router && <meta name="og:url" content={HOST_URL + router.pathname} />}
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={description} />
+      <meta property="og:image" content={LOGO_URL} />
+      <meta property="og:type" content="website" />
+      {router && <meta property="og:url" content={HOST_URL + router.pathname} />}
     </Head>
   );
 }
