@@ -61,7 +61,7 @@ render(<App />, document.querySelector('#app'));
 
 ## Documentation
 
-Check out the [documentation website](https://material-ui-pickers.firebaseapp.com/)
+Check out the [documentation website](https://material-ui-pickers.dev/)
 
 ### Recently updated?
 
