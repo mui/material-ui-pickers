@@ -104,6 +104,10 @@ export class DateTimePicker extends React.Component<DateTimePickerProps, DateTim
   };
 
   public handleYearChange = (date: MaterialUiPickersDate) => {
+    if (this.props.onYearChange) {
+      this.props.onYearChange(date);
+    }
+
     this.onChange(date, true, DateTimePickerView.DATE);
   };
 
@@ -135,6 +139,7 @@ export class DateTimePicker extends React.Component<DateTimePickerProps, DateTim
       animateYearScrolling,
       allowKeyboardControl,
       ViewContainerComponent,
+      onMonthChange,
     } = this.props;
 
     const Container = ViewContainerComponent!;
@@ -187,6 +192,7 @@ export class DateTimePicker extends React.Component<DateTimePickerProps, DateTim
               rightArrowIcon={rightArrowIcon}
               renderDay={renderDay}
               shouldDisableDate={shouldDisableDate}
+              onMonthChange={onMonthChange}
             />
           </View>
 
