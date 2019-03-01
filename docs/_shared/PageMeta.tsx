@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import { withRouter, WithRouterProps } from 'next/router';
+import { LOGO_URL, HOST_URL } from '_constants';
 
 interface PageMetaProps extends WithRouterProps {
   title?: string;
@@ -7,26 +8,28 @@ interface PageMetaProps extends WithRouterProps {
   description?: string;
 }
 
-const host = process.env.NOW_URL;
-
 export function PageMeta({ title, component, router, description }: PageMetaProps) {
   if (component) {
     title = `${component} - Material-ui-pickers component`;
     description = `${component} usage examples and API of material-ui-pickers`;
   }
 
+  if (!description) {
+    description = title;
+  }
+
   return (
     <Head>
       <title>{title}</title>
 
-      {router && host && <meta name="og:url" content={host + router.pathname} />}
-      {description && (
-        <>
-          <meta name="description" content={description} />
-          <meta name="og:description" content={description} />
-          <meta name="twitter:description" content={description} />
-        </>
-      )}
+      <meta name="twitter:card" content="summary" />
+      <meta name="og:image" content={LOGO_URL} />
+      <meta name="twitter:image" content={LOGO_URL} />
+      <meta name="description" content={description} />
+      <meta name="og:description" content={description} />
+      <meta name="twitter:description" content={description} />
+
+      {router && <meta name="og:url" content={HOST_URL + router.pathname} />}
     </Head>
   );
 }

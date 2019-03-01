@@ -62,7 +62,7 @@ class MyDocument extends Document<{ theme?: ThemeType }> {
           />
           <link data-prism="true" href={prismThemes[theme]} rel="stylesheet" />
 
-          <meta name="theme-color" content="3f51b5" />
+          <meta name="theme-color" content="#3da044" />
           <link rel="manifest" href="/static/manifest.json" />
           <link rel="apple-touch-icon" sizes="57x57" href="/static/apple-icon-57x57.png" />
           <link rel="apple-touch-icon" sizes="60x60" href="/static/apple-icon-60x60.png" />
