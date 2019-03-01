@@ -42,6 +42,10 @@ export interface BaseDatePickerProps {
   allowKeyboardControl?: boolean;
   /** Disable specific date */
   shouldDisableDate?: (day: MaterialUiPickersDate) => boolean;
+  /** Callback firing on year change */
+  onYearChange?: (date: MaterialUiPickersDate) => void;
+  /** Callback firing on month change */
+  onMonthChange?: (date: MaterialUiPickersDate) => void;
   initialFocusedDate?: DateType;
 }
 
@@ -101,8 +105,11 @@ export class DatePicker extends React.PureComponent<DatePickerProps> {
   }
 
   public handleYearSelect = (date: MaterialUiPickersDate) => {
-    this.props.onChange(date, this.isYearOnly);
+    if (this.props.onYearChange) {
+      this.props.onYearChange(date);
+    }
 
+    this.props.onChange(date, this.isYearOnly);
     if (this.isYearOnly) {
       return;
     }
@@ -115,6 +122,10 @@ export class DatePicker extends React.PureComponent<DatePickerProps> {
   };
 
   public handleMonthSelect = (date: MaterialUiPickersDate) => {
+    if (this.props.onMonthChange) {
+      this.props.onMonthChange(date);
+    }
+
     const isFinish = !this.props.views!.includes('day');
     this.props.onChange(date, isFinish);
 
@@ -149,6 +160,7 @@ export class DatePicker extends React.PureComponent<DatePickerProps> {
       shouldDisableDate,
       allowKeyboardControl,
       classes,
+      onMonthChange,
     } = this.props;
 
     return (
@@ -207,6 +219,7 @@ export class DatePicker extends React.PureComponent<DatePickerProps> {
           <Calendar
             date={this.date}
             onChange={onChange}
+            onMonthChange={onMonthChange}
             disablePast={disablePast}
             disableFuture={disableFuture}
             minDate={this.minDate}
