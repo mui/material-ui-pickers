@@ -100,11 +100,11 @@ const Landing: React.SFC<WithStyles<typeof styles>> = ({ classes }) => {
           </div>
         </Paper>
 
-        <Typography variant="h4" className={classes.landingTypography} gutterBottom>
+        <Typography variant="h4" align="center" className={classes.landingTypography} gutterBottom>
           Material-UI Pickers
         </Typography>
 
-        <Typography variant="h5" className={classes.landingTypography} gutterBottom>
+        <Typography variant="h5" align="center" className={classes.landingTypography} gutterBottom>
           Accessible, customizable, delightful date & time pickers for @material-ui/core
         </Typography>
 

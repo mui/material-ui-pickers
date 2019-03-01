@@ -43,7 +43,9 @@ module.exports = withBundleAnalyzer(
               config.module.rules.push({
                 test: /\.example\.(js|mjs|jsx)$/,
                 include: [path.resolve(__dirname, 'pages')],
-                use: { loader: path.resolve(__dirname, 'loaders', 'example-loader.js') },
+                use: {
+                  loader: path.resolve(__dirname, 'loaders', 'example-loader.js'),
+                },
               });
 
               // Resolve roots also for mdx pages

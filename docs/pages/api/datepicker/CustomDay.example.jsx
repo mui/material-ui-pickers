@@ -11,7 +11,7 @@ import { DatePicker } from 'material-ui-pickers';
 import { IconButton, withStyles } from '@material-ui/core';
 
 // this guy required only on the docs site to work with dynamic date library
-import cloneCrossUtils from 'utils/helpers';
+import { cloneCrossUtils } from 'utils/helpers';
 
 class CustomElements extends PureComponent {
   state = {

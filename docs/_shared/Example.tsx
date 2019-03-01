@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 
 import Code from './Code';
 import CodeIcon from '@material-ui/icons/Code';
-import { withUtilsService } from './UtilsServiceContext';
+import CopyIcon from '@material-ui/icons/FileCopy';
+import GithubIcon from '_shared/svgIcons/GithubIcon';
 import {
   IconButton,
   withStyles,
@@ -12,32 +13,63 @@ import {
   Theme,
   Tooltip,
 } from '@material-ui/core';
+import { withSnackbar, InjectedNotistackProps } from 'notistack';
 
-type Props = {
-  source: { raw: string; default: React.FC<any> };
-} & WithStyles<typeof styles>;
+import { copy } from 'utils/helpers';
+import { withUtilsService } from './UtilsServiceContext';
+import { GITHUB_EDIT_URL } from '_constants';
 
-function Example({ classes, source }: Props) {
-  if (!source.default && !source.raw) {
+interface Props extends WithStyles<typeof styles>, InjectedNotistackProps {
+  source: { raw: string; relativePath: string; default: React.FC<any> };
+}
+
+function Example({ classes, source, enqueueSnackbar }: Props) {
+  if (!source.default || !source.raw || !source.relativePath) {
     throw new Error(
       'Missing component or raw component code, you likely forgot to .example to your example extension'
     );
   }
 
   const [expanded, setExpanded] = useState(false);
+  const copySource = useCallback(
+    () =>
+      copy(source.raw).then(() =>
+        enqueueSnackbar('Source copied', { variant: 'success', autoHideDuration: 1000 })
+      ),
+    [source]
+  );
+
   // make each component rerender on utils change
   const Component = withUtilsService(source.default);
 
   return (
     <>
       <Collapse key="code" in={expanded}>
-        <div className={classes.codeContainer}>
-          <IconButton className={classes.sourceBtn} onClick={() => setExpanded(!expanded)}>
+        <div className={classes.sourceToolbar}>
+          <Tooltip title="Propose file change">
+            <a
+              target="_blank"
+              rel="noopenner noreferrer"
+              href={GITHUB_EDIT_URL + source.relativePath}
+            >
+              <IconButton>
+                <GithubIcon />
+              </IconButton>
+            </a>
+          </Tooltip>
+
+          <Tooltip title="Copy source">
+            <IconButton onClick={copySource}>
+              <CopyIcon />
+            </IconButton>
+          </Tooltip>
+
+          <IconButton className={classes.toolbarSourceBtn} onClick={() => setExpanded(!expanded)}>
             <CodeIcon />
           </IconButton>
-
-          {source.raw && <Code children={source.raw} />}
         </div>
+
+        <div className={classes.codeContainer}>{source.raw && <Code children={source.raw} />}</div>
       </Collapse>
 
       <div className={classes.pickers}>
@@ -83,6 +115,12 @@ const styles = (theme: Theme) =>
         },
       },
     },
+    sourceToolbar: {
+      display: 'flex',
+    },
+    toolbarSourceBtn: {
+      marginLeft: 'auto',
+    },
     codeContainer: {
       position: 'relative',
     },
@@ -93,4 +131,4 @@ const styles = (theme: Theme) =>
     },
   });
 
-export default withStyles(styles)(Example);
+export default withSnackbar(withStyles(styles)(Example));

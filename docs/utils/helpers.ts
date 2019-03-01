@@ -2,7 +2,7 @@ import moment, { Moment } from 'moment';
 import { DateTime } from 'luxon';
 import dayjs, { Dayjs } from 'dayjs';
 
-export default function cloneCrossUtils(date: Date | Moment | DateTime | Dayjs) {
+export function cloneCrossUtils(date: Date | Moment | DateTime | Dayjs) {
   if (date instanceof dayjs) {
     return (date as Dayjs).clone().toDate();
   }
@@ -20,4 +20,14 @@ export default function cloneCrossUtils(date: Date | Moment | DateTime | Dayjs) 
   }
 
   throw new Error('Cannot properly parse argument passed to cloneCrossUtils');
+}
+
+export function copy(text: string) {
+  return window.navigator.permissions.query({ name: 'clipboard-write' }).then(result => {
+    if (result.state == 'granted' || result.state == 'prompt') {
+      return navigator.clipboard.writeText(text);
+    }
+
+    return Promise.reject();
+  });
 }

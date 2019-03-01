@@ -11,6 +11,7 @@ import { PageContext } from '../utils/getPageContext';
 import { MuiPickersUtilsProvider } from 'material-ui-pickers';
 import { setPrismTheme } from '../utils/prism';
 import orange from '@material-ui/core/colors/deepOrange';
+import { SnackbarProvider } from 'notistack';
 
 export type ThemeType = 'light' | 'dark';
 export type Direction = Theme['direction'];
@@ -76,20 +77,22 @@ export const PageWithContexts: React.SFC<Props> = ({
         theme={createCustomMuiTheme(theme, direction)}
         sheetsManager={pageContext.sheetsManager}
       >
-        <MuiPickersUtilsProvider utils={utilsMap[lib]}>
-          <ThemeContext.Provider value={theme}>
-            <UtilsContext.Provider value={createUtilsService(lib)}>
-              <CssBaseline />
+        <SnackbarProvider maxSnack={3}>
+          <MuiPickersUtilsProvider utils={utilsMap[lib]}>
+            <ThemeContext.Provider value={theme}>
+              <UtilsContext.Provider value={createUtilsService(lib)}>
+                <CssBaseline />
 
-              <Layout
-                children={children}
-                onChangeUtils={setLib}
-                toggleThemeType={toggleTheme}
-                toggleDirection={setBodyDirection}
-              />
-            </UtilsContext.Provider>
-          </ThemeContext.Provider>
-        </MuiPickersUtilsProvider>
+                <Layout
+                  children={children}
+                  onChangeUtils={setLib}
+                  toggleThemeType={toggleTheme}
+                  toggleDirection={setBodyDirection}
+                />
+              </UtilsContext.Provider>
+            </ThemeContext.Provider>
+          </MuiPickersUtilsProvider>
+        </SnackbarProvider>
       </MuiThemeProvider>
     </JssProvider>
   );

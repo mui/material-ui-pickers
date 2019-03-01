@@ -1233,6 +1233,11 @@
   dependencies:
     source-map "^0.6.1"
 
+"@types/w3c-permissions@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@types/w3c-permissions/-/w3c-permissions-1.0.1.tgz#7c5b88d2d2b3ea0d18d77b29a48fd6cd3f807104"
+  integrity sha512-QVlAB2djlKAYXE9PcdTdf8EO4Tx+q14/3HJWpJsd8JPYjvU6GwgpVUiAKy6vLQZKZnnPBU+7mykXZV5L3dpn+Q==
+
 "@types/webpack@*":
   version "4.4.24"
   resolved "https://registry.yarnpkg.com/@types/webpack/-/webpack-4.4.24.tgz#75bc301176066f566ec54151b6101c2b45abb8b2"
@@ -2648,7 +2653,7 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
-classnames@^2.2.5:
+classnames@^2.2.5, classnames@^2.2.6:
   version "2.2.6"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
   integrity sha512-JR/iSQOSt+LQIWwrwEzJ9uk0xfN3mTVYMwt1Ir5mUcSN6pU+V4zQFFaJsclJbPuAUQH+yfWef6tm7l1quW3C8Q==
@@ -7232,6 +7237,14 @@ normalize-url@^3.0.0:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/normalize-url/-/normalize-url-3.3.0.tgz#b2e1c4dc4f7c6d57743df733a4f5978d18650559"
   integrity sha512-U+JJi7duF1o+u2pynbp2zXDW2/PADgC30f0GsHZtRh+HOcXHnw137TrNlyxxRvWW5fjKd3bcLHPxofWuCjaeZg==
+
+notistack@^0.4.3:
+  version "0.4.3"
+  resolved "https://registry.yarnpkg.com/notistack/-/notistack-0.4.3.tgz#0387f2d2b399474339c7de8552e4090e432baa99"
+  integrity sha512-YVG4IqA7+eCmMRH42UE+KZOIXTPg/3HEWU+pE1S+Tc8mUNSTQlZMdLy7XwDF1+WimyLiA7Glm+y+ClSu/4t+WA==
+  dependencies:
+    classnames "^2.2.6"
+    prop-types "^15.6.2"
 
 npm-bundled@^1.0.1:
   version "1.0.6"
