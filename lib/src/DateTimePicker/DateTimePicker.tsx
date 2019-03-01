@@ -104,10 +104,6 @@ export class DateTimePicker extends React.Component<DateTimePickerProps, DateTim
   };
 
   public handleYearChange = (date: MaterialUiPickersDate) => {
-    if (this.props.onYearChange) {
-      this.props.onYearChange(date);
-    }
-
     this.onChange(date, true, DateTimePickerView.DATE);
   };
 
@@ -140,6 +136,7 @@ export class DateTimePicker extends React.Component<DateTimePickerProps, DateTim
       allowKeyboardControl,
       ViewContainerComponent,
       onMonthChange,
+      onYearChange,
     } = this.props;
 
     const Container = ViewContainerComponent!;
@@ -172,6 +169,7 @@ export class DateTimePicker extends React.Component<DateTimePickerProps, DateTim
               date={date}
               minDate={minDate}
               maxDate={maxDate}
+              onYearChange={onYearChange}
               onChange={this.handleYearChange}
               disablePast={disablePast}
               disableFuture={disableFuture}

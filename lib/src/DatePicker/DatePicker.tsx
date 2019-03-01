@@ -105,11 +105,8 @@ export class DatePicker extends React.PureComponent<DatePickerProps> {
   }
 
   public handleYearSelect = (date: MaterialUiPickersDate) => {
-    if (this.props.onYearChange) {
-      this.props.onYearChange(date);
-    }
-
     this.props.onChange(date, this.isYearOnly);
+
     if (this.isYearOnly) {
       return;
     }
@@ -161,6 +158,7 @@ export class DatePicker extends React.PureComponent<DatePickerProps> {
       allowKeyboardControl,
       classes,
       onMonthChange,
+      onYearChange,
     } = this.props;
 
     return (
@@ -202,6 +200,7 @@ export class DatePicker extends React.PureComponent<DatePickerProps> {
             maxDate={this.maxDate}
             disablePast={disablePast}
             disableFuture={disableFuture}
+            onYearChange={onYearChange}
             animateYearScrolling={animateYearScrolling}
           />
         )}
