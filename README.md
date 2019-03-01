@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://material-ui.com/" rel="noopener" target="_blank"><img width="400" src="https://user-images.githubusercontent.com/16926049/50042115-1dea3d80-0068-11e9-9996-6b7ea8af9fc6.png" alt="Material-UI logo"></a></p>
+  <a href="https://material-ui.com/" rel="noopener" target="_blank"><img width="200" src="https://material-ui-pickers.dev/static/meta-image.png" alt="Material-UI logo"></a></p>
 </p>
 
 <h1 align="center">Material-UI pickers</h1>
