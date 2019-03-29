@@ -64,6 +64,7 @@
     "unist-util-visit": "^1.4.0"
   },
   "devDependencies": {
+    "dotenv": "^7.0.0",
     "fs-extra": "^7.0.1",
     "patreon": "^0.4.1"
   }
