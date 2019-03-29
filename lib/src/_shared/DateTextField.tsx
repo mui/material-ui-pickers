@@ -35,6 +35,7 @@ export interface DateTextFieldProps
   /** Input mask, used in keyboard mode read more <a href="https://github.com/text-mask/text-mask/blob/master/componentDocumentation.md#readme">here</a> */
   mask?: MaskedInputProps['mask'];
   pipe?: any;
+  /** Do not move chars on removing in masked input */
   keepCharPositions?: boolean;
   onChange: (date: MaterialUiPickersDate) => void;
   onClear?: () => void;
@@ -103,7 +104,12 @@ export class DateTextField extends React.PureComponent<DateTextFieldProps> {
     keyboardIcon: PropTypes.node,
     disableOpenOnEnter: PropTypes.bool,
     invalidDateMessage: PropTypes.node,
-    TextFieldComponent: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.node, PropTypes.object]),
+    TextFieldComponent: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.func,
+      PropTypes.node,
+      PropTypes.object,
+    ]),
     InputAdornmentProps: PropTypes.object,
     KeyboardButtonProps: PropTypes.object,
     adornmentPosition: PropTypes.oneOf(['start', 'end']),
