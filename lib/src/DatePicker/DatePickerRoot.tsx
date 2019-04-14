@@ -35,7 +35,7 @@ export interface BaseDatePickerProps {
   rightArrowIcon?: React.ReactNode;
   /** Custom renderer for day */
   renderDay?: RenderDay;
-  /** Show only calendar for datepicker in popover mode */
+  /** Show only calendar, without toolbar */
   onlyCalendar?: boolean;
   /** Enables keyboard listener for moving between days in calendar */
   allowKeyboardControl?: boolean;
