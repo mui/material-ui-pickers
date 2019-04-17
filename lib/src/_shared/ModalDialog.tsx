@@ -76,20 +76,21 @@ export const ModalDialog: React.SFC<ModalDialogProps & WithStyles<typeof styles>
         </Button>
       )}
 
-      {!clearable &&
-        showTodayButton && (
-          <Button color="primary" onClick={onSetToday}>
-            {todayLabel}
-          </Button>
-        )}
+      {!clearable && showTodayButton && (
+        <Button color="primary" onClick={onSetToday}>
+          {todayLabel}
+        </Button>
+      )}
 
       <Button color="primary" onClick={onDismiss}>
         {cancelLabel}
       </Button>
 
-      <Button color="primary" onClick={onAccept}>
-        {okLabel}
-      </Button>
+      {okLabel && (
+        <Button color="primary" onClick={onAccept}>
+          {okLabel}
+        </Button>
+      )}
     </DialogActions>
   </Dialog>
 );
