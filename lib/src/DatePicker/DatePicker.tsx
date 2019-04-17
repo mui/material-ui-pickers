@@ -27,6 +27,7 @@ export const DatePicker: React.FC<DatePickerProps> = props => {
     invalidDateMessage,
     labelFunc,
     leftArrowIcon,
+    leftArrowButtonProps,
     maxDate,
     maxDateMessage,
     minDate,
@@ -38,12 +39,13 @@ export const DatePicker: React.FC<DatePickerProps> = props => {
     onOpen,
     onClose,
     openTo,
-    openToYearSelection,
     renderDay,
     rightArrowIcon,
+    rightArrowButtonProps,
     shouldDisableDate,
     value,
     variant,
+    onlyCalendar,
     views,
     ...other
   } = props;
@@ -64,16 +66,18 @@ export const DatePicker: React.FC<DatePickerProps> = props => {
     >
       <DatePickerRoot
         {...pickerProps}
+        onlyCalendar={onlyCalendar}
         allowKeyboardControl={allowKeyboardControl}
         animateYearScrolling={animateYearScrolling}
         disableFuture={disableFuture}
         disablePast={disablePast}
         leftArrowIcon={leftArrowIcon}
+        leftArrowButtonProps={leftArrowButtonProps}
         maxDate={maxDate}
         minDate={minDate}
-        openToYearSelection={openToYearSelection}
         renderDay={renderDay}
         rightArrowIcon={rightArrowIcon}
+        rightArrowButtonProps={rightArrowButtonProps}
         shouldDisableDate={shouldDisableDate}
         views={views}
         openTo={openTo}
