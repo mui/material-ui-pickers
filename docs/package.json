@@ -46,7 +46,7 @@
     "material-ui-search-bar": "^1.0.0-beta.13",
     "moment": "^2.24.0",
     "moment-jalaali": "^0.8.3",
-    "next": "^8.0.1",
+    "next": "8.0.4",
     "next-cookies": "1.1.0",
     "next-images": "^1.0.4",
     "next-transpile-modules": "^2.0.0",
