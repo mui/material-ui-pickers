@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
+    "build:typescript": "tsc -p tsconfig.json && tsc -p tsconfig.js.json",
     "start": "next start"
   },
   "keywords": [],
