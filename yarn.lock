@@ -797,28 +797,28 @@
   resolved "https://registry.yarnpkg.com/@date-io/core/-/core-1.2.0.tgz#da3a46999b8f58dc1d471c4f5373c5bff44b5794"
   integrity sha512-lp77u8Q0ZP9a8M8CjskVZWxa5U4ixVC7mpsdPKr9kZEYlDPVtk1BXkJrr/Fz4Yt37jz8Al5zYOyr4Q+SMsJwCg==
 
-"@date-io/date-fns@^1.1.0":
+"@date-io/date-fns@^1.1.0", "@date-io/date-fns@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@date-io/date-fns/-/date-fns-1.2.0.tgz#7c58934a0ad50ba4a687189eb67373fd6da8b3bb"
   integrity sha512-YK4Udt74ipcTsz6Wb2Xmsn8Thbn/LDCb0qmf2k88ehEwe7h7WskeeBU/K+ky/A2Hst+rF9IDFfgbzCCBBxTHtg==
   dependencies:
     "@date-io/core" "^1.2.0"
 
-"@date-io/dayjs@^1.1.0":
+"@date-io/dayjs@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@date-io/dayjs/-/dayjs-1.2.0.tgz#09af1c3b22dbb3c9bb1e449c8b798bd911aa98c8"
   integrity sha512-TC/1JCIb5XZt77AeyWo9evJrjka/k86tzM41GUIWeFnCgzjJafUDKw8m4mbeU7K7DnY/MN855NB7sMTJSnRfSg==
   dependencies:
     "@date-io/core" "^1.2.0"
 
-"@date-io/jalaali@^1.0.4":
+"@date-io/jalaali@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@date-io/jalaali/-/jalaali-1.2.0.tgz#397f74e71b675d2bf95543023778c5ddff8b7a4b"
   integrity sha512-TKkTGveTmQavreHk980tLYOcNWf89ErEE0ZxaJJdP2Ilyd/RzMA8vhSBVASwCA2gwT87I/SbI2tfZKiCJpOYYg==
   dependencies:
     "@date-io/moment" "^1.2.0"
 
-"@date-io/luxon@^1.1.0":
+"@date-io/luxon@^1.1.0", "@date-io/luxon@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@date-io/luxon/-/luxon-1.2.0.tgz#92b7b8eafec8021e527e0c8e044a852a52a7cb29"
   integrity sha512-gLOgU60BzIG6rb88jneBw/F7G1+RG6Vq6fbu2VcX5zVHVNFbY8ZHAZ4Y/XmimmYXU0KESeceRC4hla/7exqXDw==
