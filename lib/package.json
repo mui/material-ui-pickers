@@ -69,7 +69,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
-    "@date-io/core": "^1.3.0",
+    "@date-io/core": "^1.2.0",
     "@date-io/date-fns": "^1.3.0",
     "@date-io/luxon": "^1.3.0",
     "@date-io/moment": "^1.3.0",
