@@ -1,5 +1,3 @@
-import '@date-io/date-fns/type'; // eslint-disable-line
-
 import React from 'react';
 import App from 'next/app';
 import cookies from 'next-cookies';
