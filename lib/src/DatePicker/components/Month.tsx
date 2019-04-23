@@ -40,7 +40,7 @@ export const useStyles = makeStyles<Theme>(
   { name: 'MuiPickersMonth' }
 );
 
-const Month: React.FC<MonthProps> = ({
+export const Month: React.FC<MonthProps> = ({
   selected,
   onSelect,
   disabled,
@@ -71,5 +71,7 @@ const Month: React.FC<MonthProps> = ({
     />
   );
 };
+
+Month.displayName = 'Month';
 
 export default Month;
