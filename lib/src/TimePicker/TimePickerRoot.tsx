@@ -83,17 +83,12 @@ interface TimePickerState {
 
 export class TimePickerRoot extends React.Component<TimePickerProps> {
   public static propTypes: any = {
-    date: PropTypes.object.isRequired,
-    onChange: PropTypes.func.isRequired,
-    utils: PropTypes.object.isRequired,
     ampm: PropTypes.bool,
     seconds: PropTypes.bool,
     minutesStep: PropTypes.number,
-    innerRef: PropTypes.any,
   };
 
   public static defaultProps = {
-    children: null,
     ampm: true,
     seconds: false,
     minutesStep: 1,
