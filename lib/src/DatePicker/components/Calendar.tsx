@@ -5,7 +5,7 @@ import DayWrapper from './DayWrapper';
 import CalendarHeader from './CalendarHeader';
 import EventListener from 'react-event-listener';
 import SlideTransition, { SlideDirection } from './SlideTransition';
-import withStyles, { WithStyles } from '@material-ui/styles/withStyles';
+import withStyles, { WithStyles } from '@material-ui/core/styles/withStyles';
 import { Theme } from '@material-ui/core';
 import { DateType } from '../../constants/prop-types';
 import { MaterialUiPickersDate } from '../../typings/date';
