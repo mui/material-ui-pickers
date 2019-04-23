@@ -70,7 +70,9 @@ const SlideTransition: React.SFC<SlideTransitionProps> = ({
   const transitionClasses = {
     exit: classes.slideExit,
     enterActive: classes.slideEnterActive,
+    // @ts-ignore
     enter: classes['slideEnter-' + slideDirection],
+    // @ts-ignore
     exitActive: classes['slideExitActiveLeft-' + slideDirection],
   };
 
