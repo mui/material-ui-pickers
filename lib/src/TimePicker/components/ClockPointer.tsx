@@ -3,7 +3,7 @@ import * as PropTypes from 'prop-types';
 import clsx from 'clsx';
 import ClockType, { ClockViewType } from '../../constants/ClockType';
 import { Theme } from '@material-ui/core';
-import { withStyles, createStyles, WithStyles } from '@material-ui/styles';
+import { withStyles, createStyles, WithStyles } from '@material-ui/core/styles';
 
 export interface ClockPointerProps extends WithStyles<typeof styles> {
   value: number;
