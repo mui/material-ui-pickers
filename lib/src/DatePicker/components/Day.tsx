@@ -42,14 +42,26 @@ export const useStyles = makeStyles(
 );
 
 export interface DayProps {
+  /** Day text */
   children: React.ReactNode;
+  /** Is today */
   current?: boolean;
+  /** Disabled? */
   disabled?: boolean;
+  /** Hidden? */
   hidden?: boolean;
+  /** Selected? */
   selected?: boolean;
 }
 
-const Day: React.FC<DayProps> = ({ children, disabled, hidden, current, selected, ...other }) => {
+export const Day: React.FC<DayProps> = ({
+  children,
+  disabled,
+  hidden,
+  current,
+  selected,
+  ...other
+}) => {
   const classes = useStyles();
   const className = clsx(classes.day, {
     [classes.hidden]: hidden,

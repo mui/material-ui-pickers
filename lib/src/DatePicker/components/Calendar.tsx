@@ -49,11 +49,17 @@ export interface CalendarProps
   extends OutterCalendarProps,
     WithUtilsProps,
     WithStyles<typeof styles, true> {
+  /** Calendar Date */
   date: MaterialUiPickersDate;
+  /** Calendar onChange */
   onChange: (date: MaterialUiPickersDate, isFinish?: boolean) => void;
+  /** Min date */
   minDate?: MaterialUiPickersDate;
+  /** Max date */
   maxDate?: MaterialUiPickersDate;
+  /** Disable past dates */
   disablePast?: boolean;
+  /** Disable future dates */
   disableFuture?: boolean;
 }
 
