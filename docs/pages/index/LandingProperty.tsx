@@ -8,16 +8,14 @@ interface LandingPropertyProps {
   icon: React.ComponentType<SvgIconProps>;
 }
 
-const useStyles = makeStyles<Theme>(theme => ({
+const useStyles = makeStyles<Theme>({
   propertyContainer: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     padding: 24,
     height: '100%',
-    [theme.breakpoints.down('md')]: {
-      margin: '0 16px',
-    },
+    margin: '0 16px',
   },
   icon: {
     marginBottom: 24,
@@ -28,7 +26,7 @@ const useStyles = makeStyles<Theme>(theme => ({
     lineHeight: 1.2,
     marginBottom: 24,
   },
-}));
+});
 
 export const LandingProperty: React.FC<LandingPropertyProps> = ({
   title,

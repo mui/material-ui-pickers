@@ -174,7 +174,9 @@ const Landing = () => {
 
         <Typography gutterBottom align="center">
           @material-ui/pickers is a MIT licensed open source project. We are intent on code quality
-          and project maintain. Entirely thanks to our awesome bakers.
+          and project maintain. You can support this project as a part of material-ui's{' '}
+          <a href="https://opencollective.com/material-ui">open collective</a>. Or support this
+          project directly via <a href="https://www.patreon.com/user?u=9897423"> Patreon </a>
         </Typography>
 
         <Typography align="center" className={classes.sponsorHeader} variant="h5" gutterBottom>
