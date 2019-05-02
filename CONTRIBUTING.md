@@ -20,7 +20,7 @@ Please make sure that we are using `develop` branch for active development. So y
 If you have an existing local repository, please update it before you start, to minimise the chance of merge conflicts.
 
 ```sh
-git remote add upstream git@github.com:dmtrKovalenko/@material-ui/pickers.git
+Ugit remote add upstream git@github.com:mui-org/@material-ui/pickers.git
 git checkout develop
 git pull upstream develop
 git checkout -b my-topic-branch
