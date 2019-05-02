@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import NavigationMenu from './NavigationMenu';
-import { version } from 'material-ui-pickers/package.json';
+import { version } from '@material-ui/pickers/package.json';
 import { Divider, Toolbar, Typography, Theme } from '@material-ui/core';
 import { createStyles, withStyles, WithStyles } from '@material-ui/styles';
 
@@ -40,7 +40,7 @@ const DrawerMenu: React.SFC<WithStyles<typeof styles>> = ({ classes }) => (
         target="_blank"
         rel="noopener noreferrer"
         style={{ textDecoration: 'none' }}
-        href="https://github.com/dmtrKovalenko/material-ui-pickers/releases"
+        href="https://github.com/dmtrKovalenko/@material-ui/pickers/releases"
       >
         <Typography variant="caption" color="textPrimary" className={classes.headerLink}>
           {version}
