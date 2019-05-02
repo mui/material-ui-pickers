@@ -77,12 +77,12 @@ Check out the [documentation website](https://material-ui-pickers.dev/)
 
 ### Recently updated?
 
-Changelog available [here](https://github.com/mui-org/@material-ui/pickers/releases)
+Changelog available [here](https://github.com/mui-org/material-ui-pickers/releases)
 
 ### Contributing
 
-For information about how to contribute, see the [CONTRIBUTING](https://github.com/mui-org/@material-ui/pickers/blob/master/CONTRIBUTING.md) file.
+For information about how to contribute, see the [CONTRIBUTING](https://github.com/mui-org/material-ui-pickers/blob/master/CONTRIBUTING.md) file.
 
 ### LICENSE
 
-The project is licensed under the terms of [MIT license](https://github.com/mui-org/@material-ui/pickers/blob/master/LICENSE)
+The project is licensed under the terms of [MIT license](https://github.com/mui-org/material-ui-pickers/blob/master/LICENSE)
