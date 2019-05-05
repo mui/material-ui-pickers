@@ -45,7 +45,7 @@ export interface BaseDatePickerProps extends OutterCalendarProps {
    */
   animateYearScrolling?: boolean;
   /**
-   * Array of views to show. Order of views will follow passed array. 
+   * Array of views to show. Order of views will follow passed array.
    * @default ['year', 'day']
    */
   views?: ('year' | 'month' | 'day')[];
