@@ -93,6 +93,8 @@
     "date-fns": "^2.0.0-alpha.27",
     "enzyme": "^3.8.0",
     "enzyme-adapter-react-16": "^1.9.1",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-react": "^7.12.4",
     "fs-extra": "^7.0.1",
     "full-icu": "^1.2.1",
     "glob": "^7.1.3",
