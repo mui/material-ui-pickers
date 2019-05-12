@@ -48,12 +48,12 @@ export interface BaseDatePickerProps extends OutterCalendarProps {
    * Array of views to show. Order of views will follow passed array.
    * @default ['year', 'day']
    */
-  views?: ('year' | 'month' | 'day')[];
+  // views?: ('year' | 'month' | 'day')[];
   /**
    * Initial view to show when date picker is open
    * @default 'day'
    */
-  openTo?: 'year' | 'month' | 'day';
+  // openTo?: 'year' | 'month' | 'day';
   /** Callback firing on year change */
   onYearChange?: (date: MaterialUiPickersDate) => void;
 }
