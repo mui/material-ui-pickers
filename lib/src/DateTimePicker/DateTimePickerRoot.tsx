@@ -63,9 +63,10 @@ const DateTimePickerRoot: React.FC<DateTimePickerProps> = ({
   onChange,
   onMonthChange,
   onYearChange,
+  openTo = 'date',
 }) => {
   const utils = useUtils();
-  const [openView, setOpenView] = React.useState<DateTimePickerViewType>('date');
+  const [openView, setOpenView] = React.useState<DateTimePickerViewType>(openTo);
   const { meridiemMode, handleMeridiemChange } = useMeridiemMode(date, ampm, onChange);
 
   const handleChangeAndOpenNext = React.useCallback(

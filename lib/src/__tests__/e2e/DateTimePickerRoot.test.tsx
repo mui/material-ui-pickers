@@ -70,4 +70,8 @@ describe('e2e - DateTimePicker', () => {
 
     expect(onChangeMock).toHaveBeenCalledWith(utilsToUse.date('2018-01-01T12:00:00.000Z'), false);
   });
+
+  it('Should open to hours view', () => {
+    expect(component.find('.MuiPickersClock-container')).toHaveLength(1);
+  });
 });
