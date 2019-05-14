@@ -5,8 +5,8 @@ import MonthSelection from '../DatePicker/components/MonthSelection';
 import { MaterialUiPickersDate } from '..';
 import { useUtils } from '../_shared/hooks/useUtils';
 import { BaseTimePickerProps } from '../TimePicker/TimePicker';
+import { BaseDatePickerProps } from '../DatePicker/DatePicker';
 import { datePickerDefaultProps } from '../constants/prop-types';
-import { BaseDatePickerProps } from '../DatePicker/DatePickerRoot';
 import { TimePickerView } from '../TimePicker/components/TimePickerView';
 
 const viewsMap = {
@@ -32,6 +32,7 @@ export type ToolbarComponentProps = BaseDatePickerProps &
 export interface PickerViewProps extends BaseDatePickerProps, BaseTimePickerProps {
   views: View[];
   openTo: View;
+  disableToolbar?: boolean;
   ToolbarComponent: React.ComponentType<ToolbarComponentProps>;
 }
 
@@ -85,7 +86,8 @@ export const Picker: React.FunctionComponent<PickerProps> = props => {
   const {
     date,
     ampm,
-    views = Object.keys(viewsMap) as View[],
+    views,
+    disableToolbar,
     disablePast,
     disableFuture,
     onChange,
@@ -114,13 +116,15 @@ export const Picker: React.FunctionComponent<PickerProps> = props => {
 
   return (
     <>
-      <ToolbarComponent
-        date={date}
-        onChange={onChange}
-        setOpenView={setOpenView}
-        openView={openView}
-        {...props}
-      />
+      {!disableToolbar && (
+        <ToolbarComponent
+          date={date}
+          onChange={onChange}
+          setOpenView={setOpenView}
+          openView={openView}
+          {...props}
+        />
+      )}
 
       {openView === 'year' && (
         <YearSelection

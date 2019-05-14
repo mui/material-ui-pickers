@@ -17,9 +17,7 @@ export type KeyboardDateTimePickerProps = KeyboardDateTimePickerProps;
 
 export type MaterialUiPickersDate = MaterialUiPickersDate;
 
-export { default as DatePicker } from './DatePicker';
-
-export { default as KeyboardDatePicker } from './DatePicker/KeyboardDatePicker';
+export { DatePicker, KeyboardDatePicker } from './DatePicker';
 
 export { TimePicker, KeyboardTimePicker } from './TimePicker';
 

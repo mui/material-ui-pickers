@@ -10,7 +10,7 @@ import { Omit } from '@material-ui/core';
 import { useUtils } from '../_shared/hooks/useUtils';
 import { MaterialUiPickersDate } from '../typings/date';
 import { convertToMeridiem } from '../_helpers/time-utils';
-import { BaseDatePickerProps } from '../DatePicker/DatePickerRoot';
+import { BaseDatePickerProps } from '../DatePicker/DatePickerToolbar';
 import { BaseTimePickerProps, useMeridiemMode } from '../TimePicker/TimePickerToolbar';
 
 export type DateTimePickerViewType = 'year' | 'date' | 'hours' | 'minutes';

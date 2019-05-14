@@ -1,6 +1,6 @@
 import * as PropTypes from 'prop-types';
 import { BaseTimePickerProps } from '../TimePicker/TimePicker';
-import { BaseDatePickerProps } from '../DatePicker/DatePickerRoot';
+import { BaseDatePickerProps } from '../DatePicker/DatePickerToolbar';
 
 const date = PropTypes.oneOfType([
   PropTypes.object,

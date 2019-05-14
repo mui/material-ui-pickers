@@ -49,6 +49,7 @@ export function makePurePicker<T extends any>({
       shouldDisableDate,
       value,
       variant,
+      disableToolbar,
       ...other
     } = props;
 
@@ -65,6 +66,7 @@ export function makePurePicker<T extends any>({
       >
         <Picker
           {...pickerProps}
+          disableToolbar={disableToolbar}
           ToolbarComponent={ToolbarComponent}
           ampm={ampm}
           views={views}

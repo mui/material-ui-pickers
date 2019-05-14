@@ -56,6 +56,7 @@ export function makeKeyboardPicker<T extends any>({
       shouldDisableDate,
       value,
       variant,
+      disableToolbar,
       ...other
     } = props;
 
@@ -73,6 +74,7 @@ export function makeKeyboardPicker<T extends any>({
         <Picker
           {...pickerProps}
           ToolbarComponent={ToolbarComponent}
+          disableToolbar={disableToolbar}
           ampm={ampm}
           views={views}
           openTo={openTo}
