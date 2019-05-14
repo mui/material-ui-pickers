@@ -1,5 +1,5 @@
 import * as PropTypes from 'prop-types';
-import { TimePickerProps } from '../TimePicker';
+import { TimePickerViewsProps } from '../TimePicker';
 import { DateTimePickerProps } from '../DateTimePicker';
 import { DatePickerProps } from '../DatePicker/DatePicker';
 
@@ -20,7 +20,7 @@ export const DomainPropTypes = { date, datePickerView };
 export const timePickerDefaultProps = {
   ampm: true,
   invalidDateMessage: 'Invalid Time Format',
-} as TimePickerProps;
+} as TimePickerViewsProps;
 
 export const datePickerDefaultProps = {
   openTo: 'day',

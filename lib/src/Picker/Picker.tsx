@@ -20,11 +20,14 @@ const viewsMap = {
 
 type View = keyof typeof viewsMap;
 
-interface PickerProps extends BaseDatePickerProps, BaseTimePickerProps {
-  date: MaterialUiPickersDate;
-  onChange: (date: MaterialUiPickersDate, isFinish?: boolean) => void;
+export interface PickerViewProps extends BaseDatePickerProps, BaseTimePickerProps {
   views: View[];
   openTo: View;
+}
+
+interface PickerProps extends PickerViewProps {
+  date: MaterialUiPickersDate;
+  onChange: (date: MaterialUiPickersDate, isFinish?: boolean) => void;
 }
 
 function useViews(
@@ -68,7 +71,7 @@ function useViews(
   return { handleChangeAndOpenNext, openView, setOpenView };
 }
 
-const Picker: React.FunctionComponent<PickerProps> = ({
+export const Picker: React.FunctionComponent<PickerProps> = ({
   date,
   ampm,
   views = Object.keys(viewsMap) as View[],
@@ -91,7 +94,6 @@ const Picker: React.FunctionComponent<PickerProps> = ({
   rightArrowButtonProps,
 }) => {
   const utils = useUtils();
-
   const { openView, handleChangeAndOpenNext } = useViews(views, openTo, onChange);
 
   const minDate = React.useMemo(() => utils.date(unparsedMinDate)!, [unparsedMinDate, utils]);
@@ -162,5 +164,3 @@ Picker.defaultProps = {
   ...datePickerDefaultProps,
   views: Object.keys(viewsMap),
 } as any;
-
-export default Picker;
