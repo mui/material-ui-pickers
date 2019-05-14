@@ -1,6 +1,6 @@
 import * as React from 'react';
 import KeyboardDateInput, { KeyboardDateInputProps } from '../_shared/KeyboardDateInput';
-import { Picker } from './Picker';
+import { Picker, ToolbarComponentProps } from './Picker';
 import { ExtendWrapper, Wrapper } from '../wrappers/Wrapper';
 import { StateHookOptions } from '../_shared/hooks/usePickerState';
 import { DateValidationProps } from '../_helpers/text-field-helper';
@@ -15,10 +15,12 @@ export type WrappedKeyboardPickerProps = DateValidationProps &
 
 export interface MakePickerOptions<T> {
   useOptions: (props: T) => StateHookOptions;
+  ToolbarComponent: React.ComponentType<ToolbarComponentProps>;
 }
 
 export function makeKeyboardPicker<T extends any>({
   useOptions,
+  ToolbarComponent,
 }: MakePickerOptions<T>): React.FC<WrappedKeyboardPickerProps & T> {
   function WrappedKeyboardPicker(props: WrappedKeyboardPickerProps & T) {
     const {
@@ -70,6 +72,7 @@ export function makeKeyboardPicker<T extends any>({
       >
         <Picker
           {...pickerProps}
+          ToolbarComponent={ToolbarComponent}
           ampm={ampm}
           views={views}
           openTo={openTo}

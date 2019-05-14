@@ -35,11 +35,11 @@ export { default as TimePickerView } from './TimePicker/components/TimePickerVie
 
 export { default as Clock } from './TimePicker/components/Clock';
 
-export { default as Picker } from './Picker/Picker';
+export { Picker } from './Picker/Picker';
 
-export { default as WrappedKeyboardPicker } from './Picker/WrappedKeyboardPicker';
+export { makePurePicker } from './Picker/WrappedPurePicker';
 
-export { default as PurePicker } from './Picker/WrappedPurePicker';
+export { makeKeyboardPicker } from './Picker/WrappedKeyboardPicker';
 
 export { validate } from './_helpers/text-field-helper';
 

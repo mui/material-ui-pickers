@@ -4,8 +4,8 @@ import YearSelection from '../DatePicker/components/YearSelection';
 import MonthSelection from '../DatePicker/components/MonthSelection';
 import { MaterialUiPickersDate } from '..';
 import { useUtils } from '../_shared/hooks/useUtils';
+import { BaseTimePickerProps } from '../TimePicker/TimePicker';
 import { datePickerDefaultProps } from '../constants/prop-types';
-import { BaseTimePickerProps } from '../TimePicker/TimePickerRoot';
 import { BaseDatePickerProps } from '../DatePicker/DatePickerRoot';
 import { TimePickerView } from '../TimePicker/components/TimePickerView';
 
@@ -20,9 +20,19 @@ const viewsMap = {
 
 type View = keyof typeof viewsMap;
 
+export type ToolbarComponentProps = BaseDatePickerProps &
+  BaseTimePickerProps & {
+    views: View[];
+    openView: View;
+    date: MaterialUiPickersDate;
+    setOpenView: (view: View) => void;
+    onChange: (date: MaterialUiPickersDate, isFinish?: boolean) => void;
+  };
+
 export interface PickerViewProps extends BaseDatePickerProps, BaseTimePickerProps {
   views: View[];
   openTo: View;
+  ToolbarComponent: React.ComponentType<ToolbarComponentProps>;
 }
 
 interface PickerProps extends PickerViewProps {
@@ -71,36 +81,47 @@ function useViews(
   return { handleChangeAndOpenNext, openView, setOpenView };
 }
 
-export const Picker: React.FunctionComponent<PickerProps> = ({
-  date,
-  ampm,
-  views = Object.keys(viewsMap) as View[],
-  disablePast,
-  disableFuture,
-  onChange,
-  openTo,
-  minutesStep,
-  minDate: unparsedMinDate,
-  maxDate: unparsedMaxDate,
-  animateYearScrolling,
-  leftArrowIcon,
-  rightArrowIcon,
-  renderDay,
-  shouldDisableDate,
-  allowKeyboardControl,
-  onMonthChange,
-  onYearChange,
-  leftArrowButtonProps,
-  rightArrowButtonProps,
-}) => {
+export const Picker: React.FunctionComponent<PickerProps> = props => {
+  const {
+    date,
+    ampm,
+    views = Object.keys(viewsMap) as View[],
+    disablePast,
+    disableFuture,
+    onChange,
+    openTo,
+    minutesStep,
+    minDate: unparsedMinDate,
+    maxDate: unparsedMaxDate,
+    animateYearScrolling,
+    leftArrowIcon,
+    rightArrowIcon,
+    renderDay,
+    shouldDisableDate,
+    allowKeyboardControl,
+    onMonthChange,
+    onYearChange,
+    leftArrowButtonProps,
+    rightArrowButtonProps,
+    ToolbarComponent,
+  } = props;
+
   const utils = useUtils();
-  const { openView, handleChangeAndOpenNext } = useViews(views, openTo, onChange);
+  const { openView, setOpenView, handleChangeAndOpenNext } = useViews(views, openTo, onChange);
 
   const minDate = React.useMemo(() => utils.date(unparsedMinDate)!, [unparsedMinDate, utils]);
   const maxDate = React.useMemo(() => utils.date(unparsedMaxDate)!, [unparsedMaxDate, utils]);
 
   return (
     <>
+      <ToolbarComponent
+        date={date}
+        onChange={onChange}
+        setOpenView={setOpenView}
+        openView={openView}
+        {...props}
+      />
+
       {openView === 'year' && (
         <YearSelection
           date={date}

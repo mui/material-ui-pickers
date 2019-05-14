@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Picker, PickerViewProps } from './Picker';
+import { Picker } from './Picker';
 import { BasePickerProps } from '../typings/BasePicker';
 import { MakePickerOptions } from './WrappedKeyboardPicker';
 import { ExtendWrapper, Wrapper } from '../wrappers/Wrapper';
@@ -7,14 +7,13 @@ import { usePickerState } from '../_shared/hooks/usePickerState';
 import { DateValidationProps } from '../_helpers/text-field-helper';
 import { PureDateInput, PureDateInputProps } from '../_shared/PureDateInput';
 
-export type BasePurePickerProps = DateValidationProps &
+export type WrappedPurePickerProps = DateValidationProps &
   BasePickerProps &
   ExtendWrapper<PureDateInputProps>;
 
-export type WrappedPurePickerProps = BasePurePickerProps & PickerViewProps;
-
 export function makePurePicker<T extends any>({
   useOptions,
+  ToolbarComponent,
 }: MakePickerOptions<T>): React.FC<WrappedPurePickerProps & T> {
   function WrappedPurePicker(props: WrappedPurePickerProps & T) {
     const {
@@ -66,6 +65,7 @@ export function makePurePicker<T extends any>({
       >
         <Picker
           {...pickerProps}
+          ToolbarComponent={ToolbarComponent}
           ampm={ampm}
           views={views}
           openTo={openTo}

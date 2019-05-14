@@ -3,7 +3,6 @@ import { useStyles as DayStyles } from '../DatePicker/components/Day';
 import { styles as ClockStyles } from '../TimePicker/components/Clock';
 import { styles as PickerToolbarStyles } from '../_shared/PickerToolbar';
 import { styles as ToolbarButtonStyles } from '../_shared/ToolbarButton';
-import { useStyles as TimePickerStyles } from '../TimePicker/TimePickerRoot';
 import { styles as CalendarStyles } from '../DatePicker/components/Calendar';
 import { useStyles as DatePickerRootStyles } from '../DatePicker/DatePickerRoot';
 import { useStyles as MuiPickersYearStyles } from '../DatePicker/components/Year';
@@ -11,6 +10,7 @@ import { useStyles as MuiPickersMonthStyles } from '../DatePicker/components/Mon
 import { StyleRules, StyleRulesCallback } from '@material-ui/core/styles/withStyles';
 import { styles as ClockPointerStyles } from '../TimePicker/components/ClockPointer';
 import { useStyles as ClockNumberStyles } from '../TimePicker/components/ClockNumber';
+import { useStyles as TimePickerToolbarStyles } from '../TimePicker/TimePickerToolbar';
 import { useStyles as DTTabsStyles } from '../DateTimePicker/components/DateTimePickerTabs';
 import { useStyles as CalendarHeaderStyles } from '../DatePicker/components/CalendarHeader';
 import { useStyles as SlideTransitionStyles } from '../DatePicker/components/SlideTransition';
@@ -41,7 +41,7 @@ export interface MuiPickersOverrides {
   MuiPickersYear?: Classes<typeof MuiPickersYearStyles>;
   MuiPickersMonthSelection?: Classes<typeof MuiPickersMonthSelectionStyles>;
   MuiPickersMonth?: Classes<typeof MuiPickersMonthStyles>;
-  MuiPickersTimePicker?: Classes<typeof TimePickerStyles>;
+  MuiPickersTimePickerToolbar?: Classes<typeof TimePickerToolbarStyles>;
   MuiPickersClock?: Classes<typeof ClockStyles>;
   MuiPickersClockNumber?: Classes<typeof ClockNumberStyles>;
   MuiPickersClockPointer?: Classes<typeof ClockPointerStyles>;
