@@ -19,6 +19,7 @@ export function makePurePicker<T extends any>({
     const {
       allowKeyboardControl,
       ampm,
+      hideTabs,
       animateYearScrolling,
       autoOk,
       disableFuture,
@@ -47,6 +48,8 @@ export function makePurePicker<T extends any>({
       rightArrowIcon,
       rightArrowButtonProps,
       shouldDisableDate,
+      dateRangeIcon,
+      timeIcon,
       value,
       variant,
       disableToolbar,
@@ -68,6 +71,7 @@ export function makePurePicker<T extends any>({
           {...pickerProps}
           disableToolbar={disableToolbar}
           ToolbarComponent={ToolbarComponent}
+          hideTabs={hideTabs}
           ampm={ampm}
           views={views}
           openTo={openTo}
@@ -83,6 +87,8 @@ export function makePurePicker<T extends any>({
           onMonthChange={onMonthChange}
           onYearChange={onYearChange}
           renderDay={renderDay}
+          dateRangeIcon={dateRangeIcon}
+          timeIcon={timeIcon}
           rightArrowIcon={rightArrowIcon}
           rightArrowButtonProps={rightArrowButtonProps}
           shouldDisableDate={shouldDisableDate}

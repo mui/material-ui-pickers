@@ -23,9 +23,9 @@ export interface BaseTimePickerProps {
 
 export interface TimePickerViewsProps extends BasePickerProps, BaseTimePickerProps {
   /** Array of views to show */
-  views?: TimePickerView[];
+  views?: ('hours' | 'minutes' | 'seconds')[];
   /** Open to timepicker */
-  openTo?: TimePickerView;
+  openTo?: 'hours' | 'minutes' | 'seconds';
 }
 
 export type TimePickerProps = WrappedPurePickerProps & TimePickerViewsProps;

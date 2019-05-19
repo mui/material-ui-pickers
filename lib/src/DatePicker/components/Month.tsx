@@ -1,7 +1,6 @@
 import * as React from 'react';
 import clsx from 'clsx';
 import Typography from '@material-ui/core/Typography';
-import { Theme } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 export interface MonthProps {
@@ -12,7 +11,7 @@ export interface MonthProps {
   value: any;
 }
 
-export const useStyles = makeStyles<Theme>(
+export const useStyles = makeStyles(
   theme => ({
     root: {
       flex: '1 0 33.33%',

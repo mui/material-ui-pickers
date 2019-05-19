@@ -1,7 +1,7 @@
 import * as React from 'react';
-import DateTimePicker, { DateTimePickerProps } from '../../DateTimePicker/DateTimePickerRoot';
 import { ReactWrapper } from 'enzyme';
 import { mount, utilsToUse } from '../test-utils';
+import { DateTimePicker, DateTimePickerProps } from '../../DateTimePicker/DateTimePicker';
 
 describe('e2e - DateTimePicker', () => {
   let component: ReactWrapper<DateTimePickerProps>;
@@ -11,7 +11,8 @@ describe('e2e - DateTimePicker', () => {
     jest.clearAllMocks();
     component = mount(
       <DateTimePicker
-        date={utilsToUse.date('2018-01-01T00:00:00.000Z')}
+        open
+        value={utilsToUse.date('2018-01-01T00:00:00.000Z')}
         onChange={onChangeMock}
         openTo="hours"
         leftArrowIcon="keyboard_arrow_left"
@@ -27,6 +28,7 @@ describe('e2e - DateTimePicker', () => {
   });
 
   it('Should render year selection', () => {
+    console.log(component.debug());
     component
       .find('ToolbarButton')
       .first()

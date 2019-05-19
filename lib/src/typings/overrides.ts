@@ -4,17 +4,18 @@ import { styles as ClockStyles } from '../TimePicker/components/Clock';
 import { styles as PickerToolbarStyles } from '../_shared/PickerToolbar';
 import { styles as ToolbarButtonStyles } from '../_shared/ToolbarButton';
 import { styles as CalendarStyles } from '../DatePicker/components/Calendar';
+import { useStyles as DTTabsStyles } from '../DateTimePicker/DateTimePickerTabs';
 import { useStyles as MuiPickersYearStyles } from '../DatePicker/components/Year';
 import { useStyles as DatePickerRootStyles } from '../DatePicker/DatePickerToolbar';
 import { useStyles as MuiPickersMonthStyles } from '../DatePicker/components/Month';
-import { StyleRules, StyleRulesCallback } from '@material-ui/core/styles/withStyles';
 import { styles as ClockPointerStyles } from '../TimePicker/components/ClockPointer';
+import { StyleRules, StyleRulesCallback } from '@material-ui/core/styles/withStyles';
 import { useStyles as ClockNumberStyles } from '../TimePicker/components/ClockNumber';
+import { useStyles as DTHeaderStyles } from '../DateTimePicker/DateTimePickerToolbar';
 import { useStyles as TimePickerToolbarStyles } from '../TimePicker/TimePickerToolbar';
-import { useStyles as DTTabsStyles } from '../DateTimePicker/components/DateTimePickerTabs';
 import { useStyles as CalendarHeaderStyles } from '../DatePicker/components/CalendarHeader';
 import { useStyles as SlideTransitionStyles } from '../DatePicker/components/SlideTransition';
-import { useStyles as DTHeaderStyles } from '../DateTimePicker/components/DateTimePickerHeader';
+import { useStyles as MuiPickerDTToolbarStyles } from '../DateTimePicker/DateTimePickerToolbar';
 import { useStyles as MuiPickersYearSelectionStyles } from '../DatePicker/components/YearSelection';
 import { useStyles as MuiPickersMonthSelectionStyles } from '../DatePicker/components/MonthSelection';
 
@@ -49,4 +50,5 @@ export interface MuiPickersOverrides {
   MuiPickersToolbar?: Classes<typeof PickerToolbarStyles>;
   MuiPickersToolbarButton?: Classes<typeof ToolbarButtonStyles>;
   MuiPickersDatePickerRoot?: Classes<typeof DatePickerRootStyles>;
+  MuiPickerDTToolbar?: Classes<typeof MuiPickerDTToolbarStyles>;
 }

@@ -21,9 +21,7 @@ export { DatePicker, KeyboardDatePicker } from './DatePicker';
 
 export { TimePicker, KeyboardTimePicker } from './TimePicker';
 
-export { default as DateTimePicker } from './DateTimePicker';
-
-export { default as KeyboardDateTimePicker } from './DateTimePicker/KeyboardDateTimePicker';
+export { DateTimePicker, KeyboardDateTimePicker } from './DateTimePicker';
 
 export { default as Calendar } from './DatePicker/components/Calendar';
 

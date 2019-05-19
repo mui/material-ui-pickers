@@ -26,6 +26,7 @@ export function makeKeyboardPicker<T extends any>({
     const {
       allowKeyboardControl,
       ampm,
+      hideTabs,
       animateYearScrolling,
       autoOk,
       disableFuture,
@@ -55,6 +56,8 @@ export function makeKeyboardPicker<T extends any>({
       rightArrowButtonProps,
       shouldDisableDate,
       value,
+      dateRangeIcon,
+      timeIcon,
       variant,
       disableToolbar,
       ...other
@@ -75,6 +78,7 @@ export function makeKeyboardPicker<T extends any>({
           {...pickerProps}
           ToolbarComponent={ToolbarComponent}
           disableToolbar={disableToolbar}
+          hideTabs={hideTabs}
           ampm={ampm}
           views={views}
           openTo={openTo}
@@ -90,6 +94,8 @@ export function makeKeyboardPicker<T extends any>({
           onMonthChange={onMonthChange}
           onYearChange={onYearChange}
           renderDay={renderDay}
+          dateRangeIcon={dateRangeIcon}
+          timeIcon={timeIcon}
           rightArrowIcon={rightArrowIcon}
           rightArrowButtonProps={rightArrowButtonProps}
           shouldDisableDate={shouldDisableDate}

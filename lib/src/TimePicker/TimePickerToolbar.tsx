@@ -9,7 +9,6 @@ import { MaterialUiPickersDate } from '../typings/date';
 import { ToolbarComponentProps } from '../Picker/Picker';
 import { convertToMeridiem } from '../_helpers/time-utils';
 import { useTheme, makeStyles } from '@material-ui/core/styles';
-import { MeridiemMode } from '../DateTimePicker/components/DateTimePickerHeader';
 
 export const useStyles = makeStyles(
   {
@@ -58,10 +57,10 @@ export function useMeridiemMode(
   onChange: (date: MaterialUiPickersDate, isFinished?: boolean | undefined) => void
 ) {
   const utils = useUtils();
-  const meridiemMode: MeridiemMode = utils.getHours(date) >= 12 ? 'pm' : 'am';
+  const meridiemMode: 'am' | 'pm' = utils.getHours(date) >= 12 ? 'pm' : 'am';
 
   const handleMeridiemChange = React.useCallback(
-    (mode: MeridiemMode) => {
+    (mode: 'am' | 'pm') => {
       const timeWithMeridiem = convertToMeridiem(date, mode, Boolean(ampm), utils);
       onChange(timeWithMeridiem, false);
     },

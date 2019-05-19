@@ -1,6 +1,6 @@
 import * as PropTypes from 'prop-types';
 import { BaseTimePickerProps } from '../TimePicker/TimePicker';
-import { BaseDatePickerProps } from '../DatePicker/DatePickerToolbar';
+import { BaseDatePickerProps } from '../DatePicker/DatePicker';
 
 const date = PropTypes.oneOfType([
   PropTypes.object,
@@ -22,8 +22,6 @@ export const timePickerDefaultProps = {
 } as BaseTimePickerProps;
 
 export const datePickerDefaultProps = {
-  openTo: 'day',
-  views: ['year', 'day'],
   minDate: new Date('1900-01-01'),
   maxDate: new Date('2100-01-01'),
   invalidDateMessage: 'Invalid Date Format',
@@ -36,6 +34,4 @@ export const dateTimePickerDefaultProps = {
   ...timePickerDefaultProps,
   ...datePickerDefaultProps,
   showTabs: true,
-  openTo: undefined,
-  views: undefined as never,
 } as BaseTimePickerProps & BaseDatePickerProps;

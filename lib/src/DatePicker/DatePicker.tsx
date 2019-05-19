@@ -42,9 +42,9 @@ export interface BaseDatePickerProps extends OutterCalendarProps {
 
 export interface DatePickerViewsProps extends BasePickerProps, BaseDatePickerProps {
   /** Array of views to show */
-  views?: DatePickerView[];
+  views?: ('year' | 'date' | 'month')[];
   /** Open to DatePicker */
-  openTo?: DatePickerView;
+  openTo?: 'year' | 'date' | 'month';
 }
 
 export type DatePickerProps = WrappedPurePickerProps & DatePickerViewsProps;

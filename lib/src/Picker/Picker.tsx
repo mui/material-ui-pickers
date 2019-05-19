@@ -3,7 +3,9 @@ import Calendar from '../DatePicker/components/Calendar';
 import YearSelection from '../DatePicker/components/YearSelection';
 import MonthSelection from '../DatePicker/components/MonthSelection';
 import { MaterialUiPickersDate } from '..';
+import { useViews } from '../_shared/hooks/useViews';
 import { useUtils } from '../_shared/hooks/useUtils';
+import { makeStyles } from '@material-ui/core/styles';
 import { BaseTimePickerProps } from '../TimePicker/TimePicker';
 import { BaseDatePickerProps } from '../DatePicker/DatePicker';
 import { datePickerDefaultProps } from '../constants/prop-types';
@@ -18,22 +20,30 @@ const viewsMap = {
   seconds: TimePickerView,
 };
 
-type View = keyof typeof viewsMap;
+export type PickerView = keyof typeof viewsMap;
 
 export type ToolbarComponentProps = BaseDatePickerProps &
   BaseTimePickerProps & {
-    views: View[];
-    openView: View;
+    views: PickerView[];
+    openView: PickerView;
     date: MaterialUiPickersDate;
-    setOpenView: (view: View) => void;
+    setOpenView: (view: PickerView) => void;
     onChange: (date: MaterialUiPickersDate, isFinish?: boolean) => void;
+    // TODO move out, cause it is DateTimePickerOnly
+    hideTabs?: boolean;
+    dateRangeIcon?: React.ReactNode;
+    timeIcon?: React.ReactNode;
   };
 
 export interface PickerViewProps extends BaseDatePickerProps, BaseTimePickerProps {
-  views: View[];
-  openTo: View;
+  views: PickerView[];
+  openTo: PickerView;
   disableToolbar?: boolean;
   ToolbarComponent: React.ComponentType<ToolbarComponentProps>;
+  // TODO move out, cause it is DateTimePickerOnly
+  hideTabs?: boolean;
+  dateRangeIcon?: React.ReactNode;
+  timeIcon?: React.ReactNode;
 }
 
 interface PickerProps extends PickerViewProps {
@@ -41,46 +51,14 @@ interface PickerProps extends PickerViewProps {
   onChange: (date: MaterialUiPickersDate, isFinish?: boolean) => void;
 }
 
-function useViews(
-  views: View[],
-  openTo: View,
-  onChange: (date: MaterialUiPickersDate, isFinish?: boolean) => void
-) {
-  const [openView, setOpenView] = React.useState(
-    openTo && views.includes(openTo) ? openTo : views[0]
-  );
-
-  const getNextAvailableView = React.useCallback(
-    (nextView: View) => {
-      if (views.includes(nextView)) {
-        return nextView;
-      }
-
-      return views[views.indexOf(openView!) + 1];
-    },
-    [openView, views]
-  );
-
-  const handleChangeAndOpenNext = React.useCallback(
-    (nextView: View) => {
-      return (date: MaterialUiPickersDate, isFinish?: boolean) => {
-        const nextViewToOpen = getNextAvailableView(nextView);
-        if (isFinish && nextViewToOpen) {
-          // do not close picker if needs to show next view
-          onChange(date, false);
-          setOpenView(nextViewToOpen);
-
-          return;
-        }
-
-        onChange(date, isFinish);
-      };
-    },
-    [getNextAvailableView, onChange]
-  );
-
-  return { handleChangeAndOpenNext, openView, setOpenView };
-}
+const useStyles = makeStyles({
+  pickerView: {
+    minHeight: 305,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+  },
+});
 
 export const Picker: React.FunctionComponent<PickerProps> = props => {
   const {
@@ -90,9 +68,12 @@ export const Picker: React.FunctionComponent<PickerProps> = props => {
     disableToolbar,
     disablePast,
     disableFuture,
+    hideTabs,
     onChange,
     openTo,
     minutesStep,
+    dateRangeIcon,
+    timeIcon,
     minDate: unparsedMinDate,
     maxDate: unparsedMaxDate,
     animateYearScrolling,
@@ -109,6 +90,7 @@ export const Picker: React.FunctionComponent<PickerProps> = props => {
   } = props;
 
   const utils = useUtils();
+  const classes = useStyles();
   const { openView, setOpenView, handleChangeAndOpenNext } = useViews(views, openTo, onChange);
 
   const minDate = React.useMemo(() => utils.date(unparsedMinDate)!, [unparsedMinDate, utils]);
@@ -122,65 +104,70 @@ export const Picker: React.FunctionComponent<PickerProps> = props => {
           onChange={onChange}
           setOpenView={setOpenView}
           openView={openView}
+          hideTabs={hideTabs}
+          dateRangeIcon={dateRangeIcon}
+          timeIcon={timeIcon}
           {...props}
         />
       )}
 
-      {openView === 'year' && (
-        <YearSelection
-          date={date}
-          onChange={handleChangeAndOpenNext('month')}
-          minDate={minDate}
-          maxDate={maxDate}
-          disablePast={disablePast}
-          disableFuture={disableFuture}
-          onYearChange={onYearChange}
-          animateYearScrolling={animateYearScrolling}
-        />
-      )}
+      <div className={classes.pickerView}>
+        {openView === 'year' && (
+          <YearSelection
+            date={date}
+            onChange={handleChangeAndOpenNext('month')}
+            minDate={minDate}
+            maxDate={maxDate}
+            disablePast={disablePast}
+            disableFuture={disableFuture}
+            onYearChange={onYearChange}
+            animateYearScrolling={animateYearScrolling}
+          />
+        )}
 
-      {openView === 'month' && (
-        <MonthSelection
-          date={date}
-          onChange={handleChangeAndOpenNext('date')}
-          minDate={minDate}
-          maxDate={maxDate}
-          disablePast={disablePast}
-          disableFuture={disableFuture}
-          onMonthChange={onMonthChange}
-        />
-      )}
+        {openView === 'month' && (
+          <MonthSelection
+            date={date}
+            onChange={handleChangeAndOpenNext('date')}
+            minDate={minDate}
+            maxDate={maxDate}
+            disablePast={disablePast}
+            disableFuture={disableFuture}
+            onMonthChange={onMonthChange}
+          />
+        )}
 
-      {openView === 'date' && (
-        <Calendar
-          date={date}
-          onChange={handleChangeAndOpenNext('hours')}
-          onMonthChange={onMonthChange}
-          disablePast={disablePast}
-          disableFuture={disableFuture}
-          minDate={minDate}
-          maxDate={maxDate}
-          leftArrowIcon={leftArrowIcon}
-          leftArrowButtonProps={leftArrowButtonProps}
-          rightArrowIcon={rightArrowIcon}
-          rightArrowButtonProps={rightArrowButtonProps}
-          renderDay={renderDay}
-          shouldDisableDate={shouldDisableDate}
-          allowKeyboardControl={allowKeyboardControl}
-        />
-      )}
+        {openView === 'date' && (
+          <Calendar
+            date={date}
+            onChange={handleChangeAndOpenNext('hours')}
+            onMonthChange={onMonthChange}
+            disablePast={disablePast}
+            disableFuture={disableFuture}
+            minDate={minDate}
+            maxDate={maxDate}
+            leftArrowIcon={leftArrowIcon}
+            leftArrowButtonProps={leftArrowButtonProps}
+            rightArrowIcon={rightArrowIcon}
+            rightArrowButtonProps={rightArrowButtonProps}
+            renderDay={renderDay}
+            shouldDisableDate={shouldDisableDate}
+            allowKeyboardControl={allowKeyboardControl}
+          />
+        )}
 
-      {(openView === 'hours' || openView === 'minutes' || openView === 'seconds') && (
-        <TimePickerView
-          date={date}
-          ampm={ampm}
-          type={openView}
-          minutesStep={minutesStep}
-          onHourChange={handleChangeAndOpenNext('minutes')}
-          onMinutesChange={handleChangeAndOpenNext('seconds')}
-          onSecondsChange={handleChangeAndOpenNext('seconds')}
-        />
-      )}
+        {(openView === 'hours' || openView === 'minutes' || openView === 'seconds') && (
+          <TimePickerView
+            date={date}
+            ampm={ampm}
+            type={openView}
+            minutesStep={minutesStep}
+            onHourChange={handleChangeAndOpenNext('minutes')}
+            onMinutesChange={handleChangeAndOpenNext('seconds')}
+            onSecondsChange={handleChangeAndOpenNext(null)}
+          />
+        )}
+      </div>
     </>
   );
 };
