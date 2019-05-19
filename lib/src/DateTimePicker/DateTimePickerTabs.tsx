@@ -43,9 +43,6 @@ export const useStyles = makeStyles(
         color: theme.palette.getContrastText(tabsBackground),
         backgroundColor: tabsBackground,
       },
-      tab: {
-        margin: 0,
-      },
     };
   },
   { name: 'MuiPickerDTTabs' }
@@ -75,8 +72,8 @@ export const DateTimePickerTabs: React.SFC<DateTimePickerTabsProps> = ({
         className={classes.tabs}
         indicatorColor={indicatorColor}
       >
-        <Tab value="date" className={classes.tab} icon={<>{dateRangeIcon}</>} />
-        <Tab value="time" className={classes.tab} icon={<>{timeIcon}</>} />
+        <Tab value="date" icon={<>{dateRangeIcon}</>} />
+        <Tab value="time" icon={<>{timeIcon}</>} />
       </Tabs>
     </Paper>
   );

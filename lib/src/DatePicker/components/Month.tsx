@@ -27,11 +27,11 @@ export const useStyles = makeStyles(
         fontWeight: theme.typography.fontWeightMedium,
       },
     },
-    selected: {
+    monthSelected: {
       color: theme.palette.primary.main,
       fontWeight: theme.typography.fontWeightMedium,
     },
-    disabled: {
+    monthDisabled: {
       pointerEvents: 'none',
       color: theme.palette.text.hint,
     },
@@ -57,8 +57,8 @@ export const Month: React.FC<MonthProps> = ({
       role="button"
       component="div"
       className={clsx(classes.root, {
-        [classes.selected]: selected,
-        [classes.disabled]: disabled,
+        [classes.monthSelected]: selected,
+        [classes.monthDisabled]: disabled,
       })}
       tabIndex={disabled ? -1 : 0}
       onClick={handleSelection}
