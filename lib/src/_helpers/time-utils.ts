@@ -57,6 +57,13 @@ export const getMinutes = (offsetX: number, offsetY: number, step = 1) => {
   return value;
 };
 
+export const getMeridiem = (
+  date: MaterialUiPickersDate,
+  utils: IUtils<MaterialUiPickersDate>
+): 'am' | 'pm' => {
+  return utils.getHours(date) >= 12 ? 'pm' : 'am';
+};
+
 export const convertToMeridiem = (
   time: MaterialUiPickersDate,
   meridiem: 'am' | 'pm',
