@@ -46,7 +46,7 @@ export const DateTimePickerToolbar: React.FC<ToolbarComponentProps> = ({
     <>
       <PickerToolbar className={classes.toolbar}>
         <Grid container justify="center" wrap="nowrap">
-          <Grid xs={5} container direction="row">
+          <Grid item container xs={5} direction="row">
             <ToolbarButton
               variant="subtitle1"
               onClick={() => setOpenView('year')}
@@ -61,7 +61,7 @@ export const DateTimePickerToolbar: React.FC<ToolbarComponentProps> = ({
             />
           </Grid>
 
-          <Grid xs={6} container justify="center" alignItems="flex-end">
+          <Grid item container xs={6} justify="center" alignItems="flex-end">
             <ToolbarButton
               variant="h3"
               onClick={() => setOpenView('hours')}
