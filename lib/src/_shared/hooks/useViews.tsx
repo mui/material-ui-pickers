@@ -31,7 +31,8 @@ export function useViews(
           setOpenView(nextViewToOpen);
           return;
         }
-        onChange(date, isFinish);
+
+        onChange(date, Boolean(isFinish));
       };
     },
     [getNextAvailableView, onChange]

@@ -79,7 +79,7 @@ describe('e2e - TimePicker', () => {
       .at(3)
       .simulate('click');
 
-    toHaveBeenCalledExceptMoment(onChangeMock, [utilsToUse.date('2018-01-01T12:00:00.000'), false]);
+    toHaveBeenCalledExceptMoment(onChangeMock, [utilsToUse.date('2018-01-01T12:00:00.000')]);
   });
 });
 
@@ -124,6 +124,6 @@ describe('e2e - TimePicker with seconds', () => {
       ],
     });
 
-    toHaveBeenCalledExceptMoment(onChangeMock, [utilsToUse.date('2018-01-01T00:00:53.000'), false]);
+    toHaveBeenCalledExceptMoment(onChangeMock, [utilsToUse.date('2018-01-01T00:00:53.000')]);
   });
 });

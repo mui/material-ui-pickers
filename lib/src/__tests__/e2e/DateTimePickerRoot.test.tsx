@@ -28,7 +28,6 @@ describe('e2e - DateTimePicker', () => {
   });
 
   it('Should render year selection', () => {
-    console.log(component.debug());
     component
       .find('ToolbarButton')
       .first()
@@ -70,6 +69,6 @@ describe('e2e - DateTimePicker', () => {
       return;
     }
 
-    expect(onChangeMock).toHaveBeenCalledWith(utilsToUse.date('2018-01-01T12:00:00.000Z'), false);
+    expect(onChangeMock).toHaveBeenCalledWith(utilsToUse.date('2018-01-01T12:00:00.000Z'));
   });
 });
