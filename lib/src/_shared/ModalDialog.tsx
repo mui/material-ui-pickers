@@ -94,6 +94,7 @@ ModalDialog.displayName = 'ModalDialog';
 export const styles = createStyles({
   dialogRoot: {
     minWidth: DIALOG_WIDTH,
+    maxWidth: DIALOG_WIDTH_WIDER,
   },
   dialogRootWider: {
     minWidth: DIALOG_WIDTH_WIDER,

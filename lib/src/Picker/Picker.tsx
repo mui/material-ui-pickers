@@ -51,14 +51,17 @@ interface PickerProps extends PickerViewProps {
   onChange: (date: MaterialUiPickersDate, isFinish?: boolean) => void;
 }
 
-const useStyles = makeStyles({
-  pickerView: {
-    minHeight: 305,
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
+const useStyles = makeStyles(
+  {
+    pickerView: {
+      minHeight: 305,
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+    },
   },
-});
+  { name: 'MuiPickersBasePicker' }
+);
 
 export const Picker: React.FunctionComponent<PickerProps> = props => {
   const {
