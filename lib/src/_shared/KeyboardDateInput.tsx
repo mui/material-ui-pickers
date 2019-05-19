@@ -15,7 +15,7 @@ export interface KeyboardDateInputProps
   onClick?: () => void;
   validationError?: React.ReactNode;
   inputValue: string;
-  InputProps: TextFieldProps['InputProps'];
+  InputProps?: TextFieldProps['InputProps'];
   /** Pass material-ui text field variant down, bypass internal variant prop */
   inputVariant?: TextFieldProps['variant'];
   /**
