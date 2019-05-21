@@ -5,7 +5,7 @@ import DayWrapper from './DayWrapper';
 import CalendarHeader from './CalendarHeader';
 import EventListener from 'react-event-listener';
 import SlideTransition, { SlideDirection } from './SlideTransition';
-import { Theme } from '@material-ui/core';
+import { Theme, CircularProgress } from '@material-ui/core';
 import { handleKeydown } from '../../_helpers/utils';
 import { MaterialUiPickersDate } from '../../typings/date';
 import { IconButtonProps } from '@material-ui/core/IconButton';
@@ -43,7 +43,7 @@ export interface OutterCalendarProps {
   /** Disable specific date */
   shouldDisableDate?: (day: MaterialUiPickersDate) => boolean;
   /** Callback firing on month change */
-  onMonthChange?: (date: MaterialUiPickersDate) => void;
+  onMonthChange?: (date: MaterialUiPickersDate) => void | Promise<void>;
 }
 
 export interface CalendarProps
@@ -68,6 +68,7 @@ export interface CalendarState {
   slideDirection: SlideDirection;
   currentMonth: MaterialUiPickersDate;
   lastDate?: MaterialUiPickersDate;
+  loadingQueue: number;
 }
 
 export class Calendar extends React.Component<CalendarProps, CalendarState> {
@@ -110,6 +111,7 @@ export class Calendar extends React.Component<CalendarProps, CalendarState> {
   public state: CalendarState = {
     slideDirection: 'left',
     currentMonth: this.props.utils.startOfMonth(this.props.date),
+    loadingQueue: 0,
   };
 
   public componentDidMount() {
@@ -136,12 +138,17 @@ export class Calendar extends React.Component<CalendarProps, CalendarState> {
     this.props.onChange(utils.mergeDateAndTime(day, date), isFinish);
   };
 
-  public handleChangeMonth = (newMonth: MaterialUiPickersDate, slideDirection: SlideDirection) => {
-    if (this.props.onMonthChange) {
-      this.props.onMonthChange(newMonth);
-    }
-
+  public handleChangeMonth = async (
+    newMonth: MaterialUiPickersDate,
+    slideDirection: SlideDirection
+  ) => {
     this.setState({ currentMonth: newMonth, slideDirection });
+
+    if (this.props.onMonthChange) {
+      this.pushToLoadingQueue();
+      await this.props.onMonthChange(newMonth);
+      this.popFromLoadingQueue();
+    }
   };
 
   public validateMinMaxDate = (day: MaterialUiPickersDate) => {
@@ -284,17 +291,41 @@ export class Calendar extends React.Component<CalendarProps, CalendarState> {
           transKey={currentMonth!.toString()}
           className={classes.transitionContainer}
         >
-          <div>{this.renderWeeks()}</div>
+          <>
+            {(this.state.loadingQueue > 0 && (
+              <div className={classes.progressContainer}>
+                <CircularProgress />
+              </div>
+            )) || <div>{this.renderWeeks()}</div>}
+          </>
         </SlideTransition>
       </React.Fragment>
     );
   }
+
+  private pushToLoadingQueue = () => {
+    const loadingQueue = this.state.loadingQueue + 1;
+    this.setState({ loadingQueue });
+  };
+
+  private popFromLoadingQueue = () => {
+    let loadingQueue = this.state.loadingQueue;
+    loadingQueue = loadingQueue <= 0 ? 0 : loadingQueue - 1;
+    this.setState({ loadingQueue });
+  };
 }
 
 export const styles = (theme: Theme) => ({
   transitionContainer: {
     minHeight: 36 * 6,
     marginTop: theme.spacing(1.5),
+  },
+  progressContainer: {
+    width: '100%',
+    height: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   week: {
     display: 'flex',
