@@ -53,6 +53,7 @@ export function makePurePicker<T extends any>({
       value,
       variant,
       disableToolbar,
+      loadingIndicator,
       ...other
     } = props;
 
@@ -92,6 +93,7 @@ export function makePurePicker<T extends any>({
           rightArrowIcon={rightArrowIcon}
           rightArrowButtonProps={rightArrowButtonProps}
           shouldDisableDate={shouldDisableDate}
+          loadingIndicator={loadingIndicator}
         />
       </Wrapper>
     );

@@ -45,6 +45,8 @@ export interface OutterCalendarProps {
   shouldDisableDate?: (day: MaterialUiPickersDate) => boolean;
   /** Callback firing on month change */
   onMonthChange?: (date: MaterialUiPickersDate) => void | Promise<void>;
+  /** Custom loading indicator  */
+  loadingIndicator?: JSX.Element;
 }
 
 export interface CalendarProps
@@ -270,7 +272,9 @@ export class Calendar extends React.Component<CalendarProps, CalendarState> {
       leftArrowIcon,
       rightArrowButtonProps,
       rightArrowIcon,
+      loadingIndicator,
     } = this.props;
+    const loadingElement = loadingIndicator ? loadingIndicator : <CircularProgress />;
 
     return (
       <React.Fragment>
@@ -295,9 +299,7 @@ export class Calendar extends React.Component<CalendarProps, CalendarState> {
         >
           <>
             {(this.state.loadingQueue > 0 && (
-              <div className={classes.progressContainer}>
-                <CircularProgress />
-              </div>
+              <div className={classes.progressContainer}>{loadingElement}</div>
             )) || <div>{this.renderWeeks()}</div>}
           </>
         </SlideTransition>
