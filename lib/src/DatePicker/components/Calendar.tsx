@@ -138,18 +138,16 @@ export class Calendar extends React.Component<CalendarProps, CalendarState> {
     this.props.onChange(utils.mergeDateAndTime(day, date), isFinish);
   };
 
-  public handleChangeMonth = async (
-    newMonth: MaterialUiPickersDate,
-    slideDirection: SlideDirection
-  ) => {
+  public handleChangeMonth = (newMonth: MaterialUiPickersDate, slideDirection: SlideDirection) => {
     this.setState({ currentMonth: newMonth, slideDirection });
 
     if (this.props.onMonthChange) {
       const returnVal = this.props.onMonthChange(newMonth);
       if (returnVal) {
         this.pushToLoadingQueue();
-        await returnVal;
-        this.popFromLoadingQueue();
+        returnVal.then(() => {
+          this.popFromLoadingQueue();
+        });
       }
     }
   };
