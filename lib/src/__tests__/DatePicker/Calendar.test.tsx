@@ -23,40 +23,6 @@ describe('Calendar', () => {
     component.find('CalendarHeader').prop<any>('onMonthChange')(utilsToUse.date());
     expect(onMonthChangeMock).toHaveBeenCalled();
   });
-
-  it('Should not display loading indicator when synchronous', () => {
-    component.find('CalendarHeader').prop<any>('onMonthChange')(utilsToUse.date());
-    expect(component.state('loadingQueue')).toEqual(0);
-  });
-
-  it('Should display loading indicator while loading asynchronous data', () => {
-    const onMonthChangeAsyncMock = jest.fn(async () => {
-      await new Promise(() => {});
-    });
-
-    component.setProps({ ...component.props, onMonthChange: onMonthChangeAsyncMock });
-    component.find('CalendarHeader').prop<any>('onMonthChange')(utilsToUse.date());
-    expect(component.state('loadingQueue')).toEqual(1);
-  });
-
-  it('Should hide display loading indicator after loading asynchronous data', async () => {
-    const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
-    const promise = sleep(50);
-    const onMonthChangeAsyncMock = jest.fn(async () => {
-      await promise;
-    });
-
-    component.setProps({ ...component.props, onMonthChange: onMonthChangeAsyncMock });
-    component.find('CalendarHeader').prop<any>('onMonthChange')(utilsToUse.date());
-    await sleep(100);
-    expect(component.state('loadingQueue')).toEqual(0);
-  });
-
-  it('Should not display loading indicator if callback is undefined', () => {
-    component.setProps({ ...component.props, onMonthChange: undefined });
-    component.find('CalendarHeader').prop<any>('onMonthChange')(utilsToUse.date());
-    expect(component.state('loadingQueue')).toEqual(0);
-  });
 });
 
 describe('Calendar - disabled selected date on mount', () => {
