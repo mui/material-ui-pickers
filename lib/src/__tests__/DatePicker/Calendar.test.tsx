@@ -5,7 +5,6 @@ import { Calendar, CalendarProps } from '../../DatePicker/components/Calendar';
 
 describe('Calendar', () => {
   let component: ShallowWrapper<CalendarProps>;
-
   const onChangeMock = jest.fn();
   const onMonthChangeMock = jest.fn();
 
@@ -23,6 +22,21 @@ describe('Calendar', () => {
   it('Should swipe between month', () => {
     component.find('CalendarHeader').prop<any>('onMonthChange')(utilsToUse.date());
     expect(onMonthChangeMock).toHaveBeenCalled();
+  });
+
+  it('Should not display loading indicator when synchronous', () => {
+    component.find('CalendarHeader').prop<any>('onMonthChange')(utilsToUse.date());
+    expect(component.state('loadingQueue')).toEqual(0);
+  });
+
+  it('Should display loading indicator while loading asynchronous data', () => {
+    const onMonthChangeAsyncMock = jest.fn(async () => {
+      await new Promise(() => {});
+    });
+
+    component.setProps({ ...component.props, onMonthChange: onMonthChangeAsyncMock });
+    component.find('CalendarHeader').prop<any>('onMonthChange')(utilsToUse.date());
+    expect(component.state('loadingQueue')).toEqual(1);
   });
 });
 
