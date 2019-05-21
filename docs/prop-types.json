@@ -482,7 +482,7 @@
         "name": "OutterCalendarProps"
       },
       "required": false,
-      "type": { "name": "(date: any) => void" }
+      "type": { "name": "(date: any) => void | Promise<void>" }
     }
   },
   "KeyboardDatePicker": {
@@ -955,7 +955,7 @@
         "name": "OutterCalendarProps"
       },
       "required": false,
-      "type": { "name": "(date: any) => void" }
+      "type": { "name": "(date: any) => void | Promise<void>" }
     }
   },
   "TimePicker": {
@@ -2007,7 +2007,7 @@
         "name": "OutterCalendarProps"
       },
       "required": false,
-      "type": { "name": "(date: any) => void" }
+      "type": { "name": "(date: any) => void | Promise<void>" }
     }
   },
   "KeyboardDateTimePicker": {
@@ -2513,7 +2513,7 @@
         "name": "OutterCalendarProps"
       },
       "required": false,
-      "type": { "name": "(date: any) => void" }
+      "type": { "name": "(date: any) => void | Promise<void>" }
     }
   },
   "Calendar": {
@@ -2671,7 +2671,7 @@
         "name": "OutterCalendarProps"
       },
       "required": false,
-      "type": { "name": "(date: any) => void" }
+      "type": { "name": "(date: any) => void | Promise<void>" }
     }
   },
   "TimePickerView": {
