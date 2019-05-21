@@ -145,9 +145,12 @@ export class Calendar extends React.Component<CalendarProps, CalendarState> {
     this.setState({ currentMonth: newMonth, slideDirection });
 
     if (this.props.onMonthChange) {
-      this.pushToLoadingQueue();
-      await this.props.onMonthChange(newMonth);
-      this.popFromLoadingQueue();
+      const returnVal = this.props.onMonthChange(newMonth);
+      if (returnVal) {
+        this.pushToLoadingQueue();
+        await returnVal;
+        this.popFromLoadingQueue();
+      }
     }
   };
 
