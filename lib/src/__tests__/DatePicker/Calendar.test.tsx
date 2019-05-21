@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ShallowWrapper } from 'enzyme';
-import { shallowRender, utilsToUse, shallow } from '../test-utils';
+import { shallowRender, utilsToUse } from '../test-utils';
 import { Calendar, CalendarProps } from '../../DatePicker/components/Calendar';
 
 describe('Calendar', () => {
