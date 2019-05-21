@@ -2,7 +2,6 @@ import * as React from 'react';
 import { ReactWrapper } from 'enzyme';
 import { mount, utilsToUse } from '../test-utils';
 import { DatePicker, DatePickerProps } from '../../DatePicker/DatePicker';
-import CalendarHeader from '../../DatePicker/components/CalendarHeader';
 
 describe('e2e - DatePicker default year format', () => {
   let component: ReactWrapper<DatePickerProps>;
