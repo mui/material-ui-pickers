@@ -306,12 +306,12 @@ export class Calendar extends React.Component<CalendarProps, CalendarState> {
     );
   }
 
-  private pushToLoadingQueue = () => {
+  public pushToLoadingQueue = () => {
     const loadingQueue = this.state.loadingQueue + 1;
     this.setState({ loadingQueue });
   };
 
-  private popFromLoadingQueue = () => {
+  public popFromLoadingQueue = () => {
     let loadingQueue = this.state.loadingQueue;
     loadingQueue = loadingQueue <= 0 ? 0 : loadingQueue - 1;
     this.setState({ loadingQueue });

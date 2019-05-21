@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ShallowWrapper } from 'enzyme';
-import { shallowRender, utilsToUse } from '../test-utils';
+import { shallowRender, utilsToUse, shallow } from '../test-utils';
 import { Calendar, CalendarProps } from '../../DatePicker/components/Calendar';
 
 describe('Calendar', () => {
@@ -38,6 +38,25 @@ describe('Calendar', () => {
     component.find('CalendarHeader').prop<any>('onMonthChange')(utilsToUse.date());
     expect(component.state('loadingQueue')).toEqual(1);
   });
+
+  it('Should hide display loading indicator after loading asynchronous data', async () => {
+    const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+    const promise = sleep(50);
+    const onMonthChangeAsyncMock = jest.fn(async () => {
+      await promise;
+    });
+
+    component.setProps({ ...component.props, onMonthChange: onMonthChangeAsyncMock });
+    component.find('CalendarHeader').prop<any>('onMonthChange')(utilsToUse.date());
+    await sleep(100);
+    expect(component.state('loadingQueue')).toEqual(0);
+  });
+
+  it('Should not display loading indicator if callback is undefined', () => {
+    component.setProps({ ...component.props, onMonthChange: undefined });
+    component.find('CalendarHeader').prop<any>('onMonthChange')(utilsToUse.date());
+    expect(component.state('loadingQueue')).toEqual(0);
+  });
 });
 
 describe('Calendar - disabled selected date on mount', () => {
@@ -62,6 +81,42 @@ describe('Calendar - disabled selected date on mount', () => {
     }
 
     expect(onChange).toHaveBeenCalledWith(utilsToUse.date('01-01-2018'), false);
+  });
+});
+
+describe('Calendar - pop and push loading queue', () => {
+  let component: ShallowWrapper<any, any, any>;
+
+  beforeEach(() => {
+    component = shallowRender(props => (
+      <Calendar
+        date={utilsToUse.date('01-01-2017')}
+        minDate={new Date('01-01-2018')}
+        onChange={jest.fn()}
+        utils={utilsToUse}
+        {...props}
+      />
+    ));
+  });
+
+  it('Push two times to loading queue', () => {
+    (component.instance() as Calendar).pushToLoadingQueue();
+    (component.instance() as Calendar).pushToLoadingQueue();
+
+    expect(component.state('loadingQueue')).toEqual(2);
+  });
+
+  it('Pop from empty loading queue', () => {
+    (component.instance() as Calendar).popFromLoadingQueue();
+
+    expect(component.state('loadingQueue')).toEqual(0);
+  });
+
+  it('Push and pop loading queue', () => {
+    (component.instance() as Calendar).pushToLoadingQueue();
+    (component.instance() as Calendar).popFromLoadingQueue();
+
+    expect(component.state('loadingQueue')).toEqual(0);
   });
 });
 
