@@ -64,17 +64,17 @@ export function usePickerState(props: BasePickerProps, options: StateHookOptions
   const { isOpen, setIsOpen } = useOpenState(props);
   const { acceptedDateRef, date, format } = useDateValues(props, options);
 
-  useEffect(() => {
-    if (!isOpen) {
-      // if value was changed in closed state treat it as accepted
-      acceptedDateRef.current = date;
-    }
-  }, [acceptedDateRef, date, isOpen, props.value]);
+  if (!isOpen) {
+    // if value was changed in closed state treat it as accepted
+    acceptedDateRef.current = date;
+  }
 
   const validationError = validate(props.value, utils, props);
-  if (validationError && props.onError) {
-    props.onError(validationError, props.value);
-  }
+  useEffect(() => {
+    if (validationError && props.onError) {
+      props.onError(validationError, props.value);
+    }
+  }, [props, validationError]);
 
   const inputProps = useMemo(
     () => ({
