@@ -80,9 +80,15 @@ export function usePickerState(props: BasePickerProps, options: StateHookOptions
     () => ({
       validationError,
       onClick: () => !props.disabled && setIsOpen(true),
-      inputValue: getDisplayDate(date, format, utils, props.value === null, props),
+      inputValue: getDisplayDate(
+        acceptedDateRef.current,
+        format,
+        utils,
+        props.value === null,
+        props
+      ),
     }),
-    [date, format, props, setIsOpen, utils, validationError]
+    [acceptedDateRef, format, props, setIsOpen, utils, validationError]
   );
 
   // prettier-ignore
