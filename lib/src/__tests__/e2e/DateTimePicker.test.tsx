@@ -56,28 +56,6 @@ describe('e2e - DateTimePicker', () => {
     ).toBe('2018');
     // expect(component.find('ToolbarButton').at(1).text()).toBe('Jan 3');
   });
-
-  it('Should handle accept on enter', () => {
-    component.find('input').simulate('click');
-    const onKeyDown = component
-      .find('EventListener')
-      .at(0)
-      .props().onKeyDown;
-
-    if (!onKeyDown) {
-      throw new Error('Expected onKeyDown to be non-null');
-    }
-
-    act(() => {
-      onKeyDown({
-        key: 'Enter',
-        preventDefault: jest.fn(),
-      } as any);
-    });
-
-    expect(onCloseMock).toHaveBeenCalled();
-    expect(onChangeMock).toHaveBeenCalled();
-  });
 });
 
 describe('e2e -- Controlling open state', () => {

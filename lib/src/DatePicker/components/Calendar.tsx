@@ -3,7 +3,6 @@ import * as PropTypes from 'prop-types';
 import Day from './Day';
 import DayWrapper from './DayWrapper';
 import CalendarHeader from './CalendarHeader';
-import EventListener from 'react-event-listener';
 import SlideTransition, { SlideDirection } from './SlideTransition';
 import { Theme } from '@material-ui/core';
 import { handleKeydown } from '../../_helpers/utils';
@@ -69,6 +68,17 @@ export interface CalendarState {
   currentMonth: MaterialUiPickersDate;
   lastDate?: MaterialUiPickersDate;
 }
+
+const KeyDownListener = ({ onKeyDown }: { onKeyDown: (e: KeyboardEvent) => void }) => {
+  React.useEffect(() => {
+    window.addEventListener('keydown', onKeyDown);
+    return () => {
+      window.removeEventListener('keydown', onKeyDown);
+    };
+  }, [onKeyDown]);
+
+  return null;
+};
 
 export class Calendar extends React.Component<CalendarProps, CalendarState> {
   public static propTypes: any = {
@@ -266,7 +276,7 @@ export class Calendar extends React.Component<CalendarProps, CalendarState> {
 
     return (
       <React.Fragment>
-        {allowKeyboardControl && <EventListener target="window" onKeyDown={this.handleKeyDown} />}
+        {allowKeyboardControl && <KeyDownListener onKeyDown={this.handleKeyDown} />}
 
         <CalendarHeader
           currentMonth={currentMonth!}

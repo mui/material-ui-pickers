@@ -63,21 +63,26 @@ export const ModalWrapper: React.FC<ModalWrapperProps<any>> = ({
   onSetToday,
   ...other
 }) => {
-  const handleKeyDown = React.useCallback(
-    (event: KeyboardEvent) => {
-      switch (event.key) {
-        case 'Enter':
-          onAccept();
-          break;
-        default:
-          return; // if key is not handled, stop execution
-      }
+  React.useEffect(() => {
+    if (open) {
+      const handleKeyDown = (event: KeyboardEvent) => {
+        switch (event.key) {
+          case 'Enter':
+            onAccept();
+            break;
+          default:
+            return; // if key is not handled, stop execution
+        }
 
-      // if event was handled prevent other side effects
-      event.preventDefault();
-    },
-    [onAccept]
-  );
+        // if event was handled prevent other side effects
+        event.preventDefault();
+      };
+      window.addEventListener('keydown', handleKeyDown);
+      return () => {
+        window.removeEventListener('keydown', handleKeyDown);
+      };
+    }
+  }, [open, onAccept]);
 
   return (
     <React.Fragment>
@@ -87,7 +92,6 @@ export const ModalWrapper: React.FC<ModalWrapperProps<any>> = ({
         wider={wider}
         showTabs={showTabs}
         open={open}
-        onKeyDownInner={handleKeyDown}
         onClear={onClear}
         onAccept={onAccept}
         onDismiss={onDismiss}
