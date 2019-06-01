@@ -6,6 +6,7 @@ import { WrapperProps } from './Wrapper';
 import { makeStyles } from '@material-ui/core/styles';
 import { TextFieldProps } from '@material-ui/core/TextField';
 import { DIALOG_WIDTH, DIALOG_WIDTH_WIDER } from '../constants/dimensions';
+import { useKeyDown } from '../_shared/hooks/useKeyDown';
 
 export const useStyles = makeStyles(
   {
@@ -42,26 +43,9 @@ export const InlineWrapper: React.FC<InlineWrapperProps> = ({
   const ref = React.useRef();
   const classes = useStyles();
 
-  React.useEffect(() => {
-    if (open) {
-      const handleKeyDown = (event: KeyboardEvent) => {
-        switch (event.key) {
-          case 'Enter':
-            onAccept();
-            break;
-          default:
-            return; // if key is not handled, stop execution
-        }
-
-        // if event was handled prevent other side effects
-        event.preventDefault();
-      };
-      window.addEventListener('keydown', handleKeyDown);
-      return () => {
-        window.removeEventListener('keydown', handleKeyDown);
-      };
-    }
-  }, [open, onAccept]);
+  useKeyDown(open, {
+    Enter: onAccept,
+  });
 
   return (
     <React.Fragment>

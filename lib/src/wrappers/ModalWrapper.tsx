@@ -4,6 +4,7 @@ import ModalDialog from '../_shared/ModalDialog';
 import { Omit } from '@material-ui/core';
 import { WrapperProps } from './Wrapper';
 import { DialogProps as MuiDialogProps } from '@material-ui/core/Dialog';
+import { useKeyDown } from '../_shared/hooks/useKeyDown';
 
 export interface ModalWrapperProps<T = {}> extends WrapperProps<T> {
   /**
@@ -63,26 +64,9 @@ export const ModalWrapper: React.FC<ModalWrapperProps<any>> = ({
   onSetToday,
   ...other
 }) => {
-  React.useEffect(() => {
-    if (open) {
-      const handleKeyDown = (event: KeyboardEvent) => {
-        switch (event.key) {
-          case 'Enter':
-            onAccept();
-            break;
-          default:
-            return; // if key is not handled, stop execution
-        }
-
-        // if event was handled prevent other side effects
-        event.preventDefault();
-      };
-      window.addEventListener('keydown', handleKeyDown);
-      return () => {
-        window.removeEventListener('keydown', handleKeyDown);
-      };
-    }
-  }, [open, onAccept]);
+  useKeyDown(open, {
+    Enter: onAccept,
+  });
 
   return (
     <React.Fragment>

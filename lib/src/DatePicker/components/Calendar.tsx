@@ -5,7 +5,7 @@ import DayWrapper from './DayWrapper';
 import CalendarHeader from './CalendarHeader';
 import SlideTransition, { SlideDirection } from './SlideTransition';
 import { Theme } from '@material-ui/core';
-import { handleKeydown } from '../../_helpers/utils';
+import { runKeyHandler } from '../../_shared/hooks/useKeyDown';
 import { MaterialUiPickersDate } from '../../typings/date';
 import { IconButtonProps } from '@material-ui/core/IconButton';
 import { withStyles, WithStyles } from '@material-ui/core/styles';
@@ -204,7 +204,7 @@ export class Calendar extends React.Component<CalendarProps, CalendarState> {
   public handleKeyDown = (event: KeyboardEvent) => {
     const { theme, date, utils } = this.props;
 
-    handleKeydown(event, {
+    runKeyHandler(event, {
       ArrowUp: () => this.moveToDay(utils.addDays(date, -7)),
       ArrowDown: () => this.moveToDay(utils.addDays(date, 7)),
       ArrowLeft: () => this.moveToDay(utils.addDays(date, theme.direction === 'ltr' ? -1 : 1)),
