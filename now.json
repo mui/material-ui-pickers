@@ -1,5 +1,6 @@
 {
   "version": 2,
+  "silent": true,
   "build": {
     "env": {
       "IS_NOW": "true"
