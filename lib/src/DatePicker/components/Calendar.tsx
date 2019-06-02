@@ -3,11 +3,10 @@ import * as PropTypes from 'prop-types';
 import Day from './Day';
 import DayWrapper from './DayWrapper';
 import CalendarHeader from './CalendarHeader';
-import EventListener from 'react-event-listener';
 import SlideTransition, { SlideDirection } from './SlideTransition';
 import { Theme } from '@material-ui/core';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { handleKeydown } from '../../_helpers/utils';
+import { runKeyHandler } from '../../_shared/hooks/useKeyDown';
 import { MaterialUiPickersDate } from '../../typings/date';
 import { IconButtonProps } from '@material-ui/core/IconButton';
 import { withStyles, WithStyles } from '@material-ui/core/styles';
@@ -74,6 +73,17 @@ export interface CalendarState {
   loadingQueue: number;
 }
 
+const KeyDownListener = ({ onKeyDown }: { onKeyDown: (e: KeyboardEvent) => void }) => {
+  React.useEffect(() => {
+    window.addEventListener('keydown', onKeyDown);
+    return () => {
+      window.removeEventListener('keydown', onKeyDown);
+    };
+  }, [onKeyDown]);
+
+  return null;
+};
+
 export class Calendar extends React.Component<CalendarProps, CalendarState> {
   public static propTypes: any = {
     renderDay: PropTypes.func,
@@ -94,7 +104,8 @@ export class Calendar extends React.Component<CalendarProps, CalendarState> {
 
     if (!utils.isEqual(nextDate, state.lastDate)) {
       const nextMonth = utils.getMonth(nextDate);
-      const lastMonth = utils.getMonth(state.lastDate || nextDate);
+      const lastDate = state.lastDate || nextDate;
+      const lastMonth = utils.getMonth(lastDate);
 
       return {
         lastDate: nextDate,
@@ -102,7 +113,7 @@ export class Calendar extends React.Component<CalendarProps, CalendarState> {
         // prettier-ignore
         slideDirection: nextMonth === lastMonth
           ? state.slideDirection
-          : nextMonth > lastMonth
+          : utils.isAfterDay(nextDate, lastDate)
             ? 'left'
             : 'right'
       };
@@ -204,7 +215,7 @@ export class Calendar extends React.Component<CalendarProps, CalendarState> {
   public handleKeyDown = (event: KeyboardEvent) => {
     const { theme, date, utils } = this.props;
 
-    handleKeydown(event, {
+    runKeyHandler(event, {
       ArrowUp: () => this.moveToDay(utils.addDays(date, -7)),
       ArrowDown: () => this.moveToDay(utils.addDays(date, 7)),
       ArrowLeft: () => this.moveToDay(utils.addDays(date, theme.direction === 'ltr' ? -1 : 1)),
@@ -278,7 +289,7 @@ export class Calendar extends React.Component<CalendarProps, CalendarState> {
 
     return (
       <React.Fragment>
-        {allowKeyboardControl && <EventListener target="window" onKeyDown={this.handleKeyDown} />}
+        {allowKeyboardControl && <KeyDownListener onKeyDown={this.handleKeyDown} />}
 
         <CalendarHeader
           currentMonth={currentMonth!}
