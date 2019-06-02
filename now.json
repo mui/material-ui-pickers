@@ -1,6 +1,8 @@
 {
   "version": 2,
-  "silent": true,
+  "github": {
+    "silent": true
+  },
   "build": {
     "env": {
       "IS_NOW": "true"
