@@ -16,6 +16,7 @@ export interface KeyboardDateInputProps
   validationError?: React.ReactNode;
   inputValue: string;
   InputProps?: TextFieldProps['InputProps'];
+  /** Icon displaying for open picker button */
   keyboardIcon?: React.ReactNode;
   /** Pass material-ui text field variant down, bypass internal variant prop */
   inputVariant?: TextFieldProps['variant'];
