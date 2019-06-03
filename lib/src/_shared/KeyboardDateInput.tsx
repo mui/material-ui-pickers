@@ -16,6 +16,7 @@ export interface KeyboardDateInputProps
   validationError?: React.ReactNode;
   inputValue: string;
   InputProps?: TextFieldProps['InputProps'];
+  keyboardIcon?: React.ReactNode;
   /** Pass material-ui text field variant down, bypass internal variant prop */
   inputVariant?: TextFieldProps['variant'];
   /**
@@ -57,6 +58,7 @@ const KeyboardDateInput: React.FunctionComponent<KeyboardDateInputProps> = ({
   maskChar = '_',
   refuse = /[^\dap]+/gi,
   format,
+  keyboardIcon,
   disabled,
   ...other
 }) => {
@@ -86,7 +88,7 @@ const KeyboardDateInput: React.FunctionComponent<KeyboardDateInputProps> = ({
             [`${position}Adornment`]: (
               <InputAdornment position={position} {...InputAdornmentProps}>
                 <IconButton disabled={disabled} {...KeyboardButtonProps} onClick={onClick}>
-                  <KeyboardIcon />
+                  {keyboardIcon}
                 </IconButton>
               </InputAdornment>
             ),
@@ -95,6 +97,10 @@ const KeyboardDateInput: React.FunctionComponent<KeyboardDateInputProps> = ({
       )}
     </Rifm>
   );
+};
+
+KeyboardDateInput.defaultProps = {
+  keyboardIcon: <KeyboardIcon />,
 };
 
 export default KeyboardDateInput;
