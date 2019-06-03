@@ -86,25 +86,34 @@ export const validate = (
   }
 
   if (
-    (maxDate &&
-      utils.isAfter(
-        parsedValue,
-        getComparisonMaxDate(utils, !!strictCompareDates, utils.date(maxDate))
-      )) ||
-    (disableFuture &&
-      utils.isAfter(parsedValue, getComparisonMaxDate(utils, !!strictCompareDates, utils.date())))
+    maxDate &&
+    utils.isAfter(
+      parsedValue,
+      getComparisonMaxDate(utils, !!strictCompareDates, utils.date(maxDate))
+    )
   ) {
     return maxDateMessage;
   }
 
   if (
-    (minDate &&
-      utils.isBefore(
-        parsedValue,
-        getComparisonMinDate(utils, !!strictCompareDates, utils.date(minDate))
-      )) ||
-    (disablePast &&
-      utils.isBefore(parsedValue, getComparisonMinDate(utils, !!strictCompareDates, utils.date())))
+    disableFuture &&
+    utils.isAfter(parsedValue, getComparisonMaxDate(utils, !!strictCompareDates, utils.date()))
+  ) {
+    return maxDateMessage;
+  }
+
+  if (
+    minDate &&
+    utils.isBefore(
+      parsedValue,
+      getComparisonMinDate(utils, !!strictCompareDates, utils.date(minDate))
+    )
+  ) {
+    return minDateMessage;
+  }
+  if (
+    disablePast &&
+    utils.isBefore(parsedValue, getComparisonMinDate(utils, !!strictCompareDates, utils.date()))
   ) {
     return minDateMessage;
   }
