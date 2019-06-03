@@ -26,7 +26,7 @@ export interface BaseDatePickerProps extends OutterCalendarProps {
    * Compare date isBefore or isAfter without utils endOfDay or startOfDay
    * @default false
    */
-  validateStrict?: boolean;
+  strictCompareDates?: boolean;
 
   /**
    * Disable past dates

@@ -44,16 +44,16 @@ export interface DateValidationProps extends BaseValidationProps {
   maxDateMessage?: React.ReactNode;
 }
 
-const getComparisonMaxDate = (utils: IUtils<any>, validateStrict: boolean, date: Date) => {
-  if (validateStrict) {
+const getComparisonMaxDate = (utils: IUtils<any>, strictCompareDates: boolean, date: Date) => {
+  if (strictCompareDates) {
     return date;
   }
 
   return utils.endOfDay(date);
 };
 
-const getComparisonMinDate = (utils: IUtils<any>, validateStrict: boolean, date: Date) => {
-  if (validateStrict) {
+const getComparisonMinDate = (utils: IUtils<any>, strictCompareDates: boolean, date: Date) => {
+  if (strictCompareDates) {
     return date;
   }
 
@@ -71,7 +71,7 @@ export const validate = (
     maxDateMessage,
     minDateMessage,
     invalidDateMessage,
-    validateStrict,
+    strictCompareDates,
   }: Omit<DatePickerProps, 'views' | 'openTo'> // DateTimePicker doesn't support
 ): React.ReactNode => {
   const parsedValue = utils.date(value);
@@ -89,10 +89,10 @@ export const validate = (
     (maxDate &&
       utils.isAfter(
         parsedValue,
-        getComparisonMaxDate(utils, !!validateStrict, utils.date(maxDate))
+        getComparisonMaxDate(utils, !!strictCompareDates, utils.date(maxDate))
       )) ||
     (disableFuture &&
-      utils.isAfter(parsedValue, getComparisonMaxDate(utils, !!validateStrict, utils.date())))
+      utils.isAfter(parsedValue, getComparisonMaxDate(utils, !!strictCompareDates, utils.date())))
   ) {
     return maxDateMessage;
   }
@@ -101,10 +101,10 @@ export const validate = (
     (minDate &&
       utils.isBefore(
         parsedValue,
-        getComparisonMinDate(utils, !!validateStrict, utils.date(minDate))
+        getComparisonMinDate(utils, !!strictCompareDates, utils.date(minDate))
       )) ||
     (disablePast &&
-      utils.isBefore(parsedValue, getComparisonMinDate(utils, !!validateStrict, utils.date())))
+      utils.isBefore(parsedValue, getComparisonMinDate(utils, !!strictCompareDates, utils.date())))
   ) {
     return minDateMessage;
   }

@@ -37,7 +37,7 @@ export function makePurePicker<T extends any>({
       onOpen,
       onClose,
       minDateMessage,
-      validateStrict,
+      strictCompareDates,
       minutesStep,
       onAccept,
       onChange,
@@ -85,7 +85,7 @@ export function makePurePicker<T extends any>({
           leftArrowButtonProps={leftArrowButtonProps}
           maxDate={maxDate}
           minDate={minDate}
-          validateStrict={validateStrict}
+          strictCompareDates={strictCompareDates}
           onMonthChange={onMonthChange}
           onYearChange={onYearChange}
           renderDay={renderDay}
