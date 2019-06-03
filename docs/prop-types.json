@@ -493,7 +493,18 @@
         "name": "OutterCalendarProps"
       },
       "required": false,
-      "type": { "name": "(date: any) => void" }
+      "type": { "name": "(date: any) => void | Promise<void>" }
+    },
+    "loadingIndicator": {
+      "defaultValue": null,
+      "description": "Custom loading indicator",
+      "name": "loadingIndicator",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/DatePicker/components/Calendar.tsx",
+        "name": "OutterCalendarProps"
+      },
+      "required": false,
+      "type": { "name": "Element" }
     }
   },
   "KeyboardDatePicker": {
@@ -543,14 +554,14 @@
     },
     "onChange": {
       "defaultValue": null,
-      "description": "Keyboard onChange callback\nonChange callback",
+      "description": "Keyboard onChange callback",
       "name": "onChange",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/hooks/useKeyboardPickerState.ts",
         "name": "BaseKeyboardPickerProps"
       },
       "required": true,
-      "type": { "name": "((date: any, value?: string) => void) & ((date: any) => void)" }
+      "type": { "name": "(date: any, value?: string) => void" }
     },
     "value": {
       "defaultValue": null,
@@ -988,7 +999,18 @@
         "name": "OutterCalendarProps"
       },
       "required": false,
-      "type": { "name": "(date: any) => void" }
+      "type": { "name": "(date: any) => void | Promise<void>" }
+    },
+    "loadingIndicator": {
+      "defaultValue": null,
+      "description": "Custom loading indicator",
+      "name": "loadingIndicator",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/DatePicker/components/Calendar.tsx",
+        "name": "OutterCalendarProps"
+      },
+      "required": false,
+      "type": { "name": "Element" }
     }
   },
   "TimePicker": {
@@ -1311,25 +1333,14 @@
     },
     "onChange": {
       "defaultValue": null,
-      "description": "Keyboard onChange callback\nonChange callback",
+      "description": "Keyboard onChange callback",
       "name": "onChange",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/hooks/useKeyboardPickerState.ts",
         "name": "BaseKeyboardPickerProps"
       },
       "required": true,
-      "type": { "name": "((date: any, value?: string) => void) & ((date: any) => void)" }
-    },
-    "value": {
-      "defaultValue": null,
-      "description": "Picker value",
-      "name": "value",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
-        "name": "BasePickerProps"
-      },
-      "required": true,
-      "type": { "name": "ParsableDate" }
+      "type": { "name": "(date: any, value?: string) => void" }
     },
     "open": {
       "defaultValue": null,
@@ -1375,6 +1386,17 @@
       "required": false,
       "type": { "name": "(error: ReactNode, value: any) => void" }
     },
+    "value": {
+      "defaultValue": null,
+      "description": "Picker value",
+      "name": "value",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
+        "name": "BasePickerProps"
+      },
+      "required": true,
+      "type": { "name": "ParsableDate" }
+    },
     "disabled": {
       "defaultValue": null,
       "description": "Disable datepicker and text field",
@@ -1385,6 +1407,17 @@
       },
       "required": false,
       "type": { "name": "boolean" }
+    },
+    "onClose": {
+      "defaultValue": null,
+      "description": "On close callback",
+      "name": "onClose",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
+        "name": "BasePickerProps"
+      },
+      "required": false,
+      "type": { "name": "() => void" }
     },
     "autoOk": {
       "defaultValue": { "value": "false" },
@@ -1445,17 +1478,6 @@
       "defaultValue": null,
       "description": "On open callback",
       "name": "onOpen",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
-        "name": "BasePickerProps"
-      },
-      "required": false,
-      "type": { "name": "() => void" }
-    },
-    "onClose": {
-      "defaultValue": null,
-      "description": "On close callback",
-      "name": "onClose",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
         "name": "BasePickerProps"
@@ -2084,7 +2106,18 @@
         "name": "OutterCalendarProps"
       },
       "required": false,
-      "type": { "name": "(date: any) => void" }
+      "type": { "name": "(date: any) => void | Promise<void>" }
+    },
+    "loadingIndicator": {
+      "defaultValue": null,
+      "description": "Custom loading indicator",
+      "name": "loadingIndicator",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/DatePicker/components/Calendar.tsx",
+        "name": "OutterCalendarProps"
+      },
+      "required": false,
+      "type": { "name": "Element" }
     }
   },
   "KeyboardDateTimePicker": {
@@ -2134,14 +2167,14 @@
     },
     "onChange": {
       "defaultValue": null,
-      "description": "Keyboard onChange callback\nonChange callback",
+      "description": "Keyboard onChange callback",
       "name": "onChange",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/hooks/useKeyboardPickerState.ts",
         "name": "BaseKeyboardPickerProps"
       },
       "required": true,
-      "type": { "name": "((date: any, value?: string) => void) & ((date: any) => void)" }
+      "type": { "name": "(date: any, value?: string) => void" }
     },
     "open": {
       "defaultValue": null,
@@ -2634,7 +2667,18 @@
         "name": "OutterCalendarProps"
       },
       "required": false,
-      "type": { "name": "(date: any) => void" }
+      "type": { "name": "(date: any) => void | Promise<void>" }
+    },
+    "loadingIndicator": {
+      "defaultValue": null,
+      "description": "Custom loading indicator",
+      "name": "loadingIndicator",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/DatePicker/components/Calendar.tsx",
+        "name": "OutterCalendarProps"
+      },
+      "required": false,
+      "type": { "name": "Element" }
     }
   },
   "Calendar": {
@@ -2792,7 +2836,18 @@
         "name": "OutterCalendarProps"
       },
       "required": false,
-      "type": { "name": "(date: any) => void" }
+      "type": { "name": "(date: any) => void | Promise<void>" }
+    },
+    "loadingIndicator": {
+      "defaultValue": null,
+      "description": "Custom loading indicator",
+      "name": "loadingIndicator",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/DatePicker/components/Calendar.tsx",
+        "name": "OutterCalendarProps"
+      },
+      "required": false,
+      "type": { "name": "Element" }
     }
   },
   "TimePickerView": {
