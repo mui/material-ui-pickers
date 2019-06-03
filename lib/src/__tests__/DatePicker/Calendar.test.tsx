@@ -85,4 +85,3 @@ describe('Calendar - pop and push loading queue', () => {
     expect(component.state('loadingQueue')).toEqual(0);
   });
 });
-
