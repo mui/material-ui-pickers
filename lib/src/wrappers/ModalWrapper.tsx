@@ -6,7 +6,7 @@ import { WrapperProps } from './Wrapper';
 import { useKeyDown } from '../_shared/hooks/useKeyDown';
 import { DialogProps as MuiDialogProps } from '@material-ui/core/Dialog';
 
-export interface ModalWrapperProps<T = {},> extends WrapperProps<T> {
+export interface ModalWrapperProps<T = {}> extends WrapperProps<T> {
   /**
    * "OK" label message
    * @default 'OK'
