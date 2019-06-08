@@ -67,12 +67,16 @@ export function usePickerState(props: BasePickerProps, options: StateHookOptions
       onChange: (newDate: MaterialUiPickersDate, isFinish = true) => {
         setPickerDate(newDate);
 
+        if (props.variant === 'inline') {
+          props.onChange(newDate);
+        }
+
         if (isFinish && props.autoOk) {
           acceptDate(newDate);
         }
       },
     }),
-    [acceptDate, pickerDate, props.autoOk]
+    [acceptDate, pickerDate, props]
   );
 
   const validationError = validate(props.value, utils, props);
