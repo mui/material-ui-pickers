@@ -42,7 +42,7 @@ export interface OutterCalendarProps {
   rightArrowButtonProps?: Partial<IconButtonProps>;
   /** Disable specific date */
   shouldDisableDate?: (day: MaterialUiPickersDate) => boolean;
-  /** Callback firing on month change */
+  /** Callback firing on month change. Return promise to render spinner till it will not be resolved */
   onMonthChange?: (date: MaterialUiPickersDate) => void | Promise<void>;
   /** Custom loading indicator  */
   loadingIndicator?: JSX.Element;
