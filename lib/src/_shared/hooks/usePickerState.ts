@@ -35,6 +35,13 @@ export function usePickerState(props: BasePickerProps, options: StateHookOptions
   const { date, format } = useDateValues(props, options);
   const [pickerDate, setPickerDate] = useState(date);
 
+  useEffect(() => {
+    // if value was changed in closed state - treat it as accepted
+    if (!isOpen) {
+      setPickerDate(date);
+    }
+  }, [date, isOpen]);
+
   const acceptDate = useCallback(
     (acceptedDate: MaterialUiPickersDate) => {
       setIsOpen(false);

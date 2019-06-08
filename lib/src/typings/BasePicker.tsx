@@ -45,7 +45,7 @@ export interface BasePickerProps {
    * @default false
    */
   disableToolbar?: boolean;
-  variant: WrapperVariant;
+  variant?: WrapperVariant;
   mergePreviousDateOnChange?: boolean;
   forwardedRef?: any;
 }
