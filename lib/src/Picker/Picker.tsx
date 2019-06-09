@@ -49,6 +49,7 @@ export interface PickerViewProps extends BaseDatePickerProps, BaseTimePickerProp
 interface PickerProps extends PickerViewProps {
   date: MaterialUiPickersDate;
   onChange: (date: MaterialUiPickersDate, isFinish?: boolean) => void;
+  viewComponents?: Partial<typeof viewsMap>;
 }
 
 const useStyles = makeStyles(
@@ -89,6 +90,7 @@ export const Picker: React.FunctionComponent<PickerProps> = props => {
     onYearChange,
     leftArrowButtonProps,
     rightArrowButtonProps,
+    viewComponents,
     ToolbarComponent,
   } = props;
 
@@ -98,6 +100,9 @@ export const Picker: React.FunctionComponent<PickerProps> = props => {
 
   const minDate = React.useMemo(() => utils.date(unparsedMinDate)!, [unparsedMinDate, utils]);
   const maxDate = React.useMemo(() => utils.date(unparsedMaxDate)!, [unparsedMaxDate, utils]);
+
+  const effectiveComponents = { ...viewsMap, ...viewComponents };
+  const { year: YearComponent, month: MonthComponent, date: DateComponent } = effectiveComponents;
 
   return (
     <>
@@ -116,7 +121,7 @@ export const Picker: React.FunctionComponent<PickerProps> = props => {
 
       <div className={classes.pickerView}>
         {openView === 'year' && (
-          <YearSelection
+          <YearComponent
             date={date}
             onChange={handleChangeAndOpenNext('month')}
             minDate={minDate}
@@ -129,7 +134,7 @@ export const Picker: React.FunctionComponent<PickerProps> = props => {
         )}
 
         {openView === 'month' && (
-          <MonthSelection
+          <MonthComponent
             date={date}
             onChange={handleChangeAndOpenNext('date')}
             minDate={minDate}
@@ -141,7 +146,7 @@ export const Picker: React.FunctionComponent<PickerProps> = props => {
         )}
 
         {openView === 'date' && (
-          <Calendar
+          <DateComponent
             date={date}
             onChange={handleChangeAndOpenNext('hours')}
             onMonthChange={onMonthChange}
@@ -159,17 +164,16 @@ export const Picker: React.FunctionComponent<PickerProps> = props => {
           />
         )}
 
-        {(openView === 'hours' || openView === 'minutes' || openView === 'seconds') && (
-          <TimePickerView
-            date={date}
-            ampm={ampm}
-            type={openView}
-            minutesStep={minutesStep}
-            onHourChange={handleChangeAndOpenNext('minutes')}
-            onMinutesChange={handleChangeAndOpenNext('seconds')}
-            onSecondsChange={handleChangeAndOpenNext(null)}
-          />
-        )}
+        {(openView === 'hours' || openView === 'minutes' || openView === 'seconds') &&
+          React.createElement(effectiveComponents[openView], {
+            type: openView,
+            date,
+            ampm,
+            minutesStep,
+            onHourChange: handleChangeAndOpenNext('minutes'),
+            onMinutesChange: handleChangeAndOpenNext('seconds'),
+            onSecondsChange: handleChangeAndOpenNext(null),
+          })}
       </div>
     </>
   );

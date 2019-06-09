@@ -51,6 +51,7 @@ export function makeKeyboardPicker<T extends any>({
       onYearChange,
       renderDay,
       views,
+      viewComponents,
       openTo,
       rightArrowIcon,
       rightArrowButtonProps,
@@ -81,6 +82,7 @@ export function makeKeyboardPicker<T extends any>({
           hideTabs={hideTabs}
           ampm={ampm}
           views={views}
+          viewComponents={viewComponents}
           openTo={openTo}
           allowKeyboardControl={allowKeyboardControl}
           minutesStep={minutesStep}
