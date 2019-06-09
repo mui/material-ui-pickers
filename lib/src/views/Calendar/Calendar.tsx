@@ -207,7 +207,13 @@ export class Calendar extends React.Component<CalendarProps, CalendarState> {
   };
 
   public moveToDay = (day: MaterialUiPickersDate) => {
+    const { utils } = this.props;
+
     if (day && !this.shouldDisableDate(day)) {
+      if (utils.getMonth(day) !== utils.getMonth(this.state.currentMonth)) {
+        this.handleChangeMonth(utils.startOfMonth(day), 'left');
+      }
+
       this.onDateSelect(day, false);
     }
   };
