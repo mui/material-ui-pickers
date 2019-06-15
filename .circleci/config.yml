@@ -90,7 +90,7 @@ jobs:
           name: Run docs in background
           command: yarn workspace docs start
       - run: npx wait-on http://localhost:3000
-      - run: percy exec -- cypress run --record
+      - run: yarn percy exec -- cypress run --record
 
 ####################
 # Workflow
