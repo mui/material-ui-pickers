@@ -89,6 +89,9 @@ jobs:
           name: Restore Cache
           keys:
             - yarn-packages-{{ checksum "yarn.lock" }}
+      - run:
+          name: Additional yarn install
+          command: yarn install --frozen-lockfile
       - run: yarn workspace docs build
       - run:
           background: true
