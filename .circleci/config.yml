@@ -85,7 +85,10 @@ jobs:
       - attach_workspace:
           at: .
       - run: yarn workspace docs build
-      - run: yarn workspace docs start
+      - run:
+          background: true
+          name: Run docs in background
+          command: yarn workspace docs start
       - run: npx wait-on http://localhost:3000
       - run: percy exec -- cypress run --record
 
