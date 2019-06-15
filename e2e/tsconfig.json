@@ -2,9 +2,12 @@
   "compilerOptions": {
     "strict": true,
     "baseUrl": "../node_modules",
-    "target": "es5",
+    "target": "es2015",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
     "lib": ["es5", "dom"],
-    "types": ["cypress"]
+    "types": ["cypress", "@percy/cypress"]
   },
-  "include": ["**/*.ts"]
+  "include": ["./**/*.ts", "../docs/**/*"]
 }
