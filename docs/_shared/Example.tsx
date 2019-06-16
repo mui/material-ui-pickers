@@ -5,7 +5,6 @@ import CopyIcon from '@material-ui/icons/FileCopy';
 import GithubIcon from '_shared/svgIcons/GithubIcon';
 import { copy } from 'utils/helpers';
 import { GITHUB_EDIT_URL } from '_constants';
-import { useUtils } from '@material-ui/pickers';
 import { replaceGetFormatStrings } from 'utils/utilsService';
 import { withSnackbar, InjectedNotistackProps } from 'notistack';
 import { withUtilsService, UtilsContext } from './UtilsServiceContext';
@@ -68,7 +67,6 @@ function Example({ source, testId, enqueueSnackbar }: Props) {
     );
   }
 
-  const utils = useUtils();
   const classes = useStyles();
   const currentLib = React.useContext(UtilsContext).lib;
   const [expanded, setExpanded] = React.useState(false);
@@ -85,7 +83,7 @@ function Example({ source, testId, enqueueSnackbar }: Props) {
   // remount component only if utils change
   const ExampleComponent = React.useMemo(
     () => withUtilsService(source.default),
-    [utils, source.default] // eslint-disable-line
+    [currentLib, source.default] // eslint-disable-line
   );
 
   return (
@@ -127,7 +125,7 @@ function Example({ source, testId, enqueueSnackbar }: Props) {
           </IconButton>
         </Tooltip>
 
-        <ExampleComponent />
+        <ExampleComponent key={currentLib} />
       </div>
     </>
   );
