@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
     },
     '@media only percy': {
       '#codefund': {
-        visibility: 'hidden',
+        display: 'none',
       },
     },
   },
