@@ -15,6 +15,7 @@ export const navItems = [
       { title: 'Using date-fns', href: '/localization/date-fns' },
       { title: 'Using moment', href: '/localization/moment' },
       { title: 'Persian Calendar System', href: '/localization/persian' },
+      { title: 'Hijri Calendar System', href: '/localization/hijri' },
     ],
   },
   {
