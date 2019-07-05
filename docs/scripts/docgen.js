@@ -50,7 +50,7 @@ function processProp(prop) {
   }
 
   // replace | undefined
-  prop.type.name = prop.type.name.replace('| undefined', '');
+  prop.type.name = prop.type.name.replace(' | undefined', '');
 }
 
 const removeExternalDeps = ([_, value]) =>
