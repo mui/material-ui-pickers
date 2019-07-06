@@ -6,7 +6,8 @@ const StaticDatePicker = () => {
 
   return (
     <>
-      <DatePicker autoOk variant="static" value={date} onChange={changeDate} />
+      <DatePicker autoOk variant="static" openTo="year" value={date} onChange={changeDate} />
+      <DatePicker autoOk variant="static" openTo="date" value={date} onChange={changeDate} />
     </>
   );
 };
