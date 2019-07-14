@@ -2,7 +2,10 @@ import * as React from 'react';
 import { BasePickerProps } from '../../typings/BasePicker';
 
 const getOrientation = () =>
-  typeof window !== 'undefined' && Math.abs(window.screen.orientation.angle) === 90
+  typeof window !== 'undefined' &&
+  window.screen &&
+  window.orientation &&
+  Math.abs(window.screen.orientation.angle) === 90
     ? 'landscape'
     : 'portrait';
 
