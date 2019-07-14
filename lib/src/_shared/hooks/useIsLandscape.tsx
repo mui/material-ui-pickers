@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useIsomorphicEffect } from './useKeyDown';
 import { BasePickerProps } from '../../typings/BasePicker';
 
 const getOrientation = () =>
@@ -16,7 +17,7 @@ export function useIsLandscape(customOrientation?: BasePickerProps['orientation'
 
   const eventHandler = React.useCallback(() => setOrientation(getOrientation()), []);
 
-  React.useEffect(() => {
+  useIsomorphicEffect(() => {
     window.addEventListener('orientationchange', eventHandler);
     return () => window.removeEventListener('orientationchange', eventHandler);
   }, [eventHandler]);
