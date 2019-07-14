@@ -45,6 +45,8 @@ export interface BasePickerProps {
    * @default false
    */
   disableToolbar?: boolean;
+  /** Force rendering in particular orientation */
+  orientation?: 'portrait' | 'landscape';
   variant?: WrapperVariant;
   mergePreviousDateOnChange?: boolean;
   forwardedRef?: any;
