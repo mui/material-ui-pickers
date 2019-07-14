@@ -8,8 +8,8 @@ export const useStyles = makeStyles(
   theme => ({
     toolbar: {
       display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'flex-start',
+      flexDirection: 'row',
+      alignItems: 'center',
       justifyContent: 'center',
       height: 100,
       backgroundColor:
@@ -20,7 +20,7 @@ export const useStyles = makeStyles(
     toolbarLandscape: {
       height: 'auto',
       maxWidth: 150,
-      padding: 16,
+      padding: 8,
       justifyContent: 'flex-start',
     },
   }),

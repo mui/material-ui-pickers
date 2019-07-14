@@ -9,9 +9,12 @@ import { isYearAndMonthViews, isYearOnlyView } from '../_helpers/date-utils';
 
 export const useStyles = makeStyles(
   {
-    toolbarCenter: {
-      flexDirection: 'row',
-      alignItems: 'center',
+    toolbar: {
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+    },
+    toolbarLandscape: {
+      padding: 16,
     },
   },
   { name: 'MuiPickersDatePickerRoot' }
@@ -34,7 +37,8 @@ export const DatePickerToolbar: React.FC<ToolbarComponentProps> = ({
     <PickerToolbar
       isLandscape={isLandscape}
       className={clsx({
-        [classes.toolbarCenter]: isYearOnly,
+        [classes.toolbar]: !isYearOnly,
+        [classes.toolbarLandscape]: isLandscape,
       })}
     >
       <ToolbarButton

@@ -96,8 +96,6 @@ export const styles = createStyles({
     // minWidth: DIALOG_WIDTH_WIDER,
   },
   dialog: {
-    // minHeight: dialogHeight,
-
     '&:first-child': {
       padding: 0,
     },

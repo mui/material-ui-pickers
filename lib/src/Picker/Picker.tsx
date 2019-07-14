@@ -13,7 +13,7 @@ import { BaseTimePickerProps } from '../TimePicker/TimePicker';
 import { BaseDatePickerProps } from '../DatePicker/DatePicker';
 import { useIsLandscape } from '../_shared/hooks/useIsLandscape';
 import { datePickerDefaultProps } from '../constants/prop-types';
-import { DIALOG_WIDTH_WIDER, DIALOG_WIDTH } from '../constants/dimensions';
+import { DIALOG_WIDTH_WIDER, DIALOG_WIDTH, VIEW_HEIGHT } from '../constants/dimensions';
 
 const viewsMap = {
   year: YearSelection,
@@ -67,7 +67,8 @@ const useStyles = makeStyles(
       flexDirection: 'row',
     },
     pickerView: {
-      overflowX: 'auto',
+      overflowX: 'hidden',
+      minHeight: VIEW_HEIGHT,
       minWidth: DIALOG_WIDTH,
       maxWidth: DIALOG_WIDTH_WIDER,
       display: 'flex',
