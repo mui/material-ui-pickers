@@ -445,7 +445,7 @@
       },
       "required": false,
       "type": {
-        "name": "\"year\" | \"date\" | \"month\""
+        "name": "\"date\" | \"year\" | \"month\""
       }
     },
     "minDate": {
@@ -743,19 +743,6 @@
         "name": "(date: any, value?: string | null) => void"
       }
     },
-    "value": {
-      "defaultValue": null,
-      "description": "Picker value",
-      "name": "value",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
-        "name": "BasePickerProps"
-      },
-      "required": true,
-      "type": {
-        "name": "ParsableDate"
-      }
-    },
     "open": {
       "defaultValue": null,
       "description": "Controlled picker open state",
@@ -821,6 +808,19 @@
       "required": false,
       "type": {
         "name": "(error: ReactNode, value: any) => void"
+      }
+    },
+    "value": {
+      "defaultValue": null,
+      "description": "Picker value",
+      "name": "value",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
+        "name": "BasePickerProps"
+      },
+      "required": true,
+      "type": {
+        "name": "ParsableDate"
       }
     },
     "disabled": {
@@ -1045,7 +1045,7 @@
     },
     "refuse": {
       "defaultValue": {
-        "value": "/[^\\dap]+/gi"
+        "value": "/[^\\d]+/gi"
       },
       "description": "Refuse values regexp",
       "name": "refuse",
@@ -1120,7 +1120,7 @@
       },
       "required": false,
       "type": {
-        "name": "\"year\" | \"date\" | \"month\""
+        "name": "\"date\" | \"year\" | \"month\""
       }
     },
     "minDate": {
@@ -2095,7 +2095,7 @@
     },
     "refuse": {
       "defaultValue": {
-        "value": "/[^\\dap]+/gi"
+        "value": "/[^\\d]+/gi"
       },
       "description": "Refuse values regexp",
       "name": "refuse",
@@ -3214,7 +3214,7 @@
     },
     "refuse": {
       "defaultValue": {
-        "value": "/[^\\dap]+/gi"
+        "value": "/[^\\d]+/gi"
       },
       "description": "Refuse values regexp",
       "name": "refuse",

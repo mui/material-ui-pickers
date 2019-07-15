@@ -32,7 +32,7 @@ function InlineDatePickerDemo(props) {
           dateFns: 'MM/dd/yyyy',
         })}
         value={selectedDate}
-        InputAdornmentProps={{ position: 'start' }}
+        // InputAdornmentProps={{ position: 'start' }}
         onChange={date => handleDateChange(date)}
       />
     </Fragment>
