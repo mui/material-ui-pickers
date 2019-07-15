@@ -76,12 +76,12 @@ function useOptions(props: DatePickerViewsProps) {
 
 export const DatePicker = makePurePicker<DatePickerViewsProps>({
   useOptions,
-  ToolbarComponent: DatePickerToolbar,
+  DefaultToolbarComponent: DatePickerToolbar,
 });
 
 export const KeyboardDatePicker = makeKeyboardPicker<DatePickerViewsProps>({
   useOptions,
-  ToolbarComponent: DatePickerToolbar,
+  DefaultToolbarComponent: DatePickerToolbar,
 });
 
 DatePicker.defaultProps = defaultProps;
