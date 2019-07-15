@@ -1,7 +1,7 @@
 {
   "ModalWrapper": {
     "okLabel": {
-      "defaultValue": { "value": "'OK'" },
+      "defaultValue": { "value": "\"OK\"" },
       "description": "\"OK\" label message",
       "name": "okLabel",
       "parent": {
@@ -12,7 +12,7 @@
       "type": { "name": "ReactNode" }
     },
     "cancelLabel": {
-      "defaultValue": { "value": "'CANCEL'" },
+      "defaultValue": { "value": "\"CANCEL\"" },
       "description": "\"CANCEL\" label message",
       "name": "cancelLabel",
       "parent": {
@@ -23,7 +23,7 @@
       "type": { "name": "ReactNode" }
     },
     "clearLabel": {
-      "defaultValue": { "value": "'CLEAR'" },
+      "defaultValue": { "value": "\"CLEAR\"" },
       "description": "\"CLEAR\" label message",
       "name": "clearLabel",
       "parent": {
@@ -34,7 +34,7 @@
       "type": { "name": "ReactNode" }
     },
     "todayLabel": {
-      "defaultValue": { "value": "'TODAY'" },
+      "defaultValue": { "value": "\"TODAY\"" },
       "description": "\"TODAY\" label message",
       "name": "todayLabel",
       "parent": {
@@ -411,7 +411,7 @@
     },
     "animateYearScrolling": {
       "defaultValue": { "value": "false" },
-      "description": "To animate scrolling to current year (with scrollIntoView)",
+      "description": "To animate scrolling to current year (using scrollIntoView)",
       "name": "animateYearScrolling",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/DatePicker/DatePicker.tsx",
@@ -954,7 +954,7 @@
     },
     "animateYearScrolling": {
       "defaultValue": { "value": "false" },
-      "description": "To animate scrolling to current year (with scrollIntoView)",
+      "description": "To animate scrolling to current year (using scrollIntoView)",
       "name": "animateYearScrolling",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/DatePicker/DatePicker.tsx",
@@ -2150,7 +2150,7 @@
     },
     "animateYearScrolling": {
       "defaultValue": { "value": "false" },
-      "description": "To animate scrolling to current year (with scrollIntoView)",
+      "description": "To animate scrolling to current year (using scrollIntoView)",
       "name": "animateYearScrolling",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/DatePicker/DatePicker.tsx",
@@ -2748,7 +2748,7 @@
     },
     "animateYearScrolling": {
       "defaultValue": { "value": "false" },
-      "description": "To animate scrolling to current year (with scrollIntoView)",
+      "description": "To animate scrolling to current year (using scrollIntoView)",
       "name": "animateYearScrolling",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/DatePicker/DatePicker.tsx",

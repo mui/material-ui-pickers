@@ -44,7 +44,8 @@
   },
   "lint-staged": {
     "lib/**/*.{ts,tsx}": [
-      "yarn docgen"
+      "yarn docgen",
+      "git add"
     ],
     "*.{js,jsx,ts,tsx,json,css,md}": [
       "prettier --write",
