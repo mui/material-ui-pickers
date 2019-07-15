@@ -16,6 +16,9 @@ export const useStyles = makeStyles(
     toolbarLandscape: {
       padding: 16,
     },
+    dateLandscape: {
+      marginRight: 16,
+    },
   },
   { name: 'MuiPickersDatePickerRoot' }
 );
@@ -51,10 +54,11 @@ export const DatePickerToolbar: React.FC<ToolbarComponentProps> = ({
       {!isYearOnly && !isYearAndMonth && (
         <ToolbarButton
           variant="h4"
-          align={isLandscape ? 'left' : 'center'}
-          onClick={() => setOpenView('date')}
           selected={openView === 'date'}
+          onClick={() => setOpenView('date')}
+          align={isLandscape ? 'left' : 'center'}
           label={utils.getDatePickerHeaderText(date)}
+          className={clsx({ [classes.dateLandscape]: isLandscape })}
         />
       )}
 
