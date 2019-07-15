@@ -43,7 +43,7 @@
     }
   },
   "lint-staged": {
-    "lib/*.{ts,tsx}": [
+    "lib/**/*.{ts,tsx}": [
       "yarn docgen"
     ],
     "*.{js,jsx,ts,tsx,json,css,md}": [

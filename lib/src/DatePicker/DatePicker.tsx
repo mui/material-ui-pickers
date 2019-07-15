@@ -38,7 +38,7 @@ export interface BaseDatePickerProps extends OutterCalendarProps {
    */
   disableFuture?: boolean;
   /**
-   * To animate scrolling to current year (with scrollIntoView)
+   * To animate scrolling to current year (using scrollIntoView)
    * @default false
    */
   animateYearScrolling?: boolean;
