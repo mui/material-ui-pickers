@@ -1,7 +1,9 @@
 import React from 'react';
 import App from 'next/app';
+import store from '../store.jsx';
 import cookies from 'next-cookies';
 import getPageContext from '../utils/getPageContext';
+import { Provider as ReduxProvider } from 'react-redux';
 import { PageWithContexts, ThemeType } from '../layout/PageWithContext';
 
 class MyApp extends App<{ theme: ThemeType }> {
@@ -30,9 +32,11 @@ class MyApp extends App<{ theme: ThemeType }> {
     const { Component, pageProps, theme } = this.props;
 
     return (
-      <PageWithContexts initialTheme={theme} pageContext={this.pageContext}>
-        <Component pageContext={this.pageContext} {...pageProps} />
-      </PageWithContexts>
+      <ReduxProvider store={store}>
+        <PageWithContexts initialTheme={theme} pageContext={this.pageContext}>
+          <Component pageContext={this.pageContext} {...pageProps} />
+        </PageWithContexts>
+      </ReduxProvider>
     );
   }
 }
