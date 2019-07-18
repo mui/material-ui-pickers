@@ -14,13 +14,12 @@ function InlineDateTimePickerDemo(props) {
       />
 
       <KeyboardDateTimePicker
+        disablePast
         variant="inline"
-        ampm={false}
         label="With keyboard"
         value={selectedDate}
         onChange={handleDateChange}
         onError={console.log}
-        disablePast
         format={props.__willBeReplacedGetFormatString({
           moment: 'YYYY/MM/DD HH:mm',
           dateFns: 'yyyy/MM/dd HH:mm',
