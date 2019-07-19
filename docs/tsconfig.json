@@ -19,5 +19,5 @@
     "target": "esnext",
     "resolveJsonModule": true
   },
-  "include": ["../docs/**/*.ts*", "store.jsx"]
+  "include": ["../docs/**/*.ts*", "pages/guides/store.jsx"]
 }
