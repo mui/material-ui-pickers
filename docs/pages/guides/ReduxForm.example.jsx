@@ -1,8 +1,9 @@
 import React from 'react';
-import store from './store';
 import Code from '../../_shared/Code';
 import { connect } from 'react-redux';
 import { Grid } from '@material-ui/core';
+import { reducer as formReducer } from 'redux-form';
+import { createStore, combineReducers } from 'redux';
 import { Provider as ReduxProvider } from 'react-redux';
 import { KeyboardDatePicker } from '@material-ui/pickers';
 import { reduxForm, Field, formValueSelector } from 'redux-form';
@@ -71,10 +72,17 @@ const mapStateToProps = state => ({
 const createReduxForm = reduxForm({ form: 'example' });
 const Form = connect(mapStateToProps)(createReduxForm(ReduxFormExample));
 
-const app = () => (
+const rootReducer = combineReducers({
+  form: formReducer,
+  // Others reducers
+});
+
+const store = createStore(rootReducer);
+
+const App = () => (
   <ReduxProvider store={store}>
     <Form />
   </ReduxProvider>
 );
 
-export default app;
+export default App;
