@@ -65,7 +65,6 @@
     "react-redux": "^7.1.0",
     "redux": "^4.0.4",
     "redux-form": "^8.2.4",
-    "redux-thunk": "^2.3.0",
     "remark-slug": "^5.1.1",
     "safe-json-stringify": "^1.2.0",
     "typescript": "^3.4.4",
