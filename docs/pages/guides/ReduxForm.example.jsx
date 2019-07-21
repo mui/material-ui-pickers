@@ -14,6 +14,10 @@ const DateField = props => {
     ...others
   } = props;
 
+  const onChange = date => {
+    Date.parse(date) ? inputProps.onChange(date.toISOString()) : inputProps.onChange(null);
+  };
+
   return (
     <KeyboardDatePicker
       {...inputProps}
@@ -23,7 +27,7 @@ const DateField = props => {
       disabled={submitting}
       onBlur={() => onBlur(value ? new Date(value).toISOString() : null)}
       error={error && touched}
-      onChange={date => Date.parse(date) && inputProps.onChange(date.toISOString())}
+      onChange={onChange}
     />
   );
 };
