@@ -75,14 +75,15 @@ export function usePickerState(props: BasePickerProps, options: StateHookOptions
       onChange: (newDate: MaterialUiPickersDate, isFinish = true) => {
         setPickerDate(newDate);
 
+        if (isFinish && autoOk) {
+          acceptDate(newDate);
+          return;
+        }
+
+        // simulate autoOk, but do not close the modal
         if (variant === 'inline' || variant === 'static') {
           onChange(newDate);
           onAccept && onAccept(newDate);
-          return; // simulate autoOk, but do not close the modal
-        }
-
-        if (isFinish && autoOk) {
-          acceptDate(newDate);
         }
       },
     }),
