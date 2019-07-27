@@ -78,7 +78,7 @@ export function usePickerState(props: BasePickerProps, options: StateHookOptions
         if (variant === 'inline' || variant === 'static') {
           onChange(newDate);
           onAccept && onAccept(newDate);
-          return; // simulate autoOk, but do not close the mod
+          return; // simulate autoOk, but do not close the modal
         }
 
         if (isFinish && autoOk) {
