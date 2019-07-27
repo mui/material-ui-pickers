@@ -77,6 +77,8 @@ export function usePickerState(props: BasePickerProps, options: StateHookOptions
 
         if (variant === 'inline' || variant === 'static') {
           onChange(newDate);
+          onAccept && onAccept(newDate);
+          return; // simulate autoOk, but do not close the mod
         }
 
         if (isFinish && autoOk) {
@@ -84,7 +86,7 @@ export function usePickerState(props: BasePickerProps, options: StateHookOptions
         }
       },
     }),
-    [acceptDate, autoOk, onChange, pickerDate, variant]
+    [acceptDate, autoOk, onAccept, onChange, pickerDate, variant]
   );
 
   const validationError = validate(value, utils, props);
