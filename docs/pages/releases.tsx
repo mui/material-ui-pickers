@@ -11,6 +11,7 @@ import {
   TableCell,
   TableRow,
   Typography,
+  makeStyles,
 } from '@material-ui/core';
 
 interface ReleasesProps {
@@ -25,7 +26,15 @@ const ExternalLink: React.FC<React.HTMLProps<HTMLLinkElement>> = ({ href }) => {
   );
 };
 
+const useStyles = makeStyles({
+  scrollableTable: {
+    overflowX: 'auto',
+  },
+});
+
 const Releases: NextFC<ReleasesProps> = ({ tags }) => {
+  const classes = useStyles();
+
   return (
     <>
       <PageMeta
@@ -42,7 +51,7 @@ const Releases: NextFC<ReleasesProps> = ({ tags }) => {
         @material-ui/core versions
       </Typography>
 
-      <Paper>
+      <Paper className={classes.scrollableTable}>
         <Table>
           <TableHead>
             <TableRow>
