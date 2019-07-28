@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { NextFC } from 'next';
 import { PageMeta } from '_shared/PageMeta';
-import { DOMAIN, GITHUB_URL } from '_constants';
 import { fetchGithubData } from 'utils/github-api';
+import { DOMAIN, GITHUB_URL, HOST_URL } from '_constants';
 import {
   Paper,
   Table,
@@ -70,7 +70,7 @@ const Releases: NextFC<ReleasesProps> = ({ tags }) => {
                 <strong> Latest </strong>
               </TableCell>
               <TableCell>
-                <ExternalLink href="https://material-ui-pickers.dev" />
+                <ExternalLink href={HOST_URL} />
               </TableCell>
               <TableCell>Latest stable published release</TableCell>
             </TableRow>
