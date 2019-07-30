@@ -28,7 +28,7 @@ describe('DatePicker', () => {
   });
 
   it('Should change the value to the next month', () => {
-    cy.get(ids.basic).click();
+    cy.get(ids.basic).click({ force: true });
     // return back in 2 month
     cy.get('svg[data-arrow="left"]')
       .click()
