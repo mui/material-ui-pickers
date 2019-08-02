@@ -66,6 +66,7 @@ describe('Visual Regression', () => {
         cy.clock(now.getTime());
 
         cy.visit(page.url);
+        cy.wait(1000);
       });
 
       it(`Displays ${page.name} page`, () => {
