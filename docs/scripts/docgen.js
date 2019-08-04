@@ -78,14 +78,15 @@ components.forEach(filePart => {
       return;
     }
 
-    doc[parsedDoc.displayName] = Object.entries(parsedDoc.props)
-      // .filter(prop => removeExternalDeps(prop) && removeWrapperProps(parsedDoc.displayName, prop))
-      .reduce((obj, [key, propTypeObj]) => {
+    doc[parsedDoc.displayName] = Object.entries(parsedDoc.props).reduce(
+      (obj, [key, propTypeObj]) => {
         processProp(propTypeObj);
 
         obj[key] = propTypeObj;
         return obj;
-      }, {});
+      },
+      {}
+    );
   });
 });
 
