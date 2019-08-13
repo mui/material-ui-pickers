@@ -16,19 +16,19 @@ export function runKeyHandler(e: KeyboardEvent, keyHandlers: KeyHandlers) {
 
 export function useKeyDown(active: boolean, keyHandlers: KeyHandlers) {
   const keyHandlersRef = React.useRef(keyHandlers);
-  useIsomorphicEffect(() => {
+  React.useEffect(() => {
     keyHandlersRef.current = keyHandlers;
   });
 
   React.useEffect(() => {
     if (active) {
       const handleKeyDown = (event: KeyboardEvent) => {
-        runKeyHandler(event, keyHandlers);
+        runKeyHandler(event, keyHandlersRef.current);
       };
       window.addEventListener('keydown', handleKeyDown);
       return () => {
         window.removeEventListener('keydown', handleKeyDown);
       };
     }
-  }, [active, keyHandlers]);
+  }, [active]);
 }
