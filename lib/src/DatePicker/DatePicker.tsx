@@ -88,7 +88,7 @@ export const DatePicker = makePickerWithState<DatePickerProps>({
   DefaultToolbarComponent: DatePickerToolbar,
 });
 
-export const KeyboardDatePicker = makePickerWithState<DatePickerViewsProps>({
+export const KeyboardDatePicker = makePickerWithState<KeyboardDatePickerProps>({
   useOptions,
   Input: KeyboardDateInput,
   useState: useKeyboardPickerState,
