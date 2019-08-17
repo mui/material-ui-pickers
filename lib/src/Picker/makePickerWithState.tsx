@@ -19,7 +19,7 @@ export type WithPureInputProps = DateValidationProps &
   BasePickerProps &
   ExtendWrapper<PureDateInputProps>;
 
-export interface MakePickerOptions<T> {
+export interface MakePickerOptions<T extends any> {
   Input: KeyboardDateInput | PureDateInputProps;
   useState: typeof usePickerState | typeof useKeyboardPickerState;
   useOptions: (props: any) => StateHookOptions;
@@ -27,66 +27,64 @@ export interface MakePickerOptions<T> {
   DefaultToolbarComponent: React.ComponentType<ToolbarComponentProps>;
 }
 
-// Mostly duplicate of ./WrappedPurePicker.tsx to enable tree-shaking of keyboard logic
-// TODO investigate how to reduce duplications
 export function makePickerWithState<T extends any>({
   Input,
   useState,
   useOptions,
   getCustomProps,
   DefaultToolbarComponent,
-}: MakePickerOptions<WithKeyboardInputProps & T>): React.FC<WithKeyboardInputProps & T> {
-  function WrappedKeyboardPicker(props: WithKeyboardInputProps & T) {
+}: MakePickerOptions<T>): React.FC<T> {
+  function PickerWithState(props: T) {
     const {
       allowKeyboardControl,
       ampm,
-      hideTabs,
       animateYearScrolling,
       autoOk,
+      dateRangeIcon,
       disableFuture,
       disablePast,
+      disableToolbar,
+      emptyLabel,
       format,
       forwardedRef,
+      hideTabs,
       initialFocusedDate,
       invalidDateMessage,
+      invalidLabel,
       labelFunc,
-      leftArrowIcon,
       leftArrowButtonProps,
+      leftArrowIcon,
+      loadingIndicator,
       maxDate,
       maxDateMessage,
       minDate,
-      onOpen,
-      onClose,
       minDateMessage,
-      strictCompareDates,
       minutesStep,
       onAccept,
       onChange,
+      onClose,
       onMonthChange,
+      onOpen,
       onYearChange,
-      renderDay,
-      views,
       openTo,
-      rightArrowIcon,
-      rightArrowButtonProps,
-      shouldDisableDate,
-      value,
-      dateRangeIcon,
-      emptyLabel,
-      invalidLabel,
-      timeIcon,
       orientation,
-      variant,
-      disableToolbar,
-      loadingIndicator,
+      renderDay,
+      rightArrowButtonProps,
+      rightArrowIcon,
+      shouldDisableDate,
+      strictCompareDates,
+      timeIcon,
       ToolbarComponent = DefaultToolbarComponent,
+      value,
+      variant,
+      views,
       ...other
     } = props;
 
     const injectedProps = getCustomProps ? getCustomProps(props) : {};
 
     const options = useOptions(props);
-    const { pickerProps, inputProps, wrapperProps } = useState(props, options);
+    const { pickerProps, inputProps, wrapperProps } = useState(props as any, options);
 
     return (
       <Wrapper
@@ -99,36 +97,36 @@ export function makePickerWithState<T extends any>({
       >
         <Picker
           {...pickerProps}
-          ToolbarComponent={ToolbarComponent}
-          disableToolbar={disableToolbar}
-          hideTabs={hideTabs}
-          orientation={orientation}
-          ampm={ampm}
-          views={views}
-          openTo={openTo}
           allowKeyboardControl={allowKeyboardControl}
-          minutesStep={minutesStep}
+          ampm={ampm}
           animateYearScrolling={animateYearScrolling}
+          dateRangeIcon={dateRangeIcon}
           disableFuture={disableFuture}
           disablePast={disablePast}
-          leftArrowIcon={leftArrowIcon}
+          disableToolbar={disableToolbar}
+          hideTabs={hideTabs}
           leftArrowButtonProps={leftArrowButtonProps}
+          leftArrowIcon={leftArrowIcon}
+          loadingIndicator={loadingIndicator}
           maxDate={maxDate}
           minDate={minDate}
-          strictCompareDates={strictCompareDates}
+          minutesStep={minutesStep}
           onMonthChange={onMonthChange}
           onYearChange={onYearChange}
+          openTo={openTo}
+          orientation={orientation}
           renderDay={renderDay}
-          dateRangeIcon={dateRangeIcon}
-          timeIcon={timeIcon}
-          rightArrowIcon={rightArrowIcon}
           rightArrowButtonProps={rightArrowButtonProps}
+          rightArrowIcon={rightArrowIcon}
           shouldDisableDate={shouldDisableDate}
-          loadingIndicator={loadingIndicator}
+          strictCompareDates={strictCompareDates}
+          timeIcon={timeIcon}
+          ToolbarComponent={ToolbarComponent}
+          views={views}
         />
       </Wrapper>
     );
   }
 
-  return WrappedKeyboardPicker;
+  return PickerWithState;
 }

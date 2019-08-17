@@ -59,7 +59,7 @@ export interface DatePickerViewsProps extends BaseDatePickerProps {
    * @type {Array<"year" | "date" | "month">}
    */
   views?: DatePickerView[];
-  /** Open to DatePicker */
+  /** First view to show in DatePicker */
   openTo?: DatePickerView;
 }
 
@@ -81,7 +81,7 @@ function useOptions(props: DatePickerViewsProps) {
   };
 }
 
-export const DatePicker = makePickerWithState<DatePickerViewsProps>({
+export const DatePicker = makePickerWithState<DatePickerProps>({
   useOptions,
   Input: PureDateInput,
   useState: usePickerState,

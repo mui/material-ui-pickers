@@ -30,7 +30,7 @@ export interface BaseTimePickerProps {
 export interface TimePickerViewsProps extends BaseTimePickerProps {
   /** Array of views to show */
   views?: ('hours' | 'minutes' | 'seconds')[];
-  /** Open to timepicker */
+  /** First view to show in timepicker */
   openTo?: 'hours' | 'minutes' | 'seconds';
 }
 
@@ -56,14 +56,14 @@ function useOptions(props: TimePickerProps | KeyboardTimePickerProps) {
   };
 }
 
-export const TimePicker = makePickerWithState<TimePickerViewsProps>({
+export const TimePicker = makePickerWithState<TimePickerProps>({
   useOptions,
   Input: PureDateInput,
   useState: usePickerState,
   DefaultToolbarComponent: TimePickerToolbar,
 });
 
-export const KeyboardTimePicker = makePickerWithState<TimePickerViewsProps>({
+export const KeyboardTimePicker = makePickerWithState<KeyboardTimePickerProps>({
   useOptions,
   Input: KeyboardDateInput,
   useState: useKeyboardPickerState,

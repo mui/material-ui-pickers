@@ -21,7 +21,7 @@ export type BaseDateTimePickerProps = BaseTimePickerProps & BaseDatePickerProps;
 export interface DateTimePickerViewsProps extends BaseDateTimePickerProps {
   /** Array of views to show */
   views?: ('year' | 'date' | 'month' | 'hours' | 'minutes')[];
-  /** Open to DatePicker */
+  /** First view to show in DatePicker */
   openTo?: 'year' | 'date' | 'month' | 'hours' | 'minutes';
   /** To show tabs */
   hideTabs?: boolean;
