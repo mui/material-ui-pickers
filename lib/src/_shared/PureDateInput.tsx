@@ -53,7 +53,7 @@ export const PureDateInput: React.FC<PureDateInputProps> = ({
       InputProps={PureDateInputProps}
       onKeyDown={e => {
         // space or enter
-        if (e.keyCode === 32 || e.keyCode === 13) {
+        if (e.keyCode === 32) {
           e.stopPropagation();
           onOpen();
         }
