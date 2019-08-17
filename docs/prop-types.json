@@ -782,19 +782,6 @@
         "name": "(date: DateIOType) => void"
       }
     },
-    "onOpen": {
-      "defaultValue": null,
-      "description": "On open callback",
-      "name": "onOpen",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
-        "name": "BasePickerProps"
-      },
-      "required": false,
-      "type": {
-        "name": "() => void"
-      }
-    },
     "format": {
       "defaultValue": null,
       "description": "Format string",
@@ -931,6 +918,19 @@
       "required": false,
       "type": {
         "name": "string"
+      }
+    },
+    "onOpen": {
+      "defaultValue": null,
+      "description": "On open callback",
+      "name": "onOpen",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
+        "name": "BasePickerProps"
+      },
+      "required": false,
+      "type": {
+        "name": "() => void"
       }
     },
     "onClose": {
@@ -1858,19 +1858,6 @@
         "name": "(date: DateIOType) => void"
       }
     },
-    "onOpen": {
-      "defaultValue": null,
-      "description": "On open callback",
-      "name": "onOpen",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
-        "name": "BasePickerProps"
-      },
-      "required": false,
-      "type": {
-        "name": "() => void"
-      }
-    },
     "format": {
       "defaultValue": null,
       "description": "Format string",
@@ -2020,6 +2007,19 @@
       "required": false,
       "type": {
         "name": "string"
+      }
+    },
+    "onOpen": {
+      "defaultValue": null,
+      "description": "On open callback",
+      "name": "onOpen",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
+        "name": "BasePickerProps"
+      },
+      "required": false,
+      "type": {
+        "name": "() => void"
       }
     },
     "disableToolbar": {
@@ -3003,19 +3003,6 @@
         "name": "(date: DateIOType) => void"
       }
     },
-    "onOpen": {
-      "defaultValue": null,
-      "description": "On open callback",
-      "name": "onOpen",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
-        "name": "BasePickerProps"
-      },
-      "required": false,
-      "type": {
-        "name": "() => void"
-      }
-    },
     "format": {
       "defaultValue": null,
       "description": "Format string",
@@ -3165,6 +3152,19 @@
       "required": false,
       "type": {
         "name": "string"
+      }
+    },
+    "onOpen": {
+      "defaultValue": null,
+      "description": "On open callback",
+      "name": "onOpen",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
+        "name": "BasePickerProps"
+      },
+      "required": false,
+      "type": {
+        "name": "() => void"
       }
     },
     "disableToolbar": {

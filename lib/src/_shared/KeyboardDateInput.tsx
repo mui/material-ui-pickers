@@ -11,7 +11,7 @@ export interface KeyboardDateInputProps
   extends ExtendMui<BaseTextFieldProps, 'variant' | 'onError' | 'onChange' | 'value'> {
   format: string;
   onChange: (value: string | null) => void;
-  onOpen?: () => void;
+  openPicker?: () => void;
   validationError?: React.ReactNode;
   inputValue: string;
   inputProps?: TextFieldProps['inputProps'];
@@ -56,7 +56,7 @@ const KeyboardDateInput: React.FunctionComponent<KeyboardDateInputProps> = ({
   validationError,
   KeyboardButtonProps,
   InputAdornmentProps,
-  onOpen,
+  openPicker: onOpen,
   onChange,
   InputProps,
   mask,

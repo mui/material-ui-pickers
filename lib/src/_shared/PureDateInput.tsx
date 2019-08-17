@@ -3,7 +3,7 @@ import TextField, { BaseTextFieldProps, TextFieldProps } from '@material-ui/core
 import { ExtendMui } from '../typings/extendMui';
 
 export type NotOverridableProps =
-  | 'onOpen'
+  | 'openPicker'
   | 'inputValue'
   | 'onChange'
   | 'format'
@@ -21,7 +21,7 @@ export interface PureDateInputProps
   inputProps?: TextFieldProps['inputProps'];
   inputValue: string;
   validationError?: React.ReactNode;
-  onOpen: () => void;
+  openPicker: () => void;
 }
 
 export const PureDateInput: React.FC<PureDateInputProps> = ({
@@ -29,7 +29,7 @@ export const PureDateInput: React.FC<PureDateInputProps> = ({
   inputVariant,
   validationError,
   InputProps,
-  onOpen,
+  openPicker: onOpen,
   TextFieldComponent = TextField,
   ...other
 }) => {
