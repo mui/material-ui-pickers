@@ -1,22 +1,42 @@
 import * as React from 'react';
-import { Picker } from './Picker';
 import { BasePickerProps } from '../typings/BasePicker';
-import { MakePickerOptions } from './WrappedKeyboardPicker';
+import { Picker, ToolbarComponentProps } from './Picker';
 import { ExtendWrapper, Wrapper } from '../wrappers/Wrapper';
-import { usePickerState } from '../_shared/hooks/usePickerState';
+import { PureDateInputProps } from '../_shared/PureDateInput';
 import { DateValidationProps } from '../_helpers/text-field-helper';
-import { PureDateInput, PureDateInputProps } from '../_shared/PureDateInput';
+import { StateHookOptions, usePickerState } from '../_shared/hooks/usePickerState';
+import { KeyboardDateInput, KeyboardDateInputProps } from '../_shared/KeyboardDateInput';
+import {
+  BaseKeyboardPickerProps,
+  useKeyboardPickerState,
+} from '../_shared/hooks/useKeyboardPickerState';
 
-export type WrappedPurePickerProps = DateValidationProps &
+export type WithKeyboardInputProps = DateValidationProps &
+  BaseKeyboardPickerProps &
+  ExtendWrapper<KeyboardDateInputProps>;
+
+export type WithPureInputProps = DateValidationProps &
   BasePickerProps &
   ExtendWrapper<PureDateInputProps>;
 
-export function makePurePicker<T extends any>({
+export interface MakePickerOptions<T> {
+  Input: KeyboardDateInput | PureDateInputProps;
+  useState: typeof usePickerState | typeof useKeyboardPickerState;
+  useOptions: (props: any) => StateHookOptions;
+  getCustomProps?: (props: T) => Partial<T>;
+  DefaultToolbarComponent: React.ComponentType<ToolbarComponentProps>;
+}
+
+// Mostly duplicate of ./WrappedPurePicker.tsx to enable tree-shaking of keyboard logic
+// TODO investigate how to reduce duplications
+export function makePickerWithState<T extends any>({
+  Input,
+  useState,
   useOptions,
   getCustomProps,
   DefaultToolbarComponent,
-}: MakePickerOptions<WrappedPurePickerProps & T>): React.FC<WrappedPurePickerProps & T> {
-  function WrappedPurePicker(props: WrappedPurePickerProps & T) {
+}: MakePickerOptions<WithKeyboardInputProps & T>): React.FC<WithKeyboardInputProps & T> {
+  function WrappedKeyboardPicker(props: WithKeyboardInputProps & T) {
     const {
       allowKeyboardControl,
       ampm,
@@ -50,13 +70,13 @@ export function makePurePicker<T extends any>({
       rightArrowIcon,
       rightArrowButtonProps,
       shouldDisableDate,
+      value,
       dateRangeIcon,
       emptyLabel,
       invalidLabel,
       timeIcon,
-      value,
-      variant,
       orientation,
+      variant,
       disableToolbar,
       loadingIndicator,
       ToolbarComponent = DefaultToolbarComponent,
@@ -66,23 +86,23 @@ export function makePurePicker<T extends any>({
     const injectedProps = getCustomProps ? getCustomProps(props) : {};
 
     const options = useOptions(props);
-    const { pickerProps, inputProps, wrapperProps } = usePickerState(props, options);
+    const { pickerProps, inputProps, wrapperProps } = useState(props, options);
 
     return (
       <Wrapper
         variant={variant}
-        InputComponent={PureDateInput}
+        InputComponent={Input}
         DateInputProps={inputProps}
-        {...wrapperProps}
         {...injectedProps}
+        {...wrapperProps}
         {...other}
       >
         <Picker
           {...pickerProps}
-          orientation={orientation}
-          disableToolbar={disableToolbar}
           ToolbarComponent={ToolbarComponent}
+          disableToolbar={disableToolbar}
           hideTabs={hideTabs}
+          orientation={orientation}
           ampm={ampm}
           views={views}
           openTo={openTo}
@@ -110,5 +130,5 @@ export function makePurePicker<T extends any>({
     );
   }
 
-  return WrappedPurePicker;
+  return WrappedKeyboardPicker;
 }
