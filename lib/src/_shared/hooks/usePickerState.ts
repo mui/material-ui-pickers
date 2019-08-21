@@ -45,12 +45,12 @@ export function usePickerState(props: BasePickerProps, options: StateHookOptions
 
   const acceptDate = useCallback(
     (acceptedDate: MaterialUiPickersDate) => {
-      setIsOpen(false);
       onChange(acceptedDate);
-
       if (onAccept) {
         onAccept(acceptedDate);
       }
+
+      setIsOpen(false);
     },
     [onAccept, onChange, setIsOpen]
   );
@@ -102,7 +102,7 @@ export function usePickerState(props: BasePickerProps, options: StateHookOptions
     () => ({
       inputValue,
       validationError,
-      onClick: () => !disabled && setIsOpen(true),
+      openPicker: () => !disabled && setIsOpen(true),
     }),
     [disabled, inputValue, setIsOpen, validationError]
   );
