@@ -2,7 +2,7 @@
   "ModalWrapper": {
     "okLabel": {
       "defaultValue": {
-        "value": "\"OK\""
+        "value": "OK"
       },
       "description": "\"OK\" label message",
       "name": "okLabel",
@@ -17,7 +17,7 @@
     },
     "cancelLabel": {
       "defaultValue": {
-        "value": "\"CANCEL\""
+        "value": "Cancel"
       },
       "description": "\"CANCEL\" label message",
       "name": "cancelLabel",
@@ -32,7 +32,7 @@
     },
     "clearLabel": {
       "defaultValue": {
-        "value": "\"CLEAR\""
+        "value": "Clear"
       },
       "description": "\"CLEAR\" label message",
       "name": "clearLabel",
@@ -47,7 +47,7 @@
     },
     "todayLabel": {
       "defaultValue": {
-        "value": "\"TODAY\""
+        "value": "Today"
       },
       "description": "\"TODAY\" label message",
       "name": "todayLabel",
@@ -3893,7 +3893,9 @@
       }
     },
     "ampm": {
-      "defaultValue": null,
+      "defaultValue": {
+        "value": "true"
+      },
       "description": "12h/24h clock mode",
       "name": "ampm",
       "parent": {
@@ -3906,7 +3908,9 @@
       }
     },
     "minutesStep": {
-      "defaultValue": null,
+      "defaultValue": {
+        "value": "1"
+      },
       "description": "Minutes step",
       "name": "minutesStep",
       "parent": {
@@ -3986,7 +3990,9 @@
       }
     },
     "ampm": {
-      "defaultValue": null,
+      "defaultValue": {
+        "value": "true"
+      },
       "description": "12h/24h clock mode",
       "name": "ampm",
       "parent": {
@@ -3999,7 +4005,9 @@
       }
     },
     "minutesStep": {
-      "defaultValue": null,
+      "defaultValue": {
+        "value": "1"
+      },
       "description": "Minutes step",
       "name": "minutesStep",
       "parent": {
