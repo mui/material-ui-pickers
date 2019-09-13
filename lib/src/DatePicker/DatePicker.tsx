@@ -13,6 +13,7 @@ import {
   WithPureInputProps,
   makePickerWithState,
 } from '../Picker/makePickerWithState';
+import { InputProps as StandardInputProps } from "@material-ui/core/Input"
 
 export type DatePickerView = 'year' | 'date' | 'month';
 
@@ -61,6 +62,10 @@ export interface DatePickerViewsProps extends BaseDatePickerProps {
   views?: DatePickerView[];
   /** First view to show in DatePicker */
   openTo?: DatePickerView;
+  
+  onBlur?: StandardInputProps["onBlur"]
+  onChange?: StandardInputProps["onChange"]
+  onFocus?: StandardInputProps["onFocus"]
 }
 
 export type DatePickerProps = WithPureInputProps & DatePickerViewsProps;
