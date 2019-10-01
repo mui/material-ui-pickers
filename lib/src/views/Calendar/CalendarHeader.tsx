@@ -83,6 +83,7 @@ export const CalendarHeader: React.SFC<CalendarHeaderProps> = ({
           disabled={disablePrevMonth}
           onClick={selectPreviousMonth}
           className={classes.iconButton}
+          datatest='prevmonth'
         >
           {rtl ? rightArrowIcon : leftArrowIcon}
         </IconButton>
@@ -102,6 +103,7 @@ export const CalendarHeader: React.SFC<CalendarHeaderProps> = ({
           disabled={disableNextMonth}
           onClick={selectNextMonth}
           className={classes.iconButton}
+          datatest='nextmonth'
         >
           {rtl ? leftArrowIcon : rightArrowIcon}
         </IconButton>
