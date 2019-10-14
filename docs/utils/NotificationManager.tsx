@@ -17,6 +17,10 @@ export function useNotification() {
   const { enqueueSnackbar } = useSnackbar();
 
   React.useEffect(() => {
+    if (window.Cypress) {
+      return; // hide for visual regression and tests
+    }
+
     const viewedNotifications: string[] = JSON.parse(
       localStorage.getItem('viewedNotifications') || '[]'
     );
