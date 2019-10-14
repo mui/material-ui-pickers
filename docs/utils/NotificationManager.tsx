@@ -17,6 +17,7 @@ export function useNotification() {
   const { enqueueSnackbar } = useSnackbar();
 
   React.useEffect(() => {
+    // @ts-ignore
     if (window.Cypress) {
       return; // hide for visual regression and tests
     }
@@ -36,7 +37,6 @@ export function useNotification() {
           source={notificationToShow.title}
         />,
         {
-          autoHideDuration: 1000008,
           anchorOrigin: {
             vertical: 'top',
             horizontal: 'center',
