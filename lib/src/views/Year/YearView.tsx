@@ -54,10 +54,12 @@ export const YearSelection: React.FC<YearSelectionProps> = ({
           behavior: animateYearScrolling ? 'smooth' : 'auto',
         });
       } catch (err) {
-        selectedYearRef.current.parentElement.scrollTo(
-          0,
-          selectedYearRef.current.offsetTop - selectedYearRef.current.offsetHeight * 6
-        );
+        if (selectedYearRef.current.parentElement) {
+          selectedYearRef.current.parentElement.scrollTo(
+            0,
+            selectedYearRef.current.offsetTop - selectedYearRef.current.offsetHeight * 6
+          );
+        }
       }
     }
   }, []); // eslint-disable-line
