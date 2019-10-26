@@ -44,10 +44,21 @@ export const YearSelection: React.FC<YearSelectionProps> = ({
 
   React.useEffect(() => {
     if (selectedYearRef.current && selectedYearRef.current.scrollIntoView) {
-      selectedYearRef.current.scrollIntoView({
-        block: currentVariant === 'static' ? 'nearest' : 'center',
-        behavior: animateYearScrolling ? 'smooth' : 'auto',
-      });
+      /*
+        Before Firefox 58, nearest and center values for the block option were unsupported.
+        Using either of these two values causes an error to be thrown.
+      */
+      try {
+        selectedYearRef.current.scrollIntoView({
+          block: currentVariant === 'static' ? 'nearest' : 'center',
+          behavior: animateYearScrolling ? 'smooth' : 'auto',
+        });
+      } catch (err) {
+        selectedYearRef.current.parentElement.scrollTo(
+          0,
+          selectedYearRef.current.offsetTop - selectedYearRef.current.offsetHeight * 6
+        );
+      }
     }
   }, []); // eslint-disable-line
 
