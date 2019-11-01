@@ -1,7 +1,3 @@
-import { DatePickerProps, KeyboardDatePickerProps } from './DatePicker';
-
-export type DatePickerProps = DatePickerProps;
-
-export type KeyboardDatePickerProps = KeyboardDatePickerProps;
+export { DatePickerProps, KeyboardDatePickerProps } from './DatePicker';
 
 export { KeyboardDatePicker, DatePicker } from './DatePicker';

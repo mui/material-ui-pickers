@@ -1,7 +1,3 @@
-import { DateTimePickerProps, KeyboardDateTimePickerProps } from './DateTimePicker';
-
-export type DateTimePickerProps = DateTimePickerProps;
-
-export type KeyboardDateTimePickerProps = KeyboardDateTimePickerProps;
+export { DateTimePickerProps, KeyboardDateTimePickerProps } from './DateTimePicker';
 
 export { KeyboardDateTimePicker, DateTimePicker } from './DateTimePicker';
