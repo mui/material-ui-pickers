@@ -44,10 +44,14 @@ export const YearSelection: React.FC<YearSelectionProps> = ({
 
   React.useEffect(() => {
     if (selectedYearRef.current && selectedYearRef.current.scrollIntoView) {
-      selectedYearRef.current.scrollIntoView({
-        block: currentVariant === 'static' ? 'nearest' : 'center',
-        behavior: animateYearScrolling ? 'smooth' : 'auto',
-      });
+      try {
+        selectedYearRef.current.scrollIntoView({
+          block: currentVariant === 'static' ? 'nearest' : 'center',
+          behavior: animateYearScrolling ? 'smooth' : 'auto',
+        });
+      } catch (e) {
+        // do nothing we got a case when scrollIntoView works improperly (e.g. Firefox 52-57)
+      }
     }
   }, []); // eslint-disable-line
 

@@ -2,7 +2,7 @@
   "ModalWrapper": {
     "okLabel": {
       "defaultValue": {
-        "value": "OK"
+        "value": "\"OK\""
       },
       "description": "\"OK\" label message",
       "name": "okLabel",
@@ -17,7 +17,7 @@
     },
     "cancelLabel": {
       "defaultValue": {
-        "value": "Cancel"
+        "value": "\"CANCEL\""
       },
       "description": "\"CANCEL\" label message",
       "name": "cancelLabel",
@@ -32,7 +32,7 @@
     },
     "clearLabel": {
       "defaultValue": {
-        "value": "Clear"
+        "value": "\"CLEAR\""
       },
       "description": "\"CLEAR\" label message",
       "name": "clearLabel",
@@ -47,7 +47,7 @@
     },
     "todayLabel": {
       "defaultValue": {
-        "value": "Today"
+        "value": "\"TODAY\""
       },
       "description": "\"TODAY\" label message",
       "name": "todayLabel",
@@ -391,7 +391,7 @@
       },
       "required": false,
       "type": {
-        "name": "FunctionComponent<ToolbarComponentProps> | ComponentClass<ToolbarComponentProps, any>"
+        "name": "ComponentClass<ToolbarComponentProps, any> | FunctionComponent<ToolbarComponentProps>"
       }
     },
     "variant": {
@@ -1012,7 +1012,7 @@
       },
       "required": false,
       "type": {
-        "name": "FunctionComponent<ToolbarComponentProps> | ComponentClass<ToolbarComponentProps, any>"
+        "name": "ComponentClass<ToolbarComponentProps, any> | FunctionComponent<ToolbarComponentProps>"
       }
     },
     "PopoverProps": {
@@ -1685,7 +1685,7 @@
       },
       "required": false,
       "type": {
-        "name": "FunctionComponent<ToolbarComponentProps> | ComponentClass<ToolbarComponentProps, any>"
+        "name": "ComponentClass<ToolbarComponentProps, any> | FunctionComponent<ToolbarComponentProps>"
       }
     },
     "variant": {
@@ -2114,7 +2114,7 @@
       },
       "required": false,
       "type": {
-        "name": "FunctionComponent<ToolbarComponentProps> | ComponentClass<ToolbarComponentProps, any>"
+        "name": "ComponentClass<ToolbarComponentProps, any> | FunctionComponent<ToolbarComponentProps>"
       }
     },
     "PopoverProps": {
@@ -2595,7 +2595,7 @@
       },
       "required": false,
       "type": {
-        "name": "FunctionComponent<ToolbarComponentProps> | ComponentClass<ToolbarComponentProps, any>"
+        "name": "ComponentClass<ToolbarComponentProps, any> | FunctionComponent<ToolbarComponentProps>"
       }
     },
     "variant": {
@@ -3285,7 +3285,7 @@
       },
       "required": false,
       "type": {
-        "name": "FunctionComponent<ToolbarComponentProps> | ComponentClass<ToolbarComponentProps, any>"
+        "name": "ComponentClass<ToolbarComponentProps, any> | FunctionComponent<ToolbarComponentProps>"
       }
     },
     "PopoverProps": {
@@ -3971,9 +3971,7 @@
       }
     },
     "ampm": {
-      "defaultValue": {
-        "value": "true"
-      },
+      "defaultValue": null,
       "description": "12h/24h clock mode",
       "name": "ampm",
       "parent": {
@@ -3986,9 +3984,7 @@
       }
     },
     "minutesStep": {
-      "defaultValue": {
-        "value": "1"
-      },
+      "defaultValue": null,
       "description": "Minutes step",
       "name": "minutesStep",
       "parent": {
@@ -4068,9 +4064,7 @@
       }
     },
     "ampm": {
-      "defaultValue": {
-        "value": "true"
-      },
+      "defaultValue": null,
       "description": "12h/24h clock mode",
       "name": "ampm",
       "parent": {
@@ -4083,9 +4077,7 @@
       }
     },
     "minutesStep": {
-      "defaultValue": {
-        "value": "1"
-      },
+      "defaultValue": null,
       "description": "Minutes step",
       "name": "minutesStep",
       "parent": {
