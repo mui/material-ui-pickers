@@ -2,7 +2,7 @@
   "ModalWrapper": {
     "okLabel": {
       "defaultValue": {
-        "value": "OK"
+        "value": "\"OK\""
       },
       "description": "\"OK\" label message",
       "name": "okLabel",
@@ -17,7 +17,7 @@
     },
     "cancelLabel": {
       "defaultValue": {
-        "value": "Cancel"
+        "value": "\"CANCEL\""
       },
       "description": "\"CANCEL\" label message",
       "name": "cancelLabel",
@@ -32,7 +32,7 @@
     },
     "clearLabel": {
       "defaultValue": {
-        "value": "Clear"
+        "value": "\"CLEAR\""
       },
       "description": "\"CLEAR\" label message",
       "name": "clearLabel",
@@ -47,7 +47,7 @@
     },
     "todayLabel": {
       "defaultValue": {
-        "value": "Today"
+        "value": "\"TODAY\""
       },
       "description": "\"TODAY\" label message",
       "name": "todayLabel",
@@ -62,7 +62,7 @@
     },
     "showTodayButton": {
       "defaultValue": {
-        "value": false
+        "value": "false"
       },
       "description": "If true today button will be displayed <b>Note*</b> that clear button has higher priority",
       "name": "showTodayButton",
@@ -77,7 +77,7 @@
     },
     "clearable": {
       "defaultValue": {
-        "value": false
+        "value": "false"
       },
       "description": "Show clear action in picker dialog",
       "name": "clearable",
@@ -3768,9 +3768,7 @@
       }
     },
     "minDate": {
-      "defaultValue": {
-        "value": null
-      },
+      "defaultValue": null,
       "description": "Min date",
       "name": "minDate",
       "parent": {
@@ -3783,9 +3781,7 @@
       }
     },
     "maxDate": {
-      "defaultValue": {
-        "value": null
-      },
+      "defaultValue": null,
       "description": "Max date",
       "name": "maxDate",
       "parent": {
@@ -3799,7 +3795,7 @@
     },
     "disablePast": {
       "defaultValue": {
-        "value": false
+        "value": "false"
       },
       "description": "Disable past dates",
       "name": "disablePast",
@@ -3814,7 +3810,7 @@
     },
     "disableFuture": {
       "defaultValue": {
-        "value": false
+        "value": "false"
       },
       "description": "Disable future dates",
       "name": "disableFuture",
@@ -3868,7 +3864,7 @@
     },
     "allowKeyboardControl": {
       "defaultValue": {
-        "value": true
+        "value": "true"
       },
       "description": "Enables keyboard listener for moving between days in calendar",
       "name": "allowKeyboardControl",
@@ -3975,9 +3971,7 @@
       }
     },
     "ampm": {
-      "defaultValue": {
-        "value": true
-      },
+      "defaultValue": null,
       "description": "12h/24h clock mode",
       "name": "ampm",
       "parent": {
@@ -3990,9 +3984,7 @@
       }
     },
     "minutesStep": {
-      "defaultValue": {
-        "value": 1
-      },
+      "defaultValue": null,
       "description": "Minutes step",
       "name": "minutesStep",
       "parent": {
@@ -4072,9 +4064,7 @@
       }
     },
     "ampm": {
-      "defaultValue": {
-        "value": true
-      },
+      "defaultValue": null,
       "description": "12h/24h clock mode",
       "name": "ampm",
       "parent": {
@@ -4087,9 +4077,7 @@
       }
     },
     "minutesStep": {
-      "defaultValue": {
-        "value": 1
-      },
+      "defaultValue": null,
       "description": "Minutes step",
       "name": "minutesStep",
       "parent": {
