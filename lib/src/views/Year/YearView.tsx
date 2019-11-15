@@ -50,7 +50,8 @@ export const YearSelection: React.FC<YearSelectionProps> = ({
           behavior: animateYearScrolling ? 'smooth' : 'auto',
         });
       } catch (e) {
-        // do nothing we got a case when scrollIntoView works improperly (e.g. Firefox 52-57)
+        // call without arguments in case when scrollIntoView works improperly (e.g. Firefox 52-57)
+        selectedYearRef.current.scrollIntoView();
       }
     }
   }, []); // eslint-disable-line
