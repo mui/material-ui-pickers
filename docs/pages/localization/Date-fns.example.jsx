@@ -1,7 +1,8 @@
+import format from 'date-fns/format';
 import frLocale from 'date-fns/locale/fr';
 import ruLocale from 'date-fns/locale/ru';
-import DateFnsUtils from '@date-io/date-fns';
 import enLocale from 'date-fns/locale/en-US';
+import DateFnsUtils from '@date-io/date-fns';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import React, { useState, useCallback } from 'react';
 import { IconButton, Menu, MenuItem } from '@material-ui/core';
@@ -11,6 +12,40 @@ const localeMap = {
   en: enLocale,
   fr: frLocale,
   ru: ruLocale,
+};
+
+class RuLocalizedUtils extends DateFnsUtils {
+  getCalendarHeaderText(date) {
+    return format(date, 'LLLL', { locale: this.locale });
+  }
+
+  getDatePickerHeaderText(date) {
+    return format(date, 'dd MMMM, EEEE', { locale: this.locale });
+  }
+}
+
+class FrLocalizedUtils extends DateFnsUtils {
+  getDatePickerHeaderText(date) {
+    return format(date, 'd MMM yyyy', { locale: this.locale });
+  }
+}
+
+const localeUtilsMap = {
+  en: DateFnsUtils,
+  fr: FrLocalizedUtils,
+  ru: RuLocalizedUtils,
+};
+
+const localeFormatMap = {
+  en: 'MMMM d, yyyy',
+  fr: 'd MMM yyyy',
+  ru: 'd MMMM yyyy',
+};
+
+const localeCancelLabelMap = {
+  en: 'cancel',
+  fr: 'annuler',
+  ru: 'отмена',
 };
 
 function DateFnsLocalizationExample() {
@@ -29,10 +64,12 @@ function DateFnsLocalizationExample() {
   }, []);
 
   return (
-    <MuiPickersUtilsProvider utils={DateFnsUtils} locale={localeMap[locale]}>
+    <MuiPickersUtilsProvider utils={localeUtilsMap[locale]} locale={localeMap[locale]}>
       <DatePicker
         value={selectedDate}
         onChange={handleDateChange}
+        format={localeFormatMap[locale]}
+        cancelLabel={localeCancelLabelMap[locale]}
         InputProps={{
           endAdornment: (
             <IconButton
