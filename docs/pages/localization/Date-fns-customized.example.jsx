@@ -20,7 +20,7 @@ class RuLocalizedUtils extends DateFnsUtils {
   }
 
   getDatePickerHeaderText(date) {
-    return format(date, 'dd MMMM, EEEE', { locale: this.locale });
+    return format(date, 'dd MMMM', { locale: this.locale });
   }
 }
 
@@ -39,7 +39,7 @@ const localeUtilsMap = {
 const localeFormatMap = {
   en: 'MMMM d, yyyy',
   fr: 'd MMM yyyy',
-  ru: 'd MMMM yyyy',
+  ru: 'd MMM yyyy',
 };
 
 const localeCancelLabelMap = {
