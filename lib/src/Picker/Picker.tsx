@@ -33,6 +33,7 @@ export type ToolbarComponentProps = BaseDatePickerProps &
     date: MaterialUiPickersDate;
     setOpenView: (view: PickerView) => void;
     onChange: (date: MaterialUiPickersDate, isFinish?: boolean) => void;
+    title?: string;
     // TODO move out, cause it is DateTimePickerOnly
     hideTabs?: boolean;
     dateRangeIcon?: React.ReactNode;

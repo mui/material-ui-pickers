@@ -1,23 +1,28 @@
 import * as React from 'react';
-import clsx from 'clsx';
-import ToolbarButton from '../_shared/ToolbarButton';
 import PickerToolbar from '../_shared/PickerToolbar';
+import { DatePickerView } from './DatePicker';
+import { PenIcon } from '../_shared/icons/PenIcon';
 import { useUtils } from '../_shared/hooks/useUtils';
-import { makeStyles } from '@material-ui/core/styles';
 import { ToolbarComponentProps } from '../Picker/Picker';
 import { isYearAndMonthViews, isYearOnlyView } from '../_helpers/date-utils';
+import { Typography, makeStyles, IconButton, Grid, Theme } from '@material-ui/core';
 
-export const useStyles = makeStyles(
+export const useStyles = makeStyles<Theme, { isLandscape: boolean }>(
   {
     toolbar: {
+      color: 'white',
       flexDirection: 'column',
       alignItems: 'flex-start',
+      justifyContent: 'space-between',
+      paddingTop: 16,
+      paddingBottom: 16,
+      padding: props => (props.isLandscape ? 16 : undefined),
     },
-    toolbarLandscape: {
-      padding: 16,
+    dateTitleContainer: {
+      flex: 1,
     },
-    dateLandscape: {
-      marginRight: 16,
+    dateTitle: {
+      margin: props => (props.isLandscape ? 'auto 16px auto auto' : undefined),
     },
   },
   { name: 'MuiPickersDatePickerRoot' }
@@ -26,50 +31,51 @@ export const useStyles = makeStyles(
 export const DatePickerToolbar: React.FC<ToolbarComponentProps> = ({
   date,
   views,
-  setOpenView,
   isLandscape,
-  openView,
+  title = 'SELECT DATE',
 }) => {
   const utils = useUtils();
-  const classes = useStyles();
+  const classes = useStyles({ isLandscape });
 
-  const isYearOnly = React.useMemo(() => isYearOnlyView(views as any), [views]);
-  const isYearAndMonth = React.useMemo(() => isYearAndMonthViews(views as any), [views]);
+  const dateTitle = React.useMemo(() => {
+    if (isYearOnlyView(views as DatePickerView[])) {
+      return utils.getYearText(date);
+    }
+
+    if (isYearAndMonthViews(views as DatePickerView[])) {
+      return utils.getMonthText(date);
+    }
+
+    return utils.getDatePickerHeaderText(date);
+  }, [date, utils, views]);
 
   return (
-    <PickerToolbar
-      isLandscape={isLandscape}
-      className={clsx({
-        [classes.toolbar]: !isYearOnly,
-        [classes.toolbarLandscape]: isLandscape,
-      })}
-    >
-      <ToolbarButton
-        variant={isYearOnly ? 'h3' : 'subtitle1'}
-        onClick={() => setOpenView('year')}
-        selected={openView === 'year'}
-        label={utils.getYearText(date)}
+    <PickerToolbar isLandscape={isLandscape} className={classes.toolbar}>
+      <Typography
+        color="inherit"
+        variant="overline"
+        children={title}
+        className={classes.toolbarTitle}
       />
 
-      {!isYearOnly && !isYearAndMonth && (
-        <ToolbarButton
+      <Grid
+        container
+        justify="space-between"
+        className={classes.dateTitleContainer}
+        direction={isLandscape ? 'column' : 'row'}
+        alignItems={isLandscape ? 'flex-start' : 'center'}
+      >
+        <Typography
           variant="h4"
-          selected={openView === 'date'}
-          onClick={() => setOpenView('date')}
+          children={dateTitle}
           align={isLandscape ? 'left' : 'center'}
-          label={utils.getDatePickerHeaderText(date)}
-          className={clsx({ [classes.dateLandscape]: isLandscape })}
+          className={classes.dateTitle}
         />
-      )}
 
-      {isYearAndMonth && (
-        <ToolbarButton
-          variant="h4"
-          onClick={() => setOpenView('month')}
-          selected={openView === 'month'}
-          label={utils.getMonthText(date)}
-        />
-      )}
+        <IconButton>
+          <PenIcon />
+        </IconButton>
+      </Grid>
     </PickerToolbar>
   );
 };

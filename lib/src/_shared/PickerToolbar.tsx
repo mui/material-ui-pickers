@@ -10,8 +10,7 @@ export const useStyles = makeStyles(
       display: 'flex',
       flexDirection: 'row',
       alignItems: 'center',
-      justifyContent: 'center',
-      height: 100,
+      height: 120,
       backgroundColor:
         theme.palette.type === 'light'
           ? theme.palette.primary.main
