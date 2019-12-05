@@ -170,9 +170,8 @@ export const Calendar2: React.FC<CalendarProps> = ({
                   current={utils.isSameDay(day, now)}
                   hidden={!isDayInCurrentMonth}
                   selected={utils.isSameDay(selectedDate, day)}
-                >
-                  {utils.getDayText(day)}
-                </Day>
+                  children={utils.getDayText(day)}
+                />
               );
 
               if (renderDay) {
@@ -181,14 +180,13 @@ export const Calendar2: React.FC<CalendarProps> = ({
 
               return (
                 <DayWrapper
-                  value={day}
                   key={day!.toString()}
+                  value={day}
                   disabled={disabled}
                   dayInCurrentMonth={isDayInCurrentMonth}
                   onSelect={handleDaySelect}
-                >
-                  {dayComponent}
-                </DayWrapper>
+                  children={dayComponent}
+                />
               );
             })}
           </div>

@@ -43,7 +43,7 @@ export const useStyles = makeStyles(
 export interface DayProps {
   /** Day text */
   children: React.ReactNode;
-  /** Is today */
+  /** Is today? */
   current?: boolean;
   /** Disabled? */
   disabled?: boolean;
@@ -71,9 +71,7 @@ export const Day: React.FC<DayProps> = ({
 
   return (
     <IconButton className={className} tabIndex={hidden || disabled ? -1 : 0} {...other}>
-      <Typography variant="body2" color="inherit">
-        {children}
-      </Typography>
+      <Typography variant="body2" color="inherit" children={children} />
     </IconButton>
   );
 };

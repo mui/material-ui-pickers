@@ -2,12 +2,13 @@ import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import clsx from 'clsx';
 import Typography from '@material-ui/core/Typography';
-import IconButton, { IconButtonProps } from '@material-ui/core/IconButton';
 import { CalendarProps } from './Calendar';
 import { DatePickerView } from '../../DatePicker';
 import { SlideDirection } from './SlideTransition';
+import { Fade, IconButton } from '@material-ui/core';
 import { useUtils } from '../../_shared/hooks/useUtils';
 import { MaterialUiPickersDate } from '../../typings/date';
+import { IconButtonProps } from '@material-ui/core/IconButton';
 import { ArrowLeftIcon } from '../../_shared/icons/ArrowLeftIcon';
 import { ArrowRightIcon } from '../../_shared/icons/ArrowRightIcon';
 import { makeStyles, useTheme, Theme } from '@material-ui/core/styles';
@@ -107,36 +108,42 @@ export const CalendarHeader: React.SFC<CalendarWithHeaderProps> = ({
   return (
     <>
       <div className={classes.switchHeader}>
-        <Typography align="center" variant="subtitle1">
-          {utils.getCalendarHeaderText(month)}
-        </Typography>
+        <Typography
+          align="center"
+          variant="subtitle1"
+          children={utils.getCalendarHeaderText(month)}
+        />
         <IconButton onClick={changeView} size="small" className={classes.yearSelectionSwitcher}>
           <ArrowDropDownIcon className={classes.switchViewDropdown} />
         </IconButton>
 
-        <IconButton
-          size="small"
-          {...leftArrowButtonProps}
-          disabled={isPreviousMonthDisabled}
-          onClick={selectPreviousMonth}
-          className={clsx(
-            classes.iconButton,
-            classes.previousMonthButton,
-            leftArrowButtonProps?.className
-          )}
-        >
-          {isRtl ? rightArrowIcon : leftArrowIcon}
-        </IconButton>
+        <Fade in={view === 'date'}>
+          <div>
+            <IconButton
+              size="small"
+              {...leftArrowButtonProps}
+              disabled={isPreviousMonthDisabled}
+              onClick={selectPreviousMonth}
+              className={clsx(
+                classes.iconButton,
+                classes.previousMonthButton,
+                leftArrowButtonProps?.className
+              )}
+            >
+              {isRtl ? rightArrowIcon : leftArrowIcon}
+            </IconButton>
 
-        <IconButton
-          size="small"
-          {...rightArrowButtonProps}
-          disabled={isNextMonthDisabled}
-          onClick={selectNextMonth}
-          className={clsx(classes.iconButton, rightArrowButtonProps?.className)}
-        >
-          {isRtl ? leftArrowIcon : rightArrowIcon}
-        </IconButton>
+            <IconButton
+              size="small"
+              {...rightArrowButtonProps}
+              disabled={isNextMonthDisabled}
+              onClick={selectNextMonth}
+              className={clsx(classes.iconButton, rightArrowButtonProps?.className)}
+            >
+              {isRtl ? leftArrowIcon : rightArrowIcon}
+            </IconButton>
+          </div>
+        </Fade>
       </div>
     </>
   );

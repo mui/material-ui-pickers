@@ -158,21 +158,22 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
         />
       )}
 
-      {view === 'date' && loadingQueue > 0 ? (
-        <GridFullHeight container alignItems="center" justify="center">
-          {loadingIndicator}
-        </GridFullHeight>
-      ) : (
-        <Calendar
-          {...rest}
-          currentMonth={currentMonth}
-          slideDirection={slideDirection}
-          date={date}
-          onChange={onChange}
-          minDate={minDate}
-          maxDate={maxDate}
-        />
-      )}
+      {view === 'date' &&
+        (loadingQueue > 0 ? (
+          <GridFullHeight container alignItems="center" justify="center">
+            {loadingIndicator}
+          </GridFullHeight>
+        ) : (
+          <Calendar
+            {...rest}
+            currentMonth={currentMonth}
+            slideDirection={slideDirection}
+            date={date}
+            onChange={onChange}
+            minDate={minDate}
+            maxDate={maxDate}
+          />
+        ))}
     </>
   );
 };
