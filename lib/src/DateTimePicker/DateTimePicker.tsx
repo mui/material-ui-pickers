@@ -14,7 +14,7 @@ import {
   WithPureInputProps,
 } from '../Picker/makePickerWithState';
 
-export type DateTimePickerView = 'year' | 'date' | 'month' | 'hours' | 'minutes';
+export type DateTimePickerView = 'year' | 'date' | 'month' | 'hours' | 'minutes' | 'seconds';
 
 export type BaseDateTimePickerProps = BaseTimePickerProps & BaseDatePickerProps;
 

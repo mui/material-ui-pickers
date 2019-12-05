@@ -72,8 +72,8 @@ export const DatePickerToolbar: React.FC<ToolbarComponentProps> = ({
           className={classes.dateTitle}
         />
 
-        <IconButton>
-          <PenIcon />
+        <IconButton color="inherit">
+          <PenIcon color="inherit" />
         </IconButton>
       </Grid>
     </PickerToolbar>
