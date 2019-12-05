@@ -7,7 +7,7 @@ import { useUtils } from '../../_shared/hooks/useUtils';
 import { MaterialUiPickersDate } from '../../typings/date';
 import { useKeyDown } from '../../_shared/hooks/useKeyDown';
 import { IconButtonProps } from '@material-ui/core/IconButton';
-import { Theme, makeStyles, useTheme } from '@material-ui/core';
+import { makeStyles, useTheme, Typography } from '@material-ui/core';
 
 export interface OuterCalendarProps {
   /** Left arrow icon */
@@ -61,7 +61,7 @@ export interface CalendarProps extends OuterCalendarProps {
   currentMonth: MaterialUiPickersDate;
 }
 
-export const useStyles = makeStyles((theme: Theme) => ({
+export const useStyles = makeStyles(theme => ({
   transitionContainer: {
     minHeight: 36 * 6,
   },
@@ -82,6 +82,21 @@ export const useStyles = makeStyles((theme: Theme) => ({
   },
   previousMonthButton: {
     marginRight: 12,
+  },
+  daysHeader: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  dayLabel: {
+    width: 36,
+    height: 40,
+    margin: '0 2px',
+    textAlign: 'center',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    color: theme.palette.text.hint,
   },
 }));
 
@@ -152,47 +167,60 @@ export const Calendar2: React.FC<CalendarProps> = ({
   const currentMonthNumber = utils.getMonth(currentMonth);
 
   return (
-    <SlideTransition
-      slideDirection={slideDirection}
-      transKey={currentMonth!.toString()}
-      className={classes.transitionContainer}
-    >
-      <div>
-        {utils.getWeekArray(currentMonth).map(week => (
-          <div key={`week-${week[0]!.toString()}`} className={classes.week}>
-            {week.map(day => {
-              const disabled = shouldDisableDate(day);
-              const isDayInCurrentMonth = utils.getMonth(day) === currentMonthNumber;
-
-              let dayComponent = (
-                <Day
-                  disabled={disabled}
-                  current={utils.isSameDay(day, now)}
-                  hidden={!isDayInCurrentMonth}
-                  selected={utils.isSameDay(selectedDate, day)}
-                  children={utils.getDayText(day)}
-                />
-              );
-
-              if (renderDay) {
-                dayComponent = renderDay(day, selectedDate, isDayInCurrentMonth, dayComponent);
-              }
-
-              return (
-                <DayWrapper
-                  key={day!.toString()}
-                  value={day}
-                  disabled={disabled}
-                  dayInCurrentMonth={isDayInCurrentMonth}
-                  onSelect={handleDaySelect}
-                  children={dayComponent}
-                />
-              );
-            })}
-          </div>
+    <>
+      <div className={classes.daysHeader}>
+        {utils.getWeekdays().map(day => (
+          <Typography
+            key={day.toString()}
+            variant="caption"
+            className={classes.dayLabel}
+            children={day.charAt(0).toUpperCase()}
+          />
         ))}
       </div>
-    </SlideTransition>
+
+      <SlideTransition
+        slideDirection={slideDirection}
+        transKey={currentMonth!.toString()}
+        className={classes.transitionContainer}
+      >
+        <div>
+          {utils.getWeekArray(currentMonth).map(week => (
+            <div key={`week-${week[0]!.toString()}`} className={classes.week}>
+              {week.map(day => {
+                const disabled = shouldDisableDate(day);
+                const isDayInCurrentMonth = utils.getMonth(day) === currentMonthNumber;
+
+                let dayComponent = (
+                  <Day
+                    disabled={disabled}
+                    current={utils.isSameDay(day, now)}
+                    hidden={!isDayInCurrentMonth}
+                    selected={utils.isSameDay(selectedDate, day)}
+                    children={utils.getDayText(day)}
+                  />
+                );
+
+                if (renderDay) {
+                  dayComponent = renderDay(day, selectedDate, isDayInCurrentMonth, dayComponent);
+                }
+
+                return (
+                  <DayWrapper
+                    key={day!.toString()}
+                    value={day}
+                    disabled={disabled}
+                    dayInCurrentMonth={isDayInCurrentMonth}
+                    onSelect={handleDaySelect}
+                    children={dayComponent}
+                  />
+                );
+              })}
+            </div>
+          ))}
+        </div>
+      </SlideTransition>
+    </>
   );
 };
 
