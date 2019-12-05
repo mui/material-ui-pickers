@@ -11,7 +11,7 @@ import { BaseTimePickerProps } from '../TimePicker/TimePicker';
 import { BaseDatePickerProps } from '../DatePicker/DatePicker';
 import { useIsLandscape } from '../_shared/hooks/useIsLandscape';
 import { datePickerDefaultProps } from '../constants/prop-types';
-import { DIALOG_WIDTH_WIDER, DIALOG_WIDTH, VIEW_HEIGHT } from '../constants/dimensions';
+import { DIALOG_WIDTH, VIEW_HEIGHT } from '../constants/dimensions';
 
 export type PickerView = DateTimePickerView;
 
@@ -58,9 +58,8 @@ const useStyles = makeStyles(
     },
     pickerView: {
       overflowX: 'hidden',
-      minHeight: VIEW_HEIGHT,
-      minWidth: DIALOG_WIDTH,
-      maxWidth: DIALOG_WIDTH_WIDER,
+      height: VIEW_HEIGHT,
+      width: DIALOG_WIDTH,
       display: 'flex',
       flexDirection: 'column',
     },

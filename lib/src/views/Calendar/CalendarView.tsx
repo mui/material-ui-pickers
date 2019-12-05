@@ -1,8 +1,8 @@
 import * as React from 'react';
 import CalendarHeader from './CalendarHeader';
 import { Calendar } from '../..';
-import { YearSelection } from './YearView';
 import { MonthSelection } from './MonthView';
+import { YearSelection } from './YearSelection';
 import { OuterCalendarProps } from './Calendar';
 import { DatePickerView } from '../../DatePicker';
 import { SlideDirection } from './SlideTransition';
@@ -94,17 +94,14 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
   );
 
   React.useEffect(() => {
-    const nextMonth = utils.getMonth(date);
-    const lastMonth = utils.getMonth(currentMonth);
-
-    if (nextMonth === lastMonth) {
+    if (utils.isSameMonth(date, currentMonth)) {
       return;
     }
 
     dispatch({
       type: 'changeMonth',
       newMonth: utils.startOfMonth(date),
-      direction: nextMonth > lastMonth ? 'left' : 'right',
+      direction: utils.isAfterDay(date, currentMonth) ? 'left' : 'right',
     });
   }, [date]); // eslint-disable-line
 

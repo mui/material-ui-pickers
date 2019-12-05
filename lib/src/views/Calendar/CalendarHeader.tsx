@@ -42,7 +42,7 @@ export const useStyles = makeStyles<Theme, Pick<CalendarWithHeaderProps, 'view'>
       display: 'flex',
       alignItems: 'center',
       marginTop: theme.spacing(2),
-      marginBottom: theme.spacing(2),
+      marginBottom: theme.spacing(1),
       paddingLeft: theme.spacing(3),
       paddingRight: theme.spacing(1.5),
     },
@@ -54,7 +54,7 @@ export const useStyles = makeStyles<Theme, Pick<CalendarWithHeaderProps, 'view'>
       backgroundColor: theme.palette.background.paper,
     },
     previousMonthButton: {
-      marginRight: 12,
+      marginRight: theme.spacing(3),
     },
     switchViewDropdown: {
       willChange: 'transform',
