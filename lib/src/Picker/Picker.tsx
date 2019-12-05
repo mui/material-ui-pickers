@@ -47,7 +47,7 @@ interface PickerProps extends PickerViewProps {
   onChange: (date: MaterialUiPickersDate, isFinish?: boolean) => void;
 }
 
-const useStyles = makeStyles(
+export const useStyles = makeStyles(
   {
     container: {
       display: 'flex',

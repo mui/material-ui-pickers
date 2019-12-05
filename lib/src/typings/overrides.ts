@@ -1,6 +1,7 @@
 import { StylesHook } from '@material-ui/styles/makeStyles';
 import { styles as ClockStyles } from '../views/Clock/Clock';
 import { useStyles as DayStyles } from '../views/Calendar/Day';
+import { useStyles as MuiBasePickerStyles } from '../Picker/Picker';
 import { styles as ModalDialogStyles } from '../_shared/ModalDialog';
 import { useStyles as CalendarStyles } from '../views/Calendar/Calendar';
 import { styles as ToolbarButtonStyles } from '../_shared/ToolbarButton';
@@ -54,4 +55,5 @@ export interface MuiPickersOverrides {
   MuiPickersToolbarButton?: Classes<typeof ToolbarButtonStyles>;
   MuiPickersDatePickerRoot?: Classes<typeof DatePickerRootStyles>;
   MuiPickerDTToolbar?: Classes<typeof MuiPickerDTToolbarStyles>;
+  MuiBasePickerStyles?: Classes<typeof MuiBasePickerStyles>;
 }
