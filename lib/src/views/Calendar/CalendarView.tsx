@@ -1,9 +1,9 @@
 import * as React from 'react';
 import CalendarHeader from './CalendarHeader';
 import { Calendar } from '../..';
-import { MonthSelection } from './MonthView';
 import { YearSelection } from './YearSelection';
 import { OuterCalendarProps } from './Calendar';
+import { MonthSelection } from './MonthSelection';
 import { DatePickerView } from '../../DatePicker';
 import { SlideDirection } from './SlideTransition';
 import { useUtils } from '../../_shared/hooks/useUtils';

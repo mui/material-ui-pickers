@@ -2,7 +2,7 @@ import { StylesHook } from '@material-ui/styles/makeStyles';
 import { styles as ClockStyles } from '../views/Clock/Clock';
 import { useStyles as DayStyles } from '../views/Calendar/Day';
 import { styles as ModalDialogStyles } from '../_shared/ModalDialog';
-import { styles as CalendarStyles } from '../views/Calendar/Calendar';
+import { useStyles as CalendarStyles } from '../views/Calendar/Calendar';
 import { styles as ToolbarButtonStyles } from '../_shared/ToolbarButton';
 import { useStyles as MuiPickersYearStyles } from '../views/Calendar/Year';
 import { styles as ClockPointerStyles } from '../views/Clock/ClockPointer';
@@ -15,9 +15,9 @@ import { useStyles as CalendarHeaderStyles } from '../views/Calendar/CalendarHea
 import { useStyles as DTHeaderStyles } from '../DateTimePicker/DateTimePickerToolbar';
 import { useStyles as TimePickerToolbarStyles } from '../TimePicker/TimePickerToolbar';
 import { useStyles as SlideTransitionStyles } from '../views/Calendar/SlideTransition';
-import { useStyles as MuiPickersYearSelectionStyles } from '../views/Calendar/YearView';
-import { useStyles as MuiPickersMonthSelectionStyles } from '../views/Calendar/MonthView';
+import { useStyles as MuiPickersYearSelectionStyles } from '../views/Calendar/YearSelection';
 import { StyleRules, StyleRulesCallback, Styles } from '@material-ui/core/styles/withStyles';
+import { useStyles as MuiPickersMonthSelectionStyles } from '../views/Calendar/MonthSelection';
 import { useStyles as MuiPickerDTToolbarStyles } from '../DateTimePicker/DateTimePickerToolbar';
 
 type Classes<T> = Partial<
