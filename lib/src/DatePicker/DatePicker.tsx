@@ -3,9 +3,9 @@ import { MaterialUiPickersDate } from '../typings/date';
 import { DatePickerToolbar } from './DatePickerToolbar';
 import { PureDateInput } from '../_shared/PureDateInput';
 import { getFormatByViews } from '../_helpers/date-utils';
-import { OuterCalendarProps } from '../views/Calendar/Calendar';
 import { KeyboardDateInput } from '../_shared/KeyboardDateInput';
 import { usePickerState } from '../_shared/hooks/usePickerState';
+import { ExportedCalendarProps } from '../views/Calendar/CalendarView';
 import { datePickerDefaultProps, ParsableDate } from '../constants/prop-types';
 import { useKeyboardPickerState } from '../_shared/hooks/useKeyboardPickerState';
 import {
@@ -16,7 +16,7 @@ import {
 
 export type DatePickerView = 'year' | 'date' | 'month';
 
-export interface BaseDatePickerProps extends OuterCalendarProps {
+export interface BaseDatePickerProps extends ExportedCalendarProps {
   /**
    * Min selectable date
    * @default Date(1900-01-01)

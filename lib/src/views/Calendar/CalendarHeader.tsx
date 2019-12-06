@@ -7,7 +7,9 @@ import { DatePickerView } from '../../DatePicker';
 import { SlideDirection } from './SlideTransition';
 import { Fade, IconButton } from '@material-ui/core';
 import { useUtils } from '../../_shared/hooks/useUtils';
+import { VariantContext } from '../../wrappers/Wrapper';
 import { MaterialUiPickersDate } from '../../typings/date';
+import { FadeTransitionGroup } from './FadeTransitionGroup';
 import { IconButtonProps } from '@material-ui/core/IconButton';
 import { ArrowLeftIcon } from '../../_shared/icons/ArrowLeftIcon';
 import { ArrowRightIcon } from '../../_shared/icons/ArrowRightIcon';
@@ -45,6 +47,9 @@ export const useStyles = makeStyles<Theme, Pick<CalendarWithHeaderProps, 'view'>
       marginBottom: theme.spacing(1),
       paddingLeft: theme.spacing(3),
       paddingRight: theme.spacing(1.5),
+      // prevent jumping in safari
+      maxHeight: 30,
+      minHeight: 30,
     },
     yearSelectionSwitcher: {
       marginRight: 'auto',
@@ -61,6 +66,15 @@ export const useStyles = makeStyles<Theme, Pick<CalendarWithHeaderProps, 'view'>
       transition: theme.transitions.create('transform'),
       transform: props => (props.view === 'year' ? 'rotate(180deg)' : 'rotate(0deg)'),
     },
+    monthTitleContainer: {
+      flex: 1,
+      display: 'flex',
+      maxHeight: 30,
+      overflow: 'hidden',
+    },
+    monthText: {
+      marginRight: 4,
+    },
   }),
   { name: 'MuiPickersCalendarHeader' }
 );
@@ -72,7 +86,7 @@ export const CalendarHeader: React.SFC<CalendarWithHeaderProps> = ({
   rightArrowIcon,
   leftArrowButtonProps,
   rightArrowButtonProps,
-  changeView,
+  changeView: switchView,
   onMonthChange,
   minDate,
   maxDate,
@@ -80,9 +94,10 @@ export const CalendarHeader: React.SFC<CalendarWithHeaderProps> = ({
   disablePast,
 }) => {
   const utils = useUtils();
-  const classes = useStyles({ view });
   const theme = useTheme();
+  const classes = useStyles({ view });
   const isRtl = theme.direction === 'rtl';
+  const variant = React.useContext(VariantContext);
 
   const selectNextMonth = () => onMonthChange(utils.getNextMonth(month), 'left');
   const selectPreviousMonth = () => onMonthChange(utils.getPreviousMonth(month), 'right');
@@ -108,14 +123,26 @@ export const CalendarHeader: React.SFC<CalendarWithHeaderProps> = ({
   return (
     <>
       <div className={classes.switchHeader}>
-        <Typography
-          align="center"
-          variant="subtitle1"
-          children={utils.getCalendarHeaderText(month)}
-        />
-        <IconButton onClick={changeView} size="small" className={classes.yearSelectionSwitcher}>
-          <ArrowDropDownIcon className={classes.switchViewDropdown} />
-        </IconButton>
+        <div
+          className={classes.monthTitleContainer}
+          onClick={() => variant !== 'inline' && switchView()}
+        >
+          <FadeTransitionGroup transKey={utils.getMonthText(month)}>
+            <Typography
+              align="center"
+              variant="subtitle1"
+              className={classes.monthText}
+              children={utils.getMonthText(month)}
+            />
+          </FadeTransitionGroup>
+          <FadeTransitionGroup transKey={utils.getYearText(month)}>
+            <Typography align="center" variant="subtitle1" children={utils.getYearText(month)} />
+          </FadeTransitionGroup>
+
+          <IconButton onClick={switchView} size="small" className={classes.yearSelectionSwitcher}>
+            <ArrowDropDownIcon className={classes.switchViewDropdown} />
+          </IconButton>
+        </div>
 
         <Fade in={view === 'date'}>
           <div>

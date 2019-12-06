@@ -1,25 +1,34 @@
 import * as React from 'react';
 import CalendarHeader from './CalendarHeader';
 import { Calendar } from '../..';
+import { CalendarProps } from './Calendar';
 import { YearSelection } from './YearSelection';
-import { OuterCalendarProps } from './Calendar';
+import { makeStyles } from '@material-ui/styles';
 import { MonthSelection } from './MonthSelection';
 import { DatePickerView } from '../../DatePicker';
 import { SlideDirection } from './SlideTransition';
 import { useUtils } from '../../_shared/hooks/useUtils';
 import { ParsableDate } from '../../constants/prop-types';
 import { MaterialUiPickersDate } from '../../typings/date';
+import { CircularProgress, Grid } from '@material-ui/core';
+import { FadeTransitionGroup } from './FadeTransitionGroup';
 import { useParsedDate } from '../../_shared/hooks/useParsedDate';
-import { CircularProgress, Grid, styled } from '@material-ui/core';
 
-interface CalendarViewProps extends Omit<OuterCalendarProps, 'minDate' | 'maxDate'> {
+export interface CalendarViewProps extends Omit<CalendarProps, 'minDate' | 'maxDate'> {
   date: MaterialUiPickersDate;
   view: DatePickerView;
   changeView: (nextView: DatePickerView) => void;
   onChange: (date: MaterialUiPickersDate, isFinish?: boolean) => void;
+  /** Min date @DateIOType */
   minDate?: ParsableDate;
+  /** Max date */
   maxDate?: ParsableDate;
 }
+
+export type ExportedCalendarProps = Omit<
+  CalendarViewProps,
+  'date' | 'view' | 'onChange' | 'changeView' | 'slideDirection' | 'currentMonth'
+>;
 
 export type ReducerAction<TType, TAdditional = {}> = { type: TType } & TAdditional;
 
@@ -64,9 +73,14 @@ function calendarStateReducer(
   }
 }
 
-const GridFullHeight = styled(Grid)({
-  flex: 1,
-  height: '100%',
+const useClasses = makeStyles({
+  viewTransitionContainer: {
+    overflowY: 'auto',
+  },
+  gridFullHeight: {
+    flex: 1,
+    height: '100%',
+  },
 });
 
 export const CalendarView: React.FC<CalendarViewProps> = ({
@@ -81,6 +95,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
   ...rest
 }) => {
   const utils = useUtils();
+  const classes = useClasses();
   const minDate = useParsedDate(unparsedMinDate);
   const maxDate = useParsedDate(unparsedMaxDate);
 
@@ -92,18 +107,6 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
       slideDirection: 'left',
     }
   );
-
-  React.useEffect(() => {
-    if (utils.isSameMonth(date, currentMonth)) {
-      return;
-    }
-
-    dispatch({
-      type: 'changeMonth',
-      newMonth: utils.startOfMonth(date),
-      direction: utils.isAfterDay(date, currentMonth) ? 'left' : 'right',
-    });
-  }, [date]); // eslint-disable-line
 
   const handleChangeMonth = (payload: ChangeMonthPayload) => {
     const returnedPromise = onMonthChange && onMonthChange(payload.newMonth);
@@ -123,6 +126,17 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
     }
   };
 
+  React.useEffect(() => {
+    if (utils.isSameMonth(date, currentMonth)) {
+      return;
+    }
+
+    handleChangeMonth({
+      newMonth: utils.startOfMonth(date),
+      direction: utils.isAfterDay(date, currentMonth) ? 'left' : 'right',
+    });
+  }, [date]); // eslint-disable-line
+
   return (
     <>
       <CalendarHeader
@@ -134,43 +148,51 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
         minDate={minDate}
         maxDate={maxDate}
       />
+      <FadeTransitionGroup className={classes.viewTransitionContainer} transKey={view}>
+        <div>
+          {view === 'year' && (
+            <YearSelection
+              {...rest}
+              date={date}
+              onChange={onChange}
+              minDate={minDate}
+              maxDate={maxDate}
+            />
+          )}
 
-      {view === 'year' && (
-        <YearSelection
-          {...rest}
-          date={date}
-          onChange={onChange}
-          minDate={minDate}
-          maxDate={maxDate}
-        />
-      )}
+          {view === 'month' && (
+            <MonthSelection
+              {...rest}
+              date={date}
+              onChange={onChange}
+              minDate={minDate}
+              maxDate={maxDate}
+            />
+          )}
 
-      {view === 'month' && (
-        <MonthSelection
-          {...rest}
-          date={date}
-          onChange={onChange}
-          minDate={minDate}
-          maxDate={maxDate}
-        />
-      )}
-
-      {view === 'date' &&
-        (loadingQueue > 0 ? (
-          <GridFullHeight container alignItems="center" justify="center">
-            {loadingIndicator}
-          </GridFullHeight>
-        ) : (
-          <Calendar
-            {...rest}
-            currentMonth={currentMonth}
-            slideDirection={slideDirection}
-            date={date}
-            onChange={onChange}
-            minDate={minDate}
-            maxDate={maxDate}
-          />
-        ))}
+          {view === 'date' &&
+            (loadingQueue > 0 ? (
+              <Grid
+                className={classes.gridFullHeight}
+                container
+                alignItems="center"
+                justify="center"
+              >
+                {loadingIndicator}
+              </Grid>
+            ) : (
+              <Calendar
+                {...rest}
+                currentMonth={currentMonth}
+                slideDirection={slideDirection}
+                date={date}
+                onChange={onChange}
+                minDate={minDate}
+                maxDate={maxDate}
+              />
+            ))}
+        </div>
+      </FadeTransitionGroup>
     </>
   );
 };

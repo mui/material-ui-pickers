@@ -25,6 +25,7 @@ export const useStyles = makeStyles(
       flexWrap: 'wrap',
       overflowY: 'auto',
       justifyContent: 'center',
+      height: '100%',
     },
   },
   { name: 'MuiPickersYearSelection' }

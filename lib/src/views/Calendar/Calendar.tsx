@@ -9,7 +9,15 @@ import { useKeyDown } from '../../_shared/hooks/useKeyDown';
 import { IconButtonProps } from '@material-ui/core/IconButton';
 import { makeStyles, useTheme, Typography } from '@material-ui/core';
 
-export interface OuterCalendarProps {
+export interface CalendarProps {
+  /** Calendar Date @DateIOType */
+  date: MaterialUiPickersDate;
+  /** Calendar onChange */
+  onChange: (date: MaterialUiPickersDate, isFinish?: boolean) => void;
+  /** Disable past dates */
+  disablePast?: boolean;
+  /** Disable future dates */
+  disableFuture?: boolean;
   /** Left arrow icon */
   leftArrowIcon?: React.ReactNode;
   /** Right arrow icon */
@@ -42,21 +50,8 @@ export interface OuterCalendarProps {
   onMonthChange?: (date: MaterialUiPickersDate) => void | Promise<void>;
   /** Custom loading indicator  */
   loadingIndicator?: JSX.Element;
-  /** Min date @DateIOType */
   minDate?: MaterialUiPickersDate;
-  /** Max date @DateIOType */
   maxDate?: MaterialUiPickersDate;
-}
-
-export interface CalendarProps extends OuterCalendarProps {
-  /** Calendar Date @DateIOType */
-  date: MaterialUiPickersDate;
-  /** Calendar onChange */
-  onChange: (date: MaterialUiPickersDate, isFinish?: boolean) => void;
-  /** Disable past dates */
-  disablePast?: boolean;
-  /** Disable future dates */
-  disableFuture?: boolean;
   slideDirection: SlideDirection;
   currentMonth: MaterialUiPickersDate;
 }
