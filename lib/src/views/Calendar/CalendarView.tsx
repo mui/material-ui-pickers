@@ -92,7 +92,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
   minDate: unparsedMinDate,
   maxDate: unparsedMaxDate,
   loadingIndicator = <CircularProgress />,
-  ...rest
+  ...other
 }) => {
   const utils = useUtils();
   const classes = useClasses();
