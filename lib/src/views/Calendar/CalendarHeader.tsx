@@ -147,6 +147,7 @@ export const CalendarHeader: React.SFC<CalendarWithHeaderProps> = ({
         <Fade in={view === 'date'}>
           <div>
             <IconButton
+              data-test-id="previous-month"
               size="small"
               {...leftArrowButtonProps}
               disabled={isPreviousMonthDisabled}
