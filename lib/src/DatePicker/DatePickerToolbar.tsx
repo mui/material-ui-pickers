@@ -1,13 +1,14 @@
 import * as React from 'react';
+import clsx from 'clsx';
 import PickerToolbar from '../_shared/PickerToolbar';
 import { DatePickerView } from './DatePicker';
 import { PenIcon } from '../_shared/icons/PenIcon';
 import { useUtils } from '../_shared/hooks/useUtils';
 import { ToolbarComponentProps } from '../Picker/Picker';
 import { isYearAndMonthViews, isYearOnlyView } from '../_helpers/date-utils';
-import { Typography, makeStyles, IconButton, Grid, Theme } from '@material-ui/core';
+import { Typography, makeStyles, IconButton, Grid } from '@material-ui/core';
 
-export const useStyles = makeStyles<Theme, { isLandscape: boolean }>(
+export const useStyles = makeStyles(
   {
     toolbar: {
       color: 'white',
@@ -16,13 +17,15 @@ export const useStyles = makeStyles<Theme, { isLandscape: boolean }>(
       justifyContent: 'space-between',
       paddingTop: 16,
       paddingBottom: 16,
-      padding: props => (props.isLandscape ? 16 : undefined),
+    },
+    toolbarLandscape: {
+      padding: 16,
     },
     dateTitleContainer: {
       flex: 1,
     },
-    dateTitle: {
-      margin: props => (props.isLandscape ? 'auto 16px auto auto' : undefined),
+    dateTitleLandscape: {
+      margin: 'auto 16px auto auto',
     },
   },
   { name: 'MuiPickersDatePickerRoot' }
@@ -35,7 +38,7 @@ export const DatePickerToolbar: React.FC<ToolbarComponentProps> = ({
   title = 'SELECT DATE',
 }) => {
   const utils = useUtils();
-  const classes = useStyles({ isLandscape });
+  const classes = useStyles();
 
   const dateTitle = React.useMemo(() => {
     if (isYearOnlyView(views as DatePickerView[])) {
@@ -50,13 +53,11 @@ export const DatePickerToolbar: React.FC<ToolbarComponentProps> = ({
   }, [date, utils, views]);
 
   return (
-    <PickerToolbar isLandscape={isLandscape} className={classes.toolbar}>
-      <Typography
-        color="inherit"
-        variant="overline"
-        children={title}
-        className={classes.toolbarTitle}
-      />
+    <PickerToolbar
+      isLandscape={isLandscape}
+      className={clsx(classes.toolbar, { [classes.toolbarLandscape]: isLandscape })}
+    >
+      <Typography color="inherit" variant="overline" children={title} />
 
       <Grid
         container
@@ -69,7 +70,7 @@ export const DatePickerToolbar: React.FC<ToolbarComponentProps> = ({
           variant="h4"
           children={dateTitle}
           align={isLandscape ? 'left' : 'center'}
-          className={classes.dateTitle}
+          className={clsx({ [classes.dateTitleLandscape]: isLandscape })}
         />
 
         <IconButton color="inherit">

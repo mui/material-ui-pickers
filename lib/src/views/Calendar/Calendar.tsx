@@ -152,10 +152,10 @@ export const Calendar2: React.FC<CalendarProps> = ({
   );
 
   useKeyDown(Boolean(allowKeyboardControl && variant !== 'static'), {
-    ArrowUp: () => moveToDay(utils.addDays(date, -7)),
-    ArrowDown: () => moveToDay(utils.addDays(date, 7)),
-    ArrowLeft: () => moveToDay(utils.addDays(date, theme.direction === 'ltr' ? -1 : 1)),
-    ArrowRight: () => moveToDay(utils.addDays(date, theme.direction === 'ltr' ? 1 : -1)),
+    38: () => moveToDay(utils.addDays(date, -7)), // ArrowUp
+    40: () => moveToDay(utils.addDays(date, 7)), // ArrowDown
+    37: () => moveToDay(utils.addDays(date, theme.direction === 'ltr' ? -1 : 1)), // ArrowLeft
+    39: () => moveToDay(utils.addDays(date, theme.direction === 'ltr' ? 1 : -1)), // ArrowRight
   });
 
   const selectedDate = utils.startOfDay(date);

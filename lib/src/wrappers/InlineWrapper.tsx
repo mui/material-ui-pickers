@@ -27,7 +27,7 @@ export const InlineWrapper: React.FC<InlineWrapperProps> = ({
   const ref = React.useRef();
 
   useKeyDown(open, {
-    Enter: onAccept,
+    13: onAccept, // Enter
   });
 
   return (

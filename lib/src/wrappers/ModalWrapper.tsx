@@ -65,7 +65,7 @@ export const ModalWrapper: React.FC<ModalWrapperProps<any>> = ({
   ...other
 }) => {
   useKeyDown(open, {
-    Enter: onAccept,
+    13: onAccept, // Enter
   });
 
   return (

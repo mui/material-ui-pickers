@@ -11,9 +11,9 @@ import { VariantContext } from '../../wrappers/Wrapper';
 import { MaterialUiPickersDate } from '../../typings/date';
 import { FadeTransitionGroup } from './FadeTransitionGroup';
 import { IconButtonProps } from '@material-ui/core/IconButton';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { ArrowLeftIcon } from '../../_shared/icons/ArrowLeftIcon';
 import { ArrowRightIcon } from '../../_shared/icons/ArrowRightIcon';
-import { makeStyles, useTheme, Theme } from '@material-ui/core/styles';
 import { ArrowDropDownIcon } from '../../_shared/icons/ArrowDropDownIcon';
 
 export interface CalendarWithHeaderProps
@@ -38,7 +38,7 @@ export interface CalendarWithHeaderProps
   onMonthChange: (date: MaterialUiPickersDate, slideDirection: SlideDirection) => void;
 }
 
-export const useStyles = makeStyles<Theme, Pick<CalendarWithHeaderProps, 'view'>>(
+export const useStyles = makeStyles(
   theme => ({
     switchHeader: {
       display: 'flex',
@@ -59,12 +59,15 @@ export const useStyles = makeStyles<Theme, Pick<CalendarWithHeaderProps, 'view'>
       backgroundColor: theme.palette.background.paper,
     },
     previousMonthButton: {
-      marginRight: theme.spacing(3),
+      marginRight: 24,
     },
     switchViewDropdown: {
       willChange: 'transform',
       transition: theme.transitions.create('transform'),
-      transform: props => (props.view === 'year' ? 'rotate(180deg)' : 'rotate(0deg)'),
+      transform: 'rotate(0deg)',
+    },
+    switchViewDropdownDown: {
+      transform: 'rotate(180deg)',
     },
     monthTitleContainer: {
       flex: 1,
@@ -140,7 +143,11 @@ export const CalendarHeader: React.SFC<CalendarWithHeaderProps> = ({
           </FadeTransitionGroup>
 
           <IconButton onClick={switchView} size="small" className={classes.yearSelectionSwitcher}>
-            <ArrowDropDownIcon className={classes.switchViewDropdown} />
+            <ArrowDropDownIcon
+              className={clsx(classes.switchViewDropdown, {
+                [classes.switchViewDropdownDown]: view === 'year',
+              })}
+            />
           </IconButton>
         </div>
 

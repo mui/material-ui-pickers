@@ -1,10 +1,4 @@
 import React from 'react';
-import SvgIcon, { SvgIconProps } from '@material-ui/core/SvgIcon';
+import createSvgIcon from '@material-ui/core/internal/svg-icons/createSvgIcon';
 
-export const ArrowDropDownIcon: React.SFC<SvgIconProps> = props => {
-  return (
-    <SvgIcon {...props}>
-      <path d="M7 10l5 5 5-5z" />
-    </SvgIcon>
-  );
-};
+export const ArrowDropDownIcon = createSvgIcon(<path d="M7 10l5 5 5-5z" />, 'ArrowDropDownIcon');

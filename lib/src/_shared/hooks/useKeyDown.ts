@@ -6,7 +6,7 @@ export const useIsomorphicEffect =
 type KeyHandlers = Record<KeyboardEvent['key'], () => void>;
 
 export function runKeyHandler(e: KeyboardEvent, keyHandlers: KeyHandlers) {
-  const handler = keyHandlers[e.key];
+  const handler = keyHandlers[e.keyCode];
   if (handler) {
     handler();
     // if event was handled prevent other side effects (e.g. page scroll)
@@ -23,9 +23,9 @@ export function useKeyDown(active: boolean, keyHandlers: KeyHandlers) {
       const handleKeyDown = (event: KeyboardEvent) => {
         runKeyHandler(event, keyHandlersRef.current);
       };
-      window.addEventListener('keydown', handleKeyDown);
+      document.addEventListener('keydown', handleKeyDown);
       return () => {
-        window.removeEventListener('keydown', handleKeyDown);
+        document.removeEventListener('keydown', handleKeyDown);
       };
     }
   }, [active]);
