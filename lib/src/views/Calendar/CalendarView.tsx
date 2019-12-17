@@ -1,12 +1,11 @@
 import * as React from 'react';
 import CalendarHeader from './CalendarHeader';
-import { Calendar } from '../..';
-import { CalendarProps } from './Calendar';
 import { YearSelection } from './YearSelection';
 import { makeStyles } from '@material-ui/styles';
 import { MonthSelection } from './MonthSelection';
 import { DatePickerView } from '../../DatePicker';
 import { SlideDirection } from './SlideTransition';
+import { Calendar, CalendarProps } from './Calendar';
 import { useUtils } from '../../_shared/hooks/useUtils';
 import { ParsableDate } from '../../constants/prop-types';
 import { MaterialUiPickersDate } from '../../typings/date';
@@ -14,12 +13,13 @@ import { CircularProgress, Grid } from '@material-ui/core';
 import { FadeTransitionGroup } from './FadeTransitionGroup';
 import { useParsedDate } from '../../_shared/hooks/useParsedDate';
 
-export interface CalendarViewProps extends Omit<CalendarProps, 'minDate' | 'maxDate'> {
+export interface CalendarViewProps
+  extends Omit<CalendarProps, 'slideDirection' | 'currentMonth' | 'minDate' | 'maxDate'> {
   date: MaterialUiPickersDate;
   view: DatePickerView;
   changeView: (nextView: DatePickerView) => void;
   onChange: (date: MaterialUiPickersDate, isFinish?: boolean) => void;
-  /** Min date @DateIOType */
+  /** Min date */
   minDate?: ParsableDate;
   /** Max date */
   maxDate?: ParsableDate;

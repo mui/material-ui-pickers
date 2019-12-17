@@ -14,7 +14,7 @@ export interface ToolbarButtonProps extends ExtendMui<ButtonProps, 'variant'> {
   typographyClassName?: string;
 }
 
-const useStyles = makeStyles(
+export const useStyles = makeStyles(
   _ => ({
     toolbarBtn: {
       padding: 0,

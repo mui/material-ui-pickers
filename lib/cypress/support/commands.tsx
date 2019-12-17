@@ -48,6 +48,7 @@ export function mountPicker(
   renderProp: (props: StateProps) => React.ReactElement,
   alias = 'Picker'
 ) {
+  // @ts-ignore
   const document = cy.state('document');
   document.write(`
   <head>
@@ -80,5 +81,5 @@ export function mountPicker(
   const component = ReactDOM.render(ReactElement, document.getElementById('cypress-jsdom'));
 
   cy.wrap(component, { log: false }).as(alias);
-  // copyComponentStyles(ReactElement);
+  copyComponentStyles(ReactElement);
 }

@@ -35,13 +35,14 @@ export type DateTimePickerProps = WithPureInputProps & DateTimePickerViewsProps;
 
 export type KeyboardDateTimePickerProps = WithKeyboardInputProps & DateTimePickerViewsProps;
 
-const defaultProps = {
+const defaultProps: DateTimePickerViewsProps = {
   ...dateTimePickerDefaultProps,
+  // @ts-ignore
   wider: true,
   ampmInClock: true,
-  orientation: 'portrait' as const,
-  openTo: 'date' as DateTimePickerView,
-  views: ['year', 'date', 'hours', 'minutes'] as DateTimePickerView[],
+  orientation: 'portrait',
+  openTo: 'date',
+  views: ['year', 'date', 'hours', 'minutes'],
 };
 
 function useOptions(props: DateTimePickerProps | KeyboardDateTimePickerProps) {

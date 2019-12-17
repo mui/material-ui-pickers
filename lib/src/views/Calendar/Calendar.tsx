@@ -95,7 +95,7 @@ export const useStyles = makeStyles(theme => ({
   },
 }));
 
-export const Calendar2: React.FC<CalendarProps> = ({
+export const Calendar: React.FC<CalendarProps> = ({
   date,
   onChange,
   minDate,
@@ -219,4 +219,4 @@ export const Calendar2: React.FC<CalendarProps> = ({
   );
 };
 
-export default Calendar2;
+export default Calendar;

@@ -21,6 +21,7 @@ export const useStyles = makeStyles(
     },
     timeContainer: {
       display: 'flex',
+      marginRight: 12,
     },
     dateContainer: {
       display: 'flex',
