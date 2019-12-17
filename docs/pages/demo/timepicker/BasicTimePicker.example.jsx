@@ -6,7 +6,13 @@ function BasicTimePicker() {
 
   return (
     <Fragment>
-      <TimePicker autoOk label="12 hours" value={selectedDate} onChange={handleDateChange} />
+      <TimePicker
+        autoOk
+        ampmInClock
+        label="12 hours"
+        value={selectedDate}
+        onChange={handleDateChange}
+      />
 
       <TimePicker
         clearable

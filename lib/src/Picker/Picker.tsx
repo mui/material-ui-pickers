@@ -28,6 +28,7 @@ export type ToolbarComponentProps = BaseDatePickerProps &
     dateRangeIcon?: React.ReactNode;
     timeIcon?: React.ReactNode;
     isLandscape: boolean;
+    ampmInClock?: boolean;
   };
 
 export interface PickerViewProps extends BaseDatePickerProps, BaseTimePickerProps {
@@ -78,7 +79,7 @@ export const Picker: React.FunctionComponent<PickerProps> = ({
   openTo,
   ToolbarComponent,
   orientation,
-  ...rest
+  ...other
 }) => {
   const classes = useStyles();
   const isLandscape = useIsLandscape(orientation);
@@ -92,13 +93,15 @@ export const Picker: React.FunctionComponent<PickerProps> = ({
     >
       {!disableToolbar && (
         <ToolbarComponent
-          {...rest}
+          {...other}
           views={views}
           isLandscape={isLandscape}
           date={date}
           onChange={onChange}
           setOpenView={setOpenView}
           openView={openView}
+          // @ts-ignore
+          ampmInClock={other.ampmInClock}
         />
       )}
 
@@ -109,15 +112,16 @@ export const Picker: React.FunctionComponent<PickerProps> = ({
             changeView={setOpenView}
             onChange={handleChangeAndOpenNext}
             view={openView}
-            {...rest}
+            {...other}
           />
         )}
 
         {(openView === 'hours' || openView === 'minutes' || openView === 'seconds') && (
           <ClockView
-            {...rest}
+            {...other}
             date={date}
             type={openView}
+            onDateChange={onChange}
             onHourChange={handleChangeAndOpenNext}
             onMinutesChange={handleChangeAndOpenNext}
             onSecondsChange={handleChangeAndOpenNext}

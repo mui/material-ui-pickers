@@ -9,6 +9,8 @@ function InlineTimePickerDemo() {
       <TimePicker
         variant="inline"
         label="Inline mode"
+        disableToolbar
+        ampmInClock
         value={selectedDate}
         onChange={handleDateChange}
       />

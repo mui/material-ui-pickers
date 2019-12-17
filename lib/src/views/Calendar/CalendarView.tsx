@@ -140,7 +140,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
   return (
     <>
       <CalendarHeader
-        {...rest}
+        {...other}
         view={view}
         month={currentMonth}
         changeView={() => changeView(view === 'date' ? 'year' : 'date')}
@@ -152,7 +152,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
         <div>
           {view === 'year' && (
             <YearSelection
-              {...rest}
+              {...other}
               date={date}
               onChange={onChange}
               minDate={minDate}
@@ -162,7 +162,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
 
           {view === 'month' && (
             <MonthSelection
-              {...rest}
+              {...other}
               date={date}
               onChange={onChange}
               minDate={minDate}
@@ -182,7 +182,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
               </Grid>
             ) : (
               <Calendar
-                {...rest}
+                {...other}
                 currentMonth={currentMonth}
                 slideDirection={slideDirection}
                 date={date}

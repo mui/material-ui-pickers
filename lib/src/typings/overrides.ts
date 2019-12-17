@@ -1,6 +1,6 @@
 import { StylesHook } from '@material-ui/styles/makeStyles';
-import { styles as ClockStyles } from '../views/Clock/Clock';
 import { useStyles as DayStyles } from '../views/Calendar/Day';
+import { useStyles as ClockStyles } from '../views/Clock/Clock';
 import { useStyles as MuiBasePickerStyles } from '../Picker/Picker';
 import { styles as ModalDialogStyles } from '../_shared/ModalDialog';
 import { useStyles as CalendarStyles } from '../views/Calendar/Calendar';

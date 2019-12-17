@@ -1,7 +1,6 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import Clock from './Clock';
-import ClockType from '../../constants/ClockType';
 import { useUtils } from '../../_shared/hooks/useUtils';
 import { MaterialUiPickersDate } from '../../typings/date';
 import { getHourNumbers, getMinutesNumbers } from './ClockNumbers';
@@ -16,6 +15,10 @@ export interface TimePickerViewProps {
   ampm?: boolean;
   /** Minutes step */
   minutesStep?: number;
+  /** Display ampm controls in the clock control, instead of toolbar */
+  ampmInClock?: boolean;
+  /** On change date without moving between views */
+  onDateChange: (date: MaterialUiPickersDate, isFinish?: boolean) => void;
   /** On hour change */
   onHourChange: (date: MaterialUiPickersDate, isFinish?: boolean) => void;
   /** On minutes change */
@@ -26,17 +29,19 @@ export interface TimePickerViewProps {
 
 export const ClockView: React.FC<TimePickerViewProps> = ({
   type,
+  onDateChange,
   onHourChange,
   onMinutesChange,
   onSecondsChange,
   ampm,
   date,
   minutesStep,
+  ampmInClock,
 }) => {
   const utils = useUtils();
   const viewProps = React.useMemo(() => {
     switch (type) {
-      case ClockType.HOURS:
+      case 'hours':
         return {
           value: utils.getHours(date),
           children: getHourNumbers({ date, utils, ampm: Boolean(ampm) }),
@@ -53,7 +58,7 @@ export const ClockView: React.FC<TimePickerViewProps> = ({
           },
         };
 
-      case ClockType.MINUTES:
+      case 'minutes':
         const minutesValue = utils.getMinutes(date);
         return {
           value: minutesValue,
@@ -65,7 +70,7 @@ export const ClockView: React.FC<TimePickerViewProps> = ({
           },
         };
 
-      case ClockType.SECONDS:
+      case 'seconds':
         const secondsValue = utils.getSeconds(date);
         return {
           value: secondsValue,
@@ -82,11 +87,22 @@ export const ClockView: React.FC<TimePickerViewProps> = ({
     }
   }, [ampm, date, onHourChange, onMinutesChange, onSecondsChange, type, utils]);
 
-  return <Clock type={type} ampm={ampm} minutesStep={minutesStep} {...viewProps} />;
+  return (
+    <Clock
+      date={date}
+      ampmInClock={ampmInClock}
+      onDateChange={onDateChange}
+      type={type}
+      ampm={ampm}
+      minutesStep={minutesStep}
+      {...viewProps}
+    />
+  );
 };
 
 ClockView.displayName = 'TimePickerView';
 
+// @ts-ignore
 ClockView.propTypes = {
   date: PropTypes.object.isRequired,
   onHourChange: PropTypes.func.isRequired,
@@ -94,9 +110,8 @@ ClockView.propTypes = {
   onSecondsChange: PropTypes.func.isRequired,
   ampm: PropTypes.bool,
   minutesStep: PropTypes.number,
-  type: PropTypes.oneOf(Object.keys(ClockType).map(key => ClockType[key as keyof typeof ClockType]))
-    .isRequired,
-} as any;
+  type: PropTypes.oneOf(['minutes', 'hours', 'seconds']).isRequired,
+};
 
 ClockView.defaultProps = {
   ampm: true,

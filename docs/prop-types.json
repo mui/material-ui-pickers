@@ -4233,6 +4233,32 @@
         "name": "number"
       }
     },
+    "ampmInClock": {
+      "defaultValue": null,
+      "description": "Display ampm controls in the clock control, instead of toolbar",
+      "name": "ampmInClock",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
+        "name": "TimePickerViewProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "onDateChange": {
+      "defaultValue": null,
+      "description": "On change date without moving between views",
+      "name": "onDateChange",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
+        "name": "TimePickerViewProps"
+      },
+      "required": true,
+      "type": {
+        "name": "(date: any, isFinish?: boolean) => void"
+      }
+    },
     "onHourChange": {
       "defaultValue": null,
       "description": "On hour change",
@@ -4328,6 +4354,32 @@
       "required": false,
       "type": {
         "name": "number"
+      }
+    },
+    "ampmInClock": {
+      "defaultValue": null,
+      "description": "Display ampm controls in the clock control, instead of toolbar",
+      "name": "ampmInClock",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
+        "name": "TimePickerViewProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "onDateChange": {
+      "defaultValue": null,
+      "description": "On change date without moving between views",
+      "name": "onDateChange",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
+        "name": "TimePickerViewProps"
+      },
+      "required": true,
+      "type": {
+        "name": "(date: any, isFinish?: boolean) => void"
       }
     },
     "onHourChange": {
