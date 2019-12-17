@@ -2,15 +2,21 @@ import * as React from 'react';
 import clsx from 'clsx';
 import Toolbar, { ToolbarProps } from '@material-ui/core/Toolbar';
 import { ExtendMui } from '../typings/extendMui';
+import { PenIcon } from '../_shared/icons/PenIcon';
 import { makeStyles } from '@material-ui/core/styles';
+import { Typography, IconButton, Grid } from '@material-ui/core';
 
 export const useStyles = makeStyles(
   theme => ({
     toolbar: {
-      display: 'flex',
-      flexDirection: 'row',
-      alignItems: 'center',
       height: 120,
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+      color: 'white',
+      justifyContent: 'space-between',
+      paddingTop: 16,
+      paddingBottom: 16,
       backgroundColor:
         theme.palette.type === 'light'
           ? theme.palette.primary.main
@@ -18,21 +24,29 @@ export const useStyles = makeStyles(
     },
     toolbarLandscape: {
       height: 'auto',
-      maxWidth: 150,
-      padding: 8,
+      maxWidth: 160,
+      padding: 16,
       justifyContent: 'flex-start',
+      flexWrap: 'wrap',
+    },
+    dateTitleContainer: {
+      flex: 1,
     },
   }),
   { name: 'MuiPickersToolbar' }
 );
 
 interface PickerToolbarProps extends ExtendMui<ToolbarProps> {
+  title: string;
+  landscapeDirection?: 'row' | 'column';
   isLandscape: boolean;
 }
 
 const PickerToolbar: React.SFC<PickerToolbarProps> = ({
   children,
   isLandscape,
+  title,
+  landscapeDirection = 'column',
   className = null,
   ...other
 }) => {
@@ -43,7 +57,19 @@ const PickerToolbar: React.SFC<PickerToolbarProps> = ({
       className={clsx(classes.toolbar, { [classes.toolbarLandscape]: isLandscape }, className)}
       {...other}
     >
-      {children}
+      <Typography color="inherit" variant="overline" children={title} />
+      <Grid
+        container
+        justify="space-between"
+        className={classes.dateTitleContainer}
+        direction={isLandscape ? landscapeDirection : 'row'}
+        alignItems={isLandscape ? 'flex-start' : 'center'}
+      >
+        {children}
+        <IconButton color="inherit">
+          <PenIcon color="inherit" />
+        </IconButton>
+      </Grid>
     </Toolbar>
   );
 };

@@ -12,12 +12,6 @@ import { convertToMeridiem, getMeridiem } from '../_helpers/time-utils';
 
 export const useStyles = makeStyles(
   {
-    toolbarLandscape: {
-      flexWrap: 'wrap',
-    },
-    toolbarAmpmLeftPadding: {
-      paddingLeft: 50,
-    },
     separator: {
       margin: '0 4px 0 2px',
       cursor: 'default',
@@ -34,20 +28,17 @@ export const useStyles = makeStyles(
       flexDirection: 'row-reverse',
     },
     ampmSelection: {
-      marginLeft: 20,
-      marginRight: -20,
       display: 'flex',
       flexDirection: 'column',
+      marginRight: 'auto',
+      marginLeft: 12,
+      marginBottom: 8,
     },
     ampmLandscape: {
       margin: '4px 0 auto',
       flexDirection: 'row',
       justifyContent: 'space-around',
       flexBasis: '100%',
-    },
-    ampmSelectionWithSeconds: {
-      marginLeft: 15,
-      marginRight: 10,
     },
     ampmLabel: {
       fontSize: 18,
@@ -84,6 +75,7 @@ export const TimePickerToolbar: React.FC<ToolbarComponentProps> = ({
   isLandscape,
   setOpenView,
   ampmInClock,
+  title = 'SELECT TIME',
 }) => {
   const utils = useUtils();
   const theme = useTheme();
@@ -91,16 +83,10 @@ export const TimePickerToolbar: React.FC<ToolbarComponentProps> = ({
   const showAmPmControl = ampm && !ampmInClock;
   const { meridiemMode, handleMeridiemChange } = useMeridiemMode(date, ampm, onChange);
 
-  const clockTypographyVariant = isLandscape ? 'h3' : 'h2';
+  const clockTypographyVariant = 'h3';
 
   return (
-    <PickerToolbar
-      isLandscape={isLandscape}
-      className={clsx({
-        [classes.toolbarLandscape]: isLandscape,
-        [classes.toolbarAmpmLeftPadding]: showAmPmControl && !isLandscape,
-      })}
-    >
+    <PickerToolbar landscapeDirection="row" title={title} isLandscape={isLandscape}>
       <div
         className={clsx(classes.hourMinuteLabel, {
           [classes.hourMinuteLabelAmpmLandscape]: showAmPmControl && isLandscape,
@@ -140,7 +126,7 @@ export const TimePickerToolbar: React.FC<ToolbarComponentProps> = ({
 
         {arrayIncludes(views, 'seconds') && (
           <ToolbarButton
-            variant="h2"
+            variant={clockTypographyVariant}
             onClick={() => setOpenView('seconds')}
             selected={openView === 'seconds'}
             label={utils.getSecondText(date)}
@@ -152,7 +138,6 @@ export const TimePickerToolbar: React.FC<ToolbarComponentProps> = ({
         <div
           className={clsx(classes.ampmSelection, {
             [classes.ampmLandscape]: isLandscape,
-            [classes.ampmSelectionWithSeconds]: arrayIncludes(views, 'seconds'),
           })}
         >
           <ToolbarButton

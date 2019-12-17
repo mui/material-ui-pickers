@@ -6,17 +6,26 @@ import { MaterialUiPickersDate } from '../../typings/date';
 import { getHourNumbers, getMinutesNumbers } from './ClockNumbers';
 import { convertToMeridiem, getMeridiem } from '../../_helpers/time-utils';
 
-export interface TimePickerViewProps {
+export interface BaseClockProps {
+  /**
+   * 12h/24h view for hour selection clock
+   * @default true
+   */
+  ampm?: boolean;
+  /**
+   * Step over minutes
+   * @default 1
+   */
+  minutesStep?: number;
+  /** Display ampm controls under the clock (instead of in the toolbar) */
+  ampmInClock?: boolean;
+}
+
+export interface TimePickerViewProps extends BaseClockProps {
   /** TimePicker value */
   date: MaterialUiPickersDate;
   /** Clock type */
   type: 'hours' | 'minutes' | 'seconds';
-  /** 12h/24h clock mode */
-  ampm?: boolean;
-  /** Minutes step */
-  minutesStep?: number;
-  /** Display ampm controls in the clock control, instead of toolbar */
-  ampmInClock?: boolean;
   /** On change date without moving between views */
   onDateChange: (date: MaterialUiPickersDate, isFinish?: boolean) => void;
   /** On hour change */

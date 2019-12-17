@@ -17,7 +17,7 @@ function SecondsTimePicker() {
       />
 
       <TimePicker
-        ampm={false}
+        ampmInClock
         openTo="minutes"
         views={['minutes', 'seconds']}
         format="mm:ss"

@@ -82,7 +82,7 @@ export const Picker: React.FunctionComponent<PickerProps> = ({
   ...other
 }) => {
   const classes = useStyles();
-  const isLandscape = useIsLandscape(orientation);
+  const isLandscape = useIsLandscape(views, orientation);
   const { openView, setOpenView, handleChangeAndOpenNext } = useViews(views, openTo, onChange);
 
   return (
