@@ -30,7 +30,7 @@ export type ExportedCalendarProps = Omit<
   'date' | 'view' | 'onChange' | 'changeView' | 'slideDirection' | 'currentMonth'
 >;
 
-export type ReducerAction<TType, TAdditional = {}> = { type: TType } & TAdditional;
+type ReducerAction<TType, TAdditional = {}> = { type: TType } & TAdditional;
 
 interface ChangeMonthPayload {
   direction: SlideDirection;

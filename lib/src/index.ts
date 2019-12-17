@@ -6,7 +6,7 @@ export * from './DateTimePicker';
 
 export { Calendar } from './views/Calendar/Calendar';
 
-export { CalendarView, CalendarViewProps } from './views/Calendar/CalendarView';
+export * from './views/Calendar/CalendarView';
 
 export { default as Day } from './views/Calendar/Day';
 
