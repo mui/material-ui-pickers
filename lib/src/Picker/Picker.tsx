@@ -1,22 +1,21 @@
 import * as React from 'react';
 import clsx from 'clsx';
 import { useViews } from '../_shared/hooks/useViews';
-import { ClockView } from '../views/Clock/ClockView';
 import { makeStyles } from '@material-ui/core/styles';
 import { DateTimePickerView } from '../DateTimePicker';
 import { BasePickerProps } from '../typings/BasePicker';
 import { MaterialUiPickersDate } from '../typings/date';
 import { CalendarView } from '../views/Calendar/CalendarView';
-import { BaseTimePickerProps } from '../TimePicker/TimePicker';
 import { BaseDatePickerProps } from '../DatePicker/DatePicker';
 import { useIsLandscape } from '../_shared/hooks/useIsLandscape';
 import { datePickerDefaultProps } from '../constants/prop-types';
 import { DIALOG_WIDTH, VIEW_HEIGHT } from '../constants/dimensions';
+import { ClockView, BaseClockProps } from '../views/Clock/ClockView';
 
 export type PickerView = DateTimePickerView;
 
 export type ToolbarComponentProps = BaseDatePickerProps &
-  BaseTimePickerProps & {
+  BaseClockProps & {
     views: PickerView[];
     openView: PickerView;
     date: MaterialUiPickersDate;
@@ -31,9 +30,10 @@ export type ToolbarComponentProps = BaseDatePickerProps &
     ampmInClock?: boolean;
   };
 
-export interface PickerViewProps extends BaseDatePickerProps, BaseTimePickerProps {
+export interface PickerViewProps extends BaseDatePickerProps, BaseClockProps {
   views: PickerView[];
   openTo: PickerView;
+  title?: string;
   disableToolbar?: boolean;
   ToolbarComponent: React.ComponentType<ToolbarComponentProps>;
   // TODO move out, cause it is DateTimePickerOnly
@@ -63,6 +63,7 @@ export const useStyles = makeStyles(
       width: DIALOG_WIDTH,
       display: 'flex',
       flexDirection: 'column',
+      margin: '0 auto',
     },
     pickerViewLandscape: {
       padding: '0 8px',
@@ -74,6 +75,7 @@ export const useStyles = makeStyles(
 export const Picker: React.FunctionComponent<PickerProps> = ({
   date,
   views,
+  title,
   disableToolbar,
   onChange,
   openTo,
@@ -100,7 +102,7 @@ export const Picker: React.FunctionComponent<PickerProps> = ({
           onChange={onChange}
           setOpenView={setOpenView}
           openView={openView}
-          // @ts-ignore
+          title={title}
           ampmInClock={other.ampmInClock}
         />
       )}

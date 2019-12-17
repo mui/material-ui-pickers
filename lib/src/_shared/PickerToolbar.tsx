@@ -40,6 +40,7 @@ interface PickerToolbarProps extends ExtendMui<ToolbarProps> {
   title: string;
   landscapeDirection?: 'row' | 'column';
   isLandscape: boolean;
+  penIconClassName?: string;
 }
 
 const PickerToolbar: React.SFC<PickerToolbarProps> = ({
@@ -48,6 +49,7 @@ const PickerToolbar: React.SFC<PickerToolbarProps> = ({
   title,
   landscapeDirection = 'column',
   className = null,
+  penIconClassName,
   ...other
 }) => {
   const classes = useStyles();
@@ -63,10 +65,10 @@ const PickerToolbar: React.SFC<PickerToolbarProps> = ({
         justify="space-between"
         className={classes.dateTitleContainer}
         direction={isLandscape ? landscapeDirection : 'row'}
-        alignItems={isLandscape ? 'flex-start' : 'center'}
+        alignItems={isLandscape ? 'flex-start' : 'flex-end'}
       >
         {children}
-        <IconButton color="inherit">
+        <IconButton className={penIconClassName} color="inherit">
           <PenIcon color="inherit" />
         </IconButton>
       </Grid>

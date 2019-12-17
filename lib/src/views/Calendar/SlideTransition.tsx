@@ -23,6 +23,7 @@ export const useStyles = makeStyles(
       transitionContainer: {
         display: 'block',
         position: 'relative',
+        overflowX: 'hidden',
         '& > *': {
           position: 'absolute',
           top: 0,

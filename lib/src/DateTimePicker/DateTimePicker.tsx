@@ -1,6 +1,6 @@
 import { useUtils } from '../_shared/hooks/useUtils';
 import { PureDateInput } from '../_shared/PureDateInput';
-import { BaseTimePickerProps } from '../TimePicker/TimePicker';
+import { BaseClockProps } from '../views/Clock/ClockView';
 import { BaseDatePickerProps } from '../DatePicker/DatePicker';
 import { DateTimePickerToolbar } from './DateTimePickerToolbar';
 import { KeyboardDateInput } from '../_shared/KeyboardDateInput';
@@ -16,7 +16,7 @@ import {
 
 export type DateTimePickerView = 'year' | 'date' | 'month' | 'hours' | 'minutes' | 'seconds';
 
-export type BaseDateTimePickerProps = BaseTimePickerProps & BaseDatePickerProps;
+export type BaseDateTimePickerProps = BaseClockProps & BaseDatePickerProps;
 
 export interface DateTimePickerViewsProps extends BaseDateTimePickerProps {
   /** Array of views to show */
@@ -38,6 +38,7 @@ export type KeyboardDateTimePickerProps = WithKeyboardInputProps & DateTimePicke
 const defaultProps = {
   ...dateTimePickerDefaultProps,
   wider: true,
+  ampmInClock: true,
   orientation: 'portrait' as const,
   openTo: 'date' as DateTimePickerView,
   views: ['year', 'date', 'hours', 'minutes'] as DateTimePickerView[],
@@ -77,5 +78,7 @@ export const KeyboardDateTimePicker = makePickerWithState<KeyboardDateTimePicker
 });
 
 DateTimePicker.defaultProps = defaultProps;
+DateTimePicker.displayName = 'DateTimePicker';
 
 KeyboardDateTimePicker.defaultProps = defaultProps;
+KeyboardDateTimePicker.displayName = 'DateTimePicker';
