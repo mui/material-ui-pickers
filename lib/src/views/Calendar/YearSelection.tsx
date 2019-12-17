@@ -74,27 +74,29 @@ export const YearSelection: React.FC<YearSelectionProps> = ({
   );
 
   return (
-    <div className={classes.container}>
-      {utils.getYearRange(minDate, maxDate).map(year => {
-        const yearNumber = utils.getYear(year);
-        const selected = yearNumber === currentYear;
+    <div>
+      <div className={classes.container}>
+        {utils.getYearRange(minDate, maxDate).map(year => {
+          const yearNumber = utils.getYear(year);
+          const selected = yearNumber === currentYear;
 
-        return (
-          <Year
-            key={utils.getYearText(year)}
-            selected={selected}
-            value={yearNumber}
-            onSelect={onYearSelect}
-            ref={selected ? selectedYearRef : undefined}
-            disabled={Boolean(
-              (disablePast && utils.isBeforeYear(year, utils.date())) ||
-                (disableFuture && utils.isAfterYear(year, utils.date()))
-            )}
-          >
-            {utils.getYearText(year)}
-          </Year>
-        );
-      })}
+          return (
+            <Year
+              key={utils.getYearText(year)}
+              selected={selected}
+              value={yearNumber}
+              onSelect={onYearSelect}
+              ref={selected ? selectedYearRef : undefined}
+              disabled={Boolean(
+                (disablePast && utils.isBeforeYear(year, utils.date())) ||
+                  (disableFuture && utils.isAfterYear(year, utils.date()))
+              )}
+            >
+              {utils.getYearText(year)}
+            </Year>
+          );
+        })}
+      </div>
     </div>
   );
 };

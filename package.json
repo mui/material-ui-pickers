@@ -56,7 +56,6 @@
   "eslintIgnore": [
     "**/node_modules",
     "**/coverage",
-    "*.d.ts",
     "videos/",
     "**/build"
   ],
