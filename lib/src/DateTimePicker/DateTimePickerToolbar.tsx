@@ -21,7 +21,6 @@ export const useStyles = makeStyles(
     },
     timeContainer: {
       display: 'flex',
-      marginRight: 12,
     },
     dateContainer: {
       display: 'flex',
@@ -31,8 +30,8 @@ export const useStyles = makeStyles(
     timeTypography: {},
     penIcon: {
       position: 'absolute',
-      top: 0,
-      right: 0,
+      top: 8,
+      right: 8,
     },
   }),
   { name: 'MuiPickerDTToolbar' }

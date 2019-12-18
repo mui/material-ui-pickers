@@ -21,7 +21,7 @@ export const useStyles = makeStyles(
       justifyContent: 'flex-end',
       alignItems: 'flex-end',
     },
-    hourMinuteLabelAmpmLandscape: {
+    hourMinuteLabelLandscape: {
       marginTop: 'auto',
     },
     hourMinuteLabelReverse: {
@@ -32,7 +32,6 @@ export const useStyles = makeStyles(
       flexDirection: 'column',
       marginRight: 'auto',
       marginLeft: 12,
-      marginBottom: 8,
     },
     ampmLandscape: {
       margin: '4px 0 auto',
@@ -41,7 +40,10 @@ export const useStyles = makeStyles(
       flexBasis: '100%',
     },
     ampmLabel: {
-      fontSize: 18,
+      fontSize: 17,
+    },
+    penIconLandscape: {
+      marginTop: 'auto',
     },
   },
   { name: 'MuiPickersTimePickerToolbar' }
@@ -86,10 +88,15 @@ export const TimePickerToolbar: React.FC<ToolbarComponentProps> = ({
   const clockTypographyVariant = 'h3';
 
   return (
-    <PickerToolbar landscapeDirection="row" title={title} isLandscape={isLandscape}>
+    <PickerToolbar
+      landscapeDirection="row"
+      title={title}
+      isLandscape={isLandscape}
+      penIconClassName={clsx({ [classes.penIconLandscape]: isLandscape })}
+    >
       <div
         className={clsx(classes.hourMinuteLabel, {
-          [classes.hourMinuteLabelAmpmLandscape]: showAmPmControl && isLandscape,
+          [classes.hourMinuteLabelLandscape]: isLandscape,
           [classes.hourMinuteLabelReverse]: theme.direction === 'rtl',
         })}
       >
@@ -142,7 +149,7 @@ export const TimePickerToolbar: React.FC<ToolbarComponentProps> = ({
         >
           <ToolbarButton
             disableRipple
-            variant="subtitle1"
+            variant="subtitle2"
             selected={meridiemMode === 'am'}
             typographyClassName={classes.ampmLabel}
             label={utils.getMeridiemText('am')}
@@ -151,7 +158,7 @@ export const TimePickerToolbar: React.FC<ToolbarComponentProps> = ({
 
           <ToolbarButton
             disableRipple
-            variant="subtitle1"
+            variant="subtitle2"
             selected={meridiemMode === 'pm'}
             typographyClassName={classes.ampmLabel}
             label={utils.getMeridiemText('pm')}

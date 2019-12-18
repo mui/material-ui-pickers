@@ -9,7 +9,6 @@ import { Typography, IconButton, Grid } from '@material-ui/core';
 export const useStyles = makeStyles(
   theme => ({
     toolbar: {
-      height: 120,
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'flex-start',
