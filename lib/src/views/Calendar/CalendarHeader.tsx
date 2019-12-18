@@ -43,10 +43,10 @@ export const useStyles = makeStyles(
     switchHeader: {
       display: 'flex',
       alignItems: 'center',
-      marginTop: theme.spacing(2),
-      marginBottom: theme.spacing(1),
-      paddingLeft: theme.spacing(3),
-      paddingRight: theme.spacing(1.5),
+      marginTop: 16,
+      marginBottom: 8,
+      paddingLeft: 24,
+      paddingRight: 12,
       // prevent jumping in safari
       maxHeight: 30,
       minHeight: 30,

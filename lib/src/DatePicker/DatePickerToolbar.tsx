@@ -12,6 +12,10 @@ export const useStyles = makeStyles(
     dateTitleLandscape: {
       margin: 'auto 16px auto auto',
     },
+    penIcon: {
+      position: 'relative',
+      top: 4,
+    },
   },
   { name: 'MuiPickersDatePickerRoot' }
 );
@@ -38,7 +42,7 @@ export const DatePickerToolbar: React.FC<ToolbarComponentProps> = ({
   }, [date, utils, views]);
 
   return (
-    <PickerToolbar title={title} isLandscape={isLandscape}>
+    <PickerToolbar title={title} isLandscape={isLandscape} penIconClassName={classes.penIcon}>
       <Typography
         variant="h4"
         children={dateText}
