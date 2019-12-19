@@ -12,7 +12,6 @@ import { useStyles as ClockNumberStyles } from '../views/Clock/ClockNumber';
 import { useStyles as MuiPickersMonthStyles } from '../views/Calendar/Month';
 import { useStyles as DTTabsStyles } from '../DateTimePicker/DateTimePickerTabs';
 import { useStyles as MuiPickersToolbarTextStyles } from '../_shared/ToolbarText';
-import { useStyles as MuiPickersYearSelectionStyles } from '../views/Year/YearView';
 import { useStyles as DatePickerRootStyles } from '../DatePicker/DatePickerToolbar';
 import { useStyles as CalendarHeaderStyles } from '../views/Calendar/CalendarHeader';
 import { useStyles as DTHeaderStyles } from '../DateTimePicker/DateTimePickerToolbar';
