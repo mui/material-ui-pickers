@@ -39,10 +39,7 @@ describe('e2e - DatePicker', () => {
   });
 
   it('Should render year selection', () => {
-    component
-      .find('ToolbarButton')
-      .first()
-      .simulate('click');
+    component.find('button[data-test-id="calendar-view-switcher"]').simulate('click');
 
     expect(component.find('Year').length).toBe(201);
 

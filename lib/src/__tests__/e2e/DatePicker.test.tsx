@@ -79,6 +79,7 @@ describe('e2e - DatePicker inline variant', () => {
         onChange={onChangeMock}
         onClose={onCloseMock}
         onOpen={onOpenMock}
+        loadingIndicator={<div data-test-id="loading" />}
         value={utilsToUse.date('2018-01-01T00:00:00.000Z')}
       />
     );
@@ -124,7 +125,14 @@ describe('e2e - DatePicker without month change', () => {
   const date = utilsToUse.date('2018-01-01T00:00:00.000Z');
 
   beforeEach(() => {
-    component = mount(<DatePicker open onChange={onChangeMock} value={date} />);
+    component = mount(
+      <DatePicker
+        open
+        loadingIndicator={<div data-test-id="loading" />}
+        onChange={onChangeMock}
+        value={date}
+      />
+    );
   });
 
   it('Should not add to loading queue if callback is undefined', () => {
@@ -132,12 +140,8 @@ describe('e2e - DatePicker without month change', () => {
       .find('CalendarHeader button')
       .first()
       .simulate('click');
-    expect(
-      component
-        .find('Calendar')
-        .first()
-        .state('loadingQueue')
-    ).toEqual(0);
+
+    expect(component.find('[data-test-id="loading"]').length).toEqual(0);
   });
 });
 

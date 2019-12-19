@@ -7,6 +7,7 @@ import { useUtils } from '../../_shared/hooks/useUtils';
 import { MaterialUiPickersDate } from '../../typings/date';
 import { useKeyDown } from '../../_shared/hooks/useKeyDown';
 import { IconButtonProps } from '@material-ui/core/IconButton';
+import { findClosestEnabledDate } from '../../_helpers/date-utils';
 import { makeStyles, useTheme, Typography } from '@material-ui/core';
 
 export interface CalendarProps {
@@ -150,6 +151,31 @@ export const Calendar: React.FC<CalendarProps> = ({
     },
     [handleDaySelect, shouldDisableDate]
   );
+
+  React.useEffect(() => {
+    if (shouldDisableDate(date)) {
+      const closestEnabledDate = findClosestEnabledDate({
+        date,
+        utils,
+        minDate: utils.date(minDate),
+        maxDate: utils.date(maxDate),
+        disablePast: Boolean(disablePast),
+        disableFuture: Boolean(disableFuture),
+        shouldDisableDate: shouldDisableDate,
+      });
+
+      handleDaySelect(closestEnabledDate, false);
+    }
+  }, [
+    date,
+    disableFuture,
+    disablePast,
+    handleDaySelect,
+    maxDate,
+    minDate,
+    shouldDisableDate,
+    utils,
+  ]);
 
   useKeyDown(Boolean(allowKeyboardControl && variant !== 'static'), {
     38: () => moveToDay(utils.addDays(date, -7)), // ArrowUp

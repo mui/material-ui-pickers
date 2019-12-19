@@ -142,7 +142,12 @@ export const CalendarHeader: React.SFC<CalendarWithHeaderProps> = ({
             <Typography align="center" variant="subtitle1" children={utils.getYearText(month)} />
           </FadeTransitionGroup>
 
-          <IconButton onClick={switchView} size="small" className={classes.yearSelectionSwitcher}>
+          <IconButton
+            data-test-id="calendar-view-switcher"
+            size="small"
+            onClick={switchView}
+            className={classes.yearSelectionSwitcher}
+          >
             <ArrowDropDownIcon
               className={clsx(classes.switchViewDropdown, {
                 [classes.switchViewDropdownDown]: view === 'year',

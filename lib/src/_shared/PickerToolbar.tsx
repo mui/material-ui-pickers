@@ -7,31 +7,34 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Typography, IconButton, Grid } from '@material-ui/core';
 
 export const useStyles = makeStyles(
-  theme => ({
-    toolbar: {
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'flex-start',
-      color: 'white',
-      justifyContent: 'space-between',
-      paddingTop: 16,
-      paddingBottom: 16,
-      backgroundColor:
-        theme.palette.type === 'light'
-          ? theme.palette.primary.main
-          : theme.palette.background.default,
-    },
-    toolbarLandscape: {
-      height: 'auto',
-      maxWidth: 160,
-      padding: 16,
-      justifyContent: 'flex-start',
-      flexWrap: 'wrap',
-    },
-    dateTitleContainer: {
-      flex: 1,
-    },
-  }),
+  theme => {
+    const toolbarBackground =
+      theme.palette.type === 'light'
+        ? theme.palette.primary.main
+        : theme.palette.background.default;
+    return {
+      toolbar: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+        justifyContent: 'space-between',
+        paddingTop: 16,
+        paddingBottom: 16,
+        backgroundColor: toolbarBackground,
+        color: theme.palette.getContrastText(toolbarBackground),
+      },
+      toolbarLandscape: {
+        height: 'auto',
+        maxWidth: 160,
+        padding: 16,
+        justifyContent: 'flex-start',
+        flexWrap: 'wrap',
+      },
+      dateTitleContainer: {
+        flex: 1,
+      },
+    };
+  },
   { name: 'MuiPickersToolbar' }
 );
 

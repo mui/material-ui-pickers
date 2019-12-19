@@ -85,7 +85,7 @@ export const useStyles = makeStyles(
   }
 );
 
-const Clock: React.FC<ClockProps> = ({
+export const Clock: React.FC<ClockProps> = ({
   date,
   onDateChange,
   ampmInClock = false,
@@ -188,6 +188,7 @@ const Clock: React.FC<ClockProps> = ({
       {ampm && ampmInClock && (
         <>
           <IconButton
+            data-test-id="in-clock-am-btn"
             onClick={() => handleMeridiemChange('am')}
             className={clsx(classes.amButton, {
               [classes.meridiemButtonSelected]: meridiemMode === 'am',
@@ -196,6 +197,7 @@ const Clock: React.FC<ClockProps> = ({
             <Typography variant="caption">AM</Typography>
           </IconButton>
           <IconButton
+            data-test-id="in-clock-pm-btn"
             onClick={() => handleMeridiemChange('pm')}
             className={clsx(classes.pmButton, {
               [classes.meridiemButtonSelected]: meridiemMode === 'pm',
@@ -214,5 +216,7 @@ Clock.defaultProps = {
   ampm: PropTypes.bool,
   minutesStep: PropTypes.number,
 };
+
+Clock.displayName = 'Clock';
 
 export default Clock;
