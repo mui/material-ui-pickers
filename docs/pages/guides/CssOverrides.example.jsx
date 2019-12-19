@@ -2,8 +2,7 @@
 import React, { useState } from 'react';
 import lightBlue from '@material-ui/core/colors/lightBlue';
 import { DatePicker } from '@material-ui/pickers';
-import { createMuiTheme } from '@material-ui/core';
-import { ThemeProvider } from '@material-ui/styles';
+import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 
 const materialTheme = createMuiTheme({
   overrides: {
@@ -44,7 +43,7 @@ function CssOverrides() {
   const [selectedDate, handleDateChange] = useState(new Date());
 
   return (
-    <ThemeProvider theme={materialTheme}>
+    <MuiThemeProvider theme={materialTheme}>
       <DatePicker
         label="Light blue picker"
         value={selectedDate}
@@ -52,7 +51,7 @@ function CssOverrides() {
         shouldDisableDate={day => day.getDay() === 0}
         animateYearScrolling={false}
       />
-    </ThemeProvider>
+    </MuiThemeProvider>
   );
 }
 
