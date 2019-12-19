@@ -17,7 +17,8 @@ export interface CalendarViewProps
   extends Omit<CalendarProps, 'slideDirection' | 'currentMonth' | 'minDate' | 'maxDate'> {
   date: MaterialUiPickersDate;
   view: DatePickerView;
-  changeView: (nextView: DatePickerView) => void;
+  views: DatePickerView[];
+  changeView: (view: DatePickerView) => void;
   onChange: (date: MaterialUiPickersDate, isFinish?: boolean) => void;
   /** Min date */
   minDate?: ParsableDate;
@@ -27,7 +28,7 @@ export interface CalendarViewProps
 
 export type ExportedCalendarProps = Omit<
   CalendarViewProps,
-  'date' | 'view' | 'onChange' | 'changeView' | 'slideDirection' | 'currentMonth'
+  'date' | 'view' | 'views' | 'onChange' | 'changeView' | 'slideDirection' | 'currentMonth'
 >;
 
 type ReducerAction<TType, TAdditional = {}> = { type: TType } & TAdditional;
@@ -91,7 +92,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
   onMonthChange,
   minDate: unparsedMinDate,
   maxDate: unparsedMaxDate,
-  loadingIndicator = <CircularProgress />,
+  loadingIndicator = <CircularProgress data-test-id="loading-progress" />,
   ...other
 }) => {
   const utils = useUtils();
@@ -143,11 +144,12 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
         {...other}
         view={view}
         month={currentMonth}
-        changeView={() => changeView(view === 'date' ? 'year' : 'date')}
+        changeView={changeView}
         onMonthChange={(newMonth, direction) => handleChangeMonth({ newMonth, direction })}
         minDate={minDate}
         maxDate={maxDate}
       />
+
       <FadeTransitionGroup className={classes.viewTransitionContainer} transKey={view}>
         <div>
           {view === 'year' && (
@@ -167,6 +169,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
               onChange={onChange}
               minDate={minDate}
               maxDate={maxDate}
+              onMonthChange={onMonthChange}
             />
           )}
 

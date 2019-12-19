@@ -7,7 +7,6 @@ import { DatePickerView } from '../../DatePicker';
 import { SlideDirection } from './SlideTransition';
 import { Fade, IconButton } from '@material-ui/core';
 import { useUtils } from '../../_shared/hooks/useUtils';
-import { VariantContext } from '../../wrappers/Wrapper';
 import { MaterialUiPickersDate } from '../../typings/date';
 import { FadeTransitionGroup } from './FadeTransitionGroup';
 import { IconButtonProps } from '@material-ui/core/IconButton';
@@ -19,6 +18,7 @@ import { ArrowDropDownIcon } from '../../_shared/icons/ArrowDropDownIcon';
 export interface CalendarWithHeaderProps
   extends Pick<CalendarProps, 'minDate' | 'maxDate' | 'disablePast' | 'disableFuture'> {
   view: DatePickerView;
+  views: DatePickerView[];
   month: MaterialUiPickersDate;
   /** Left arrow icon */
   leftArrowIcon?: React.ReactNode;
@@ -34,7 +34,7 @@ export interface CalendarWithHeaderProps
    * @type {Partial<IconButtonProps>}
    */
   rightArrowButtonProps?: Partial<IconButtonProps>;
-  changeView: () => void;
+  changeView: (view: DatePickerView) => void;
   onMonthChange: (date: MaterialUiPickersDate, slideDirection: SlideDirection) => void;
 }
 
@@ -84,12 +84,13 @@ export const useStyles = makeStyles(
 
 export const CalendarHeader: React.SFC<CalendarWithHeaderProps> = ({
   view,
+  views,
   month,
   leftArrowIcon,
   rightArrowIcon,
   leftArrowButtonProps,
   rightArrowButtonProps,
-  changeView: switchView,
+  changeView,
   onMonthChange,
   minDate,
   maxDate,
@@ -100,7 +101,6 @@ export const CalendarHeader: React.SFC<CalendarWithHeaderProps> = ({
   const theme = useTheme();
   const classes = useStyles({ view });
   const isRtl = theme.direction === 'rtl';
-  const variant = React.useContext(VariantContext);
 
   const selectNextMonth = () => onMonthChange(utils.getNextMonth(month), 'left');
   const selectPreviousMonth = () => onMonthChange(utils.getPreviousMonth(month), 'right');
@@ -123,13 +123,28 @@ export const CalendarHeader: React.SFC<CalendarWithHeaderProps> = ({
     return !utils.isAfter(lastEnabledMonth, month);
   }, [disableFuture, maxDate, month, utils]);
 
+  const toggleView = () => {
+    if (views.length === 1) {
+      return;
+    }
+
+    if (views.length === 2) {
+      changeView(views.find(v => v !== view) || views[0]);
+    } else {
+      // switching only between first 2
+      const nextIndexToOpen = views.indexOf(view) !== 0 ? 0 : 1;
+      changeView(views[nextIndexToOpen]);
+    }
+  };
+
+  if (views.length === 1) {
+    return null;
+  }
+
   return (
     <>
       <div className={classes.switchHeader}>
-        <div
-          className={classes.monthTitleContainer}
-          onClick={() => variant !== 'inline' && switchView()}
-        >
+        <div className={classes.monthTitleContainer}>
           <FadeTransitionGroup transKey={utils.getMonthText(month)}>
             <Typography
               align="center"
@@ -145,7 +160,7 @@ export const CalendarHeader: React.SFC<CalendarWithHeaderProps> = ({
           <IconButton
             data-test-id="calendar-view-switcher"
             size="small"
-            onClick={switchView}
+            onClick={toggleView}
             className={classes.yearSelectionSwitcher}
           >
             <ArrowDropDownIcon

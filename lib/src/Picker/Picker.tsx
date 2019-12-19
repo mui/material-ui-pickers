@@ -112,6 +112,8 @@ export const Picker: React.FunctionComponent<PickerProps> = ({
           <CalendarView
             date={date}
             changeView={setOpenView}
+            // @ts-ignore
+            views={views}
             onChange={handleChangeAndOpenNext}
             view={openView}
             {...other}

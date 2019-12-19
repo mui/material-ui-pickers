@@ -107,7 +107,7 @@ describe('e2e -- DatePicker views year and month', () => {
   it('Should select month', () => {
     expect(component.find('Month').length).toBe(12);
     component
-      .find('Month')
+      .find('div[data-test-id="month"]')
       .first()
       .simulate('click');
 
@@ -115,10 +115,7 @@ describe('e2e -- DatePicker views year and month', () => {
   });
 
   it('Should switch to year selection and back to month', () => {
-    component
-      .find('ToolbarButton')
-      .first()
-      .simulate('click');
+    component.find('button[data-test-id="calendar-view-switcher"]').simulate('click');
 
     const year = component.find('Year');
     expect(component.find('Year').length).toBe(201);

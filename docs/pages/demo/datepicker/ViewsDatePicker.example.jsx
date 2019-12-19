@@ -21,6 +21,7 @@ function YearMonthPicker() {
         maxDate={new Date('2018-06-01')}
         value={selectedDate}
         onChange={handleDateChange}
+        onMonthChange={console.log}
       />
 
       <DatePicker

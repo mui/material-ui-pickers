@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { ReactWrapper } from 'enzyme';
+import { act } from 'react-dom/test-utils';
 import { mount, utilsToUse } from '../test-utils';
 import { DatePicker, DatePickerProps } from '../../DatePicker/DatePicker';
 
@@ -149,8 +150,8 @@ describe('e2e - DatePicker month change sync', () => {
   let component: ReactWrapper<DatePickerProps>;
   const onChangeMock = jest.fn();
   const onMonthChangeMock = jest.fn();
-  const date = utilsToUse.date('2018-01-01T00:00:00.000Z');
 
+  const date = utilsToUse.date('2018-01-01T00:00:00.000Z');
   beforeEach(() => {
     component = mount(
       <DatePicker open onChange={onChangeMock} onMonthChange={onMonthChangeMock} value={date} />
@@ -159,27 +160,21 @@ describe('e2e - DatePicker month change sync', () => {
 
   it('Should not add to loading queue when synchronous', () => {
     component
-      .find('CalendarHeader button')
+      .find('button[data-test-id="previous-month"]')
       .first()
       .simulate('click');
-    expect(
-      component
-        .find('Calendar')
-        .first()
-        .state('loadingQueue')
-    ).toEqual(0);
+
+    expect(component.find('[data-test-id="loading-progress"]').length).toBe(0);
   });
 });
 
 describe('e2e - DatePicker month change async', () => {
+  jest.useFakeTimers();
   let component: ReactWrapper<DatePickerProps>;
   const onChangeMock = jest.fn();
 
-  const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
-  const promise = sleep(50);
-  const onMonthChangeAsyncMock = jest.fn(async () => {
-    await promise;
-  });
+  const sleep = (ms: number) => new Promise<void>(resolve => setTimeout(resolve, ms));
+  const onMonthChangeAsyncMock = jest.fn(() => sleep(10));
 
   const date = utilsToUse.date('2018-01-01T00:00:00.000Z');
 
@@ -195,31 +190,16 @@ describe('e2e - DatePicker month change async', () => {
   });
 
   it('Should add to loading queue when loading asynchronous data', () => {
-    component
-      .find('CalendarHeader button')
-      .first()
-      .simulate('click');
+    component.find('button[data-test-id="previous-month"]').simulate('click');
 
-    expect(
-      component
-        .find('Calendar')
-        .first()
-        .state('loadingQueue')
-    ).toEqual(1);
+    expect(component.find('[data-test-id="loading-progress"]').length).toBeGreaterThan(1);
   });
 
-  it('Should empty loading queue after loading asynchronous data', async () => {
-    component
-      .find('CalendarHeader button')
-      .first()
-      .simulate('click');
-    await sleep(100);
-    expect(
-      component
-        .find('Calendar')
-        .first()
-        .state('loadingQueue')
-    ).toEqual(0);
+  it.skip('Should empty loading queue after loading asynchronous data', async () => {
+    component.find('button[data-test-id="previous-month"]').simulate('click');
+    jest.runTimersToTime(10);
+
+    expect(component.find('[data-test-id="loading-progress"]').length).toBe(0);
   });
 });
 
