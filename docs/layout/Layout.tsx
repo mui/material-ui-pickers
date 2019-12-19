@@ -152,7 +152,7 @@ class Layout extends Component<LayoutProps> {
                   key={option}
                   className={classes.utilsMenuItem}
                   selected={index === this.state.selectedIndex}
-                  onClick={event => this.handleUtilsChange(event, index)}
+                  onClick={(event: any) => this.handleUtilsChange(event, index)}
                 >
                   {option}
                 </MenuItem>

@@ -13,7 +13,7 @@ function SecondsTimePicker() {
         format="HH:mm:ss"
         label="With seconds"
         value={selectedDate}
-        onChange={handleDateChange}
+        onChange={date => handleDateChange(date)}
       />
 
       <TimePicker
@@ -23,7 +23,7 @@ function SecondsTimePicker() {
         format="mm:ss"
         label="Minutes and seconds"
         value={selectedDate}
-        onChange={handleDateChange}
+        onChange={date => handleDateChange(date)}
       />
     </Fragment>
   );

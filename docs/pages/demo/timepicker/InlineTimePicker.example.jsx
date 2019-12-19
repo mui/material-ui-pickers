@@ -12,7 +12,7 @@ function InlineTimePickerDemo() {
         disableToolbar
         ampmInClock
         value={selectedDate}
-        onChange={handleDateChange}
+        onChange={date => handleDateChange(date)}
       />
 
       <KeyboardTimePicker
@@ -20,7 +20,7 @@ function InlineTimePickerDemo() {
         variant="inline"
         label="With keyboard"
         value={selectedDate}
-        onChange={handleDateChange}
+        onChange={date => handleDateChange(date)}
       />
     </Fragment>
   );
