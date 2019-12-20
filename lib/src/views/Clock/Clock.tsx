@@ -117,6 +117,7 @@ export const Clock: React.FC<ClockProps> = ({
         ? getMinutes(offsetX, offsetY, minutesStep)
         : getHours(offsetX, offsetY, Boolean(ampm));
 
+    console.log('CAKLLING', value, isFinish);
     onChange(value, isFinish);
   };
 

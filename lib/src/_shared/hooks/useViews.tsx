@@ -22,9 +22,11 @@ export function useViews(
   const handleChangeAndOpenNext = React.useCallback(
     (date: MaterialUiPickersDate, isFinish?: boolean) => {
       // do not close picker if needs to show next view
-      const toFinish = Boolean(isFinish && !nextView);
-      onChange(date, toFinish);
-      openNext();
+      onChange(date, Boolean(isFinish && !nextView));
+
+      if (isFinish) {
+        openNext();
+      }
     },
     [nextView, onChange, openNext]
   );
