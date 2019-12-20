@@ -48,6 +48,8 @@ jobs:
   lint:
     <<: *js_defaults
     steps:
+      - attach_workspace:
+          at: .
       - run:
           name: Eslint
           command: yarn lint
@@ -58,6 +60,8 @@ jobs:
   build:
     <<: *js_defaults
     steps:
+      - attach_workspace:
+          at: .
       - run:
           name: Typescript
           command: yarn workspaces run build:typescript
