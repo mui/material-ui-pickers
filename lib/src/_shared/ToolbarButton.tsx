@@ -15,13 +15,13 @@ export interface ToolbarButtonProps extends ExtendMui<ButtonProps, 'variant'> {
 }
 
 export const useStyles = makeStyles(
-  _ => ({
+  {
     toolbarBtn: {
       padding: 0,
       minWidth: '16px',
       textTransform: 'none',
     },
-  }),
+  },
   { name: 'MuiPickersToolbarButton' }
 );
 
