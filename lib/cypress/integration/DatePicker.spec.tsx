@@ -6,7 +6,7 @@ describe('Demo', () => {
   it('Just testing cypress inline', () => {
     mountPicker(props => <DatePicker variant="static" id="wtf" {...props} />);
 
-    cy.get('[data-test-id="previous-month"]').click();
+    cy.get('[data-mui-test="previous-month"]').click();
     cy.contains('Sun, Dec 8');
   });
 });

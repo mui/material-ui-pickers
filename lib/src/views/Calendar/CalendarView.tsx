@@ -92,7 +92,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
   onMonthChange,
   minDate: unparsedMinDate,
   maxDate: unparsedMaxDate,
-  loadingIndicator = <CircularProgress data-test-id="loading-progress" />,
+  loadingIndicator = <CircularProgress data-mui-test="loading-progress" />,
   ...other
 }) => {
   const utils = useUtils();

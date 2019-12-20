@@ -148,7 +148,7 @@ export const TimePickerToolbar: React.FC<ToolbarComponentProps> = ({
           })}
         >
           <ToolbarButton
-            data-test-id="toolbar-am-btn"
+            data-mui-test="toolbar-am-btn"
             disableRipple
             variant="subtitle2"
             selected={meridiemMode === 'am'}
@@ -158,7 +158,7 @@ export const TimePickerToolbar: React.FC<ToolbarComponentProps> = ({
           />
 
           <ToolbarButton
-            data-test-id="toolbar-pm-btn"
+            data-mui-test="toolbar-pm-btn"
             disableRipple
             variant="subtitle2"
             selected={meridiemMode === 'pm'}

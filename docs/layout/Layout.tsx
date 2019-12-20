@@ -160,7 +160,11 @@ class Layout extends Component<LayoutProps> {
             </Menu>
 
             <Tooltip title="Toggle light/dark theme" enterDelay={300}>
-              <IconButton data-testid="toggle-theme-btn" color="inherit" onClick={toggleThemeType}>
+              <IconButton
+                data-mui-test="toggle-theme-btn"
+                color="inherit"
+                onClick={toggleThemeType}
+              >
                 <LightbulbOutlineIcon />
               </IconButton>
             </Tooltip>

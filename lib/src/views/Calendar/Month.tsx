@@ -54,7 +54,7 @@ export const Month: React.FC<MonthProps> = ({
 
   return (
     <Typography
-      data-test-id="month"
+      data-mui-test="month"
       role="button"
       component="div"
       className={clsx(classes.root, {

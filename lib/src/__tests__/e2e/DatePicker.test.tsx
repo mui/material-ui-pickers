@@ -77,7 +77,7 @@ describe('e2e - DatePicker inline variant', () => {
         onChange={onChangeMock}
         onClose={onCloseMock}
         onOpen={onOpenMock}
-        loadingIndicator={<div data-test-id="loading" />}
+        loadingIndicator={<div data-mui-test="loading" />}
         value={utilsToUse.date('2018-01-01T00:00:00.000Z')}
       />
     );
@@ -126,7 +126,7 @@ describe('e2e - DatePicker without month change', () => {
     component = mount(
       <DatePicker
         open
-        loadingIndicator={<div data-test-id="loading" />}
+        loadingIndicator={<div data-mui-test="loading" />}
         onChange={onChangeMock}
         value={date}
       />
@@ -139,7 +139,7 @@ describe('e2e - DatePicker without month change', () => {
       .first()
       .simulate('click');
 
-    expect(component.find('[data-test-id="loading"]').length).toEqual(0);
+    expect(component.find('[data-mui-test="loading"]').length).toEqual(0);
   });
 });
 
@@ -157,11 +157,11 @@ describe('e2e - DatePicker month change sync', () => {
 
   it('Should not add to loading queue when synchronous', () => {
     component
-      .find('button[data-test-id="previous-month"]')
+      .find('button[data-mui-test="previous-month"]')
       .first()
       .simulate('click');
 
-    expect(component.find('[data-test-id="loading-progress"]').length).toBe(0);
+    expect(component.find('[data-mui-test="loading-progress"]').length).toBe(0);
   });
 });
 
@@ -187,16 +187,16 @@ describe('e2e - DatePicker month change async', () => {
   });
 
   it('Should add to loading queue when loading asynchronous data', () => {
-    component.find('button[data-test-id="previous-month"]').simulate('click');
+    component.find('button[data-mui-test="previous-month"]').simulate('click');
 
-    expect(component.find('[data-test-id="loading-progress"]').length).toBeGreaterThan(1);
+    expect(component.find('[data-mui-test="loading-progress"]').length).toBeGreaterThan(1);
   });
 
   it.skip('Should empty loading queue after loading asynchronous data', async () => {
-    component.find('button[data-test-id="previous-month"]').simulate('click');
+    component.find('button[data-mui-test="previous-month"]').simulate('click');
     jest.runTimersToTime(10);
 
-    expect(component.find('[data-test-id="loading-progress"]').length).toBe(0);
+    expect(component.find('[data-mui-test="loading-progress"]').length).toBe(0);
   });
 });
 

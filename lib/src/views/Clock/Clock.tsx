@@ -186,7 +186,7 @@ export const Clock: React.FC<ClockProps> = ({
       {ampm && ampmInClock && (
         <>
           <IconButton
-            data-test-id="in-clock-am-btn"
+            data-mui-test="in-clock-am-btn"
             onClick={() => handleMeridiemChange('am')}
             className={clsx(classes.amButton, {
               [classes.meridiemButtonSelected]: meridiemMode === 'am',
@@ -195,7 +195,7 @@ export const Clock: React.FC<ClockProps> = ({
             <Typography variant="caption">AM</Typography>
           </IconButton>
           <IconButton
-            data-test-id="in-clock-pm-btn"
+            data-mui-test="in-clock-pm-btn"
             onClick={() => handleMeridiemChange('pm')}
             className={clsx(classes.pmButton, {
               [classes.meridiemButtonSelected]: meridiemMode === 'pm',

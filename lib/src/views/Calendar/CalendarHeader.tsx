@@ -158,7 +158,7 @@ export const CalendarHeader: React.SFC<CalendarWithHeaderProps> = ({
           </FadeTransitionGroup>
 
           <IconButton
-            data-test-id="calendar-view-switcher"
+            data-mui-test="calendar-view-switcher"
             size="small"
             onClick={toggleView}
             className={classes.yearSelectionSwitcher}
@@ -174,7 +174,7 @@ export const CalendarHeader: React.SFC<CalendarWithHeaderProps> = ({
         <Fade in={view === 'date'}>
           <div>
             <IconButton
-              data-test-id="previous-month"
+              data-mui-test="previous-month"
               size="small"
               {...leftArrowButtonProps}
               disabled={isPreviousMonthDisabled}
