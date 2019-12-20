@@ -5,7 +5,7 @@ export const useIsomorphicEffect =
 
 type KeyHandlers = Record<KeyboardEvent['key'], () => void>;
 
-export function runKeyHandler(e: KeyboardEvent, keyHandlers: KeyHandlers) {
+export function runKeyHandler(e: KeyboardEvent | React.KeyboardEvent, keyHandlers: KeyHandlers) {
   const handler = keyHandlers[e.keyCode];
   if (handler) {
     handler();
