@@ -115,7 +115,6 @@ export const Clock: React.FC<ClockProps> = ({
         ? getMinutes(offsetX, offsetY, minutesStep)
         : getHours(offsetX, offsetY, Boolean(ampm));
 
-    console.log('CAKLLING', value, isFinish);
     onChange(value, isFinish);
   };
 
@@ -135,11 +134,10 @@ export const Clock: React.FC<ClockProps> = ({
     e.preventDefault();
     e.stopPropagation();
     // MouseEvent.which is deprecated, but MouseEvent.buttons is not supported in Safari
-    const isButtonPressed =
-      typeof e.buttons === 'undefined' ? e.nativeEvent.which === 1 : e.buttons === 1;
+    const isButtonPressed = typeof e.buttons === 'undefined' ? e.which === 1 : e.buttons === 1;
 
     if (isButtonPressed) {
-      setTime(e.nativeEvent, false);
+      setTime(e, false);
     }
   };
 
@@ -148,7 +146,7 @@ export const Clock: React.FC<ClockProps> = ({
       isMoving.current = false;
     }
 
-    setTime(e.nativeEvent, true);
+    setTime(e, true);
   };
 
   const hasSelected = React.useMemo(() => {
