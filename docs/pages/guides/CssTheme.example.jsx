@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import lime from '@material-ui/core/colors/lime';
 import { DateTimePicker } from '@material-ui/pickers';
-import { createMuiTheme, ThemeProvider } from '@material-ui/core';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
 const defaultMaterialTheme = createMuiTheme({
   palette: {

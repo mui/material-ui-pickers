@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { DateTimePicker } from '@material-ui/pickers';
-import { createMuiTheme, ThemeProvider } from '@material-ui/core';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
 const muiTheme = createMuiTheme({
   spacing: 2,
