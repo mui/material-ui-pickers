@@ -39,7 +39,6 @@ export function makePickerWithState<T extends any>({
       allowKeyboardControl,
       ampm,
       ampmInClock,
-      animateYearScrolling,
       autoOk,
       dateRangeIcon,
       disableFuture,
@@ -103,7 +102,6 @@ export function makePickerWithState<T extends any>({
           allowKeyboardControl={allowKeyboardControl}
           ampm={ampm}
           ampmInClock={ampmInClock}
-          animateYearScrolling={animateYearScrolling}
           dateRangeIcon={dateRangeIcon}
           disableFuture={disableFuture}
           disablePast={disablePast}

@@ -44,11 +44,6 @@ export interface BaseDatePickerProps extends ExportedCalendarProps {
    * @default false
    */
   disableFuture?: boolean;
-  /**
-   * To animate scrolling to current year (using scrollIntoView)
-   * @default false
-   */
-  animateYearScrolling?: boolean;
   /** Callback firing on year change @DateIOType */
   onYearChange?: (date: MaterialUiPickersDate) => void;
 }

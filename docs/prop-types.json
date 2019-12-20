@@ -564,21 +564,6 @@
         "name": "boolean"
       }
     },
-    "animateYearScrolling": {
-      "defaultValue": {
-        "value": "false"
-      },
-      "description": "To animate scrolling to current year (using scrollIntoView)",
-      "name": "animateYearScrolling",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/DatePicker/DatePicker.tsx",
-        "name": "BaseDatePickerProps"
-      },
-      "required": false,
-      "type": {
-        "name": "boolean"
-      }
-    },
     "onYearChange": {
       "defaultValue": null,
       "description": "Callback firing on year change",
@@ -1271,21 +1256,6 @@
       },
       "description": "Disable future dates",
       "name": "disableFuture",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/DatePicker/DatePicker.tsx",
-        "name": "BaseDatePickerProps"
-      },
-      "required": false,
-      "type": {
-        "name": "boolean"
-      }
-    },
-    "animateYearScrolling": {
-      "defaultValue": {
-        "value": "false"
-      },
-      "description": "To animate scrolling to current year (using scrollIntoView)",
-      "name": "animateYearScrolling",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/DatePicker/DatePicker.tsx",
         "name": "BaseDatePickerProps"
@@ -3035,21 +3005,6 @@
       },
       "description": "Disable future dates",
       "name": "disableFuture",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/DatePicker/DatePicker.tsx",
-        "name": "BaseDatePickerProps"
-      },
-      "required": false,
-      "type": {
-        "name": "boolean"
-      }
-    },
-    "animateYearScrolling": {
-      "defaultValue": {
-        "value": "false"
-      },
-      "description": "To animate scrolling to current year (using scrollIntoView)",
-      "name": "animateYearScrolling",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/DatePicker/DatePicker.tsx",
         "name": "BaseDatePickerProps"

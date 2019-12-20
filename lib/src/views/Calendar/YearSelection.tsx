@@ -13,7 +13,6 @@ export interface YearSelectionProps {
   onChange: (date: MaterialUiPickersDate, isFinish: boolean) => void;
   disablePast?: boolean | null | undefined;
   disableFuture?: boolean | null | undefined;
-  animateYearScrolling?: boolean | null | undefined;
   onYearChange?: (date: MaterialUiPickersDate) => void;
 }
 
@@ -39,7 +38,6 @@ export const YearSelection: React.FC<YearSelectionProps> = ({
   maxDate,
   disablePast,
   disableFuture,
-  animateYearScrolling,
 }) => {
   const utils = useUtils();
   const classes = useStyles();
@@ -51,7 +49,6 @@ export const YearSelection: React.FC<YearSelectionProps> = ({
       try {
         selectedYearRef.current.scrollIntoView({
           block: currentVariant === 'static' ? 'nearest' : 'center',
-          behavior: animateYearScrolling ? 'smooth' : 'auto',
         });
       } catch (e) {
         // call without arguments in case when scrollIntoView works improperly (e.g. Firefox 52-57)
