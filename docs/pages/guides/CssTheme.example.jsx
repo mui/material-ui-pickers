@@ -18,7 +18,6 @@ function CssThemeExample() {
         label="Lime DateTimePicker"
         value={selectedDate}
         onChange={handleDateChange}
-        animateYearScrolling={false}
       />
     </ThemeProvider>
   );

@@ -15,7 +15,6 @@ describe('e2e - DatePicker', () => {
         open
         autoOk
         openTo="date"
-        animateYearScrolling={false}
         value={utilsToUse.date('2018-01-01T00:00:00.000Z')}
         onChange={onChangeMock}
       />

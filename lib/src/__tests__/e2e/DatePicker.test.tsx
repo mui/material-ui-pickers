@@ -12,7 +12,6 @@ describe('e2e - DatePicker default year format', () => {
     jest.clearAllMocks();
     component = mount(
       <DatePicker
-        animateYearScrolling={false}
         value={utilsToUse.date('2018-01-01T00:00:00.000')}
         onChange={onChangeMock}
         views={['year']}
@@ -75,7 +74,6 @@ describe('e2e - DatePicker inline variant', () => {
       <DatePicker
         autoOk
         variant="inline"
-        animateYearScrolling={false}
         onChange={onChangeMock}
         onClose={onCloseMock}
         onOpen={onOpenMock}

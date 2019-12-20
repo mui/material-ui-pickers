@@ -49,7 +49,6 @@ function CssOverrides() {
         value={selectedDate}
         onChange={handleDateChange}
         shouldDisableDate={day => day.getDay() === 0}
-        animateYearScrolling={false}
       />
     </ThemeProvider>
   );

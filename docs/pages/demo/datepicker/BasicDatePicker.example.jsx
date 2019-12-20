@@ -10,7 +10,6 @@ function BasicDatePicker(props) {
         label="Basic example"
         value={selectedDate}
         onChange={date => handleDateChange(date)}
-        animateYearScrolling
       />
 
       <DatePicker
