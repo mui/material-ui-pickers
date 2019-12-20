@@ -190,9 +190,9 @@ export const Calendar: React.FC<CalendarProps> = ({
   return (
     <div onKeyDown={keydownHandler}>
       <div className={classes.daysHeader}>
-        {utils.getWeekdays().map(day => (
+        {utils.getWeekdays().map((day, i) => (
           <Typography
-            key={day.toString()}
+            key={day + i.toString()}
             variant="caption"
             className={classes.dayLabel}
             children={day.charAt(0).toUpperCase()}

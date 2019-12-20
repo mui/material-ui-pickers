@@ -52,16 +52,16 @@
   ],
   "scripts": {
     "test": "jest",
-    "test:date-fns": "UTILS=date-fns npm run test",
-    "test:luxon": "UTILS=luxon npm run test",
-    "test:moment": "UTILS=moment npm run test",
+    "test:date-fns": "UTILS=date-fns yarn test",
+    "test:luxon": "UTILS=luxon yarn test",
+    "test:moment": "UTILS=moment yarn test",
     "start": "rollup --config rollup.config.dev.js --watch & npx tsc --watch",
     "prebuild": "rimraf build",
     "build:copy": "node copy.js",
     "build:bundle": "rollup --config",
     "build:typescript": "tsc --project tsconfig.json",
-    "build": "npm run build:typescript && npm run build:bundle && npm run build:copy",
-    "build:analyze": "npm run build",
+    "build": "yarn build:typescript && yarn build:bundle && yarn build:copy",
+    "build:analyze": "yarn build",
     "release": "yarn test && yarn version && yarn build && yarn publish --non-interactive build"
   },
   "devDependencies": {

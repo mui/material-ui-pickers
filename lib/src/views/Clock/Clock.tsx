@@ -134,10 +134,11 @@ export const Clock: React.FC<ClockProps> = ({
     e.preventDefault();
     e.stopPropagation();
     // MouseEvent.which is deprecated, but MouseEvent.buttons is not supported in Safari
-    const isButtonPressed = typeof e.buttons === 'undefined' ? e.which === 1 : e.buttons === 1;
+    const isButtonPressed =
+      typeof e.buttons === 'undefined' ? e.nativeEvent.which === 1 : e.buttons === 1;
 
     if (isButtonPressed) {
-      setTime(e, false);
+      setTime(e.nativeEvent, false);
     }
   };
 
@@ -146,7 +147,7 @@ export const Clock: React.FC<ClockProps> = ({
       isMoving.current = false;
     }
 
-    setTime(e, true);
+    setTime(e.nativeEvent, true);
   };
 
   const hasSelected = React.useMemo(() => {
