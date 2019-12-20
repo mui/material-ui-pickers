@@ -67,7 +67,6 @@ export const ModalDialog: React.FC<ModalDialogProps> = ({
   const classes = useStyles();
   return (
     <Dialog
-      role="dialog"
       onClose={onDismiss}
       classes={{
         paper: clsx(classes.dialogRoot, {
@@ -79,11 +78,9 @@ export const ModalDialog: React.FC<ModalDialogProps> = ({
       <DialogContent children={children} className={classes.dialog} />
 
       <DialogActions
-        classes={{
-          root: clsx({
-            [classes.withAdditionalAction]: clearable || showTodayButton,
-          }),
-        }}
+        className={clsx({
+          [classes.withAdditionalAction]: clearable || showTodayButton,
+        })}
       >
         {clearable && (
           <Button color="primary" onClick={onClear}>

@@ -14,19 +14,16 @@ export function runKeyHandler(e: KeyboardEvent, keyHandlers: KeyHandlers) {
   }
 }
 
-export function useKeyDown(active: boolean, keyHandlers: KeyHandlers) {
+export function useKeyDownHandler(active: boolean, keyHandlers: KeyHandlers) {
   const keyHandlersRef = React.useRef(keyHandlers);
   keyHandlersRef.current = keyHandlers;
 
-  useIsomorphicEffect(() => {
-    if (active) {
-      const handleKeyDown = (event: KeyboardEvent) => {
-        runKeyHandler(event, keyHandlersRef.current);
-      };
-      document.addEventListener('keydown', handleKeyDown);
-      return () => {
-        document.removeEventListener('keydown', handleKeyDown);
-      };
-    }
-  }, [active]);
+  return React.useCallback(
+    (e: React.KeyboardEvent) => {
+      if (active) {
+        runKeyHandler(e, keyHandlersRef.current);
+      }
+    },
+    [active]
+  );
 }
