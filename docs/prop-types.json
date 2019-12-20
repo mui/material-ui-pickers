@@ -1814,7 +1814,9 @@
       }
     },
     "ampmInClock": {
-      "defaultValue": null,
+      "defaultValue": {
+        "value": "false"
+      },
       "description": "Display ampm controls under the clock (instead of in the toolbar)",
       "name": "ampmInClock",
       "parent": {
@@ -2351,7 +2353,9 @@
       }
     },
     "ampmInClock": {
-      "defaultValue": null,
+      "defaultValue": {
+        "value": "false"
+      },
       "description": "Display ampm controls under the clock (instead of in the toolbar)",
       "name": "ampmInClock",
       "parent": {
@@ -2927,7 +2931,9 @@
       }
     },
     "ampmInClock": {
-      "defaultValue": null,
+      "defaultValue": {
+        "value": "false"
+      },
       "description": "Display ampm controls under the clock (instead of in the toolbar)",
       "name": "ampmInClock",
       "parent": {
@@ -3323,15 +3329,15 @@
   "TimePickerView": {
     "date": {
       "defaultValue": null,
-      "description": "TimePicker value",
+      "description": "Selected date",
       "name": "date",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
-        "name": "TimePickerViewProps"
+        "name": "ClockViewProps"
       },
       "required": true,
       "type": {
-        "name": "any"
+        "name": "DateIOType"
       }
     },
     "type": {
@@ -3340,7 +3346,7 @@
       "name": "type",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
-        "name": "TimePickerViewProps"
+        "name": "ClockViewProps"
       },
       "required": true,
       "type": {
@@ -3353,11 +3359,11 @@
       "name": "onDateChange",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
-        "name": "TimePickerViewProps"
+        "name": "ClockViewProps"
       },
       "required": true,
       "type": {
-        "name": "(date: any, isFinish?: boolean) => void"
+        "name": "(date: DateIOType, isFinish?: boolean) => void"
       }
     },
     "onHourChange": {
@@ -3366,11 +3372,11 @@
       "name": "onHourChange",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
-        "name": "TimePickerViewProps"
+        "name": "ClockViewProps"
       },
       "required": true,
       "type": {
-        "name": "(date: any, isFinish?: boolean) => void"
+        "name": "(date: DateIOType, isFinish?: boolean) => void"
       }
     },
     "onMinutesChange": {
@@ -3379,11 +3385,11 @@
       "name": "onMinutesChange",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
-        "name": "TimePickerViewProps"
+        "name": "ClockViewProps"
       },
       "required": true,
       "type": {
-        "name": "(date: any, isFinish?: boolean) => void"
+        "name": "(date: DateIOType, isFinish?: boolean) => void"
       }
     },
     "onSecondsChange": {
@@ -3392,11 +3398,11 @@
       "name": "onSecondsChange",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
-        "name": "TimePickerViewProps"
+        "name": "ClockViewProps"
       },
       "required": true,
       "type": {
-        "name": "(date: any, isFinish?: boolean) => void"
+        "name": "(date: DateIOType, isFinish?: boolean) => void"
       }
     },
     "ampm": {
@@ -3430,7 +3436,9 @@
       }
     },
     "ampmInClock": {
-      "defaultValue": null,
+      "defaultValue": {
+        "value": "false"
+      },
       "description": "Display ampm controls under the clock (instead of in the toolbar)",
       "name": "ampmInClock",
       "parent": {
@@ -3446,15 +3454,15 @@
   "ClockView": {
     "date": {
       "defaultValue": null,
-      "description": "TimePicker value",
+      "description": "Selected date",
       "name": "date",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
-        "name": "TimePickerViewProps"
+        "name": "ClockViewProps"
       },
       "required": true,
       "type": {
-        "name": "any"
+        "name": "DateIOType"
       }
     },
     "type": {
@@ -3463,7 +3471,7 @@
       "name": "type",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
-        "name": "TimePickerViewProps"
+        "name": "ClockViewProps"
       },
       "required": true,
       "type": {
@@ -3476,11 +3484,11 @@
       "name": "onDateChange",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
-        "name": "TimePickerViewProps"
+        "name": "ClockViewProps"
       },
       "required": true,
       "type": {
-        "name": "(date: any, isFinish?: boolean) => void"
+        "name": "(date: DateIOType, isFinish?: boolean) => void"
       }
     },
     "onHourChange": {
@@ -3489,11 +3497,11 @@
       "name": "onHourChange",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
-        "name": "TimePickerViewProps"
+        "name": "ClockViewProps"
       },
       "required": true,
       "type": {
-        "name": "(date: any, isFinish?: boolean) => void"
+        "name": "(date: DateIOType, isFinish?: boolean) => void"
       }
     },
     "onMinutesChange": {
@@ -3502,11 +3510,11 @@
       "name": "onMinutesChange",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
-        "name": "TimePickerViewProps"
+        "name": "ClockViewProps"
       },
       "required": true,
       "type": {
-        "name": "(date: any, isFinish?: boolean) => void"
+        "name": "(date: DateIOType, isFinish?: boolean) => void"
       }
     },
     "onSecondsChange": {
@@ -3515,11 +3523,11 @@
       "name": "onSecondsChange",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
-        "name": "TimePickerViewProps"
+        "name": "ClockViewProps"
       },
       "required": true,
       "type": {
-        "name": "(date: any, isFinish?: boolean) => void"
+        "name": "(date: DateIOType, isFinish?: boolean) => void"
       }
     },
     "ampm": {
@@ -3553,7 +3561,9 @@
       }
     },
     "ampmInClock": {
-      "defaultValue": null,
+      "defaultValue": {
+        "value": "false"
+      },
       "description": "Display ampm controls under the clock (instead of in the toolbar)",
       "name": "ampmInClock",
       "parent": {

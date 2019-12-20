@@ -17,26 +17,29 @@ export interface BaseClockProps {
    * @default 1
    */
   minutesStep?: number;
-  /** Display ampm controls under the clock (instead of in the toolbar) */
+  /**
+   * Display ampm controls under the clock (instead of in the toolbar)
+   * @default false
+   */
   ampmInClock?: boolean;
 }
 
-export interface TimePickerViewProps extends BaseClockProps {
-  /** TimePicker value */
+export interface ClockViewProps extends BaseClockProps {
+  /** Selected date @DateIOType */
   date: MaterialUiPickersDate;
   /** Clock type */
   type: 'hours' | 'minutes' | 'seconds';
-  /** On change date without moving between views */
+  /** On change date without moving between views @DateIOType */
   onDateChange: (date: MaterialUiPickersDate, isFinish?: boolean) => void;
-  /** On hour change */
+  /** On hour change @DateIOType */
   onHourChange: (date: MaterialUiPickersDate, isFinish?: boolean) => void;
-  /** On minutes change */
+  /** On minutes change @DateIOType */
   onMinutesChange: (date: MaterialUiPickersDate, isFinish?: boolean) => void;
-  /** On seconds change */
+  /** On seconds change @DateIOType */
   onSecondsChange: (date: MaterialUiPickersDate, isFinish?: boolean) => void;
 }
 
-export const ClockView: React.FC<TimePickerViewProps> = ({
+export const ClockView: React.FC<ClockViewProps> = ({
   type,
   onDateChange,
   onHourChange,
