@@ -44,7 +44,7 @@
     }
   },
   "lint-staged": {
-    "lib/**/*.{ts,tsx}": [
+    "lib/src/**/*.{ts,tsx}": [
       "yarn docgen",
       "git add docs/prop-types.json"
     ],
