@@ -61,11 +61,13 @@ export const useStyles = makeStyles(
       transform: 'translate(-50%, -50%)',
     },
     amButton: {
+      zIndex: 1,
       left: 8,
       position: 'absolute',
       bottom: -10,
     },
     pmButton: {
+      zIndex: 1,
       position: 'absolute',
       bottom: -10,
       right: 8,
