@@ -6,8 +6,8 @@ import { VariantContext } from '../../wrappers/Wrapper';
 import { useUtils } from '../../_shared/hooks/useUtils';
 import { MaterialUiPickersDate } from '../../typings/date';
 import { IconButtonProps } from '@material-ui/core/IconButton';
+import { useGlobalKeyDown } from '../../_shared/hooks/useKeyDown';
 import { findClosestEnabledDate } from '../../_helpers/date-utils';
-import { useKeyDownHandler } from '../../_shared/hooks/useKeyDown';
 import { makeStyles, useTheme, Typography } from '@material-ui/core';
 
 export interface CalendarProps {
@@ -179,7 +179,7 @@ export const Calendar: React.FC<CalendarProps> = ({
     utils,
   ]);
 
-  const keydownHandler = useKeyDownHandler(Boolean(allowKeyboardControl && variant !== 'static'), {
+  useGlobalKeyDown(Boolean(allowKeyboardControl && variant !== 'static'), {
     38: () => moveToDay(utils.addDays(date, -7)), // ArrowUp
     40: () => moveToDay(utils.addDays(date, 7)), // ArrowDown
     37: () => moveToDay(utils.addDays(date, theme.direction === 'ltr' ? -1 : 1)), // ArrowLeft
@@ -190,7 +190,7 @@ export const Calendar: React.FC<CalendarProps> = ({
   const currentMonthNumber = utils.getMonth(currentMonth);
 
   return (
-    <div onKeyDown={keydownHandler}>
+    <>
       <div className={classes.daysHeader}>
         {utils.getWeekdays().map((day, i) => (
           <Typography
@@ -244,7 +244,7 @@ export const Calendar: React.FC<CalendarProps> = ({
           ))}
         </div>
       </SlideTransition>
-    </div>
+    </>
   );
 };
 

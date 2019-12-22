@@ -27,3 +27,20 @@ export function useKeyDownHandler(active: boolean, keyHandlers: KeyHandlers) {
     [active]
   );
 }
+
+export function useGlobalKeyDown(active: boolean, keyHandlers: KeyHandlers) {
+  const keyHandlersRef = React.useRef(keyHandlers);
+  keyHandlersRef.current = keyHandlers;
+
+  useIsomorphicEffect(() => {
+    if (active) {
+      const handleKeyDown = (event: KeyboardEvent) => {
+        runKeyHandler(event, keyHandlersRef.current);
+      };
+      window.addEventListener('keydown', handleKeyDown);
+      return () => {
+        window.removeEventListener('keydown', handleKeyDown);
+      };
+    }
+  }, [active]);
+}
