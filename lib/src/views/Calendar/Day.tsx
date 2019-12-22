@@ -1,35 +1,40 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import clsx from 'clsx';
-import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
+import { ButtonBase } from '@material-ui/core';
+import { makeStyles, fade } from '@material-ui/core/styles';
 
 export const useStyles = makeStyles(
   theme => ({
     day: {
+      margin: '1px 2px',
       width: 36,
       height: 36,
+      borderRadius: '50%',
       fontSize: theme.typography.caption.fontSize,
-      margin: '0 2px',
       color: theme.palette.text.primary,
       fontWeight: theme.typography.fontWeightMedium,
       padding: 0,
+      '&:hover': {
+        backgroundColor: fade(theme.palette.action.active, theme.palette.action.hoverOpacity),
+      },
     },
     hidden: {
       opacity: 0,
       pointerEvents: 'none',
     },
     current: {
-      color: theme.palette.primary.main,
-      fontWeight: 600,
+      '&:not($daySelected)': {
+        border: `1px solid ${theme.palette.text.hint}`,
+      },
     },
     daySelected: {
       color: theme.palette.primary.contrastText,
       backgroundColor: theme.palette.primary.main,
       fontWeight: theme.typography.fontWeightMedium,
       '&:hover': {
-        backgroundColor: theme.palette.primary.main,
+        backgroundColor: theme.palette.primary.light,
       },
     },
     dayDisabled: {
@@ -70,9 +75,14 @@ export const Day: React.FC<DayProps> = ({
   });
 
   return (
-    <IconButton className={className} tabIndex={hidden || disabled ? -1 : 0} {...other}>
+    <ButtonBase
+      centerRipple
+      className={className}
+      tabIndex={hidden || disabled ? -1 : 0}
+      {...other}
+    >
       <Typography variant="body2" color="inherit" children={children} />
-    </IconButton>
+    </ButtonBase>
   );
 };
 
