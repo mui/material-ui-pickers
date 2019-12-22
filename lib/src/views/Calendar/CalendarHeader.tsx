@@ -34,6 +34,7 @@ export interface CalendarWithHeaderProps
    * @type {Partial<IconButtonProps>}
    */
   rightArrowButtonProps?: Partial<IconButtonProps>;
+  reduceAnimations: boolean;
   changeView: (view: DatePickerView) => void;
   onMonthChange: (date: MaterialUiPickersDate, slideDirection: SlideDirection) => void;
 }
@@ -94,6 +95,7 @@ export const CalendarHeader: React.SFC<CalendarWithHeaderProps> = ({
   onMonthChange,
   minDate,
   maxDate,
+  reduceAnimations,
   disableFuture,
   disablePast,
 }) => {
@@ -145,7 +147,10 @@ export const CalendarHeader: React.SFC<CalendarWithHeaderProps> = ({
     <>
       <div className={classes.switchHeader}>
         <div className={classes.monthTitleContainer}>
-          <FadeTransitionGroup transKey={utils.getMonthText(month)}>
+          <FadeTransitionGroup
+            reduceAnimations={reduceAnimations}
+            transKey={utils.getMonthText(month)}
+          >
             <Typography
               align="center"
               variant="subtitle1"
@@ -153,7 +158,10 @@ export const CalendarHeader: React.SFC<CalendarWithHeaderProps> = ({
               children={utils.getMonthText(month)}
             />
           </FadeTransitionGroup>
-          <FadeTransitionGroup transKey={utils.getYearText(month)}>
+          <FadeTransitionGroup
+            reduceAnimations={reduceAnimations}
+            transKey={utils.getYearText(month)}
+          >
             <Typography align="center" variant="subtitle1" children={utils.getYearText(month)} />
           </FadeTransitionGroup>
 

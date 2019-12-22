@@ -55,6 +55,7 @@ export interface CalendarProps {
   maxDate?: MaterialUiPickersDate;
   slideDirection: SlideDirection;
   currentMonth: MaterialUiPickersDate;
+  reduceAnimations: boolean;
 }
 
 export const useStyles = makeStyles(theme => ({
@@ -106,6 +107,7 @@ export const Calendar: React.FC<CalendarProps> = ({
   disablePast,
   currentMonth,
   renderDay,
+  reduceAnimations,
   allowKeyboardControl,
   ...props
 }) => {
@@ -201,6 +203,7 @@ export const Calendar: React.FC<CalendarProps> = ({
       </div>
 
       <SlideTransition
+        reduceAnimations={reduceAnimations}
         slideDirection={slideDirection}
         transKey={currentMonth!.toString()}
         className={classes.transitionContainer}

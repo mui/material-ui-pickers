@@ -14,7 +14,10 @@ import { FadeTransitionGroup } from './FadeTransitionGroup';
 import { useParsedDate } from '../../_shared/hooks/useParsedDate';
 
 export interface CalendarViewProps
-  extends Omit<CalendarProps, 'slideDirection' | 'currentMonth' | 'minDate' | 'maxDate'> {
+  extends Omit<
+    CalendarProps,
+    'reduceAnimations' | 'slideDirection' | 'currentMonth' | 'minDate' | 'maxDate'
+  > {
   date: MaterialUiPickersDate;
   view: DatePickerView;
   views: DatePickerView[];
@@ -24,6 +27,10 @@ export interface CalendarViewProps
   minDate?: ParsableDate;
   /** Max date */
   maxDate?: ParsableDate;
+  /** Do not show heavy animations, significantly improves performance on slow devices
+   * @default /(android)/i.test(navigator.userAgent)
+   */
+  reduceAnimations?: boolean;
 }
 
 export type ExportedCalendarProps = Omit<
@@ -92,6 +99,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
   onMonthChange,
   minDate: unparsedMinDate,
   maxDate: unparsedMaxDate,
+  reduceAnimations = typeof window !== 'undefined' && /(android)/i.test(window.navigator.userAgent),
   loadingIndicator = <CircularProgress data-mui-test="loading-progress" />,
   ...other
 }) => {
@@ -148,9 +156,14 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
         onMonthChange={(newMonth, direction) => handleChangeMonth({ newMonth, direction })}
         minDate={minDate}
         maxDate={maxDate}
+        reduceAnimations={reduceAnimations}
       />
 
-      <FadeTransitionGroup className={classes.viewTransitionContainer} transKey={view}>
+      <FadeTransitionGroup
+        reduceAnimations={reduceAnimations}
+        className={classes.viewTransitionContainer}
+        transKey={view}
+      >
         <div>
           {view === 'year' && (
             <YearSelection
@@ -186,6 +199,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
             ) : (
               <Calendar
                 {...other}
+                reduceAnimations={reduceAnimations}
                 currentMonth={currentMonth}
                 slideDirection={slideDirection}
                 date={date}

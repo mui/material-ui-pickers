@@ -577,6 +577,21 @@
         "name": "(date: DateIOType) => void"
       }
     },
+    "reduceAnimations": {
+      "defaultValue": {
+        "value": "/(android)/i.test(navigator.userAgent)"
+      },
+      "description": "Do not show heavy animations, significantly improves performance on slow devices",
+      "name": "reduceAnimations",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/CalendarView.tsx",
+        "name": "CalendarViewProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
     "leftArrowIcon": {
       "defaultValue": null,
       "description": "Left arrow icon",
@@ -1276,6 +1291,21 @@
       "required": false,
       "type": {
         "name": "(date: DateIOType) => void"
+      }
+    },
+    "reduceAnimations": {
+      "defaultValue": {
+        "value": "/(android)/i.test(navigator.userAgent)"
+      },
+      "description": "Do not show heavy animations, significantly improves performance on slow devices",
+      "name": "reduceAnimations",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/CalendarView.tsx",
+        "name": "CalendarViewProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
       }
     },
     "leftArrowIcon": {
@@ -3031,6 +3061,21 @@
       "required": false,
       "type": {
         "name": "(date: DateIOType) => void"
+      }
+    },
+    "reduceAnimations": {
+      "defaultValue": {
+        "value": "/(android)/i.test(navigator.userAgent)"
+      },
+      "description": "Do not show heavy animations, significantly improves performance on slow devices",
+      "name": "reduceAnimations",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/CalendarView.tsx",
+        "name": "CalendarViewProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
       }
     },
     "leftArrowIcon": {

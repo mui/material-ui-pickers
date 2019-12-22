@@ -6,7 +6,8 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 interface FadeTransitionProps {
   transKey: React.Key;
   className?: string;
-  children: React.ReactChild;
+  reduceAnimations: boolean;
+  children: React.ReactElement;
 }
 
 const animationDuration = 500;
@@ -44,9 +45,14 @@ export const useStyles = makeStyles(
 export const FadeTransitionGroup: React.FC<FadeTransitionProps> = ({
   children,
   transKey,
+  reduceAnimations,
   className = null,
 }) => {
   const classes = useStyles();
+  if (reduceAnimations) {
+    return children;
+  }
+
   const transitionClasses = {
     exit: classes.fadeExit,
     enterActive: classes.fadeEnterActive,
