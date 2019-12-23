@@ -152,6 +152,7 @@ export const CalendarHeader: React.SFC<CalendarWithHeaderProps> = ({
             transKey={utils.getMonthText(month)}
           >
             <Typography
+              data-mui-test="calendar-month-text"
               align="center"
               variant="subtitle1"
               className={classes.monthText}
@@ -162,7 +163,12 @@ export const CalendarHeader: React.SFC<CalendarWithHeaderProps> = ({
             reduceAnimations={reduceAnimations}
             transKey={utils.getYearText(month)}
           >
-            <Typography align="center" variant="subtitle1" children={utils.getYearText(month)} />
+            <Typography
+              data-mui-test="calendar-year-text"
+              align="center"
+              variant="subtitle1"
+              children={utils.getYearText(month)}
+            />
           </FadeTransitionGroup>
 
           <IconButton

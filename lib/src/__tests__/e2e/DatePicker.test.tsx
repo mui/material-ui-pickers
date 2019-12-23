@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ReactWrapper } from 'enzyme';
-import { mount, utilsToUse } from '../test-utils';
 import { DatePicker, DatePickerProps } from '../../DatePicker/DatePicker';
+import { mount, utilsToUse, toHaveBeenCalledExceptMoment } from '../test-utils';
 
 describe('e2e - DatePicker default year format', () => {
   let component: ReactWrapper<DatePickerProps>;
@@ -212,4 +212,28 @@ test('Custom toolbar component', () => {
   );
 
   expect(component.find('#custom-toolbar').length).toBe(1);
+});
+
+test('Selected date is disabled', () => {
+  const component = mount(
+    <DatePicker
+      open
+      value={utilsToUse.date('01-01-2019')}
+      maxDate={utilsToUse.date('01-01-2018')}
+      onChange={jest.fn()}
+    />
+  );
+
+  expect(
+    component
+      .find('[data-mui-test="calendar-year-text"]')
+      .first()
+      .text()
+  ).toBe('2018');
+  expect(
+    component
+      .find('[data-mui-test="calendar-month-text"]')
+      .first()
+      .text()
+  ).toBe('January');
 });

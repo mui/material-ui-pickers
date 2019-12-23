@@ -168,16 +168,7 @@ export const Calendar: React.FC<CalendarProps> = ({
 
       handleDaySelect(closestEnabledDate, false);
     }
-  }, [
-    date,
-    disableFuture,
-    disablePast,
-    handleDaySelect,
-    maxDate,
-    minDate,
-    shouldDisableDate,
-    utils,
-  ]);
+  }, []); // eslint-disable-line
 
   useGlobalKeyDown(Boolean(allowKeyboardControl && variant !== 'static'), {
     38: () => moveToDay(utils.addDays(date, -7)), // ArrowUp
