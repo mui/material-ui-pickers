@@ -1,7 +1,6 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import clsx from 'clsx';
-import Typography from '@material-ui/core/Typography';
 import { ButtonBase } from '@material-ui/core';
 import { makeStyles, fade } from '@material-ui/core/styles';
 
@@ -12,10 +11,13 @@ export const useStyles = makeStyles(
       width: 36,
       height: 36,
       borderRadius: '50%',
-      fontSize: theme.typography.caption.fontSize,
-      color: theme.palette.text.primary,
-      fontWeight: theme.typography.fontWeightMedium,
       padding: 0,
+      color: theme.palette.text.primary,
+      fontSize: theme.typography.caption.fontSize,
+      fontWeight: theme.typography.fontWeightMedium,
+      '&:focus': {
+        backgroundColor: fade(theme.palette.action.active, theme.palette.action.hoverOpacity),
+      },
       '&:hover': {
         backgroundColor: fade(theme.palette.action.active, theme.palette.action.hoverOpacity),
       },
@@ -33,13 +35,24 @@ export const useStyles = makeStyles(
       color: theme.palette.primary.contrastText,
       backgroundColor: theme.palette.primary.main,
       fontWeight: theme.typography.fontWeightMedium,
+      transition: theme.transitions.create('background-color', {
+        duration: theme.transitions.duration.short,
+      }),
       '&:hover': {
+        willChange: 'background-color',
+        backgroundColor: theme.palette.primary.light,
+      },
+      '&:focus': {
+        willChange: 'background-color',
         backgroundColor: theme.palette.primary.light,
       },
     },
     dayDisabled: {
       pointerEvents: 'none',
       color: theme.palette.text.hint,
+    },
+    dayLabel: {
+      // need for overrides
     },
   }),
   { name: 'MuiPickersDay' }
@@ -81,7 +94,7 @@ export const Day: React.FC<DayProps> = ({
       tabIndex={hidden || disabled ? -1 : 0}
       {...other}
     >
-      <Typography variant="body2" color="inherit" children={children} />
+      <span className={classes.dayLabel}>{children}</span>
     </ButtonBase>
   );
 };

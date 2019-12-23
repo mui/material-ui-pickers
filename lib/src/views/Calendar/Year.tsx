@@ -1,7 +1,7 @@
 import * as React from 'react';
 import clsx from 'clsx';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, fade } from '@material-ui/core/styles';
 
 export interface YearProps {
   children: React.ReactNode;
@@ -23,16 +23,22 @@ export const useStyles = makeStyles(
     yearLabel: {
       height: 36,
       width: 72,
+      borderRadius: 16,
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
       cursor: 'pointer',
       outline: 'none',
+      '&:focus': {
+        backgroundColor: fade(theme.palette.action.active, theme.palette.action.hoverOpacity),
+      },
     },
     yearSelected: {
-      borderRadius: 16,
       color: theme.palette.getContrastText(theme.palette.primary.main),
       backgroundColor: theme.palette.primary.main,
+      '&:focus': {
+        backgroundColor: theme.palette.primary.light,
+      },
     },
     yearDisabled: {
       pointerEvents: 'none',
