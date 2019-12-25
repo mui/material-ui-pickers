@@ -1,23 +1,27 @@
 import * as React from 'react';
-import CalendarHeader from './CalendarHeader';
 import { YearSelection } from './YearSelection';
-import { makeStyles } from '@material-ui/styles';
+import { CalendarHeader } from './CalendarHeader';
 import { MonthSelection } from './MonthSelection';
 import { DatePickerView } from '../../DatePicker';
 import { SlideDirection } from './SlideTransition';
 import { Calendar, CalendarProps } from './Calendar';
 import { useUtils } from '../../_shared/hooks/useUtils';
-import { WrapperVariant } from '../../wrappers/Wrapper';
 import { ParsableDate } from '../../constants/prop-types';
 import { MaterialUiPickersDate } from '../../typings/date';
-import { CircularProgress, Grid } from '@material-ui/core';
 import { FadeTransitionGroup } from './FadeTransitionGroup';
 import { useParsedDate } from '../../_shared/hooks/useParsedDate';
+import { CircularProgress, Grid, makeStyles } from '@material-ui/core';
+import { WrapperVariantContext } from '../../wrappers/WrapperVariantContext';
 
 export interface CalendarViewProps
   extends Omit<
     CalendarProps,
-    'reduceAnimations' | 'slideDirection' | 'currentMonth' | 'minDate' | 'maxDate'
+    | 'reduceAnimations'
+    | 'slideDirection'
+    | 'currentMonth'
+    | 'minDate'
+    | 'maxDate'
+    | 'wrapperVariant'
   > {
   date: MaterialUiPickersDate;
   view: DatePickerView;
@@ -38,19 +42,11 @@ export interface CalendarViewProps
    * @default /(android)/i.test(navigator.userAgent)
    */
   reduceAnimations?: boolean;
-  wrapperVariant: WrapperVariant;
 }
 
 export type ExportedCalendarProps = Omit<
   CalendarViewProps,
-  | 'date'
-  | 'view'
-  | 'views'
-  | 'onChange'
-  | 'changeView'
-  | 'slideDirection'
-  | 'currentMonth'
-  | 'wrapperVariant'
+  'date' | 'view' | 'views' | 'onChange' | 'changeView' | 'slideDirection' | 'currentMonth'
 >;
 
 type ReducerAction<TType, TAdditional = {}> = { type: TType } & TAdditional;
@@ -114,7 +110,6 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
   onMonthChange,
   minDate: unparsedMinDate,
   maxDate: unparsedMaxDate,
-  wrapperVariant,
   reduceAnimations = typeof window !== 'undefined' && /(android)/i.test(window.navigator.userAgent),
   loadingIndicator = <CircularProgress data-mui-test="loading-progress" />,
   ...other
@@ -123,6 +118,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
   const classes = useClasses();
   const minDate = useParsedDate(unparsedMinDate);
   const maxDate = useParsedDate(unparsedMaxDate);
+  const wrapperVariant = React.useContext(WrapperVariantContext);
 
   const [{ currentMonth, loadingQueue, slideDirection }, dispatch] = React.useReducer(
     calendarStateReducer,
@@ -188,7 +184,6 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
               onChange={onChange}
               minDate={minDate}
               maxDate={maxDate}
-              wrapperVariant={wrapperVariant}
             />
           )}
 

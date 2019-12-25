@@ -43,7 +43,7 @@ export const TimePicker = makePickerWithStateAndWrapper<TimePickerProps>(ModalWr
 export const KeyboardTimePicker = makePickerWithStateAndWrapper<TimePickerProps>(InlineWrapper, {
   useOptions,
   DefaultToolbarComponent: TimePickerToolbar,
-  getCustomProps: props => ({
+  getCustomProps: (props: TimePickerProps) => ({
     refuse: props.ampm ? /[^\dap]+/gi : /[^\d]+/gi,
   }),
 });

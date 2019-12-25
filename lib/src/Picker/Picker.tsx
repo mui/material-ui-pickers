@@ -1,7 +1,6 @@
 import * as React from 'react';
 import clsx from 'clsx';
 import { useViews } from '../_shared/hooks/useViews';
-import { WrapperVariant } from '../wrappers/Wrapper';
 import { makeStyles } from '@material-ui/core/styles';
 import { DateTimePickerView } from '../DateTimePicker';
 import { WithViewsProps } from './makePickerWithState';
@@ -12,6 +11,7 @@ import { BaseDatePickerProps } from '../DatePicker/DatePicker';
 import { useIsLandscape } from '../_shared/hooks/useIsLandscape';
 import { DIALOG_WIDTH, VIEW_HEIGHT } from '../constants/dimensions';
 import { ClockView, BaseClockViewProps } from '../views/Clock/ClockView';
+import { WrapperVariantContext } from '../wrappers/WrapperVariantContext';
 
 export type PickerView = DateTimePickerView;
 
@@ -43,7 +43,6 @@ export interface PickerViewProps<TView extends PickerView>
   hideTabs?: boolean;
   dateRangeIcon?: React.ReactNode;
   timeIcon?: React.ReactNode;
-  wrapperVariant: WrapperVariant;
 }
 
 interface PickerProps<T extends PickerView> extends PickerViewProps<T> {
@@ -84,13 +83,13 @@ export function Picker<T extends PickerView>({
   title,
   disableToolbar,
   onChange,
-  wrapperVariant,
   ToolbarComponent,
   orientation,
   ...other
 }: PickerProps<T>) {
   const classes = useStyles();
   const isLandscape = useIsLandscape(views, orientation);
+  const wrapperVariant = React.useContext(WrapperVariantContext);
   const { openView, setOpenView, handleChangeAndOpenNext } = useViews(views, openTo, onChange);
 
   return (
@@ -99,7 +98,7 @@ export function Picker<T extends PickerView>({
         [classes.containerLandscape]: isLandscape,
       })}
     >
-      {!disableToolbar && (
+      {wrapperVariant !== 'desktop' && !disableToolbar && (
         <ToolbarComponent
           {...other}
           views={views}
@@ -122,7 +121,6 @@ export function Picker<T extends PickerView>({
             views={views}
             onChange={handleChangeAndOpenNext}
             view={openView}
-            wrapperVariant={wrapperVariant}
             {...other}
           />
         )}

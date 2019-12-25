@@ -84,7 +84,6 @@ export const getFormatByViews = (
   views: readonly DatePickerView[],
   utils: IUtils<MaterialUiPickersDate>
 ) => {
-  console.log(views);
   if (isYearOnlyView(views)) {
     return utils.yearFormat;
   }

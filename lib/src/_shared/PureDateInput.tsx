@@ -30,8 +30,6 @@ export interface DateInputProps
   TextFieldComponent?: React.ComponentType<TextFieldProps>;
   /** Icon displaying for open picker button */
   keyboardIcon?: React.ReactNode;
-  /** Pass material-ui text field variant down, bypass internal variant prop */
-  inputVariant?: TextFieldProps['variant'];
   /**
    * Custom mask. Can be used to override generate from format. (e.g. __/__/____ __:__)
    */
@@ -70,7 +68,6 @@ export const PureDateInput: React.FC<DateInputProps> = ({
   mask,
   maskChar,
   inputValue,
-  inputVariant,
   validationError,
   InputProps,
   openPicker: onOpen,
@@ -93,7 +90,6 @@ export const PureDateInput: React.FC<DateInputProps> = ({
       // do not overridable
       onClick={onOpen}
       value={inputValue}
-      variant={inputVariant as any}
       InputProps={PureDateInputProps}
       onKeyDown={e => {
         // space

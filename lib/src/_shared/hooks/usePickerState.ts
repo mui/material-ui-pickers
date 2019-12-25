@@ -29,7 +29,7 @@ function useDateValues(props: BasePickerProps, options: StateHookOptions) {
 }
 
 export function usePickerState(props: BasePickerProps, options: StateHookOptions) {
-  const { autoOk, disabled, readOnly, onAccept, onChange, onError, value, variant } = props;
+  const { autoOk, disabled, readOnly, onAccept, onChange, onError, value } = props;
 
   const utils = useUtils();
   const { isOpen, setIsOpen } = useOpenState(props);
@@ -79,13 +79,13 @@ export function usePickerState(props: BasePickerProps, options: StateHookOptions
         }
 
         // simulate autoOk, but do not close the modal
-        if (variant === 'inline' || variant === 'static') {
-          onChange(newDate);
-          onAccept && onAccept(newDate);
-        }
+        // if (variant === 'inline' || variant === 'static') {
+        onChange(newDate);
+        onAccept && onAccept(newDate);
+        // }
       },
     }),
-    [acceptDate, autoOk, onAccept, onChange, pickerDate, variant]
+    [acceptDate, autoOk, onAccept, onChange, pickerDate]
   );
 
   const validationError = validate(value, utils, props as any);

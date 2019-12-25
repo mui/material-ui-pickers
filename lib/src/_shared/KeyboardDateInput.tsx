@@ -11,7 +11,6 @@ import { makeMaskFromFormat, maskedDateFormatter } from '../_helpers/text-field-
 export const KeyboardDateInput: React.FC<DateInputProps> = ({
   rawValue,
   inputValue,
-  inputVariant,
   validationError,
   KeyboardButtonProps,
   InputAdornmentProps,
@@ -70,7 +69,6 @@ export const KeyboardDateInput: React.FC<DateInputProps> = ({
           {...other}
           value={value}
           onChange={onChange}
-          variant={inputVariant as any}
           InputProps={{
             ...InputProps,
             [`${position}Adornment`]: (

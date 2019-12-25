@@ -62,7 +62,7 @@ export interface CalendarProps {
   slideDirection: SlideDirection;
   currentMonth: MaterialUiPickersDate;
   reduceAnimations: boolean;
-  wrapperVariant: WrapperVariant;
+  wrapperVariant: WrapperVariant | null;
 }
 
 export const useStyles = makeStyles(theme => ({

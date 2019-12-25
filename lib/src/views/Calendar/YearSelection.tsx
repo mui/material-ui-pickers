@@ -3,8 +3,8 @@ import Year from './Year';
 import { DateType } from '@date-io/type';
 import { makeStyles } from '@material-ui/core/styles';
 import { useUtils } from '../../_shared/hooks/useUtils';
-import { WrapperVariant } from '../../wrappers/Wrapper';
 import { MaterialUiPickersDate } from '../../typings/date';
+import { WrapperVariantContext } from '../../wrappers/WrapperVariantContext';
 
 export interface YearSelectionProps {
   date: MaterialUiPickersDate;
@@ -14,7 +14,6 @@ export interface YearSelectionProps {
   disablePast?: boolean | null | undefined;
   disableFuture?: boolean | null | undefined;
   onYearChange?: (date: MaterialUiPickersDate) => void;
-  wrapperVariant: WrapperVariant;
 }
 
 export const useStyles = makeStyles(
@@ -39,10 +38,10 @@ export const YearSelection: React.FC<YearSelectionProps> = ({
   maxDate,
   disablePast,
   disableFuture,
-  wrapperVariant,
 }) => {
   const utils = useUtils();
   const classes = useStyles();
+  const wrapperVariant = React.useContext(WrapperVariantContext);
   const selectedYearRef = React.useRef<HTMLElement>(null);
 
   React.useEffect(() => {

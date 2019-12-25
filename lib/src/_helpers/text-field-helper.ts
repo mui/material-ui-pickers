@@ -1,4 +1,3 @@
-import { Omit } from './utils';
 import { IUtils } from '@date-io/core/IUtils';
 import { DatePickerProps } from '../DatePicker';
 import { ParsableDate } from '../constants/prop-types';

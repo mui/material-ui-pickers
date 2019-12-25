@@ -3,10 +3,11 @@ import * as PropTypes from 'prop-types';
 import KeyboardDateInput from '../_shared/KeyboardDateInput';
 import Popover, { PopoverProps } from '@material-ui/core/Popover';
 import { WrapperProps } from './Wrapper';
+import { WrapperVariantContext } from './WrapperVariantContext';
 import { useKeyDownHandler } from '../_shared/hooks/useKeyDown';
 
 export interface InlineWrapperProps extends WrapperProps {
-  /** Popover props passed to material-ui Popover (with variant="inline") */
+  /** Popover props passed to material-ui Popover */
   PopoverProps?: Partial<PopoverProps>;
 }
 
@@ -29,7 +30,7 @@ export const InlineWrapper: React.FC<InlineWrapperProps> = ({
   });
 
   return (
-    <>
+    <WrapperVariantContext.Provider value="desktop">
       <KeyboardDateInput {...other} {...DateInputProps} inputRef={ref} />
 
       <Popover
@@ -48,7 +49,7 @@ export const InlineWrapper: React.FC<InlineWrapperProps> = ({
         children={children}
         {...PopoverProps}
       />
-    </>
+    </WrapperVariantContext.Provider>
   );
 };
 

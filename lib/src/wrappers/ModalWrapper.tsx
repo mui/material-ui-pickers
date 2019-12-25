@@ -2,8 +2,8 @@ import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import ModalDialog from '../_shared/ModalDialog';
 import { WrapperProps } from './Wrapper';
-import { Omit } from '../_helpers/utils';
 import { PureDateInput } from '../_shared/PureDateInput';
+import { WrapperVariantContext } from './WrapperVariantContext';
 import { useKeyDownHandler } from '../_shared/hooks/useKeyDown';
 import { DialogProps as MuiDialogProps } from '@material-ui/core/Dialog';
 
@@ -69,7 +69,7 @@ export const ModalWrapper: React.FC<ModalWrapperProps> = ({
   });
 
   return (
-    <React.Fragment>
+    <WrapperVariantContext.Provider value="mobile">
       <PureDateInput {...other} {...DateInputProps} />
 
       <ModalDialog
@@ -90,7 +90,7 @@ export const ModalWrapper: React.FC<ModalWrapperProps> = ({
         children={children}
         {...DialogProps}
       />
-    </React.Fragment>
+    </WrapperVariantContext.Provider>
   );
 };
 
