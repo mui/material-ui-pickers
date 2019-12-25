@@ -7,17 +7,14 @@ import { KeyboardDateInput } from '../_shared/KeyboardDateInput';
 import { ExportedCalendarProps } from '../views/Calendar/CalendarView';
 import { datePickerDefaultProps, ParsableDate } from '../constants/prop-types';
 import {
-  WithPureInputProps,
+  WithDateInputProps,
   makePickerWithState,
   WithViewsProps,
 } from '../Picker/makePickerWithState';
 
 export type DatePickerView = 'year' | 'date' | 'month';
 
-export interface DatePickerProps
-  extends WithPureInputProps,
-    WithViewsProps<DatePickerView>,
-    ExportedCalendarProps {
+export interface BaseDatePickerProps extends ExportedCalendarProps {
   /**
    * Min selectable date
    * @default Date(1900-01-01)
@@ -47,12 +44,9 @@ export interface DatePickerProps
   disableFuture?: boolean;
   /** Callback firing on year change @DateIOType */
   onYearChange?: (date: MaterialUiPickersDate) => void;
-  /**
-   * Array of views to show
-   * @type {Array<"year" | "date" | "month">}
-   */
-  views?: DatePickerView[];
 }
+
+type DatePickerProps = WithDateInputProps & WithViewsProps<DatePickerView>;
 
 function useOptions(props: DatePickerProps) {
   const utils = useUtils();

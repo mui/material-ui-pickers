@@ -3,8 +3,8 @@ import { DateTimePickerView } from '../DateTimePicker';
 import { BasePickerProps } from '../typings/BasePicker';
 import { Picker, ToolbarComponentProps } from './Picker';
 import { ExtendWrapper, Wrapper } from '../wrappers/Wrapper';
-import { PureDateInputProps } from '../_shared/PureDateInput';
 import { DateValidationProps } from '../_helpers/text-field-helper';
+import { KeyboardDateInputProps } from '../_shared/KeyboardDateInput';
 import { StateHookOptions, usePickerState } from '../_shared/hooks/usePickerState';
 
 export interface WithViewsProps<T extends DateTimePickerView> {
@@ -16,9 +16,9 @@ export interface WithViewsProps<T extends DateTimePickerView> {
   openTo?: T;
 }
 
-export type WithPureInputProps = DateValidationProps &
+export type WithDateInputProps = DateValidationProps &
   BasePickerProps &
-  ExtendWrapper<PureDateInputProps>;
+  ExtendWrapper<KeyboardDateInputProps>;
 
 export interface MakePickerOptions<T extends unknown> {
   Input: any;

@@ -26,6 +26,4 @@ export { usePickerState } from './_shared/hooks/usePickerState';
 
 export { useStaticState } from './_shared/hooks/useStaticState';
 
-export { useKeyboardPickerState } from './_shared/hooks/useKeyboardPickerState';
-
 export { default as MuiPickersUtilsProvider, MuiPickersContext } from './MuiPickersUtilsProvider';
