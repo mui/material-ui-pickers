@@ -62,9 +62,7 @@ export function usePickerState(props: BasePickerProps, options: StateHookOptions
       onClear: () => acceptDate(null),
       onAccept: () => acceptDate(pickerDate),
       onSetToday: () => setPickerDate(utils.date()),
-      onDismiss: () => {
-        setIsOpen(false);
-      },
+      onDismiss: () => setIsOpen(false),
     }),
     [acceptDate, format, isOpen, pickerDate, setIsOpen, utils]
   );
@@ -97,18 +95,27 @@ export function usePickerState(props: BasePickerProps, options: StateHookOptions
     }
   }, [onError, validationError, value]);
 
-  const inputValue = getDisplayDate(date, format, utils, value === null, props);
+  const inputValue = getDisplayDate(value, format, utils, props);
   const inputProps = useMemo(
     () => ({
       inputValue,
+      onChange,
+      rawValue: value,
       validationError,
       openPicker: () => !readOnly && !disabled && setIsOpen(true),
     }),
-    [disabled, inputValue, readOnly, setIsOpen, validationError]
+    [disabled, inputValue, onChange, readOnly, setIsOpen, validationError, value]
   );
 
   const pickerState = { pickerProps, inputProps, wrapperProps };
 
-  useDebugValue(pickerState);
+  useDebugValue(pickerState, () => ({
+    MuiPickerState: {
+      pickerDate,
+      parsedDate: date,
+      other: pickerState,
+    },
+  }));
+
   return pickerState;
 }

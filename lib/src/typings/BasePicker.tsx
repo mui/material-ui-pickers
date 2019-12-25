@@ -7,7 +7,7 @@ export interface BasePickerProps {
   /** Picker value */
   value: ParsableDate;
   /** onChange callback @DateIOType */
-  onChange: (date: MaterialUiPickersDate) => void;
+  onChange: (date: MaterialUiPickersDate | null, keyboardInputValue?: string) => void;
   /**
    * Auto accept date on selection
    * @default false

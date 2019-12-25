@@ -4,19 +4,20 @@ import { DatePickerToolbar } from './DatePickerToolbar';
 import { PureDateInput } from '../_shared/PureDateInput';
 import { getFormatByViews } from '../_helpers/date-utils';
 import { KeyboardDateInput } from '../_shared/KeyboardDateInput';
-import { usePickerState } from '../_shared/hooks/usePickerState';
 import { ExportedCalendarProps } from '../views/Calendar/CalendarView';
 import { datePickerDefaultProps, ParsableDate } from '../constants/prop-types';
-import { useKeyboardPickerState } from '../_shared/hooks/useKeyboardPickerState';
 import {
-  WithKeyboardInputProps,
   WithPureInputProps,
   makePickerWithState,
+  WithViewsProps,
 } from '../Picker/makePickerWithState';
 
 export type DatePickerView = 'year' | 'date' | 'month';
 
-export interface BaseDatePickerProps extends ExportedCalendarProps {
+export interface DatePickerProps
+  extends WithPureInputProps,
+    WithViewsProps<DatePickerView>,
+    ExportedCalendarProps {
   /**
    * Min selectable date
    * @default Date(1900-01-01)
@@ -46,29 +47,14 @@ export interface BaseDatePickerProps extends ExportedCalendarProps {
   disableFuture?: boolean;
   /** Callback firing on year change @DateIOType */
   onYearChange?: (date: MaterialUiPickersDate) => void;
-}
-
-export interface DatePickerViewsProps extends BaseDatePickerProps {
   /**
    * Array of views to show
    * @type {Array<"year" | "date" | "month">}
    */
   views?: DatePickerView[];
-  /** First view to show in DatePicker */
-  openTo?: DatePickerView;
 }
 
-export type DatePickerProps = WithPureInputProps & DatePickerViewsProps;
-
-export type KeyboardDatePickerProps = WithKeyboardInputProps & DatePickerViewsProps;
-
-const defaultProps = {
-  ...datePickerDefaultProps,
-  openTo: 'date' as DatePickerView,
-  views: ['year', 'date'] as DatePickerView[],
-};
-
-function useOptions(props: DatePickerViewsProps) {
+function useOptions(props: DatePickerProps) {
   const utils = useUtils();
 
   return {
@@ -79,16 +65,20 @@ function useOptions(props: DatePickerViewsProps) {
 export const DatePicker = makePickerWithState<DatePickerProps>({
   useOptions,
   Input: PureDateInput,
-  useState: usePickerState,
   DefaultToolbarComponent: DatePickerToolbar,
 });
 
-export const KeyboardDatePicker = makePickerWithState<KeyboardDatePickerProps>({
+export const KeyboardDatePicker = makePickerWithState<DatePickerProps>({
   useOptions,
   Input: KeyboardDateInput,
-  useState: useKeyboardPickerState,
   DefaultToolbarComponent: DatePickerToolbar,
 });
+
+const defaultProps = {
+  ...datePickerDefaultProps,
+  openTo: 'date' as DatePickerView,
+  views: ['year', 'date'] as DatePickerView[],
+};
 
 DatePicker.defaultProps = defaultProps;
 

@@ -1,27 +1,27 @@
 import * as React from 'react';
+import { DateTimePickerView } from '../DateTimePicker';
 import { BasePickerProps } from '../typings/BasePicker';
 import { Picker, ToolbarComponentProps } from './Picker';
 import { ExtendWrapper, Wrapper } from '../wrappers/Wrapper';
 import { PureDateInputProps } from '../_shared/PureDateInput';
 import { DateValidationProps } from '../_helpers/text-field-helper';
-import { KeyboardDateInputProps } from '../_shared/KeyboardDateInput';
 import { StateHookOptions, usePickerState } from '../_shared/hooks/usePickerState';
-import {
-  BaseKeyboardPickerProps,
-  useKeyboardPickerState,
-} from '../_shared/hooks/useKeyboardPickerState';
 
-export type WithKeyboardInputProps = DateValidationProps &
-  BaseKeyboardPickerProps &
-  ExtendWrapper<KeyboardDateInputProps>;
+export interface WithViewsProps<T extends DateTimePickerView> {
+  /**
+   * Array of views to show
+   */
+  views?: T[];
+  /** First view to show */
+  openTo?: T;
+}
 
 export type WithPureInputProps = DateValidationProps &
   BasePickerProps &
   ExtendWrapper<PureDateInputProps>;
 
-export interface MakePickerOptions<T extends any> {
+export interface MakePickerOptions<T extends unknown> {
   Input: any;
-  useState: typeof usePickerState | typeof useKeyboardPickerState;
   useOptions: (props: any) => StateHookOptions;
   getCustomProps?: (props: T) => Partial<T>;
   DefaultToolbarComponent: React.ComponentType<ToolbarComponentProps>;
@@ -29,7 +29,6 @@ export interface MakePickerOptions<T extends any> {
 
 export function makePickerWithState<T extends any>({
   Input,
-  useState,
   useOptions,
   getCustomProps,
   DefaultToolbarComponent,
@@ -85,7 +84,7 @@ export function makePickerWithState<T extends any>({
     const injectedProps = getCustomProps ? getCustomProps(props) : {};
 
     const options = useOptions(props);
-    const { pickerProps, inputProps, wrapperProps } = useState(props as any, options);
+    const { pickerProps, inputProps, wrapperProps } = usePickerState(props as any, options);
 
     return (
       <Wrapper

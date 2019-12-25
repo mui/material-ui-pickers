@@ -8,10 +8,15 @@ export const getDisplayDate = (
   value: ParsableDate,
   format: string,
   utils: IUtils<any>,
-  isEmpty: boolean,
-  { invalidLabel, emptyLabel, labelFunc }: Omit<BasePickerProps, 'value' | 'onChange'>
+  {
+    invalidLabel,
+    emptyLabel,
+    labelFunc,
+  }: Pick<BasePickerProps, 'invalidLabel' | 'emptyLabel' | 'labelFunc'>
 ) => {
   const date = utils.date(value);
+  const isEmpty = value === null;
+
   if (labelFunc) {
     return labelFunc(isEmpty ? null : date, invalidLabel!);
   }

@@ -3,14 +3,18 @@ import TextField, { TextFieldProps } from '@material-ui/core/TextField';
 import IconButton, { IconButtonProps } from '@material-ui/core/IconButton';
 import InputAdornment, { InputAdornmentProps } from '@material-ui/core/InputAdornment';
 import { Rifm } from 'rifm';
+import { useUtils } from './hooks/useUtils';
 import { ExtendMui } from '../typings/extendMui';
 import { KeyboardIcon } from './icons/KeyboardIcon';
+import { ParsableDate } from '../constants/prop-types';
+import { MaterialUiPickersDate } from '../typings/date';
 import { makeMaskFromFormat, maskedDateFormatter } from '../_helpers/text-field-helper';
 
 export interface KeyboardDateInputProps
   extends ExtendMui<TextFieldProps, 'variant' | 'onError' | 'onChange' | 'value'> {
+  rawValue: ParsableDate;
   format: string;
-  onChange: (value: string | null) => void;
+  onChange: (date: MaterialUiPickersDate, isFinish: boolean) => void;
   openPicker: () => void;
   validationError?: React.ReactNode;
   inputValue: string;
@@ -51,6 +55,7 @@ export interface KeyboardDateInputProps
 }
 
 export const KeyboardDateInput: React.FunctionComponent<KeyboardDateInputProps> = ({
+  rawValue,
   inputValue,
   inputVariant,
   validationError,
@@ -63,12 +68,14 @@ export const KeyboardDateInput: React.FunctionComponent<KeyboardDateInputProps> 
   maskChar = '_',
   refuse = /[^\d]+/gi,
   format,
-  keyboardIcon,
   disabled,
   rifmFormatter,
   TextFieldComponent = TextField,
+  keyboardIcon = <KeyboardIcon />,
   ...other
 }) => {
+  const utils = useUtils();
+  const [innerInputValue, setInnerInputValue] = React.useState<string | null>(inputValue || '');
   const inputMask = mask || makeMaskFromFormat(format, maskChar);
   // prettier-ignore
   const formatter = React.useMemo(
@@ -76,18 +83,27 @@ export const KeyboardDateInput: React.FunctionComponent<KeyboardDateInputProps> 
     [inputMask, maskChar, refuse]
   );
 
+  React.useEffect(() => {
+    if (rawValue === null || utils.isValid(rawValue)) {
+      setInnerInputValue(inputValue);
+    }
+  }, [rawValue]); // eslint-disable-line
+
   const position =
     InputAdornmentProps && InputAdornmentProps.position ? InputAdornmentProps.position : 'end';
 
   const handleChange = (text: string) => {
     const finalString = text === '' || text === inputMask ? null : text;
-    onChange(finalString);
+    setInnerInputValue(finalString);
+
+    const date = finalString === null ? null : utils.parse(finalString, format);
+    onChange(date, false);
   };
 
   return (
     <Rifm
       key={inputMask}
-      value={inputValue}
+      value={innerInputValue || ''}
       onChange={handleChange}
       refuse={refuse}
       format={rifmFormatter || formatter}
@@ -115,10 +131,6 @@ export const KeyboardDateInput: React.FunctionComponent<KeyboardDateInputProps> 
       )}
     </Rifm>
   );
-};
-
-KeyboardDateInput.defaultProps = {
-  keyboardIcon: <KeyboardIcon />,
 };
 
 export default KeyboardDateInput;
