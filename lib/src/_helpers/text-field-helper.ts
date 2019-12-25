@@ -1,6 +1,6 @@
 import { Omit } from './utils';
-import { DatePickerProps } from '..';
 import { IUtils } from '@date-io/core/IUtils';
+import { DatePickerProps } from '../DatePicker';
 import { ParsableDate } from '../constants/prop-types';
 import { BasePickerProps } from '../typings/BasePicker';
 
@@ -77,7 +77,7 @@ export const validate = (
     minDateMessage,
     invalidDateMessage,
     strictCompareDates,
-  }: Omit<DatePickerProps, 'views' | 'openTo'> // DateTimePicker doesn't support
+  }: Omit<DatePickerProps, 'views' | 'openTo'>
 ): React.ReactNode => {
   const parsedValue = utils.date(value);
 

@@ -76,9 +76,9 @@ export const useStyles = makeStyles(
 export function Picker<T extends PickerView>({
   date,
   // @ts-ignore
-  openTo,
+  openTo = 'date',
   // @ts-ignore
-  views,
+  views = ['year', 'month', 'date', 'hours', 'minutes', 'seconds'],
   title,
   disableToolbar,
   onChange,
