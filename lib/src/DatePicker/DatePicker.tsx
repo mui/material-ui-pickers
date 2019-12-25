@@ -1,14 +1,13 @@
 import { useUtils } from '../_shared/hooks/useUtils';
 import { MaterialUiPickersDate } from '../typings/date';
 import { DatePickerToolbar } from './DatePickerToolbar';
-import { PureDateInput } from '../_shared/PureDateInput';
 import { getFormatByViews } from '../_helpers/date-utils';
-import { KeyboardDateInput } from '../_shared/KeyboardDateInput';
 import { datePickerDefaultProps } from '../constants/prop-types';
 import { ExportedCalendarProps } from '../views/Calendar/CalendarView';
+import { ModalWrapper, InlineWrapper, StaticWrapper } from '../wrappers/Wrapper';
 import {
   WithDateInputProps,
-  makePickerWithState,
+  makePickerWithStateAndWrapper,
   WithViewsProps,
 } from '../Picker/makePickerWithState';
 
@@ -31,22 +30,30 @@ function useOptions(props: DatePickerProps) {
   };
 }
 
-export const DatePicker = makePickerWithState<DatePickerProps>({
+const datePickerConfig = {
   useOptions,
-  Input: PureDateInput,
   DefaultToolbarComponent: DatePickerToolbar,
-});
+};
 
-export const KeyboardDatePicker = makePickerWithState<DatePickerProps>({
-  useOptions,
-  Input: KeyboardDateInput,
-  DefaultToolbarComponent: DatePickerToolbar,
-});
+export const DatePicker = makePickerWithStateAndWrapper<DatePickerProps>(
+  ModalWrapper,
+  datePickerConfig
+);
+
+export const KeyboardDatePicker = makePickerWithStateAndWrapper<DatePickerProps>(
+  InlineWrapper,
+  datePickerConfig
+);
+
+export const StaticDatePicker = makePickerWithStateAndWrapper<DatePickerProps>(
+  StaticWrapper,
+  datePickerConfig
+);
 
 const defaultProps = {
   ...datePickerDefaultProps,
-  openTo: 'date' as DatePickerView,
-  views: ['year', 'date'] as DatePickerView[],
+  openTo: 'date' as const,
+  views: ['year', 'date'] as const,
 };
 
 DatePicker.defaultProps = defaultProps;

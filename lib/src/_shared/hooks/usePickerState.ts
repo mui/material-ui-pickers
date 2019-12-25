@@ -88,7 +88,7 @@ export function usePickerState(props: BasePickerProps, options: StateHookOptions
     [acceptDate, autoOk, onAccept, onChange, pickerDate, variant]
   );
 
-  const validationError = validate(value, utils, props);
+  const validationError = validate(value, utils, props as any);
   useEffect(() => {
     if (onError) {
       onError(validationError, value);
@@ -100,11 +100,12 @@ export function usePickerState(props: BasePickerProps, options: StateHookOptions
     () => ({
       inputValue,
       onChange,
+      format,
       rawValue: value,
       validationError,
       openPicker: () => !readOnly && !disabled && setIsOpen(true),
     }),
-    [disabled, inputValue, onChange, readOnly, setIsOpen, validationError, value]
+    [disabled, format, inputValue, onChange, readOnly, setIsOpen, validationError, value]
   );
 
   const pickerState = { pickerProps, inputProps, wrapperProps };

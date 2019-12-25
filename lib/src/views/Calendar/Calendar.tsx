@@ -2,8 +2,8 @@ import * as React from 'react';
 import Day from './Day';
 import DayWrapper from './DayWrapper';
 import SlideTransition, { SlideDirection } from './SlideTransition';
-import { VariantContext } from '../../wrappers/Wrapper';
 import { useUtils } from '../../_shared/hooks/useUtils';
+import { WrapperVariant } from '../../wrappers/Wrapper';
 import { MaterialUiPickersDate } from '../../typings/date';
 import { IconButtonProps } from '@material-ui/core/IconButton';
 import { useGlobalKeyDown } from '../../_shared/hooks/useKeyDown';
@@ -62,6 +62,7 @@ export interface CalendarProps {
   slideDirection: SlideDirection;
   currentMonth: MaterialUiPickersDate;
   reduceAnimations: boolean;
+  wrapperVariant: WrapperVariant;
 }
 
 export const useStyles = makeStyles(theme => ({
@@ -115,13 +116,13 @@ export const Calendar: React.FC<CalendarProps> = ({
   renderDay,
   reduceAnimations,
   allowKeyboardControl,
+  wrapperVariant,
   ...props
 }) => {
   const utils = useUtils();
   const theme = useTheme();
   const classes = useStyles();
   const now = utils.date();
-  const variant = React.useContext(VariantContext);
 
   const validateMinMaxDate = React.useCallback(
     (day: MaterialUiPickersDate) => {
@@ -176,7 +177,7 @@ export const Calendar: React.FC<CalendarProps> = ({
     }
   }, []); // eslint-disable-line
 
-  useGlobalKeyDown(Boolean(allowKeyboardControl && variant !== 'static'), {
+  useGlobalKeyDown(Boolean(allowKeyboardControl && wrapperVariant !== 'static'), {
     38: () => moveToDay(utils.addDays(date, -7)), // ArrowUp
     40: () => moveToDay(utils.addDays(date, 7)), // ArrowDown
     37: () => moveToDay(utils.addDays(date, theme.direction === 'ltr' ? -1 : 1)), // ArrowLeft

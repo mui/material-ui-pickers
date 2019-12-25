@@ -73,7 +73,6 @@ describe('e2e - DatePicker inline variant', () => {
     component = mount(
       <DatePicker
         autoOk
-        variant="inline"
         onChange={onChangeMock}
         onClose={onCloseMock}
         onOpen={onOpenMock}

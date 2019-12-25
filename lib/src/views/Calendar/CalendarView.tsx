@@ -7,6 +7,7 @@ import { DatePickerView } from '../../DatePicker';
 import { SlideDirection } from './SlideTransition';
 import { Calendar, CalendarProps } from './Calendar';
 import { useUtils } from '../../_shared/hooks/useUtils';
+import { WrapperVariant } from '../../wrappers/Wrapper';
 import { ParsableDate } from '../../constants/prop-types';
 import { MaterialUiPickersDate } from '../../typings/date';
 import { CircularProgress, Grid } from '@material-ui/core';
@@ -37,11 +38,19 @@ export interface CalendarViewProps
    * @default /(android)/i.test(navigator.userAgent)
    */
   reduceAnimations?: boolean;
+  wrapperVariant: WrapperVariant;
 }
 
 export type ExportedCalendarProps = Omit<
   CalendarViewProps,
-  'date' | 'view' | 'views' | 'onChange' | 'changeView' | 'slideDirection' | 'currentMonth'
+  | 'date'
+  | 'view'
+  | 'views'
+  | 'onChange'
+  | 'changeView'
+  | 'slideDirection'
+  | 'currentMonth'
+  | 'wrapperVariant'
 >;
 
 type ReducerAction<TType, TAdditional = {}> = { type: TType } & TAdditional;
@@ -105,6 +114,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
   onMonthChange,
   minDate: unparsedMinDate,
   maxDate: unparsedMaxDate,
+  wrapperVariant,
   reduceAnimations = typeof window !== 'undefined' && /(android)/i.test(window.navigator.userAgent),
   loadingIndicator = <CircularProgress data-mui-test="loading-progress" />,
   ...other
@@ -178,6 +188,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
               onChange={onChange}
               minDate={minDate}
               maxDate={maxDate}
+              wrapperVariant={wrapperVariant}
             />
           )}
 
@@ -212,6 +223,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
                 onChange={onChange}
                 minDate={minDate}
                 maxDate={maxDate}
+                wrapperVariant={wrapperVariant}
               />
             ))}
         </div>

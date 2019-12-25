@@ -3,7 +3,7 @@ import Year from './Year';
 import { DateType } from '@date-io/type';
 import { makeStyles } from '@material-ui/core/styles';
 import { useUtils } from '../../_shared/hooks/useUtils';
-import { VariantContext } from '../../wrappers/Wrapper';
+import { WrapperVariant } from '../../wrappers/Wrapper';
 import { MaterialUiPickersDate } from '../../typings/date';
 
 export interface YearSelectionProps {
@@ -14,6 +14,7 @@ export interface YearSelectionProps {
   disablePast?: boolean | null | undefined;
   disableFuture?: boolean | null | undefined;
   onYearChange?: (date: MaterialUiPickersDate) => void;
+  wrapperVariant: WrapperVariant;
 }
 
 export const useStyles = makeStyles(
@@ -38,17 +39,17 @@ export const YearSelection: React.FC<YearSelectionProps> = ({
   maxDate,
   disablePast,
   disableFuture,
+  wrapperVariant,
 }) => {
   const utils = useUtils();
   const classes = useStyles();
-  const currentVariant = React.useContext(VariantContext);
   const selectedYearRef = React.useRef<HTMLElement>(null);
 
   React.useEffect(() => {
     if (selectedYearRef.current && selectedYearRef.current.scrollIntoView) {
       try {
         selectedYearRef.current.scrollIntoView({
-          block: currentVariant === 'static' ? 'nearest' : 'center',
+          block: wrapperVariant === 'static' ? 'nearest' : 'center',
         });
       } catch (e) {
         // call without arguments in case when scrollIntoView works improperly (e.g. Firefox 52-57)

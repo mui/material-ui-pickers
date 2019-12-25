@@ -1,13 +1,13 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
-import Popover, { PopoverProps as PopoverPropsType } from '@material-ui/core/Popover';
+import KeyboardDateInput from '../_shared/KeyboardDateInput';
+import Popover, { PopoverProps } from '@material-ui/core/Popover';
 import { WrapperProps } from './Wrapper';
-import { TextFieldProps } from '@material-ui/core/TextField';
 import { useKeyDownHandler } from '../_shared/hooks/useKeyDown';
 
-export interface InlineWrapperProps<T = TextFieldProps> extends WrapperProps<T> {
+export interface InlineWrapperProps extends WrapperProps {
   /** Popover props passed to material-ui Popover (with variant="inline") */
-  PopoverProps?: Partial<PopoverPropsType>;
+  PopoverProps?: Partial<PopoverProps>;
 }
 
 export const InlineWrapper: React.FC<InlineWrapperProps> = ({
@@ -21,7 +21,6 @@ export const InlineWrapper: React.FC<InlineWrapperProps> = ({
   onAccept,
   showTabs,
   DateInputProps,
-  InputComponent,
   ...other
 }) => {
   const ref = React.useRef();
@@ -30,8 +29,8 @@ export const InlineWrapper: React.FC<InlineWrapperProps> = ({
   });
 
   return (
-    <React.Fragment>
-      <InputComponent {...other} {...DateInputProps} inputRef={ref} />
+    <>
+      <KeyboardDateInput {...other} {...DateInputProps} inputRef={ref} />
 
       <Popover
         open={open}
@@ -49,7 +48,7 @@ export const InlineWrapper: React.FC<InlineWrapperProps> = ({
         children={children}
         {...PopoverProps}
       />
-    </React.Fragment>
+    </>
   );
 };
 

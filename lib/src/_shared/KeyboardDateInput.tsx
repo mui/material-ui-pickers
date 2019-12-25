@@ -1,60 +1,14 @@
 import * as React from 'react';
-import TextField, { TextFieldProps } from '@material-ui/core/TextField';
-import IconButton, { IconButtonProps } from '@material-ui/core/IconButton';
-import InputAdornment, { InputAdornmentProps } from '@material-ui/core/InputAdornment';
+import TextField from '@material-ui/core/TextField';
+import IconButton from '@material-ui/core/IconButton';
+import InputAdornment from '@material-ui/core/InputAdornment';
 import { Rifm } from 'rifm';
 import { useUtils } from './hooks/useUtils';
-import { ExtendMui } from '../typings/extendMui';
+import { DateInputProps } from './PureDateInput';
 import { KeyboardIcon } from './icons/KeyboardIcon';
-import { ParsableDate } from '../constants/prop-types';
-import { MaterialUiPickersDate } from '../typings/date';
 import { makeMaskFromFormat, maskedDateFormatter } from '../_helpers/text-field-helper';
 
-export interface KeyboardDateInputProps
-  extends ExtendMui<TextFieldProps, 'variant' | 'onError' | 'onChange' | 'value'> {
-  rawValue: ParsableDate;
-  format: string;
-  onChange: (date: MaterialUiPickersDate, isFinish: boolean) => void;
-  openPicker: () => void;
-  validationError?: React.ReactNode;
-  inputValue: string;
-  inputProps?: TextFieldProps['inputProps'];
-  InputProps?: TextFieldProps['InputProps'];
-  /** Override input component */
-  TextFieldComponent?: React.ComponentType<TextFieldProps>;
-  /** Icon displaying for open picker button */
-  keyboardIcon?: React.ReactNode;
-  /** Pass material-ui text field variant down, bypass internal variant prop */
-  inputVariant?: TextFieldProps['variant'];
-  /**
-   * Custom mask. Can be used to override generate from format. (e.g. __/__/____ __:__)
-   */
-  mask?: string;
-  /**
-   * Char string that will be replaced with number (for "_" mask will be "__/__/____")
-   * @default '_'
-   */
-  maskChar?: string;
-  /**
-   * Refuse values regexp
-   * @default /[^\d]+/gi
-   */
-  refuse?: RegExp;
-  /**
-   * Props to pass to keyboard input adornment
-   * @type {Partial<InputAdornmentProps>}
-   */
-  InputAdornmentProps?: Partial<InputAdornmentProps>;
-  /**
-   * Props to pass to keyboard adornment button
-   * @type {Partial<IconButtonProps>}
-   */
-  KeyboardButtonProps?: Partial<IconButtonProps>;
-  /** Custom formatter to be passed into Rifm component */
-  rifmFormatter?: (str: string) => string;
-}
-
-export const KeyboardDateInput: React.FunctionComponent<KeyboardDateInputProps> = ({
+export const KeyboardDateInput: React.FC<DateInputProps> = ({
   rawValue,
   inputValue,
   inputVariant,
@@ -97,7 +51,7 @@ export const KeyboardDateInput: React.FunctionComponent<KeyboardDateInputProps> 
     setInnerInputValue(finalString);
 
     const date = finalString === null ? null : utils.parse(finalString, format);
-    onChange(date, false);
+    onChange(date, finalString || undefined);
   };
 
   return (

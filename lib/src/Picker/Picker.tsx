@@ -1,6 +1,7 @@
 import * as React from 'react';
 import clsx from 'clsx';
 import { useViews } from '../_shared/hooks/useViews';
+import { WrapperVariant } from '../wrappers/Wrapper';
 import { makeStyles } from '@material-ui/core/styles';
 import { DateTimePickerView } from '../DateTimePicker';
 import { WithViewsProps } from './makePickerWithState';
@@ -42,6 +43,7 @@ export interface PickerViewProps<TView extends PickerView>
   hideTabs?: boolean;
   dateRangeIcon?: React.ReactNode;
   timeIcon?: React.ReactNode;
+  wrapperVariant: WrapperVariant;
 }
 
 interface PickerProps<T extends PickerView> extends PickerViewProps<T> {
@@ -82,6 +84,7 @@ export function Picker<T extends PickerView>({
   title,
   disableToolbar,
   onChange,
+  wrapperVariant,
   ToolbarComponent,
   orientation,
   ...other
@@ -119,6 +122,7 @@ export function Picker<T extends PickerView>({
             views={views}
             onChange={handleChangeAndOpenNext}
             view={openView}
+            wrapperVariant={wrapperVariant}
             {...other}
           />
         )}

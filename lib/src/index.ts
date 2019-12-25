@@ -16,7 +16,7 @@ export { default as Clock } from './views/Clock/Clock';
 
 export { Picker } from './Picker/Picker';
 
-export { makePickerWithState } from './Picker/makePickerWithState';
+export { makePickerWithStateAndWrapper as makePickerWithState } from './Picker/makePickerWithState';
 
 export { validate } from './_helpers/text-field-helper';
 

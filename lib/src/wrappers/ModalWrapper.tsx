@@ -3,10 +3,11 @@ import * as PropTypes from 'prop-types';
 import ModalDialog from '../_shared/ModalDialog';
 import { WrapperProps } from './Wrapper';
 import { Omit } from '../_helpers/utils';
+import { PureDateInput } from '../_shared/PureDateInput';
 import { useKeyDownHandler } from '../_shared/hooks/useKeyDown';
 import { DialogProps as MuiDialogProps } from '@material-ui/core/Dialog';
 
-export interface ModalWrapperProps<T = {}> extends WrapperProps<T> {
+export interface ModalWrapperProps extends WrapperProps {
   /**
    * "OK" label message
    * @default "OK"
@@ -44,7 +45,7 @@ export interface ModalWrapperProps<T = {}> extends WrapperProps<T> {
   DialogProps?: Partial<Omit<MuiDialogProps, 'classes'>>;
 }
 
-export const ModalWrapper: React.FC<ModalWrapperProps<any>> = ({
+export const ModalWrapper: React.FC<ModalWrapperProps> = ({
   open,
   children,
   okLabel,
@@ -56,7 +57,6 @@ export const ModalWrapper: React.FC<ModalWrapperProps<any>> = ({
   DialogProps,
   showTabs,
   wider,
-  InputComponent,
   DateInputProps,
   onClear,
   onAccept,
@@ -70,7 +70,7 @@ export const ModalWrapper: React.FC<ModalWrapperProps<any>> = ({
 
   return (
     <React.Fragment>
-      <InputComponent {...other} {...DateInputProps} />
+      <PureDateInput {...other} {...DateInputProps} />
 
       <ModalDialog
         onKeyDown={handleKeyDown}

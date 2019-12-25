@@ -1,75 +1,42 @@
-import * as React from 'react';
 import { Omit } from '../_helpers/utils';
 import { StaticWrapper } from './StaticWrapper';
+import { InlineWrapper } from './InlineWrapper';
+import { DateInputProps } from '../_shared/PureDateInput';
 import { ModalWrapper, ModalWrapperProps } from './ModalWrapper';
-import { InlineWrapper, InlineWrapperProps } from './InlineWrapper';
-import { KeyboardDateInputProps } from '../_shared/KeyboardDateInput';
-import { PureDateInputProps, NotOverridableProps } from '../_shared/PureDateInput';
 
-export type WrapperVariant = 'dialog' | 'inline' | 'static';
-
-export interface WrapperProps<T> {
+export interface WrapperProps {
   open: boolean;
   onAccept: () => void;
   onDismiss: () => void;
   onClear: () => void;
   onSetToday: () => void;
-  InputComponent: React.FC<T>;
-  DateInputProps: T;
+  DateInputProps: DateInputProps;
   wider?: boolean;
   showTabs?: boolean;
 }
 
-type OmitInnerWrapperProps<T extends WrapperProps<any>> = Omit<
-  T,
-  keyof WrapperProps<any> | 'showTabs'
->;
+type OmitInnerWrapperProps<T extends WrapperProps> = Omit<T, keyof WrapperProps | 'showTabs'>;
 
-export type ModalRoot = OmitInnerWrapperProps<ModalWrapperProps>;
+export type SomeWrapper = typeof StaticWrapper | typeof ModalWrapper | typeof InlineWrapper;
 
-export type InlineRoot = OmitInnerWrapperProps<InlineWrapperProps>;
+export type ExtendWrapper<TWrapper extends SomeWrapper> = TWrapper extends typeof StaticWrapper
+  ? {} // no additional props
+  : TWrapper extends typeof ModalWrapper
+  ? OmitInnerWrapperProps<ModalWrapperProps>
+  : TWrapper extends typeof InlineWrapper
+  ? OmitInnerWrapperProps<ModalWrapperProps>
+  : never;
 
-// prettier-ignore
-export type ExtendWrapper<TInput extends PureDateInputProps | KeyboardDateInputProps> = {
-  /**
-   * Picker container option
-   * @default 'dialog'
-   */
-  variant?: WrapperVariant
-} & ModalRoot
-  & InlineRoot
-  & Omit<TInput, NotOverridableProps>
-
-export function getWrapperFromVariant<T>(
-  variant?: WrapperVariant
-): React.ComponentType<InlineWrapperProps<T> | ModalWrapperProps<T>> {
-  switch (variant) {
-    case 'inline':
-      return InlineWrapper as any;
-
-    case 'static':
-      return StaticWrapper as any;
-
-    default:
-      return ModalWrapper as any;
+export function getWrapperVariant(wrapper: SomeWrapper) {
+  if (wrapper === InlineWrapper) {
+    return 'desktop';
+  } else if (wrapper === StaticWrapper) {
+    return 'static';
+  } else {
+    return 'mobile';
   }
 }
 
-type Props<T> = {
-  variant?: WrapperVariant;
-  children?: React.ReactChild;
-} & (ModalWrapperProps<T> | InlineWrapperProps<T>);
+export type WrapperVariant = ReturnType<typeof getWrapperVariant>;
 
-export const VariantContext = React.createContext<WrapperVariant | null>(null);
-
-export const Wrapper: <T extends KeyboardDateInputProps | PureDateInputProps>(
-  p: Props<T>
-) => React.ReactElement<Props<T>> = ({ variant, ...props }) => {
-  const Component = getWrapperFromVariant<typeof props.DateInputProps>(variant);
-
-  return (
-    <VariantContext.Provider value={variant || 'dialog'}>
-      <Component {...props} />
-    </VariantContext.Provider>
-  );
-};
+export { StaticWrapper, ModalWrapper, InlineWrapper };

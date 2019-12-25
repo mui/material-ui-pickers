@@ -74,13 +74,17 @@ export const findClosestEnabledDate = ({
   return utils.date();
 };
 
-export const isYearOnlyView = (views: DatePickerView[]) =>
+export const isYearOnlyView = (views: readonly DatePickerView[]) =>
   views.length === 1 && views[0] === 'year';
 
-export const isYearAndMonthViews = (views: DatePickerView[]) =>
+export const isYearAndMonthViews = (views: readonly DatePickerView[]) =>
   views.length === 2 && arrayIncludes(views, 'month') && arrayIncludes(views, 'year');
 
-export const getFormatByViews = (views: DatePickerView[], utils: IUtils<MaterialUiPickersDate>) => {
+export const getFormatByViews = (
+  views: readonly DatePickerView[],
+  utils: IUtils<MaterialUiPickersDate>
+) => {
+  console.log(views);
   if (isYearOnlyView(views)) {
     return utils.yearFormat;
   }

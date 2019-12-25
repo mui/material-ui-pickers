@@ -1,14 +1,13 @@
 import { useUtils } from '../_shared/hooks/useUtils';
 import { TimePickerToolbar } from './TimePickerToolbar';
-import { PureDateInput } from '../_shared/PureDateInput';
 import { BaseClockViewProps } from '../views/Clock/ClockView';
-import { KeyboardDateInput } from '../_shared/KeyboardDateInput';
 import { timePickerDefaultProps } from '../constants/prop-types';
+import { ModalWrapper, InlineWrapper } from '../wrappers/Wrapper';
 import { pick12hOr24hFormat } from '../_helpers/text-field-helper';
 import {
   WithDateInputProps,
   WithViewsProps,
-  makePickerWithState,
+  makePickerWithStateAndWrapper,
 } from '../Picker/makePickerWithState';
 
 type TimePickerView = 'hours' | 'minutes' | 'seconds';
@@ -36,15 +35,13 @@ function useOptions(props: TimePickerProps) {
   };
 }
 
-export const TimePicker = makePickerWithState<TimePickerProps>({
+export const TimePicker = makePickerWithStateAndWrapper<TimePickerProps>(ModalWrapper, {
   useOptions,
-  Input: PureDateInput,
   DefaultToolbarComponent: TimePickerToolbar,
 });
 
-export const KeyboardTimePicker = makePickerWithState<TimePickerProps>({
+export const KeyboardTimePicker = makePickerWithStateAndWrapper<TimePickerProps>(InlineWrapper, {
   useOptions,
-  Input: KeyboardDateInput,
   DefaultToolbarComponent: TimePickerToolbar,
   getCustomProps: props => ({
     refuse: props.ampm ? /[^\dap]+/gi : /[^\d]+/gi,

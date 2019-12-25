@@ -1,5 +1,4 @@
 import { MaterialUiPickersDate } from './date';
-import { WrapperVariant } from '../wrappers/Wrapper';
 import { ParsableDate } from '../constants/prop-types';
 import { ToolbarComponentProps } from '../Picker/Picker';
 
@@ -64,5 +63,4 @@ export interface BasePickerProps {
    * @default false
    */
   strictCompareDates?: boolean;
-  variant?: WrapperVariant;
 }

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import clsx from 'clsx';
 import Toolbar, { ToolbarProps } from '@material-ui/core/Toolbar';
-import { ExtendMui } from '../typings/extendMui';
+import { ExtendMui } from '../typings/helpers';
 import { PenIcon } from '../_shared/icons/PenIcon';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography, IconButton, Grid } from '@material-ui/core';
