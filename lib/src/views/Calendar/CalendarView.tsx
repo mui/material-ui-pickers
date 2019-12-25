@@ -23,9 +23,15 @@ export interface CalendarViewProps
   views: DatePickerView[];
   changeView: (view: DatePickerView) => void;
   onChange: (date: MaterialUiPickersDate, isFinish?: boolean) => void;
-  /** Min date */
+  /**
+   * Min selectable date
+   * @default Date(1900-01-01)
+   */
   minDate?: ParsableDate;
-  /** Max date */
+  /**
+   * Max selectable date
+   * @default Date(2100-01-01)
+   */
   maxDate?: ParsableDate;
   /** Do not show heavy animations, significantly improves performance on slow devices
    * @default /(android)/i.test(navigator.userAgent)

@@ -1,6 +1,6 @@
 import { useUtils } from '../_shared/hooks/useUtils';
 import { PureDateInput } from '../_shared/PureDateInput';
-import { BaseClockProps } from '../views/Clock/ClockView';
+import { BaseClockViewProps } from '../views/Clock/ClockView';
 import { BaseDatePickerProps } from '../DatePicker/DatePicker';
 import { DateTimePickerToolbar } from './DateTimePickerToolbar';
 import { KeyboardDateInput } from '../_shared/KeyboardDateInput';
@@ -14,7 +14,7 @@ import {
 
 export type DateTimePickerView = 'year' | 'date' | 'month' | 'hours' | 'minutes' | 'seconds';
 
-export type BaseDateTimePickerProps = BaseClockProps & BaseDatePickerProps;
+export type BaseDateTimePickerProps = BaseClockViewProps & BaseDatePickerProps;
 
 export interface DateTimePickerViewsProps extends BaseDateTimePickerProps {
   /** To show tabs */

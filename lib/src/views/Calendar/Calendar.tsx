@@ -15,9 +15,15 @@ export interface CalendarProps {
   date: MaterialUiPickersDate;
   /** Calendar onChange */
   onChange: (date: MaterialUiPickersDate, isFinish?: boolean) => void;
-  /** Disable past dates */
+  /**
+   * Disable past dates
+   * @default false
+   */
   disablePast?: boolean;
-  /** Disable future dates */
+  /**
+   * Disable future dates
+   * @default false
+   */
   disableFuture?: boolean;
   /** Left arrow icon */
   leftArrowIcon?: React.ReactNode;

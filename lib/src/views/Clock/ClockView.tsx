@@ -6,7 +6,7 @@ import { MaterialUiPickersDate } from '../../typings/date';
 import { getHourNumbers, getMinutesNumbers } from './ClockNumbers';
 import { convertToMeridiem, getMeridiem } from '../../_helpers/time-utils';
 
-export interface BaseClockProps {
+export interface BaseClockViewProps {
   /**
    * 12h/24h view for hour selection clock
    * @default true
@@ -24,7 +24,7 @@ export interface BaseClockProps {
   ampmInClock?: boolean;
 }
 
-export interface ClockViewProps extends BaseClockProps {
+export interface ClockViewProps extends BaseClockViewProps {
   /** Selected date @DateIOType */
   date: MaterialUiPickersDate;
   /** Clock type */

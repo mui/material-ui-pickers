@@ -50,10 +50,7 @@ export interface BasePickerProps {
    * @default false
    */
   disableToolbar?: boolean;
-  /**
-   * Force rendering in particular orientation
-   * @default "portrait"
-   */
+  /** Force rendering in particular orientation */
   orientation?: 'portrait' | 'landscape';
   /** Component that will replace default toolbar renderer */
   ToolbarComponent?: React.ComponentType<ToolbarComponentProps>;
@@ -62,5 +59,10 @@ export interface BasePickerProps {
    * @default "SELECT DATE"
    */
   title?: string;
+  /**
+   * Compare dates by the exact timestamp, instead of start/end of date
+   * @default false
+   */
+  strictCompareDates?: boolean;
   variant?: WrapperVariant;
 }

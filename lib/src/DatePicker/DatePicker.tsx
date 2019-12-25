@@ -4,8 +4,8 @@ import { DatePickerToolbar } from './DatePickerToolbar';
 import { PureDateInput } from '../_shared/PureDateInput';
 import { getFormatByViews } from '../_helpers/date-utils';
 import { KeyboardDateInput } from '../_shared/KeyboardDateInput';
+import { datePickerDefaultProps } from '../constants/prop-types';
 import { ExportedCalendarProps } from '../views/Calendar/CalendarView';
-import { datePickerDefaultProps, ParsableDate } from '../constants/prop-types';
 import {
   WithDateInputProps,
   makePickerWithState,
@@ -15,33 +15,6 @@ import {
 export type DatePickerView = 'year' | 'date' | 'month';
 
 export interface BaseDatePickerProps extends ExportedCalendarProps {
-  /**
-   * Min selectable date
-   * @default Date(1900-01-01)
-   */
-  minDate?: ParsableDate;
-  /**
-   * Max selectable date
-   * @default Date(2100-01-01)
-   */
-  maxDate?: ParsableDate;
-
-  /**
-   * Compare dates by the exact timestamp, instead of start/end of date
-   * @default false
-   */
-  strictCompareDates?: boolean;
-
-  /**
-   * Disable past dates
-   * @default false
-   */
-  disablePast?: boolean;
-  /**
-   * Disable future dates
-   * @default false
-   */
-  disableFuture?: boolean;
   /** Callback firing on year change @DateIOType */
   onYearChange?: (date: MaterialUiPickersDate) => void;
 }

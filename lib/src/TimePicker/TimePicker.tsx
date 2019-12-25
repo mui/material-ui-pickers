@@ -1,7 +1,7 @@
 import { useUtils } from '../_shared/hooks/useUtils';
 import { TimePickerToolbar } from './TimePickerToolbar';
 import { PureDateInput } from '../_shared/PureDateInput';
-import { BaseClockProps } from '../views/Clock/ClockView';
+import { BaseClockViewProps } from '../views/Clock/ClockView';
 import { KeyboardDateInput } from '../_shared/KeyboardDateInput';
 import { timePickerDefaultProps } from '../constants/prop-types';
 import { pick12hOr24hFormat } from '../_helpers/text-field-helper';
@@ -14,7 +14,7 @@ import {
 type TimePickerView = 'hours' | 'minutes' | 'seconds';
 
 export interface TimePickerProps
-  extends BaseClockProps,
+  extends BaseClockViewProps,
     WithViewsProps<'hours' | 'minutes' | 'seconds'>,
     WithDateInputProps {}
 

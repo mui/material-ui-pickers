@@ -108,7 +108,6 @@ export function usePickerState(props: BasePickerProps, options: StateHookOptions
   );
 
   const pickerState = { pickerProps, inputProps, wrapperProps };
-
   useDebugValue(pickerState, () => ({
     MuiPickerState: {
       pickerDate,

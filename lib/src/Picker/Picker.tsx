@@ -10,12 +10,12 @@ import { CalendarView } from '../views/Calendar/CalendarView';
 import { BaseDatePickerProps } from '../DatePicker/DatePicker';
 import { useIsLandscape } from '../_shared/hooks/useIsLandscape';
 import { DIALOG_WIDTH, VIEW_HEIGHT } from '../constants/dimensions';
-import { ClockView, BaseClockProps } from '../views/Clock/ClockView';
+import { ClockView, BaseClockViewProps } from '../views/Clock/ClockView';
 
 export type PickerView = DateTimePickerView;
 
 export type ToolbarComponentProps<T extends PickerView = any> = BaseDatePickerProps &
-  BaseClockProps & {
+  BaseClockViewProps & {
     views: T[];
     openView: T;
     date: MaterialUiPickersDate;
@@ -34,7 +34,7 @@ export interface PickerViewProps<TView extends PickerView>
   extends Omit<BasePickerProps, 'value' | 'onChange'>,
     WithViewsProps<TView>,
     BaseDatePickerProps,
-    BaseClockProps {
+    BaseClockViewProps {
   title?: string;
   disableToolbar?: boolean;
   ToolbarComponent: React.ComponentType<ToolbarComponentProps<any>>;

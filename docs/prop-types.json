@@ -105,81 +105,6 @@
     }
   },
   "DatePicker": {
-    "minDate": {
-      "defaultValue": {
-        "value": "Date(1900-01-01)"
-      },
-      "description": "Min selectable date",
-      "name": "minDate",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/DatePicker/DatePicker.tsx",
-        "name": "BaseDatePickerProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ParsableDate"
-      }
-    },
-    "maxDate": {
-      "defaultValue": {
-        "value": "Date(2100-01-01)"
-      },
-      "description": "Max selectable date",
-      "name": "maxDate",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/DatePicker/DatePicker.tsx",
-        "name": "BaseDatePickerProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ParsableDate"
-      }
-    },
-    "strictCompareDates": {
-      "defaultValue": {
-        "value": "false"
-      },
-      "description": "Compare dates by the exact timestamp, instead of start/end of date",
-      "name": "strictCompareDates",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/DatePicker/DatePicker.tsx",
-        "name": "BaseDatePickerProps"
-      },
-      "required": false,
-      "type": {
-        "name": "boolean"
-      }
-    },
-    "disablePast": {
-      "defaultValue": {
-        "value": "false"
-      },
-      "description": "Disable past dates",
-      "name": "disablePast",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/DatePicker/DatePicker.tsx",
-        "name": "BaseDatePickerProps"
-      },
-      "required": false,
-      "type": {
-        "name": "boolean"
-      }
-    },
-    "disableFuture": {
-      "defaultValue": {
-        "value": "false"
-      },
-      "description": "Disable future dates",
-      "name": "disableFuture",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/DatePicker/DatePicker.tsx",
-        "name": "BaseDatePickerProps"
-      },
-      "required": false,
-      "type": {
-        "name": "boolean"
-      }
-    },
     "onYearChange": {
       "defaultValue": null,
       "description": "Callback firing on year change",
@@ -202,6 +127,66 @@
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Calendar/CalendarView.tsx",
         "name": "CalendarViewProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "minDate": {
+      "defaultValue": {
+        "value": "Date(1900-01-01)"
+      },
+      "description": "Min selectable date",
+      "name": "minDate",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/CalendarView.tsx",
+        "name": "CalendarViewProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ParsableDate"
+      }
+    },
+    "maxDate": {
+      "defaultValue": {
+        "value": "Date(2100-01-01)"
+      },
+      "description": "Max selectable date",
+      "name": "maxDate",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/CalendarView.tsx",
+        "name": "CalendarViewProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ParsableDate"
+      }
+    },
+    "disablePast": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "Disable past dates",
+      "name": "disablePast",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
+        "name": "CalendarProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "disableFuture": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "Disable future dates",
+      "name": "disableFuture",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
+        "name": "CalendarProps"
       },
       "required": false,
       "type": {
@@ -589,9 +574,7 @@
       }
     },
     "orientation": {
-      "defaultValue": {
-        "value": "\"portrait\""
-      },
+      "defaultValue": null,
       "description": "Force rendering in particular orientation",
       "name": "orientation",
       "parent": {
@@ -629,6 +612,21 @@
       "required": false,
       "type": {
         "name": "string"
+      }
+    },
+    "strictCompareDates": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "Compare dates by the exact timestamp, instead of start/end of date",
+      "name": "strictCompareDates",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
+        "name": "BasePickerProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
       }
     },
     "variant": {
@@ -808,81 +806,6 @@
     }
   },
   "KeyboardDatePicker": {
-    "minDate": {
-      "defaultValue": {
-        "value": "Date(1900-01-01)"
-      },
-      "description": "Min selectable date",
-      "name": "minDate",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/DatePicker/DatePicker.tsx",
-        "name": "BaseDatePickerProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ParsableDate"
-      }
-    },
-    "maxDate": {
-      "defaultValue": {
-        "value": "Date(2100-01-01)"
-      },
-      "description": "Max selectable date",
-      "name": "maxDate",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/DatePicker/DatePicker.tsx",
-        "name": "BaseDatePickerProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ParsableDate"
-      }
-    },
-    "strictCompareDates": {
-      "defaultValue": {
-        "value": "false"
-      },
-      "description": "Compare dates by the exact timestamp, instead of start/end of date",
-      "name": "strictCompareDates",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/DatePicker/DatePicker.tsx",
-        "name": "BaseDatePickerProps"
-      },
-      "required": false,
-      "type": {
-        "name": "boolean"
-      }
-    },
-    "disablePast": {
-      "defaultValue": {
-        "value": "false"
-      },
-      "description": "Disable past dates",
-      "name": "disablePast",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/DatePicker/DatePicker.tsx",
-        "name": "BaseDatePickerProps"
-      },
-      "required": false,
-      "type": {
-        "name": "boolean"
-      }
-    },
-    "disableFuture": {
-      "defaultValue": {
-        "value": "false"
-      },
-      "description": "Disable future dates",
-      "name": "disableFuture",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/DatePicker/DatePicker.tsx",
-        "name": "BaseDatePickerProps"
-      },
-      "required": false,
-      "type": {
-        "name": "boolean"
-      }
-    },
     "onYearChange": {
       "defaultValue": null,
       "description": "Callback firing on year change",
@@ -905,6 +828,66 @@
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Calendar/CalendarView.tsx",
         "name": "CalendarViewProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "minDate": {
+      "defaultValue": {
+        "value": "Date(1900-01-01)"
+      },
+      "description": "Min selectable date",
+      "name": "minDate",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/CalendarView.tsx",
+        "name": "CalendarViewProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ParsableDate"
+      }
+    },
+    "maxDate": {
+      "defaultValue": {
+        "value": "Date(2100-01-01)"
+      },
+      "description": "Max selectable date",
+      "name": "maxDate",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/CalendarView.tsx",
+        "name": "CalendarViewProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ParsableDate"
+      }
+    },
+    "disablePast": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "Disable past dates",
+      "name": "disablePast",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
+        "name": "CalendarProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "disableFuture": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "Disable future dates",
+      "name": "disableFuture",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
+        "name": "CalendarProps"
       },
       "required": false,
       "type": {
@@ -1292,9 +1275,7 @@
       }
     },
     "orientation": {
-      "defaultValue": {
-        "value": "\"portrait\""
-      },
+      "defaultValue": null,
       "description": "Force rendering in particular orientation",
       "name": "orientation",
       "parent": {
@@ -1332,6 +1313,21 @@
       "required": false,
       "type": {
         "name": "string"
+      }
+    },
+    "strictCompareDates": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "Compare dates by the exact timestamp, instead of start/end of date",
+      "name": "strictCompareDates",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
+        "name": "BasePickerProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
       }
     },
     "variant": {
@@ -1519,7 +1515,7 @@
       "name": "ampm",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
-        "name": "BaseClockProps"
+        "name": "BaseClockViewProps"
       },
       "required": false,
       "type": {
@@ -1534,7 +1530,7 @@
       "name": "minutesStep",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
-        "name": "BaseClockProps"
+        "name": "BaseClockViewProps"
       },
       "required": false,
       "type": {
@@ -1549,7 +1545,7 @@
       "name": "ampmInClock",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
-        "name": "BaseClockProps"
+        "name": "BaseClockViewProps"
       },
       "required": false,
       "type": {
@@ -1844,9 +1840,7 @@
       }
     },
     "orientation": {
-      "defaultValue": {
-        "value": "\"portrait\""
-      },
+      "defaultValue": null,
       "description": "Force rendering in particular orientation",
       "name": "orientation",
       "parent": {
@@ -1884,6 +1878,21 @@
       "required": false,
       "type": {
         "name": "string"
+      }
+    },
+    "strictCompareDates": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "Compare dates by the exact timestamp, instead of start/end of date",
+      "name": "strictCompareDates",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
+        "name": "BasePickerProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
       }
     },
     "variant": {
@@ -2045,7 +2054,7 @@
       "name": "ampm",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
-        "name": "BaseClockProps"
+        "name": "BaseClockViewProps"
       },
       "required": false,
       "type": {
@@ -2060,7 +2069,7 @@
       "name": "minutesStep",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
-        "name": "BaseClockProps"
+        "name": "BaseClockViewProps"
       },
       "required": false,
       "type": {
@@ -2075,7 +2084,7 @@
       "name": "ampmInClock",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
-        "name": "BaseClockProps"
+        "name": "BaseClockViewProps"
       },
       "required": false,
       "type": {
@@ -2370,9 +2379,7 @@
       }
     },
     "orientation": {
-      "defaultValue": {
-        "value": "\"portrait\""
-      },
+      "defaultValue": null,
       "description": "Force rendering in particular orientation",
       "name": "orientation",
       "parent": {
@@ -2410,6 +2417,21 @@
       "required": false,
       "type": {
         "name": "string"
+      }
+    },
+    "strictCompareDates": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "Compare dates by the exact timestamp, instead of start/end of date",
+      "name": "strictCompareDates",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
+        "name": "BasePickerProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
       }
     },
     "variant": {
@@ -2825,9 +2847,7 @@
       }
     },
     "orientation": {
-      "defaultValue": {
-        "value": "\"portrait\""
-      },
+      "defaultValue": null,
       "description": "Force rendering in particular orientation",
       "name": "orientation",
       "parent": {
@@ -2865,6 +2885,21 @@
       "required": false,
       "type": {
         "name": "string"
+      }
+    },
+    "strictCompareDates": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "Compare dates by the exact timestamp, instead of start/end of date",
+      "name": "strictCompareDates",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
+        "name": "BasePickerProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
       }
     },
     "variant": {
@@ -3063,7 +3098,7 @@
       "name": "ampm",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
-        "name": "BaseClockProps"
+        "name": "BaseClockViewProps"
       },
       "required": false,
       "type": {
@@ -3078,7 +3113,7 @@
       "name": "minutesStep",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
-        "name": "BaseClockProps"
+        "name": "BaseClockViewProps"
       },
       "required": false,
       "type": {
@@ -3093,82 +3128,7 @@
       "name": "ampmInClock",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
-        "name": "BaseClockProps"
-      },
-      "required": false,
-      "type": {
-        "name": "boolean"
-      }
-    },
-    "minDate": {
-      "defaultValue": {
-        "value": "Date(1900-01-01)"
-      },
-      "description": "Min selectable date",
-      "name": "minDate",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/DatePicker/DatePicker.tsx",
-        "name": "BaseDatePickerProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ParsableDate"
-      }
-    },
-    "maxDate": {
-      "defaultValue": {
-        "value": "Date(2100-01-01)"
-      },
-      "description": "Max selectable date",
-      "name": "maxDate",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/DatePicker/DatePicker.tsx",
-        "name": "BaseDatePickerProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ParsableDate"
-      }
-    },
-    "strictCompareDates": {
-      "defaultValue": {
-        "value": "false"
-      },
-      "description": "Compare dates by the exact timestamp, instead of start/end of date",
-      "name": "strictCompareDates",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/DatePicker/DatePicker.tsx",
-        "name": "BaseDatePickerProps"
-      },
-      "required": false,
-      "type": {
-        "name": "boolean"
-      }
-    },
-    "disablePast": {
-      "defaultValue": {
-        "value": "false"
-      },
-      "description": "Disable past dates",
-      "name": "disablePast",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/DatePicker/DatePicker.tsx",
-        "name": "BaseDatePickerProps"
-      },
-      "required": false,
-      "type": {
-        "name": "boolean"
-      }
-    },
-    "disableFuture": {
-      "defaultValue": {
-        "value": "false"
-      },
-      "description": "Disable future dates",
-      "name": "disableFuture",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/DatePicker/DatePicker.tsx",
-        "name": "BaseDatePickerProps"
+        "name": "BaseClockViewProps"
       },
       "required": false,
       "type": {
@@ -3197,6 +3157,66 @@
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Calendar/CalendarView.tsx",
         "name": "CalendarViewProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "minDate": {
+      "defaultValue": {
+        "value": "Date(1900-01-01)"
+      },
+      "description": "Min selectable date",
+      "name": "minDate",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/CalendarView.tsx",
+        "name": "CalendarViewProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ParsableDate"
+      }
+    },
+    "maxDate": {
+      "defaultValue": {
+        "value": "Date(2100-01-01)"
+      },
+      "description": "Max selectable date",
+      "name": "maxDate",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/CalendarView.tsx",
+        "name": "CalendarViewProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ParsableDate"
+      }
+    },
+    "disablePast": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "Disable past dates",
+      "name": "disablePast",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
+        "name": "CalendarProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "disableFuture": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "Disable future dates",
+      "name": "disableFuture",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
+        "name": "CalendarProps"
       },
       "required": false,
       "type": {
@@ -3377,7 +3397,9 @@
       }
     },
     "disablePast": {
-      "defaultValue": null,
+      "defaultValue": {
+        "value": "false"
+      },
       "description": "Disable past dates",
       "name": "disablePast",
       "parent": {
@@ -3390,7 +3412,9 @@
       }
     },
     "disableFuture": {
-      "defaultValue": null,
+      "defaultValue": {
+        "value": "false"
+      },
       "description": "Disable future dates",
       "name": "disableFuture",
       "parent": {
@@ -3609,7 +3633,7 @@
       "name": "ampm",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
-        "name": "BaseClockProps"
+        "name": "BaseClockViewProps"
       },
       "required": false,
       "type": {
@@ -3624,7 +3648,7 @@
       "name": "minutesStep",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
-        "name": "BaseClockProps"
+        "name": "BaseClockViewProps"
       },
       "required": false,
       "type": {
@@ -3639,7 +3663,7 @@
       "name": "ampmInClock",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
-        "name": "BaseClockProps"
+        "name": "BaseClockViewProps"
       },
       "required": false,
       "type": {
@@ -3734,7 +3758,7 @@
       "name": "ampm",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
-        "name": "BaseClockProps"
+        "name": "BaseClockViewProps"
       },
       "required": false,
       "type": {
@@ -3749,7 +3773,7 @@
       "name": "minutesStep",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
-        "name": "BaseClockProps"
+        "name": "BaseClockViewProps"
       },
       "required": false,
       "type": {
@@ -3764,7 +3788,7 @@
       "name": "ampmInClock",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
-        "name": "BaseClockProps"
+        "name": "BaseClockViewProps"
       },
       "required": false,
       "type": {
