@@ -3,23 +3,23 @@ import clsx from 'clsx';
 import { useViews } from '../_shared/hooks/useViews';
 import { makeStyles } from '@material-ui/core/styles';
 import { DateTimePickerView } from '../DateTimePicker';
+import { WithViewsProps } from './makePickerWithState';
 import { BasePickerProps } from '../typings/BasePicker';
 import { MaterialUiPickersDate } from '../typings/date';
 import { CalendarView } from '../views/Calendar/CalendarView';
 import { BaseDatePickerProps } from '../DatePicker/DatePicker';
 import { useIsLandscape } from '../_shared/hooks/useIsLandscape';
-import { datePickerDefaultProps } from '../constants/prop-types';
 import { DIALOG_WIDTH, VIEW_HEIGHT } from '../constants/dimensions';
 import { ClockView, BaseClockProps } from '../views/Clock/ClockView';
 
 export type PickerView = DateTimePickerView;
 
-export type ToolbarComponentProps = BaseDatePickerProps &
+export type ToolbarComponentProps<T extends PickerView = any> = BaseDatePickerProps &
   BaseClockProps & {
-    views: PickerView[];
-    openView: PickerView;
+    views: T[];
+    openView: T;
     date: MaterialUiPickersDate;
-    setOpenView: (view: PickerView) => void;
+    setOpenView: (view: T) => void;
     onChange: (date: MaterialUiPickersDate, isFinish?: boolean) => void;
     title?: string;
     // TODO move out, cause it is DateTimePickerOnly
@@ -30,21 +30,22 @@ export type ToolbarComponentProps = BaseDatePickerProps &
     ampmInClock?: boolean;
   };
 
-export interface PickerViewProps extends BaseDatePickerProps, BaseClockProps {
-  views: PickerView[];
-  openTo: PickerView;
+export interface PickerViewProps<TView extends PickerView>
+  extends Omit<BasePickerProps, 'value' | 'onChange'>,
+    WithViewsProps<TView>,
+    BaseDatePickerProps,
+    BaseClockProps {
   title?: string;
   disableToolbar?: boolean;
-  ToolbarComponent: React.ComponentType<ToolbarComponentProps>;
+  ToolbarComponent: React.ComponentType<ToolbarComponentProps<any>>;
   // TODO move out, cause it is DateTimePickerOnly
   hideTabs?: boolean;
   dateRangeIcon?: React.ReactNode;
   timeIcon?: React.ReactNode;
 }
 
-interface PickerProps extends PickerViewProps {
+interface PickerProps<T extends PickerView> extends PickerViewProps<T> {
   date: MaterialUiPickersDate;
-  orientation?: BasePickerProps['orientation'];
   onChange: (date: MaterialUiPickersDate, isFinish?: boolean) => void;
 }
 
@@ -72,17 +73,19 @@ export const useStyles = makeStyles(
   { name: 'MuiPickersBasePicker' }
 );
 
-export const Picker: React.FunctionComponent<PickerProps> = ({
+export function Picker<T extends PickerView>({
   date,
+  // @ts-ignore
+  openTo,
+  // @ts-ignore
   views,
   title,
   disableToolbar,
   onChange,
-  openTo,
   ToolbarComponent,
   orientation,
   ...other
-}) => {
+}: PickerProps<T>) {
   const classes = useStyles();
   const isLandscape = useIsLandscape(views, orientation);
   const { openView, setOpenView, handleChangeAndOpenNext } = useViews(views, openTo, onChange);
@@ -134,8 +137,4 @@ export const Picker: React.FunctionComponent<PickerProps> = ({
       </div>
     </div>
   );
-};
-
-Picker.defaultProps = {
-  ...datePickerDefaultProps,
-};
+}

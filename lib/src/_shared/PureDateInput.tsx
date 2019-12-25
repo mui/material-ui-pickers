@@ -9,6 +9,7 @@ export type NotOverridableProps =
   | 'format'
   | 'validationError'
   | 'format'
+  | 'rawValue'
   | 'forwardedRef';
 
 export interface PureDateInputProps

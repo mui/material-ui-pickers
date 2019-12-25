@@ -27,7 +27,7 @@ export interface DateTimePickerViewsProps extends BaseDateTimePickerProps {
 
 export type DateTimePickerProps = WithDateInputProps &
   DateTimePickerViewsProps &
-  WithViewsProps<DateTimePickerView>;
+  WithViewsProps<'year' | 'date' | 'month' | 'hours' | 'minutes' | 'seconds'>;
 
 function useOptions(props: DateTimePickerProps) {
   const utils = useUtils();

@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { DateTimePickerView } from '../DateTimePicker';
 import { BasePickerProps } from '../typings/BasePicker';
-import { Picker, ToolbarComponentProps } from './Picker';
 import { ExtendWrapper, Wrapper } from '../wrappers/Wrapper';
 import { DateValidationProps } from '../_helpers/text-field-helper';
 import { KeyboardDateInputProps } from '../_shared/KeyboardDateInput';
+import { Picker, ToolbarComponentProps, PickerViewProps } from './Picker';
 import { StateHookOptions, usePickerState } from '../_shared/hooks/usePickerState';
 
 export interface WithViewsProps<T extends DateTimePickerView> {
@@ -27,13 +27,20 @@ export interface MakePickerOptions<T extends unknown> {
   DefaultToolbarComponent: React.ComponentType<ToolbarComponentProps>;
 }
 
-export function makePickerWithState<T extends any>({
+export interface ExportedByPickerProps {
+  ToolbarComponent?: React.ComponentType<ToolbarComponentProps>;
+}
+
+export function makePickerWithState<
+  T extends Omit<PickerViewProps<any>, 'ToolbarComponent'> &
+    Pick<BasePickerProps, 'onChange' | 'value'>
+>({
   Input,
   useOptions,
   getCustomProps,
   DefaultToolbarComponent,
-}: MakePickerOptions<T>): React.FC<T> {
-  function PickerWithState(props: T) {
+}: MakePickerOptions<T>): React.FC<T & ExportedByPickerProps> {
+  function PickerWithState(props: T & ExportedByPickerProps) {
     const {
       allowKeyboardControl,
       ampm,
@@ -45,19 +52,15 @@ export function makePickerWithState<T extends any>({
       disableToolbar,
       emptyLabel,
       format,
-      forwardedRef,
       hideTabs,
       initialFocusedDate,
-      invalidDateMessage,
       invalidLabel,
       labelFunc,
       leftArrowButtonProps,
       leftArrowIcon,
       loadingIndicator,
       maxDate,
-      maxDateMessage,
       minDate,
-      minDateMessage,
       minutesStep,
       onAccept,
       onChange,

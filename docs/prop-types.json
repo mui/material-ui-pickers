@@ -391,7 +391,7 @@
       },
       "required": false,
       "type": {
-        "name": "ComponentClass<ToolbarComponentProps, any> | FunctionComponent<ToolbarComponentProps>"
+        "name": "ComponentClass<ToolbarComponentProps<any>, any> | FunctionComponent<ToolbarComponentProps<any>>"
       }
     },
     "title": {
@@ -568,7 +568,7 @@
       },
       "required": false,
       "type": {
-        "name": "DatePickerView[]"
+        "name": "(\"date\" | \"year\" | \"month\")[]"
       }
     },
     "openTo": {
@@ -872,7 +872,7 @@
       },
       "required": false,
       "type": {
-        "name": "ComponentClass<ToolbarComponentProps, any> | FunctionComponent<ToolbarComponentProps>"
+        "name": "ComponentClass<ToolbarComponentProps<any>, any> | FunctionComponent<ToolbarComponentProps<any>>"
       }
     },
     "title": {
@@ -1049,7 +1049,7 @@
       },
       "required": false,
       "type": {
-        "name": "DatePickerView[]"
+        "name": "(\"date\" | \"year\" | \"month\")[]"
       }
     },
     "openTo": {
@@ -1122,7 +1122,7 @@
       },
       "required": false,
       "type": {
-        "name": "TimePickerView[]"
+        "name": "(\"hours\" | \"minutes\" | \"seconds\")[]"
       }
     },
     "openTo": {
@@ -1424,7 +1424,7 @@
       },
       "required": false,
       "type": {
-        "name": "ComponentClass<ToolbarComponentProps, any> | FunctionComponent<ToolbarComponentProps>"
+        "name": "ComponentClass<ToolbarComponentProps<any>, any> | FunctionComponent<ToolbarComponentProps<any>>"
       }
     },
     "title": {
@@ -1648,7 +1648,7 @@
       },
       "required": false,
       "type": {
-        "name": "TimePickerView[]"
+        "name": "(\"hours\" | \"minutes\" | \"seconds\")[]"
       }
     },
     "openTo": {
@@ -1950,7 +1950,7 @@
       },
       "required": false,
       "type": {
-        "name": "ComponentClass<ToolbarComponentProps, any> | FunctionComponent<ToolbarComponentProps>"
+        "name": "ComponentClass<ToolbarComponentProps<any>, any> | FunctionComponent<ToolbarComponentProps<any>>"
       }
     },
     "title": {
@@ -2405,7 +2405,7 @@
       },
       "required": false,
       "type": {
-        "name": "ComponentClass<ToolbarComponentProps, any> | FunctionComponent<ToolbarComponentProps>"
+        "name": "ComponentClass<ToolbarComponentProps<any>, any> | FunctionComponent<ToolbarComponentProps<any>>"
       }
     },
     "title": {
@@ -2888,7 +2888,7 @@
       },
       "required": false,
       "type": {
-        "name": "DateTimePickerView[]"
+        "name": "(\"date\" | \"year\" | \"month\" | \"hours\" | \"minutes\" | \"seconds\")[]"
       }
     },
     "openTo": {

@@ -46,7 +46,7 @@ export interface BaseDatePickerProps extends ExportedCalendarProps {
   onYearChange?: (date: MaterialUiPickersDate) => void;
 }
 
-type DatePickerProps = WithDateInputProps & WithViewsProps<DatePickerView>;
+type DatePickerProps = WithDateInputProps & WithViewsProps<'year' | 'date' | 'month'>;
 
 function useOptions(props: DatePickerProps) {
   const utils = useUtils();

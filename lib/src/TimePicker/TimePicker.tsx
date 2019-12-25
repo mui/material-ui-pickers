@@ -15,7 +15,7 @@ type TimePickerView = 'hours' | 'minutes' | 'seconds';
 
 export interface TimePickerProps
   extends BaseClockProps,
-    WithViewsProps<TimePickerView>,
+    WithViewsProps<'hours' | 'minutes' | 'seconds'>,
     WithDateInputProps {}
 
 const defaultProps = {
