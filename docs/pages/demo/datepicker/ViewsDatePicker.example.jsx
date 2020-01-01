@@ -24,7 +24,6 @@ function YearMonthPicker() {
       />
 
       <DatePicker
-        variant="inline"
         openTo="year"
         views={['year', 'month']}
         label="Year and Month"

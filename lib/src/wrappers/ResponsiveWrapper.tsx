@@ -6,7 +6,7 @@ import { Breakpoint } from '@material-ui/core/styles/createBreakpoints';
 
 export interface ResponsiveWrapperProps extends InlineWrapperProps, ModalWrapperProps {
   /** Breakpoint where mobile picker will be changed to desktop
-   * @default 'xs'
+   * @default 'sm'
    */
   desktopModeBreakpoint?: Breakpoint;
 }

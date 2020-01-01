@@ -24,8 +24,6 @@ export interface DateInputProps
   openPicker: () => void;
   validationError?: React.ReactNode;
   inputValue: string;
-  inputProps?: TextFieldProps['inputProps'];
-  InputProps?: TextFieldProps['InputProps'];
   /** Override input component */
   TextFieldComponent?: React.ComponentType<TextFieldProps>;
   /** Icon displaying for open picker button */

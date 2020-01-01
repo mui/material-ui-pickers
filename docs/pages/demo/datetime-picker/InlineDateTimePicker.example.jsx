@@ -6,15 +6,9 @@ function InlineDateTimePickerDemo(props) {
 
   return (
     <>
-      <DateTimePicker
-        variant="inline"
-        label="Basic example"
-        value={selectedDate}
-        onChange={handleDateChange}
-      />
+      <DateTimePicker label="Basic example" value={selectedDate} onChange={handleDateChange} />
 
       <KeyboardDateTimePicker
-        variant="inline"
         ampm={false}
         label="With keyboard"
         value={selectedDate}

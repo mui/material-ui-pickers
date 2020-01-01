@@ -61,8 +61,9 @@ export const useStyles = makeStyles(
     },
     pickerView: {
       overflowX: 'hidden',
-      height: VIEW_HEIGHT,
       width: DIALOG_WIDTH,
+      maxHeight: VIEW_HEIGHT,
+      minHeight: VIEW_HEIGHT,
       display: 'flex',
       flexDirection: 'column',
       margin: '0 auto',

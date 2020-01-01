@@ -7,7 +7,6 @@ function InlineTimePickerDemo() {
   return (
     <Fragment>
       <TimePicker
-        variant="inline"
         label="Inline mode"
         disableToolbar
         ampmInClock
@@ -17,7 +16,6 @@ function InlineTimePickerDemo() {
 
       <KeyboardTimePicker
         ampm={false}
-        variant="inline"
         label="With keyboard"
         value={selectedDate}
         onChange={date => handleDateChange(date)}

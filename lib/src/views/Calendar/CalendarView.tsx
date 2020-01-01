@@ -92,15 +92,18 @@ function calendarStateReducer(
   }
 }
 
-const useClasses = makeStyles({
-  viewTransitionContainer: {
-    overflowY: 'auto',
+export const useStyles = makeStyles(
+  {
+    viewTransitionContainer: {
+      overflowY: 'auto',
+    },
+    gridFullHeight: {
+      flex: 1,
+      height: '100%',
+    },
   },
-  gridFullHeight: {
-    flex: 1,
-    height: '100%',
-  },
-});
+  { name: 'MuiPickersCalendarView' }
+);
 
 export const CalendarView: React.FC<CalendarViewProps> = ({
   date,
@@ -115,7 +118,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
   ...other
 }) => {
   const utils = useUtils();
-  const classes = useClasses();
+  const classes = useStyles();
   const minDate = useParsedDate(unparsedMinDate);
   const maxDate = useParsedDate(unparsedMaxDate);
   const wrapperVariant = React.useContext(WrapperVariantContext);

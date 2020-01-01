@@ -67,7 +67,7 @@ export interface CalendarProps {
 
 export const useStyles = makeStyles(theme => ({
   transitionContainer: {
-    minHeight: 36 * 6,
+    minHeight: 36 * 6 + 20,
   },
   progressContainer: {
     width: '100%',
@@ -206,7 +206,7 @@ export const Calendar: React.FC<CalendarProps> = ({
         transKey={currentMonth!.toString()}
         className={classes.transitionContainer}
       >
-        <div>
+        <div style={{ overflow: 'hidden' }}>
           {utils.getWeekArray(currentMonth).map(week => (
             <div key={`week-${week[0]!.toString()}`} className={classes.week}>
               {week.map(day => {

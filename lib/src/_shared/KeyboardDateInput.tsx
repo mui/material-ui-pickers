@@ -29,6 +29,7 @@ export const KeyboardDateInput: React.FC<DateInputProps> = ({
 }) => {
   const utils = useUtils();
   const [innerInputValue, setInnerInputValue] = React.useState<string | null>(inputValue || '');
+
   const inputMask = mask || makeMaskFromFormat(format, maskChar);
   // prettier-ignore
   const formatter = React.useMemo(
