@@ -17,7 +17,7 @@ export type NotOverridableProps =
   | 'forwardedRef';
 
 export interface DateInputProps
-  extends ExtendMui<TextFieldProps, 'variant' | 'onError' | 'onChange' | 'value'> {
+  extends ExtendMui<TextFieldProps, 'onError' | 'onChange' | 'value'> {
   rawValue: ParsableDate;
   format: string;
   onChange: (date: MaterialUiPickersDate | null, keyboardInputValue?: string) => void;
@@ -70,6 +70,7 @@ export const PureDateInput: React.FC<DateInputProps> = ({
   InputProps,
   openPicker: onOpen,
   TextFieldComponent = TextField,
+  variant,
   ...other
 }) => {
   const PureDateInputProps = React.useMemo(
@@ -82,6 +83,7 @@ export const PureDateInput: React.FC<DateInputProps> = ({
 
   return (
     <TextFieldComponent
+      variant={variant!}
       error={Boolean(validationError)}
       helperText={validationError}
       {...other}

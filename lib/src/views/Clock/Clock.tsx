@@ -27,7 +27,7 @@ export const useStyles = makeStyles(
       justifyContent: 'center',
       alignItems: 'flex-end',
       position: 'relative',
-      margin: `16px 0 8px`,
+      margin: `16px 0 16px`,
     },
     clock: {
       backgroundColor: 'rgba(0,0,0,.07)',

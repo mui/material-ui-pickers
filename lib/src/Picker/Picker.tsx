@@ -67,8 +67,8 @@ export const useStyles = makeStyles(
     pickerView: {
       overflowX: 'hidden',
       width: DIALOG_WIDTH,
-      maxHeight: VIEW_HEIGHT,
       minHeight: VIEW_HEIGHT,
+      maxHeight: VIEW_HEIGHT,
       display: 'flex',
       flexDirection: 'column',
       margin: '0 auto',
@@ -76,11 +76,14 @@ export const useStyles = makeStyles(
     pickerViewLandscape: {
       padding: '0 8px',
     },
+    pickerViewNoCalendar: {
+      minHeight: 'unset',
+    },
   },
   { name: 'MuiPickersBasePicker' }
 );
 
-export function Picker<T extends PickerView>({
+export function Picker<T extends PickerView = PickerView>({
   date,
   // @ts-ignore
   openTo = 'date',
@@ -125,7 +128,12 @@ export function Picker<T extends PickerView>({
         />
       )}
 
-      <div className={clsx(classes.pickerView, { [classes.pickerViewLandscape]: isLandscape })}>
+      <div
+        className={clsx(classes.pickerView, {
+          [classes.pickerViewLandscape]: isLandscape,
+          [classes.pickerViewNoCalendar]: !views.includes('date' as any),
+        })}
+      >
         {(openView === 'year' || openView === 'month' || openView === 'date') && (
           <CalendarView
             date={date}

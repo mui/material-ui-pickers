@@ -28,50 +28,46 @@ export type DateTimePickerProps = WithDateInputProps &
   DateTimePickerViewsProps &
   WithViewsProps<'year' | 'date' | 'month' | 'hours' | 'minutes' | 'seconds'>;
 
-function useOptions(props: DateTimePickerProps) {
+function useDefaultProps({
+  ampm,
+  format,
+  orientation = 'portrait',
+  openTo = 'date',
+  views = ['year', 'date', 'hours', 'minutes'],
+}: DateTimePickerProps) {
   const utils = useUtils();
 
-  if (props.orientation !== 'portrait') {
+  if (orientation !== 'portrait') {
     throw new Error('We are not supporting custom orientation for DateTimePicker yet :(');
   }
 
   return {
-    getDefaultFormat: () =>
-      pick12hOr24hFormat(props.format, props.ampm, {
-        '12h': utils.formats.fullDateTime12h,
-        '24h': utils.formats.fullDateTime24h,
-      }),
+    ...dateTimePickerDefaultProps,
+    openTo,
+    views,
+    wider: true,
+    ampmInClock: true,
+    orientation,
+    refuse: ampm ? /[^\dap]+/gi : /[^\d]+/gi,
+    format: pick12hOr24hFormat(format, ampm, {
+      '12h': utils.formats.fullDateTime12h,
+      '24h': utils.formats.fullDateTime24h,
+    }),
   };
 }
 
 export const DateTimePicker = makePickerWithStateAndWrapper<DateTimePickerProps>(ModalWrapper, {
-  useOptions,
+  useDefaultProps,
   DefaultToolbarComponent: DateTimePickerToolbar,
 });
 
 export const KeyboardDateTimePicker = makePickerWithStateAndWrapper<DateTimePickerProps>(
   InlineWrapper,
   {
-    useOptions,
+    useDefaultProps,
     DefaultToolbarComponent: DateTimePickerToolbar,
-    getCustomProps: props => ({
-      refuse: props.ampm ? /[^\dap]+/gi : /[^\d]+/gi,
-    }),
   }
 );
 
-const defaultProps: DateTimePickerViewsProps = {
-  ...dateTimePickerDefaultProps,
-  // @ts-ignore
-  wider: true,
-  ampmInClock: true,
-  orientation: 'portrait',
-  openTo: 'date',
-  views: ['year', 'date', 'hours', 'minutes'],
-};
-
-DateTimePicker.defaultProps = defaultProps;
 DateTimePicker.displayName = 'DateTimePicker';
-
-KeyboardDateTimePicker.defaultProps = defaultProps;
 KeyboardDateTimePicker.displayName = 'DateTimePicker';

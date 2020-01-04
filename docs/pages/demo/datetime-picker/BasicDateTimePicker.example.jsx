@@ -8,7 +8,7 @@ function BasicDateTimePicker() {
     <Fragment>
       <DateTimePicker
         label="DateTimePicker"
-        inputVariant="outlined"
+        variant="outlined"
         value={selectedDate}
         onChange={handleDateChange}
       />

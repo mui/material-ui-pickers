@@ -6,18 +6,11 @@ const StaticTimePicker = () => {
 
   return (
     <>
-      <TimePicker
-        autoOk
-        variant="static"
-        openTo="hours"
-        value={date}
-        onChange={date => handleDateChange(date)}
-      />
+      <TimePicker autoOk openTo="hours" value={date} onChange={date => handleDateChange(date)} />
 
       <TimePicker
         autoOk
         ampm={false}
-        variant="static"
         orientation="landscape"
         openTo="minutes"
         value={date}

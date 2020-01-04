@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react';
-import { TimePicker, KeyboardTimePicker } from '@material-ui/pickers';
+import { TimePicker } from '@material-ui/pickers';
 
 function InlineTimePickerDemo() {
   const [selectedDate, handleDateChange] = useState('2018-01-01T00:00:00.000Z');
@@ -14,7 +14,7 @@ function InlineTimePickerDemo() {
         onChange={date => handleDateChange(date)}
       />
 
-      <KeyboardTimePicker
+      <TimePicker
         ampm={false}
         label="With keyboard"
         value={selectedDate}

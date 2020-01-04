@@ -38,7 +38,7 @@ export const DatePickerToolbar: React.FC<ToolbarComponentProps> = ({
       return utils.format(date, 'month');
     }
 
-    return utils.format(date, 'shortDate');
+    return utils.format(date, 'normalDate');
   }, [date, utils, views]);
 
   return (
