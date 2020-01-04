@@ -41,7 +41,7 @@ export function getWrapperVariant(wrapper: SomeWrapper) {
   } else if (wrapper === ModalWrapper) {
     return 'mobile';
   } else {
-    return 'responsive';
+    return null;
   }
 }
 

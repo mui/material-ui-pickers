@@ -1,6 +1,7 @@
 import { useUtils } from './useUtils';
 import { IUtils } from '@date-io/core/IUtils';
 import { useOpenState } from './useOpenState';
+import { WrapperVariant } from '../../wrappers/Wrapper';
 import { MaterialUiPickersDate } from '../../typings/date';
 import { BasePickerProps } from '../../typings/BasePicker';
 import { getDisplayDate, validate } from '../../_helpers/text-field-helper';
@@ -70,7 +71,11 @@ export function usePickerState(props: BasePickerProps) {
   const pickerProps = useMemo(
     () => ({
       date: pickerDate,
-      onChange: (newDate: MaterialUiPickersDate, isFinish = true) => {
+      onDateChange: (
+        newDate: MaterialUiPickersDate,
+        currentVariant: WrapperVariant,
+        isFinish = true
+      ) => {
         setPickerDate(newDate);
 
         if (isFinish && autoOk) {
@@ -79,10 +84,10 @@ export function usePickerState(props: BasePickerProps) {
         }
 
         // simulate autoOk, but do not close the modal
-        // if (variant === 'inline' || variant === 'static') {
-        onChange(newDate);
-        onAccept && onAccept(newDate);
-        // }
+        if (currentVariant === 'desktop' || currentVariant === 'static') {
+          onChange(newDate);
+          onAccept && onAccept(newDate);
+        }
       },
     }),
     [acceptDate, autoOk, onAccept, onChange, pickerDate]

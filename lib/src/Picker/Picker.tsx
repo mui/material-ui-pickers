@@ -1,6 +1,7 @@
 import * as React from 'react';
 import clsx from 'clsx';
 import { useViews } from '../_shared/hooks/useViews';
+import { WrapperVariant } from '../wrappers/Wrapper';
 import { makeStyles } from '@material-ui/core/styles';
 import { DateTimePickerView } from '../DateTimePicker';
 import { WithViewsProps } from './makePickerWithState';
@@ -47,7 +48,11 @@ export interface PickerViewProps<TView extends PickerView>
 
 interface PickerProps<T extends PickerView> extends PickerViewProps<T> {
   date: MaterialUiPickersDate;
-  onChange: (date: MaterialUiPickersDate, isFinish?: boolean) => void;
+  onDateChange: (
+    date: MaterialUiPickersDate,
+    currentVariant: WrapperVariant,
+    isFinish?: boolean
+  ) => void;
 }
 
 export const useStyles = makeStyles(
@@ -83,7 +88,7 @@ export function Picker<T extends PickerView>({
   views = ['year', 'month', 'date', 'hours', 'minutes', 'seconds'],
   title,
   disableToolbar,
-  onChange,
+  onDateChange,
   ToolbarComponent,
   orientation,
   ...other
@@ -91,6 +96,13 @@ export function Picker<T extends PickerView>({
   const classes = useStyles();
   const isLandscape = useIsLandscape(views, orientation);
   const wrapperVariant = React.useContext(WrapperVariantContext);
+  const onChange = React.useCallback(
+    (date: MaterialUiPickersDate, isFinish?: boolean) => {
+      onDateChange(date, wrapperVariant, isFinish);
+    },
+    [onDateChange, wrapperVariant]
+  );
+
   const { openView, setOpenView, handleChangeAndOpenNext } = useViews(views, openTo, onChange);
 
   return (
