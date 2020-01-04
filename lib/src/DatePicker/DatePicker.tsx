@@ -32,7 +32,7 @@ const datePickerConfig = {
       ...datePickerDefaultProps,
       views,
       openTo,
-      format: getFormatByViews(views!, utils),
+      format: getFormatByViews(views, utils),
     };
   },
 };

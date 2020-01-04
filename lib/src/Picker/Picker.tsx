@@ -83,11 +83,9 @@ export const useStyles = makeStyles(
   { name: 'MuiPickersBasePicker' }
 );
 
-export function Picker<T extends PickerView = PickerView>({
+export function Picker({
   date,
-  // @ts-ignore
   openTo = 'date',
-  // @ts-ignore
   views = ['year', 'month', 'date', 'hours', 'minutes', 'seconds'],
   title,
   disableToolbar,
@@ -95,7 +93,7 @@ export function Picker<T extends PickerView = PickerView>({
   ToolbarComponent,
   orientation,
   ...other
-}: PickerProps<T>) {
+}: PickerProps<PickerView>) {
   const classes = useStyles();
   const isLandscape = useIsLandscape(views, orientation);
   const wrapperVariant = React.useContext(WrapperVariantContext);
@@ -131,7 +129,7 @@ export function Picker<T extends PickerView = PickerView>({
       <div
         className={clsx(classes.pickerView, {
           [classes.pickerViewLandscape]: isLandscape,
-          [classes.pickerViewNoCalendar]: !views.includes('date' as any),
+          [classes.pickerViewNoCalendar]: !views.includes('date'),
         })}
       >
         {(openView === 'year' || openView === 'month' || openView === 'date') && (
