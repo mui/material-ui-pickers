@@ -24,13 +24,12 @@ export function useStaticState({
   ...other
 }: StaticStateOpts) {
   const { openView, setOpenView, handleChangeAndOpenNext } = useViews(views, openTo, onChange);
-  const { pickerProps, wrapperProps, inputProps } = usePickerState(
-    { value, onChange, autoOk, ...other },
-    {
-      // just a random format, mostly always not needed for users
-      getDefaultFormat: () => defaultFormat || 'MM/dd/yyyy',
-    }
-  );
+  const { pickerProps, wrapperProps, inputProps } = usePickerState({
+    value,
+    onChange,
+    autoOk,
+    ...other,
+  });
 
   return {
     currentView: openView,

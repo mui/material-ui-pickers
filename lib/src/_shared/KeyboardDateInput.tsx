@@ -25,6 +25,7 @@ export const KeyboardDateInput: React.FC<DateInputProps> = ({
   rifmFormatter,
   TextFieldComponent = TextField,
   keyboardIcon = <KeyboardIcon />,
+  variant,
   ...other
 }) => {
   const utils = useUtils();
@@ -64,6 +65,7 @@ export const KeyboardDateInput: React.FC<DateInputProps> = ({
     >
       {({ onChange, value }) => (
         <TextFieldComponent
+          variant={variant as any}
           disabled={disabled}
           error={Boolean(validationError)}
           helperText={validationError}

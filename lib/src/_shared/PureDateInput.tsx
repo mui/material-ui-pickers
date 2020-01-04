@@ -83,7 +83,7 @@ export const PureDateInput: React.FC<DateInputProps> = ({
 
   return (
     <TextFieldComponent
-      variant={variant!}
+      variant={variant as any}
       error={Boolean(validationError)}
       helperText={validationError}
       {...other}
