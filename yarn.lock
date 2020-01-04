@@ -1755,19 +1755,24 @@
   resolved "https://registry.yarnpkg.com/@date-io/core/-/core-1.3.13.tgz#90c71da493f20204b7a972929cc5c482d078b3fa"
   integrity sha512-AlEKV7TxjeK+jxWVKcCFrfYAk8spX9aCyiToFIiLPtfQbsjmRGLIhb5VZgptQcJdHtLXo7+m0DuurwFgUToQuA==
 
-"@date-io/date-fns@^1.3.0", "@date-io/date-fns@^1.3.7":
-  version "1.3.13"
-  resolved "https://registry.yarnpkg.com/@date-io/date-fns/-/date-fns-1.3.13.tgz#7798844041640ab393f7e21a7769a65d672f4735"
-  integrity sha512-yXxGzcRUPcogiMj58wVgFjc9qUYrCnnU9eLcyNbsQCmae4jPuZCDoIBR21j8ZURsM7GRtU62VOw5yNd4dDHunA==
-  dependencies:
-    "@date-io/core" "^1.3.13"
+"@date-io/core@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@date-io/core/-/core-2.0.0.tgz#3a8685b8f5ea25513327e1273a673b5477573ce9"
+  integrity sha512-Zam4FfQrRhGobLyjwM4qL9yoAZ66+jGHjXWf7ZrqRqeP/mrrVEAG2td/xHuUzCKz4xN3NzGcrd3r42p4n6UgXA==
 
-"@date-io/dayjs@^1.3.7":
-  version "1.3.13"
-  resolved "https://registry.yarnpkg.com/@date-io/dayjs/-/dayjs-1.3.13.tgz#3a9edf5a7227b31b0f00a4f640f8715626833a61"
-  integrity sha512-nD39xWYwQjDMIdpUzHIcADHxY9m1hm1DpOaRn3bc2rBdgmwQC0PfW0WYaHyGGP/6LEzEguINRbHuotMhf+T9Sg==
+"@date-io/date-fns@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@date-io/date-fns/-/date-fns-2.0.0.tgz#88eecb1351eee8fcfc54d41ab7e4c656f05f0c15"
+  integrity sha512-X3NArLJQR+0W3ycArliXWzO9RgbMoMtnJGW2BPcKDjGPtFLWWmdS/NbrX3XisEhzb2sO2kHYQqh5W/SDvdk6PQ==
   dependencies:
-    "@date-io/core" "^1.3.13"
+    "@date-io/core" "^2.0.0"
+
+"@date-io/dayjs@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@date-io/dayjs/-/dayjs-2.0.0.tgz#35e4ef4a61f4bc46977fdd055bf4ddf03c935dd6"
+  integrity sha512-HkP83c/SDMnnPgxhJgkkS+0pZs8aQYzb9vOtKHuaRSM1I18aQu3e6osrelFX/5LkSCbuYInZOlamRjI8OGIITw==
+  dependencies:
+    "@date-io/core" "^2.0.0"
 
 "@date-io/hijri@^1.3.8":
   version "1.3.13"
@@ -1776,26 +1781,33 @@
   dependencies:
     "@date-io/moment" "^1.3.13"
 
-"@date-io/jalaali@^1.3.7":
-  version "1.3.13"
-  resolved "https://registry.yarnpkg.com/@date-io/jalaali/-/jalaali-1.3.13.tgz#44759cbf6e15460104c2ebe69ffc38def3c198bd"
-  integrity sha512-CCbDFlNcu4EiL3zS6EYEmGf6Lnx0dICXdzSSochmT7ZrIWqyl9dHORNycwWsZ9EXKIM0YoZPkYhxOVQkzyCtGg==
+"@date-io/jalaali@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@date-io/jalaali/-/jalaali-2.0.0.tgz#2fdd9baa1f722947097a8b98688a6c8b8a30b21d"
+  integrity sha512-MNWHZDhEqapKF9D8xEQRo2X2H2otsz0oA13ahTriV9K5WSOIHSeefe6iCheVvlYUNJiUsAGwgcRf8aMp/BbEPw==
   dependencies:
-    "@date-io/moment" "^1.3.13"
+    "@date-io/moment" "^2.0.0"
 
-"@date-io/luxon@^1.3.0", "@date-io/luxon@^1.3.7":
-  version "1.3.13"
-  resolved "https://registry.yarnpkg.com/@date-io/luxon/-/luxon-1.3.13.tgz#68f0134bb38ef486b2ed6df01981f814c633e28a"
-  integrity sha512-9wUrJCNSMZJeYAiH+dbb45oGpnHeFP7TOH/Lt26If47gjFCkjvyINzWx+K5AGsnlP0Qosxc7hkF1yLi6ecutxw==
+"@date-io/luxon@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@date-io/luxon/-/luxon-2.0.0.tgz#17a7779c4b4ccd3de54d76f847cc54990c238161"
+  integrity sha512-A7lgHH8k58Yfgv3KO3rCG/15zfBAX7ChLnsynVe/tGMmuIbR+2IBOXz/avXUx2OjcLQbNqutI371yiyU14COPg==
   dependencies:
-    "@date-io/core" "^1.3.13"
+    "@date-io/core" "^2.0.0"
 
-"@date-io/moment@^1.3.0", "@date-io/moment@^1.3.13", "@date-io/moment@^1.3.7":
+"@date-io/moment@^1.3.13":
   version "1.3.13"
   resolved "https://registry.yarnpkg.com/@date-io/moment/-/moment-1.3.13.tgz#56c2772bc4f6675fc6970257e6033e7a7c2960f0"
   integrity sha512-3kJYusJtQuOIxq6byZlzAHoW/18iExJer9qfRF5DyyzdAk074seTuJfdofjz4RFfTd/Idk8WylOQpWtERqvFuQ==
   dependencies:
     "@date-io/core" "^1.3.13"
+
+"@date-io/moment@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@date-io/moment/-/moment-2.0.0.tgz#354e9af5f27e795216fd2c6b1cd3abf05615256a"
+  integrity sha512-7/shUYNwOn9TjFf/kAGTRnfIIseSBsNlGLzmLAUYob4eDmbpq/HiQ9arMmdLzFAhrFrqpxWbeXLW5mG3QBf0iA==
+  dependencies:
+    "@date-io/core" "^2.0.0"
 
 "@emotion/hash@^0.7.1":
   version "0.7.3"
