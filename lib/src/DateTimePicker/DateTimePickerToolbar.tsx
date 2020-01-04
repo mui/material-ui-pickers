@@ -64,14 +64,14 @@ export const DateTimePickerToolbar: React.FC<ToolbarComponentProps> = ({
             variant="subtitle1"
             onClick={() => setOpenView('year')}
             selected={openView === 'year'}
-            label={utils.getYearText(date)}
+            label={utils.format(date, 'year')}
           />
 
           <ToolbarButton
             variant="h4"
             onClick={() => setOpenView('date')}
             selected={openView === 'date'}
-            label={utils.getDateTimePickerHeaderText(date)}
+            label={utils.format(date, 'monthAndDate')}
           />
         </div>
 
@@ -80,7 +80,7 @@ export const DateTimePickerToolbar: React.FC<ToolbarComponentProps> = ({
             variant="h3"
             onClick={() => setOpenView('hours')}
             selected={openView === 'hours'}
-            label={utils.getHourText(date, ampm!)}
+            label={ampm ? utils.format(date, 'hours12h') : utils.format(date, 'hours24h')}
             typographyClassName={classes.timeTypography}
           />
 
@@ -90,7 +90,7 @@ export const DateTimePickerToolbar: React.FC<ToolbarComponentProps> = ({
             variant="h3"
             onClick={() => setOpenView('minutes')}
             selected={openView === 'minutes'}
-            label={utils.getMinuteText(date)}
+            label={utils.format(date, 'minutes')}
             typographyClassName={classes.timeTypography}
           />
         </div>

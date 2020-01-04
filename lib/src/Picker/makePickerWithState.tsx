@@ -3,10 +3,10 @@ import { MakeOptional } from '../typings/helpers';
 import { DateTimePickerView } from '../DateTimePicker';
 import { BasePickerProps } from '../typings/BasePicker';
 import { SomeWrapper, ExtendWrapper } from '../wrappers/Wrapper';
+import { usePickerState } from '../_shared/hooks/usePickerState';
 import { ExportedDateInputProps } from '../_shared/PureDateInput';
 import { DateValidationProps } from '../_helpers/text-field-helper';
 import { Picker, ToolbarComponentProps, PickerViewProps } from './Picker';
-import { StateHookOptions, usePickerState } from '../_shared/hooks/usePickerState';
 
 export interface WithViewsProps<T extends DateTimePickerView> {
   /**
@@ -20,8 +20,7 @@ export interface WithViewsProps<T extends DateTimePickerView> {
 export type WithDateInputProps = DateValidationProps & BasePickerProps & ExportedDateInputProps;
 
 export interface MakePickerOptions<T extends unknown> {
-  useOptions: (props: any) => StateHookOptions;
-  getCustomProps?: (props: T) => Partial<T>;
+  useDefaultProps: (props: T) => Partial<T> & { format: string };
   DefaultToolbarComponent: React.ComponentType<ToolbarComponentProps>;
 }
 
@@ -32,9 +31,12 @@ export function makePickerWithStateAndWrapper<
   TWrapper extends SomeWrapper = any
 >(
   Wrapper: TWrapper,
-  { useOptions, getCustomProps, DefaultToolbarComponent }: MakePickerOptions<T>
+  { useDefaultProps, DefaultToolbarComponent }: MakePickerOptions<T>
 ): React.FC<T & ExtendWrapper<TWrapper>> {
   function PickerWithState(props: T & ExtendWrapper<TWrapper>) {
+    const defaultProps = useDefaultProps(props);
+    const allProps = { ...defaultProps, ...props };
+
     const {
       allowKeyboardControl,
       ampm,
@@ -75,16 +77,13 @@ export function makePickerWithStateAndWrapper<
       views,
       title,
       ...other
-    } = props;
+    } = allProps;
 
-    const injectedProps = getCustomProps ? getCustomProps(props) : {};
-
-    const options = useOptions(props);
-    const { pickerProps, inputProps, wrapperProps } = usePickerState(props as any, options);
+    const { pickerProps, inputProps, wrapperProps } = usePickerState(allProps);
     const WrapperComponent = Wrapper as SomeWrapper;
 
     return (
-      <WrapperComponent DateInputProps={inputProps} {...injectedProps} {...wrapperProps} {...other}>
+      <WrapperComponent DateInputProps={inputProps} {...defaultProps} {...wrapperProps} {...other}>
         <Picker
           {...pickerProps}
           title={title}

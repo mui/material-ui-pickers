@@ -219,7 +219,7 @@ export const Calendar: React.FC<CalendarProps> = ({
                     current={utils.isSameDay(day, now)}
                     hidden={!isDayInCurrentMonth}
                     selected={utils.isSameDay(selectedDate, day)}
-                    children={utils.getDayText(day)}
+                    children={utils.format(day, 'dayOfMonth')}
                   />
                 );
 

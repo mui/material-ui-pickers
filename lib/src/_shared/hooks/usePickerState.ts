@@ -6,10 +6,6 @@ import { BasePickerProps } from '../../typings/BasePicker';
 import { getDisplayDate, validate } from '../../_helpers/text-field-helper';
 import { useCallback, useDebugValue, useEffect, useMemo, useState, useRef } from 'react';
 
-export interface StateHookOptions {
-  getDefaultFormat: () => string;
-}
-
 const useValueToDate = (
   utils: IUtils<MaterialUiPickersDate>,
   { value, initialFocusedDate }: BasePickerProps
@@ -20,20 +16,24 @@ const useValueToDate = (
   return date && utils.isValid(date) ? date : nowRef.current;
 };
 
-function useDateValues(props: BasePickerProps, options: StateHookOptions) {
+function useDateValues(props: BasePickerProps) {
   const utils = useUtils();
   const date = useValueToDate(utils, props);
-  const format = props.format || options.getDefaultFormat();
+  const format = props.format;
+
+  if (!format) {
+    throw new Error('format prop is required');
+  }
 
   return { date, format };
 }
 
-export function usePickerState(props: BasePickerProps, options: StateHookOptions) {
+export function usePickerState(props: BasePickerProps) {
   const { autoOk, disabled, readOnly, onAccept, onChange, onError, value } = props;
 
   const utils = useUtils();
   const { isOpen, setIsOpen } = useOpenState(props);
-  const { date, format } = useDateValues(props, options);
+  const { date, format } = useDateValues(props);
   const [pickerDate, setPickerDate] = useState(date);
 
   useEffect(() => {

@@ -29,8 +29,8 @@ function useOptions(props: TimePickerProps) {
   return {
     getDefaultFormat: () =>
       pick12hOr24hFormat(props.format, props.ampm, {
-        '12h': utils.time12hFormat,
-        '24h': utils.time24hFormat,
+        '12h': utils.formats.fullTime12h,
+        '24h': utils.formats.fullTime24h,
       }),
   };
 }

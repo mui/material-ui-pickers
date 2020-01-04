@@ -31,14 +31,14 @@ export const DatePickerToolbar: React.FC<ToolbarComponentProps> = ({
 
   const dateText = React.useMemo(() => {
     if (isYearOnlyView(views as DatePickerView[])) {
-      return utils.getYearText(date);
+      return utils.format(date, 'year');
     }
 
     if (isYearAndMonthViews(views as DatePickerView[])) {
-      return utils.getMonthText(date);
+      return utils.format(date, 'month');
     }
 
-    return utils.getDatePickerHeaderText(date);
+    return utils.format(date, 'shortDate');
   }, [date, utils, views]);
 
   return (

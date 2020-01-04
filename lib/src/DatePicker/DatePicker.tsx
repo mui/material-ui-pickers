@@ -23,17 +23,18 @@ export type DatePickerProps = BaseDatePickerProps &
   WithDateInputProps &
   WithViewsProps<'year' | 'date' | 'month'>;
 
-function useOptions(props: DatePickerProps) {
-  const utils = useUtils();
-
-  return {
-    getDefaultFormat: () => getFormatByViews(props.views!, utils),
-  };
-}
-
 const datePickerConfig = {
-  useOptions,
   DefaultToolbarComponent: DatePickerToolbar,
+  useDefaultProps: ({ openTo = 'date', views = ['year', 'date'] }: DatePickerProps) => {
+    const utils = useUtils();
+
+    return {
+      ...datePickerDefaultProps,
+      views,
+      openTo,
+      format: getFormatByViews(views!, utils),
+    };
+  },
 };
 
 export const DatePicker = makePickerWithStateAndWrapper<DatePickerProps>(
@@ -55,13 +56,3 @@ export const StaticDatePicker = makePickerWithStateAndWrapper<DatePickerProps>(
   StaticWrapper,
   datePickerConfig
 );
-
-const defaultProps = {
-  ...datePickerDefaultProps,
-  openTo: 'date' as const,
-  views: ['year', 'date'] as DatePickerView[],
-};
-
-DatePicker.defaultProps = defaultProps;
-
-DesktopDatePicker.defaultProps = defaultProps;

@@ -3007,7 +3007,7 @@
       },
       "required": false,
       "type": {
-        "name": "(date: DateIOType) => void) | (((date: DateIOType) => void) & (() => void)"
+        "name": "(date: DateIOType) => void"
       }
     },
     "onError": {
@@ -3505,7 +3505,7 @@
       },
       "required": false,
       "type": {
-        "name": "(date: DateIOType) => void) | (((date: DateIOType) => void) & (() => void)"
+        "name": "(date: DateIOType) => void"
       }
     },
     "onError": {
@@ -3932,7 +3932,7 @@
       },
       "required": false,
       "type": {
-        "name": "(date: DateIOType) => void) | (((date: DateIOType) => void) & (() => void)"
+        "name": "(date: DateIOType) => void"
       }
     },
     "onError": {

@@ -38,8 +38,8 @@ function useOptions(props: DateTimePickerProps) {
   return {
     getDefaultFormat: () =>
       pick12hOr24hFormat(props.format, props.ampm, {
-        '12h': utils.dateTime12hFormat,
-        '24h': utils.dateTime24hFormat,
+        '12h': utils.formats.fullDateTime12h,
+        '24h': utils.formats.fullDateTime24h,
       }),
   };
 }

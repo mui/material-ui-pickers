@@ -24,7 +24,7 @@ export const getDisplayDate = (
     return emptyLabel || '';
   }
 
-  return utils.isValid(date) ? utils.format(date, format) : invalidLabel!;
+  return utils.isValid(date) ? utils.formatByString(date, format) : invalidLabel!;
 };
 
 export interface BaseValidationProps {

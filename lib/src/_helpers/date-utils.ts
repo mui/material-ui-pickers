@@ -85,12 +85,12 @@ export const getFormatByViews = (
   utils: IUtils<MaterialUiPickersDate>
 ) => {
   if (isYearOnlyView(views)) {
-    return utils.yearFormat;
+    return utils.formats.year;
   }
 
   if (isYearAndMonthViews(views)) {
-    return utils.yearMonthFormat;
+    return utils.formats.monthAndYear;
   }
 
-  return utils.dateFormat;
+  return utils.formats.keyboardDate;
 };
