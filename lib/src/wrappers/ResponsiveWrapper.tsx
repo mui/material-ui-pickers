@@ -13,9 +13,30 @@ export interface ResponsiveWrapperProps extends InlineWrapperProps, ModalWrapper
 
 export const ResponsiveWrapper: React.FC<ResponsiveWrapperProps> = ({
   desktopModeBreakpoint = 'sm',
+  okLabel,
+  cancelLabel,
+  clearLabel,
+  todayLabel,
+  showTodayButton,
+  clearable,
+  DialogProps,
+  PopoverProps,
   ...other
 }) => {
   const isDesktop = useMediaQuery<Theme>(theme => theme.breakpoints.up(desktopModeBreakpoint));
 
-  return isDesktop ? <InlineWrapper {...other} /> : <ModalWrapper {...other} />;
+  return isDesktop ? (
+    <InlineWrapper PopoverProps={PopoverProps} {...other} />
+  ) : (
+    <ModalWrapper
+      okLabel={okLabel}
+      cancelLabel={cancelLabel}
+      clearLabel={clearLabel}
+      todayLabel={todayLabel}
+      showTodayButton={showTodayButton}
+      clearable={clearable}
+      DialogProps={DialogProps}
+      {...other}
+    />
+  );
 };

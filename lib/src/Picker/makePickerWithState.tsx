@@ -27,7 +27,7 @@ export interface MakePickerOptions<T extends unknown> {
 type ExportedPickerProps = MakeOptional<PickerViewProps<any>, 'ToolbarComponent'>;
 
 export function makePickerWithStateAndWrapper<
-  T extends ExportedPickerProps & Pick<BasePickerProps, 'onChange' | 'value'>,
+  T extends ExportedPickerProps & DateValidationProps & Pick<BasePickerProps, 'onChange' | 'value'>,
   TWrapper extends SomeWrapper = any
 >(
   Wrapper: TWrapper,
@@ -76,6 +76,9 @@ export function makePickerWithStateAndWrapper<
       value,
       views,
       title,
+      invalidDateMessage,
+      minDateMessage,
+      maxDateMessage,
       ...other
     } = allProps;
 
@@ -83,7 +86,7 @@ export function makePickerWithStateAndWrapper<
     const WrapperComponent = Wrapper as SomeWrapper;
 
     return (
-      <WrapperComponent DateInputProps={inputProps} {...defaultProps} {...wrapperProps} {...other}>
+      <WrapperComponent DateInputProps={inputProps} {...wrapperProps} {...other}>
         <Picker
           {...pickerProps}
           title={title}

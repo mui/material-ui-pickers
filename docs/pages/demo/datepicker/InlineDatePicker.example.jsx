@@ -22,7 +22,7 @@ function InlineDatePickerDemo(props) {
 
       <DesktopDatePicker
         autoOk
-        inputVariant="outlined"
+        variant="outlined"
         label="With keyboard"
         format={props.__willBeReplacedGetFormatString({
           moment: 'MM/DD/YYYY',

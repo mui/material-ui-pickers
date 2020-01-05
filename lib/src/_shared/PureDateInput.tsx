@@ -64,6 +64,7 @@ export const PureDateInput: React.FC<DateInputProps> = ({
   rifmFormatter,
   refuse,
   mask,
+  rawValue,
   maskChar,
   inputValue,
   validationError,
