@@ -2,9 +2,10 @@ import { useUtils } from '../_shared/hooks/useUtils';
 import { BaseClockViewProps } from '../views/Clock/ClockView';
 import { BaseDatePickerProps } from '../DatePicker/DatePicker';
 import { DateTimePickerToolbar } from './DateTimePickerToolbar';
-import { InlineWrapper, ModalWrapper } from '../wrappers/Wrapper';
+import { ResponsiveWrapper } from '../wrappers/ResponsiveWrapper';
 import { pick12hOr24hFormat } from '../_helpers/text-field-helper';
 import { dateTimePickerDefaultProps } from '../constants/prop-types';
+import { InlineWrapper, ModalWrapper, StaticWrapper } from '../wrappers/Wrapper';
 import {
   makePickerWithStateAndWrapper,
   WithDateInputProps,
@@ -26,7 +27,7 @@ export interface DateTimePickerViewsProps extends BaseDateTimePickerProps {
 
 export type DateTimePickerProps = WithDateInputProps &
   DateTimePickerViewsProps &
-  WithViewsProps<'year' | 'date' | 'month' | 'hours' | 'minutes' | 'seconds'>;
+  WithViewsProps<'year' | 'date' | 'month' | 'hours' | 'minutes'>;
 
 function useDefaultProps({
   ampm,
@@ -48,20 +49,24 @@ function useDefaultProps({
     wider: true,
     ampmInClock: true,
     orientation,
+    showToolbar: true,
     refuse: ampm ? /[^\dap]+/gi : /[^\d]+/gi,
     format: pick12hOr24hFormat(format, ampm, {
-      '12h': utils.formats.fullDateTime12h,
-      '24h': utils.formats.fullDateTime24h,
+      '12h': utils.formats.keyboardDateTime12h,
+      '24h': utils.formats.keyboardDateTime24h,
     }),
   };
 }
 
-export const DateTimePicker = makePickerWithStateAndWrapper<DateTimePickerProps>(ModalWrapper, {
-  useDefaultProps,
-  DefaultToolbarComponent: DateTimePickerToolbar,
-});
+export const DateTimePicker = makePickerWithStateAndWrapper<DateTimePickerProps>(
+  ResponsiveWrapper,
+  {
+    useDefaultProps,
+    DefaultToolbarComponent: DateTimePickerToolbar,
+  }
+);
 
-export const KeyboardDateTimePicker = makePickerWithStateAndWrapper<DateTimePickerProps>(
+export const DesktopDateTimePicker = makePickerWithStateAndWrapper<DateTimePickerProps>(
   InlineWrapper,
   {
     useDefaultProps,
@@ -69,5 +74,18 @@ export const KeyboardDateTimePicker = makePickerWithStateAndWrapper<DateTimePick
   }
 );
 
-DateTimePicker.displayName = 'DateTimePicker';
-KeyboardDateTimePicker.displayName = 'DateTimePicker';
+export const MobileDateTimePicker = makePickerWithStateAndWrapper<DateTimePickerProps>(
+  ModalWrapper,
+  {
+    useDefaultProps,
+    DefaultToolbarComponent: DateTimePickerToolbar,
+  }
+);
+
+export const StaticDateTimePicker = makePickerWithStateAndWrapper<DateTimePickerProps>(
+  StaticWrapper,
+  {
+    useDefaultProps,
+    DefaultToolbarComponent: DateTimePickerToolbar,
+  }
+);

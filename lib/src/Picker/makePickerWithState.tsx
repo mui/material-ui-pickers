@@ -45,7 +45,7 @@ export function makePickerWithStateAndWrapper<
       dateRangeIcon,
       disableFuture,
       disablePast,
-      disableToolbar,
+      showToolbar,
       emptyLabel,
       format,
       hideTabs,
@@ -96,7 +96,7 @@ export function makePickerWithStateAndWrapper<
           dateRangeIcon={dateRangeIcon}
           disableFuture={disableFuture}
           disablePast={disablePast}
-          disableToolbar={disableToolbar}
+          showToolbar={showToolbar}
           hideTabs={hideTabs}
           leftArrowButtonProps={leftArrowButtonProps}
           leftArrowIcon={leftArrowIcon}

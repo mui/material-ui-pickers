@@ -38,7 +38,7 @@ export interface PickerViewProps<TView extends PickerView>
     BaseDatePickerProps,
     BaseClockViewProps {
   title?: string;
-  disableToolbar?: boolean;
+  showToolbar?: boolean;
   ToolbarComponent: React.ComponentType<ToolbarComponentProps<any>>;
   // TODO move out, cause it is DateTimePickerOnly
   hideTabs?: boolean;
@@ -88,7 +88,7 @@ export function Picker({
   openTo = 'date',
   views = ['year', 'month', 'date', 'hours', 'minutes', 'seconds'],
   title,
-  disableToolbar,
+  showToolbar,
   onDateChange,
   ToolbarComponent,
   orientation,
@@ -105,6 +105,8 @@ export function Picker({
   );
 
   const { openView, setOpenView, handleChangeAndOpenNext } = useViews(views, openTo, onChange);
+  const toShowToolbar =
+    typeof showToolbar === 'undefined' ? wrapperVariant! == 'desktop' : showToolbar;
 
   return (
     <div
@@ -112,7 +114,7 @@ export function Picker({
         [classes.containerLandscape]: isLandscape,
       })}
     >
-      {wrapperVariant !== 'desktop' && !disableToolbar && (
+      {toShowToolbar && (
         <ToolbarComponent
           {...other}
           views={views}

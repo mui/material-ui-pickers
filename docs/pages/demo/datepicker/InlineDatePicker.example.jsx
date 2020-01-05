@@ -13,7 +13,7 @@ function InlineDatePickerDemo(props) {
       />
 
       <DesktopDatePicker
-        disableToolbar
+        showToolbar
         label="Only calendar"
         helperText="No year selection"
         value={selectedDate}

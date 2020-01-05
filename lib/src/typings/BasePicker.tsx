@@ -45,10 +45,9 @@ export interface BasePickerProps {
   /** Controlled picker open state */
   open?: boolean;
   /**
-   * Hide toolbar and show only date/time views
-   * @default false
+   * Show toolbar even in desktop mode
    */
-  disableToolbar?: boolean;
+  showToolbar?: boolean;
   /** Force rendering in particular orientation */
   orientation?: 'portrait' | 'landscape';
   /** Component that will replace default toolbar renderer */

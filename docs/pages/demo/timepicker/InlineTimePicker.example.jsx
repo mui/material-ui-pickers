@@ -8,7 +8,6 @@ function InlineTimePickerDemo() {
     <Fragment>
       <TimePicker
         label="Inline mode"
-        disableToolbar
         ampmInClock
         value={selectedDate}
         onChange={date => handleDateChange(date)}
