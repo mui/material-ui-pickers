@@ -42,7 +42,7 @@ export const YearSelection: React.FC<YearSelectionProps> = ({
   const utils = useUtils();
   const classes = useStyles();
   const wrapperVariant = React.useContext(WrapperVariantContext);
-  const selectedYearRef = React.useRef<HTMLElement>(null);
+  const selectedYearRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
     if (selectedYearRef.current && selectedYearRef.current.scrollIntoView) {

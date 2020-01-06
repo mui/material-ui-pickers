@@ -10,7 +10,7 @@ export interface YearProps {
   onSelect: (value: any) => void;
   selected?: boolean;
   value: any;
-  forwardedRef?: React.Ref<HTMLElement | null>;
+  forwardedRef?: React.Ref<HTMLDivElement>;
 }
 
 export const useStyles = makeStyles(
@@ -92,6 +92,6 @@ export const Year: React.FC<YearProps> = ({
 
 Year.displayName = 'Year';
 
-export default React.forwardRef<HTMLElement, YearProps>((props, ref) => (
+export default React.forwardRef<HTMLDivElement, YearProps>((props, ref) => (
   <Year {...props} forwardedRef={ref} />
 ));
