@@ -94,9 +94,6 @@ describe('DatePicker', () => {
       .first()
       .click();
     cy.get(`[data-day="19/03/2019"]`).click();
-    cy.get('button')
-      .contains('OK')
-      .click();
 
     cy.get(ids.maskedKeyboard).should('have.value', '03/19/2019');
   });

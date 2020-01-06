@@ -6,7 +6,7 @@ import DateFnsUtils from '@date-io/date-fns';
 import MuiPickersUtilsProvider from '../MuiPickersUtilsProvider';
 import { IUtils } from '@date-io/core/IUtils';
 import { createMuiTheme } from '@material-ui/core';
-import { ThemeProvider } from '@material-ui/styles';
+import { ThemeProvider } from '@material-ui/core/styles';
 import { MaterialUiPickersDate } from '../typings/date';
 
 interface WithUtilsProps {

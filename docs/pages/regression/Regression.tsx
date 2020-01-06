@@ -3,7 +3,7 @@ import LeftArrowIcon from '@material-ui/icons/KeyboardArrowLeft';
 import RightArrowIcon from '@material-ui/icons/KeyboardArrowRight';
 import { Grid, Typography } from '@material-ui/core';
 import { MuiPickersContext } from '@material-ui/pickers';
-import { DatePicker, KeyboardDatePicker } from '@material-ui/pickers';
+import { MobileDatePicker, DesktopDatePicker } from '@material-ui/pickers';
 import { createRegressionDay as createRegressionDayRenderer } from './RegressionDay';
 
 function Regression() {
@@ -34,11 +34,16 @@ function Regression() {
       </Typography>
 
       <Grid container justify="center" wrap="wrap">
-        <DatePicker id="basic-datepicker" {...sharedProps} />
-        <DatePicker id="clearable-datepicker" clearable {...sharedProps} />
-        <KeyboardDatePicker id="keyboard-mask-datepicker" {...sharedProps} format="MM/dd/yyyy" />
-        <DatePicker disabled id="disabled" {...sharedProps} />
-        <DatePicker readOnly id="readonly" {...sharedProps} />
+        <MobileDatePicker id="basic-datepicker" {...sharedProps} />
+        <MobileDatePicker id="clearable-datepicker" clearable {...sharedProps} />
+        <DesktopDatePicker
+          autoOk
+          id="keyboard-mask-datepicker"
+          {...sharedProps}
+          format="MM/dd/yyyy"
+        />
+        <MobileDatePicker disabled id="disabled" {...sharedProps} />
+        <MobileDatePicker readOnly id="readonly" {...sharedProps} />
       </Grid>
     </div>
   );
