@@ -75,7 +75,7 @@
     "@babel/preset-react": "^7.0.0",
     "@cypress/browserify-preprocessor": "^2.1.1",
     "@cypress/webpack-preprocessor": "^4.1.1",
-    "@date-io/core": "^1.2.0",
+    "@date-io/core": "^2.0.0",
     "@date-io/date-fns": "^2.0.0",
     "@date-io/luxon": "^2.0.0",
     "@date-io/moment": "^2.0.0",
