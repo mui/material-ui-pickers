@@ -20,16 +20,16 @@ yarn add @material-ui/pickers
 @material-ui/pickers was designed to use the date management library of your choice.
 We are providing interfaces for [moment](https://momentjs.com/), [date-fns 2](https://date-fns.org/), [luxon](https://moment.github.io/luxon/) and [dayjs](https://github.com/iamkun/dayjs).
 
-**Important:** we only support date-fns versions `v2` upwards.
+**Important:** For material-ui-pickers v3 use v1.x version of @date-io adapters.
 
 ```
-npm i @date-io/date-fns date-fns
+npm i @date-io/date-fns@1.3.7 date-fns
 // or
-npm i @date-io/moment moment
+npm i @date-io/moment@1.3.7 moment
 // or
-npm i -s @date-io/luxon luxon
+npm i -s @date-io/luxon@1.3.7luxon
 // or
-npm i -s @date-io/dayjs dayjs
+npm i -s @date-io/dayjs@1.3.7 dayjs
 ```
 
 Tell pickers which date management library it should use with `MuiPickersUtilsProvider`. This component takes a utils
