@@ -36,7 +36,10 @@ describe('e2e - DateTimePicker', () => {
     component.setProps({ value: '2018-01-01T00:00:00.000Z' });
     component.update(); // make additional react tick to update text field
 
-    const expectedString = utilsToUse.format(utilsToUse.date('2018-01-01T00:00:00.000Z'), format);
+    const expectedString = utilsToUse.formatByString(
+      utilsToUse.date('2018-01-01T00:00:00.000Z'),
+      format
+    );
     expect(component.find('input').props().value).toBe(expectedString);
   });
 

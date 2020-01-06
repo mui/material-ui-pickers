@@ -76,7 +76,12 @@ export const KeyboardDateInput: React.FC<DateInputProps> = ({
             ...InputProps,
             [`${position}Adornment`]: (
               <InputAdornment position={position} {...InputAdornmentProps}>
-                <IconButton disabled={disabled} {...KeyboardButtonProps} onClick={onOpen}>
+                <IconButton
+                  data-mui-test="open-picker-from-keyboard"
+                  disabled={disabled}
+                  {...KeyboardButtonProps}
+                  onClick={onOpen}
+                >
                   {keyboardIcon}
                 </IconButton>
               </InputAdornment>

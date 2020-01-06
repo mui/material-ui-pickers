@@ -106,7 +106,7 @@ export function Picker({
 
   const { openView, setOpenView, handleChangeAndOpenNext } = useViews(views, openTo, onChange);
   const toShowToolbar =
-    typeof showToolbar === 'undefined' ? wrapperVariant! == 'desktop' : showToolbar;
+    typeof showToolbar === 'undefined' ? wrapperVariant !== 'desktop' : showToolbar;
 
   return (
     <div
@@ -161,3 +161,5 @@ export function Picker({
     </div>
   );
 }
+
+Picker.displayName = 'Picker';
