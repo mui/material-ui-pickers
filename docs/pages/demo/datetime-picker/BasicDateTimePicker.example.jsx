@@ -7,6 +7,7 @@ function BasicDateTimePicker() {
   return (
     <Fragment>
       <DateTimePicker
+        mask="____/__/__ __:__ _P"
         label="DateTimePicker"
         variant="outlined"
         value={selectedDate}

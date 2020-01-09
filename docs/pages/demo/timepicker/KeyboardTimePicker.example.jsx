@@ -6,6 +6,7 @@ function KeyboardTimePickerExample() {
 
   return (
     <TimePicker
+      ampm
       label="Masked timepicker"
       placeholder="08:00 AM"
       mask="__:__ _M"

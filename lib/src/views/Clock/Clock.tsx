@@ -7,6 +7,7 @@ import { MaterialUiPickersDate } from '../../typings/date';
 import { getHours, getMinutes } from '../../_helpers/time-utils';
 import { useMeridiemMode } from '../../TimePicker/TimePickerToolbar';
 import { IconButton, Typography, makeStyles } from '@material-ui/core';
+import { WrapperVariantContext } from '../../wrappers/WrapperVariantContext';
 
 export interface ClockProps {
   date: MaterialUiPickersDate;
@@ -97,6 +98,7 @@ export const Clock: React.FC<ClockProps> = ({
   onChange,
 }) => {
   const classes = useStyles();
+  const wrapperVariant = React.useContext(WrapperVariantContext);
   const isMoving = React.useRef(false);
   const { meridiemMode, handleMeridiemChange } = useMeridiemMode(date, ampm, onDateChange);
 
@@ -185,7 +187,7 @@ export const Clock: React.FC<ClockProps> = ({
         {numbersElementsArray}
       </div>
 
-      {ampm && ampmInClock && (
+      {ampm && (wrapperVariant === 'desktop' || ampmInClock) && (
         <>
           <IconButton
             data-mui-test="in-clock-am-btn"
