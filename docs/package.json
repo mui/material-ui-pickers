@@ -12,6 +12,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "engines": {
+    "node": "12.x"
+  },
   "dependencies": {
     "@babel/plugin-proposal-optional-chaining": "^7.7.4",
     "@date-io/date-fns": "^2.0.0",
