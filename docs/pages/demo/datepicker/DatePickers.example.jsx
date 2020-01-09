@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react';
-import { MobileDatePicker } from '@material-ui/pickers';
+import { MobileDatePicker, DesktopDatePicker, DatePicker } from '@material-ui/pickers';
 
 function KeyboardDatePickerExample(props) {
   const [selectedDate, handleDateChange] = useState(new Date());
@@ -8,24 +8,33 @@ function KeyboardDatePickerExample(props) {
     <Fragment>
       <MobileDatePicker
         clearable
+        label="For mobile"
         value={selectedDate}
         placeholder="10/10/2018"
         onChange={date => handleDateChange(date)}
-        minDate={new Date()}
         format={props.__willBeReplacedGetFormatString({
           moment: 'MM/DD/YYYY',
           dateFns: 'MM/dd/yyyy',
         })}
       />
 
-      <MobileDatePicker
-        placeholder="2018/10/10"
+      <DesktopDatePicker
+        autoOk
+        clearable
+        label="For desktop"
+        minDate={new Date('2017-01-01')}
         value={selectedDate}
         onChange={date => handleDateChange(date)}
-        format={props.__willBeReplacedGetFormatString({
-          moment: 'YYYY/MM/DD',
-          dateFns: 'yyyy/MM/dd',
-        })}
+      />
+
+      <DatePicker
+        disableFuture
+        showTodayButton
+        label="Responsive"
+        openTo="year"
+        views={['year', 'month', 'date']}
+        value={selectedDate}
+        onChange={date => handleDateChange(date)}
       />
     </Fragment>
   );

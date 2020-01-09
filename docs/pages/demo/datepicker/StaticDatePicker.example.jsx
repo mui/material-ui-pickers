@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { DatePicker as StaticDatePicker } from '@material-ui/pickers';
+import { StaticDatePicker } from '@material-ui/pickers';
 
 const StaticDatePickerExample = () => {
   const [date, handleDateChange] = useState(new Date());
