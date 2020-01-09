@@ -45,7 +45,7 @@ export interface ModalWrapperProps extends WrapperProps {
   DialogProps?: Partial<Omit<MuiDialogProps, 'classes'>>;
 }
 
-export const ModalWrapper: React.FC<ModalWrapperProps> = ({
+export const MobileWrapper: React.FC<ModalWrapperProps> = ({
   open,
   children,
   okLabel,
@@ -94,7 +94,7 @@ export const ModalWrapper: React.FC<ModalWrapperProps> = ({
   );
 };
 
-ModalWrapper.propTypes = {
+MobileWrapper.propTypes = {
   okLabel: PropTypes.node,
   cancelLabel: PropTypes.node,
   clearLabel: PropTypes.node,
@@ -104,7 +104,7 @@ ModalWrapper.propTypes = {
   DialogProps: PropTypes.object,
 } as any;
 
-ModalWrapper.defaultProps = {
+MobileWrapper.defaultProps = {
   okLabel: 'OK',
   cancelLabel: 'Cancel',
   clearLabel: 'Clear',

@@ -1,7 +1,7 @@
 import { StaticWrapper } from './StaticWrapper';
 import { DateInputProps } from '../_shared/PureDateInput';
-import { ModalWrapper, ModalWrapperProps } from './ModalWrapper';
-import { InlineWrapper, InlineWrapperProps } from './InlineWrapper';
+import { MobileWrapper, ModalWrapperProps } from './MobileWrapper';
+import { DesktopWrapper, DesktopWrapperProps } from './DesktopWrapper';
 import { ResponsiveWrapper, ResponsiveWrapperProps } from './ResponsiveWrapper';
 
 export interface WrapperProps {
@@ -20,25 +20,25 @@ type OmitInnerWrapperProps<T extends WrapperProps> = Omit<T, keyof WrapperProps 
 export type SomeWrapper =
   | typeof ResponsiveWrapper
   | typeof StaticWrapper
-  | typeof ModalWrapper
-  | typeof InlineWrapper;
+  | typeof MobileWrapper
+  | typeof DesktopWrapper;
 
 export type ExtendWrapper<TWrapper extends SomeWrapper> = TWrapper extends typeof StaticWrapper
   ? {} // no additional props
-  : TWrapper extends typeof ModalWrapper
+  : TWrapper extends typeof MobileWrapper
   ? OmitInnerWrapperProps<ModalWrapperProps>
-  : TWrapper extends typeof InlineWrapper
-  ? OmitInnerWrapperProps<InlineWrapperProps>
+  : TWrapper extends typeof DesktopWrapper
+  ? OmitInnerWrapperProps<DesktopWrapperProps>
   : TWrapper extends typeof ResponsiveWrapper
   ? ResponsiveWrapperProps
   : never;
 
 export function getWrapperVariant(wrapper: SomeWrapper) {
-  if (wrapper === InlineWrapper) {
+  if (wrapper === DesktopWrapper) {
     return 'desktop';
   } else if (wrapper === StaticWrapper) {
     return 'static';
-  } else if (wrapper === ModalWrapper) {
+  } else if (wrapper === MobileWrapper) {
     return 'mobile';
   } else {
     return null;
@@ -47,4 +47,4 @@ export function getWrapperVariant(wrapper: SomeWrapper) {
 
 export type WrapperVariant = ReturnType<typeof getWrapperVariant>;
 
-export { StaticWrapper, ModalWrapper, InlineWrapper };
+export { StaticWrapper, MobileWrapper as ModalWrapper, DesktopWrapper as InlineWrapper };

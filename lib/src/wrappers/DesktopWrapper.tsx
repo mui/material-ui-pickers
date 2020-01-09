@@ -6,12 +6,12 @@ import { WrapperProps } from './Wrapper';
 import { WrapperVariantContext } from './WrapperVariantContext';
 import { useKeyDownHandler } from '../_shared/hooks/useKeyDown';
 
-export interface InlineWrapperProps extends WrapperProps {
+export interface DesktopWrapperProps extends WrapperProps {
   /** Popover props passed to material-ui Popover */
   PopoverProps?: Partial<PopoverProps>;
 }
 
-export const InlineWrapper: React.FC<InlineWrapperProps> = ({
+export const DesktopWrapper: React.FC<DesktopWrapperProps> = ({
   open,
   wider,
   children,
@@ -53,7 +53,7 @@ export const InlineWrapper: React.FC<InlineWrapperProps> = ({
   );
 };
 
-InlineWrapper.propTypes = {
+DesktopWrapper.propTypes = {
   onOpen: PropTypes.func,
   onClose: PropTypes.func,
   PopoverProps: PropTypes.object,
