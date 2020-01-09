@@ -38,7 +38,7 @@ function CustomDateTimePicker(props) {
       <MobileDateTimePicker
         value={selectedDate}
         onChange={date => handleDateChange(date)}
-        label="Keyboard with error handler"
+        label="With error handler"
         onError={console.log}
         minDate={new Date('2018-01-01T00:00')}
         format={props.__willBeReplacedGetFormatString({

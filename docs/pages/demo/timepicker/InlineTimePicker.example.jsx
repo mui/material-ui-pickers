@@ -1,26 +1,39 @@
 import React, { Fragment, useState } from 'react';
-import { TimePicker } from '@material-ui/pickers';
+import { TimePicker, MobileTimePicker, DesktopTimePicker } from '@material-ui/pickers';
 
-function InlineTimePickerDemo() {
-  const [selectedDate, handleDateChange] = useState('2018-01-01T00:00:00.000Z');
+function TimePickers() {
+  const [selectedDate, handleDateChange] = useState(new Date('2018-01-01T00:00:00.000Z'));
 
   return (
     <Fragment>
-      <TimePicker
-        label="Inline mode"
+      <MobileTimePicker
         ampmInClock
+        label="For mobile"
         value={selectedDate}
         onChange={date => handleDateChange(date)}
       />
 
-      <TimePicker
+      <DesktopTimePicker
+        clearable
         ampm={false}
-        label="With keyboard"
+        label="For desktop"
         value={selectedDate}
-        onChange={date => handleDateChange(date)}
+        onChange={handleDateChange}
+      />
+
+      {/* Alternative way to show am/pm */}
+      <TimePicker
+        ampm
+        ampmInClock
+        showTodayButton
+        todayLabel="now"
+        label="Responsive, with step = 5"
+        value={selectedDate}
+        minutesStep={5}
+        onChange={handleDateChange}
       />
     </Fragment>
   );
 }
 
-export default InlineTimePickerDemo;
+export default TimePickers;

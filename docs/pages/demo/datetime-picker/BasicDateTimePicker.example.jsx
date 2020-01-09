@@ -13,23 +13,6 @@ function BasicDateTimePicker() {
         value={selectedDate}
         onChange={handleDateChange}
       />
-
-      <DateTimePicker
-        autoOk
-        ampm={false}
-        disableFuture
-        value={selectedDate}
-        onChange={handleDateChange}
-        label="24h clock"
-      />
-
-      <DateTimePicker
-        value={selectedDate}
-        disablePast
-        onChange={handleDateChange}
-        label="With Today Button"
-        showTodayButton
-      />
     </Fragment>
   );
 }

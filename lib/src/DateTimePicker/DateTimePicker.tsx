@@ -30,7 +30,7 @@ export type DateTimePickerProps = WithDateInputProps &
   WithViewsProps<'year' | 'date' | 'month' | 'hours' | 'minutes'>;
 
 function useDefaultProps({
-  ampm,
+  ampm = false,
   format,
   orientation = 'portrait',
   openTo = 'date',

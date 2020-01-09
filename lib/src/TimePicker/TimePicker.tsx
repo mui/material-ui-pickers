@@ -17,7 +17,7 @@ export interface TimePickerProps
     WithDateInputProps {}
 
 function useDefaultProps({
-  ampm,
+  ampm = false,
   format,
   openTo = 'hours',
   views = ['hours', 'minutes'],
