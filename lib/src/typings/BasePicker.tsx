@@ -18,20 +18,8 @@ export interface BasePickerProps {
   disabled?: boolean;
   /** Make picker read only */
   readOnly?: boolean;
-  /** Dynamic formatter of text field value @DateIOType */
-  labelFunc?: (date: MaterialUiPickersDate, invalidLabel: string) => string;
   /** Date that will be initially highlighted if null was passed */
   initialFocusedDate?: ParsableDate;
-  /**
-   * Message displaying in text field if date is invalid (doesn't work in keyboard mode)
-   * @default 'unknown'
-   */
-  invalidLabel?: string;
-  /**
-   * Message displaying in text field, if null passed (doesn't work in keyboard mode)
-   * @default ' '
-   */
-  emptyLabel?: string;
   /** Callback fired when date is accepted @DateIOType */
   onAccept?: (date: MaterialUiPickersDate) => void;
   /** Callback fired when new error should be displayed

@@ -4,7 +4,7 @@ import { useOpenState } from './useOpenState';
 import { WrapperVariant } from '../../wrappers/Wrapper';
 import { MaterialUiPickersDate } from '../../typings/date';
 import { BasePickerProps } from '../../typings/BasePicker';
-import { getDisplayDate, validate } from '../../_helpers/text-field-helper';
+import { validate } from '../../_helpers/text-field-helper';
 import { useCallback, useDebugValue, useEffect, useMemo, useState, useRef } from 'react';
 
 const useValueToDate = (
@@ -100,17 +100,15 @@ export function usePickerState(props: BasePickerProps) {
     }
   }, [onError, validationError, value]);
 
-  const inputValue = getDisplayDate(value, format, utils, props);
   const inputProps = useMemo(
     () => ({
-      inputValue,
       onChange,
       format,
       rawValue: value,
       validationError,
       openPicker: () => !readOnly && !disabled && setIsOpen(true),
     }),
-    [disabled, format, inputValue, onChange, readOnly, setIsOpen, validationError, value]
+    [disabled, format, onChange, readOnly, setIsOpen, validationError, value]
   );
 
   const pickerState = { pickerProps, inputProps, wrapperProps };

@@ -6,11 +6,14 @@ import { Rifm } from 'rifm';
 import { useUtils } from './hooks/useUtils';
 import { DateInputProps } from './PureDateInput';
 import { KeyboardIcon } from './icons/KeyboardIcon';
-import { makeMaskFromFormat, maskedDateFormatter } from '../_helpers/text-field-helper';
+import {
+  makeMaskFromFormat,
+  maskedDateFormatter,
+  getDisplayDate,
+} from '../_helpers/text-field-helper';
 
 export const KeyboardDateInput: React.FC<DateInputProps> = ({
   rawValue,
-  inputValue,
   validationError,
   KeyboardButtonProps,
   InputAdornmentProps,
@@ -26,10 +29,21 @@ export const KeyboardDateInput: React.FC<DateInputProps> = ({
   TextFieldComponent = TextField,
   keyboardIcon = <KeyboardIcon />,
   variant,
+  emptyLabel,
+  invalidLabel,
+  labelFunc,
   ...other
 }) => {
   const utils = useUtils();
-  const [innerInputValue, setInnerInputValue] = React.useState<string | null>(inputValue || '');
+  const getInputValue = () =>
+    getDisplayDate(rawValue, utils, {
+      format,
+      emptyLabel,
+      invalidLabel,
+      labelFunc,
+    });
+
+  const [innerInputValue, setInnerInputValue] = React.useState<string | null>(getInputValue());
 
   const inputMask = mask || makeMaskFromFormat(format, maskChar);
   // prettier-ignore
@@ -40,7 +54,7 @@ export const KeyboardDateInput: React.FC<DateInputProps> = ({
 
   React.useEffect(() => {
     if (rawValue === null || utils.isValid(rawValue)) {
-      setInnerInputValue(inputValue);
+      setInnerInputValue(getInputValue());
     }
   }, [rawValue]); // eslint-disable-line
 

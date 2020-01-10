@@ -1,9 +1,11 @@
 import * as React from 'react';
 import TextField, { TextFieldProps } from '@material-ui/core/TextField';
+import { useUtils } from './hooks/useUtils';
 import { ExtendMui } from '../typings/helpers';
 import { ParsableDate } from '../constants/prop-types';
 import { MaterialUiPickersDate } from '../typings/date';
 import { IconButtonProps } from '@material-ui/core/IconButton';
+import { getDisplayDate } from '../_helpers/text-field-helper';
 import { InputAdornmentProps } from '@material-ui/core/InputAdornment';
 
 export type NotOverridableProps =
@@ -23,9 +25,20 @@ export interface DateInputProps
   onChange: (date: MaterialUiPickersDate | null, keyboardInputValue?: string) => void;
   openPicker: () => void;
   validationError?: React.ReactNode;
-  inputValue: string;
+  /** Dynamic formatter of text field value @DateIOType */
+  labelFunc?: (date: MaterialUiPickersDate, invalidLabel: string) => string;
   /** Override input component */
   TextFieldComponent?: React.ComponentType<TextFieldProps>;
+  /**
+   * Message displaying in text field, if null passed
+   * @default ' '
+   */
+  emptyLabel?: string;
+  /**
+   * Message displaying in text field if date is invalid (doesn't work in keyboard mode)
+   * @default 'unknown'
+   */
+  invalidLabel?: string;
   /** Icon displaying for open picker button */
   keyboardIcon?: React.ReactNode;
   /**
@@ -66,14 +79,17 @@ export const PureDateInput: React.FC<DateInputProps> = ({
   mask,
   rawValue,
   maskChar,
-  inputValue,
   validationError,
   InputProps,
   openPicker: onOpen,
   TextFieldComponent = TextField,
   variant,
+  emptyLabel,
+  invalidLabel,
+  labelFunc,
   ...other
 }) => {
+  const utils = useUtils();
   const PureDateInputProps = React.useMemo(
     () => ({
       ...InputProps,
@@ -81,6 +97,13 @@ export const PureDateInput: React.FC<DateInputProps> = ({
     }),
     [InputProps]
   );
+
+  const inputValue = getDisplayDate(rawValue, utils, {
+    format,
+    emptyLabel,
+    invalidLabel,
+    labelFunc,
+  });
 
   return (
     <TextFieldComponent

@@ -452,19 +452,6 @@
         "name": "boolean"
       }
     },
-    "labelFunc": {
-      "defaultValue": null,
-      "description": "Dynamic formatter of text field value",
-      "name": "labelFunc",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
-        "name": "BasePickerProps"
-      },
-      "required": false,
-      "type": {
-        "name": "(date: DateIOType, invalidLabel: string) => string"
-      }
-    },
     "initialFocusedDate": {
       "defaultValue": null,
       "description": "Date that will be initially highlighted if null was passed",
@@ -476,36 +463,6 @@
       "required": false,
       "type": {
         "name": "ParsableDate"
-      }
-    },
-    "invalidLabel": {
-      "defaultValue": {
-        "value": "'unknown'"
-      },
-      "description": "Message displaying in text field if date is invalid (doesn't work in keyboard mode)",
-      "name": "invalidLabel",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
-        "name": "BasePickerProps"
-      },
-      "required": false,
-      "type": {
-        "name": "string"
-      }
-    },
-    "emptyLabel": {
-      "defaultValue": {
-        "value": "' '"
-      },
-      "description": "Message displaying in text field, if null passed (doesn't work in keyboard mode)",
-      "name": "emptyLabel",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
-        "name": "BasePickerProps"
-      },
-      "required": false,
-      "type": {
-        "name": "string"
       }
     },
     "onAccept": {
@@ -655,6 +612,19 @@
         "name": "string"
       }
     },
+    "labelFunc": {
+      "defaultValue": null,
+      "description": "Dynamic formatter of text field value",
+      "name": "labelFunc",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
+        "name": "DateInputProps"
+      },
+      "required": false,
+      "type": {
+        "name": "(date: DateIOType, invalidLabel: string) => string"
+      }
+    },
     "TextFieldComponent": {
       "defaultValue": null,
       "description": "Override input component",
@@ -666,6 +636,36 @@
       "required": false,
       "type": {
         "name": "ComponentClass<TextFieldProps, any> | FunctionComponent<TextFieldProps>"
+      }
+    },
+    "emptyLabel": {
+      "defaultValue": {
+        "value": "' '"
+      },
+      "description": "Message displaying in text field, if null passed",
+      "name": "emptyLabel",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
+        "name": "DateInputProps"
+      },
+      "required": false,
+      "type": {
+        "name": "string"
+      }
+    },
+    "invalidLabel": {
+      "defaultValue": {
+        "value": "'unknown'"
+      },
+      "description": "Message displaying in text field if date is invalid (doesn't work in keyboard mode)",
+      "name": "invalidLabel",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
+        "name": "DateInputProps"
+      },
+      "required": false,
+      "type": {
+        "name": "string"
       }
     },
     "keyboardIcon": {
@@ -974,19 +974,6 @@
         "name": "boolean"
       }
     },
-    "labelFunc": {
-      "defaultValue": null,
-      "description": "Dynamic formatter of text field value",
-      "name": "labelFunc",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
-        "name": "BasePickerProps"
-      },
-      "required": false,
-      "type": {
-        "name": "(date: DateIOType, invalidLabel: string) => string"
-      }
-    },
     "initialFocusedDate": {
       "defaultValue": null,
       "description": "Date that will be initially highlighted if null was passed",
@@ -998,36 +985,6 @@
       "required": false,
       "type": {
         "name": "ParsableDate"
-      }
-    },
-    "invalidLabel": {
-      "defaultValue": {
-        "value": "'unknown'"
-      },
-      "description": "Message displaying in text field if date is invalid (doesn't work in keyboard mode)",
-      "name": "invalidLabel",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
-        "name": "BasePickerProps"
-      },
-      "required": false,
-      "type": {
-        "name": "string"
-      }
-    },
-    "emptyLabel": {
-      "defaultValue": {
-        "value": "' '"
-      },
-      "description": "Message displaying in text field, if null passed (doesn't work in keyboard mode)",
-      "name": "emptyLabel",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
-        "name": "BasePickerProps"
-      },
-      "required": false,
-      "type": {
-        "name": "string"
       }
     },
     "onAccept": {
@@ -1177,6 +1134,19 @@
         "name": "string"
       }
     },
+    "labelFunc": {
+      "defaultValue": null,
+      "description": "Dynamic formatter of text field value",
+      "name": "labelFunc",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
+        "name": "DateInputProps"
+      },
+      "required": false,
+      "type": {
+        "name": "(date: DateIOType, invalidLabel: string) => string"
+      }
+    },
     "TextFieldComponent": {
       "defaultValue": null,
       "description": "Override input component",
@@ -1188,6 +1158,36 @@
       "required": false,
       "type": {
         "name": "ComponentClass<TextFieldProps, any> | FunctionComponent<TextFieldProps>"
+      }
+    },
+    "emptyLabel": {
+      "defaultValue": {
+        "value": "' '"
+      },
+      "description": "Message displaying in text field, if null passed",
+      "name": "emptyLabel",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
+        "name": "DateInputProps"
+      },
+      "required": false,
+      "type": {
+        "name": "string"
+      }
+    },
+    "invalidLabel": {
+      "defaultValue": {
+        "value": "'unknown'"
+      },
+      "description": "Message displaying in text field if date is invalid (doesn't work in keyboard mode)",
+      "name": "invalidLabel",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
+        "name": "DateInputProps"
+      },
+      "required": false,
+      "type": {
+        "name": "string"
       }
     },
     "keyboardIcon": {
@@ -1399,19 +1399,6 @@
         "name": "boolean"
       }
     },
-    "labelFunc": {
-      "defaultValue": null,
-      "description": "Dynamic formatter of text field value",
-      "name": "labelFunc",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
-        "name": "BasePickerProps"
-      },
-      "required": false,
-      "type": {
-        "name": "(date: DateIOType, invalidLabel: string) => string"
-      }
-    },
     "initialFocusedDate": {
       "defaultValue": null,
       "description": "Date that will be initially highlighted if null was passed",
@@ -1423,36 +1410,6 @@
       "required": false,
       "type": {
         "name": "ParsableDate"
-      }
-    },
-    "invalidLabel": {
-      "defaultValue": {
-        "value": "'unknown'"
-      },
-      "description": "Message displaying in text field if date is invalid (doesn't work in keyboard mode)",
-      "name": "invalidLabel",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
-        "name": "BasePickerProps"
-      },
-      "required": false,
-      "type": {
-        "name": "string"
-      }
-    },
-    "emptyLabel": {
-      "defaultValue": {
-        "value": "' '"
-      },
-      "description": "Message displaying in text field, if null passed (doesn't work in keyboard mode)",
-      "name": "emptyLabel",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
-        "name": "BasePickerProps"
-      },
-      "required": false,
-      "type": {
-        "name": "string"
       }
     },
     "onAccept": {
@@ -1602,6 +1559,19 @@
         "name": "string"
       }
     },
+    "labelFunc": {
+      "defaultValue": null,
+      "description": "Dynamic formatter of text field value",
+      "name": "labelFunc",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
+        "name": "DateInputProps"
+      },
+      "required": false,
+      "type": {
+        "name": "(date: DateIOType, invalidLabel: string) => string"
+      }
+    },
     "TextFieldComponent": {
       "defaultValue": null,
       "description": "Override input component",
@@ -1613,6 +1583,36 @@
       "required": false,
       "type": {
         "name": "ComponentClass<TextFieldProps, any> | FunctionComponent<TextFieldProps>"
+      }
+    },
+    "emptyLabel": {
+      "defaultValue": {
+        "value": "' '"
+      },
+      "description": "Message displaying in text field, if null passed",
+      "name": "emptyLabel",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
+        "name": "DateInputProps"
+      },
+      "required": false,
+      "type": {
+        "name": "string"
+      }
+    },
+    "invalidLabel": {
+      "defaultValue": {
+        "value": "'unknown'"
+      },
+      "description": "Message displaying in text field if date is invalid (doesn't work in keyboard mode)",
+      "name": "invalidLabel",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
+        "name": "DateInputProps"
+      },
+      "required": false,
+      "type": {
+        "name": "string"
       }
     },
     "keyboardIcon": {

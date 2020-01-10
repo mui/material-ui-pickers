@@ -14,6 +14,7 @@ const StaticTimePickerExample = () => {
       />
 
       <StaticTimePicker
+        ampm
         orientation="landscape"
         openTo="minutes"
         value={date}

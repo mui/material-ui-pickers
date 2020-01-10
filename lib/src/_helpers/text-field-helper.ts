@@ -1,17 +1,18 @@
 import { IUtils } from '@date-io/core/IUtils';
 import { DatePickerProps } from '../DatePicker';
 import { ParsableDate } from '../constants/prop-types';
-import { BasePickerProps } from '../typings/BasePicker';
+import { MaterialUiPickersDate } from '../typings/date';
+import { DateInputProps } from '../_shared/PureDateInput';
 
 export const getDisplayDate = (
   value: ParsableDate,
-  format: string,
-  utils: IUtils<any>,
+  utils: IUtils<MaterialUiPickersDate>,
   {
-    invalidLabel,
+    format,
+    invalidLabel = '',
     emptyLabel,
     labelFunc,
-  }: Pick<BasePickerProps, 'invalidLabel' | 'emptyLabel' | 'labelFunc'>
+  }: Pick<DateInputProps, 'format' | 'invalidLabel' | 'emptyLabel' | 'labelFunc'>
 ) => {
   const date = utils.date(value);
   const isEmpty = value === null;
@@ -24,7 +25,7 @@ export const getDisplayDate = (
     return emptyLabel || '';
   }
 
-  return utils.isValid(date) ? utils.formatByString(date, format) : invalidLabel!;
+  return utils.isValid(date) ? utils.formatByString(date, format) : invalidLabel;
 };
 
 export interface BaseValidationProps {

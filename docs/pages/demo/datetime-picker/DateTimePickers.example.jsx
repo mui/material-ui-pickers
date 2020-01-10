@@ -8,7 +8,6 @@ function DateTimePickerDemo(props) {
     <>
       <MobileDateTimePicker
         autoOk
-        ampm={false}
         disableFuture
         value={selectedDate}
         onChange={handleDateChange}
@@ -16,16 +15,14 @@ function DateTimePickerDemo(props) {
       />
 
       <DesktopDateTimePicker
-        value={selectedDate}
+        ampm
         disablePast
+        ampmInClock
+        value={selectedDate}
         onChange={handleDateChange}
-        label="With Today Button"
-        showTodayButton
       />
 
       <DateTimePicker
-        ampm={false}
-        label="With keyboard"
         value={selectedDate}
         onChange={handleDateChange}
         onError={console.log}
