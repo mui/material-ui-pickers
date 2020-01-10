@@ -33,6 +33,7 @@ export const KeyboardDateInput: React.FC<DateInputProps> = ({
   invalidLabel,
   labelFunc,
   hideOpenPickerButton,
+  ignoreInvalidInputs,
   ...other
 }) => {
   const utils = useUtils();
@@ -67,6 +68,10 @@ export const KeyboardDateInput: React.FC<DateInputProps> = ({
     setInnerInputValue(finalString);
 
     const date = finalString === null ? null : utils.parse(finalString, format);
+    if (ignoreInvalidInputs && !utils.isValid(date)) {
+      return;
+    }
+
     onChange(date, finalString || undefined);
   };
 

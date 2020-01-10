@@ -51,6 +51,8 @@ export interface PickerViewProps<TView extends PickerView>
 }
 
 interface PickerProps<T extends PickerView> extends PickerViewProps<T> {
+  isMobileKeyboardViewOpen: boolean;
+  toggleMobileKeyboardView: () => void;
   DateInputProps: DateInputProps;
   date: MaterialUiPickersDate;
   onDateChange: (
@@ -94,6 +96,8 @@ export function Picker({
   ToolbarComponent,
   orientation,
   DateInputProps,
+  isMobileKeyboardViewOpen,
+  toggleMobileKeyboardView,
   ...other
 }: PickerProps<PickerView>) {
   const classes = useStyles();
@@ -106,16 +110,16 @@ export function Picker({
     [onDateChange, wrapperVariant]
   );
 
-  const {
-    isMobileKeyboardViewOpen,
-    toggleMobileKeyboardView,
-    openView,
-    setOpenView,
-    handleChangeAndOpenNext,
-  } = useViews(views, openTo, onChange);
-
   const toShowToolbar =
     typeof showToolbar === 'undefined' ? wrapperVariant !== 'desktop' : showToolbar;
+
+  const { openView, setOpenView, handleChangeAndOpenNext } = useViews({
+    views,
+    openTo,
+    onChange,
+    isMobileKeyboardViewOpen,
+    toggleMobileKeyboardView,
+  });
 
   return (
     <div

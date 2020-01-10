@@ -33,16 +33,20 @@ export function usePickerState(props: BasePickerProps) {
   const { autoOk, disabled, readOnly, onAccept, onChange, onError, value } = props;
 
   const utils = useUtils();
-  const { isOpen, setIsOpen } = useOpenState(props);
   const { date, format } = useDateValues(props);
   const [pickerDate, setPickerDate] = useState(date);
 
+  // Mobile keyboard view is a special case.
+  // When it's open picker should work like closed, cause we are just showing text field
+  const [isMobileKeyboardViewOpen, setMobileKeyboardViewOpen] = useState(false);
+  const { isOpen, setIsOpen } = useOpenState(props);
+
   useEffect(() => {
-    // if value was changed in closed state - treat it as accepted
-    if (!isOpen && !utils.isEqual(pickerDate, date)) {
+    // if value was changed in closed state or from mobile keyboard view - treat it as accepted
+    if ((!isOpen || isMobileKeyboardViewOpen) && !utils.isEqual(pickerDate, date)) {
       setPickerDate(date);
     }
-  }, [date, isOpen, pickerDate, utils]);
+  }, [date, isMobileKeyboardViewOpen, isOpen, pickerDate, utils]);
 
   const acceptDate = useCallback(
     (acceptedDate: MaterialUiPickersDate) => {
@@ -71,6 +75,15 @@ export function usePickerState(props: BasePickerProps) {
   const pickerProps = useMemo(
     () => ({
       date: pickerDate,
+      isMobileKeyboardViewOpen,
+      toggleMobileKeyboardView: () => {
+        if (!isMobileKeyboardViewOpen) {
+          // accept any partial input done by user
+          setPickerDate(pickerDate);
+        }
+
+        setMobileKeyboardViewOpen(!isMobileKeyboardViewOpen);
+      },
       onDateChange: (
         newDate: MaterialUiPickersDate,
         currentVariant: WrapperVariant,
@@ -90,7 +103,7 @@ export function usePickerState(props: BasePickerProps) {
         }
       },
     }),
-    [acceptDate, autoOk, onAccept, onChange, pickerDate]
+    [acceptDate, autoOk, isMobileKeyboardViewOpen, onAccept, onChange, pickerDate]
   );
 
   const validationError = validate(value, utils, props as any);

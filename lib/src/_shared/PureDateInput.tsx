@@ -72,6 +72,8 @@ export interface DateInputProps
    * @default false
    */
   hideOpenPickerButton?: boolean;
+  // ?? TODO when it will be possible to display "empty" date in datepicker use it instead of ignoring invalid inputs
+  ignoreInvalidInputs?: boolean;
 }
 
 export type ExportedDateInputProps = Omit<DateInputProps, NotOverridableProps>;
@@ -93,6 +95,7 @@ export const PureDateInput: React.FC<DateInputProps> = ({
   invalidLabel,
   labelFunc,
   hideOpenPickerButton,
+  ignoreInvalidInputs,
   ...other
 }) => {
   const utils = useUtils();

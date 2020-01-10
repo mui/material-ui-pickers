@@ -15,7 +15,7 @@ export const MobileKeyboardInputView: React.FC<MobileKeyboardInputViewProps> = (
   const classes = useStyles();
   return (
     <div className={classes.mobileKeyboardView}>
-      <KeyboardDateInput autoFocus fullWidth {...other} hideOpenPickerButton />
+      <KeyboardDateInput autoFocus fullWidth {...other} hideOpenPickerButton ignoreInvalidInputs />
     </div>
   );
 };

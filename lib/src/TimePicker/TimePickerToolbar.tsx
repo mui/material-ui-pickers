@@ -77,6 +77,8 @@ export const TimePickerToolbar: React.FC<ToolbarComponentProps> = ({
   isLandscape,
   setOpenView,
   ampmInClock,
+  isMobileKeyboardViewOpen,
+  toggleMobileKeyboardView,
   title = 'SELECT TIME',
 }) => {
   const utils = useUtils();
@@ -92,6 +94,8 @@ export const TimePickerToolbar: React.FC<ToolbarComponentProps> = ({
       landscapeDirection="row"
       title={title}
       isLandscape={isLandscape}
+      isMobileKeyboardViewOpen={isMobileKeyboardViewOpen}
+      toggleMobileKeyboardView={toggleMobileKeyboardView}
       penIconClassName={clsx({ [classes.penIconLandscape]: isLandscape })}
     >
       <div
