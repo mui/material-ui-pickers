@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { useMediaQuery, Theme } from '@material-ui/core';
-import { ModalWrapperProps, MobileWrapper } from './MobileWrapper';
+import { MobileWrapperProps, MobileWrapper } from './MobileWrapper';
 import { DesktopWrapperProps, DesktopWrapper } from './DesktopWrapper';
 import { Breakpoint } from '@material-ui/core/styles/createBreakpoints';
 
-export interface ResponsiveWrapperProps extends DesktopWrapperProps, ModalWrapperProps {
-  /** Breakpoint where mobile picker will be changed to desktop
+export interface ResponsiveWrapperProps extends DesktopWrapperProps, MobileWrapperProps {
+  /** Breakpoint when `Desktop` mode will be changed to `Mobile`
    * @default 'sm'
    */
   desktopModeBreakpoint?: Breakpoint;

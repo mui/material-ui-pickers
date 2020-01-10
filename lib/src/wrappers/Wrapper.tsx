@@ -1,6 +1,6 @@
 import { StaticWrapper } from './StaticWrapper';
 import { DateInputProps } from '../_shared/PureDateInput';
-import { MobileWrapper, ModalWrapperProps } from './MobileWrapper';
+import { MobileWrapper, MobileWrapperProps } from './MobileWrapper';
 import { DesktopWrapper, DesktopWrapperProps } from './DesktopWrapper';
 import { ResponsiveWrapper, ResponsiveWrapperProps } from './ResponsiveWrapper';
 
@@ -26,7 +26,7 @@ export type SomeWrapper =
 export type ExtendWrapper<TWrapper extends SomeWrapper> = TWrapper extends typeof StaticWrapper
   ? {} // no additional props
   : TWrapper extends typeof MobileWrapper
-  ? OmitInnerWrapperProps<ModalWrapperProps>
+  ? OmitInnerWrapperProps<MobileWrapperProps>
   : TWrapper extends typeof DesktopWrapper
   ? OmitInnerWrapperProps<DesktopWrapperProps>
   : TWrapper extends typeof ResponsiveWrapper

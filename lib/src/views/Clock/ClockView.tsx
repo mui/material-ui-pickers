@@ -95,7 +95,7 @@ export const ClockView: React.FC<ClockViewProps> = ({
         };
 
       default:
-        throw new Error('You must provide the type for TimePickerView');
+        throw new Error('You must provide the type for ClockView');
     }
   }, [ampm, date, onHourChange, onMinutesChange, onSecondsChange, type, utils]);
 
@@ -112,7 +112,7 @@ export const ClockView: React.FC<ClockViewProps> = ({
   );
 };
 
-ClockView.displayName = 'TimePickerView';
+ClockView.displayName = 'ClockView';
 
 // @ts-ignore
 ClockView.propTypes = {

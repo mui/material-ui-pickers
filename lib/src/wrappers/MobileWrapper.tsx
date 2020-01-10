@@ -7,7 +7,7 @@ import { WrapperVariantContext } from './WrapperVariantContext';
 import { useKeyDownHandler } from '../_shared/hooks/useKeyDown';
 import { DialogProps as MuiDialogProps } from '@material-ui/core/Dialog';
 
-export interface ModalWrapperProps extends WrapperProps {
+export interface MobileWrapperProps extends WrapperProps {
   /**
    * "OK" label message
    * @default "OK"
@@ -45,7 +45,7 @@ export interface ModalWrapperProps extends WrapperProps {
   DialogProps?: Partial<Omit<MuiDialogProps, 'classes'>>;
 }
 
-export const MobileWrapper: React.FC<ModalWrapperProps> = ({
+export const MobileWrapper: React.FC<MobileWrapperProps> = ({
   open,
   children,
   okLabel,
