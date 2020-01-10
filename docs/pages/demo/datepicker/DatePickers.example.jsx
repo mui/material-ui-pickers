@@ -20,7 +20,6 @@ function KeyboardDatePickerExample(props) {
 
       <DesktopDatePicker
         autoOk
-        clearable
         label="For desktop"
         minDate={new Date('2017-01-01')}
         value={selectedDate}

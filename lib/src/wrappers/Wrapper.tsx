@@ -15,7 +15,7 @@ export interface WrapperProps {
   showTabs?: boolean;
 }
 
-type OmitInnerWrapperProps<T extends WrapperProps> = Omit<T, keyof WrapperProps | 'showTabs'>;
+export type OmitInnerWrapperProps<T extends WrapperProps> = Omit<T, keyof WrapperProps>;
 
 export type SomeWrapper =
   | typeof ResponsiveWrapper
@@ -30,7 +30,7 @@ export type ExtendWrapper<TWrapper extends SomeWrapper> = TWrapper extends typeo
   : TWrapper extends typeof DesktopWrapper
   ? OmitInnerWrapperProps<DesktopWrapperProps>
   : TWrapper extends typeof ResponsiveWrapper
-  ? ResponsiveWrapperProps
+  ? OmitInnerWrapperProps<ResponsiveWrapperProps>
   : never;
 
 export function getWrapperVariant(wrapper: SomeWrapper) {

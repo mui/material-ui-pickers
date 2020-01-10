@@ -475,7 +475,7 @@
       },
       "required": false,
       "type": {
-        "name": "(date: DateIOType) => void) | (((date: DateIOType) => void) & (() => void)"
+        "name": "(date: DateIOType) => void"
       }
     },
     "onError": {
@@ -748,6 +748,21 @@
       "required": false,
       "type": {
         "name": "(str: string) => string"
+      }
+    },
+    "hideOpenPickerButton": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "Do not render open picker button (renders only text field with validation)",
+      "name": "hideOpenPickerButton",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
+        "name": "DateInputProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
       }
     },
     "views": {
@@ -997,7 +1012,7 @@
       },
       "required": false,
       "type": {
-        "name": "(date: DateIOType) => void) | (((date: DateIOType) => void) & (() => void)"
+        "name": "(date: DateIOType) => void"
       }
     },
     "onError": {
@@ -1270,6 +1285,21 @@
       "required": false,
       "type": {
         "name": "(str: string) => string"
+      }
+    },
+    "hideOpenPickerButton": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "Do not render open picker button (renders only text field with validation)",
+      "name": "hideOpenPickerButton",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
+        "name": "DateInputProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
       }
     }
   },
@@ -1422,7 +1452,7 @@
       },
       "required": false,
       "type": {
-        "name": "(date: DateIOType) => void) | (((date: DateIOType) => void) & (() => void)"
+        "name": "(date: DateIOType) => void"
       }
     },
     "onError": {
@@ -1695,6 +1725,21 @@
       "required": false,
       "type": {
         "name": "(str: string) => string"
+      }
+    },
+    "hideOpenPickerButton": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "Do not render open picker button (renders only text field with validation)",
+      "name": "hideOpenPickerButton",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
+        "name": "DateInputProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
       }
     },
     "hideTabs": {

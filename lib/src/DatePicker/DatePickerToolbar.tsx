@@ -24,6 +24,8 @@ export const DatePickerToolbar: React.FC<ToolbarComponentProps> = ({
   date,
   views,
   isLandscape,
+  isMobileKeyboardViewOpen,
+  toggleMobileKeyboardView,
   title = 'SELECT DATE',
 }) => {
   const utils = useUtils();
@@ -42,7 +44,13 @@ export const DatePickerToolbar: React.FC<ToolbarComponentProps> = ({
   }, [date, utils, views]);
 
   return (
-    <PickerToolbar title={title} isLandscape={isLandscape} penIconClassName={classes.penIcon}>
+    <PickerToolbar
+      title={title}
+      isMobileKeyboardViewOpen={isMobileKeyboardViewOpen}
+      toggleMobileKeyboardView={toggleMobileKeyboardView}
+      isLandscape={isLandscape}
+      penIconClassName={classes.penIcon}
+    >
       <Typography
         variant="h4"
         children={dateText}

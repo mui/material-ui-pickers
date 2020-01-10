@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import clsx from 'clsx';
 import ClockPointer from './ClockPointer';
+import { VIEW_HEIGHT } from '../../constants/dimensions';
 import { ClockViewType } from '../../constants/ClockType';
 import { MaterialUiPickersDate } from '../../typings/date';
 import { getHours, getMinutes } from '../../_helpers/time-utils';
@@ -26,9 +27,9 @@ export const useStyles = makeStyles(
     container: {
       display: 'flex',
       justifyContent: 'center',
-      alignItems: 'flex-end',
       position: 'relative',
-      margin: `16px 0 16px`,
+      minHeight: VIEW_HEIGHT,
+      alignItems: 'center',
     },
     clock: {
       backgroundColor: 'rgba(0,0,0,.07)',
@@ -65,12 +66,12 @@ export const useStyles = makeStyles(
       zIndex: 1,
       left: 8,
       position: 'absolute',
-      bottom: -10,
+      bottom: 8,
     },
     pmButton: {
       zIndex: 1,
       position: 'absolute',
-      bottom: -10,
+      bottom: 8,
       right: 8,
     },
     meridiemButtonSelected: {

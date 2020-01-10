@@ -8,6 +8,7 @@ export function useViews(
   openTo: PickerView,
   onChange: (date: MaterialUiPickersDate, isFinish?: boolean) => void
 ) {
+  const [isMobileKeyboardViewOpen, setMobileKeyboardViewOpen] = React.useState(false);
   const [openView, setOpenView] = React.useState(
     openTo && arrayIncludes(views, openTo) ? openTo : views[0]
   );
@@ -31,5 +32,17 @@ export function useViews(
     [nextView, onChange, openNext]
   );
 
-  return { nextView, openNext, handleChangeAndOpenNext, openView, setOpenView };
+  const toggleMobileKeyboardView = React.useCallback(() => {
+    setMobileKeyboardViewOpen(!isMobileKeyboardViewOpen);
+  }, [isMobileKeyboardViewOpen]);
+
+  return {
+    isMobileKeyboardViewOpen,
+    toggleMobileKeyboardView,
+    nextView,
+    openNext,
+    handleChangeAndOpenNext,
+    openView,
+    setOpenView,
+  };
 }

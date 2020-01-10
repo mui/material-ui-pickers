@@ -7,12 +7,14 @@ import { DateTimePickerView } from '../DateTimePicker';
 import { WithViewsProps } from './makePickerWithState';
 import { BasePickerProps } from '../typings/BasePicker';
 import { MaterialUiPickersDate } from '../typings/date';
+import { DateInputProps } from '../_shared/PureDateInput';
 import { CalendarView } from '../views/Calendar/CalendarView';
-import { BaseDatePickerProps } from '../DatePicker/DatePicker';
 import { useIsLandscape } from '../_shared/hooks/useIsLandscape';
 import { DIALOG_WIDTH, VIEW_HEIGHT } from '../constants/dimensions';
 import { ClockView, BaseClockViewProps } from '../views/Clock/ClockView';
 import { WrapperVariantContext } from '../wrappers/WrapperVariantContext';
+import { MobileKeyboardInputView } from '../views/MobileKeyboardInputView';
+import { BaseDatePickerProps, DatePickerView } from '../DatePicker/DatePicker';
 
 export type PickerView = DateTimePickerView;
 
@@ -30,6 +32,8 @@ export type ToolbarComponentProps<T extends PickerView = any> = BaseDatePickerPr
     timeIcon?: React.ReactNode;
     isLandscape: boolean;
     ampmInClock?: boolean;
+    isMobileKeyboardViewOpen: boolean;
+    toggleMobileKeyboardView: () => void;
   };
 
 export interface PickerViewProps<TView extends PickerView>
@@ -47,6 +51,7 @@ export interface PickerViewProps<TView extends PickerView>
 }
 
 interface PickerProps<T extends PickerView> extends PickerViewProps<T> {
+  DateInputProps: DateInputProps;
   date: MaterialUiPickersDate;
   onDateChange: (
     date: MaterialUiPickersDate,
@@ -67,7 +72,6 @@ export const useStyles = makeStyles(
     pickerView: {
       overflowX: 'hidden',
       width: DIALOG_WIDTH,
-      minHeight: VIEW_HEIGHT,
       maxHeight: VIEW_HEIGHT,
       display: 'flex',
       flexDirection: 'column',
@@ -75,9 +79,6 @@ export const useStyles = makeStyles(
     },
     pickerViewLandscape: {
       padding: '0 8px',
-    },
-    pickerViewNoCalendar: {
-      minHeight: 'unset',
     },
   },
   { name: 'MuiPickersBasePicker' }
@@ -92,6 +93,7 @@ export function Picker({
   onDateChange,
   ToolbarComponent,
   orientation,
+  DateInputProps,
   ...other
 }: PickerProps<PickerView>) {
   const classes = useStyles();
@@ -104,7 +106,14 @@ export function Picker({
     [onDateChange, wrapperVariant]
   );
 
-  const { openView, setOpenView, handleChangeAndOpenNext } = useViews(views, openTo, onChange);
+  const {
+    isMobileKeyboardViewOpen,
+    toggleMobileKeyboardView,
+    openView,
+    setOpenView,
+    handleChangeAndOpenNext,
+  } = useViews(views, openTo, onChange);
+
   const toShowToolbar =
     typeof showToolbar === 'undefined' ? wrapperVariant !== 'desktop' : showToolbar;
 
@@ -125,37 +134,44 @@ export function Picker({
           openView={openView}
           title={title}
           ampmInClock={other.ampmInClock}
+          isMobileKeyboardViewOpen={isMobileKeyboardViewOpen}
+          toggleMobileKeyboardView={toggleMobileKeyboardView}
         />
       )}
 
       <div
         className={clsx(classes.pickerView, {
           [classes.pickerViewLandscape]: isLandscape,
-          [classes.pickerViewNoCalendar]: !views.includes('date'),
         })}
       >
-        {(openView === 'year' || openView === 'month' || openView === 'date') && (
-          <CalendarView
-            date={date}
-            changeView={setOpenView}
-            // @ts-ignore
-            views={views}
-            onChange={handleChangeAndOpenNext}
-            view={openView}
-            {...other}
-          />
-        )}
+        {isMobileKeyboardViewOpen ? (
+          <MobileKeyboardInputView {...DateInputProps} />
+        ) : (
+          <>
+            {(openView === 'year' || openView === 'month' || openView === 'date') && (
+              <CalendarView
+                date={date}
+                changeView={setOpenView}
+                // @ts-ignore
+                views={views}
+                onChange={handleChangeAndOpenNext}
+                view={openView as DatePickerView}
+                {...other}
+              />
+            )}
 
-        {(openView === 'hours' || openView === 'minutes' || openView === 'seconds') && (
-          <ClockView
-            {...other}
-            date={date}
-            type={openView}
-            onDateChange={onChange}
-            onHourChange={handleChangeAndOpenNext}
-            onMinutesChange={handleChangeAndOpenNext}
-            onSecondsChange={handleChangeAndOpenNext}
-          />
+            {(openView === 'hours' || openView === 'minutes' || openView === 'seconds') && (
+              <ClockView
+                {...other}
+                date={date}
+                type={openView as 'hours' | 'minutes' | 'seconds'}
+                onDateChange={onChange}
+                onHourChange={handleChangeAndOpenNext}
+                onMinutesChange={handleChangeAndOpenNext}
+                onSecondsChange={handleChangeAndOpenNext}
+              />
+            )}
+          </>
         )}
       </div>
     </div>

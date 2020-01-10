@@ -2,11 +2,12 @@ import * as React from 'react';
 import { MakeOptional } from '../typings/helpers';
 import { DateTimePickerView } from '../DateTimePicker';
 import { BasePickerProps } from '../typings/BasePicker';
-import { SomeWrapper, ExtendWrapper } from '../wrappers/Wrapper';
 import { usePickerState } from '../_shared/hooks/usePickerState';
 import { ExportedDateInputProps } from '../_shared/PureDateInput';
 import { DateValidationProps } from '../_helpers/text-field-helper';
+import { ResponsiveWrapperProps } from '../wrappers/ResponsiveWrapper';
 import { Picker, ToolbarComponentProps, PickerViewProps } from './Picker';
+import { SomeWrapper, ExtendWrapper, OmitInnerWrapperProps } from '../wrappers/Wrapper';
 
 export interface WithViewsProps<T extends DateTimePickerView> {
   /**
@@ -33,7 +34,7 @@ export function makePickerWithStateAndWrapper<
   Wrapper: TWrapper,
   { useDefaultProps, DefaultToolbarComponent }: MakePickerOptions<T>
 ): React.FC<T & ExtendWrapper<TWrapper>> {
-  function PickerWithState(props: T & ExtendWrapper<TWrapper>) {
+  function PickerWithState(props: T & Partial<OmitInnerWrapperProps<ResponsiveWrapperProps>>) {
     const defaultProps = useDefaultProps(props);
     const allProps = { ...defaultProps, ...props };
 
@@ -76,16 +77,35 @@ export function makePickerWithStateAndWrapper<
       invalidDateMessage,
       minDateMessage,
       maxDateMessage,
-      ...other
+      // WrapperProps
+      clearable,
+      clearLabel,
+      DialogProps,
+      PopoverProps,
+      okLabel,
+      cancelLabel,
+      todayLabel,
+      ...restPropsForTextField
     } = allProps;
 
     const { pickerProps, inputProps, wrapperProps } = usePickerState(allProps);
     const WrapperComponent = Wrapper as SomeWrapper;
 
     return (
-      <WrapperComponent DateInputProps={inputProps} {...wrapperProps} {...other}>
+      <WrapperComponent
+        clearable={clearable}
+        clearLabel={clearLabel}
+        DialogProps={DialogProps}
+        okLabel={okLabel}
+        todayLabel={todayLabel}
+        cancelLabel={cancelLabel}
+        DateInputProps={inputProps}
+        {...wrapperProps}
+        {...restPropsForTextField}
+      >
         <Picker
           {...pickerProps}
+          DateInputProps={{ ...inputProps, ...restPropsForTextField }}
           title={title}
           allowKeyboardControl={allowKeyboardControl}
           ampm={ampm}

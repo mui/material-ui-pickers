@@ -32,6 +32,7 @@ export const KeyboardDateInput: React.FC<DateInputProps> = ({
   emptyLabel,
   invalidLabel,
   labelFunc,
+  hideOpenPickerButton,
   ...other
 }) => {
   const utils = useUtils();
@@ -88,7 +89,9 @@ export const KeyboardDateInput: React.FC<DateInputProps> = ({
           onChange={onChange}
           InputProps={{
             ...InputProps,
-            [`${position}Adornment`]: (
+            [`${position}Adornment`]: hideOpenPickerButton ? (
+              undefined
+            ) : (
               <InputAdornment position={position} {...InputAdornmentProps}>
                 <IconButton
                   data-mui-test="open-picker-from-keyboard"

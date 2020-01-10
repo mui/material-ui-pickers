@@ -67,6 +67,11 @@ export interface DateInputProps
   KeyboardButtonProps?: Partial<IconButtonProps>;
   /** Custom formatter to be passed into Rifm component */
   rifmFormatter?: (str: string) => string;
+  /**
+   * Do not render open picker button (renders only text field with validation)
+   * @default false
+   */
+  hideOpenPickerButton?: boolean;
 }
 
 export type ExportedDateInputProps = Omit<DateInputProps, NotOverridableProps>;
@@ -87,6 +92,7 @@ export const PureDateInput: React.FC<DateInputProps> = ({
   emptyLabel,
   invalidLabel,
   labelFunc,
+  hideOpenPickerButton,
   ...other
 }) => {
   const utils = useUtils();
