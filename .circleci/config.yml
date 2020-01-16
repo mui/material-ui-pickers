@@ -11,7 +11,7 @@ defaults: &js_defaults
 
 version: 2.1
 orbs:
-  cypress: cypress-io/cypress@1.6.0
+  cypress: cypress-io/cypress@1
 
 ####################
 # Custom jobs
