@@ -2,9 +2,9 @@ import * as React from 'react';
 import makeStyles from '@material-ui/styles/makeStyles';
 import KeyboardDateInput from '../_shared/KeyboardDateInput';
 import { DateInputProps } from '../_shared/PureDateInput';
-import { MobileWrapperProps } from '../wrappers/MobileWrapper';
+import { InnerMobileWrapperProps } from '../wrappers/MobileWrapper';
 
-interface MobileKeyboardInputViewProps extends DateInputProps, MobileWrapperProps {}
+interface MobileKeyboardInputViewProps extends DateInputProps, Partial<InnerMobileWrapperProps> {}
 
 const useStyles = makeStyles(() => ({
   mobileKeyboardView: {
