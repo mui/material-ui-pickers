@@ -89,6 +89,7 @@ export const KeyboardDateInput: React.FC<DateInputProps> = ({
           disabled={disabled}
           error={Boolean(validationError)}
           helperText={validationError}
+          data-mui-test="keyboard-date-input"
           {...other}
           value={value}
           onChange={onChange}

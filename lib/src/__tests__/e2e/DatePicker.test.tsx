@@ -66,7 +66,7 @@ describe('e2e - DatePicker default year month day format', () => {
   });
 });
 
-describe('e2e - DatePicker inline variant', () => {
+describe.only('e2e - DatePicker inline variant', () => {
   let component: ReactWrapper<DatePickerProps>;
   const onChangeMock = jest.fn();
   const onCloseMock = jest.fn();

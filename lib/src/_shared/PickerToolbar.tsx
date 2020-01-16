@@ -64,6 +64,7 @@ const PickerToolbar: React.SFC<PickerToolbarProps> = ({
 
   return (
     <Toolbar
+      data-mui-test="picker-toolbar"
       className={clsx(classes.toolbar, { [classes.toolbarLandscape]: isLandscape }, className)}
       {...other}
     >
@@ -76,7 +77,12 @@ const PickerToolbar: React.SFC<PickerToolbarProps> = ({
         alignItems={isLandscape ? 'flex-start' : 'flex-end'}
       >
         {children}
-        <IconButton onClick={toggleMobileKeyboardView} className={penIconClassName} color="inherit">
+        <IconButton
+          onClick={toggleMobileKeyboardView}
+          className={penIconClassName}
+          color="inherit"
+          data-mui-test="toggle-mobile-keyboard-view"
+        >
           {isMobileKeyboardViewOpen ? (
             <KeyboardIcon color="inherit" />
           ) : (

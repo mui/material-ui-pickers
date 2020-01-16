@@ -14,7 +14,6 @@ function Regression() {
     value: date,
     onChange: (date: any) => changeDate(date),
     style: { margin: '0 10px' },
-    format: 'MMMM d',
     leftArrowIcon: <LeftArrowIcon data-arrow="left" />,
     rightArrowIcon: <RightArrowIcon data-arrow="right" />,
     renderDay: createRegressionDayRenderer(utils!),

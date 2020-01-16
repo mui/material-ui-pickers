@@ -8,6 +8,7 @@ function BasicDatePicker() {
     <DatePicker
       label="Basic example"
       value={selectedDate}
+      // DialogProps={{ 'aria-activedescendant': '12' }}
       onChange={date => handleDateChange(date)}
     />
   );

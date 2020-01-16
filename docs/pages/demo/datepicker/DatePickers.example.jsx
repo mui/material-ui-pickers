@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import { MobileDatePicker, DesktopDatePicker, DatePicker } from '@material-ui/pickers';
 
-function KeyboardDatePickerExample(props) {
+function DatePickersVariants(props) {
   const [selectedDate, handleDateChange] = useState(new Date());
 
   return (
@@ -39,4 +39,4 @@ function KeyboardDatePickerExample(props) {
   );
 }
 
-export default KeyboardDatePickerExample;
+export default DatePickersVariants;

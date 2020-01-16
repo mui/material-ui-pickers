@@ -96,6 +96,7 @@ export const PureDateInput: React.FC<DateInputProps> = ({
   labelFunc,
   hideOpenPickerButton,
   ignoreInvalidInputs,
+  KeyboardButtonProps,
   ...other
 }) => {
   const utils = useUtils();

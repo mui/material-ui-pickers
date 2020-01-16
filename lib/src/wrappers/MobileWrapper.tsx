@@ -3,11 +3,12 @@ import * as PropTypes from 'prop-types';
 import ModalDialog from '../_shared/ModalDialog';
 import { WrapperProps } from './Wrapper';
 import { PureDateInput } from '../_shared/PureDateInput';
+import { InnerDesktopWrapperProps } from './DesktopWrapper';
 import { WrapperVariantContext } from './WrapperVariantContext';
 import { useKeyDownHandler } from '../_shared/hooks/useKeyDown';
 import { DialogProps as MuiDialogProps } from '@material-ui/core/Dialog';
 
-export interface MobileWrapperProps extends WrapperProps {
+export interface InnerMobileWrapperProps {
   /**
    * "OK" label message
    * @default "OK"
@@ -45,6 +46,11 @@ export interface MobileWrapperProps extends WrapperProps {
   DialogProps?: Partial<Omit<MuiDialogProps, 'classes'>>;
 }
 
+export interface MobileWrapperProps
+  extends InnerMobileWrapperProps,
+    WrapperProps,
+    Partial<InnerDesktopWrapperProps> {}
+
 export const MobileWrapper: React.FC<MobileWrapperProps> = ({
   open,
   children,
@@ -62,6 +68,7 @@ export const MobileWrapper: React.FC<MobileWrapperProps> = ({
   onAccept,
   onDismiss,
   onSetToday,
+  PopoverProps,
   ...other
 }) => {
   const handleKeyDown = useKeyDownHandler(open, {
@@ -88,6 +95,7 @@ export const MobileWrapper: React.FC<MobileWrapperProps> = ({
         clearable={clearable}
         showTodayButton={showTodayButton}
         children={children}
+        data-mui-test="mobile-wrapper-dialog"
         {...DialogProps}
       />
     </WrapperVariantContext.Provider>

@@ -8,7 +8,7 @@
       "name": "okLabel",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
-        "name": "MobileWrapperProps"
+        "name": "InnerMobileWrapperProps"
       },
       "required": false,
       "type": {
@@ -23,7 +23,7 @@
       "name": "cancelLabel",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
-        "name": "MobileWrapperProps"
+        "name": "InnerMobileWrapperProps"
       },
       "required": false,
       "type": {
@@ -38,7 +38,7 @@
       "name": "clearLabel",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
-        "name": "MobileWrapperProps"
+        "name": "InnerMobileWrapperProps"
       },
       "required": false,
       "type": {
@@ -53,7 +53,7 @@
       "name": "todayLabel",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
-        "name": "MobileWrapperProps"
+        "name": "InnerMobileWrapperProps"
       },
       "required": false,
       "type": {
@@ -68,7 +68,7 @@
       "name": "showTodayButton",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
-        "name": "MobileWrapperProps"
+        "name": "InnerMobileWrapperProps"
       },
       "required": false,
       "type": {
@@ -83,7 +83,7 @@
       "name": "clearable",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
-        "name": "MobileWrapperProps"
+        "name": "InnerMobileWrapperProps"
       },
       "required": false,
       "type": {
@@ -96,11 +96,24 @@
       "name": "DialogProps",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
-        "name": "MobileWrapperProps"
+        "name": "InnerMobileWrapperProps"
       },
       "required": false,
       "type": {
         "name": "Partial<MuiDialogProps>"
+      }
+    },
+    "PopoverProps": {
+      "defaultValue": null,
+      "description": "Popover props passed to material-ui Popover",
+      "name": "PopoverProps",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/wrappers/DesktopWrapper.tsx",
+        "name": "InnerDesktopWrapperProps"
+      },
+      "required": false,
+      "type": {
+        "name": "Partial<PopoverProps>"
       }
     }
   },
@@ -111,11 +124,114 @@
       "name": "PopoverProps",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/wrappers/DesktopWrapper.tsx",
-        "name": "DesktopWrapperProps"
+        "name": "InnerDesktopWrapperProps"
       },
       "required": false,
       "type": {
         "name": "Partial<PopoverProps>"
+      }
+    },
+    "okLabel": {
+      "defaultValue": {
+        "value": "\"OK\""
+      },
+      "description": "\"OK\" label message",
+      "name": "okLabel",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
+        "name": "InnerMobileWrapperProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "cancelLabel": {
+      "defaultValue": {
+        "value": "\"CANCEL\""
+      },
+      "description": "\"CANCEL\" label message",
+      "name": "cancelLabel",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
+        "name": "InnerMobileWrapperProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "clearLabel": {
+      "defaultValue": {
+        "value": "\"CLEAR\""
+      },
+      "description": "\"CLEAR\" label message",
+      "name": "clearLabel",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
+        "name": "InnerMobileWrapperProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "todayLabel": {
+      "defaultValue": {
+        "value": "\"TODAY\""
+      },
+      "description": "\"TODAY\" label message",
+      "name": "todayLabel",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
+        "name": "InnerMobileWrapperProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "showTodayButton": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "If true today button will be displayed <b>Note*</b> that clear button has higher priority",
+      "name": "showTodayButton",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
+        "name": "InnerMobileWrapperProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "clearable": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "Show clear action in picker dialog",
+      "name": "clearable",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
+        "name": "InnerMobileWrapperProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "DialogProps": {
+      "defaultValue": null,
+      "description": "Props to be passed directly to material-ui Dialog",
+      "name": "DialogProps",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
+        "name": "InnerMobileWrapperProps"
+      },
+      "required": false,
+      "type": {
+        "name": "Partial<MuiDialogProps>"
       }
     }
   },

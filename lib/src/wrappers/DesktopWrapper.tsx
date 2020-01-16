@@ -3,13 +3,19 @@ import * as PropTypes from 'prop-types';
 import KeyboardDateInput from '../_shared/KeyboardDateInput';
 import Popover, { PopoverProps } from '@material-ui/core/Popover';
 import { WrapperProps } from './Wrapper';
+import { InnerMobileWrapperProps } from './MobileWrapper';
 import { WrapperVariantContext } from './WrapperVariantContext';
 import { useKeyDownHandler } from '../_shared/hooks/useKeyDown';
 
-export interface DesktopWrapperProps extends WrapperProps {
+export interface InnerDesktopWrapperProps {
   /** Popover props passed to material-ui Popover */
   PopoverProps?: Partial<PopoverProps>;
 }
+
+export interface DesktopWrapperProps
+  extends InnerDesktopWrapperProps,
+    WrapperProps,
+    Partial<InnerMobileWrapperProps> {}
 
 export const DesktopWrapper: React.FC<DesktopWrapperProps> = ({
   open,
@@ -22,6 +28,13 @@ export const DesktopWrapper: React.FC<DesktopWrapperProps> = ({
   onAccept,
   showTabs,
   DateInputProps,
+  okLabel,
+  cancelLabel,
+  clearLabel,
+  todayLabel,
+  showTodayButton,
+  clearable,
+  DialogProps,
   ...other
 }) => {
   const ref = React.useRef();
