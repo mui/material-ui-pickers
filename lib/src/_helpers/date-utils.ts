@@ -86,7 +86,7 @@ export const getFormatByViews = (views: DatePickerView[], utils: IUtils<Material
   }
 
   if (isYearAndMonthViews(views)) {
-    return utils.yearMonthFormat;
+    return utils.monthAndYear;
   }
 
   return utils.dateFormat;
