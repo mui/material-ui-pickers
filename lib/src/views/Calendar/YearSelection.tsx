@@ -23,7 +23,6 @@ export const useStyles = makeStyles(
       flexDirection: 'row',
       flexWrap: 'wrap',
       overflowY: 'auto',
-      justifyContent: 'center',
       height: '100%',
     },
   },

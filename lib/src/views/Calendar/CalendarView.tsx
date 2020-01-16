@@ -6,6 +6,7 @@ import { DatePickerView } from '../../DatePicker';
 import { SlideDirection } from './SlideTransition';
 import { Calendar, CalendarProps } from './Calendar';
 import { useUtils } from '../../_shared/hooks/useUtils';
+import { VIEW_HEIGHT } from '../../constants/dimensions';
 import { ParsableDate } from '../../constants/prop-types';
 import { MaterialUiPickersDate } from '../../typings/date';
 import { FadeTransitionGroup } from './FadeTransitionGroup';
@@ -99,6 +100,7 @@ export const useStyles = makeStyles(
     },
     gridFullHeight: {
       flex: 1,
+      minHeight: VIEW_HEIGHT - 60,
       height: '100%',
     },
   },
