@@ -24,6 +24,4 @@ export { useUtils } from './_shared/hooks/useUtils';
 
 export { usePickerState } from './_shared/hooks/usePickerState';
 
-export { useStaticState } from './_shared/hooks/useStaticState';
-
 export { default as MuiPickersUtilsProvider, MuiPickersContext } from './MuiPickersUtilsProvider';
