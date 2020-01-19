@@ -7,6 +7,7 @@ import { makeStyles } from '@material-ui/core';
 interface Notification {
   id: string;
   title: string;
+  expired?: boolean;
 }
 
 const useStyles = makeStyles({
