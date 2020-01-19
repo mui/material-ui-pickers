@@ -55,10 +55,13 @@ export function useNotification() {
         JSON.stringify([...viewedNotifications, notificationToShow.id])
       );
     }
-  }, [enqueueSnackbar, styles.notificationContainer]);
+  }, []); // eslint-disable-line
 }
 
-export const NotificationManager: React.FC = () => {
-  useNotification();
-  return null;
-};
+export const NotificationManager: React.FC = React.memo(
+  () => {
+    useNotification();
+    return null;
+  },
+  () => false
+);
