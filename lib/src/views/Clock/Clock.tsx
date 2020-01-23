@@ -5,7 +5,7 @@ import ClockType, { ClockViewType } from '../../constants/ClockType';
 import { getHours, getMinutes } from '../../_helpers/time-utils';
 import { withStyles, createStyles, WithStyles, Theme } from '@material-ui/core/styles';
 
-export interface ClockProps extends WithStyles<typeof styles> {
+export interface ClockProps extends WithStyles<keyof ReturnType<typeof styles>> {
   type: ClockViewType;
   value: number;
   onChange: (value: number, isFinish?: boolean) => void;
