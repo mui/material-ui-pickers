@@ -62,6 +62,7 @@ export const Day: React.FC<DayProps> = ({
   ...other
 }) => {
   const classes = useStyles();
+
   const className = clsx(classes.day, {
     [classes.hidden]: hidden,
     [classes.current]: current,

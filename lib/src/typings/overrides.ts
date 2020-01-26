@@ -1,4 +1,3 @@
-import { StylesHook } from '@material-ui/styles/makeStyles';
 import { styles as ClockStyles } from '../views/Clock/Clock';
 import { useStyles as DayStyles } from '../views/Calendar/Day';
 import { styles as ModalDialogStyles } from '../_shared/ModalDialog';
@@ -17,14 +16,14 @@ import { useStyles as DTHeaderStyles } from '../DateTimePicker/DateTimePickerToo
 import { useStyles as TimePickerToolbarStyles } from '../TimePicker/TimePickerToolbar';
 import { useStyles as SlideTransitionStyles } from '../views/Calendar/SlideTransition';
 import { useStyles as MuiPickersMonthSelectionStyles } from '../views/Month/MonthView';
-import { StyleRules, StyleRulesCallback, Styles } from '@material-ui/core/styles/withStyles';
 import { useStyles as MuiPickerDTToolbarStyles } from '../DateTimePicker/DateTimePickerToolbar';
+import { StyleRules, StyleRulesCallback, ClassNameMap } from '@material-ui/core/styles/withStyles';
 
 type Classes<T> = Partial<
   StyleRules<
     T extends string
       ? T
-      : T extends StylesHook<Styles<any, any, infer C>>
+      : T extends (props?: any) => ClassNameMap<infer C>
       ? C
       : T extends StyleRulesCallback<any, any, infer K>
       ? K
