@@ -1,7 +1,10 @@
+import LuxonUtils from '@date-io/luxon';
+import DateFnsUtils from '@date-io/date-fns';
+import { utilsToUse } from '../test-utils';
 import {
-  makeMaskFromFormat,
   maskedDateFormatter,
   pick12hOr24hFormat,
+  checkMaskIsValidForCurrentFormat,
 } from '../../_helpers/text-field-helper';
 
 const refuse = /[^\d]+/gi;
@@ -12,12 +15,6 @@ describe('test-field-helper', () => {
     expect(formatterFn('21')).toBe('21/__/____');
     expect(formatterFn('21-12-21')).toBe('21/12/21__');
     expect(formatterFn('21-12-2010')).toBe('21/12/2010');
-  });
-
-  test('makeMaskFromFormat', () => {
-    expect(makeMaskFromFormat('yyyy-mm-dd', '_')).toBe('____-__-__');
-    expect(makeMaskFromFormat('YYYY/LL/DD', '_')).toBe('____/__/__');
-    expect(makeMaskFromFormat('yyyy-mm-dd mm:hh', '_')).toBe('____-__-__ __:__');
   });
 
   test('pick12hOr24hFormat', () => {
@@ -31,4 +28,26 @@ describe('test-field-helper', () => {
       'HH:mm'
     );
   });
+
+  test.each`
+    format                                             | mask            | expected
+    ${utilsToUse.formats.keyboardDate}                 | ${'__/__/____'} | ${true}
+    ${utilsToUse.formats.keyboardDate}                 | ${'__.__.____'} | ${false}
+    ${utilsToUse.formats.fullTime}                     | ${'__:__ _M'}   | ${true}
+    ${{ dateFns: 'MM/dd/yyyy', moment: 'MM/DD/YYYY' }} | ${'__/__/____'} | ${true}
+  `(
+    'checkMaskIsValidFormat returns $expected for mask $mask and format $format',
+    ({ format, mask, expected }) => {
+      const formatForCurrentLib =
+        typeof format === 'string'
+          ? format
+          : utilsToUse instanceof DateFnsUtils || utilsToUse instanceof LuxonUtils
+          ? format.dateFns
+          : format.moment;
+
+      expect(
+        checkMaskIsValidForCurrentFormat(mask, formatForCurrentLib, /[^\dap]+/gi, utilsToUse)
+      ).toBe(expected);
+    }
+  );
 });

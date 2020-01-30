@@ -881,6 +881,21 @@
         "name": "boolean"
       }
     },
+    "disableMaskedInput": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "Disable mask on the keyboard, this should be used rarely. Consider passing proper mask for your format",
+      "name": "disableMaskedInput",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
+        "name": "DateInputProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
     "views": {
       "defaultValue": null,
       "description": "Array of views to show",
@@ -1417,6 +1432,21 @@
       "type": {
         "name": "boolean"
       }
+    },
+    "disableMaskedInput": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "Disable mask on the keyboard, this should be used rarely. Consider passing proper mask for your format",
+      "name": "disableMaskedInput",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
+        "name": "DateInputProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
     }
   },
   "DateTimePicker": {
@@ -1849,6 +1879,21 @@
       },
       "description": "Do not render open picker button (renders only text field with validation)",
       "name": "hideOpenPickerButton",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
+        "name": "DateInputProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "disableMaskedInput": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "Disable mask on the keyboard, this should be used rarely. Consider passing proper mask for your format",
+      "name": "disableMaskedInput",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
         "name": "DateInputProps"

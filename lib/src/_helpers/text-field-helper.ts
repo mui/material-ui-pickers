@@ -138,18 +138,35 @@ export function pick12hOr24hFormat(
   return ampm ? formats['12h'] : formats['24h'];
 }
 
-export function makeMaskFromFormat(format: string, numberMaskChar: string) {
-  return format.replace(/[a-z]/gi, numberMaskChar);
+const staticDateForValidation = new Date('2019-11-21T22:00:00.000Z');
+export function checkMaskIsValidForCurrentFormat(
+  mask: string,
+  format: string,
+  acceptRegex: RegExp,
+  utils: IUtils<any>
+) {
+  const actualFormattedDate = utils.formatByString(utils.date(staticDateForValidation), format);
+  const inferredFormatPattern = actualFormattedDate.replace(acceptRegex, '_');
+
+  const isMaskValid = inferredFormatPattern === mask;
+  // @ts-ignore
+  if (!isMaskValid && process.env.NODE_ENV !== 'production') {
+    console.warn(
+      `The mask "${mask}" you passed is not valid for the format used ${format}. Falling down to uncontrolled not-masked input.`
+    );
+  }
+
+  return isMaskValid;
 }
 
-export const maskedDateFormatter = (mask: string, numberMaskChar: string, refuse: RegExp) => (
+export const maskedDateFormatter = (mask: string, numberMaskChar: string, accept: RegExp) => (
   value: string
 ) => {
   let result = '';
-  const parsed = value.replace(refuse, '');
+  const parsed = value.match(accept) || [];
 
-  if (parsed === '') {
-    return parsed;
+  if (parsed.length === 0) {
+    return '';
   }
 
   let i = 0;

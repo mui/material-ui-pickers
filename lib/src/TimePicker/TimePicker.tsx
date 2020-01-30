@@ -28,7 +28,7 @@ function useDefaultProps({
     ...timePickerDefaultProps,
     views,
     openTo,
-    refuse: ampm ? /[^\dap]+/gi : /[^\d]+/gi,
+    refuse: ampm ? /\dap/gi : /\d/gi,
     format: pick12hOr24hFormat(format, ampm, {
       '12h': utils.formats.fullTime12h,
       '24h': utils.formats.fullTime24h,

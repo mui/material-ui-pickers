@@ -7,12 +7,13 @@ import { useUtils } from './hooks/useUtils';
 import { DateInputProps } from './PureDateInput';
 import { KeyboardIcon } from './icons/KeyboardIcon';
 import {
-  makeMaskFromFormat,
   maskedDateFormatter,
   getDisplayDate,
+  checkMaskIsValidForCurrentFormat,
 } from '../_helpers/text-field-helper';
 
 export const KeyboardDateInput: React.FC<DateInputProps> = ({
+  disableMaskedInput,
   rawValue,
   validationError,
   KeyboardButtonProps,
@@ -22,7 +23,7 @@ export const KeyboardDateInput: React.FC<DateInputProps> = ({
   InputProps,
   mask,
   maskChar = '_',
-  refuse = /[^\d]+/gi,
+  acceptRegexp = /[\d]/gi,
   format,
   disabled,
   rifmFormatter,
@@ -34,9 +35,12 @@ export const KeyboardDateInput: React.FC<DateInputProps> = ({
   labelFunc,
   hideOpenPickerButton,
   ignoreInvalidInputs,
+  onFocus,
+  onBlur,
   ...other
 }) => {
   const utils = useUtils();
+  const [isFocused, setIsFocused] = React.useState(false);
   const getInputValue = () =>
     getDisplayDate(rawValue, utils, {
       format,
@@ -46,25 +50,32 @@ export const KeyboardDateInput: React.FC<DateInputProps> = ({
     });
 
   const [innerInputValue, setInnerInputValue] = React.useState<string | null>(getInputValue());
+  const shouldUseMaskedInput = React.useMemo(() => {
+    if (disableMaskedInput) {
+      return false;
+    }
 
-  const inputMask = mask || makeMaskFromFormat(format, maskChar);
+    return mask ? checkMaskIsValidForCurrentFormat(mask, format, acceptRegexp, utils) : false;
+  }, [format, mask]); // eslint-disable-line
+
   // prettier-ignore
   const formatter = React.useMemo(
-    () => maskedDateFormatter(inputMask, maskChar, refuse),
-    [inputMask, maskChar, refuse]
+    () => shouldUseMaskedInput && mask
+       ? maskedDateFormatter(mask, maskChar, acceptRegexp)
+       : (st: string) => st,
+    [shouldUseMaskedInput, mask, maskChar, acceptRegexp]
   );
 
   React.useEffect(() => {
-    if (rawValue === null || utils.isValid(rawValue)) {
+    // If not using mask don't update input on state change when focused to avoid such weird thing:
+    // When parsing format "yyyy" with input value "2" value parsed and input value updating to "0002"
+    if ((rawValue === null || utils.isValid(rawValue)) && !isFocused) {
       setInnerInputValue(getInputValue());
     }
   }, [rawValue]); // eslint-disable-line
 
-  const position =
-    InputAdornmentProps && InputAdornmentProps.position ? InputAdornmentProps.position : 'end';
-
   const handleChange = (text: string) => {
-    const finalString = text === '' || text === inputMask ? null : text;
+    const finalString = text === '' || text === mask ? null : text;
     setInnerInputValue(finalString);
 
     const date = finalString === null ? null : utils.parse(finalString, format);
@@ -75,42 +86,62 @@ export const KeyboardDateInput: React.FC<DateInputProps> = ({
     onChange(date, finalString || undefined);
   };
 
+  const adornmentPosition = InputAdornmentProps?.position || 'end';
+  const inputProps = {
+    type: 'tel',
+    variant: variant as any,
+    disabled: disabled,
+    error: Boolean(validationError),
+    helperText: validationError,
+    'data-mui-test': 'keyboard-date-input',
+    ...other,
+    InputProps: {
+      ...InputProps,
+      [`${adornmentPosition}Adornment`]: hideOpenPickerButton ? (
+        undefined
+      ) : (
+        <InputAdornment position={adornmentPosition} {...InputAdornmentProps}>
+          <IconButton
+            data-mui-test="open-picker-from-keyboard"
+            disabled={disabled}
+            {...KeyboardButtonProps}
+            onClick={onOpen}
+          >
+            {keyboardIcon}
+          </IconButton>
+        </InputAdornment>
+      ),
+    },
+  };
+
+  if (!shouldUseMaskedInput) {
+    return (
+      <TextFieldComponent
+        value={innerInputValue || ''}
+        onChange={e => handleChange(e.currentTarget.value)}
+        {...inputProps}
+        onFocus={e => {
+          setIsFocused(true);
+          onFocus && onFocus(e);
+        }}
+        onBlur={e => {
+          setIsFocused(false);
+          onBlur && onBlur(e);
+        }}
+      />
+    );
+  }
+
   return (
     <Rifm
-      key={inputMask}
+      key={mask}
       value={innerInputValue || ''}
       onChange={handleChange}
-      refuse={refuse}
+      accept={acceptRegexp}
       format={rifmFormatter || formatter}
     >
       {({ onChange, value }) => (
-        <TextFieldComponent
-          variant={variant as any}
-          disabled={disabled}
-          error={Boolean(validationError)}
-          helperText={validationError}
-          data-mui-test="keyboard-date-input"
-          {...other}
-          value={value}
-          onChange={onChange}
-          InputProps={{
-            ...InputProps,
-            [`${position}Adornment`]: hideOpenPickerButton ? (
-              undefined
-            ) : (
-              <InputAdornment position={position} {...InputAdornmentProps}>
-                <IconButton
-                  data-mui-test="open-picker-from-keyboard"
-                  disabled={disabled}
-                  {...KeyboardButtonProps}
-                  onClick={onOpen}
-                >
-                  {keyboardIcon}
-                </IconButton>
-              </InputAdornment>
-            ),
-          }}
-        />
+        <TextFieldComponent value={value} onChange={onChange} {...inputProps} />
       )}
     </Rifm>
   );

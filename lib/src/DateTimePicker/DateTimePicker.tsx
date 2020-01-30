@@ -50,7 +50,7 @@ function useDefaultProps({
     ampmInClock: true,
     orientation,
     showToolbar: true,
-    refuse: ampm ? /[^\dap]+/gi : /[^\d]+/gi,
+    refuse: ampm ? /\dap/gi : /\d/gi,
     format: pick12hOr24hFormat(format, ampm, {
       '12h': utils.formats.keyboardDateTime12h,
       '24h': utils.formats.keyboardDateTime24h,
