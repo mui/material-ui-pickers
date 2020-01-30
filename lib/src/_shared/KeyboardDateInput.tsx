@@ -23,7 +23,7 @@ export const KeyboardDateInput: React.FC<DateInputProps> = ({
   InputProps,
   mask,
   maskChar = '_',
-  acceptRegexp = /[\d]/gi,
+  acceptRegex = /[\d]/gi,
   format,
   disabled,
   rifmFormatter,
@@ -55,15 +55,15 @@ export const KeyboardDateInput: React.FC<DateInputProps> = ({
       return false;
     }
 
-    return mask ? checkMaskIsValidForCurrentFormat(mask, format, acceptRegexp, utils) : false;
+    return mask ? checkMaskIsValidForCurrentFormat(mask, format, acceptRegex, utils) : false;
   }, [format, mask]); // eslint-disable-line
 
   // prettier-ignore
   const formatter = React.useMemo(
     () => shouldUseMaskedInput && mask
-       ? maskedDateFormatter(mask, maskChar, acceptRegexp)
+       ? maskedDateFormatter(mask, maskChar, acceptRegex)
        : (st: string) => st,
-    [shouldUseMaskedInput, mask, maskChar, acceptRegexp]
+    [shouldUseMaskedInput, mask, maskChar, acceptRegex]
   );
 
   React.useEffect(() => {
@@ -137,7 +137,7 @@ export const KeyboardDateInput: React.FC<DateInputProps> = ({
       key={mask}
       value={innerInputValue || ''}
       onChange={handleChange}
-      accept={acceptRegexp}
+      accept={acceptRegex}
       format={rifmFormatter || formatter}
     >
       {({ onChange, value }) => (

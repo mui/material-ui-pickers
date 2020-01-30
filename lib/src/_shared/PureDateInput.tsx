@@ -54,7 +54,7 @@ export interface DateInputProps
    *Regular expression to detect "accepted" symbols
    * @default /\dap/gi
    */
-  acceptRegexp?: RegExp;
+  acceptRegex?: RegExp;
   /**
    * Props to pass to keyboard input adornment
    * @type {Partial<InputAdornmentProps>}
@@ -87,7 +87,7 @@ export const PureDateInput: React.FC<DateInputProps> = ({
   onChange,
   format,
   rifmFormatter,
-  acceptRegexp: refuse,
+  acceptRegex: refuse,
   mask,
   rawValue,
   maskChar,

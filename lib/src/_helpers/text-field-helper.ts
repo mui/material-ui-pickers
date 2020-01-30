@@ -128,17 +128,21 @@ export const validate = (
 
 export function pick12hOr24hFormat(
   userFormat: string | undefined,
-  ampm: boolean | undefined = true,
-  formats: { '12h': string; '24h': string }
+  ampm: boolean | undefined,
+  formats: { localized: string; '12h': string; '24h': string }
 ) {
   if (userFormat) {
     return userFormat;
   }
 
+  if (typeof ampm === 'undefined') {
+    return formats.localized;
+  }
+
   return ampm ? formats['12h'] : formats['24h'];
 }
 
-const staticDateForValidation = new Date('2019-11-21T22:00:00.000Z');
+const staticDateForValidation = new Date('2019-11-21T22:30:00.000Z');
 export function checkMaskIsValidForCurrentFormat(
   mask: string,
   format: string,

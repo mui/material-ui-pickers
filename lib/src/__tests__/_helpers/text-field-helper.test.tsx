@@ -7,7 +7,7 @@ import {
   checkMaskIsValidForCurrentFormat,
 } from '../../_helpers/text-field-helper';
 
-const refuse = /[^\d]+/gi;
+const refuse = /[\d]/gi;
 describe('test-field-helper', () => {
   test('maskedDateFormatter', () => {
     const formatterFn = maskedDateFormatter('__/__/____', '_', refuse);
@@ -18,23 +18,25 @@ describe('test-field-helper', () => {
   });
 
   test('pick12hOr24hFormat', () => {
-    expect(pick12hOr24hFormat(undefined, true, { '12h': 'hh:mm a', '24h': 'HH:mm' })).toBe(
-      'hh:mm a'
-    );
-    expect(pick12hOr24hFormat(undefined, undefined, { '12h': 'hh:mm a', '24h': 'HH:mm' })).toBe(
-      'hh:mm a'
-    );
-    expect(pick12hOr24hFormat(undefined, false, { '12h': 'hh:mm a', '24h': 'HH:mm' })).toBe(
-      'HH:mm'
-    );
+    expect(
+      pick12hOr24hFormat(undefined, true, { localized: 'T', '12h': 'hh:mm a', '24h': 'HH:mm' })
+    ).toBe('hh:mm a');
+    expect(
+      pick12hOr24hFormat(undefined, undefined, { localized: 'T', '12h': 'hh:mm a', '24h': 'HH:mm' })
+    ).toBe('T');
+    expect(
+      pick12hOr24hFormat(undefined, false, { localized: 'T', '12h': 'hh:mm a', '24h': 'HH:mm' })
+    ).toBe('HH:mm');
   });
 
   test.each`
-    format                                             | mask            | expected
-    ${utilsToUse.formats.keyboardDate}                 | ${'__/__/____'} | ${true}
-    ${utilsToUse.formats.keyboardDate}                 | ${'__.__.____'} | ${false}
-    ${utilsToUse.formats.fullTime}                     | ${'__:__ _M'}   | ${true}
-    ${{ dateFns: 'MM/dd/yyyy', moment: 'MM/DD/YYYY' }} | ${'__/__/____'} | ${true}
+    format                                             | mask                     | expected
+    ${utilsToUse.formats.keyboardDate}                 | ${'__.__.____'}          | ${false}
+    ${utilsToUse.formats.keyboardDate}                 | ${'__/__/____'}          | ${true}
+    ${utilsToUse.formats.fullTime}                     | ${'__:__ _M'}            | ${true}
+    ${utilsToUse.formats.keyboardDateTime}             | ${'__/__/____ __:__ _M'} | ${true}
+    ${{ dateFns: 'MM/dd/yyyy', moment: 'MM/DD/YYYY' }} | ${'__/__/____'}          | ${true}
+    ${{ dateFns: 'MMMM yyyy', moment: 'MMMM YYYY' }}   | ${'__/__/____'}          | ${false}
   `(
     'checkMaskIsValidFormat returns $expected for mask $mask and format $format',
     ({ format, mask, expected }) => {
@@ -46,7 +48,7 @@ describe('test-field-helper', () => {
           : format.moment;
 
       expect(
-        checkMaskIsValidForCurrentFormat(mask, formatForCurrentLib, /[^\dap]+/gi, utilsToUse)
+        checkMaskIsValidForCurrentFormat(mask, formatForCurrentLib, /[\dap]/gi, utilsToUse)
       ).toBe(expected);
     }
   );

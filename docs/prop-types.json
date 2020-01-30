@@ -812,12 +812,12 @@
         "name": "string"
       }
     },
-    "acceptRegexp": {
+    "acceptRegex": {
       "defaultValue": {
         "value": "/\\dap/gi"
       },
       "description": "Regular expression to detect \"accepted\" symbols",
-      "name": "acceptRegexp",
+      "name": "acceptRegex",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
         "name": "DateInputProps"
@@ -1364,12 +1364,12 @@
         "name": "string"
       }
     },
-    "acceptRegexp": {
+    "acceptRegex": {
       "defaultValue": {
         "value": "/\\dap/gi"
       },
       "description": "Regular expression to detect \"accepted\" symbols",
-      "name": "acceptRegexp",
+      "name": "acceptRegex",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
         "name": "DateInputProps"
@@ -1819,12 +1819,12 @@
         "name": "string"
       }
     },
-    "acceptRegexp": {
+    "acceptRegex": {
       "defaultValue": {
         "value": "/\\dap/gi"
       },
       "description": "Regular expression to detect \"accepted\" symbols",
-      "name": "acceptRegexp",
+      "name": "acceptRegex",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
         "name": "DateInputProps"
