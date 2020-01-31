@@ -7,6 +7,7 @@ import { useUtils } from './hooks/useUtils';
 import { DateInputProps } from './PureDateInput';
 import { KeyboardIcon } from './icons/KeyboardIcon';
 import {
+  staticDateWith1DigitTokens,
   maskedDateFormatter,
   getDisplayDate,
   checkMaskIsValidForCurrentFormat,
@@ -50,12 +51,16 @@ export const KeyboardDateInput: React.FC<DateInputProps> = ({
     });
 
   const [innerInputValue, setInnerInputValue] = React.useState<string | null>(getInputValue());
-  const shouldUseMaskedInput = React.useMemo(() => {
-    if (disableMaskedInput) {
-      return false;
+  const { isMaskValid: shouldUseMaskedInput, placeholder } = React.useMemo(() => {
+    // formatting of dates is a quite slow thing, so do not make useless .format calls
+    if (!mask || disableMaskedInput) {
+      return {
+        isMaskValid: false,
+        placeholder: utils.formatByString(staticDateWith1DigitTokens, format),
+      };
     }
 
-    return mask ? checkMaskIsValidForCurrentFormat(mask, format, acceptRegex, utils) : false;
+    return checkMaskIsValidForCurrentFormat(mask, maskChar, format, acceptRegex, utils);
   }, [format, mask]); // eslint-disable-line
 
   // prettier-ignore
@@ -141,7 +146,12 @@ export const KeyboardDateInput: React.FC<DateInputProps> = ({
       format={rifmFormatter || formatter}
     >
       {({ onChange, value }) => (
-        <TextFieldComponent value={value} onChange={onChange} {...inputProps} />
+        <TextFieldComponent
+          value={value}
+          onChange={onChange}
+          placeholder={placeholder}
+          {...inputProps}
+        />
       )}
     </Rifm>
   );

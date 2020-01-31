@@ -44,8 +44,8 @@ export const DatePickerToolbar: React.FC<ToolbarComponentProps> = ({
     // For english localization it is convenient to include weekday into the date "Mon, Jun 1"
     // For other locales using strings like "June 1", without weekday
     return /en/.test(utils.getCurrentLocaleCode())
-      ? utils.format(date, 'normalDate')
-      : utils.format(date, 'shortDate');
+      ? utils.format(date, 'normalDateWithWeekday')
+      : utils.format(date, 'normalDate');
   }, [date, utils, views]);
 
   return (

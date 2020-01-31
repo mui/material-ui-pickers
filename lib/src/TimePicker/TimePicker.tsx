@@ -24,7 +24,7 @@ function useDefaultProps({
   views = ['hours', 'minutes'],
 }: TimePickerProps) {
   const utils = useUtils();
-  const willUseAmPm = ampm || utils.is12HourCycleInCurrentLocale();
+  const willUseAmPm = ampm ?? utils.is12HourCycleInCurrentLocale();
 
   return {
     ...timePickerDefaultProps,

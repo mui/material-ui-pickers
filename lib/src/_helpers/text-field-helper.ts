@@ -142,17 +142,28 @@ export function pick12hOr24hFormat(
   return ampm ? formats['12h'] : formats['24h'];
 }
 
-const staticDateForValidation = new Date('2019-11-21T22:30:00.000Z');
+const staticDateWith2DigitTokens = new Date('2019-11-21T22:30:00.000');
+export const staticDateWith1DigitTokens = new Date('2019-01-01T09:00:00.000');
 export function checkMaskIsValidForCurrentFormat(
   mask: string,
+  maskChar: string,
   format: string,
   acceptRegex: RegExp,
   utils: IUtils<any>
 ) {
-  const actualFormattedDate = utils.formatByString(utils.date(staticDateForValidation), format);
-  const inferredFormatPattern = actualFormattedDate.replace(acceptRegex, '_');
+  const formattedDateWith1Digit = utils.formatByString(
+    utils.date(staticDateWith1DigitTokens),
+    format
+  );
+  const inferredFormatPatternWith1Digits = formattedDateWith1Digit.replace(acceptRegex, maskChar);
 
-  const isMaskValid = inferredFormatPattern === mask;
+  const inferredFormatPatternWith2Digits = utils
+    .formatByString(utils.date(staticDateWith2DigitTokens), format)
+    .replace(acceptRegex, '_');
+
+  const isMaskValid =
+    inferredFormatPatternWith2Digits === mask && inferredFormatPatternWith1Digits === mask;
+
   // @ts-ignore
   if (!isMaskValid && process.env.NODE_ENV !== 'production') {
     console.warn(
@@ -160,7 +171,7 @@ export function checkMaskIsValidForCurrentFormat(
     );
   }
 
-  return isMaskValid;
+  return { isMaskValid, placeholder: formattedDateWith1Digit };
 }
 
 export const maskedDateFormatter = (mask: string, numberMaskChar: string, accept: RegExp) => (

@@ -33,8 +33,10 @@ describe('test-field-helper', () => {
     format                                             | mask                     | expected
     ${utilsToUse.formats.keyboardDate}                 | ${'__.__.____'}          | ${false}
     ${utilsToUse.formats.keyboardDate}                 | ${'__/__/____'}          | ${true}
-    ${utilsToUse.formats.fullTime}                     | ${'__:__ _M'}            | ${true}
-    ${utilsToUse.formats.keyboardDateTime}             | ${'__/__/____ __:__ _M'} | ${true}
+    ${utilsToUse.formats.fullTime}                     | ${'__:__ _M'}            | ${false}
+    ${utilsToUse.formats.keyboardDateTime}             | ${'__/__/____ __:__ _M'} | ${false}
+    ${utilsToUse.formats.keyboardDateTime12h}          | ${'__/__/____ __:__ _M'} | ${true}
+    ${utilsToUse.formats.keyboardDateTime24h}          | ${'__/__/____ __:__'}    | ${true}
     ${{ dateFns: 'MM/dd/yyyy', moment: 'MM/DD/YYYY' }} | ${'__/__/____'}          | ${true}
     ${{ dateFns: 'MMMM yyyy', moment: 'MMMM YYYY' }}   | ${'__/__/____'}          | ${false}
   `(
@@ -47,8 +49,13 @@ describe('test-field-helper', () => {
           ? format.dateFns
           : format.moment;
 
+      if (process.env.UTILS === 'luxon') {
+        return; // luxon has awful formatting strategy we are not supporting mask for luxon's localized formats
+      }
+
       expect(
         checkMaskIsValidForCurrentFormat(mask, formatForCurrentLib, /[\dap]/gi, utilsToUse)
+          .isMaskValid
       ).toBe(expected);
     }
   );

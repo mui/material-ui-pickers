@@ -38,7 +38,7 @@ function useDefaultProps({
   views = ['year', 'date', 'hours', 'minutes'],
 }: DateTimePickerProps) {
   const utils = useUtils();
-  const willUseAmPm = ampm || utils.is12HourCycleInCurrentLocale();
+  const willUseAmPm = ampm ?? utils.is12HourCycleInCurrentLocale();
 
   if (orientation !== 'portrait') {
     throw new Error('We are not supporting custom orientation for DateTimePicker yet :(');
