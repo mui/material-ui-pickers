@@ -94,8 +94,9 @@ export const KeyboardDateInput: React.FC<DateInputProps> = ({
   const adornmentPosition = InputAdornmentProps?.position || 'end';
   const inputProps = {
     type: 'tel',
+    disabled,
+    placeholder,
     variant: variant as any,
-    disabled: disabled,
     error: Boolean(validationError),
     helperText: validationError,
     'data-mui-test': 'keyboard-date-input',
@@ -146,12 +147,7 @@ export const KeyboardDateInput: React.FC<DateInputProps> = ({
       format={rifmFormatter || formatter}
     >
       {({ onChange, value }) => (
-        <TextFieldComponent
-          value={value}
-          onChange={onChange}
-          placeholder={placeholder}
-          {...inputProps}
-        />
+        <TextFieldComponent value={value} onChange={onChange} {...inputProps} />
       )}
     </Rifm>
   );
