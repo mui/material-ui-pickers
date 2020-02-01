@@ -1279,19 +1279,19 @@
   resolved "https://registry.yarnpkg.com/@date-io/core/-/core-1.3.13.tgz#90c71da493f20204b7a972929cc5c482d078b3fa"
   integrity sha512-AlEKV7TxjeK+jxWVKcCFrfYAk8spX9aCyiToFIiLPtfQbsjmRGLIhb5VZgptQcJdHtLXo7+m0DuurwFgUToQuA==
 
-"@date-io/core@^2.1.0", "@date-io/core@^2.2.0":
+"@date-io/core@^2.2.0":
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/@date-io/core/-/core-2.2.0.tgz#cb351cefa3544460f183ebf26b52f3b5781c28fa"
   integrity sha512-QM0ESKqAtuz8kNz53XYJFLZtceVp1V1cbhqdIDMveB0wSfDfBk8m5iT0GkHv5RIs+p6PXVd3zkeqz/qD4UzdPw==
 
-"@date-io/date-fns@^2.0.0", "@date-io/date-fns@^2.1.0":
+"@date-io/date-fns@^2.1.0":
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/@date-io/date-fns/-/date-fns-2.2.0.tgz#366a3fbeddf9bfbfe6286d44bdb0e5f8c1e12545"
   integrity sha512-69+fw/RfOT8PwJrfR6xMzn0gewkFOBEgO/j4o2xiI/u4jw4mX26H5o8W43arzLTmIHQ8bg64sjci0M00QOpWAg==
   dependencies:
     "@date-io/core" "^2.2.0"
 
-"@date-io/dayjs@^2.0.1", "@date-io/dayjs@^2.1.0":
+"@date-io/dayjs@^2.1.0":
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/@date-io/dayjs/-/dayjs-2.2.0.tgz#236cbd1d49da3e871503adaa9ad1ebcd6628c8f6"
   integrity sha512-U/jlTqb4+AoiPRl1Rs9/+kmorBQ5sEsAam5ovs1cKajh6OpxZ4LteD3E5fB/dzEWIxJAwVBwdnA4vLf1zsAbgg==
@@ -1312,7 +1312,7 @@
   dependencies:
     "@date-io/moment" "^2.2.0"
 
-"@date-io/luxon@^2.0.0", "@date-io/luxon@^2.1.0":
+"@date-io/luxon@^2.1.0":
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/@date-io/luxon/-/luxon-2.2.0.tgz#91ed2ff6e88c9090ab50ff6ca4ecc2efc5a48c05"
   integrity sha512-mRLEm08a2uvsxze9PwMyi7RAiQJF/UHjJXRHbc5FnuYSBHsKKzoyicafCntJxvGX0tKePdzDnusXrukW3JrBdA==
@@ -1326,7 +1326,7 @@
   dependencies:
     "@date-io/core" "^1.3.13"
 
-"@date-io/moment@^2.0.0", "@date-io/moment@^2.1.0", "@date-io/moment@^2.2.0":
+"@date-io/moment@^2.1.0", "@date-io/moment@^2.2.0":
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/@date-io/moment/-/moment-2.2.0.tgz#e9ed751c92d29e211ef729de67e67619720313f1"
   integrity sha512-EFEwNBMCrUhYVic31dzKZLsftgu7DlKZ90yTDFrPnwt4Mk9PV1FcT4VYsmyp+F6V0LP9+X7zHSktxDJE9Jq9Qg==
@@ -4242,6 +4242,11 @@ date-fns@^1.27.2:
   version "1.30.1"
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-1.30.1.tgz#2e71bf0b119153dbb4cc4e88d9ea5acfb50dc05c"
   integrity sha512-hBSVCvSmWC+QypYObzwGOd9wqdDpOt+0wl0KbU+R+uuZBS1jN8VsD1ss3irQDknRj5NvxiTF6oj/nDRnN/UQNw==
+
+date-fns@^2.0.0:
+  version "2.9.0"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.9.0.tgz#d0b175a5c37ed5f17b97e2272bbc1fa5aec677d2"
+  integrity sha512-khbFLu/MlzLjEzy9Gh8oY1hNt/Dvxw3J6Rbc28cVoYWQaC1S3YI4xwkF9ZWcjDLscbZlY9hISMr66RFzZagLsA==
 
 date-fns@^2.0.0-alpha.27:
   version "2.8.1"
@@ -11361,11 +11366,6 @@ ts-jest@^24.0.1:
     resolve "1.x"
     semver "^5.5"
     yargs-parser "10.x"
-
-ts-lib@0.0.5:
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/ts-lib/-/ts-lib-0.0.5.tgz#7f319885478de67f575a3b890a3f30fc6159352a"
-  integrity sha1-fzGYhUeN5n9XWjuJCj8w/GFZNSo=
 
 ts-loader@^6.0.2:
   version "6.2.1"

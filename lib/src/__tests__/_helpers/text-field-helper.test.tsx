@@ -54,7 +54,7 @@ describe('test-field-helper', () => {
       }
 
       expect(
-        checkMaskIsValidForCurrentFormat(mask, formatForCurrentLib, /[\dap]/gi, utilsToUse)
+        checkMaskIsValidForCurrentFormat(mask, '_', formatForCurrentLib, /[\dap]/gi, utilsToUse)
           .isMaskValid
       ).toBe(expected);
     }
