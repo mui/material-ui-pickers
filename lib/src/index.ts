@@ -23,5 +23,3 @@ export { validate } from './_helpers/text-field-helper';
 export { useUtils } from './_shared/hooks/useUtils';
 
 export { usePickerState } from './_shared/hooks/usePickerState';
-
-export { default as MuiPickersUtilsProvider, MuiPickersContext } from './MuiPickersUtilsProvider';

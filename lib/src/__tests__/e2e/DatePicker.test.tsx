@@ -1,4 +1,5 @@
 import * as React from 'react';
+import DateFnsUtils from '@date-io/date-fns';
 // import { act } from 'react-dom'
 import { ReactWrapper } from 'enzyme';
 import { Picker } from '../../Picker/Picker';

@@ -7,7 +7,6 @@ import { SnackbarProvider } from 'notistack';
 import { setPrismTheme } from '../utils/prism';
 import { PageContext } from '../utils/getPageContext';
 import { UtilsContext } from '../_shared/UtilsServiceContext';
-import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import { NotificationManager } from 'utils/NotificationManager';
 import { Theme, createMuiTheme, CssBaseline } from '@material-ui/core';
 import { createUtilsService, UtilsLib, utilsMap } from '../utils/utilsService';
@@ -21,8 +20,9 @@ export const ThemeContext = React.createContext<ThemeType>('light');
 // Configure JSS
 const jss = create({ plugins: [...jssPreset().plugins, rtl()] });
 
-const createCustomMuiTheme = (theme: ThemeType, direction: Theme['direction']) => {
+const createCustomMuiTheme = (theme: ThemeType, Utils: any, direction: Theme['direction']) => {
   return createMuiTheme({
+    dateIOAdapter: new Utils(),
     direction,
     palette: {
       primary: {
@@ -88,7 +88,11 @@ export const PageWithContexts: React.SFC<Props> = ({
     document.cookie = `theme=${newTheme}`;
   }, [theme]);
 
-  const muiTheme = createCustomMuiTheme(theme, direction);
+  const muiTheme = React.useMemo(() => createCustomMuiTheme(theme, utilsMap[lib], direction), [
+    theme,
+    lib,
+    direction,
+  ]);
 
   return (
     <StylesProvider
@@ -99,21 +103,21 @@ export const PageWithContexts: React.SFC<Props> = ({
     >
       <ThemeProvider theme={muiTheme}>
         <SnackbarProvider maxSnack={3}>
-          <MuiPickersUtilsProvider utils={utilsMap[lib]}>
-            <ThemeContext.Provider value={theme}>
-              <UtilsContext.Provider value={createUtilsService(lib)}>
-                <CssBaseline />
-                <NotificationManager />
+          {/* <MuiPickersUtilsProvider utils={utilsMap[lib]}> */}
+          <ThemeContext.Provider value={theme}>
+            <UtilsContext.Provider value={createUtilsService(lib)}>
+              <CssBaseline />
+              <NotificationManager />
 
-                <Layout
-                  children={children}
-                  onChangeUtils={setLib}
-                  toggleThemeType={toggleTheme}
-                  toggleDirection={setBodyDirection}
-                />
-              </UtilsContext.Provider>
-            </ThemeContext.Provider>
-          </MuiPickersUtilsProvider>
+              <Layout
+                children={children}
+                onChangeUtils={setLib}
+                toggleThemeType={toggleTheme}
+                toggleDirection={setBodyDirection}
+              />
+            </UtilsContext.Provider>
+          </ThemeContext.Provider>
+          {/* </MuiPickersUtilsProvider> */}
         </SnackbarProvider>
       </ThemeProvider>
     </StylesProvider>

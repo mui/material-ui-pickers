@@ -1,20 +1,16 @@
-import { useContext } from 'react';
+import { useTheme } from '@material-ui/core';
 import { IUtils } from '@date-io/core/IUtils';
 import { MaterialUiPickersDate } from '../../typings/date';
-import { MuiPickersContext } from '../../MuiPickersUtilsProvider';
 
-export const checkUtils = (utils: IUtils<MaterialUiPickersDate> | null | undefined) => {
+const checkUtils = (utils: IUtils<MaterialUiPickersDate> | null | undefined) => {
   if (!utils) {
-    // tslint:disable-next-line
-    throw new Error(
-      'Can not find utils in context. You either a) forgot to wrap your component tree in MuiPickersUtilsProvider; or b) mixed named and direct file imports.  Recommendation: use named imports from the module index.'
-    );
+    throw new Error('Can not find dateIOAdapter in material-ui theme.');
   }
 };
 
-export function useUtils() {
-  const utils = useContext(MuiPickersContext);
-  checkUtils(utils);
+export function useUtils(): IUtils<MaterialUiPickersDate> {
+  const theme = useTheme();
+  checkUtils(theme.dateIOAdapter);
 
-  return utils!;
+  return theme.dateIOAdapter!;
 }

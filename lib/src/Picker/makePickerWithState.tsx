@@ -33,7 +33,8 @@ export function makePickerWithStateAndWrapper<
 >(
   Wrapper: TWrapper,
   { useDefaultProps, DefaultToolbarComponent }: MakePickerOptions<T>
-): React.FC<T & ExtendWrapper<TWrapper>> {
+): React.FC<T & ExtendWrapper<TWrapper> & UtilsInjectorProps> {
+  // TS is not allowing us to use dynamic props coming from wrapper, but we still need to spread them.
   function PickerWithState(props: T & Partial<OmitInnerWrapperProps<ResponsiveWrapperProps>>) {
     const defaultProps = useDefaultProps(props);
     const allProps = { ...defaultProps, ...props };
@@ -77,7 +78,7 @@ export function makePickerWithStateAndWrapper<
       invalidDateMessage,
       minDateMessage,
       maxDateMessage,
-      // WrapperProps
+      // WrapperProps (do not failing with ts because of Partial<OmitInnerWrapperProps<ResponsiveWrapperProps>> in :38)
       clearable,
       clearLabel,
       DialogProps,
