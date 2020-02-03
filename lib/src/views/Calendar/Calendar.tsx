@@ -53,6 +53,16 @@ export interface CalendarProps {
   rightArrowButtonProps?: Partial<IconButtonProps>;
   /** Disable specific date @DateIOType */
   shouldDisableDate?: (day: MaterialUiPickersDate) => boolean;
+  /**
+   * Show left arrow button?
+   * @default true
+   */
+  showLeftArrowButton?: boolean;
+  /**
+   * Show right arrow button?
+   * @default true
+   */
+  showRightArrowButton?: boolean;
   /** Callback firing on month change. Return promise to render spinner till it will not be resolved @DateIOType */
   onMonthChange?: (date: MaterialUiPickersDate) => void | Promise<void>;
   /** Custom loading indicator  */

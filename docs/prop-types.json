@@ -417,6 +417,36 @@
         "name": "(day: DateIOType) => boolean"
       }
     },
+    "showLeftArrowButton": {
+      "defaultValue": {
+        "value": "true"
+      },
+      "description": "Show left arrow button?",
+      "name": "showLeftArrowButton",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
+        "name": "CalendarProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "showRightArrowButton": {
+      "defaultValue": {
+        "value": "true"
+      },
+      "description": "Show right arrow button?",
+      "name": "showRightArrowButton",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
+        "name": "CalendarProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
     "onMonthChange": {
       "defaultValue": null,
       "description": "Callback firing on month change. Return promise to render spinner till it will not be resolved",
@@ -2123,6 +2153,36 @@
         "name": "(day: DateIOType) => boolean"
       }
     },
+    "showLeftArrowButton": {
+      "defaultValue": {
+        "value": "true"
+      },
+      "description": "Show left arrow button?",
+      "name": "showLeftArrowButton",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
+        "name": "CalendarProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "showRightArrowButton": {
+      "defaultValue": {
+        "value": "true"
+      },
+      "description": "Show right arrow button?",
+      "name": "showRightArrowButton",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
+        "name": "CalendarProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
     "onMonthChange": {
       "defaultValue": null,
       "description": "Callback firing on month change. Return promise to render spinner till it will not be resolved",
@@ -2324,6 +2384,36 @@
       "required": false,
       "type": {
         "name": "(day: DateIOType) => boolean"
+      }
+    },
+    "showLeftArrowButton": {
+      "defaultValue": {
+        "value": "true"
+      },
+      "description": "Show left arrow button?",
+      "name": "showLeftArrowButton",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
+        "name": "CalendarProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "showRightArrowButton": {
+      "defaultValue": {
+        "value": "true"
+      },
+      "description": "Show right arrow button?",
+      "name": "showRightArrowButton",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
+        "name": "CalendarProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
       }
     },
     "onMonthChange": {
