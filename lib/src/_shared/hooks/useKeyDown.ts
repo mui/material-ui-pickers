@@ -44,3 +44,10 @@ export function useGlobalKeyDown(active: boolean, keyHandlers: KeyHandlers) {
     }
   }, [active]);
 }
+
+export const keycode = {
+  ArrowUp: 38,
+  ArrowDown: 40,
+  ArrowLeft: 37,
+  ArrowRight: 39,
+};

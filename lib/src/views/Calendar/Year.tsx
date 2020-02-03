@@ -8,7 +8,8 @@ export interface YearProps {
   children: React.ReactNode;
   disabled?: boolean;
   onSelect: (value: any) => void;
-  selected?: boolean;
+  selected: boolean;
+  focused: boolean;
   value: any;
   forwardedRef?: React.Ref<HTMLDivElement>;
 }
@@ -59,27 +60,36 @@ export const Year: React.FC<YearProps> = ({
   selected,
   disabled,
   children,
+  focused,
   ...other
 }) => {
   const classes = useStyles();
+  const ref = React.useRef<HTMLSpanElement>(null);
   const wrapperVariant = React.useContext(WrapperVariantContext);
   const handleClick = React.useCallback(() => onSelect(value), [onSelect, value]);
+
+  React.useEffect(() => {
+    if (focused && ref.current) {
+      ref.current.focus();
+    }
+  }, [focused]);
 
   return (
     <div
       role="button"
       onClick={handleClick}
+      ref={forwardedRef}
       className={clsx(classes.yearContainer, {
         [classes.yearContainerDesktop]: wrapperVariant === 'desktop',
       })}
     >
       <Typography
+        ref={ref}
         variant="subtitle1"
-        tabIndex={disabled ? -1 : 0}
+        tabIndex={selected ? 0 : -1}
         onKeyPress={handleClick}
         color={selected ? 'primary' : undefined}
         children={children}
-        ref={forwardedRef}
         className={clsx(classes.yearLabel, {
           [classes.yearSelected]: selected,
           [classes.yearDisabled]: disabled,

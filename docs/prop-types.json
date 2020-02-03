@@ -404,19 +404,6 @@
         "name": "Partial<IconButtonProps>"
       }
     },
-    "shouldDisableDate": {
-      "defaultValue": null,
-      "description": "Disable specific date",
-      "name": "shouldDisableDate",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
-        "name": "CalendarProps"
-      },
-      "required": false,
-      "type": {
-        "name": "(day: DateIOType) => boolean"
-      }
-    },
     "onMonthChange": {
       "defaultValue": null,
       "description": "Callback firing on month change. Return promise to render spinner till it will not be resolved",
@@ -441,6 +428,19 @@
       "required": false,
       "type": {
         "name": "Element"
+      }
+    },
+    "shouldDisableDate": {
+      "defaultValue": null,
+      "description": "Disable specific date",
+      "name": "shouldDisableDate",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/CalendarView.tsx",
+        "name": "CalendarViewProps"
+      },
+      "required": false,
+      "type": {
+        "name": "(day: DateIOType) => boolean"
       }
     },
     "minDateMessage": {
@@ -2155,19 +2155,6 @@
         "name": "Partial<IconButtonProps>"
       }
     },
-    "shouldDisableDate": {
-      "defaultValue": null,
-      "description": "Disable specific date",
-      "name": "shouldDisableDate",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
-        "name": "CalendarProps"
-      },
-      "required": false,
-      "type": {
-        "name": "(day: DateIOType) => boolean"
-      }
-    },
     "onMonthChange": {
       "defaultValue": null,
       "description": "Callback firing on month change. Return promise to render spinner till it will not be resolved",
@@ -2192,6 +2179,19 @@
       "required": false,
       "type": {
         "name": "Element"
+      }
+    },
+    "shouldDisableDate": {
+      "defaultValue": null,
+      "description": "Disable specific date",
+      "name": "shouldDisableDate",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/CalendarView.tsx",
+        "name": "CalendarViewProps"
+      },
+      "required": false,
+      "type": {
+        "name": "(day: DateIOType) => boolean"
       }
     },
     "views": {
@@ -2356,19 +2356,6 @@
       "required": false,
       "type": {
         "name": "Partial<IconButtonProps>"
-      }
-    },
-    "shouldDisableDate": {
-      "defaultValue": null,
-      "description": "Disable specific date",
-      "name": "shouldDisableDate",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
-        "name": "CalendarProps"
-      },
-      "required": false,
-      "type": {
-        "name": "(day: DateIOType) => boolean"
       }
     },
     "onMonthChange": {
