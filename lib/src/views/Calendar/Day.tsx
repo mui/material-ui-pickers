@@ -1,8 +1,10 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import clsx from 'clsx';
-import { ButtonBase } from '@material-ui/core';
+import { useUtils } from '../../_shared/hooks/useUtils';
+import { MaterialUiPickersDate } from '../../typings/date';
 import { makeStyles, fade } from '@material-ui/core/styles';
+import { ButtonBase, ButtonBaseProps } from '@material-ui/core';
 
 export const useStyles = makeStyles(
   theme => ({
@@ -15,9 +17,6 @@ export const useStyles = makeStyles(
       color: theme.palette.text.primary,
       fontSize: theme.typography.caption.fontSize,
       fontWeight: theme.typography.fontWeightMedium,
-      '&:focus': {
-        backgroundColor: fade(theme.palette.action.active, theme.palette.action.hoverOpacity),
-      },
       '&:hover': {
         backgroundColor: fade(theme.palette.action.active, theme.palette.action.hoverOpacity),
       },
@@ -42,10 +41,6 @@ export const useStyles = makeStyles(
         willChange: 'background-color',
         backgroundColor: theme.palette.primary.light,
       },
-      '&:focus': {
-        willChange: 'background-color',
-        backgroundColor: theme.palette.primary.light,
-      },
     },
     dayDisabled: {
       pointerEvents: 'none',
@@ -58,9 +53,11 @@ export const useStyles = makeStyles(
   { name: 'MuiPickersDay' }
 );
 
-export interface DayProps {
-  /** Day text */
-  children: React.ReactNode;
+export interface DayProps extends ButtonBaseProps {
+  /** The date to show */
+  day: MaterialUiPickersDate;
+  /** Is focused by keyboard navigation */
+  focused: boolean;
   /** Is today? */
   current?: boolean;
   /** Disabled? */
@@ -72,13 +69,16 @@ export interface DayProps {
 }
 
 export const Day: React.FC<DayProps> = ({
-  children,
+  day,
   disabled,
   hidden,
   current,
   selected,
+  focused,
   ...other
 }) => {
+  const ref = React.useRef<HTMLButtonElement>(null);
+  const utils = useUtils();
   const classes = useStyles();
   const className = clsx(classes.day, {
     [classes.hidden]: hidden,
@@ -87,15 +87,24 @@ export const Day: React.FC<DayProps> = ({
     [classes.dayDisabled]: disabled,
   });
 
+  React.useEffect(() => {
+    if (focused && ref.current) {
+      ref.current.focus();
+    }
+  }, [focused]);
+
   return (
     <ButtonBase
-      data-mui-test="day"
+      ref={ref}
       centerRipple
+      focusRipple
+      data-mui-test="day"
+      aria-label={utils.format(day, 'fullDate')}
       className={className}
-      tabIndex={hidden || disabled ? -1 : 0}
+      tabIndex={selected ? 0 : -1}
       {...other}
     >
-      <span className={classes.dayLabel}>{children}</span>
+      <span className={classes.dayLabel}>{utils.format(day, 'dayOfMonth')}</span>
     </ButtonBase>
   );
 };

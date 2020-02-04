@@ -66,10 +66,10 @@ export const Year: React.FC<YearProps> = ({
   const classes = useStyles();
   const ref = React.useRef<HTMLSpanElement>(null);
   const wrapperVariant = React.useContext(WrapperVariantContext);
-  const handleClick = React.useCallback(() => onSelect(value), [onSelect, value]);
 
   React.useEffect(() => {
     if (focused && ref.current) {
+      console.log(ref.current);
       ref.current.focus();
     }
   }, [focused]);
@@ -77,8 +77,8 @@ export const Year: React.FC<YearProps> = ({
   return (
     <div
       role="button"
-      onClick={handleClick}
       ref={forwardedRef}
+      onClick={() => onSelect(value)}
       className={clsx(classes.yearContainer, {
         [classes.yearContainerDesktop]: wrapperVariant === 'desktop',
       })}
@@ -87,9 +87,16 @@ export const Year: React.FC<YearProps> = ({
         ref={ref}
         variant="subtitle1"
         tabIndex={selected ? 0 : -1}
-        onKeyPress={handleClick}
         color={selected ? 'primary' : undefined}
         children={children}
+        onKeyPress={e => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            onSelect(value);
+
+            e.preventDefault();
+            e.stopPropagation();
+          }
+        }}
         className={clsx(classes.yearLabel, {
           [classes.yearSelected]: selected,
           [classes.yearDisabled]: disabled,

@@ -110,6 +110,11 @@ export const KeyboardDateInput: React.FC<DateInputProps> = ({
           <IconButton
             data-mui-test="open-picker-from-keyboard"
             disabled={disabled}
+            aria-label={
+              rawValue && utils.isValid(utils.date(rawValue))
+                ? `Choose date, selected date is ${utils.format(utils.date(rawValue), 'fullDate')}`
+                : 'Choose date'
+            }
             {...KeyboardButtonProps}
             onClick={onOpen}
           >

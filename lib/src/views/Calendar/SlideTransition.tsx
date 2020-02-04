@@ -12,11 +12,11 @@ interface SlideTransitionProps {
   children: React.ReactElement;
 }
 
-const animationDuration = 350;
+export const slideAnimationDuration = 350;
 export const useStyles = makeStyles(
   theme => {
     const slideTransition = theme.transitions.create('transform', {
-      duration: animationDuration,
+      duration: slideAnimationDuration,
       easing: 'cubic-bezier(0.35, 0.8, 0.4, 1)',
     });
 
@@ -96,7 +96,7 @@ const SlideTransition: React.SFC<SlideTransitionProps> = ({
         mountOnEnter
         unmountOnExit
         key={transKey + slideDirection}
-        timeout={animationDuration}
+        timeout={slideAnimationDuration}
         classNames={transitionClasses}
         children={children}
       />

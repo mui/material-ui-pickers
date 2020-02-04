@@ -1,14 +1,14 @@
 import * as React from 'react';
 import Day from './Day';
 import DayWrapper from './DayWrapper';
-import SlideTransition, { SlideDirection } from './SlideTransition';
-import { useUtils } from '../../_shared/hooks/useUtils';
+import SlideTransition, { SlideDirection, slideAnimationDuration } from './SlideTransition';
 import { WrapperVariant } from '../../wrappers/Wrapper';
 import { MaterialUiPickersDate } from '../../typings/date';
 import { IconButtonProps } from '@material-ui/core/IconButton';
-import { useGlobalKeyDown } from '../../_shared/hooks/useKeyDown';
+import { useUtils, useNow } from '../../_shared/hooks/useUtils';
 import { findClosestEnabledDate } from '../../_helpers/date-utils';
 import { makeStyles, useTheme, Typography } from '@material-ui/core';
+import { useGlobalKeyDown, keycode } from '../../_shared/hooks/useKeyDown';
 
 export interface CalendarProps {
   /** Calendar Date @DateIOType */
@@ -51,16 +51,14 @@ export interface CalendarProps {
    * @type {Partial<IconButtonProps>}
    */
   rightArrowButtonProps?: Partial<IconButtonProps>;
-  /** Disable specific date @DateIOType */
-  shouldDisableDate?: (day: MaterialUiPickersDate) => boolean;
-  /** Callback firing on month change. Return promise to render spinner till it will not be resolved @DateIOType */
-  onMonthChange?: (date: MaterialUiPickersDate) => void | Promise<void>;
   /** Custom loading indicator  */
   loadingIndicator?: JSX.Element;
   minDate?: MaterialUiPickersDate;
   maxDate?: MaterialUiPickersDate;
+  isDateDisabled: (day: MaterialUiPickersDate) => boolean;
   slideDirection: SlideDirection;
   currentMonth: MaterialUiPickersDate;
+  onMonthChange: (date: MaterialUiPickersDate) => void;
   reduceAnimations: boolean;
   wrapperVariant: WrapperVariant | null;
 }
@@ -113,37 +111,18 @@ export const Calendar: React.FC<CalendarProps> = ({
   disableFuture,
   disablePast,
   currentMonth,
+  onMonthChange,
   renderDay,
   reduceAnimations,
   allowKeyboardControl,
   wrapperVariant,
-  ...props
+  isDateDisabled,
 }) => {
+  const now = useNow();
   const utils = useUtils();
   const theme = useTheme();
   const classes = useStyles();
-  const now = utils.date();
-
-  const validateMinMaxDate = React.useCallback(
-    (day: MaterialUiPickersDate) => {
-      return Boolean(
-        (disableFuture && utils.isAfterDay(day, now)) ||
-          (disablePast && utils.isBeforeDay(day, now)) ||
-          (minDate && utils.isBeforeDay(day, utils.date(minDate))) ||
-          (maxDate && utils.isAfterDay(day, utils.date(maxDate)))
-      );
-    },
-    [disableFuture, disablePast, maxDate, minDate, now, utils]
-  );
-
-  const shouldDisableDate = React.useCallback(
-    (day: MaterialUiPickersDate) => {
-      return (
-        validateMinMaxDate(day) || Boolean(props.shouldDisableDate && props.shouldDisableDate(day))
-      );
-    },
-    [props, validateMinMaxDate]
-  );
+  const [focusedDay, setFocusedDay] = React.useState<MaterialUiPickersDate>(date);
 
   const handleDaySelect = React.useCallback(
     (day: MaterialUiPickersDate, isFinish = true) => {
@@ -152,17 +131,26 @@ export const Calendar: React.FC<CalendarProps> = ({
     [date, onChange, utils]
   );
 
-  const moveToDay = React.useCallback(
+  const focusDay = React.useCallback(
     (day: MaterialUiPickersDate) => {
-      if (day && !shouldDisableDate(day)) {
-        handleDaySelect(day, false);
+      if (day && !isDateDisabled(day)) {
+        if (!utils.isSameMonth(day, currentMonth)) {
+          onMonthChange(utils.startOfMonth(day));
+
+          if (!reduceAnimations) {
+            setTimeout(() => setFocusedDay(day), slideAnimationDuration);
+            return;
+          }
+        }
+
+        setFocusedDay(day);
       }
     },
-    [handleDaySelect, shouldDisableDate]
+    [currentMonth, isDateDisabled, onMonthChange, reduceAnimations, utils]
   );
 
   React.useEffect(() => {
-    if (shouldDisableDate(date)) {
+    if (isDateDisabled(date)) {
       const closestEnabledDate = findClosestEnabledDate({
         date,
         utils,
@@ -170,7 +158,7 @@ export const Calendar: React.FC<CalendarProps> = ({
         maxDate: utils.date(maxDate),
         disablePast: Boolean(disablePast),
         disableFuture: Boolean(disableFuture),
-        shouldDisableDate: shouldDisableDate,
+        shouldDisableDate: isDateDisabled,
       });
 
       handleDaySelect(closestEnabledDate, false);
@@ -178,10 +166,13 @@ export const Calendar: React.FC<CalendarProps> = ({
   }, []); // eslint-disable-line
 
   useGlobalKeyDown(Boolean(allowKeyboardControl && wrapperVariant !== 'static'), {
-    38: () => moveToDay(utils.addDays(date, -7)), // ArrowUp
-    40: () => moveToDay(utils.addDays(date, 7)), // ArrowDown
-    37: () => moveToDay(utils.addDays(date, theme.direction === 'ltr' ? -1 : 1)), // ArrowLeft
-    39: () => moveToDay(utils.addDays(date, theme.direction === 'ltr' ? 1 : -1)), // ArrowRight
+    [keycode.Enter]: () => handleDaySelect(date, true),
+    [keycode.ArrowUp]: () => focusDay(utils.addDays(focusedDay, -7)),
+    [keycode.ArrowDown]: () => focusDay(utils.addDays(focusedDay, 7)),
+    [keycode.ArrowLeft]: () =>
+      focusDay(utils.addDays(focusedDay, theme.direction === 'ltr' ? -1 : 1)),
+    [keycode.ArrowRight]: () =>
+      focusDay(utils.addDays(focusedDay, theme.direction === 'ltr' ? 1 : -1)),
   });
 
   const selectedDate = utils.startOfDay(date);
@@ -210,16 +201,17 @@ export const Calendar: React.FC<CalendarProps> = ({
           {utils.getWeekArray(currentMonth).map(week => (
             <div key={`week-${week[0]!.toString()}`} className={classes.week}>
               {week.map(day => {
-                const disabled = shouldDisableDate(day);
+                const disabled = isDateDisabled(day);
                 const isDayInCurrentMonth = utils.getMonth(day) === currentMonthNumber;
 
                 let dayComponent = (
                   <Day
+                    day={day}
                     disabled={disabled}
+                    focused={utils.isSameDay(day, focusedDay)}
                     current={utils.isSameDay(day, now)}
                     hidden={!isDayInCurrentMonth}
                     selected={utils.isSameDay(selectedDate, day)}
-                    children={utils.format(day, 'dayOfMonth')}
                   />
                 );
 

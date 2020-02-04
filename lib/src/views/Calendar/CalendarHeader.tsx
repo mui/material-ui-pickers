@@ -172,10 +172,15 @@ export const CalendarHeader: React.SFC<CalendarWithHeaderProps> = ({
           </FadeTransitionGroup>
 
           <IconButton
-            data-mui-test="calendar-view-switcher"
             size="small"
+            data-mui-test="calendar-view-switcher"
             onClick={toggleView}
             className={classes.yearSelectionSwitcher}
+            aria-label={
+              view === 'year'
+                ? 'year view is open, switch to calendar view'
+                : 'calendar view is open, switch to year view'
+            }
           >
             <ArrowDropDownIcon
               className={clsx(classes.switchViewDropdown, {

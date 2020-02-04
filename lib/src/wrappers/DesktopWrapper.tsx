@@ -47,6 +47,7 @@ export const DesktopWrapper: React.FC<DesktopWrapperProps> = ({
       <KeyboardDateInput {...other} {...DateInputProps} inputRef={ref} />
 
       <Popover
+        role="dialog"
         open={open}
         onClose={onDismiss}
         anchorEl={ref.current}

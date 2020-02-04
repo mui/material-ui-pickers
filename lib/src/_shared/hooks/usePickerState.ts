@@ -1,20 +1,20 @@
-import { useUtils } from './useUtils';
+import { useUtils, useNow } from './useUtils';
 import { IUtils } from '@date-io/core/IUtils';
 import { useOpenState } from './useOpenState';
 import { WrapperVariant } from '../../wrappers/Wrapper';
 import { MaterialUiPickersDate } from '../../typings/date';
 import { BasePickerProps } from '../../typings/BasePicker';
 import { validate } from '../../_helpers/text-field-helper';
-import { useCallback, useDebugValue, useEffect, useMemo, useState, useRef } from 'react';
+import { useCallback, useDebugValue, useEffect, useMemo, useState } from 'react';
 
 const useValueToDate = (
   utils: IUtils<MaterialUiPickersDate>,
   { value, initialFocusedDate }: BasePickerProps
 ) => {
-  const nowRef = useRef(utils.date());
-  const date = utils.date(value || initialFocusedDate || nowRef.current);
+  const now = useNow();
+  const date = utils.date(value || initialFocusedDate || now);
 
-  return date && utils.isValid(date) ? date : nowRef.current;
+  return date && utils.isValid(date) ? date : now;
 };
 
 function useDateValues(props: BasePickerProps) {

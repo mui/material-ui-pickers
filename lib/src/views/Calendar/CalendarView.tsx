@@ -5,11 +5,11 @@ import { MonthSelection } from './MonthSelection';
 import { DatePickerView } from '../../DatePicker';
 import { SlideDirection } from './SlideTransition';
 import { Calendar, CalendarProps } from './Calendar';
-import { useUtils } from '../../_shared/hooks/useUtils';
 import { VIEW_HEIGHT } from '../../constants/dimensions';
 import { ParsableDate } from '../../constants/prop-types';
 import { MaterialUiPickersDate } from '../../typings/date';
 import { FadeTransitionGroup } from './FadeTransitionGroup';
+import { useUtils, useNow } from '../../_shared/hooks/useUtils';
 import { useParsedDate } from '../../_shared/hooks/useParsedDate';
 import { CircularProgress, Grid, makeStyles } from '@material-ui/core';
 import { WrapperVariantContext } from '../../wrappers/WrapperVariantContext';
@@ -23,12 +23,15 @@ export interface CalendarViewProps
     | 'minDate'
     | 'maxDate'
     | 'wrapperVariant'
+    | 'onMonthChange'
   > {
   date: MaterialUiPickersDate;
   view: DatePickerView;
   views: DatePickerView[];
   changeView: (view: DatePickerView) => void;
   onChange: (date: MaterialUiPickersDate, isFinish?: boolean) => void;
+  /** Callback firing on month change. Return promise to render spinner till it will not be resolved @DateIOType */
+  onMonthChange?: (date: MaterialUiPickersDate) => void | Promise<void>;
   /**
    * Min selectable date
    * @default Date(1900-01-01)
@@ -43,6 +46,8 @@ export interface CalendarViewProps
    * @default /(android)/i.test(navigator.userAgent)
    */
   reduceAnimations?: boolean;
+  /** Disable specific date @DateIOType */
+  shouldDisableDate?: (day: MaterialUiPickersDate) => boolean;
 }
 
 export type ExportedCalendarProps = Omit<
@@ -117,8 +122,10 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
   maxDate: unparsedMaxDate,
   reduceAnimations = typeof window !== 'undefined' && /(android)/i.test(window.navigator.userAgent),
   loadingIndicator = <CircularProgress data-mui-test="loading-progress" />,
+  shouldDisableDate,
   ...other
 }) => {
+  const now = useNow();
   const utils = useUtils();
   const classes = useStyles();
   const minDate = useParsedDate(unparsedMinDate);
@@ -135,6 +142,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
   );
 
   const handleChangeMonth = (payload: ChangeMonthPayload) => {
+    console.log(payload);
     const returnedPromise = onMonthChange && onMonthChange(payload.newMonth);
 
     if (returnedPromise) {
@@ -152,7 +160,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
     }
   };
 
-  React.useEffect(() => {
+  const changeMonth = (date: MaterialUiPickersDate) => {
     if (utils.isSameMonth(date, currentMonth)) {
       return;
     }
@@ -161,7 +169,30 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
       newMonth: utils.startOfMonth(date),
       direction: utils.isAfterDay(date, currentMonth) ? 'left' : 'right',
     });
+  };
+
+  React.useEffect(() => {
+    changeMonth(date);
   }, [date]); // eslint-disable-line
+
+  const validateMinMaxDate = React.useCallback(
+    (day: MaterialUiPickersDate) => {
+      return Boolean(
+        (other.disableFuture && utils.isAfterDay(day, now)) ||
+          (other.disablePast && utils.isBeforeDay(day, now)) ||
+          (minDate && utils.isBeforeDay(day, utils.date(minDate))) ||
+          (maxDate && utils.isAfterDay(day, utils.date(maxDate)))
+      );
+    },
+    [maxDate, minDate, now, other.disableFuture, other.disablePast, utils]
+  );
+
+  const isDateDisabled = React.useCallback(
+    (day: MaterialUiPickersDate) => {
+      return validateMinMaxDate(day) || Boolean(shouldDisableDate && shouldDisableDate(day));
+    },
+    [shouldDisableDate, validateMinMaxDate]
+  );
 
   return (
     <>
@@ -189,6 +220,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
               onChange={onChange}
               minDate={minDate}
               maxDate={maxDate}
+              isDateDisabled={isDateDisabled}
             />
           )}
 
@@ -224,6 +256,8 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
                 minDate={minDate}
                 maxDate={maxDate}
                 wrapperVariant={wrapperVariant}
+                isDateDisabled={isDateDisabled}
+                onMonthChange={changeMonth}
               />
             ))}
         </div>

@@ -80,11 +80,11 @@ export const YearSelection: React.FC<YearSelectionProps> = ({
     [date, isDateDisabled, onChange, onYearChange, utils]
   );
 
-  const yearsInRow = wrapperVariant === 'desktop' ? 3 : 4;
+  const yearsInRow = wrapperVariant === 'desktop' ? 4 : 3;
   const nowFocusedYear = focusedYear || currentYear;
-  useGlobalKeyDown(Boolean(allowKeyboardControl), {
-    [keys.ArrowUp]: () => setFocused(nowFocusedYear - (yearsInRow + 1)),
-    [keys.ArrowDown]: () => setFocused(nowFocusedYear + (yearsInRow + 1)),
+  useGlobalKeyDown(wrapperVariant !== 'static' && Boolean(allowKeyboardControl), {
+    [keys.ArrowUp]: () => setFocused(nowFocusedYear - yearsInRow),
+    [keys.ArrowDown]: () => setFocused(nowFocusedYear + yearsInRow),
     [keys.ArrowLeft]: () => setFocused(nowFocusedYear + (theme.direction === 'ltr' ? -1 : 1)),
     [keys.ArrowRight]: () => setFocused(nowFocusedYear + (theme.direction === 'ltr' ? 1 : -1)),
   });
@@ -95,7 +95,6 @@ export const YearSelection: React.FC<YearSelectionProps> = ({
         {utils.getYearRange(minDate, maxDate).map(year => {
           const yearNumber = utils.getYear(year);
           const selected = yearNumber === currentYear;
-          console.log(yearNumber === focusedYear);
 
           return (
             <Year
