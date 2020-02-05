@@ -25,7 +25,7 @@ export const useStyles = makeStyles(
       opacity: 0,
       pointerEvents: 'none',
     },
-    current: {
+    today: {
       '&:not($daySelected)': {
         border: `1px solid ${theme.palette.text.hint}`,
       },
@@ -58,12 +58,14 @@ export interface DayProps extends ButtonBaseProps {
   day: MaterialUiPickersDate;
   /** Is focused by keyboard navigation */
   focused: boolean;
+  /** Is day in current month */
+  isInCurrentMonth: boolean;
+  /** Is switching month animation going on right now */
+  isAnimating: boolean;
   /** Is today? */
-  current?: boolean;
+  isToday?: boolean;
   /** Disabled? */
   disabled?: boolean;
-  /** Hidden? */
-  hidden?: boolean;
   /** Selected? */
   selected?: boolean;
 }
@@ -71,27 +73,29 @@ export interface DayProps extends ButtonBaseProps {
 export const Day: React.FC<DayProps> = ({
   day,
   disabled,
-  hidden,
-  current,
+  isInCurrentMonth,
+  isToday,
   selected,
   focused,
+  isAnimating,
   ...other
 }) => {
   const ref = React.useRef<HTMLButtonElement>(null);
   const utils = useUtils();
   const classes = useStyles();
   const className = clsx(classes.day, {
-    [classes.hidden]: hidden,
-    [classes.current]: current,
+    [classes.hidden]: !isInCurrentMonth,
+    [classes.today]: isToday,
     [classes.daySelected]: selected,
     [classes.dayDisabled]: disabled,
   });
 
   React.useEffect(() => {
-    if (focused && ref.current) {
+    if (!isAnimating && isInCurrentMonth && focused && ref.current) {
+      console.log('focusing current date', day);
       ref.current.focus();
     }
-  }, [focused]);
+  }, [day, focused, isAnimating, isInCurrentMonth]);
 
   return (
     <ButtonBase
@@ -112,7 +116,7 @@ export const Day: React.FC<DayProps> = ({
 Day.displayName = 'Day';
 
 Day.propTypes = {
-  current: PropTypes.bool,
+  isToday: PropTypes.bool,
   disabled: PropTypes.bool,
   hidden: PropTypes.bool,
   selected: PropTypes.bool,
@@ -121,7 +125,7 @@ Day.propTypes = {
 Day.defaultProps = {
   disabled: false,
   hidden: false,
-  current: false,
+  isToday: false,
   selected: false,
 };
 

@@ -141,35 +141,40 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
     }
   );
 
-  const handleChangeMonth = (payload: ChangeMonthPayload) => {
-    console.log(payload);
-    const returnedPromise = onMonthChange && onMonthChange(payload.newMonth);
+  const handleChangeMonth = React.useCallback(
+    (payload: ChangeMonthPayload) => {
+      const returnedPromise = onMonthChange && onMonthChange(payload.newMonth);
 
-    if (returnedPromise) {
-      dispatch({
-        type: 'changeMonthLoading',
-        ...payload,
+      if (returnedPromise) {
+        dispatch({
+          type: 'changeMonthLoading',
+          ...payload,
+        });
+
+        returnedPromise.then(() => dispatch({ type: 'popLoadingQueue' }));
+      } else {
+        dispatch({
+          type: 'changeMonth',
+          ...payload,
+        });
+      }
+    },
+    [onMonthChange]
+  );
+
+  const changeMonth = React.useCallback(
+    (date: MaterialUiPickersDate) => {
+      if (utils.isSameMonth(date, currentMonth)) {
+        return;
+      }
+
+      handleChangeMonth({
+        newMonth: utils.startOfMonth(date),
+        direction: utils.isAfterDay(date, currentMonth) ? 'left' : 'right',
       });
-
-      returnedPromise.then(() => dispatch({ type: 'popLoadingQueue' }));
-    } else {
-      dispatch({
-        type: 'changeMonth',
-        ...payload,
-      });
-    }
-  };
-
-  const changeMonth = (date: MaterialUiPickersDate) => {
-    if (utils.isSameMonth(date, currentMonth)) {
-      return;
-    }
-
-    handleChangeMonth({
-      newMonth: utils.startOfMonth(date),
-      direction: utils.isAfterDay(date, currentMonth) ? 'left' : 'right',
-    });
-  };
+    },
+    [currentMonth, handleChangeMonth, utils]
+  );
 
   React.useEffect(() => {
     changeMonth(date);

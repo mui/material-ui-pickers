@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Day from './Day';
 import DayWrapper from './DayWrapper';
-import SlideTransition, { SlideDirection, slideAnimationDuration } from './SlideTransition';
+import SlideTransition, { SlideDirection } from './SlideTransition';
 import { WrapperVariant } from '../../wrappers/Wrapper';
 import { MaterialUiPickersDate } from '../../typings/date';
 import { IconButtonProps } from '@material-ui/core/IconButton';
@@ -122,6 +122,7 @@ export const Calendar: React.FC<CalendarProps> = ({
   const utils = useUtils();
   const theme = useTheme();
   const classes = useStyles();
+  const [isAnimating, setIsAnimating] = React.useState(false);
   const [focusedDay, setFocusedDay] = React.useState<MaterialUiPickersDate>(date);
 
   const handleDaySelect = React.useCallback(
@@ -136,17 +137,12 @@ export const Calendar: React.FC<CalendarProps> = ({
       if (day && !isDateDisabled(day)) {
         if (!utils.isSameMonth(day, currentMonth)) {
           onMonthChange(utils.startOfMonth(day));
-
-          if (!reduceAnimations) {
-            setTimeout(() => setFocusedDay(day), slideAnimationDuration);
-            return;
-          }
         }
 
         setFocusedDay(day);
       }
     },
-    [currentMonth, isDateDisabled, onMonthChange, reduceAnimations, utils]
+    [currentMonth, isDateDisabled, onMonthChange, utils]
   );
 
   React.useEffect(() => {
@@ -165,8 +161,12 @@ export const Calendar: React.FC<CalendarProps> = ({
     }
   }, []); // eslint-disable-line
 
+  React.useEffect(() => {
+    setFocusedDay(date);
+  }, [date]);
+
   useGlobalKeyDown(Boolean(allowKeyboardControl && wrapperVariant !== 'static'), {
-    [keycode.Enter]: () => handleDaySelect(date, true),
+    [keycode.Enter]: () => handleDaySelect(focusedDay, true),
     [keycode.ArrowUp]: () => focusDay(utils.addDays(focusedDay, -7)),
     [keycode.ArrowDown]: () => focusDay(utils.addDays(focusedDay, 7)),
     [keycode.ArrowLeft]: () =>
@@ -192,9 +192,11 @@ export const Calendar: React.FC<CalendarProps> = ({
       </div>
 
       <SlideTransition
+        onEnter={() => setIsAnimating(true)}
+        onExited={() => setIsAnimating(false)}
         reduceAnimations={reduceAnimations}
         slideDirection={slideDirection}
-        transKey={currentMonth!.toString()}
+        transKey={currentMonthNumber}
         className={classes.transitionContainer}
       >
         <div style={{ overflow: 'hidden' }}>
@@ -207,10 +209,12 @@ export const Calendar: React.FC<CalendarProps> = ({
                 let dayComponent = (
                   <Day
                     day={day}
+                    isAnimating={isAnimating}
                     disabled={disabled}
                     focused={utils.isSameDay(day, focusedDay)}
-                    current={utils.isSameDay(day, now)}
+                    isToday={utils.isSameDay(day, now)}
                     hidden={!isDayInCurrentMonth}
+                    isInCurrentMonth={isDayInCurrentMonth}
                     selected={utils.isSameDay(selectedDate, day)}
                   />
                 );

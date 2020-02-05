@@ -2,9 +2,10 @@ import * as React from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { CSSTransitionProps } from 'react-transition-group/CSSTransition';
 
 export type SlideDirection = 'right' | 'left';
-interface SlideTransitionProps {
+interface SlideTransitionProps extends Omit<CSSTransitionProps, 'timeout'> {
   transKey: React.Key;
   className?: string;
   reduceAnimations: boolean;
@@ -68,6 +69,7 @@ const SlideTransition: React.SFC<SlideTransitionProps> = ({
   reduceAnimations,
   slideDirection,
   className = null,
+  ...other
 }) => {
   const classes = useStyles();
   if (reduceAnimations) {
@@ -99,6 +101,7 @@ const SlideTransition: React.SFC<SlideTransitionProps> = ({
         timeout={slideAnimationDuration}
         classNames={transitionClasses}
         children={children}
+        {...other}
       />
     </TransitionGroup>
   );
