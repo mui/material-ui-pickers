@@ -69,7 +69,6 @@ export const Year: React.FC<YearProps> = ({
 
   React.useEffect(() => {
     if (focused && ref.current) {
-      console.log(ref.current);
       ref.current.focus();
     }
   }, [focused]);

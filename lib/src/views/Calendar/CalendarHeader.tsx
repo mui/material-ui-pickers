@@ -24,6 +24,10 @@ export interface CalendarWithHeaderProps
   leftArrowIcon?: React.ReactNode;
   /** Right arrow icon */
   rightArrowIcon?: React.ReactNode;
+  /** Left arrow icon aria-label text */
+  leftArrowButtonText?: string;
+  /** Right arrow icon aria-label text */
+  rightArrowButtonText?: string;
   /**
    * Props to pass to left arrow button
    * @type {Partial<IconButtonProps>}
@@ -91,6 +95,8 @@ export const CalendarHeader: React.SFC<CalendarWithHeaderProps> = ({
   rightArrowIcon,
   leftArrowButtonProps,
   rightArrowButtonProps,
+  leftArrowButtonText = 'previous month',
+  rightArrowButtonText = 'next month',
   changeView,
   onMonthChange,
   minDate,
@@ -195,6 +201,7 @@ export const CalendarHeader: React.SFC<CalendarWithHeaderProps> = ({
             <IconButton
               data-mui-test="previous-month"
               size="small"
+              aria-label={leftArrowButtonText}
               {...leftArrowButtonProps}
               disabled={isPreviousMonthDisabled}
               onClick={selectPreviousMonth}
@@ -209,6 +216,7 @@ export const CalendarHeader: React.SFC<CalendarWithHeaderProps> = ({
 
             <IconButton
               size="small"
+              aria-label={rightArrowButtonText}
               {...rightArrowButtonProps}
               disabled={isNextMonthDisabled}
               onClick={selectNextMonth}
