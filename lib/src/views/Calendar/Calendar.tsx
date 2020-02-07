@@ -60,6 +60,10 @@ export interface CalendarProps {
   currentMonth: MaterialUiPickersDate;
   onMonthChange: (date: MaterialUiPickersDate) => void;
   reduceAnimations: boolean;
+  focusedDay: MaterialUiPickersDate | null;
+  changeFocusedDay: (newFocusedDay: MaterialUiPickersDate) => void;
+  isMonthSwitchingAnimating: boolean;
+  onMonthSwitchingAnimationEnd: () => void;
   wrapperVariant: WrapperVariant | null;
 }
 
@@ -104,6 +108,10 @@ export const useStyles = makeStyles(theme => ({
 
 export const Calendar: React.FC<CalendarProps> = ({
   date,
+  isMonthSwitchingAnimating,
+  onMonthSwitchingAnimationEnd,
+  focusedDay,
+  changeFocusedDay,
   onChange,
   minDate,
   maxDate,
@@ -111,7 +119,6 @@ export const Calendar: React.FC<CalendarProps> = ({
   disableFuture,
   disablePast,
   currentMonth,
-  onMonthChange,
   renderDay,
   reduceAnimations,
   allowKeyboardControl,
@@ -122,27 +129,12 @@ export const Calendar: React.FC<CalendarProps> = ({
   const utils = useUtils();
   const theme = useTheme();
   const classes = useStyles();
-  const [isAnimating, setIsAnimating] = React.useState(false);
-  const [focusedDay, setFocusedDay] = React.useState<MaterialUiPickersDate>(date);
 
   const handleDaySelect = React.useCallback(
     (day: MaterialUiPickersDate, isFinish = true) => {
       onChange(utils.mergeDateAndTime(day, date), isFinish);
     },
     [date, onChange, utils]
-  );
-
-  const focusDay = React.useCallback(
-    (day: MaterialUiPickersDate) => {
-      if (day && !isDateDisabled(day)) {
-        if (!utils.isSameMonth(day, currentMonth)) {
-          onMonthChange(utils.startOfMonth(day));
-        }
-
-        setFocusedDay(day);
-      }
-    },
-    [currentMonth, isDateDisabled, onMonthChange, utils]
   );
 
   React.useEffect(() => {
@@ -161,18 +153,15 @@ export const Calendar: React.FC<CalendarProps> = ({
     }
   }, []); // eslint-disable-line
 
-  React.useEffect(() => {
-    setFocusedDay(date);
-  }, [date]);
-
+  const nowFocusedDay = focusedDay || date;
   useGlobalKeyDown(Boolean(allowKeyboardControl && wrapperVariant !== 'static'), {
-    [keycode.Enter]: () => handleDaySelect(focusedDay, true),
-    [keycode.ArrowUp]: () => focusDay(utils.addDays(focusedDay, -7)),
-    [keycode.ArrowDown]: () => focusDay(utils.addDays(focusedDay, 7)),
+    [keycode.Enter]: () => handleDaySelect(nowFocusedDay, true),
+    [keycode.ArrowUp]: () => changeFocusedDay(utils.addDays(nowFocusedDay, -7)),
+    [keycode.ArrowDown]: () => changeFocusedDay(utils.addDays(nowFocusedDay, 7)),
     [keycode.ArrowLeft]: () =>
-      focusDay(utils.addDays(focusedDay, theme.direction === 'ltr' ? -1 : 1)),
+      changeFocusedDay(utils.addDays(nowFocusedDay, theme.direction === 'ltr' ? -1 : 1)),
     [keycode.ArrowRight]: () =>
-      focusDay(utils.addDays(focusedDay, theme.direction === 'ltr' ? 1 : -1)),
+      changeFocusedDay(utils.addDays(nowFocusedDay, theme.direction === 'ltr' ? 1 : -1)),
   });
 
   const selectedDate = utils.startOfDay(date);
@@ -192,8 +181,7 @@ export const Calendar: React.FC<CalendarProps> = ({
       </div>
 
       <SlideTransition
-        onEnter={() => setIsAnimating(true)}
-        onExited={() => setIsAnimating(false)}
+        onExited={onMonthSwitchingAnimationEnd}
         reduceAnimations={reduceAnimations}
         slideDirection={slideDirection}
         transKey={currentMonthNumber}
@@ -209,9 +197,14 @@ export const Calendar: React.FC<CalendarProps> = ({
                 let dayComponent = (
                   <Day
                     day={day}
-                    isAnimating={isAnimating}
+                    isAnimating={isMonthSwitchingAnimating}
                     disabled={disabled}
-                    focused={utils.isSameDay(day, focusedDay)}
+                    focused={Boolean(focusedDay) && utils.isSameDay(day, focusedDay)}
+                    onFocus={() => changeFocusedDay(day)}
+                    focusable={
+                      Boolean(nowFocusedDay) &&
+                      utils.toJsDate(nowFocusedDay).getDate() === utils.toJsDate(day).getDate()
+                    }
                     isToday={utils.isSameDay(day, now)}
                     hidden={!isDayInCurrentMonth}
                     isInCurrentMonth={isDayInCurrentMonth}

@@ -97,7 +97,7 @@ const SlideTransition: React.SFC<SlideTransitionProps> = ({
       <CSSTransition
         mountOnEnter
         unmountOnExit
-        key={transKey + slideDirection}
+        key={transKey}
         timeout={slideAnimationDuration}
         classNames={transitionClasses}
         children={children}

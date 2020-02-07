@@ -16,13 +16,24 @@ const DayWrapper: React.FC<DayWrapperProps> = ({
   dayInCurrentMonth,
   ...other
 }) => {
-  const handleClick = React.useCallback(() => onSelect(value), [onSelect, value]);
+  const handleSelection = () => {
+    if (dayInCurrentMonth && !disabled) {
+      onSelect(value);
+    }
+  };
 
   return (
     <div
       role="presentation"
-      onClick={dayInCurrentMonth && !disabled ? handleClick : undefined}
-      onKeyPress={dayInCurrentMonth && !disabled ? handleClick : undefined}
+      onClick={handleSelection}
+      onKeyPress={e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          handleSelection();
+
+          e.preventDefault();
+          e.stopPropagation();
+        }
+      }}
       children={children}
       {...other}
     />

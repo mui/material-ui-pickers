@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { IUtils } from '@date-io/core/IUtils';
 import { YearSelection } from './YearSelection';
 import { CalendarHeader } from './CalendarHeader';
 import { MonthSelection } from './MonthSelection';
@@ -62,17 +63,26 @@ interface ChangeMonthPayload {
   newMonth: MaterialUiPickersDate;
 }
 
-function calendarStateReducer(
-  state: {
-    loadingQueue: number;
-    currentMonth: MaterialUiPickersDate;
-    slideDirection: SlideDirection;
-  },
+interface State {
+  isMonthSwitchingAnimating: boolean;
+  loadingQueue: number;
+  currentMonth: MaterialUiPickersDate;
+  focusedDay: MaterialUiPickersDate | null;
+  slideDirection: SlideDirection;
+}
+
+const createCalendarStateReducer = (
+  reduceAnimations: boolean,
+  utils: IUtils<MaterialUiPickersDate>
+) => (
+  state: State,
   action:
     | ReducerAction<'popLoadingQueue'>
+    | ReducerAction<'finishMonthSwitchingAnimation'>
     | ReducerAction<'changeMonth', ChangeMonthPayload>
     | ReducerAction<'changeMonthLoading', ChangeMonthPayload>
-) {
+    | ReducerAction<'changeFocusedDay', { focusedDay: MaterialUiPickersDate }>
+): State => {
   switch (action.type) {
     case 'changeMonthLoading': {
       return {
@@ -80,6 +90,7 @@ function calendarStateReducer(
         loadingQueue: state.loadingQueue + 1,
         slideDirection: action.direction,
         currentMonth: action.newMonth,
+        isMonthSwitchingAnimating: !reduceAnimations,
       };
     }
     case 'changeMonth': {
@@ -87,6 +98,7 @@ function calendarStateReducer(
         ...state,
         slideDirection: action.direction,
         currentMonth: action.newMonth,
+        isMonthSwitchingAnimating: !reduceAnimations,
       };
     }
     case 'popLoadingQueue': {
@@ -95,8 +107,24 @@ function calendarStateReducer(
         loadingQueue: state.loadingQueue <= 0 ? 0 : state.loadingQueue - 1,
       };
     }
+    case 'finishMonthSwitchingAnimation': {
+      return {
+        ...state,
+        isMonthSwitchingAnimating: false,
+      };
+    }
+    case 'changeFocusedDay': {
+      const needMonthSwitch = !utils.isSameMonth(state.currentMonth, action.focusedDay);
+      return {
+        ...state,
+        focusedDay: action.focusedDay,
+        isMonthSwitchingAnimating: needMonthSwitch && !reduceAnimations,
+        currentMonth: needMonthSwitch ? utils.startOfMonth(action.focusedDay) : state.currentMonth,
+        slideDirection: utils.isAfterDay(action.focusedDay, state.currentMonth) ? 'left' : 'right',
+      };
+    }
   }
-}
+};
 
 export const useStyles = makeStyles(
   {
@@ -132,14 +160,16 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
   const maxDate = useParsedDate(unparsedMaxDate);
   const wrapperVariant = React.useContext(WrapperVariantContext);
 
-  const [{ currentMonth, loadingQueue, slideDirection }, dispatch] = React.useReducer(
-    calendarStateReducer,
-    {
-      loadingQueue: 0,
-      currentMonth: utils.startOfMonth(date),
-      slideDirection: 'left',
-    }
-  );
+  const [
+    { currentMonth, isMonthSwitchingAnimating, focusedDay, loadingQueue, slideDirection },
+    dispatch,
+  ] = React.useReducer(createCalendarStateReducer(reduceAnimations, utils), {
+    isMonthSwitchingAnimating: false,
+    loadingQueue: 0,
+    focusedDay: null,
+    currentMonth: utils.startOfMonth(date),
+    slideDirection: 'left',
+  });
 
   const handleChangeMonth = React.useCallback(
     (payload: ChangeMonthPayload) => {
@@ -253,6 +283,12 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
             ) : (
               <Calendar
                 {...other}
+                isMonthSwitchingAnimating={isMonthSwitchingAnimating}
+                onMonthSwitchingAnimationEnd={() =>
+                  dispatch({ type: 'finishMonthSwitchingAnimation' })
+                }
+                focusedDay={focusedDay}
+                changeFocusedDay={focusedDay => dispatch({ type: 'changeFocusedDay', focusedDay })}
                 reduceAnimations={reduceAnimations}
                 currentMonth={currentMonth}
                 slideDirection={slideDirection}

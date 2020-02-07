@@ -57,7 +57,9 @@ export interface DayProps extends ButtonBaseProps {
   /** The date to show */
   day: MaterialUiPickersDate;
   /** Is focused by keyboard navigation */
-  focused: boolean;
+  focused?: boolean;
+  /** Can be focused by tabbing in */
+  focusable?: boolean;
   /** Is day in current month */
   isInCurrentMonth: boolean;
   /** Is switching month animation going on right now */
@@ -76,8 +78,10 @@ export const Day: React.FC<DayProps> = ({
   isInCurrentMonth,
   isToday,
   selected,
-  focused,
+  focused = false,
+  focusable = false,
   isAnimating,
+  onFocus,
   ...other
 }) => {
   const ref = React.useRef<HTMLButtonElement>(null);
@@ -103,9 +107,14 @@ export const Day: React.FC<DayProps> = ({
       centerRipple
       focusRipple
       data-mui-test="day"
-      aria-label={utils.format(day, 'fullDate')}
       className={className}
-      tabIndex={selected ? 0 : -1}
+      onFocus={e => {
+        if (!focused && onFocus) {
+          onFocus(e);
+        }
+      }}
+      aria-label={utils.format(day, 'fullDate')}
+      tabIndex={focused || focusable ? 0 : -1}
       {...other}
     >
       <span className={classes.dayLabel}>{utils.format(day, 'dayOfMonth')}</span>
