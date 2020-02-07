@@ -96,7 +96,6 @@ export const Day: React.FC<DayProps> = ({
 
   React.useEffect(() => {
     if (!isAnimating && isInCurrentMonth && focused && ref.current) {
-      console.log('focusing current date', day);
       ref.current.focus();
     }
   }, [day, focused, isAnimating, isInCurrentMonth]);

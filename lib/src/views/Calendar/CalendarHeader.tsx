@@ -158,6 +158,7 @@ export const CalendarHeader: React.SFC<CalendarWithHeaderProps> = ({
             transKey={utils.format(month, 'month')}
           >
             <Typography
+              aria-live="polite"
               data-mui-test="calendar-month-text"
               align="center"
               variant="subtitle1"
@@ -170,6 +171,7 @@ export const CalendarHeader: React.SFC<CalendarWithHeaderProps> = ({
             transKey={utils.format(month, 'year')}
           >
             <Typography
+              aria-live="polite"
               data-mui-test="calendar-year-text"
               align="center"
               variant="subtitle1"
