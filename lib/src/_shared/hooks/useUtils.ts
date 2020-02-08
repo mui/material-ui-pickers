@@ -25,3 +25,5 @@ export function useNow() {
 
   return now.current;
 }
+
+export type MuiPickersUtils = IUtils<MaterialUiPickersDate>;

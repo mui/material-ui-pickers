@@ -15,7 +15,7 @@ import { ArrowLeftIcon } from '../../_shared/icons/ArrowLeftIcon';
 import { ArrowRightIcon } from '../../_shared/icons/ArrowRightIcon';
 import { ArrowDropDownIcon } from '../../_shared/icons/ArrowDropDownIcon';
 
-export interface CalendarWithHeaderProps
+export interface CalendarHeaderProps
   extends Pick<CalendarProps, 'minDate' | 'maxDate' | 'disablePast' | 'disableFuture'> {
   view: DatePickerView;
   views: DatePickerView[];
@@ -38,6 +38,8 @@ export interface CalendarWithHeaderProps
    * @type {Partial<IconButtonProps>}
    */
   rightArrowButtonProps?: Partial<IconButtonProps>;
+  /** Get aria-label text for switching between views button */
+  getViewSwitchingButtonText?: (currentView: DatePickerView) => string;
   reduceAnimations: boolean;
   changeView: (view: DatePickerView) => void;
   onMonthChange: (date: MaterialUiPickersDate, slideDirection: SlideDirection) => void;
@@ -87,23 +89,30 @@ export const useStyles = makeStyles(
   { name: 'MuiPickersCalendarHeader' }
 );
 
-export const CalendarHeader: React.SFC<CalendarWithHeaderProps> = ({
+function getSwitchingViewAriaText(view: DatePickerView) {
+  return view === 'year'
+    ? 'year view is open, switch to calendar view'
+    : 'calendar view is open, switch to year view';
+}
+
+export const CalendarHeader: React.SFC<CalendarHeaderProps> = ({
   view,
   views,
   month,
+  changeView,
+  minDate,
+  maxDate,
+  disablePast,
+  disableFuture,
+  onMonthChange,
+  reduceAnimations,
   leftArrowIcon,
   rightArrowIcon,
   leftArrowButtonProps,
   rightArrowButtonProps,
   leftArrowButtonText = 'previous month',
   rightArrowButtonText = 'next month',
-  changeView,
-  onMonthChange,
-  minDate,
-  maxDate,
-  reduceAnimations,
-  disableFuture,
-  disablePast,
+  getViewSwitchingButtonText = getSwitchingViewAriaText,
 }) => {
   const utils = useUtils();
   const theme = useTheme();
@@ -184,11 +193,7 @@ export const CalendarHeader: React.SFC<CalendarWithHeaderProps> = ({
             data-mui-test="calendar-view-switcher"
             onClick={toggleView}
             className={classes.yearSelectionSwitcher}
-            aria-label={
-              view === 'year'
-                ? 'year view is open, switch to calendar view'
-                : 'calendar view is open, switch to year view'
-            }
+            aria-label={getViewSwitchingButtonText(view)}
           >
             <ArrowDropDownIcon
               className={clsx(classes.switchViewDropdown, {

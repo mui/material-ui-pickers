@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { IUtils } from '@date-io/core/IUtils';
 import { YearSelection } from './YearSelection';
-import { CalendarHeader } from './CalendarHeader';
 import { MonthSelection } from './MonthSelection';
 import { DatePickerView } from '../../DatePicker';
 import { SlideDirection } from './SlideTransition';
@@ -12,20 +11,27 @@ import { MaterialUiPickersDate } from '../../typings/date';
 import { FadeTransitionGroup } from './FadeTransitionGroup';
 import { useUtils, useNow } from '../../_shared/hooks/useUtils';
 import { useParsedDate } from '../../_shared/hooks/useParsedDate';
+import { CalendarHeader, CalendarHeaderProps } from './CalendarHeader';
 import { CircularProgress, Grid, makeStyles } from '@material-ui/core';
 import { WrapperVariantContext } from '../../wrappers/WrapperVariantContext';
 
-export interface CalendarViewProps
-  extends Omit<
-    CalendarProps,
-    | 'reduceAnimations'
-    | 'slideDirection'
-    | 'currentMonth'
-    | 'minDate'
-    | 'maxDate'
-    | 'wrapperVariant'
-    | 'onMonthChange'
-  > {
+type PublicCalendarProps = Omit<
+  CalendarProps,
+  'reduceAnimations' | 'slideDirection' | 'currentMonth' | 'minDate' | 'maxDate' | 'wrapperVariant'
+>;
+
+type PublicCalendarHeaderProps = Pick<
+  CalendarHeaderProps,
+  | 'leftArrowIcon'
+  | 'rightArrowIcon'
+  | 'leftArrowButtonProps'
+  | 'rightArrowButtonProps'
+  | 'leftArrowButtonText'
+  | 'rightArrowButtonText'
+  | 'getViewSwitchingButtonText'
+>;
+
+export interface CalendarViewProps extends PublicCalendarProps, PublicCalendarHeaderProps {
   date: MaterialUiPickersDate;
   view: DatePickerView;
   views: DatePickerView[];
@@ -298,7 +304,6 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
                 maxDate={maxDate}
                 wrapperVariant={wrapperVariant}
                 isDateDisabled={isDateDisabled}
-                onMonthChange={changeMonth}
               />
             ))}
         </div>

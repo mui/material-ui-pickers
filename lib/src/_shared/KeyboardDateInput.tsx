@@ -11,6 +11,7 @@ import {
   maskedDateFormatter,
   getDisplayDate,
   checkMaskIsValidForCurrentFormat,
+  getTextFieldAriaText,
 } from '../_helpers/text-field-helper';
 
 export const KeyboardDateInput: React.FC<DateInputProps> = ({
@@ -38,6 +39,7 @@ export const KeyboardDateInput: React.FC<DateInputProps> = ({
   ignoreInvalidInputs,
   onFocus,
   onBlur,
+  getOpenDialogAriaText = getTextFieldAriaText,
   ...other
 }) => {
   const utils = useUtils();
@@ -110,11 +112,7 @@ export const KeyboardDateInput: React.FC<DateInputProps> = ({
           <IconButton
             data-mui-test="open-picker-from-keyboard"
             disabled={disabled}
-            aria-label={
-              rawValue && utils.isValid(utils.date(rawValue))
-                ? `Choose date, selected date is ${utils.format(utils.date(rawValue), 'fullDate')}`
-                : 'Choose date'
-            }
+            aria-label={getOpenDialogAriaText(rawValue, utils)}
             {...KeyboardButtonProps}
             onClick={onOpen}
           >

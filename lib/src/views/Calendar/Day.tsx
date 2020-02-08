@@ -106,14 +106,14 @@ export const Day: React.FC<DayProps> = ({
       centerRipple
       focusRipple
       data-mui-test="day"
+      aria-label={utils.format(day, 'fullDate')}
+      tabIndex={focused || focusable ? 0 : -1}
       className={className}
       onFocus={e => {
         if (!focused && onFocus) {
           onFocus(e);
         }
       }}
-      aria-label={utils.format(day, 'fullDate')}
-      tabIndex={focused || focusable ? 0 : -1}
       {...other}
     >
       <span className={classes.dayLabel}>{utils.format(day, 'dayOfMonth')}</span>

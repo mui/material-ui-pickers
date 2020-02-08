@@ -4,7 +4,6 @@ import DayWrapper from './DayWrapper';
 import SlideTransition, { SlideDirection } from './SlideTransition';
 import { WrapperVariant } from '../../wrappers/Wrapper';
 import { MaterialUiPickersDate } from '../../typings/date';
-import { IconButtonProps } from '@material-ui/core/IconButton';
 import { useUtils, useNow } from '../../_shared/hooks/useUtils';
 import { findClosestEnabledDate } from '../../_helpers/date-utils';
 import { makeStyles, useTheme, Typography } from '@material-ui/core';
@@ -25,10 +24,6 @@ export interface CalendarProps {
    * @default false
    */
   disableFuture?: boolean;
-  /** Left arrow icon */
-  leftArrowIcon?: React.ReactNode;
-  /** Right arrow icon */
-  rightArrowIcon?: React.ReactNode;
   /** Custom renderer for day @DateIOType */
   renderDay?: (
     day: MaterialUiPickersDate,
@@ -41,16 +36,6 @@ export interface CalendarProps {
    * @default true
    */
   allowKeyboardControl?: boolean;
-  /**
-   * Props to pass to left arrow button
-   * @type {Partial<IconButtonProps>}
-   */
-  leftArrowButtonProps?: Partial<IconButtonProps>;
-  /**
-   * Props to pass to right arrow button
-   * @type {Partial<IconButtonProps>}
-   */
-  rightArrowButtonProps?: Partial<IconButtonProps>;
   /** Custom loading indicator  */
   loadingIndicator?: JSX.Element;
   minDate?: MaterialUiPickersDate;
@@ -58,7 +43,6 @@ export interface CalendarProps {
   isDateDisabled: (day: MaterialUiPickersDate) => boolean;
   slideDirection: SlideDirection;
   currentMonth: MaterialUiPickersDate;
-  onMonthChange: (date: MaterialUiPickersDate) => void;
   reduceAnimations: boolean;
   focusedDay: MaterialUiPickersDate | null;
   changeFocusedDay: (newFocusedDay: MaterialUiPickersDate) => void;
@@ -187,9 +171,9 @@ export const Calendar: React.FC<CalendarProps> = ({
         transKey={currentMonthNumber}
         className={classes.transitionContainer}
       >
-        <div style={{ overflow: 'hidden' }}>
+        <div role="grid" style={{ overflow: 'hidden' }}>
           {utils.getWeekArray(currentMonth).map(week => (
-            <div key={`week-${week[0]!.toString()}`} className={classes.week}>
+            <div role="row" key={`week-${week[0]!.toString()}`} className={classes.week}>
               {week.map(day => {
                 const disabled = isDateDisabled(day);
                 const isDayInCurrentMonth = utils.getMonth(day) === currentMonthNumber;

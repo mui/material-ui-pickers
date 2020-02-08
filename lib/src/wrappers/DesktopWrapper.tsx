@@ -5,7 +5,7 @@ import Popover, { PopoverProps } from '@material-ui/core/Popover';
 import { WrapperProps } from './Wrapper';
 import { InnerMobileWrapperProps } from './MobileWrapper';
 import { WrapperVariantContext } from './WrapperVariantContext';
-import { useKeyDownHandler } from '../_shared/hooks/useKeyDown';
+import { useKeyDownHandler, keycode } from '../_shared/hooks/useKeyDown';
 
 export interface InnerDesktopWrapperProps {
   /** Popover props passed to material-ui Popover */
@@ -39,7 +39,7 @@ export const DesktopWrapper: React.FC<DesktopWrapperProps> = ({
 }) => {
   const ref = React.useRef();
   const handleKeydown = useKeyDownHandler(open, {
-    13: onAccept, // Enter
+    [keycode.Enter]: onAccept, // Enter
   });
 
   return (
@@ -60,9 +60,10 @@ export const DesktopWrapper: React.FC<DesktopWrapperProps> = ({
           vertical: 'top',
           horizontal: 'center',
         }}
-        children={children}
         {...PopoverProps}
-      />
+      >
+        {children}
+      </Popover>
     </WrapperVariantContext.Provider>
   );
 };

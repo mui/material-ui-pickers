@@ -24,7 +24,7 @@ const DayWrapper: React.FC<DayWrapperProps> = ({
 
   return (
     <div
-      role="presentation"
+      role="cell"
       onClick={handleSelection}
       onKeyPress={e => {
         if (e.key === 'Enter' || e.key === ' ') {
