@@ -68,6 +68,8 @@ export function useMeridiemMode(
   return { meridiemMode, handleMeridiemChange };
 }
 
+const clockTypographyVariant = 'h3';
+
 export const TimePickerToolbar: React.FC<ToolbarComponentProps> = ({
   date,
   views,
@@ -86,8 +88,6 @@ export const TimePickerToolbar: React.FC<ToolbarComponentProps> = ({
   const classes = useStyles();
   const showAmPmControl = ampm && !ampmInClock;
   const { meridiemMode, handleMeridiemChange } = useMeridiemMode(date, ampm, onChange);
-
-  const clockTypographyVariant = 'h3';
 
   return (
     <PickerToolbar

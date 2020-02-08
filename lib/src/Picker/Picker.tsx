@@ -34,6 +34,7 @@ export type ToolbarComponentProps<T extends PickerView = any> = BaseDatePickerPr
     ampmInClock?: boolean;
     isMobileKeyboardViewOpen: boolean;
     toggleMobileKeyboardView: () => void;
+    getMobileKeyboardInputViewButtonText?: () => string;
   };
 
 export interface PickerViewProps<TView extends PickerView>
