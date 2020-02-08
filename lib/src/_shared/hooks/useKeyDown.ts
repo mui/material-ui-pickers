@@ -3,7 +3,7 @@ import * as React from 'react';
 export const useIsomorphicEffect =
   typeof window === 'undefined' ? React.useEffect : React.useLayoutEffect;
 
-type KeyHandlers = Record<KeyboardEvent['key'], () => void>;
+type KeyHandlers = Record<number, () => void>;
 
 export function runKeyHandler(e: KeyboardEvent | React.KeyboardEvent, keyHandlers: KeyHandlers) {
   const handler = keyHandlers[e.keyCode];
