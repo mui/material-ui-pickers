@@ -4,21 +4,16 @@ import { YearSelection } from './YearSelection';
 import { MonthSelection } from './MonthSelection';
 import { DatePickerView } from '../../DatePicker';
 import { SlideDirection } from './SlideTransition';
-import { Calendar, CalendarProps } from './Calendar';
 import { VIEW_HEIGHT } from '../../constants/dimensions';
 import { ParsableDate } from '../../constants/prop-types';
 import { MaterialUiPickersDate } from '../../typings/date';
 import { FadeTransitionGroup } from './FadeTransitionGroup';
+import { Calendar, ExportedCalendarProps } from './Calendar';
 import { useUtils, useNow } from '../../_shared/hooks/useUtils';
 import { useParsedDate } from '../../_shared/hooks/useParsedDate';
 import { CalendarHeader, CalendarHeaderProps } from './CalendarHeader';
 import { CircularProgress, Grid, makeStyles } from '@material-ui/core';
 import { WrapperVariantContext } from '../../wrappers/WrapperVariantContext';
-
-type PublicCalendarProps = Omit<
-  CalendarProps,
-  'reduceAnimations' | 'slideDirection' | 'currentMonth' | 'minDate' | 'maxDate' | 'wrapperVariant'
->;
 
 type PublicCalendarHeaderProps = Pick<
   CalendarHeaderProps,
@@ -31,7 +26,7 @@ type PublicCalendarHeaderProps = Pick<
   | 'getViewSwitchingButtonText'
 >;
 
-export interface CalendarViewProps extends PublicCalendarProps, PublicCalendarHeaderProps {
+export interface CalendarViewProps extends ExportedCalendarProps, PublicCalendarHeaderProps {
   date: MaterialUiPickersDate;
   view: DatePickerView;
   views: DatePickerView[];
@@ -57,7 +52,7 @@ export interface CalendarViewProps extends PublicCalendarProps, PublicCalendarHe
   shouldDisableDate?: (day: MaterialUiPickersDate) => boolean;
 }
 
-export type ExportedCalendarProps = Omit<
+export type ExportedCalendarViewProps = Omit<
   CalendarViewProps,
   'date' | 'view' | 'views' | 'onChange' | 'changeView' | 'slideDirection' | 'currentMonth'
 >;

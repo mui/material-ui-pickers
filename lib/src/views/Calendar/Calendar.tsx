@@ -9,7 +9,7 @@ import { findClosestEnabledDate } from '../../_helpers/date-utils';
 import { makeStyles, useTheme, Typography } from '@material-ui/core';
 import { useGlobalKeyDown, keycode } from '../../_shared/hooks/useKeyDown';
 
-export interface CalendarProps {
+export interface ExportedCalendarProps {
   /** Calendar Date @DateIOType */
   date: MaterialUiPickersDate;
   /** Calendar onChange */
@@ -38,6 +38,9 @@ export interface CalendarProps {
   allowKeyboardControl?: boolean;
   /** Custom loading indicator  */
   loadingIndicator?: JSX.Element;
+}
+
+export interface CalendarProps extends ExportedCalendarProps {
   minDate?: MaterialUiPickersDate;
   maxDate?: MaterialUiPickersDate;
   isDateDisabled: (day: MaterialUiPickersDate) => boolean;

@@ -249,122 +249,6 @@
         "name": "(date: DateIOType) => void"
       }
     },
-    "reduceAnimations": {
-      "defaultValue": {
-        "value": "/(android)/i.test(navigator.userAgent)"
-      },
-      "description": "Do not show heavy animations, significantly improves performance on slow devices",
-      "name": "reduceAnimations",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Calendar/CalendarView.tsx",
-        "name": "CalendarViewProps"
-      },
-      "required": false,
-      "type": {
-        "name": "boolean"
-      }
-    },
-    "minDate": {
-      "defaultValue": {
-        "value": "Date(1900-01-01)"
-      },
-      "description": "Min selectable date",
-      "name": "minDate",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Calendar/CalendarView.tsx",
-        "name": "CalendarViewProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ParsableDate"
-      }
-    },
-    "maxDate": {
-      "defaultValue": {
-        "value": "Date(2100-01-01)"
-      },
-      "description": "Max selectable date",
-      "name": "maxDate",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Calendar/CalendarView.tsx",
-        "name": "CalendarViewProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ParsableDate"
-      }
-    },
-    "disablePast": {
-      "defaultValue": {
-        "value": "false"
-      },
-      "description": "Disable past dates",
-      "name": "disablePast",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
-        "name": "CalendarProps"
-      },
-      "required": false,
-      "type": {
-        "name": "boolean"
-      }
-    },
-    "disableFuture": {
-      "defaultValue": {
-        "value": "false"
-      },
-      "description": "Disable future dates",
-      "name": "disableFuture",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
-        "name": "CalendarProps"
-      },
-      "required": false,
-      "type": {
-        "name": "boolean"
-      }
-    },
-    "renderDay": {
-      "defaultValue": null,
-      "description": "Custom renderer for day",
-      "name": "renderDay",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
-        "name": "CalendarProps"
-      },
-      "required": false,
-      "type": {
-        "name": "(day: DateIOType, selectedDate: DateIOType, dayInCurrentMonth: boolean, dayComponent: Element) => Element"
-      }
-    },
-    "allowKeyboardControl": {
-      "defaultValue": {
-        "value": "true"
-      },
-      "description": "Enables keyboard listener for moving between days in calendar",
-      "name": "allowKeyboardControl",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
-        "name": "CalendarProps"
-      },
-      "required": false,
-      "type": {
-        "name": "boolean"
-      }
-    },
-    "loadingIndicator": {
-      "defaultValue": null,
-      "description": "Custom loading indicator",
-      "name": "loadingIndicator",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
-        "name": "CalendarProps"
-      },
-      "required": false,
-      "type": {
-        "name": "Element"
-      }
-    },
     "leftArrowIcon": {
       "defaultValue": null,
       "description": "Left arrow icon",
@@ -456,6 +340,66 @@
         "name": "(currentView: \"date\" | \"year\" | \"month\") => string"
       }
     },
+    "minDate": {
+      "defaultValue": {
+        "value": "Date(1900-01-01)"
+      },
+      "description": "Min selectable date",
+      "name": "minDate",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/CalendarView.tsx",
+        "name": "CalendarViewProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ParsableDate"
+      }
+    },
+    "maxDate": {
+      "defaultValue": {
+        "value": "Date(2100-01-01)"
+      },
+      "description": "Max selectable date",
+      "name": "maxDate",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/CalendarView.tsx",
+        "name": "CalendarViewProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ParsableDate"
+      }
+    },
+    "disablePast": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "Disable past dates",
+      "name": "disablePast",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
+        "name": "ExportedCalendarProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "disableFuture": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "Disable future dates",
+      "name": "disableFuture",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
+        "name": "ExportedCalendarProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
     "onMonthChange": {
       "defaultValue": null,
       "description": "Callback firing on month change. Return promise to render spinner till it will not be resolved",
@@ -469,6 +413,21 @@
         "name": "(date: DateIOType) => void | Promise<void>"
       }
     },
+    "reduceAnimations": {
+      "defaultValue": {
+        "value": "/(android)/i.test(navigator.userAgent)"
+      },
+      "description": "Do not show heavy animations, significantly improves performance on slow devices",
+      "name": "reduceAnimations",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/CalendarView.tsx",
+        "name": "CalendarViewProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
     "shouldDisableDate": {
       "defaultValue": null,
       "description": "Disable specific date",
@@ -480,6 +439,47 @@
       "required": false,
       "type": {
         "name": "(day: DateIOType) => boolean"
+      }
+    },
+    "renderDay": {
+      "defaultValue": null,
+      "description": "Custom renderer for day",
+      "name": "renderDay",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
+        "name": "ExportedCalendarProps"
+      },
+      "required": false,
+      "type": {
+        "name": "(day: DateIOType, selectedDate: DateIOType, dayInCurrentMonth: boolean, dayComponent: Element) => Element"
+      }
+    },
+    "allowKeyboardControl": {
+      "defaultValue": {
+        "value": "true"
+      },
+      "description": "Enables keyboard listener for moving between days in calendar",
+      "name": "allowKeyboardControl",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
+        "name": "ExportedCalendarProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "loadingIndicator": {
+      "defaultValue": null,
+      "description": "Custom loading indicator",
+      "name": "loadingIndicator",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
+        "name": "ExportedCalendarProps"
+      },
+      "required": false,
+      "type": {
+        "name": "Element"
       }
     },
     "minDateMessage": {
@@ -2078,122 +2078,6 @@
         "name": "(date: DateIOType) => void"
       }
     },
-    "reduceAnimations": {
-      "defaultValue": {
-        "value": "/(android)/i.test(navigator.userAgent)"
-      },
-      "description": "Do not show heavy animations, significantly improves performance on slow devices",
-      "name": "reduceAnimations",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Calendar/CalendarView.tsx",
-        "name": "CalendarViewProps"
-      },
-      "required": false,
-      "type": {
-        "name": "boolean"
-      }
-    },
-    "minDate": {
-      "defaultValue": {
-        "value": "Date(1900-01-01)"
-      },
-      "description": "Min selectable date",
-      "name": "minDate",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Calendar/CalendarView.tsx",
-        "name": "CalendarViewProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ParsableDate"
-      }
-    },
-    "maxDate": {
-      "defaultValue": {
-        "value": "Date(2100-01-01)"
-      },
-      "description": "Max selectable date",
-      "name": "maxDate",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Calendar/CalendarView.tsx",
-        "name": "CalendarViewProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ParsableDate"
-      }
-    },
-    "disablePast": {
-      "defaultValue": {
-        "value": "false"
-      },
-      "description": "Disable past dates",
-      "name": "disablePast",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
-        "name": "CalendarProps"
-      },
-      "required": false,
-      "type": {
-        "name": "boolean"
-      }
-    },
-    "disableFuture": {
-      "defaultValue": {
-        "value": "false"
-      },
-      "description": "Disable future dates",
-      "name": "disableFuture",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
-        "name": "CalendarProps"
-      },
-      "required": false,
-      "type": {
-        "name": "boolean"
-      }
-    },
-    "renderDay": {
-      "defaultValue": null,
-      "description": "Custom renderer for day",
-      "name": "renderDay",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
-        "name": "CalendarProps"
-      },
-      "required": false,
-      "type": {
-        "name": "(day: DateIOType, selectedDate: DateIOType, dayInCurrentMonth: boolean, dayComponent: Element) => Element"
-      }
-    },
-    "allowKeyboardControl": {
-      "defaultValue": {
-        "value": "true"
-      },
-      "description": "Enables keyboard listener for moving between days in calendar",
-      "name": "allowKeyboardControl",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
-        "name": "CalendarProps"
-      },
-      "required": false,
-      "type": {
-        "name": "boolean"
-      }
-    },
-    "loadingIndicator": {
-      "defaultValue": null,
-      "description": "Custom loading indicator",
-      "name": "loadingIndicator",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
-        "name": "CalendarProps"
-      },
-      "required": false,
-      "type": {
-        "name": "Element"
-      }
-    },
     "leftArrowIcon": {
       "defaultValue": null,
       "description": "Left arrow icon",
@@ -2285,6 +2169,66 @@
         "name": "(currentView: DatePickerView) => string"
       }
     },
+    "minDate": {
+      "defaultValue": {
+        "value": "Date(1900-01-01)"
+      },
+      "description": "Min selectable date",
+      "name": "minDate",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/CalendarView.tsx",
+        "name": "CalendarViewProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ParsableDate"
+      }
+    },
+    "maxDate": {
+      "defaultValue": {
+        "value": "Date(2100-01-01)"
+      },
+      "description": "Max selectable date",
+      "name": "maxDate",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/CalendarView.tsx",
+        "name": "CalendarViewProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ParsableDate"
+      }
+    },
+    "disablePast": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "Disable past dates",
+      "name": "disablePast",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
+        "name": "ExportedCalendarProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "disableFuture": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "Disable future dates",
+      "name": "disableFuture",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
+        "name": "ExportedCalendarProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
     "onMonthChange": {
       "defaultValue": null,
       "description": "Callback firing on month change. Return promise to render spinner till it will not be resolved",
@@ -2298,6 +2242,21 @@
         "name": "(date: DateIOType) => void | Promise<void>"
       }
     },
+    "reduceAnimations": {
+      "defaultValue": {
+        "value": "/(android)/i.test(navigator.userAgent)"
+      },
+      "description": "Do not show heavy animations, significantly improves performance on slow devices",
+      "name": "reduceAnimations",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/CalendarView.tsx",
+        "name": "CalendarViewProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
     "shouldDisableDate": {
       "defaultValue": null,
       "description": "Disable specific date",
@@ -2309,6 +2268,47 @@
       "required": false,
       "type": {
         "name": "(day: DateIOType) => boolean"
+      }
+    },
+    "renderDay": {
+      "defaultValue": null,
+      "description": "Custom renderer for day",
+      "name": "renderDay",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
+        "name": "ExportedCalendarProps"
+      },
+      "required": false,
+      "type": {
+        "name": "(day: DateIOType, selectedDate: DateIOType, dayInCurrentMonth: boolean, dayComponent: Element) => Element"
+      }
+    },
+    "allowKeyboardControl": {
+      "defaultValue": {
+        "value": "true"
+      },
+      "description": "Enables keyboard listener for moving between days in calendar",
+      "name": "allowKeyboardControl",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
+        "name": "ExportedCalendarProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "loadingIndicator": {
+      "defaultValue": null,
+      "description": "Custom loading indicator",
+      "name": "loadingIndicator",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
+        "name": "ExportedCalendarProps"
+      },
+      "required": false,
+      "type": {
+        "name": "Element"
       }
     },
     "views": {
@@ -2345,7 +2345,7 @@
       "name": "date",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
-        "name": "CalendarProps"
+        "name": "ExportedCalendarProps"
       },
       "required": true,
       "type": {
@@ -2358,7 +2358,7 @@
       "name": "onChange",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
-        "name": "CalendarProps"
+        "name": "ExportedCalendarProps"
       },
       "required": true,
       "type": {
@@ -2373,7 +2373,7 @@
       "name": "disablePast",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
-        "name": "CalendarProps"
+        "name": "ExportedCalendarProps"
       },
       "required": false,
       "type": {
@@ -2388,7 +2388,7 @@
       "name": "disableFuture",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
-        "name": "CalendarProps"
+        "name": "ExportedCalendarProps"
       },
       "required": false,
       "type": {
@@ -2401,7 +2401,7 @@
       "name": "renderDay",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
-        "name": "CalendarProps"
+        "name": "ExportedCalendarProps"
       },
       "required": false,
       "type": {
@@ -2416,7 +2416,7 @@
       "name": "allowKeyboardControl",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
-        "name": "CalendarProps"
+        "name": "ExportedCalendarProps"
       },
       "required": false,
       "type": {
@@ -2429,7 +2429,7 @@
       "name": "loadingIndicator",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
-        "name": "CalendarProps"
+        "name": "ExportedCalendarProps"
       },
       "required": false,
       "type": {
