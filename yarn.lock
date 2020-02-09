@@ -1269,10 +1269,10 @@
     debug "^3.1.0"
     lodash.once "^4.1.1"
 
-"@date-io/core@^2.2.0":
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/@date-io/core/-/core-2.2.0.tgz#cb351cefa3544460f183ebf26b52f3b5781c28fa"
-  integrity sha512-QM0ESKqAtuz8kNz53XYJFLZtceVp1V1cbhqdIDMveB0wSfDfBk8m5iT0GkHv5RIs+p6PXVd3zkeqz/qD4UzdPw==
+"@date-io/core@^2.2.0", "@date-io/core@^2.3.0":
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/@date-io/core/-/core-2.3.0.tgz#2feece77dafdf65fd911f1cb894f29d91f03153e"
+  integrity sha512-aOmiF9tDtRCGuzGfBILKsd+zigEnGMBqXWNlr4ZDA6Y8r4JxTjIpvlCZrmtDP/0x2T+og28uhwBjJbCGFzdiCA==
 
 "@date-io/date-fns@^2.1.0":
   version "2.2.0"
@@ -1302,12 +1302,12 @@
   dependencies:
     "@date-io/moment" "^2.2.0"
 
-"@date-io/luxon@^2.1.0":
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/@date-io/luxon/-/luxon-2.2.0.tgz#91ed2ff6e88c9090ab50ff6ca4ecc2efc5a48c05"
-  integrity sha512-mRLEm08a2uvsxze9PwMyi7RAiQJF/UHjJXRHbc5FnuYSBHsKKzoyicafCntJxvGX0tKePdzDnusXrukW3JrBdA==
+"@date-io/luxon@^2.3.0":
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/@date-io/luxon/-/luxon-2.3.0.tgz#cf76f60fafac2f0bc69938ef1c56ca8921b8a8b9"
+  integrity sha512-5eJfetg6o6Nbssk8B+SbWJFoMT75O3xhxsmub048r3gHjYx+b2/Iz+Qu8zO9S0hytvd2KZ415KzWwYZKFwGghw==
   dependencies:
-    "@date-io/core" "^2.2.0"
+    "@date-io/core" "^2.3.0"
 
 "@date-io/moment@^2.1.0", "@date-io/moment@^2.2.0":
   version "2.2.0"
