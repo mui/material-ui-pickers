@@ -5,7 +5,7 @@ import SlideTransition, { SlideDirection } from './SlideTransition';
 import { WrapperVariant } from '../../wrappers/Wrapper';
 import { MaterialUiPickersDate } from '../../typings/date';
 import { useUtils, useNow } from '../../_shared/hooks/useUtils';
-import { onChangeFunction } from '../../_shared/hooks/useViews';
+import { PickerOnChangeFn } from '../../_shared/hooks/useViews';
 import { findClosestEnabledDate } from '../../_helpers/date-utils';
 import { makeStyles, useTheme, Typography } from '@material-ui/core';
 import { FORCE_FINISH_PICKER } from '../../_shared/hooks/usePickerState';
@@ -15,7 +15,7 @@ export interface ExportedCalendarProps {
   /** Calendar Date @DateIOType */
   date: MaterialUiPickersDate;
   /** Calendar onChange */
-  onChange: onChangeFunction;
+  onChange: PickerOnChangeFn;
   /**
    * Disable past dates
    * @default false

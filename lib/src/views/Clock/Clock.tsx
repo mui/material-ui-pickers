@@ -6,6 +6,7 @@ import { useUtils } from '../../_shared/hooks/useUtils';
 import { VIEW_HEIGHT } from '../../constants/dimensions';
 import { ClockViewType } from '../../constants/ClockType';
 import { MaterialUiPickersDate } from '../../typings/date';
+import { PickerOnChangeFn } from '../../_shared/hooks/useViews';
 import { getHours, getMinutes } from '../../_helpers/time-utils';
 import { useMeridiemMode } from '../../TimePicker/TimePickerToolbar';
 import { IconButton, Typography, makeStyles } from '@material-ui/core';
@@ -18,8 +19,8 @@ export interface ClockProps {
   type: ClockViewType;
   value: number;
   children: React.ReactElement<any>[];
-  onDateChange: (date: MaterialUiPickersDate, isFinish?: boolean) => void;
-  onChange: (value: number, isFinish?: boolean) => void;
+  onDateChange: PickerOnChangeFn;
+  onChange: (value: number, isFinish?: boolean | symbol) => void;
   ampm?: boolean;
   minutesStep?: number;
   ampmInClock?: boolean;
@@ -97,7 +98,7 @@ export const Clock: React.FC<ClockProps> = ({
   children: numbersElementsArray,
   type,
   ampm,
-  minutesStep,
+  minutesStep = 1,
   onChange,
 }) => {
   const utils = useUtils();
@@ -166,18 +167,15 @@ export const Clock: React.FC<ClockProps> = ({
     return value % 5 === 0;
   }, [type, value]);
 
+  const keyboardControlStep = type === 'minutes' ? minutesStep : 1;
   useGlobalKeyDown(!isMoving.current, {
-    [keycode.ArrowUp]: () => onChange(value + 1, false),
-    [keycode.ArrowDown]: () => onChange(value - 1, false),
+    [keycode.ArrowUp]: () => onChange(value + keyboardControlStep, false),
+    [keycode.ArrowDown]: () => onChange(value - keyboardControlStep, false),
     [keycode.Enter]: () => onChange(value, FORCE_FINISH_PICKER),
   });
 
   return (
-    <div
-      aria-live="polite"
-      aria-label={`Selected time is ${utils.format(date, 'fullTime')}`}
-      className={classes.container}
-    >
+    <div className={classes.container}>
       <div className={classes.clock}>
         <div
           role="menu"
@@ -196,6 +194,8 @@ export const Clock: React.FC<ClockProps> = ({
           value={value}
           isInner={isPointerInner}
           hasSelected={hasSelected}
+          aria-live="polite"
+          aria-label={`Selected time ${utils.format(date, 'fullTime')}`}
         />
 
         {numbersElementsArray}

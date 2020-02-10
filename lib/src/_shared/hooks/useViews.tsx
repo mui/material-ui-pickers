@@ -3,7 +3,7 @@ import { PickerView } from '../../Picker/Picker';
 import { arrayIncludes } from '../../_helpers/utils';
 import { MaterialUiPickersDate } from '../../typings/date';
 
-export type onChangeFunction = (date: MaterialUiPickersDate, isFinish?: boolean | symbol) => void;
+export type PickerOnChangeFn = (date: MaterialUiPickersDate, isFinish?: boolean | symbol) => void;
 
 export function useViews({
   views,
@@ -14,7 +14,7 @@ export function useViews({
 }: {
   views: PickerView[];
   openTo: PickerView;
-  onChange: onChangeFunction;
+  onChange: PickerOnChangeFn;
   isMobileKeyboardViewOpen: boolean;
   toggleMobileKeyboardView: () => void;
 }) {

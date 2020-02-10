@@ -10,7 +10,7 @@ import { MaterialUiPickersDate } from '../../typings/date';
 import { FadeTransitionGroup } from './FadeTransitionGroup';
 import { Calendar, ExportedCalendarProps } from './Calendar';
 import { useUtils, useNow } from '../../_shared/hooks/useUtils';
-import { onChangeFunction } from '../../_shared/hooks/useViews';
+import { PickerOnChangeFn } from '../../_shared/hooks/useViews';
 import { useParsedDate } from '../../_shared/hooks/useParsedDate';
 import { CalendarHeader, CalendarHeaderProps } from './CalendarHeader';
 import { CircularProgress, Grid, makeStyles } from '@material-ui/core';
@@ -32,7 +32,7 @@ export interface CalendarViewProps extends ExportedCalendarProps, PublicCalendar
   view: DatePickerView;
   views: DatePickerView[];
   changeView: (view: DatePickerView) => void;
-  onChange: onChangeFunction;
+  onChange: PickerOnChangeFn;
   /** Callback firing on month change. Return promise to render spinner till it will not be resolved @DateIOType */
   onMonthChange?: (date: MaterialUiPickersDate) => void | Promise<void>;
   /**

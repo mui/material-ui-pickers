@@ -3,7 +3,7 @@ import * as PropTypes from 'prop-types';
 import Clock from './Clock';
 import { useUtils } from '../../_shared/hooks/useUtils';
 import { MaterialUiPickersDate } from '../../typings/date';
-import { onChangeFunction } from '../../_shared/hooks/useViews';
+import { PickerOnChangeFn } from '../../_shared/hooks/useViews';
 import { getHourNumbers, getMinutesNumbers } from './ClockNumbers';
 import { convertToMeridiem, getMeridiem } from '../../_helpers/time-utils';
 
@@ -31,11 +31,20 @@ export interface ClockViewProps extends BaseClockViewProps {
   /** Clock type */
   type: 'hours' | 'minutes' | 'seconds';
   /** On change date without moving between views @DateIOType */
-  onDateChange: (date: MaterialUiPickersDate, isFinish?: boolean) => void;
+  onDateChange: PickerOnChangeFn;
   /** On change callback @DateIOType */
-  onChange: onChangeFunction;
+  onChange: PickerOnChangeFn;
+  /** Get clock number aria-text for hours */
+  getHoursClockNumberText?: (hoursText: string) => string;
+  /** Get clock number aria-text for minutes */
+  getMinutesClockNumberText?: (minutesText: string) => string;
+  /** Get clock number aria-text for seconds */
+  getSecondsClockNumberText?: (secondsText: string) => string;
 }
 
+const getHoursAriaText = (hour: string) => `${hour} hours`;
+const getMinutesAriaText = (minute: string) => `${minute} minutes`;
+const getSecondsAriaText = (seconds: string) => `${seconds} seconds`;
 export const ClockView: React.FC<ClockViewProps> = ({
   type,
   onDateChange,
@@ -44,12 +53,15 @@ export const ClockView: React.FC<ClockViewProps> = ({
   date,
   minutesStep,
   ampmInClock,
+  getHoursClockNumberText = getHoursAriaText,
+  getMinutesClockNumberText = getMinutesAriaText,
+  getSecondsClockNumberText = getSecondsAriaText,
 }) => {
   const utils = useUtils();
   const viewProps = React.useMemo(() => {
     switch (type) {
       case 'hours':
-        const handleHoursChange = (value: number, isFinish?: boolean) => {
+        const handleHoursChange = (value: number, isFinish?: boolean | symbol) => {
           const currentMeridiem = getMeridiem(date, utils);
           const updatedTimeWithMeridiem = convertToMeridiem(
             utils.setHours(date, value),
@@ -69,12 +81,13 @@ export const ClockView: React.FC<ClockViewProps> = ({
             utils,
             onChange: handleHoursChange,
             ampm: Boolean(ampm),
+            getClockNumberText: getHoursClockNumberText,
           }),
         };
 
       case 'minutes':
         const minutesValue = utils.getMinutes(date);
-        const handleMinutesChange = (value: number, isFinish?: boolean) => {
+        const handleMinutesChange = (value: number, isFinish?: boolean | symbol) => {
           const updatedTime = utils.setMinutes(date, value);
 
           onChange(updatedTime, isFinish);
@@ -84,15 +97,16 @@ export const ClockView: React.FC<ClockViewProps> = ({
           value: minutesValue,
           onChange: handleMinutesChange,
           children: getMinutesNumbers({
+            utils,
             value: minutesValue,
             onChange: handleMinutesChange,
-            utils,
+            getClockNumberText: getMinutesClockNumberText,
           }),
         };
 
       case 'seconds':
         const secondsValue = utils.getSeconds(date);
-        const handleSecondsChange = (value: number, isFinish?: boolean) => {
+        const handleSecondsChange = (value: number, isFinish?: boolean | symbol) => {
           const updatedTime = utils.setSeconds(date, value);
 
           onChange(updatedTime, isFinish);
@@ -102,16 +116,26 @@ export const ClockView: React.FC<ClockViewProps> = ({
           value: secondsValue,
           onChange: handleSecondsChange,
           children: getMinutesNumbers({
+            utils,
             value: secondsValue,
             onChange: handleSecondsChange,
-            utils,
+            getClockNumberText: getSecondsClockNumberText,
           }),
         };
 
       default:
         throw new Error('You must provide the type for ClockView');
     }
-  }, [ampm, date, onChange, type, utils]);
+  }, [
+    ampm,
+    date,
+    getHoursClockNumberText,
+    getMinutesClockNumberText,
+    getSecondsClockNumberText,
+    onChange,
+    type,
+    utils,
+  ]);
 
   return (
     <Clock

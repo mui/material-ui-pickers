@@ -8,11 +8,13 @@ export const getHourNumbers = ({
   utils,
   onChange,
   date,
+  getClockNumberText,
 }: {
   ampm: boolean;
-  onChange: (value: number, isFinish?: boolean) => void;
   utils: IUtils<MaterialUiPickersDate>;
   date: MaterialUiPickersDate;
+  onChange: (value: number, isFinish?: boolean) => void;
+  getClockNumberText: (hour: string) => string;
 }) => {
   const currentHours = utils.getHours(date);
 
@@ -47,7 +49,14 @@ export const getHourNumbers = ({
       isInner: !ampm && (hour === 0 || hour > 12),
     };
 
-    hourNumbers.push(<ClockNumber key={hour} onSelect={onChange} {...props} />);
+    hourNumbers.push(
+      <ClockNumber
+        key={hour}
+        getClockNumberText={getClockNumberText}
+        onSelect={onChange}
+        {...props}
+      />
+    );
   }
 
   return hourNumbers;
@@ -57,10 +66,12 @@ export const getMinutesNumbers = ({
   value,
   utils,
   onChange,
+  getClockNumberText,
 }: {
   value: number;
   utils: IUtils<MaterialUiPickersDate>;
   onChange: (value: number, isFinish?: boolean | symbol) => void;
+  getClockNumberText: (hour: string) => string;
 }) => {
   const f = utils.formatNumber;
 
@@ -71,6 +82,7 @@ export const getMinutesNumbers = ({
       onSelect={isFinish => onChange(0, isFinish)}
       selected={value === 0}
       key={12}
+      getClockNumberText={getClockNumberText}
     />,
     <ClockNumber
       label={f('05')}
@@ -78,6 +90,7 @@ export const getMinutesNumbers = ({
       onSelect={isFinish => onChange(5, isFinish)}
       selected={value === 5}
       key={1}
+      getClockNumberText={getClockNumberText}
     />,
     <ClockNumber
       label={f('10')}
@@ -85,6 +98,7 @@ export const getMinutesNumbers = ({
       onSelect={isFinish => onChange(10, isFinish)}
       selected={value === 10}
       key={2}
+      getClockNumberText={getClockNumberText}
     />,
     <ClockNumber
       label={f('15')}
@@ -92,6 +106,7 @@ export const getMinutesNumbers = ({
       onSelect={isFinish => onChange(15, isFinish)}
       selected={value === 15}
       key={3}
+      getClockNumberText={getClockNumberText}
     />,
     <ClockNumber
       label={f('20')}
@@ -99,6 +114,7 @@ export const getMinutesNumbers = ({
       onSelect={isFinish => onChange(20, isFinish)}
       selected={value === 20}
       key={4}
+      getClockNumberText={getClockNumberText}
     />,
     <ClockNumber
       label={f('25')}
@@ -106,6 +122,7 @@ export const getMinutesNumbers = ({
       onSelect={isFinish => onChange(25, isFinish)}
       selected={value === 25}
       key={5}
+      getClockNumberText={getClockNumberText}
     />,
     <ClockNumber
       label={f('30')}
@@ -113,6 +130,7 @@ export const getMinutesNumbers = ({
       onSelect={isFinish => onChange(30, isFinish)}
       selected={value === 30}
       key={6}
+      getClockNumberText={getClockNumberText}
     />,
     <ClockNumber
       label={f('35')}
@@ -120,6 +138,7 @@ export const getMinutesNumbers = ({
       onSelect={isFinish => onChange(35, isFinish)}
       selected={value === 35}
       key={7}
+      getClockNumberText={getClockNumberText}
     />,
     <ClockNumber
       label={f('40')}
@@ -127,6 +146,7 @@ export const getMinutesNumbers = ({
       onSelect={isFinish => onChange(40, isFinish)}
       selected={value === 40}
       key={8}
+      getClockNumberText={getClockNumberText}
     />,
     <ClockNumber
       label={f('45')}
@@ -134,6 +154,7 @@ export const getMinutesNumbers = ({
       onSelect={isFinish => onChange(45, isFinish)}
       selected={value === 45}
       key={9}
+      getClockNumberText={getClockNumberText}
     />,
     <ClockNumber
       label={f('50')}
@@ -141,6 +162,7 @@ export const getMinutesNumbers = ({
       onSelect={isFinish => onChange(50, isFinish)}
       selected={value === 50}
       key={10}
+      getClockNumberText={getClockNumberText}
     />,
     <ClockNumber
       label={f('55')}
@@ -148,6 +170,7 @@ export const getMinutesNumbers = ({
       onSelect={isFinish => onChange(55, isFinish)}
       selected={value === 55}
       key={11}
+      getClockNumberText={getClockNumberText}
     />,
   ];
 };

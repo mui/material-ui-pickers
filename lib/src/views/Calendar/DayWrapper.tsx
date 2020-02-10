@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { onSpaceOrEnter } from '../../_helpers/utils';
 import { MaterialUiPickersDate } from '../../typings/date';
-import { onChangeFunction } from '../../_shared/hooks/useViews';
+import { PickerOnChangeFn } from '../../_shared/hooks/useViews';
 import { FORCE_FINISH_PICKER } from '../../_shared/hooks/usePickerState';
 
 export interface DayWrapperProps {
@@ -9,7 +9,7 @@ export interface DayWrapperProps {
   children: React.ReactNode;
   dayInCurrentMonth?: boolean;
   disabled?: boolean;
-  onSelect: onChangeFunction;
+  onSelect: PickerOnChangeFn;
 }
 
 const DayWrapper: React.FC<DayWrapperProps> = ({

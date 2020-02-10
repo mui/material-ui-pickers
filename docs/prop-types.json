@@ -2362,7 +2362,7 @@
       },
       "required": true,
       "type": {
-        "name": "onChangeFunction"
+        "name": "PickerOnChangeFn"
       }
     },
     "disablePast": {
@@ -2474,7 +2474,7 @@
       },
       "required": true,
       "type": {
-        "name": "(date: DateIOType, isFinish?: boolean) => void"
+        "name": "PickerOnChangeFn"
       }
     },
     "onChange": {
@@ -2487,7 +2487,52 @@
       },
       "required": true,
       "type": {
-        "name": "onChangeFunction"
+        "name": "PickerOnChangeFn"
+      }
+    },
+    "getHoursClockNumberText": {
+      "defaultValue": {
+        "value": null
+      },
+      "description": "Get clock number aria-text for hours",
+      "name": "getHoursClockNumberText",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
+        "name": "ClockViewProps"
+      },
+      "required": false,
+      "type": {
+        "name": "(hoursText: string) => string"
+      }
+    },
+    "getMinutesClockNumberText": {
+      "defaultValue": {
+        "value": null
+      },
+      "description": "Get clock number aria-text for minutes",
+      "name": "getMinutesClockNumberText",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
+        "name": "ClockViewProps"
+      },
+      "required": false,
+      "type": {
+        "name": "(minutesText: string) => string"
+      }
+    },
+    "getSecondsClockNumberText": {
+      "defaultValue": {
+        "value": null
+      },
+      "description": "Get clock number aria-text for seconds",
+      "name": "getSecondsClockNumberText",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
+        "name": "ClockViewProps"
+      },
+      "required": false,
+      "type": {
+        "name": "(secondsText: string) => string"
       }
     },
     "ampm": {

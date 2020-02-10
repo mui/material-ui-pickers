@@ -38,6 +38,7 @@ export interface ClockNumberProps {
   selected: boolean;
   onSelect: (isFinish: boolean | symbol) => void;
   isInner?: boolean;
+  getClockNumberText: (currentItemText: string) => string;
 }
 
 export const useStyles = makeStyles(
@@ -72,6 +73,7 @@ export const ClockNumber: React.FC<ClockNumberProps> = ({
   index,
   onSelect,
   isInner,
+  getClockNumberText,
 }) => {
   const classes = useStyles();
   const className = clsx(classes.clockNumber, {
@@ -88,12 +90,14 @@ export const ClockNumber: React.FC<ClockNumberProps> = ({
 
   return (
     <Typography
+      role="button"
       component="span"
       className={className}
       variant={isInner ? 'body2' : 'body1'}
       style={transformStyle}
       children={label}
       tabIndex={0}
+      aria-label={getClockNumberText(label)}
       onKeyPress={onSpaceOrEnter(() => onSelect(FORCE_FINISH_PICKER))}
     />
   );
