@@ -161,6 +161,7 @@ export const Calendar: React.FC<CalendarProps> = ({
       <div className={classes.daysHeader}>
         {utils.getWeekdays().map((day, i) => (
           <Typography
+            aria-hidden
             key={day + i.toString()}
             variant="caption"
             className={classes.dayLabel}

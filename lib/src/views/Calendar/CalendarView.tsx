@@ -168,7 +168,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
   ] = React.useReducer(createCalendarStateReducer(reduceAnimations, utils), {
     isMonthSwitchingAnimating: false,
     loadingQueue: 0,
-    focusedDay: null,
+    focusedDay: date,
     currentMonth: utils.startOfMonth(date),
     slideDirection: 'left',
   });
@@ -211,6 +211,12 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
   React.useEffect(() => {
     changeMonth(date);
   }, [date]); // eslint-disable-line
+
+  React.useEffect(() => {
+    if (view === 'date') {
+      dispatch({ type: 'changeFocusedDay', focusedDay: date });
+    }
+  }, [view]); // eslint-disable-line
 
   const validateMinMaxDate = React.useCallback(
     (day: MaterialUiPickersDate) => {

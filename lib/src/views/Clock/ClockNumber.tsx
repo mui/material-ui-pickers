@@ -1,6 +1,7 @@
 import * as React from 'react';
 import clsx from 'clsx';
 import Typography from '@material-ui/core/Typography';
+import { ButtonBase } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { onSpaceOrEnter } from '../../_helpers/utils';
 import { FORCE_FINISH_PICKER } from '../../_shared/hooks/usePickerState';
@@ -47,6 +48,7 @@ export const useStyles = makeStyles(
 
     return {
       clockNumber: {
+        outline: 0,
         width: size,
         height: 32,
         userSelect: 'none',
@@ -58,6 +60,9 @@ export const useStyles = makeStyles(
         borderRadius: '50%',
         color:
           theme.palette.type === 'light' ? theme.palette.text.primary : theme.palette.text.hint,
+        '&:focused': {
+          backgroundColor: theme.palette.background.paper,
+        },
       },
       clockNumberSelected: {
         color: theme.palette.primary.contrastText,
@@ -75,6 +80,7 @@ export const ClockNumber: React.FC<ClockNumberProps> = ({
   isInner,
   getClockNumberText,
 }) => {
+  const ref = React.useRef<HTMLSpanElement>(null);
   const classes = useStyles();
   const className = clsx(classes.clockNumber, {
     [classes.clockNumberSelected]: selected,
@@ -88,18 +94,26 @@ export const ClockNumber: React.FC<ClockNumberProps> = ({
     };
   }, [index]);
 
+  React.useEffect(() => {
+    if (selected && ref.current) {
+      ref.current.focus();
+    }
+  }, [selected]);
+
   return (
-    <Typography
-      role="button"
+    <ButtonBase
+      focusRipple
+      centerRipple
+      ref={ref}
+      tabIndex={0}
       component="span"
       className={className}
-      variant={isInner ? 'body2' : 'body1'}
       style={transformStyle}
-      children={label}
-      tabIndex={0}
       aria-label={getClockNumberText(label)}
       onKeyPress={onSpaceOrEnter(() => onSelect(FORCE_FINISH_PICKER))}
-    />
+    >
+      <Typography variant={isInner ? 'body2' : 'body1'}>{label}</Typography>
+    </ButtonBase>
   );
 };
 

@@ -102,9 +102,11 @@ export const Day: React.FC<DayProps> = ({
 
   return (
     <ButtonBase
+      aria-hidden={!isInCurrentMonth}
       ref={ref}
       centerRipple
       focusRipple
+      disableRipple={selected}
       data-mui-test="day"
       aria-label={utils.format(day, 'fullDate')}
       tabIndex={focused || focusable ? 0 : -1}
