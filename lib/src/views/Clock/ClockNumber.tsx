@@ -2,6 +2,8 @@ import * as React from 'react';
 import clsx from 'clsx';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import { onSpaceOrEnter } from '../../_helpers/utils';
+import { FORCE_FINISH_PICKER } from '../../_shared/hooks/usePickerState';
 
 const positions: Record<number, [number, number]> = {
   0: [0, 40],
@@ -34,6 +36,7 @@ export interface ClockNumberProps {
   index: number;
   label: string;
   selected: boolean;
+  onSelect: (isFinish: boolean | symbol) => void;
   isInner?: boolean;
 }
 
@@ -63,7 +66,13 @@ export const useStyles = makeStyles(
   { name: 'MuiPickersClockNumber' }
 );
 
-export const ClockNumber: React.FC<ClockNumberProps> = ({ selected, label, index, isInner }) => {
+export const ClockNumber: React.FC<ClockNumberProps> = ({
+  selected,
+  label,
+  index,
+  onSelect,
+  isInner,
+}) => {
   const classes = useStyles();
   const className = clsx(classes.clockNumber, {
     [classes.clockNumberSelected]: selected,
@@ -84,6 +93,8 @@ export const ClockNumber: React.FC<ClockNumberProps> = ({ selected, label, index
       variant={isInner ? 'body2' : 'body1'}
       style={transformStyle}
       children={label}
+      tabIndex={0}
+      onKeyPress={onSpaceOrEnter(() => onSelect(FORCE_FINISH_PICKER))}
     />
   );
 };

@@ -6,9 +6,11 @@ import { MaterialUiPickersDate } from '../../typings/date';
 export const getHourNumbers = ({
   ampm,
   utils,
+  onChange,
   date,
 }: {
   ampm: boolean;
+  onChange: (value: number, isFinish?: boolean) => void;
   utils: IUtils<MaterialUiPickersDate>;
   date: MaterialUiPickersDate;
 }) => {
@@ -39,12 +41,13 @@ export const getHourNumbers = ({
 
     const props = {
       index: hour,
+      onSelect: () => onChange(hour, true),
       label: utils.formatNumber(label),
       selected: isSelected(hour),
       isInner: !ampm && (hour === 0 || hour > 12),
     };
 
-    hourNumbers.push(<ClockNumber key={hour} {...props} />);
+    hourNumbers.push(<ClockNumber key={hour} onSelect={onChange} {...props} />);
   }
 
   return hourNumbers;
@@ -53,24 +56,98 @@ export const getHourNumbers = ({
 export const getMinutesNumbers = ({
   value,
   utils,
+  onChange,
 }: {
   value: number;
   utils: IUtils<MaterialUiPickersDate>;
+  onChange: (value: number, isFinish?: boolean | symbol) => void;
 }) => {
   const f = utils.formatNumber;
 
   return [
-    <ClockNumber label={f('00')} selected={value === 0} index={12} key={12} />,
-    <ClockNumber label={f('05')} selected={value === 5} index={1} key={1} />,
-    <ClockNumber label={f('10')} selected={value === 10} index={2} key={2} />,
-    <ClockNumber label={f('15')} selected={value === 15} index={3} key={3} />,
-    <ClockNumber label={f('20')} selected={value === 20} index={4} key={4} />,
-    <ClockNumber label={f('25')} selected={value === 25} index={5} key={5} />,
-    <ClockNumber label={f('30')} selected={value === 30} index={6} key={6} />,
-    <ClockNumber label={f('35')} selected={value === 35} index={7} key={7} />,
-    <ClockNumber label={f('40')} selected={value === 40} index={8} key={8} />,
-    <ClockNumber label={f('45')} selected={value === 45} index={9} key={9} />,
-    <ClockNumber label={f('50')} selected={value === 50} index={10} key={10} />,
-    <ClockNumber label={f('55')} selected={value === 55} index={11} key={11} />,
+    <ClockNumber
+      label={f('00')}
+      index={12}
+      onSelect={isFinish => onChange(0, isFinish)}
+      selected={value === 0}
+      key={12}
+    />,
+    <ClockNumber
+      label={f('05')}
+      index={1}
+      onSelect={isFinish => onChange(5, isFinish)}
+      selected={value === 5}
+      key={1}
+    />,
+    <ClockNumber
+      label={f('10')}
+      index={2}
+      onSelect={isFinish => onChange(10, isFinish)}
+      selected={value === 10}
+      key={2}
+    />,
+    <ClockNumber
+      label={f('15')}
+      index={3}
+      onSelect={isFinish => onChange(15, isFinish)}
+      selected={value === 15}
+      key={3}
+    />,
+    <ClockNumber
+      label={f('20')}
+      index={4}
+      onSelect={isFinish => onChange(20, isFinish)}
+      selected={value === 20}
+      key={4}
+    />,
+    <ClockNumber
+      label={f('25')}
+      index={5}
+      onSelect={isFinish => onChange(25, isFinish)}
+      selected={value === 25}
+      key={5}
+    />,
+    <ClockNumber
+      label={f('30')}
+      index={6}
+      onSelect={isFinish => onChange(30, isFinish)}
+      selected={value === 30}
+      key={6}
+    />,
+    <ClockNumber
+      label={f('35')}
+      index={7}
+      onSelect={isFinish => onChange(35, isFinish)}
+      selected={value === 35}
+      key={7}
+    />,
+    <ClockNumber
+      label={f('40')}
+      index={8}
+      onSelect={isFinish => onChange(40, isFinish)}
+      selected={value === 40}
+      key={8}
+    />,
+    <ClockNumber
+      label={f('45')}
+      index={9}
+      onSelect={isFinish => onChange(45, isFinish)}
+      selected={value === 45}
+      key={9}
+    />,
+    <ClockNumber
+      label={f('50')}
+      index={10}
+      onSelect={isFinish => onChange(50, isFinish)}
+      selected={value === 50}
+      key={10}
+    />,
+    <ClockNumber
+      label={f('55')}
+      index={11}
+      onSelect={isFinish => onChange(55, isFinish)}
+      selected={value === 55}
+      key={11}
+    />,
   ];
 };

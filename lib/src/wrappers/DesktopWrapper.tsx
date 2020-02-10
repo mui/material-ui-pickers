@@ -38,9 +38,6 @@ export const DesktopWrapper: React.FC<DesktopWrapperProps> = ({
   ...other
 }) => {
   const ref = React.useRef();
-  const handleKeydown = useKeyDownHandler(open, {
-    [keycode.Enter]: onAccept, // Enter
-  });
 
   return (
     <WrapperVariantContext.Provider value="desktop">
@@ -51,7 +48,6 @@ export const DesktopWrapper: React.FC<DesktopWrapperProps> = ({
         open={open}
         onClose={onDismiss}
         anchorEl={ref.current}
-        onEscapeKeyDown={handleKeydown}
         anchorOrigin={{
           vertical: 'bottom',
           horizontal: 'center',

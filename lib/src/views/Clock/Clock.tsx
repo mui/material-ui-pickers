@@ -2,12 +2,15 @@ import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import clsx from 'clsx';
 import ClockPointer from './ClockPointer';
+import { useUtils } from '../../_shared/hooks/useUtils';
 import { VIEW_HEIGHT } from '../../constants/dimensions';
 import { ClockViewType } from '../../constants/ClockType';
 import { MaterialUiPickersDate } from '../../typings/date';
 import { getHours, getMinutes } from '../../_helpers/time-utils';
 import { useMeridiemMode } from '../../TimePicker/TimePickerToolbar';
 import { IconButton, Typography, makeStyles } from '@material-ui/core';
+import { FORCE_FINISH_PICKER } from '../../_shared/hooks/usePickerState';
+import { useGlobalKeyDown, keycode } from '../../_shared/hooks/useKeyDown';
 import { WrapperVariantContext } from '../../wrappers/WrapperVariantContext';
 
 export interface ClockProps {
@@ -97,6 +100,7 @@ export const Clock: React.FC<ClockProps> = ({
   minutesStep,
   onChange,
 }) => {
+  const utils = useUtils();
   const classes = useStyles();
   const wrapperVariant = React.useContext(WrapperVariantContext);
   const isMoving = React.useRef(false);
@@ -162,8 +166,18 @@ export const Clock: React.FC<ClockProps> = ({
     return value % 5 === 0;
   }, [type, value]);
 
+  useGlobalKeyDown(!isMoving.current, {
+    [keycode.ArrowUp]: () => onChange(value + 1, false),
+    [keycode.ArrowDown]: () => onChange(value - 1, false),
+    [keycode.Enter]: () => onChange(value, FORCE_FINISH_PICKER),
+  });
+
   return (
-    <div className={classes.container}>
+    <div
+      aria-live="polite"
+      aria-label={`Selected time is ${utils.format(date, 'fullTime')}`}
+      className={classes.container}
+    >
       <div className={classes.clock}>
         <div
           role="menu"

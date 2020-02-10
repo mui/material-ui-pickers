@@ -5,15 +5,17 @@ import SlideTransition, { SlideDirection } from './SlideTransition';
 import { WrapperVariant } from '../../wrappers/Wrapper';
 import { MaterialUiPickersDate } from '../../typings/date';
 import { useUtils, useNow } from '../../_shared/hooks/useUtils';
+import { onChangeFunction } from '../../_shared/hooks/useViews';
 import { findClosestEnabledDate } from '../../_helpers/date-utils';
 import { makeStyles, useTheme, Typography } from '@material-ui/core';
+import { FORCE_FINISH_PICKER } from '../../_shared/hooks/usePickerState';
 import { useGlobalKeyDown, keycode } from '../../_shared/hooks/useKeyDown';
 
 export interface ExportedCalendarProps {
   /** Calendar Date @DateIOType */
   date: MaterialUiPickersDate;
   /** Calendar onChange */
-  onChange: (date: MaterialUiPickersDate, isFinish?: boolean) => void;
+  onChange: onChangeFunction;
   /**
    * Disable past dates
    * @default false
@@ -118,7 +120,7 @@ export const Calendar: React.FC<CalendarProps> = ({
   const classes = useStyles();
 
   const handleDaySelect = React.useCallback(
-    (day: MaterialUiPickersDate, isFinish = true) => {
+    (day: MaterialUiPickersDate, isFinish: boolean | symbol = true) => {
       onChange(utils.mergeDateAndTime(day, date), isFinish);
     },
     [date, onChange, utils]
@@ -142,7 +144,7 @@ export const Calendar: React.FC<CalendarProps> = ({
 
   const nowFocusedDay = focusedDay || date;
   useGlobalKeyDown(Boolean(allowKeyboardControl && wrapperVariant !== 'static'), {
-    [keycode.Enter]: () => handleDaySelect(nowFocusedDay, true),
+    [keycode.Enter]: () => handleDaySelect(nowFocusedDay, FORCE_FINISH_PICKER),
     [keycode.ArrowUp]: () => changeFocusedDay(utils.addDays(nowFocusedDay, -7)),
     [keycode.ArrowDown]: () => changeFocusedDay(utils.addDays(nowFocusedDay, 7)),
     [keycode.ArrowLeft]: () =>

@@ -2362,7 +2362,7 @@
       },
       "required": true,
       "type": {
-        "name": "(date: any, isFinish?: boolean) => void"
+        "name": "onChangeFunction"
       }
     },
     "disablePast": {
@@ -2477,43 +2477,17 @@
         "name": "(date: DateIOType, isFinish?: boolean) => void"
       }
     },
-    "onHourChange": {
+    "onChange": {
       "defaultValue": null,
-      "description": "On hour change",
-      "name": "onHourChange",
+      "description": "On change callback",
+      "name": "onChange",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
         "name": "ClockViewProps"
       },
       "required": true,
       "type": {
-        "name": "(date: DateIOType, isFinish?: boolean) => void"
-      }
-    },
-    "onMinutesChange": {
-      "defaultValue": null,
-      "description": "On minutes change",
-      "name": "onMinutesChange",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
-        "name": "ClockViewProps"
-      },
-      "required": true,
-      "type": {
-        "name": "(date: DateIOType, isFinish?: boolean) => void"
-      }
-    },
-    "onSecondsChange": {
-      "defaultValue": null,
-      "description": "On seconds change",
-      "name": "onSecondsChange",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
-        "name": "ClockViewProps"
-      },
-      "required": true,
-      "type": {
-        "name": "(date: DateIOType, isFinish?: boolean) => void"
+        "name": "onChangeFunction"
       }
     },
     "ampm": {

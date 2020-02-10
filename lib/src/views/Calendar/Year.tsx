@@ -1,6 +1,7 @@
 import * as React from 'react';
 import clsx from 'clsx';
 import Typography from '@material-ui/core/Typography';
+import { onSpaceOrEnter } from '../../_helpers/utils';
 import { makeStyles, fade } from '@material-ui/core/styles';
 import { WrapperVariantContext } from '../../wrappers/WrapperVariantContext';
 
@@ -88,14 +89,7 @@ export const Year: React.FC<YearProps> = ({
         tabIndex={selected ? 0 : -1}
         color={selected ? 'primary' : undefined}
         children={children}
-        onKeyPress={e => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            onSelect(value);
-
-            e.preventDefault();
-            e.stopPropagation();
-          }
-        }}
+        onKeyPress={onSpaceOrEnter(() => onSelect(value))}
         className={clsx(classes.yearLabel, {
           [classes.yearSelected]: selected,
           [classes.yearDisabled]: disabled,
