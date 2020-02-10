@@ -10,6 +10,7 @@ export interface MuiPickersUtilsProviderProps {
   children: React.ReactNode;
   locale?: any;
   libInstance?: any;
+  libFormat?: any;
 }
 
 export const MuiPickersUtilsProvider: React.FC<MuiPickersUtilsProviderProps> = ({
@@ -17,12 +18,12 @@ export const MuiPickersUtilsProvider: React.FC<MuiPickersUtilsProviderProps> = (
   children,
   locale,
   libInstance,
+  libFormat,
 }) => {
-  const utils = React.useMemo(() => new Utils({ locale, instance: libInstance }), [
-    Utils,
-    libInstance,
-    locale,
-  ]);
+  const utils = React.useMemo(
+    () => new Utils({ locale, instance: libInstance, formats: libFormat }),
+    [Utils, libInstance, locale, libFormat]
+  );
 
   return <MuiPickersContext.Provider value={utils} children={children} />;
 };
