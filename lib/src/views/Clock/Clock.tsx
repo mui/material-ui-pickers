@@ -172,6 +172,8 @@ export const Clock: React.FC<ClockProps> = ({
   useGlobalKeyDown(
     Boolean(allowKeyboardControl ?? wrapperVariant !== 'static') && !isMoving.current,
     {
+      [keycode.Home]: () => onChange(0), // annulate both hours and minutes
+      [keycode.End]: () => onChange(type === 'minutes' ? 59 : 23, false),
       [keycode.ArrowUp]: () => onChange(value + keyboardControlStep, false),
       [keycode.ArrowDown]: () => onChange(value - keyboardControlStep, false),
     }

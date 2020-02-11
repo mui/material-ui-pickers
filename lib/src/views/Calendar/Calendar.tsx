@@ -149,10 +149,10 @@ export const Calendar: React.FC<CalendarProps> = ({
       changeFocusedDay(utils.addDays(nowFocusedDay, theme.direction === 'ltr' ? -1 : 1)),
     [keycode.ArrowRight]: () =>
       changeFocusedDay(utils.addDays(nowFocusedDay, theme.direction === 'ltr' ? 1 : -1)),
-    [keycode.Home]: () =>
-      changeFocusedDay(utils.addDays(nowFocusedDay, -utils.toJsDate(nowFocusedDay).getDay())),
-    [keycode.End]: () =>
-      changeFocusedDay(utils.addDays(nowFocusedDay, 6 - utils.toJsDate(nowFocusedDay).getDay())),
+    [keycode.Home]: () => changeFocusedDay(utils.startOfWeek(nowFocusedDay)),
+    [keycode.End]: () => changeFocusedDay(utils.endOfWeek(nowFocusedDay)),
+    [keycode.PageUp]: () => changeFocusedDay(utils.getNextMonth(nowFocusedDay)),
+    [keycode.PageDown]: () => changeFocusedDay(utils.getPreviousMonth(nowFocusedDay)),
   });
 
   const selectedDate = utils.startOfDay(date);

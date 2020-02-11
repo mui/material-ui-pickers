@@ -51,4 +51,8 @@ export const keycode = {
   ArrowLeft: 37,
   ArrowRight: 39,
   Enter: 13,
+  Home: 36,
+  End: 35,
+  PageUp: 33,
+  PageDown: 34,
 };
