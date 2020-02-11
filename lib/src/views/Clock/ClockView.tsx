@@ -40,6 +40,11 @@ export interface ClockViewProps extends BaseClockViewProps {
   getMinutesClockNumberText?: (minutesText: string) => string;
   /** Get clock number aria-text for seconds */
   getSecondsClockNumberText?: (secondsText: string) => string;
+  /**
+   * Enables keyboard listener for moving between days in calendar
+   * @default currentWrapper !== 'static'
+   */
+  allowKeyboardControl?: boolean;
 }
 
 const getHoursAriaText = (hour: string) => `${hour} hours`;
@@ -53,6 +58,7 @@ export const ClockView: React.FC<ClockViewProps> = ({
   date,
   minutesStep,
   ampmInClock,
+  allowKeyboardControl,
   getHoursClockNumberText = getHoursAriaText,
   getMinutesClockNumberText = getMinutesAriaText,
   getSecondsClockNumberText = getSecondsAriaText,
@@ -145,6 +151,7 @@ export const ClockView: React.FC<ClockViewProps> = ({
       type={type}
       ampm={ampm}
       minutesStep={minutesStep}
+      allowKeyboardControl={allowKeyboardControl}
       {...viewProps}
     />
   );

@@ -10,7 +10,6 @@ import { PickerOnChangeFn } from '../../_shared/hooks/useViews';
 import { getHours, getMinutes } from '../../_helpers/time-utils';
 import { useMeridiemMode } from '../../TimePicker/TimePickerToolbar';
 import { IconButton, Typography, makeStyles } from '@material-ui/core';
-import { FORCE_FINISH_PICKER } from '../../_shared/hooks/usePickerState';
 import { useGlobalKeyDown, keycode } from '../../_shared/hooks/useKeyDown';
 import { WrapperVariantContext } from '../../wrappers/WrapperVariantContext';
 
@@ -24,6 +23,7 @@ export interface ClockProps {
   ampm?: boolean;
   minutesStep?: number;
   ampmInClock?: boolean;
+  allowKeyboardControl?: boolean;
 }
 
 export const useStyles = makeStyles(
@@ -99,6 +99,7 @@ export const Clock: React.FC<ClockProps> = ({
   type,
   ampm,
   minutesStep = 1,
+  allowKeyboardControl,
   onChange,
 }) => {
   const utils = useUtils();
@@ -168,11 +169,13 @@ export const Clock: React.FC<ClockProps> = ({
   }, [type, value]);
 
   const keyboardControlStep = type === 'minutes' ? minutesStep : 1;
-  useGlobalKeyDown(!isMoving.current, {
-    [keycode.ArrowUp]: () => onChange(value + keyboardControlStep, false),
-    [keycode.ArrowDown]: () => onChange(value - keyboardControlStep, false),
-    [keycode.Enter]: () => onChange(value, FORCE_FINISH_PICKER),
-  });
+  useGlobalKeyDown(
+    Boolean(allowKeyboardControl ?? wrapperVariant !== 'static') && !isMoving.current,
+    {
+      [keycode.ArrowUp]: () => onChange(value + keyboardControlStep, false),
+      [keycode.ArrowDown]: () => onChange(value - keyboardControlStep, false),
+    }
+  );
 
   return (
     <div className={classes.container}>

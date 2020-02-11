@@ -46,7 +46,8 @@ export const YearSelection: React.FC<YearSelectionProps> = ({
   const theme = useTheme();
   const utils = useUtils();
   const classes = useStyles();
-  const [focusedYear, setFocused] = React.useState<number | null>(null);
+  const currentYear = utils.getYear(date);
+  const [focusedYear, setFocused] = React.useState<number | null>(currentYear);
   const wrapperVariant = React.useContext(WrapperVariantContext);
   const selectedYearRef = React.useRef<HTMLDivElement>(null);
 
@@ -63,7 +64,6 @@ export const YearSelection: React.FC<YearSelectionProps> = ({
     }
   }, []); // eslint-disable-line
 
-  const currentYear = utils.getYear(date);
   const handleYearSelection = React.useCallback(
     (year: number, isFinish = true) => {
       const newDate = utils.setYear(date, year);
@@ -82,7 +82,7 @@ export const YearSelection: React.FC<YearSelectionProps> = ({
 
   const yearsInRow = wrapperVariant === 'desktop' ? 4 : 3;
   const nowFocusedYear = focusedYear || currentYear;
-  useGlobalKeyDown(wrapperVariant !== 'static' && Boolean(allowKeyboardControl), {
+  useGlobalKeyDown(Boolean(allowKeyboardControl ?? wrapperVariant !== 'static'), {
     [keys.ArrowUp]: () => setFocused(nowFocusedYear - yearsInRow),
     [keys.ArrowDown]: () => setFocused(nowFocusedYear + yearsInRow),
     [keys.ArrowLeft]: () => setFocused(nowFocusedYear + (theme.direction === 'ltr' ? -1 : 1)),

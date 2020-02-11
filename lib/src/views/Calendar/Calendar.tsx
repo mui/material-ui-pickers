@@ -8,7 +8,6 @@ import { useUtils, useNow } from '../../_shared/hooks/useUtils';
 import { PickerOnChangeFn } from '../../_shared/hooks/useViews';
 import { findClosestEnabledDate } from '../../_helpers/date-utils';
 import { makeStyles, useTheme, Typography } from '@material-ui/core';
-import { FORCE_FINISH_PICKER } from '../../_shared/hooks/usePickerState';
 import { useGlobalKeyDown, keycode } from '../../_shared/hooks/useKeyDown';
 
 export interface ExportedCalendarProps {
@@ -35,7 +34,7 @@ export interface ExportedCalendarProps {
   ) => JSX.Element;
   /**
    * Enables keyboard listener for moving between days in calendar
-   * @default true
+   * @default currentWrapper !== 'static'
    */
   allowKeyboardControl?: boolean;
   /** Custom loading indicator  */
@@ -143,14 +142,17 @@ export const Calendar: React.FC<CalendarProps> = ({
   }, []); // eslint-disable-line
 
   const nowFocusedDay = focusedDay || date;
-  useGlobalKeyDown(Boolean(allowKeyboardControl && wrapperVariant !== 'static'), {
-    [keycode.Enter]: () => handleDaySelect(nowFocusedDay, FORCE_FINISH_PICKER),
+  useGlobalKeyDown(Boolean(allowKeyboardControl ?? wrapperVariant !== 'static'), {
     [keycode.ArrowUp]: () => changeFocusedDay(utils.addDays(nowFocusedDay, -7)),
     [keycode.ArrowDown]: () => changeFocusedDay(utils.addDays(nowFocusedDay, 7)),
     [keycode.ArrowLeft]: () =>
       changeFocusedDay(utils.addDays(nowFocusedDay, theme.direction === 'ltr' ? -1 : 1)),
     [keycode.ArrowRight]: () =>
       changeFocusedDay(utils.addDays(nowFocusedDay, theme.direction === 'ltr' ? 1 : -1)),
+    [keycode.Home]: () =>
+      changeFocusedDay(utils.addDays(nowFocusedDay, -utils.toJsDate(nowFocusedDay).getDay())),
+    [keycode.End]: () =>
+      changeFocusedDay(utils.addDays(nowFocusedDay, 6 - utils.toJsDate(nowFocusedDay).getDay())),
   });
 
   const selectedDate = utils.startOfDay(date);
