@@ -95,7 +95,7 @@ export const KeyboardDateInput: React.FC<DateInputProps> = ({
 
   const adornmentPosition = InputAdornmentProps?.position || 'end';
   const inputProps = {
-    type: 'tel',
+    type: shouldUseMaskedInput ? 'tel' : 'text',
     disabled,
     placeholder,
     variant: variant as any,

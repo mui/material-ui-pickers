@@ -104,6 +104,7 @@ export const PureDateInput: React.FC<DateInputProps> = ({
   hideOpenPickerButton,
   ignoreInvalidInputs,
   KeyboardButtonProps,
+  disableMaskedInput,
   getOpenDialogAriaText = getTextFieldAriaText,
   ...other
 }) => {
