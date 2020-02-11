@@ -68,12 +68,12 @@ const SlideTransition: React.SFC<SlideTransitionProps> = ({
   transKey,
   reduceAnimations,
   slideDirection,
-  className = null,
+  className = undefined,
   ...other
 }) => {
   const classes = useStyles();
   if (reduceAnimations) {
-    return children;
+    return <div className={className}>{children}</div>;
   }
 
   const transitionClasses = {

@@ -456,7 +456,7 @@
     },
     "allowKeyboardControl": {
       "defaultValue": {
-        "value": "true"
+        "value": "currentWrapper !== 'static'"
       },
       "description": "Enables keyboard listener for moving between days in calendar",
       "name": "allowKeyboardControl",
@@ -2285,7 +2285,7 @@
     },
     "allowKeyboardControl": {
       "defaultValue": {
-        "value": "true"
+        "value": "currentWrapper !== 'static'"
       },
       "description": "Enables keyboard listener for moving between days in calendar",
       "name": "allowKeyboardControl",
@@ -2410,7 +2410,7 @@
     },
     "allowKeyboardControl": {
       "defaultValue": {
-        "value": "true"
+        "value": "currentWrapper !== 'static'"
       },
       "description": "Enables keyboard listener for moving between days in calendar",
       "name": "allowKeyboardControl",
@@ -2533,6 +2533,21 @@
       "required": false,
       "type": {
         "name": "(secondsText: string) => string"
+      }
+    },
+    "allowKeyboardControl": {
+      "defaultValue": {
+        "value": "currentWrapper !== 'static'"
+      },
+      "description": "Enables keyboard listener for moving between days in calendar",
+      "name": "allowKeyboardControl",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
+        "name": "ClockViewProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
       }
     },
     "ampm": {
