@@ -17,16 +17,16 @@ export interface YearProps {
 
 export const useStyles = makeStyles(
   theme => ({
-    yearContainer: {
+    yearButtonContainer: {
       flexBasis: '33.3%',
       display: 'flex',
       justifyContent: 'center',
       padding: '8px 0',
     },
-    yearContainerDesktop: {
+    yearButtonContainerDesktop: {
       flexBasis: '25%',
     },
-    yearLabel: {
+    yearButton: {
       height: 36,
       width: 72,
       borderRadius: 16,
@@ -35,15 +35,15 @@ export const useStyles = makeStyles(
       justifyContent: 'center',
       cursor: 'pointer',
       outline: 'none',
-      '&:focus': {
+      '&:focus, &:hover': {
         backgroundColor: fade(theme.palette.action.active, theme.palette.action.hoverOpacity),
       },
     },
     yearSelected: {
       color: theme.palette.getContrastText(theme.palette.primary.main),
       backgroundColor: theme.palette.primary.main,
-      '&:focus': {
-        backgroundColor: theme.palette.primary.light,
+      '&:focus, &:hover': {
+        backgroundColor: theme.palette.primary.dark,
       },
     },
     yearDisabled: {
@@ -79,8 +79,8 @@ export const Year: React.FC<YearProps> = ({
       role="button"
       ref={forwardedRef}
       onClick={() => onSelect(value)}
-      className={clsx(classes.yearContainer, {
-        [classes.yearContainerDesktop]: wrapperVariant === 'desktop',
+      className={clsx(classes.yearButtonContainer, {
+        [classes.yearButtonContainerDesktop]: wrapperVariant === 'desktop',
       })}
     >
       <Typography
@@ -90,7 +90,7 @@ export const Year: React.FC<YearProps> = ({
         color={selected ? 'primary' : undefined}
         children={children}
         onKeyPress={onSpaceOrEnter(() => onSelect(value))}
-        className={clsx(classes.yearLabel, {
+        className={clsx(classes.yearButton, {
           [classes.yearSelected]: selected,
           [classes.yearDisabled]: disabled,
         })}

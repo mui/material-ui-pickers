@@ -39,7 +39,7 @@ export const useStyles = makeStyles(
       }),
       '&:hover': {
         willChange: 'background-color',
-        backgroundColor: theme.palette.primary.light,
+        backgroundColor: theme.palette.primary.dark,
       },
     },
     dayDisabled: {
@@ -106,7 +106,7 @@ export const Day: React.FC<DayProps> = ({
       ref={ref}
       centerRipple
       focusRipple
-      disableRipple={selected}
+      // disableRipple={selected}
       data-mui-test="day"
       aria-label={utils.format(day, 'fullDate')}
       tabIndex={focused || focusable ? 0 : -1}
