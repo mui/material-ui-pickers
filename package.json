@@ -32,6 +32,7 @@
   "devDependencies": {
     "@babel/plugin-proposal-nullish-coalescing-operator": "^7.8.3",
     "@babel/runtime": "^7.7.5",
+    "@cypress/code-coverage": "^1.12.1",
     "@cypress/webpack-preprocessor": "^4.1.0",
     "@percy/cypress": "^1.0.9",
     "@typescript-eslint/eslint-plugin": "^1.6.0",
@@ -44,6 +45,7 @@
     "eslint-plugin-react-hooks": "^1.6.0",
     "husky": "^1.1.2",
     "lint-staged": "^7.3.0",
+    "nyc": "13.x",
     "prettier": "^1.14.3",
     "wait-on": "^4.0.0"
   },

@@ -10,4 +10,18 @@ module.exports = {
       },
     ],
   ],
+  env: {
+    test: {
+      plugins: [
+        [
+          'istanbul',
+          {
+            all: true,
+            excludeNodeModules: false,
+            include: ['**/node_modules/@material-ui/pickers/**'],
+          },
+        ],
+      ],
+    },
+  },
 };
