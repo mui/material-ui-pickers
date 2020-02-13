@@ -5,7 +5,6 @@ import { WrapperProps } from './Wrapper';
 import { PureDateInput } from '../_shared/PureDateInput';
 import { InnerDesktopWrapperProps } from './DesktopWrapper';
 import { WrapperVariantContext } from './WrapperVariantContext';
-import { useKeyDownHandler } from '../_shared/hooks/useKeyDown';
 import { DialogProps as MuiDialogProps } from '@material-ui/core/Dialog';
 
 export interface InnerMobileWrapperProps {
@@ -44,6 +43,8 @@ export interface InnerMobileWrapperProps {
    * @type {Partial<MuiDialogProps>}
    */
   DialogProps?: Partial<Omit<MuiDialogProps, 'classes'>>;
+  showTabs?: boolean;
+  wider?: boolean;
 }
 
 export interface MobileWrapperProps
