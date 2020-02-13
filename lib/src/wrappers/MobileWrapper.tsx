@@ -71,16 +71,11 @@ export const MobileWrapper: React.FC<MobileWrapperProps> = ({
   PopoverProps,
   ...other
 }) => {
-  const handleKeyDown = useKeyDownHandler(open, {
-    13: onAccept, // Enter
-  });
-
   return (
     <WrapperVariantContext.Provider value="mobile">
       <PureDateInput {...other} {...DateInputProps} />
 
       <ModalDialog
-        onKeyDown={handleKeyDown}
         wider={wider}
         showTabs={showTabs}
         open={open}

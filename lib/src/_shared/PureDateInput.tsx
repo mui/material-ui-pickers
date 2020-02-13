@@ -1,6 +1,7 @@
 import * as React from 'react';
 import TextField, { TextFieldProps } from '@material-ui/core/TextField';
 import { ExtendMui } from '../typings/helpers';
+import { onSpaceOrEnter } from '../_helpers/utils';
 import { ParsableDate } from '../constants/prop-types';
 import { MaterialUiPickersDate } from '../typings/date';
 import { useUtils, MuiPickersUtils } from './hooks/useUtils';
@@ -135,13 +136,7 @@ export const PureDateInput: React.FC<DateInputProps> = ({
       onClick={onOpen}
       value={inputValue}
       InputProps={PureDateInputProps}
-      onKeyDown={e => {
-        // space
-        if (e.keyCode === 32) {
-          e.stopPropagation();
-          onOpen();
-        }
-      }}
+      onKeyDown={onSpaceOrEnter(onOpen)}
     />
   );
 };
