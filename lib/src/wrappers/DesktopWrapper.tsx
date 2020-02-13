@@ -5,7 +5,6 @@ import Popover, { PopoverProps } from '@material-ui/core/Popover';
 import { WrapperProps } from './Wrapper';
 import { InnerMobileWrapperProps } from './MobileWrapper';
 import { WrapperVariantContext } from './WrapperVariantContext';
-import { useKeyDownHandler, keycode } from '../_shared/hooks/useKeyDown';
 
 export interface InnerDesktopWrapperProps {
   /** Popover props passed to material-ui Popover */

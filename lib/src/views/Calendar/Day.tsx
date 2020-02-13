@@ -95,10 +95,10 @@ export const Day: React.FC<DayProps> = ({
   });
 
   React.useEffect(() => {
-    if (!isAnimating && isInCurrentMonth && focused && ref.current) {
+    if (focused && !isAnimating && !disabled && isInCurrentMonth && ref.current) {
       ref.current.focus();
     }
-  }, [day, focused, isAnimating, isInCurrentMonth]);
+  }, [disabled, focused, isAnimating, isInCurrentMonth]);
 
   return (
     <ButtonBase
