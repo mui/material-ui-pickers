@@ -3,6 +3,7 @@ import * as PropTypes from 'prop-types';
 import KeyboardDateInput from '../_shared/KeyboardDateInput';
 import Popover, { PopoverProps } from '@material-ui/core/Popover';
 import { WrapperProps } from './Wrapper';
+import { makeStyles } from '@material-ui/core';
 import { InnerMobileWrapperProps } from './MobileWrapper';
 import { WrapperVariantContext } from './WrapperVariantContext';
 
@@ -15,6 +16,14 @@ export interface DesktopWrapperProps
   extends InnerDesktopWrapperProps,
     WrapperProps,
     Partial<InnerMobileWrapperProps> {}
+
+const useStyles = makeStyles({
+  popover: {
+    '&:focus': {
+      outline: 'auto',
+    },
+  },
+});
 
 export const DesktopWrapper: React.FC<DesktopWrapperProps> = ({
   open,
@@ -37,6 +46,7 @@ export const DesktopWrapper: React.FC<DesktopWrapperProps> = ({
   ...other
 }) => {
   const ref = React.useRef();
+  const classes = useStyles();
 
   return (
     <WrapperVariantContext.Provider value="desktop">
@@ -47,6 +57,7 @@ export const DesktopWrapper: React.FC<DesktopWrapperProps> = ({
         open={open}
         onClose={onDismiss}
         anchorEl={ref.current}
+        classes={{ paper: classes.popover }}
         anchorOrigin={{
           vertical: 'bottom',
           horizontal: 'center',
