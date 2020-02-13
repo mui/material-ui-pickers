@@ -110,7 +110,7 @@ export const ClockNumber: React.FC<ClockNumberProps> = ({
       className={className}
       style={transformStyle}
       aria-label={getClockNumberText(label)}
-      onKeyPress={onSpaceOrEnter(() => onSelect(FORCE_FINISH_PICKER))}
+      onKeyDown={onSpaceOrEnter(() => onSelect(FORCE_FINISH_PICKER))}
     >
       <Typography variant={isInner ? 'body2' : 'body1'}>{label}</Typography>
     </ButtonBase>

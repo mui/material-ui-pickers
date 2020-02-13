@@ -89,7 +89,7 @@ export const Year: React.FC<YearProps> = ({
         tabIndex={selected ? 0 : -1}
         color={selected ? 'primary' : undefined}
         children={children}
-        onKeyPress={onSpaceOrEnter(() => onSelect(value))}
+        onKeyDown={onSpaceOrEnter(() => onSelect(value))}
         className={clsx(classes.yearButton, {
           [classes.yearSelected]: selected,
           [classes.yearDisabled]: disabled,

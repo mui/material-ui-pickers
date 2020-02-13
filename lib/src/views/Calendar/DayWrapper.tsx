@@ -30,7 +30,7 @@ const DayWrapper: React.FC<DayWrapperProps> = ({
     <div
       role="cell"
       onClick={() => handleSelection(true)}
-      onKeyPress={onSpaceOrEnter(() => handleSelection(FORCE_FINISH_PICKER))}
+      onKeyDown={onSpaceOrEnter(() => handleSelection(FORCE_FINISH_PICKER))}
       children={children}
       {...other}
     />
