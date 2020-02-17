@@ -21,6 +21,13 @@ export const useStyles = makeStyles(
         backgroundColor: fade(theme.palette.action.active, theme.palette.action.hoverOpacity),
       },
     },
+    dayFocused: {
+      backgroundColor: fade(theme.palette.action.active, theme.palette.action.hoverOpacity),
+      '&$daySelected': {
+        willChange: 'background-color',
+        backgroundColor: theme.palette.primary.dark,
+      },
+    },
     hidden: {
       opacity: 0,
       pointerEvents: 'none',
@@ -105,8 +112,7 @@ export const Day: React.FC<DayProps> = ({
       aria-hidden={!isInCurrentMonth}
       ref={ref}
       centerRipple
-      focusRipple
-      // disableRipple={selected}
+      focusVisibleClassName={classes.dayFocused}
       data-mui-test="day"
       aria-label={utils.format(day, 'fullDate')}
       tabIndex={focused || focusable ? 0 : -1}
