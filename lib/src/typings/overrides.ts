@@ -34,23 +34,23 @@ type Classes<T> = Partial<
 >;
 
 export interface MuiPickersOverrides {
-  MuiPickersDay?: Classes<typeof DayStyles>;
-  MuiPickerDTHeader?: Classes<typeof DTHeaderStyles>;
-  MuiPickerDTTabs?: Classes<typeof DTTabsStyles>;
-  MuiPickersCalendar?: Classes<typeof CalendarStyles>;
-  MuiPickersCalendarHeader?: Classes<typeof CalendarHeaderStyles>;
-  MuiPickersSlideTransition?: Classes<typeof SlideTransitionStyles>;
-  MuiPickersYearSelectionStyles?: Classes<typeof MuiPickersYearSelectionStyles>;
-  MuiPickersYear?: Classes<typeof MuiPickersYearStyles>;
-  MuiPickersMonthSelection?: Classes<typeof MuiPickersMonthSelectionStyles>;
-  MuiPickersMonth?: Classes<typeof MuiPickersMonthStyles>;
-  MuiPickersTimePickerToolbar?: Classes<typeof TimePickerToolbarStyles>;
-  MuiPickersClock?: Classes<typeof ClockStyles>;
-  MuiPickersClockNumber?: Classes<typeof ClockNumberStyles>;
-  MuiPickersClockPointer?: Classes<typeof ClockPointerStyles>;
-  MuiPickersModal?: Classes<typeof ModalDialogStyles>;
-  MuiPickersToolbar?: Classes<typeof PickerToolbarStyles>;
-  MuiPickersToolbarButton?: Classes<typeof ToolbarButtonStyles>;
-  MuiPickersDatePickerRoot?: Classes<typeof DatePickerRootStyles>;
-  MuiPickerDTToolbar?: Classes<typeof MuiPickerDTToolbarStyles>;
+  MuiPickersDay: Classes<typeof DayStyles>;
+  MuiPickerDTHeader: Classes<typeof DTHeaderStyles>;
+  MuiPickerDTTabs: Classes<typeof DTTabsStyles>;
+  MuiPickersCalendar: Classes<typeof CalendarStyles>;
+  MuiPickersCalendarHeader: Classes<typeof CalendarHeaderStyles>;
+  MuiPickersSlideTransition: Classes<typeof SlideTransitionStyles>;
+  MuiPickersYearSelectionStyles: Classes<typeof MuiPickersYearSelectionStyles>;
+  MuiPickersYear: Classes<typeof MuiPickersYearStyles>;
+  MuiPickersMonthSelection: Classes<typeof MuiPickersMonthSelectionStyles>;
+  MuiPickersMonth: Classes<typeof MuiPickersMonthStyles>;
+  MuiPickersTimePickerToolbar: Classes<typeof TimePickerToolbarStyles>;
+  MuiPickersClock: Classes<typeof ClockStyles>;
+  MuiPickersClockNumber: Classes<typeof ClockNumberStyles>;
+  MuiPickersClockPointer: Classes<typeof ClockPointerStyles>;
+  MuiPickersModal: Classes<typeof ModalDialogStyles>;
+  MuiPickersToolbar: Classes<typeof PickerToolbarStyles>;
+  MuiPickersToolbarButton: Classes<typeof ToolbarButtonStyles>;
+  MuiPickersDatePickerRoot: Classes<typeof DatePickerRootStyles>;
+  MuiPickerDTToolbar: Classes<typeof MuiPickerDTToolbarStyles>;
 }
