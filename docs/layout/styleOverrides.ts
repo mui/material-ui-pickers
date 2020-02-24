@@ -7,7 +7,10 @@ export const createOverrides = (theme: Theme): StyleRules<any> => ({
     '-webkit-font-smoothing:': 'antialiased',
     backgroundColor: theme.palette.background.default,
   },
-  h1: theme.typography.h1,
+  h1: {
+    ...theme.typography.h1,
+    margin: theme.typography.h1.margin,
+  },
   h2: {
     ...theme.typography.h2,
     textTransform: 'unset',
@@ -23,8 +26,14 @@ export const createOverrides = (theme: Theme): StyleRules<any> => ({
     textTransform: 'unset',
     margin: '32px 0 8px',
   },
-  h5: theme.typography.h5,
-  h6: theme.typography.h6,
+  h5: {
+    ...theme.typography.h5,
+    margin: theme.typography.h5.margin,
+  },
+  h6: {
+    ...theme.typography.h6,
+    margin: theme.typography.h6.margin,
+  },
   p: {
     ...theme.typography.body1,
     textTransform: 'unset',
@@ -42,7 +51,10 @@ export const createOverrides = (theme: Theme): StyleRules<any> => ({
   ul: {
     color: theme.palette.text.primary,
   },
-  li: theme.typography.body1,
+  li: {
+    ...theme.typography.body1,
+    margin: theme.typography.body1.margin,
+  },
   code: {
     fontSize: 16,
     lineHeight: 1.4,
