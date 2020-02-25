@@ -5,7 +5,7 @@ import { LocalizationProvider } from '@material-ui/pickers';
 
 // Simple example, in some cases it can be helpful to reverse year order (from future to past).
 // Here we are simply override called by pickers function and reversing the result
-class OverriddenUtils extends DateFnsAdapter {
+class OverriddenAdapter extends DateFnsAdapter {
   getYearRange(start, end) {
     return super.getYearRange(start, end).reverse();
   }
@@ -15,7 +15,7 @@ function DateFnsLocalizationExample() {
   const [selectedDate, handleDateChange] = useState(new Date());
 
   return (
-    <LocalizationProvider adapter={OverriddenUtils}>
+    <LocalizationProvider adapter={OverriddenAdapter}>
       <DatePicker openTo="year" value={selectedDate} onChange={handleDateChange} />
     </LocalizationProvider>
   );

@@ -1,7 +1,7 @@
 import moment from 'moment';
 import jMoment from 'moment-jalaali';
 import React, { useState } from 'react';
-import JalaliUtils from '@date-io/jalaali';
+import JalaliAdapter from '@date-io/jalaali';
 import { TimePicker, DateTimePicker, DatePicker, LocalizationProvider } from '@material-ui/pickers';
 
 jMoment.loadPersian({ dialect: 'persian-modern', usePersianDigits: true });
@@ -10,7 +10,7 @@ function PersianExample() {
   const [selectedDate, handleDateChange] = useState(moment());
 
   return (
-    <LocalizationProvider adapter={JalaliUtils} locale="fa">
+    <LocalizationProvider adapter={JalaliAdapter} locale="fa">
       <DatePicker
         clearable
         okLabel="تأیید"

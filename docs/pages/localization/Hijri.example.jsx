@@ -1,6 +1,6 @@
 import moment from 'moment';
 import React, { useState } from 'react';
-import HijriUtils from '@date-io/hijri';
+import HijriAdapter from '@date-io/hijri';
 import { TimePicker, DateTimePicker, DatePicker, LocalizationProvider } from '@material-ui/pickers';
 import 'moment/locale/ar-sa';
 
@@ -8,7 +8,7 @@ function HijriExample() {
   const [selectedDate, handleDateChange] = useState(moment());
 
   return (
-    <LocalizationProvider adapter={HijriUtils} locale="ar-SA">
+    <LocalizationProvider adapter={HijriAdapter} locale="ar-SA">
       <DatePicker
         clearable
         okLabel="موافق"
