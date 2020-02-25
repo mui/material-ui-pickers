@@ -1,12 +1,12 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import { DateIOFormats } from '@date-io/core/IUtils';
-import { MuiPickersUtils } from './_shared/hooks/useUtils';
+import { MuiPickersAdapter } from './_shared/hooks/useUtils';
 
-export const MuiPickersAdapterContext = React.createContext<MuiPickersUtils | null>(null);
+export const MuiPickersAdapterContext = React.createContext<MuiPickersAdapter | null>(null);
 
 export interface LocalizationProviderProps {
-  adapter: new (...args: any) => MuiPickersUtils;
+  adapter: new (...args: any) => MuiPickersAdapter;
   children: React.ReactNode;
   locale?: any;
   libInstance?: any;
