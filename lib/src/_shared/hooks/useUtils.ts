@@ -3,14 +3,16 @@ import { IUtils } from '@date-io/core/IUtils';
 import { MaterialUiPickersDate } from '../../typings/date';
 import { MuiPickersAdapterContext } from '../../LocalizationProvider';
 
-export const checkUtils = (utils: IUtils<MaterialUiPickersDate> | null | undefined) => {
+export type MuiPickersUtils = IUtils<MaterialUiPickersDate>;
+
+// TODO uncomment when syntax will be allowed by next babel
+function checkUtils(utils: MuiPickersUtils | null) /* : asserts utils is MuiPickersUtils */ {
   if (!utils) {
-    // tslint:disable-next-line
     throw new Error(
-      'Can not find utils in context. You either a) forgot to wrap your component tree in LocalizationProvider; or b) mixed named and direct file imports.  Recommendation: use named imports from the module index.'
+      'Can not find utils in context. It looks like you forgot to wrap your component in LocalizationProvider, or pass dataAdapter prop directly.'
     );
   }
-};
+}
 
 export function useUtils() {
   const utils = useContext(MuiPickersAdapterContext);
@@ -25,5 +27,3 @@ export function useNow() {
 
   return now.current;
 }
-
-export type MuiPickersUtils = IUtils<MaterialUiPickersDate>;

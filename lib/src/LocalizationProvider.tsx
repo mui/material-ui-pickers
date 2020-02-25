@@ -26,8 +26,8 @@ export const LocalizationProvider: React.FC<LocalizationProviderProps> = ({
   return <MuiPickersAdapterContext.Provider value={utils} children={children} />;
 };
 
-// @ts-ignore
 LocalizationProvider.propTypes = {
+  // @ts-ignore
   adapter: PropTypes.func.isRequired,
   locale: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   children: PropTypes.oneOfType([
