@@ -32,12 +32,12 @@ npm i -s @date-io/luxon luxon
 npm i -s @date-io/dayjs dayjs
 ```
 
-Tell pickers which date management library it should use with `MuiPickersUtilsProvider`. This component takes a utils
+Tell pickers which date management library it should use with `LocalizationProvider`. This component takes a utils
 `prop`, and makes it available down the React tree with [React Context](https://reactjs.org/docs/context.html). It should
 be used at the root of your component tree, or at the highest level you wish the pickers to be available.
 
 ```jsx
-import { MuiPickersUtilsProvider } from '@material-ui/pickers';
+import { LocalizationProvider } from '@material-ui/pickers';
 
 // pick a date util library
 import MomentUtils from '@material-ui-pickers/adapter/moment';
@@ -46,9 +46,9 @@ import LuxonUtils from '@material-ui-pickers/adapter/luxon';
 
 function App() {
   return (
-    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+    <LocalizationProvider adapter={DateFnsUtils}>
       <Root />
-    </MuiPickersUtilsProvider>
+    </LocalizationProvider>
   );
 }
 

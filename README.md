@@ -49,13 +49,13 @@ Then teach pickers which library to use with `MuiPickerUtilsProvider`. This comp
 import MomentUtils from '@date-io/moment';
 import DateFnsUtils from '@date-io/date-fns';
 import LuxonUtils from '@date-io/luxon';
-import { MuiPickersUtilsProvider } from '@material-ui/pickers';
+import { LocalizationProvider } from '@material-ui/pickers';
 
 function App() {
   return (
-    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+    <LocalizationProvider adapter={DateFnsUtils}>
       <Root />
-    </MuiPickersUtilsProvider>
+    </LocalizationProvider>
   );
 }
 

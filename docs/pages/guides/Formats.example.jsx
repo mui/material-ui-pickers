@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import frLocale from 'date-fns/locale/fr';
 import DateFnsAdapter from '@material-ui/pickers/adapter/date-fns';
 import { DatePicker } from '@material-ui/pickers';
-import { MuiPickersUtilsProvider } from '@material-ui/pickers';
+import { LocalizationProvider } from '@material-ui/pickers';
 
 class LocalizedUtils extends DateFnsAdapter {
   getDatePickerHeaderText(date) {
@@ -15,7 +15,7 @@ function DateFnsLocalizationExample() {
   const [selectedDate, handleDateChange] = useState(new Date());
 
   return (
-    <MuiPickersUtilsProvider utils={LocalizedUtils} locale={frLocale}>
+    <LocalizationProvider adapter={LocalizedUtils} locale={frLocale}>
       <DatePicker
         clearable
         helperText="Localization done right"
@@ -25,7 +25,7 @@ function DateFnsLocalizationExample() {
         clearLabel="vider"
         cancelLabel="annuler"
       />
-    </MuiPickersUtilsProvider>
+    </LocalizationProvider>
   );
 }
 
