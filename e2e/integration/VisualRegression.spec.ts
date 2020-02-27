@@ -12,12 +12,13 @@ describe('Visual Regression', () => {
     {
       url: '/demo/datepicker',
       name: 'DatePicker demo',
+      hardResponsive: true,
       withDarkTheme: true,
       scenarios: {
-        'Opened datepicker': () => {
-          cy.get('[data-mui-test=datepicker-example]')
-            .find('input')
+        'Opened DesktopDatePicker': () => {
+          cy.get('[data-mui-test=open-picker-from-keyboard')
             .first()
+            .scrollIntoView()
             .click({ force: true });
         },
       },
@@ -25,11 +26,13 @@ describe('Visual Regression', () => {
     {
       url: '/demo/timepicker',
       name: 'TimePicker demo',
+      responsive: true,
       withDarkTheme: true,
       scenarios: {
         'Opened timepicker': () => {
-          cy.get('input')
+          cy.get('[data-mui-test=open-picker-from-keyboard')
             .first()
+            .scrollIntoView()
             .click({ force: true });
         },
       },
@@ -37,11 +40,13 @@ describe('Visual Regression', () => {
     {
       url: '/demo/datetime-picker',
       name: 'DateTimePicker demo',
+      responsive: true,
       withDarkTheme: true,
       scenarios: {
         'Opened datetimepicker': () => {
-          cy.get('input')
+          cy.get('[data-mui-test=open-picker-from-keyboard')
             .first()
+            .scrollIntoView()
             .click({ force: true });
         },
       },
@@ -51,22 +56,34 @@ describe('Visual Regression', () => {
       name: 'Css overrides',
       scenarios: {
         'Custom material-ui theme': () => {
-          cy.get('[data-mui-test=css-override]')
-            .find('input')
+          cy.get('[data-mui-test=css-override] [data-mui-test=open-picker-from-keyboard')
+            .first()
+            .scrollIntoView()
             .click({ force: true });
         },
       },
     },
   ];
 
+  function snapshotInDarkMode(name: string, options?: SnapshotOptions) {
+    cy.toggleTheme({ force: true });
+    cy.percySnapshot(`Dark ${name}`, options);
+    // cy.toggleTheme();
+  }
+
   pages.forEach(page => {
     context(page.name, () => {
-      before(() => {
+      beforeEach(() => {
         const now = new Date('2019-01-01T09:41:00.000Z');
         cy.clock(now.getTime());
 
         cy.visit(page.url);
       });
+
+      // afterEach(() => {
+      //   // just close any picker
+      //   cy.get('body').click({ force: true })
+      // })
 
       it(`Displays ${page.name} page`, () => {
         cy.percySnapshot(page.name);
@@ -74,26 +91,43 @@ describe('Visual Regression', () => {
 
       if (page.withDarkTheme) {
         it(`Displays ${page.name} page in dark theme`, () => {
-          cy.toggleTheme();
-          cy.percySnapshot(`Dark ${page.name}`);
-          cy.toggleTheme();
+          snapshotInDarkMode(page.name);
         });
       }
 
       if (page.scenarios) {
-        Object.entries(page.scenarios).forEach(([name, execute]) => {
-          it(`${page.name} scenario: ${name}`, () => {
-            execute!();
-            cy.percySnapshot(`${page.name}: ${name}`);
-          });
+        const defaultWidthForScenarios = page.hardResponsive ? [1280] : [1280, 375];
 
-          if (page.withDarkTheme) {
-            it(`${page.name} scenario: ${name} in dark theme`, () => {
-              cy.toggleTheme({ force: true });
-              cy.percySnapshot(`Dark ${page.name}: ${name}`);
-              cy.toggleTheme({ force: true });
+        Object.entries(page.scenarios).forEach(([name, execute]) => {
+          context(`${page.name} ${name}`, () => {
+            beforeEach(() => {
+              execute!();
             });
-          }
+
+            it(`${page.name} scenario: ${name}`, () => {
+              cy.percySnapshot(`${page.name}: ${name}`, { widths: defaultWidthForScenarios });
+            });
+
+            if (page.hardResponsive) {
+              it(`${page.name} scenario: ${name} on mobile`, () => {
+                cy.viewport('iphone-x');
+                cy.percySnapshot(`${page.name} scenario: ${name}`, { widths: [375] });
+              });
+            }
+
+            if (page.withDarkTheme) {
+              it(`${page.name} scenario: ${name} in dark theme`, () => {
+                snapshotInDarkMode(`${page.name}: ${name}`);
+              });
+            }
+
+            if (page.hardResponsive) {
+              it(`${page.name} scenario: ${name} on mobile in dark theme`, () => {
+                cy.viewport('iphone-x');
+                snapshotInDarkMode(`${page.name}: ${name}`, { widths: [375] });
+              });
+            }
+          });
         });
       }
     });
