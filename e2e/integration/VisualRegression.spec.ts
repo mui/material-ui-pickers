@@ -65,11 +65,6 @@ describe('Visual Regression', () => {
     },
   ];
 
-  function snapshotInDarkMode(name: string, options?: SnapshotOptions) {
-    cy.toggleTheme({ force: true });
-    cy.percySnapshot(`Dark ${name}`, options);
-  }
-
   pages.forEach(page => {
     context(page.name, () => {
       beforeEach(() => {
@@ -88,7 +83,7 @@ describe('Visual Regression', () => {
 
       if (page.withDarkTheme) {
         it(`Displays ${page.name} page in dark theme`, () => {
-          snapshotInDarkMode(page.name);
+          cy.percySnapshot(`Dark, ${page.name}`);
         });
       }
 
@@ -96,32 +91,41 @@ describe('Visual Regression', () => {
         const defaultWidthForScenarios = page.hardResponsive ? [1280] : [1280, 375];
 
         Object.entries(page.scenarios).forEach(([name, execute]) => {
-          context(`${page.name} ${name}`, () => {
-            beforeEach(() => {
-              execute!();
-            });
+          if (!execute || typeof execute !== 'function') {
+            throw new Error('Execute function in scenario is required');
+          }
 
+          context(`${page.name} ${name}`, () => {
             it(`${page.name} scenario: ${name}`, () => {
+              execute();
               cy.percySnapshot(`${page.name}: ${name}`, { widths: defaultWidthForScenarios });
             });
 
             if (page.hardResponsive) {
               it(`${page.name} scenario: ${name} on mobile`, () => {
                 cy.viewport('iphone-x');
+
+                execute();
                 cy.percySnapshot(`${page.name} scenario: ${name}`, { widths: [375] });
               });
             }
 
             if (page.withDarkTheme) {
               it(`${page.name} scenario: ${name} in dark theme`, () => {
-                snapshotInDarkMode(`${page.name}: ${name}`);
+                cy.toggleTheme();
+                execute();
+
+                cy.percySnapshot(`Dark ${page.name}: ${name}`);
               });
             }
 
-            if (page.hardResponsive) {
+            if (page.withDarkTheme && page.hardResponsive) {
               it(`${page.name} scenario: ${name} on mobile in dark theme`, () => {
                 cy.viewport('iphone-x');
-                snapshotInDarkMode(`${page.name}: ${name}`, { widths: [375] });
+                cy.toggleTheme();
+
+                execute();
+                cy.percySnapshot(`Dark ${page.name}: ${name}`, { widths: [375] });
               });
             }
           });
