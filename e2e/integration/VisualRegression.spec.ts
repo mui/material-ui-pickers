@@ -68,7 +68,6 @@ describe('Visual Regression', () => {
   function snapshotInDarkMode(name: string, options?: SnapshotOptions) {
     cy.toggleTheme({ force: true });
     cy.percySnapshot(`Dark ${name}`, options);
-    // cy.toggleTheme();
   }
 
   pages.forEach(page => {
@@ -78,12 +77,10 @@ describe('Visual Regression', () => {
         cy.clock(now.getTime());
 
         cy.visit(page.url);
+        // PLEASE FIX THIS WEIRD HACK: 2 times toggle theme to update injected styles.
+        cy.toggleTheme();
+        cy.toggleTheme();
       });
-
-      // afterEach(() => {
-      //   // just close any picker
-      //   cy.get('body').click({ force: true })
-      // })
 
       it(`Displays ${page.name} page`, () => {
         cy.percySnapshot(page.name);
