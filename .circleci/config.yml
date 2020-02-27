@@ -89,7 +89,7 @@ jobs:
 
   cypress_tests:
     description: Run cypress tests
-    executor: cypress/browsers-chrome73-ff68
+    executor: cypress/browsers-chrome80-ff72
     steps:
       - attach_workspace:
           at: .

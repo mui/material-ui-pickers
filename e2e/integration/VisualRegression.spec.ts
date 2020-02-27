@@ -3,7 +3,7 @@ describe('Visual Regression', () => {
     {
       url: '/',
       name: 'Landing',
-      // withDarkTheme: true,
+      withDarkTheme: true,
     },
     {
       url: '/localization/date-fns',
@@ -13,7 +13,7 @@ describe('Visual Regression', () => {
       url: '/demo/datepicker',
       name: 'DatePicker demo',
       hardResponsive: true,
-      // withDarkTheme: true,
+      withDarkTheme: true,
       scenarios: {
         'Opened DesktopDatePicker': () => {
           cy.get('[data-mui-test=open-picker-from-keyboard')
@@ -27,7 +27,7 @@ describe('Visual Regression', () => {
       url: '/demo/timepicker',
       name: 'TimePicker demo',
       responsive: true,
-      // withDarkTheme: true,
+      withDarkTheme: true,
       scenarios: {
         'Opened timepicker': () => {
           cy.get('[data-mui-test=open-picker-from-keyboard')
@@ -41,7 +41,7 @@ describe('Visual Regression', () => {
       url: '/demo/datetime-picker',
       name: 'DateTimePicker demo',
       responsive: true,
-      // withDarkTheme: true,
+      withDarkTheme: true,
       scenarios: {
         'Opened datetimepicker': () => {
           cy.get('[data-mui-test=open-picker-from-keyboard')
