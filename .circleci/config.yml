@@ -111,7 +111,7 @@ jobs:
           environment:
             VISUAL_TESTING: true
       - run: npx wait-on http://localhost:3000
-      - run: yarn percy exec -- cypress run --record
+      - run: yarn percy exec -- cypress run  --record --browser chrome
 
 ####################
 # Workflow
