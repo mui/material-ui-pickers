@@ -9,16 +9,16 @@ export interface LocalizationProviderProps {
   dateAdapter: new (...args: any) => MuiPickersAdapter;
   children: React.ReactNode;
   locale?: any;
-  libInstance?: any;
-  libFormats?: Partial<DateIOFormats>;
+  dateLibInstance?: any;
+  dateFormats?: Partial<DateIOFormats>;
 }
 
 export const LocalizationProvider: React.FC<LocalizationProviderProps> = ({
   dateAdapter: Utils,
   children,
   locale,
-  libFormats,
-  libInstance,
+  dateFormats: libFormats,
+  dateLibInstance: libInstance,
 }) => {
   const utils = React.useMemo(
     () => new Utils({ locale, formats: libFormats, instance: libInstance }),

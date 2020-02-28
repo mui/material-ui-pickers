@@ -14,7 +14,7 @@ function DateFnsLocalizationExample() {
   const [selectedDate, handleDateChange] = useState(new Date());
 
   return (
-    <LocalizationProvider dateAdapter={DateFnsAdapter} locale={frLocale} libFormats={formats}>
+    <LocalizationProvider dateAdapter={DateFnsAdapter} locale={frLocale} dateFormats={formats}>
       <DatePicker
         clearable
         helperText="Localization done right"
