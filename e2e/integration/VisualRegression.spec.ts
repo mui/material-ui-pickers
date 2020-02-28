@@ -15,7 +15,7 @@ describe('Visual Regression', () => {
       hardResponsive: true,
       withDarkTheme: true,
       scenarios: {
-        'Opened DesktopDatePicker': () => {
+        'Opened datepicker': () => {
           cy.get('[data-mui-test=open-picker-from-keyboard')
             .first()
             .scrollIntoView()
@@ -106,7 +106,7 @@ describe('Visual Regression', () => {
                 cy.viewport('iphone-x');
 
                 execute();
-                cy.percySnapshot(`${page.name} scenario: ${name}`, { widths: [375] });
+                cy.percySnapshot(`${page.name} scenario: ${name}, on mobile`, { widths: [375] });
               });
             }
 
@@ -115,7 +115,7 @@ describe('Visual Regression', () => {
                 cy.toggleTheme();
                 execute();
 
-                cy.percySnapshot(`Dark ${page.name}: ${name}`);
+                cy.percySnapshot(`Dark, ${page.name}: ${name}`);
               });
             }
 
@@ -125,7 +125,7 @@ describe('Visual Regression', () => {
                 cy.toggleTheme();
 
                 execute();
-                cy.percySnapshot(`Dark ${page.name}: ${name}`, { widths: [375] });
+                cy.percySnapshot(`Dark, ${page.name}: ${name} on mobile`, { widths: [375] });
               });
             }
           });
