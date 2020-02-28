@@ -8,7 +8,7 @@ function HijriExample() {
   const [selectedDate, handleDateChange] = useState(moment());
 
   return (
-    <LocalizationProvider adapter={HijriAdapter} locale="ar-SA">
+    <LocalizationProvider dateAdapter={HijriAdapter} locale="ar-SA">
       <DatePicker
         clearable
         okLabel="موافق"

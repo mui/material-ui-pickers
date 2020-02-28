@@ -29,7 +29,7 @@ function DateFnsLocalizationExample() {
   }, []);
 
   return (
-    <LocalizationProvider adapter={DateFnsAdapter} locale={localeMap[locale]}>
+    <LocalizationProvider dateAdapter={DateFnsAdapter} locale={localeMap[locale]}>
       <DatePicker
         value={selectedDate}
         onChange={handleDateChange}

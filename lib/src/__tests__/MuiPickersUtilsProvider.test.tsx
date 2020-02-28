@@ -9,7 +9,7 @@ describe('LocalizationProvider', () => {
 
   beforeEach(() => {
     component = shallow(
-      <LocalizationProvider adapter={DateFnsUtils}>
+      <LocalizationProvider dateAdapter={DateFnsUtils}>
         <div />
       </LocalizationProvider>
     );

@@ -99,7 +99,7 @@ export const PageWithContexts: React.SFC<Props> = ({
     >
       <ThemeProvider theme={muiTheme}>
         <SnackbarProvider maxSnack={3}>
-          <LocalizationProvider adapter={utilsMap[lib]}>
+          <LocalizationProvider dateAdapter={utilsMap[lib]}>
             <ThemeContext.Provider value={theme}>
               <UtilsContext.Provider value={createUtilsService(lib)}>
                 <CssBaseline />

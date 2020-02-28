@@ -46,7 +46,7 @@ import LuxonUtils from '@material-ui-pickers/adapter/luxon';
 
 function App() {
   return (
-    <LocalizationProvider adapter={DateFnsUtils}>
+    <LocalizationProvider dateAdapter={DateFnsUtils}>
       <Root />
     </LocalizationProvider>
   );

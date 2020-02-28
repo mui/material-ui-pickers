@@ -24,7 +24,7 @@ function App() {
   const [selectedDate, handleDateChange] = useState(new Date());
 
   return (
-    <LocalizationProvider adapter={DateFnsUtils}>
+    <LocalizationProvider dateAdapter={DateFnsUtils}>
       <DatePicker value={selectedDate} onChange={date => handleDateChange(date)} />
       <TimePicker value={selectedDate} onChange={date => handleDateChange(date)} />
       <DateTimePicker value={selectedDate} onChange={date => handleDateChange(date)} />

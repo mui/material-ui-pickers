@@ -10,7 +10,7 @@ function PersianExample() {
   const [selectedDate, handleDateChange] = useState(moment());
 
   return (
-    <LocalizationProvider adapter={JalaliAdapter} locale="fa">
+    <LocalizationProvider dateAdapter={JalaliAdapter} locale="fa">
       <DatePicker
         clearable
         okLabel="تأیید"

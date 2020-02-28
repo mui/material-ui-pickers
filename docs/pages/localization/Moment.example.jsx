@@ -33,7 +33,7 @@ function MomentLocalizationExample() {
   }, []);
 
   return (
-    <LocalizationProvider libInstance={moment} adapter={MomentAdapter} locale={locale}>
+    <LocalizationProvider libInstance={moment} dateAdapter={MomentAdapter} locale={locale}>
       <DatePicker
         value={selectedDate}
         onChange={date => handleDateChange(date)}

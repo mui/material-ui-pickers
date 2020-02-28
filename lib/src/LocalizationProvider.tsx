@@ -6,7 +6,7 @@ import { MuiPickersAdapter } from './_shared/hooks/useUtils';
 export const MuiPickersAdapterContext = React.createContext<MuiPickersAdapter | null>(null);
 
 export interface LocalizationProviderProps {
-  adapter: new (...args: any) => MuiPickersAdapter;
+  dateAdapter: new (...args: any) => MuiPickersAdapter;
   children: React.ReactNode;
   locale?: any;
   libInstance?: any;
@@ -14,7 +14,7 @@ export interface LocalizationProviderProps {
 }
 
 export const LocalizationProvider: React.FC<LocalizationProviderProps> = ({
-  adapter: Utils,
+  dateAdapter: Utils,
   children,
   locale,
   libFormats,
@@ -30,7 +30,7 @@ export const LocalizationProvider: React.FC<LocalizationProviderProps> = ({
 
 LocalizationProvider.propTypes = {
   // @ts-ignore
-  adapter: PropTypes.func.isRequired,
+  dateAdapter: PropTypes.func.isRequired,
   locale: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   children: PropTypes.oneOfType([
     PropTypes.element.isRequired,

@@ -53,7 +53,7 @@ import { LocalizationProvider } from '@material-ui/pickers';
 
 function App() {
   return (
-    <LocalizationProvider adapter={DateFns}>
+    <LocalizationProvider dateAdapter={DateFns}>
       <Root />
     </LocalizationProvider>
   );

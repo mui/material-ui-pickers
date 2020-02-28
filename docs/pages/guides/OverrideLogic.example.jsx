@@ -15,7 +15,7 @@ function DateFnsLocalizationExample() {
   const [selectedDate, handleDateChange] = useState(new Date());
 
   return (
-    <LocalizationProvider adapter={OverriddenAdapter}>
+    <LocalizationProvider dateAdapter={OverriddenAdapter}>
       <DatePicker openTo="year" value={selectedDate} onChange={handleDateChange} />
     </LocalizationProvider>
   );

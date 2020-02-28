@@ -38,7 +38,7 @@ export const shallow = <P extends WithUtilsProps>(element: React.ReactElement<P>
 export const mount = <P extends WithUtilsProps>(element: React.ReactElement<P>) =>
   enzyme.mount(
     <ThemeProvider theme={createMuiTheme()}>
-      <LocalizationProvider adapter={UtilClassToUse}>{element}</LocalizationProvider>
+      <LocalizationProvider dateAdapter={UtilClassToUse}>{element}</LocalizationProvider>
     </ThemeProvider>
   );
 
