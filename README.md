@@ -31,7 +31,6 @@ npm i @material-ui/pickers
 yarn add @material-ui/pickers
 ```
 
-
 ### Getting started
 
 [Here is instruction](https://material-ui-pickers.dev/getting-started/installation#peer-library) of how to get started with `@material-ui/pickers`.
