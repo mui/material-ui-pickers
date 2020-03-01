@@ -31,36 +31,9 @@ npm i @material-ui/pickers
 yarn add @material-ui/pickers
 ```
 
-Now choose the library that pickers will use to work with date. We are providing interfaces for [moment](https://momentjs.com/), [luxon](https://moment.github.io/luxon/), [dayjs](https://github.com/iamkun/dayjs) and [date-fns v2](https://date-fns.org/). If you are not using moment in the project (or don’t have it in the bundle already) we suggest using date-fns or luxon, because they are much lighter and will be correctly tree-shaked from the bundle. Note, that we are fully relying on [date-io](https://github.com/dmtrKovalenko/date-io) for supporting different libraries.
+### Getting started
 
-```sh
-npm i date-fns@next @date-io/date-fns
-// or
-npm i moment @date-io/moment
-// or
-npm i luxon @date-io/luxon
-// or
-npm i dayjs @date-io/dayjs
-```
-
-Then teach pickers which library to use with `LocalizationProvider`. This component takes an adapter property, and makes it available down the React tree thanks to React context. It should preferably be used at the root of your component tree.
-
-```jsx
-import Luxon from '@date-io/luxon';
-import Moment from '@date-io/moment';
-import DateFns from '@date-io/date-fns';
-import { LocalizationProvider } from '@material-ui/pickers';
-
-function App() {
-  return (
-    <LocalizationProvider dateAdapter={DateFns}>
-      <Root />
-    </LocalizationProvider>
-  );
-}
-
-render(<App />, document.querySelector('#app'));
-```
+[Here is instruction](https://material-ui-pickers.dev/getting-started/installation#peer-library) of how to get`started with`@material-ui/pickers`.
 
 ## Documentation
 
