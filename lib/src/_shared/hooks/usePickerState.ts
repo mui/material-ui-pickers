@@ -35,6 +35,7 @@ export function usePickerState(props: BasePickerProps) {
   const { autoOk, disabled, readOnly, onAccept, onChange, onError, value } = props;
 
   const utils = useUtils();
+  const now = useNow();
   const { date, inputFormat } = useDateValues(props);
   const [pickerDate, setPickerDate] = useState(date);
 
@@ -55,6 +56,8 @@ export function usePickerState(props: BasePickerProps) {
       onChange(acceptedDate);
 
       if (needClosePicker) {
+        console.log('closing picker');
+
         setIsOpen(false);
 
         if (onAccept) {
@@ -71,10 +74,14 @@ export function usePickerState(props: BasePickerProps) {
       open: isOpen,
       onClear: () => acceptDate(null, true),
       onAccept: () => acceptDate(pickerDate, true),
-      onSetToday: () => acceptDate(utils.date(), Boolean(autoOk)),
       onDismiss: () => setIsOpen(false),
+      onSetToday: () => {
+        setPickerDate(now);
+        console.log('WTF', now);
+        acceptDate(now, Boolean(autoOk));
+      },
     }),
-    [acceptDate, autoOk, inputFormat, isOpen, pickerDate, setIsOpen, utils]
+    [acceptDate, autoOk, inputFormat, isOpen, now, pickerDate, setIsOpen]
   );
 
   const pickerProps = useMemo(
