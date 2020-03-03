@@ -56,8 +56,6 @@ export function usePickerState(props: BasePickerProps) {
       onChange(acceptedDate);
 
       if (needClosePicker) {
-        console.log('closing picker');
-
         setIsOpen(false);
 
         if (onAccept) {
@@ -70,14 +68,13 @@ export function usePickerState(props: BasePickerProps) {
 
   const wrapperProps = useMemo(
     () => ({
-      format: inputFormat,
       open: isOpen,
+      format: inputFormat,
       onClear: () => acceptDate(null, true),
       onAccept: () => acceptDate(pickerDate, true),
       onDismiss: () => setIsOpen(false),
       onSetToday: () => {
         setPickerDate(now);
-        console.log('WTF', now);
         acceptDate(now, Boolean(autoOk));
       },
     }),
