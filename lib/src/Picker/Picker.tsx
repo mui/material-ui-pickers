@@ -5,6 +5,7 @@ import { useViews } from '../_shared/hooks/useViews';
 import { makeStyles } from '@material-ui/core/styles';
 import { DateTimePickerView } from '../DateTimePicker';
 import { WithViewsProps } from './makePickerWithState';
+import { ParsableDate } from '../constants/prop-types';
 import { BasePickerProps } from '../typings/BasePicker';
 import { MaterialUiPickersDate } from '../typings/date';
 import { DateInputProps } from '../_shared/PureDateInput';
@@ -37,27 +38,31 @@ export type ToolbarComponentProps<T extends PickerView = any> = BaseDatePickerPr
     getMobileKeyboardInputViewButtonText?: () => string;
   };
 
-export interface PickerViewProps<TView extends PickerView>
+export interface ExportedPickerProps<TView extends PickerView>
   extends Omit<BasePickerProps, 'value' | 'onChange'>,
     WithViewsProps<TView>,
     BaseDatePickerProps,
     ExportedClockViewProps {
   toolbarTitle?: string;
   showToolbar?: boolean;
-  ToolbarComponent: React.ComponentType<ToolbarComponentProps<any>>;
+  ToolbarComponent?: React.ComponentType<ToolbarComponentProps<any>>;
   // TODO move out, cause it is DateTimePickerOnly
   hideTabs?: boolean;
   dateRangeIcon?: React.ReactNode;
   timeIcon?: React.ReactNode;
 }
 
-interface PickerProps<T extends PickerView> extends PickerViewProps<T> {
+export interface PickerProps<
+  T extends PickerView,
+  TInputValue = ParsableDate,
+  TDateValue = MaterialUiPickersDate
+> extends ExportedPickerProps<T> {
   isMobileKeyboardViewOpen: boolean;
   toggleMobileKeyboardView: () => void;
-  DateInputProps: DateInputProps;
-  date: MaterialUiPickersDate;
+  DateInputProps: DateInputProps<TInputValue, TDateValue>;
+  date: TDateValue | null;
   onDateChange: (
-    date: MaterialUiPickersDate,
+    date: TDateValue,
     currentVariant: WrapperVariant,
     isFinish?: boolean | symbol
   ) => void;
@@ -97,7 +102,7 @@ export function Picker({
   toolbarTitle,
   showToolbar,
   onDateChange,
-  ToolbarComponent,
+  ToolbarComponent = () => null,
   orientation,
   DateInputProps,
   isMobileKeyboardViewOpen,

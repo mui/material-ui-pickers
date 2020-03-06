@@ -1,13 +1,15 @@
 import * as React from 'react';
-import { MakeOptional } from '../typings/helpers';
 import { DateTimePickerView } from '../DateTimePicker';
+import { ParsableDate } from '../constants/prop-types';
 import { BasePickerProps } from '../typings/BasePicker';
+import { MaterialUiPickersDate } from '../typings/date';
 import { usePickerState } from '../_shared/hooks/usePickerState';
-import { ExportedDateInputProps } from '../_shared/PureDateInput';
+import { useParsePickerInputValue } from '../_helpers/date-utils';
 import { DateValidationProps } from '../_helpers/text-field-helper';
 import { ResponsiveWrapperProps } from '../wrappers/ResponsiveWrapper';
-import { Picker, ToolbarComponentProps, PickerViewProps } from './Picker';
+import { ExportedDateInputProps, DateInputProps } from '../_shared/PureDateInput';
 import { SomeWrapper, ExtendWrapper, OmitInnerWrapperProps } from '../wrappers/Wrapper';
+import { Picker, ToolbarComponentProps, PickerProps, ExportedPickerProps } from './Picker';
 import { withDateAdapterProp, WithDateAdapterProps } from '../_shared/withDateAdapterProp';
 
 export interface WithViewsProps<T extends DateTimePickerView> {
@@ -21,19 +23,34 @@ export interface WithViewsProps<T extends DateTimePickerView> {
 
 export type WithDateInputProps = DateValidationProps & BasePickerProps & ExportedDateInputProps;
 
-export interface MakePickerOptions<T extends unknown> {
+export interface MakePickerOptions<T extends unknown, TInputValue, TDateValue> {
   useDefaultProps: (props: T) => Partial<T> & { inputFormat?: string };
   DefaultToolbarComponent: React.ComponentType<ToolbarComponentProps>;
+  PickerComponent?: React.ComponentType<PickerProps<any, TInputValue, TDateValue>>;
+  useParseInputValue?: (props: BasePickerProps<TInputValue, TDateValue>) => TDateValue;
+  PureDateInputComponent?: React.FC<DateInputProps<TInputValue>>;
+  KeyboardDateInputComponent?: React.FC<DateInputProps<TInputValue>>;
 }
 
-type ExportedPickerProps = MakeOptional<PickerViewProps<any>, 'ToolbarComponent'>;
-
 export function makePickerWithStateAndWrapper<
-  T extends ExportedPickerProps & DateValidationProps & Pick<BasePickerProps, 'onChange' | 'value'>,
+  T extends ExportedPickerProps<any> &
+    DateValidationProps &
+    Pick<BasePickerProps<TInputValue, TDateValue>, 'onChange' | 'value'>,
+  TInputValue = ParsableDate,
+  TDateValue = MaterialUiPickersDate,
   TWrapper extends SomeWrapper = any
 >(
   Wrapper: TWrapper,
-  { useDefaultProps, DefaultToolbarComponent }: MakePickerOptions<T>
+  {
+    // @ts-ignore Technically we cannot have a default value here, but left for consistency
+    PickerComponent = Picker,
+    // @ts-ignore
+    useParseInputValue = useParsePickerInputValue,
+    KeyboardDateInputComponent,
+    PureDateInputComponent,
+    useDefaultProps,
+    DefaultToolbarComponent,
+  }: MakePickerOptions<T, TInputValue, TDateValue>
 ): React.FC<T & WithDateAdapterProps & ExtendWrapper<TWrapper>> {
   function PickerWithState(props: T & Partial<OmitInnerWrapperProps<ResponsiveWrapperProps>>) {
     const defaultProps = useDefaultProps(props);
@@ -98,7 +115,11 @@ export function makePickerWithStateAndWrapper<
       ...restPropsForTextField
     } = allProps;
 
-    const { pickerProps, inputProps, wrapperProps } = usePickerState(allProps);
+    const { pickerProps, inputProps, wrapperProps } = usePickerState<TInputValue, TDateValue>(
+      allProps,
+      useParseInputValue
+    );
+
     const WrapperComponent = Wrapper as SomeWrapper;
 
     return (
@@ -110,12 +131,14 @@ export function makePickerWithStateAndWrapper<
         todayLabel={todayLabel}
         cancelLabel={cancelLabel}
         DateInputProps={inputProps}
+        KeyboardDateInputComponent={KeyboardDateInputComponent}
+        PureDateInputComponent={PureDateInputComponent}
         wider={wider}
         showTabs={showTabs}
         {...wrapperProps}
         {...restPropsForTextField}
       >
-        <Picker
+        <PickerComponent
           {...pickerProps}
           DateInputProps={{ ...inputProps, ...restPropsForTextField }}
           // @ts-ignore
