@@ -2,7 +2,6 @@ import { ParsableDate } from '../constants/prop-types';
 import { MaterialUiPickersDate } from '../typings/date';
 import { DateInputProps } from '../_shared/PureDateInput';
 import { MuiPickersAdapter } from '../_shared/hooks/useUtils';
-import { ExportedCalendarViewProps } from '../views/Calendar/CalendarView';
 
 export function getTextFieldAriaText(rawValue: ParsableDate, utils: MuiPickersAdapter) {
   return rawValue && utils.isValid(utils.date(rawValue))
@@ -75,7 +74,7 @@ const getComparisonMinDate = (
   return utils.startOfDay(date);
 };
 
-export const validate = (
+export const validateDateValue = (
   value: ParsableDate,
   utils: MuiPickersAdapter,
   {
@@ -87,13 +86,13 @@ export const validate = (
     minDateMessage,
     invalidDateMessage,
     strictCompareDates,
-  }: ExportedCalendarViewProps & DateValidationProps
+  }: any // TODO change the typings when doing hard update of validation system
 ): React.ReactNode => {
   const parsedValue = utils.date(value);
 
   // if null - do not show error
   if (value === null) {
-    return '';
+    return undefined;
   }
 
   if (!utils.isValid(value)) {
@@ -133,7 +132,7 @@ export const validate = (
     return minDateMessage;
   }
 
-  return '';
+  return undefined;
 };
 
 export function pick12hOr24hFormat(

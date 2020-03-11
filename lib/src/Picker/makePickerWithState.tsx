@@ -6,6 +6,7 @@ import { parsePickerInputValue } from '../_helpers/date-utils';
 import { KeyboardDateInput } from '../_shared/KeyboardDateInput';
 import { usePickerState } from '../_shared/hooks/usePickerState';
 import { SomeWrapper, ExtendWrapper } from '../wrappers/Wrapper';
+import { validateDateValue } from '../_helpers/text-field-helper';
 import { withDateAdapterProp } from '../_shared/withDateAdapterProp';
 import { makeWrapperComponent } from '../wrappers/makeWrapperComponent';
 import { AnyPickerView, AllSharedPickerProps } from './SharedPickerProps';
@@ -34,7 +35,7 @@ export function makePickerWithStateAndWrapper<
     const { pickerProps, inputProps, wrapperProps } = usePickerState<
       ParsableDate,
       MaterialUiPickersDate
-    >(allProps, parsePickerInputValue);
+    >(allProps, parsePickerInputValue, validateDateValue);
 
     const {
       allowKeyboardControl,

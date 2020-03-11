@@ -28,7 +28,7 @@ export interface BasePickerProps<
   /** Callback fired when new error should be displayed
    * (!! This is a side effect. Be careful if you want to rerender the component) @DateIOType
    */
-  onError?: (error: React.ReactNode, value: MaterialUiPickersDate | ParsableDate) => void;
+  onError?: (error: React.ReactNode, value: TInputValue | TDateValue) => void;
   /** On open callback */
   onOpen?: () => void;
   /** On close callback */

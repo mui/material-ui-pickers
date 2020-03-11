@@ -2,7 +2,6 @@ import { useOpenState } from './useOpenState';
 import { WrapperVariant } from '../../wrappers/Wrapper';
 import { BasePickerProps } from '../../typings/BasePicker';
 import { MaterialUiPickersDate } from '../../typings/date';
-import { validate } from '../../_helpers/text-field-helper';
 import { useUtils, useNow, MuiPickersAdapter } from './useUtils';
 import { useCallback, useDebugValue, useEffect, useMemo, useState } from 'react';
 
@@ -14,9 +13,13 @@ export function usePickerState<TInput, TOutput>(
     now: MaterialUiPickersDate,
     utils: MuiPickersAdapter,
     props: BasePickerProps<TInput, TOutput>
-  ) => TOutput | null
+  ) => TOutput | null,
+  validateInputValue: (
+    value: TInput,
+    utils: MuiPickersAdapter,
+    props: BasePickerProps<TInput, TOutput>
+  ) => React.ReactNode | undefined
 ) {
-  console.log('updating state');
   const { autoOk, inputFormat, disabled, readOnly, onAccept, onChange, onError, value } = props;
 
   if (!inputFormat) {
@@ -107,23 +110,22 @@ export function usePickerState<TInput, TOutput>(
     [acceptDate, autoOk, isMobileKeyboardViewOpen, pickerDate]
   );
 
-  // TODO FIX ME
-  // const validationError = validate(value, utils, props as any);
-  // useEffect(() => {
-  //   if (onError) {
-  //     onError(validationError, value);
-  //   }
-  // }, [onError, validationError, value]);
+  const validationError = validateInputValue(value, utils, props);
+  useEffect(() => {
+    if (onError) {
+      onError(validationError, value);
+    }
+  }, [onError, validationError, value]);
 
   const inputProps = useMemo(
     () => ({
       onChange,
       inputFormat,
       rawValue: value,
-      validationError: undefined,
+      validationError,
       openPicker: () => !readOnly && !disabled && setIsOpen(true),
     }),
-    [disabled, inputFormat, onChange, readOnly, setIsOpen, value]
+    [disabled, inputFormat, onChange, readOnly, setIsOpen, validationError, value]
   );
 
   const pickerState = { pickerProps, inputProps, wrapperProps };

@@ -1,5 +1,5 @@
 import * as PropTypes from 'prop-types';
-import { BaseDatePickerProps } from '../DatePicker/DatePicker';
+import { DatePickerProps } from '../DatePicker/DatePicker';
 import { ExportedClockViewProps } from '../views/Clock/ClockView';
 
 const date = PropTypes.oneOfType([
@@ -26,10 +26,10 @@ export const datePickerDefaultProps = {
   invalidDateMessage: 'Invalid Date Format',
   minDateMessage: 'Date should not be before minimal date',
   maxDateMessage: 'Date should not be after maximal date',
-} as BaseDatePickerProps;
+} as DatePickerProps;
 
 export const dateTimePickerDefaultProps = {
   ...timePickerDefaultProps,
   ...datePickerDefaultProps,
   showTabs: true,
-} as ExportedClockViewProps & BaseDatePickerProps;
+} as ExportedClockViewProps & DatePickerProps;

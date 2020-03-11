@@ -10,13 +10,13 @@ import { ModalWrapper, InlineWrapper, StaticWrapper } from '../wrappers/Wrapper'
 
 export type DatePickerView = 'year' | 'date' | 'month';
 
-export interface BaseDatePickerProps
+export interface DatePickerProps
   extends WithViewsProps<'year' | 'date' | 'month'>,
     ExportedCalendarViewProps {}
 
 const datePickerConfig = {
   DefaultToolbarComponent: DatePickerToolbar,
-  useDefaultProps: ({ openTo = 'date', views = ['year', 'date'] }: BaseDatePickerProps) => {
+  useDefaultProps: ({ openTo = 'date', views = ['year', 'date'] }: DatePickerProps) => {
     const utils = useUtils();
 
     return {
@@ -29,22 +29,22 @@ const datePickerConfig = {
   },
 };
 
-export const DatePicker = makePickerWithStateAndWrapper<BaseDatePickerProps>(
+export const DatePicker = makePickerWithStateAndWrapper<DatePickerProps>(
   ResponsiveWrapper,
   datePickerConfig
 );
 
-export const MobileDatePicker = makePickerWithStateAndWrapper<BaseDatePickerProps>(
+export const MobileDatePicker = makePickerWithStateAndWrapper<DatePickerProps>(
   ModalWrapper,
   datePickerConfig
 );
 
-export const DesktopDatePicker = makePickerWithStateAndWrapper<BaseDatePickerProps>(
+export const DesktopDatePicker = makePickerWithStateAndWrapper<DatePickerProps>(
   InlineWrapper,
   datePickerConfig
 );
 
-export const StaticDatePicker = makePickerWithStateAndWrapper<BaseDatePickerProps>(
+export const StaticDatePicker = makePickerWithStateAndWrapper<DatePickerProps>(
   StaticWrapper,
   datePickerConfig
 );
