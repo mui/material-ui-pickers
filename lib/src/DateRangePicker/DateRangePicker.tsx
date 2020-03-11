@@ -7,8 +7,8 @@ import { DateRangePickerInput } from './DateRangePickerInput';
 import { MuiPickersAdapter } from '../_shared/hooks/useUtils';
 import { parsePickerInputValue } from '../_helpers/date-utils';
 import { usePickerState } from '../_shared/hooks/usePickerState';
-import { makeWrapperComponent } from '../Picker/makeWrapperComponent';
 import { ResponsiveWrapperProps } from '../wrappers/ResponsiveWrapper';
+import { makeWrapperComponent } from '../wrappers/makeWrapperComponent';
 import { SomeWrapper, OmitInnerWrapperProps } from '../wrappers/Wrapper';
 import { DateRangePickerCalendar, DateRangePickerCalendarProps } from './DateRangePickerCalendar';
 

@@ -1,7 +1,7 @@
 import { useUtils } from '../_shared/hooks/useUtils';
 import { DatePickerToolbar } from './DatePickerToolbar';
 import { getFormatByViews } from '../_helpers/date-utils';
-import { WithViewsProps } from '../Picker/WithViewsProps';
+import { WithViewsProps } from '../Picker/SharedPickerProps';
 import { datePickerDefaultProps } from '../constants/prop-types';
 import { ResponsiveWrapper } from '../wrappers/ResponsiveWrapper';
 import { ExportedCalendarViewProps } from '../views/Calendar/CalendarView';

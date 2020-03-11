@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { arrayIncludes } from '../../_helpers/utils';
 import { MaterialUiPickersDate } from '../../typings/date';
-import { AnyPickerView } from '../../Picker/WithViewsProps';
+import { AnyPickerView } from '../../Picker/SharedPickerProps';
 
 export type PickerOnChangeFn = (date: MaterialUiPickersDate, isFinish?: boolean | symbol) => void;
 

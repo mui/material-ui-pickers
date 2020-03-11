@@ -1,13 +1,13 @@
 import { useUtils } from '../_shared/hooks/useUtils';
-import { WithViewsProps } from '../Picker/WithViewsProps';
 import { DateTimePickerToolbar } from './DateTimePickerToolbar';
 import { ExportedClockViewProps } from '../views/Clock/ClockView';
 import { ResponsiveWrapper } from '../wrappers/ResponsiveWrapper';
 import { pick12hOr24hFormat } from '../_helpers/text-field-helper';
 import { ExportedCalendarProps } from '../views/Calendar/Calendar';
+import { makePickerWithStateAndWrapper } from '../Picker/makePickerWithState';
 import { InlineWrapper, ModalWrapper, StaticWrapper } from '../wrappers/Wrapper';
+import { WithViewsProps, AllSharedPickerProps } from '../Picker/SharedPickerProps';
 import { dateTimePickerDefaultProps, ParsableDate } from '../constants/prop-types';
-import { makePickerWithStateAndWrapper, AllSharedPickerProps } from '../Picker/makePickerWithState';
 
 export type DateTimePickerView = 'year' | 'date' | 'month' | 'hours' | 'minutes' | 'seconds';
 

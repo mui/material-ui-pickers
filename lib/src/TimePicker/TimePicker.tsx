@@ -1,14 +1,14 @@
 import React from 'react';
 import ClockIcon from '../_shared/icons/ClockIcon';
 import { TimePickerToolbar } from './TimePickerToolbar';
-import { WithViewsProps } from '../Picker/WithViewsProps';
 import { ExportedClockViewProps } from '../views/Clock/ClockView';
 import { ResponsiveWrapper } from '../wrappers/ResponsiveWrapper';
 import { pick12hOr24hFormat } from '../_helpers/text-field-helper';
 import { useUtils, MuiPickersAdapter } from '../_shared/hooks/useUtils';
+import { makePickerWithStateAndWrapper } from '../Picker/makePickerWithState';
 import { timePickerDefaultProps, ParsableDate } from '../constants/prop-types';
 import { ModalWrapper, InlineWrapper, StaticWrapper } from '../wrappers/Wrapper';
-import { makePickerWithStateAndWrapper, AllSharedPickerProps } from '../Picker/makePickerWithState';
+import { WithViewsProps, AllSharedPickerProps } from '../Picker/SharedPickerProps';
 
 export interface TimePickerProps
   extends ExportedClockViewProps,

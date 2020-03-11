@@ -1,13 +1,13 @@
 import React from 'react';
 import { BasePickerProps } from '../typings/BasePicker';
 import { DateInputProps } from '../_shared/PureDateInput';
+import { ResponsiveWrapperProps } from './ResponsiveWrapper';
 import { DateValidationProps } from '../_helpers/text-field-helper';
-import { ResponsiveWrapperProps } from '../wrappers/ResponsiveWrapper';
 import {
   OmitInnerWrapperProps,
   SomeWrapper,
   WrapperProps,
-} from '../wrappers/Wrapper';
+} from './Wrapper';
 
 interface MakePickerOptions<TInputValue, TDateValue> {
   PureDateInputComponent?: React.FC<DateInputProps<TInputValue, TDateValue>>;

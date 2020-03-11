@@ -1,22 +1,15 @@
 import * as React from 'react';
-import { AnyPickerView } from './WithViewsProps';
 import { ParsableDate } from '../constants/prop-types';
-import { BasePickerProps } from '../typings/BasePicker';
 import { MaterialUiPickersDate } from '../typings/date';
-import { makeWrapperComponent } from './makeWrapperComponent';
+import { PureDateInput } from '../_shared/PureDateInput';
 import { parsePickerInputValue } from '../_helpers/date-utils';
 import { KeyboardDateInput } from '../_shared/KeyboardDateInput';
 import { usePickerState } from '../_shared/hooks/usePickerState';
 import { SomeWrapper, ExtendWrapper } from '../wrappers/Wrapper';
-import { DateValidationProps } from '../_helpers/text-field-helper';
+import { withDateAdapterProp } from '../_shared/withDateAdapterProp';
+import { makeWrapperComponent } from '../wrappers/makeWrapperComponent';
+import { AnyPickerView, AllSharedPickerProps } from './SharedPickerProps';
 import { Picker, ToolbarComponentProps, ExportedPickerProps } from './Picker';
-import { PureDateInput, ExportedDateInputProps } from '../_shared/PureDateInput';
-import { WithDateAdapterProps, withDateAdapterProp } from '../_shared/withDateAdapterProp';
-
-export type AllSharedPickerProps = WithDateAdapterProps &
-  BasePickerProps &
-  ExportedDateInputProps &
-  DateValidationProps;
 
 type AllAvailableForOverrideProps = ExportedPickerProps<AnyPickerView>;
 
