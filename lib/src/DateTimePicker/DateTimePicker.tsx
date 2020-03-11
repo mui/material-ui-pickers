@@ -4,13 +4,10 @@ import { DateTimePickerToolbar } from './DateTimePickerToolbar';
 import { ExportedClockViewProps } from '../views/Clock/ClockView';
 import { ResponsiveWrapper } from '../wrappers/ResponsiveWrapper';
 import { pick12hOr24hFormat } from '../_helpers/text-field-helper';
+import { WithViewsProps, WithDateInputProps } from '../Picker/WithViewsProps';
+import { makePickerWithStateAndWrapper } from '../Picker/makePickerWithState';
 import { InlineWrapper, ModalWrapper, StaticWrapper } from '../wrappers/Wrapper';
 import { dateTimePickerDefaultProps, ParsableDate } from '../constants/prop-types';
-import {
-  makePickerWithStateAndWrapper,
-  WithDateInputProps,
-  WithViewsProps,
-} from '../Picker/makePickerWithState';
 
 export type DateTimePickerView = 'year' | 'date' | 'month' | 'hours' | 'minutes' | 'seconds';
 

@@ -1,10 +1,10 @@
 import * as React from 'react';
 import clsx from 'clsx';
+import { WithViewsProps } from "./WithViewsProps";
 import { WrapperVariant } from '../wrappers/Wrapper';
 import { useViews } from '../_shared/hooks/useViews';
 import { makeStyles } from '@material-ui/core/styles';
 import { DateTimePickerView } from '../DateTimePicker';
-import { WithViewsProps } from './makePickerWithState';
 import { ParsableDate } from '../constants/prop-types';
 import { BasePickerProps } from '../typings/BasePicker';
 import { MaterialUiPickersDate } from '../typings/date';

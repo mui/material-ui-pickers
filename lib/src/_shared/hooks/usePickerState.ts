@@ -1,25 +1,31 @@
-import { useUtils, useNow } from './useUtils';
 import { useOpenState } from './useOpenState';
 import { WrapperVariant } from '../../wrappers/Wrapper';
 import { BasePickerProps } from '../../typings/BasePicker';
+import { MaterialUiPickersDate } from '../../typings/date';
 import { validate } from '../../_helpers/text-field-helper';
+import { useUtils, useNow, MuiPickersAdapter } from './useUtils';
 import { useCallback, useDebugValue, useEffect, useMemo, useState } from 'react';
 
 export const FORCE_FINISH_PICKER = Symbol('Force closing picker, used for accessibility ');
 
 export function usePickerState<TInput, TOutput>(
   props: BasePickerProps<TInput, TOutput>,
-  useParseInputValue: (props: BasePickerProps<TInput, TOutput>) => TOutput | null
+  parseInputValue: (
+    now: MaterialUiPickersDate,
+    utils: MuiPickersAdapter,
+    props: BasePickerProps<TInput, TOutput>
+  ) => TOutput | null
 ) {
+  console.log('updating state');
   const { autoOk, inputFormat, disabled, readOnly, onAccept, onChange, onError, value } = props;
 
   if (!inputFormat) {
-    throw new Error("inputFormat prop is required")
+    throw new Error('inputFormat prop is required');
   }
 
   const now = useNow();
   const utils = useUtils();
-  const date = useParseInputValue(props);
+  const date = parseInputValue(now, utils, props);
   const [pickerDate, setPickerDate] = useState(date);
 
   // Mobile keyboard view is a special case.

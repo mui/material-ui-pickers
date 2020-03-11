@@ -5,11 +5,10 @@ import { ExportedClockViewProps } from '../views/Clock/ClockView';
 import { ResponsiveWrapper } from '../wrappers/ResponsiveWrapper';
 import { pick12hOr24hFormat } from '../_helpers/text-field-helper';
 import { useUtils, MuiPickersAdapter } from '../_shared/hooks/useUtils';
+import { WithViewsProps, WithDateInputProps } from "../Picker/WithViewsProps";
 import { timePickerDefaultProps, ParsableDate } from '../constants/prop-types';
 import { ModalWrapper, InlineWrapper, StaticWrapper } from '../wrappers/Wrapper';
 import {
-  WithDateInputProps,
-  WithViewsProps,
   makePickerWithStateAndWrapper,
 } from '../Picker/makePickerWithState';
 

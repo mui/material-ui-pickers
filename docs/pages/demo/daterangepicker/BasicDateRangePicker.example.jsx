@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { DateRangePicker } from '@material-ui/pickers';
 
 function BasicDateRangePicker() {
-  const [selectedDate, handleDateChange] = useState([new Date()]);
+  const [selectedDate, handleDateChange] = useState([new Date(), null]);
 
   return (
     <DateRangePicker

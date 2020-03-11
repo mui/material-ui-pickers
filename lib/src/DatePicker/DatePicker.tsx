@@ -5,11 +5,10 @@ import { getFormatByViews } from '../_helpers/date-utils';
 import { datePickerDefaultProps } from '../constants/prop-types';
 import { ResponsiveWrapper } from '../wrappers/ResponsiveWrapper';
 import { ExportedCalendarViewProps } from '../views/Calendar/CalendarView';
+import { WithViewsProps, WithDateInputProps } from "../Picker/WithViewsProps";
 import { ModalWrapper, InlineWrapper, StaticWrapper } from '../wrappers/Wrapper';
 import {
-  WithDateInputProps,
   makePickerWithStateAndWrapper,
-  WithViewsProps,
 } from '../Picker/makePickerWithState';
 
 export type DatePickerView = 'year' | 'date' | 'month';
