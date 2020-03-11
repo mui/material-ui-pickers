@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ParsableDate } from '../constants/prop-types';
+import { DateRange, RangeInput } from './RangeTypes';
 import { MaterialUiPickersDate } from '../typings/date';
 import { BasePickerProps } from '../typings/BasePicker';
 import { DesktopWrapper } from '../wrappers/DesktopWrapper';
@@ -10,17 +10,7 @@ import { usePickerState } from '../_shared/hooks/usePickerState';
 import { ResponsiveWrapperProps } from '../wrappers/ResponsiveWrapper';
 import { makePickerWithWrapper } from '../Picker/makePickerWithWrapper';
 import { SomeWrapper, OmitInnerWrapperProps } from '../wrappers/Wrapper';
-
-export type RangeInput = [ParsableDate, ParsableDate];
-export type DateRange = [MaterialUiPickersDate, MaterialUiPickersDate];
-
-interface RangePickerProps extends BasePickerProps<RangeInput, DateRange> {
-  howManyCalendars: 2;
-}
-
-const RangePicker: React.FC<RangePickerProps> = ({}) => {
-  return <div>makePickerWithStateAndWrapper</div>;
-};
+import { DateRangePickerCalendar, DateRangePickerCalendarProps } from './DateRangePickerCalendar';
 
 export function parseRangeInputValue(
   now: MaterialUiPickersDate,
@@ -29,24 +19,30 @@ export function parseRangeInputValue(
 ) {
   return value.map(date =>
     parsePickerInputValue(now, utils, { value: date, defaultHighlight })
-  );
+  ) as DateRange;
 }
 
 export function makeRangePicker<TWrapper extends SomeWrapper>(Wrapper: TWrapper) {
-  const PickerComponentWithWrapper = makePickerWithWrapper(Wrapper, {
-    PickerComponent: RangePicker,
+  const PickerComponentWithWrapper = makePickerWithWrapper<
+    RangeInput,
+    DateRange,
+    DateRangePickerCalendarProps & Pick<BasePickerProps<RangeInput, DateRange>, 'onChange' | 'value'>
+  >(Wrapper, {
+    PickerComponent: DateRangePickerCalendar,
     DefaultToolbarComponent: () => null,
     KeyboardDateInputComponent: DateRangePickerInput,
     PureDateInputComponent: DateRangePickerInput,
   });
 
   function RangePickerWithStateAndWrapper(
-    allProps: RangePickerProps & Partial<OmitInnerWrapperProps<ResponsiveWrapperProps>>
+    allProps: DateRangePickerCalendarProps &
+      Pick<BasePickerProps<RangeInput, DateRange>, 'onChange' | 'value'> &
+      Partial<OmitInnerWrapperProps<ResponsiveWrapperProps>>
   ) {
-    const { pickerProps, inputProps, wrapperProps } = usePickerState<
-      RangeInput,
-      DateRange
-    >(allProps, parseRangeInputValue);
+    const { pickerProps, inputProps, wrapperProps } = usePickerState<RangeInput, DateRange>(
+      allProps,
+      parseRangeInputValue
+    );
 
     return (
       <PickerComponentWithWrapper
@@ -59,12 +55,10 @@ export function makeRangePicker<TWrapper extends SomeWrapper>(Wrapper: TWrapper)
   }
 
   RangePickerWithStateAndWrapper.defaultProps = {
-    inputFormat: 'MM'
-  }
+    inputFormat: 'MM',
+  };
 
   return RangePickerWithStateAndWrapper;
 }
 
 export const DateRangePicker = makeRangePicker(DesktopWrapper);
-
-<DateRangePicker value={[]} />;

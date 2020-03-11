@@ -19,12 +19,12 @@ interface MakePickerOptions<TInputValue, TDateValue> {
   KeyboardDateInputComponent?: React.FC<DateInputProps<TInputValue>>;
 }
 
-type AllPickerProps<TInputValue, TDateValue> = ExportedPickerProps<any> &
+type AllPickerProps<TInputValue, TDateValue> = ExportedPickerProps<TInputValue, TDateValue> &
   DateValidationProps &
   Pick<BasePickerProps<TInputValue, TDateValue>, 'onChange' | 'value'>;
 
 interface WithWrapperProps<TInputValue, TDateValue> {
-  inputProps: DateInputProps;
+  inputProps: DateInputProps<TInputValue, TDateValue>;
   wrapperProps: Omit<WrapperProps, 'DateInputProps'>;
   pickerProps: Omit<PickerProps<any, TInputValue, TDateValue>, 'DateInputProps'>;
 }
@@ -32,8 +32,7 @@ interface WithWrapperProps<TInputValue, TDateValue> {
 export function makePickerWithWrapper<
   TInputValue,
   TDateValue,
-  TProps extends AllPickerProps<TInputValue, TDateValue> &
-    WithWrapperProps<TInputValue, TDateValue>,
+  TProps extends AllPickerProps<TInputValue, TDateValue>,
   TWrapper extends SomeWrapper = any
 >(
   Wrapper: TWrapper,
@@ -43,8 +42,18 @@ export function makePickerWithWrapper<
     PureDateInputComponent,
     DefaultToolbarComponent,
   }: MakePickerOptions<TInputValue, TDateValue>
-): React.FC<TProps & WithDateAdapterProps & ExtendWrapper<TWrapper>> {
-  function PickerWithState(props: TProps & Partial<OmitInnerWrapperProps<ResponsiveWrapperProps>>) {
+): React.FC<
+  TProps &
+    WithWrapperProps<TInputValue, TDateValue> &
+    WithDateAdapterProps &
+    ExtendWrapper<TWrapper>
+> {
+  function PickerWithState(
+    props: TProps &
+      WithDateAdapterProps &
+      WithWrapperProps<TInputValue, TDateValue> &
+      Partial<OmitInnerWrapperProps<ResponsiveWrapperProps>>
+  ) {
     const {
       allowKeyboardControl,
       ampm,

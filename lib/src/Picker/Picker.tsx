@@ -1,6 +1,6 @@
 import * as React from 'react';
 import clsx from 'clsx';
-import { WithViewsProps } from "./WithViewsProps";
+import { WithViewsProps } from './WithViewsProps';
 import { WrapperVariant } from '../wrappers/Wrapper';
 import { useViews } from '../_shared/hooks/useViews';
 import { makeStyles } from '@material-ui/core/styles';
@@ -38,9 +38,8 @@ export type ToolbarComponentProps<T extends PickerView = any> = BaseDatePickerPr
     getMobileKeyboardInputViewButtonText?: () => string;
   };
 
-export interface ExportedPickerProps<TView extends PickerView>
+export interface ExportedPickerProps<TInputValue, TDateValue>
   extends Omit<BasePickerProps, 'value' | 'onChange'>,
-    WithViewsProps<TView>,
     BaseDatePickerProps,
     ExportedClockViewProps {
   toolbarTitle?: string;
@@ -56,7 +55,7 @@ export interface PickerProps<
   T extends PickerView,
   TInputValue = ParsableDate,
   TDateValue = MaterialUiPickersDate
-> extends ExportedPickerProps<T> {
+> extends ExportedPickerProps<TInputValue, TDateValue>, WithViewsProps<T> {
   isMobileKeyboardViewOpen: boolean;
   toggleMobileKeyboardView: () => void;
   DateInputProps: DateInputProps<TInputValue, TDateValue>;
