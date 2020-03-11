@@ -1,8 +1,8 @@
-import { DatePickerProps } from '../DatePicker';
 import { ParsableDate } from '../constants/prop-types';
 import { MaterialUiPickersDate } from '../typings/date';
 import { DateInputProps } from '../_shared/PureDateInput';
 import { MuiPickersAdapter } from '../_shared/hooks/useUtils';
+import { ExportedCalendarViewProps } from '../views/Calendar/CalendarView';
 
 export function getTextFieldAriaText(rawValue: ParsableDate, utils: MuiPickersAdapter) {
   return rawValue && utils.isValid(utils.date(rawValue))
@@ -44,6 +44,11 @@ export interface DateValidationProps extends BaseValidationProps {
    * @default 'Date should not be after maximal date'
    */
   maxDateMessage?: React.ReactNode;
+  /**
+   * Compare dates by the exact timestamp, instead of start/end of date
+   * @default false
+   */
+  strictCompareDates?: boolean;
 }
 
 const getComparisonMaxDate = (
@@ -82,7 +87,7 @@ export const validate = (
     minDateMessage,
     invalidDateMessage,
     strictCompareDates,
-  }: Omit<DatePickerProps, 'views' | 'openTo'>
+  }: ExportedCalendarViewProps & DateValidationProps
 ): React.ReactNode => {
   const parsedValue = utils.date(value);
 

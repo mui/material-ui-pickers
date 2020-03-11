@@ -3,7 +3,9 @@ import { BasePickerProps } from '../typings/BasePicker';
 import { ExportedDateInputProps } from '../_shared/PureDateInput';
 import { DateValidationProps } from '../_helpers/text-field-helper';
 
-export interface WithViewsProps<T extends DateTimePickerView> {
+export type AnyPickerView = DateTimePickerView;
+
+export interface WithViewsProps<T extends AnyPickerView> {
   /**
    * Array of views to show
    */

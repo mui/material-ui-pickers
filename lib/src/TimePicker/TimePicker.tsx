@@ -1,19 +1,18 @@
 import React from 'react';
 import ClockIcon from '../_shared/icons/ClockIcon';
 import { TimePickerToolbar } from './TimePickerToolbar';
+import { WithViewsProps } from '../Picker/WithViewsProps';
 import { ExportedClockViewProps } from '../views/Clock/ClockView';
 import { ResponsiveWrapper } from '../wrappers/ResponsiveWrapper';
 import { pick12hOr24hFormat } from '../_helpers/text-field-helper';
 import { useUtils, MuiPickersAdapter } from '../_shared/hooks/useUtils';
-import { WithViewsProps, WithDateInputProps } from '../Picker/WithViewsProps';
-import { makePickerWithStateAndWrapper } from '../Picker/makePickerWithState';
 import { timePickerDefaultProps, ParsableDate } from '../constants/prop-types';
 import { ModalWrapper, InlineWrapper, StaticWrapper } from '../wrappers/Wrapper';
+import { makePickerWithStateAndWrapper, AllSharedPickerProps } from '../Picker/makePickerWithState';
 
 export interface TimePickerProps
   extends ExportedClockViewProps,
-    WithViewsProps<'hours' | 'minutes' | 'seconds'>,
-    WithDateInputProps {}
+    WithViewsProps<'hours' | 'minutes' | 'seconds'> {}
 
 export function getTextFieldAriaText(value: ParsableDate, utils: MuiPickersAdapter) {
   return value && utils.isValid(utils.date(value))
@@ -27,7 +26,7 @@ function useDefaultProps({
   inputFormat,
   openTo = 'hours',
   views = ['hours', 'minutes'],
-}: TimePickerProps) {
+}: TimePickerProps & AllSharedPickerProps) {
   const utils = useUtils();
   const willUseAmPm = ampm ?? utils.is12HourCycleInCurrentLocale();
 

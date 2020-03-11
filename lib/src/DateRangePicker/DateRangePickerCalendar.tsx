@@ -6,8 +6,6 @@ export interface DateRangePickerCalendarProps {
   calendars?: 1 | 2;
 }
 
-
-export const DateRangePickerCalendar: React.FC<DateRangePickerCalendarProps &
-  ExportedPickerProps<RangeInput, DateRange>> = ({}) => {
+export const DateRangePickerCalendar: React.FC<DateRangePickerCalendarProps> = ({}) => {
   return <>ewfojweiof</>;
 };

@@ -2,7 +2,10 @@ import { MaterialUiPickersDate } from './date';
 import { ParsableDate } from '../constants/prop-types';
 import { ToolbarComponentProps } from '../Picker/Picker';
 
-export interface BasePickerProps<TInputValue = ParsableDate, TDateValue = MaterialUiPickersDate | null> {
+export interface BasePickerProps<
+  TInputValue = ParsableDate,
+  TDateValue = MaterialUiPickersDate | null
+> {
   /** Picker value */
   value: TInputValue;
   /** onChange callback @DateIOType */
@@ -44,10 +47,7 @@ export interface BasePickerProps<TInputValue = ParsableDate, TDateValue = Materi
    * Mobile picker title, displaying in the toolbar
    * @default "SELECT DATE"
    */
-  toolbarTitle?: string;
-  /**
-   * Compare dates by the exact timestamp, instead of start/end of date
-   * @default false
-   */
-  strictCompareDates?: boolean;
+  toolbarTitle?: React.ReactNode;
+  /** Date format, that is displaying in toolbar */
+  toolbarFormat?: string;
 }
