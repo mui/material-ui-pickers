@@ -3,7 +3,7 @@ import { IUtils } from '@date-io/core/IUtils';
 import { MaterialUiPickersDate } from '../typings/date';
 import { BasePickerProps } from '../typings/BasePicker';
 import { DatePickerView } from '../DatePicker/DatePicker';
-import { useNow, useUtils, MuiPickersAdapter } from '../_shared/hooks/useUtils';
+import {  MuiPickersAdapter } from '../_shared/hooks/useUtils';
 
 interface FindClosestDateParams {
   date: MaterialUiPickersDate;
