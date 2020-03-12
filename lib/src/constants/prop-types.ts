@@ -1,4 +1,5 @@
 import * as PropTypes from 'prop-types';
+import { MaterialUiPickersDate } from '../typings/date';
 import { DatePickerProps } from '../DatePicker/DatePicker';
 import { ExportedClockViewProps } from '../views/Clock/ClockView';
 
@@ -11,7 +12,7 @@ const date = PropTypes.oneOfType([
 
 const datePickerView = PropTypes.oneOf(['year', 'month', 'day']);
 
-export type ParsableDate = string | number | Date | null | undefined;
+export type ParsableDate = string | number | Date | null | undefined | MaterialUiPickersDate;
 
 export const DomainPropTypes = { date, datePickerView };
 

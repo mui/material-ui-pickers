@@ -3,7 +3,7 @@ import { DateTimePickerToolbar } from './DateTimePickerToolbar';
 import { ExportedClockViewProps } from '../views/Clock/ClockView';
 import { ResponsiveWrapper } from '../wrappers/ResponsiveWrapper';
 import { pick12hOr24hFormat } from '../_helpers/text-field-helper';
-import { ExportedCalendarProps } from '../views/Calendar/Calendar';
+import { ExportedCalendarViewProps } from '../views/Calendar/CalendarView';
 import { makePickerWithStateAndWrapper } from '../Picker/makePickerWithState';
 import { InlineWrapper, ModalWrapper, StaticWrapper } from '../wrappers/Wrapper';
 import { WithViewsProps, AllSharedPickerProps } from '../Picker/SharedPickerProps';
@@ -14,7 +14,7 @@ export type DateTimePickerView = 'year' | 'date' | 'month' | 'hours' | 'minutes'
 export interface DateTimePickerProps
   extends WithViewsProps<'year' | 'date' | 'month' | 'hours' | 'minutes'>,
     ExportedClockViewProps,
-    ExportedCalendarProps {
+    ExportedCalendarViewProps {
   /** To show tabs */
   hideTabs?: boolean;
   /** Date tab icon */
