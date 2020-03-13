@@ -61,4 +61,8 @@ export interface MuiPickersOverrides {
   MuiPickersDatePickerRoot?: Classes<typeof DatePickerRootStyles>;
   MuiPickerDTToolbar?: Classes<typeof MuiPickerDTToolbarStyles>;
   MuiBasePickerStyles?: Classes<typeof MuiBasePickerStyles>;
+  // consider using inline import type notation
+  MuiPickersDesktopDateRangeCalendar?: Classes<
+    typeof import('../DateRangePicker/DesktopDateRangePicker').useStyles
+  >;
 }

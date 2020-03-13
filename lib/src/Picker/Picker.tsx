@@ -1,20 +1,18 @@
 import * as React from 'react';
 import clsx from 'clsx';
-import { WrapperVariant } from '../wrappers/Wrapper';
 import { useViews } from '../_shared/hooks/useViews';
 import { makeStyles } from '@material-ui/core/styles';
 import { DateTimePickerView } from '../DateTimePicker';
 import { ParsableDate } from '../constants/prop-types';
 import { BasePickerProps } from '../typings/BasePicker';
 import { MaterialUiPickersDate } from '../typings/date';
-import { DateInputProps } from '../_shared/PureDateInput';
 import { DatePickerView } from '../DatePicker/DatePicker';
 import { useIsLandscape } from '../_shared/hooks/useIsLandscape';
-import { WithViewsProps, AnyPickerView } from './SharedPickerProps';
 import { DIALOG_WIDTH, VIEW_HEIGHT } from '../constants/dimensions';
 import { WrapperVariantContext } from '../wrappers/WrapperVariantContext';
 import { MobileKeyboardInputView } from '../views/MobileKeyboardInputView';
 import { ClockView, ExportedClockViewProps } from '../views/Clock/ClockView';
+import { WithViewsProps, AnyPickerView, SharedPickerProps } from './SharedPickerProps';
 import { CalendarView, ExportedCalendarViewProps } from '../views/Calendar/CalendarView';
 
 type CalendarAndClockProps = ExportedCalendarViewProps & ExportedClockViewProps;
@@ -50,21 +48,11 @@ export interface ExportedPickerProps<TView extends AnyPickerView>
   timeIcon?: React.ReactNode;
 }
 
-export interface PickerProps<
+export type PickerProps<
   TView extends AnyPickerView,
   TInputValue = ParsableDate,
   TDateValue = MaterialUiPickersDate
-> extends ExportedPickerProps<TView> {
-  isMobileKeyboardViewOpen: boolean;
-  toggleMobileKeyboardView: () => void;
-  DateInputProps: DateInputProps<TInputValue, TDateValue>;
-  date: TDateValue | null;
-  onDateChange: (
-    date: TDateValue,
-    currentVariant: WrapperVariant,
-    isFinish?: boolean | symbol
-  ) => void;
-}
+> = ExportedPickerProps<TView> & SharedPickerProps<TInputValue, TDateValue>;
 
 export const useStyles = makeStyles(
   {

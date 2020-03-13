@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useUtils } from '../_shared/hooks/useUtils';
 import { ParsableDate } from '../constants/prop-types';
 import { MaterialUiPickersDate } from '../typings/date';
 import { PureDateInput } from '../_shared/PureDateInput';
@@ -29,13 +30,18 @@ export function makePickerWithStateAndWrapper<
   });
 
   function PickerWithState(props: T & AllSharedPickerProps & ExtendWrapper<TWrapper>) {
+    const utils = useUtils();
     const defaultProps = useDefaultProps(props);
     const allProps = { ...defaultProps, ...props };
 
     const { pickerProps, inputProps, wrapperProps } = usePickerState<
       ParsableDate,
       MaterialUiPickersDate
-    >(allProps, parsePickerInputValue, validateDateValue);
+    >(allProps, {
+      parseInput: parsePickerInputValue,
+      validateInput: validateDateValue,
+      areValuesEqual: utils.isEqual,
+    });
 
     const {
       allowKeyboardControl,

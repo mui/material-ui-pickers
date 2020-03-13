@@ -67,8 +67,8 @@ export interface DateInputProps<TInputValue = ParsableDate, TDateValue = Materia
   ignoreInvalidInputs?: boolean;
 }
 
-export type ExportedDateInputProps = Omit<
-  DateInputProps,
+export type ExportedDateInputProps<TInputValue, TDateValue> = Omit<
+  DateInputProps<TInputValue, TDateValue>,
   | 'openPicker'
   | 'inputValue'
   | 'onChange'

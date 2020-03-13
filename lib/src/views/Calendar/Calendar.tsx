@@ -1,4 +1,5 @@
 import * as React from 'react';
+import clsx from 'clsx';
 import DayWrapper from './DayWrapper';
 import SlideTransition, { SlideDirection } from './SlideTransition';
 import { Day, DayProps } from './Day';
@@ -11,8 +12,6 @@ import { useGlobalKeyDown, keycode } from '../../_shared/hooks/useKeyDown';
 
 export interface ExportedCalendarProps
   extends Pick<DayProps, 'disableHighlightToday' | 'showDaysOutsideCurrentMonth'> {
-  /** Calendar Date @DateIOType */
-  date: MaterialUiPickersDate;
   /** Calendar onChange */
   onChange: PickerOnChangeFn;
   /**
@@ -28,7 +27,7 @@ export interface ExportedCalendarProps
   /** Custom renderer for day. Check [DayComponentProps api](https://material-ui-pickers.dev/api/Day) @DateIOType */
   renderDay?: (
     day: MaterialUiPickersDate,
-    selectedDate: MaterialUiPickersDate,
+    selectedDates: MaterialUiPickersDate[],
     DayComponentProps: DayProps
   ) => JSX.Element;
   /**
@@ -41,6 +40,7 @@ export interface ExportedCalendarProps
 }
 
 export interface CalendarProps extends ExportedCalendarProps {
+  date: MaterialUiPickersDate | MaterialUiPickersDate[];
   minDate?: MaterialUiPickersDate;
   maxDate?: MaterialUiPickersDate;
   isDateDisabled: (day: MaterialUiPickersDate) => boolean;
@@ -51,11 +51,15 @@ export interface CalendarProps extends ExportedCalendarProps {
   changeFocusedDay: (newFocusedDay: MaterialUiPickersDate) => void;
   isMonthSwitchingAnimating: boolean;
   onMonthSwitchingAnimationEnd: () => void;
+  allowOverflowingSlideTransition?: boolean;
 }
 
 export const useStyles = makeStyles(theme => ({
   transitionContainer: {
     minHeight: 36 * 6 + 20,
+  },
+  transitionContainerOverflowAllowed: {
+    overflowX: 'visible',
   },
   progressContainer: {
     width: '100%',
@@ -111,6 +115,7 @@ export const Calendar: React.FC<CalendarProps> = ({
   isDateDisabled,
   disableHighlightToday,
   showDaysOutsideCurrentMonth,
+  allowOverflowingSlideTransition,
 }) => {
   const now = useNow();
   const utils = useUtils();
@@ -119,16 +124,17 @@ export const Calendar: React.FC<CalendarProps> = ({
 
   const handleDaySelect = React.useCallback(
     (day: MaterialUiPickersDate, isFinish: boolean | symbol = true) => {
-      onChange(utils.mergeDateAndTime(day, date), isFinish);
+      onChange(Array.isArray(date) ? day : utils.mergeDateAndTime(day, date), isFinish);
     },
     [date, onChange, utils]
   );
 
+  const initialDate = Array.isArray(date) ? date[0] : date;
   React.useEffect(() => {
-    if (isDateDisabled(date)) {
+    if (isDateDisabled(initialDate)) {
       const closestEnabledDate = findClosestEnabledDate({
-        date,
         utils,
+        date: initialDate,
         minDate: utils.date(minDate),
         maxDate: utils.date(maxDate),
         disablePast: Boolean(disablePast),
@@ -140,7 +146,7 @@ export const Calendar: React.FC<CalendarProps> = ({
     }
   }, []); // eslint-disable-line
 
-  const nowFocusedDay = focusedDay || date;
+  const nowFocusedDay = focusedDay || initialDate;
   useGlobalKeyDown(Boolean(allowKeyboardControl), {
     [keycode.ArrowUp]: () => changeFocusedDay(utils.addDays(nowFocusedDay, -7)),
     [keycode.ArrowDown]: () => changeFocusedDay(utils.addDays(nowFocusedDay, 7)),
@@ -154,9 +160,12 @@ export const Calendar: React.FC<CalendarProps> = ({
     [keycode.PageDown]: () => changeFocusedDay(utils.getPreviousMonth(nowFocusedDay)),
   });
 
-  const selectedDate = utils.startOfDay(date);
   const currentMonthNumber = utils.getMonth(currentMonth);
+  const selectedDates = (Array.isArray(date) ? date : [date])
+    .filter(Boolean)
+    .map(selectedDateItem => utils.startOfDay(selectedDateItem));
 
+  console.log(utils.getWeekArray(currentMonth));
   return (
     <>
       <div className={classes.daysHeader}>
@@ -176,7 +185,9 @@ export const Calendar: React.FC<CalendarProps> = ({
         reduceAnimations={reduceAnimations}
         slideDirection={slideDirection}
         transKey={currentMonthNumber}
-        className={classes.transitionContainer}
+        className={clsx(classes.transitionContainer, {
+          [classes.transitionContainerOverflowAllowed]: allowOverflowingSlideTransition,
+        })}
       >
         <div role="grid" style={{ overflow: 'hidden' }}>
           {utils.getWeekArray(currentMonth).map(week => (
@@ -195,7 +206,7 @@ export const Calendar: React.FC<CalendarProps> = ({
                   isToday: utils.isSameDay(day, now),
                   hidden: !isDayInCurrentMonth,
                   isInCurrentMonth: isDayInCurrentMonth,
-                  selected: utils.isSameDay(selectedDate, day),
+                  selected: selectedDates.some(selectedDate => utils.isSameDay(selectedDate, day)),
                   disableHighlightToday,
                   showDaysOutsideCurrentMonth,
                   focusable:
@@ -204,7 +215,7 @@ export const Calendar: React.FC<CalendarProps> = ({
                 };
 
                 let dayComponent = renderDay ? (
-                  renderDay(day, selectedDate, dayProps)
+                  renderDay(day, selectedDates, dayProps)
                 ) : (
                   <Day {...dayProps} />
                 );

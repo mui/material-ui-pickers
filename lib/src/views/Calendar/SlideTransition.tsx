@@ -50,12 +50,12 @@ export const useStyles = makeStyles(
       },
       'slideExitActiveLeft-left': {
         willChange: 'transform',
-        transform: 'translate(-200%)',
+        transform: 'translate(-100%)',
         transition: slideTransition,
       },
       'slideExitActiveLeft-right': {
         willChange: 'transform',
-        transform: 'translate(200%)',
+        transform: 'translate(100%)',
         transition: slideTransition,
       },
     };
