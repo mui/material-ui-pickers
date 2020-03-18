@@ -12,9 +12,6 @@
     "lib",
     "docs"
   ],
-  "engines": {
-    "node": "12.x"
-  },
   "scripts": {
     "start": "yarn dev",
     "dev": "yarn workspace docs dev",
@@ -46,6 +43,11 @@
     "lint-staged": "^10.0.8",
     "prettier": "^1.14.3",
     "wait-on": "^4.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "lint-staged": {
     "lib/src/**/*.{ts,tsx}": [
