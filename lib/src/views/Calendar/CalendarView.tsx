@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IUtils } from '@date-io/core/IUtils';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Grid from '@material-ui/core/Grid';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import { YearSelection } from './YearSelection';
 import { MonthSelection } from './MonthSelection';
 import { DatePickerView } from '../../DatePicker';
