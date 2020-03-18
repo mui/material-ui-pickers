@@ -47,11 +47,6 @@
     "prettier": "^1.14.3",
     "wait-on": "^4.0.0"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
     "lib/src/**/*.{ts,tsx}": [
       "yarn docgen",
