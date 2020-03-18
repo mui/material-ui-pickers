@@ -13,7 +13,7 @@
     "docs"
   ],
   "engines": {
-    "node": "12.x"
+    "node": ">=8.0.0"
   },
   "scripts": {
     "start": "yarn dev",
