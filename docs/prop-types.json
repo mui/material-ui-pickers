@@ -929,19 +929,6 @@
         "name": "(value: any, utils: MuiPickersAdapter) => string"
       }
     },
-    "PopoverProps": {
-      "defaultValue": null,
-      "description": "Popover props passed to material-ui Popover",
-      "name": "PopoverProps",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/DesktopWrapper.tsx",
-        "name": "InnerDesktopWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "Partial<PopoverProps>"
-      }
-    },
     "okLabel": {
       "defaultValue": {
         "value": "\"OK\""
@@ -1043,6 +1030,34 @@
       "required": false,
       "type": {
         "name": "Partial<MuiDialogProps>"
+      }
+    },
+    "PopoverProps": {
+      "defaultValue": null,
+      "description": "Popover props passed to material-ui Popover",
+      "name": "PopoverProps",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/wrappers/DesktopWrapper.tsx",
+        "name": "InnerDesktopWrapperProps"
+      },
+      "required": false,
+      "type": {
+        "name": "Partial<PopoverProps>"
+      }
+    },
+    "desktopModeBreakpoint": {
+      "defaultValue": {
+        "value": "'md'"
+      },
+      "description": "Breakpoint when `Desktop` mode will be changed to `Mobile`",
+      "name": "desktopModeBreakpoint",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/wrappers/ResponsiveWrapper.tsx",
+        "name": "ResponsiveWrapperProps"
+      },
+      "required": false,
+      "type": {
+        "name": "\"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\""
       }
     },
     "dateAdapter": {
@@ -1649,19 +1664,6 @@
         "name": "boolean"
       }
     },
-    "PopoverProps": {
-      "defaultValue": null,
-      "description": "Popover props passed to material-ui Popover",
-      "name": "PopoverProps",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/DesktopWrapper.tsx",
-        "name": "InnerDesktopWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "Partial<PopoverProps>"
-      }
-    },
     "okLabel": {
       "defaultValue": {
         "value": "\"OK\""
@@ -1763,6 +1765,34 @@
       "required": false,
       "type": {
         "name": "Partial<MuiDialogProps>"
+      }
+    },
+    "PopoverProps": {
+      "defaultValue": null,
+      "description": "Popover props passed to material-ui Popover",
+      "name": "PopoverProps",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/wrappers/DesktopWrapper.tsx",
+        "name": "InnerDesktopWrapperProps"
+      },
+      "required": false,
+      "type": {
+        "name": "Partial<PopoverProps>"
+      }
+    },
+    "desktopModeBreakpoint": {
+      "defaultValue": {
+        "value": "'md'"
+      },
+      "description": "Breakpoint when `Desktop` mode will be changed to `Mobile`",
+      "name": "desktopModeBreakpoint",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/wrappers/ResponsiveWrapper.tsx",
+        "name": "ResponsiveWrapperProps"
+      },
+      "required": false,
+      "type": {
+        "name": "\"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\""
       }
     },
     "dateAdapter": {
@@ -2695,19 +2725,6 @@
         "name": "boolean"
       }
     },
-    "PopoverProps": {
-      "defaultValue": null,
-      "description": "Popover props passed to material-ui Popover",
-      "name": "PopoverProps",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/DesktopWrapper.tsx",
-        "name": "InnerDesktopWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "Partial<PopoverProps>"
-      }
-    },
     "okLabel": {
       "defaultValue": {
         "value": "\"OK\""
@@ -2809,6 +2826,34 @@
       "required": false,
       "type": {
         "name": "Partial<MuiDialogProps>"
+      }
+    },
+    "PopoverProps": {
+      "defaultValue": null,
+      "description": "Popover props passed to material-ui Popover",
+      "name": "PopoverProps",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/wrappers/DesktopWrapper.tsx",
+        "name": "InnerDesktopWrapperProps"
+      },
+      "required": false,
+      "type": {
+        "name": "Partial<PopoverProps>"
+      }
+    },
+    "desktopModeBreakpoint": {
+      "defaultValue": {
+        "value": "'md'"
+      },
+      "description": "Breakpoint when `Desktop` mode will be changed to `Mobile`",
+      "name": "desktopModeBreakpoint",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/wrappers/ResponsiveWrapper.tsx",
+        "name": "ResponsiveWrapperProps"
+      },
+      "required": false,
+      "type": {
+        "name": "\"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\""
       }
     },
     "dateAdapter": {
