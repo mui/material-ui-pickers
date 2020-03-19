@@ -65,6 +65,7 @@ describe('DatePicker - different props', () => {
       <MobileDatePicker
         autoOk
         showTodayButton
+        cancelLabel="stream"
         onClose={onCloseMock}
         onChange={onChangeMock}
         value={utilsToUse.date('2018-01-01T00:00:00.000Z')}
@@ -76,5 +77,30 @@ describe('DatePicker - different props', () => {
 
     expect(onCloseMock).toHaveBeenCalled();
     expect(onChangeMock).toHaveBeenCalled();
+  });
+
+  it('ref - should forwardRef to text field', () => {
+    const Component = () => {
+      const ref = React.useRef<HTMLInputElement>(null);
+      const focusPicker = () => {
+        if (ref.current) {
+          ref.current.focus();
+        } else {
+          throw new Error('Ref must be available');
+        }
+      };
+
+      return (
+        <>
+          <DatePicker ref={ref} id="focusing-picker" value={null} onChange={jest.fn()} />
+          <button id="focus-picker" onClick={focusPicker} />
+        </>
+      );
+    };
+
+    const component = mount(<Component />);
+    component.find('#focus-picker').simulate('click');
+
+    expect(document.activeElement?.id).toBe('focusing-picker');
   });
 });
