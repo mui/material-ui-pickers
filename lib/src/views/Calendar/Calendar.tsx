@@ -52,6 +52,7 @@ export interface CalendarProps extends ExportedCalendarProps {
   isMonthSwitchingAnimating: boolean;
   onMonthSwitchingAnimationEnd: () => void;
   allowOverflowingSlideTransition?: boolean;
+  className?: string;
 }
 
 export const useStyles = makeStyles(theme => ({
@@ -116,6 +117,7 @@ export const Calendar: React.FC<CalendarProps> = ({
   disableHighlightToday,
   showDaysOutsideCurrentMonth,
   allowOverflowingSlideTransition,
+  className,
 }) => {
   const now = useNow();
   const utils = useUtils();
@@ -189,7 +191,7 @@ export const Calendar: React.FC<CalendarProps> = ({
           [classes.transitionContainerOverflowAllowed]: allowOverflowingSlideTransition,
         })}
       >
-        <div role="grid" style={{ overflow: 'hidden' }}>
+        <div role="grid" className={className} style={{ overflow: 'hidden' }}>
           {utils.getWeekArray(currentMonth).map(week => (
             <div role="row" key={`week-${week[0]!.toString()}`} className={classes.week}>
               {week.map(day => {

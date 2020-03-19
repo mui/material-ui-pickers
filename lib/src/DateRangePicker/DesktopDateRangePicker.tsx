@@ -20,6 +20,10 @@ export const useStyles = makeStyles(
     dateRangeContainer: {
       display: 'flex',
       flexDirection: 'row',
+      padding: '0 16px 8px 0',
+    },
+    calendar: {
+      padding: '0 16px',
     },
   }),
   { name: 'MuiPickersDesktopDateRangeCalendar' }
@@ -51,8 +55,9 @@ export const DesktopDateRangeCalendar: React.FC<DesktopDateRangeCalendarProps> =
             />
 
             <Calendar
-              allowOverflowingSlideTransition
               key={index}
+              allowOverflowingSlideTransition
+              className={classes.calendar}
               {...CalendarProps}
               currentMonth={monthOnIteration}
             />

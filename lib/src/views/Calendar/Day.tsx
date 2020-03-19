@@ -15,6 +15,8 @@ export const useStyles = makeStyles(
       height: daySize + 2,
       borderRadius: '50%',
       padding: 0,
+      // background required here to prevent collides with the other days when animating with transition group
+      backgroundColor: theme.palette.background.paper,
       color: theme.palette.text.primary,
       fontSize: theme.typography.caption.fontSize,
       fontWeight: theme.typography.fontWeightMedium,

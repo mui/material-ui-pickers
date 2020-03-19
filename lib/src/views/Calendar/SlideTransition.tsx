@@ -36,10 +36,12 @@ export const useStyles = makeStyles(
       'slideEnter-left': {
         willChange: 'transform',
         transform: 'translate(100%)',
+        zIndex: 1,
       },
       'slideEnter-right': {
         willChange: 'transform',
         transform: 'translate(-100%)',
+        zIndex: 1,
       },
       slideEnterActive: {
         transform: 'translate(0%)',
@@ -52,11 +54,13 @@ export const useStyles = makeStyles(
         willChange: 'transform',
         transform: 'translate(-100%)',
         transition: slideTransition,
+        zIndex: 0,
       },
       'slideExitActiveLeft-right': {
         willChange: 'transform',
         transform: 'translate(100%)',
         transition: slideTransition,
+        zIndex: 0,
       },
     };
   },
