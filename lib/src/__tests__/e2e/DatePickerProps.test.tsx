@@ -79,13 +79,14 @@ describe('DatePicker - different props', () => {
     expect(onChangeMock).toHaveBeenCalled();
   });
 
+  // TODO rewrite test to be more linear
   it('ref - should forwardRef to text field', () => {
     const Component = () => {
       const ref = React.useRef<HTMLInputElement>(null);
       const focusPicker = () => {
         if (ref.current) {
-          ref.current.tabIndex = 1; // fix jsdom behavior https://github.com/jsdom/jsdom/blob/5e39a4c60377c95ac09ea938ecbf5f1f91cb0360/lib/jsdom/living/helpers/focusing.js#L25
           ref.current.focus();
+          expect(ref.current.id).toBe('focusing-picker');
         } else {
           throw new Error('Ref must be available');
         }
@@ -102,7 +103,5 @@ describe('DatePicker - different props', () => {
 
     const component = mount(<Component />);
     component.find('#focus-picker').simulate('click');
-
-    expect(document.activeElement?.id).toBe('focusing-picker');
   });
 });
