@@ -7,11 +7,11 @@ import { KeyboardDateInput } from '../_shared/KeyboardDateInput';
 import { usePickerState } from '../_shared/hooks/usePickerState';
 import { SomeWrapper, ExtendWrapper } from '../wrappers/Wrapper';
 import { validateDateValue } from '../_helpers/text-field-helper';
+import { ResponsiveWrapper } from '../wrappers/ResponsiveWrapper';
 import { withDateAdapterProp } from '../_shared/withDateAdapterProp';
 import { makeWrapperComponent } from '../wrappers/makeWrapperComponent';
 import { AnyPickerView, AllSharedPickerProps } from './SharedPickerProps';
 import { Picker, ToolbarComponentProps, ExportedPickerProps } from './Picker';
-import { ResponsiveWrapper, ResponsiveWrapperProps } from '../wrappers/ResponsiveWrapper';
 
 type AllAvailableForOverrideProps = ExportedPickerProps<AnyPickerView>;
 
