@@ -51,7 +51,6 @@ export interface CalendarProps extends ExportedCalendarProps {
   changeFocusedDay: (newFocusedDay: MaterialUiPickersDate) => void;
   isMonthSwitchingAnimating: boolean;
   onMonthSwitchingAnimationEnd: () => void;
-  allowOverflowingSlideTransition?: boolean;
   className?: string;
 }
 
@@ -116,7 +115,6 @@ export const Calendar: React.FC<CalendarProps> = ({
   isDateDisabled,
   disableHighlightToday,
   showDaysOutsideCurrentMonth,
-  allowOverflowingSlideTransition,
   className,
 }) => {
   const now = useNow();
@@ -167,7 +165,6 @@ export const Calendar: React.FC<CalendarProps> = ({
     .filter(Boolean)
     .map(selectedDateItem => utils.startOfDay(selectedDateItem));
 
-  console.log(utils.getWeekArray(currentMonth));
   return (
     <>
       <div className={classes.daysHeader}>
@@ -183,15 +180,13 @@ export const Calendar: React.FC<CalendarProps> = ({
       </div>
 
       <SlideTransition
+        transKey={currentMonthNumber}
         onExited={onMonthSwitchingAnimationEnd}
         reduceAnimations={reduceAnimations}
         slideDirection={slideDirection}
-        transKey={currentMonthNumber}
-        className={clsx(classes.transitionContainer, {
-          [classes.transitionContainerOverflowAllowed]: allowOverflowingSlideTransition,
-        })}
+        className={clsx(classes.transitionContainer, className)}
       >
-        <div role="grid" className={className} style={{ overflow: 'hidden' }}>
+        <div role="grid" style={{ overflow: 'hidden' }}>
           {utils.getWeekArray(currentMonth).map(week => (
             <div role="row" key={`week-${week[0]!.toString()}`} className={classes.week}>
               {week.map(day => {

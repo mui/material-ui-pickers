@@ -96,16 +96,14 @@ export function useCalendarState({
 }: CalendarStateInput) {
   const now = useNow();
   const utils = useUtils();
-  const [{ loadingQueue, ...calendarState }, dispatch] = React.useReducer(
-    createCalendarStateReducer(Boolean(reduceAnimations), utils),
-    {
-      isMonthSwitchingAnimating: false,
-      loadingQueue: 0,
-      focusedDay: date,
-      currentMonth: utils.startOfMonth(date),
-      slideDirection: 'left',
-    }
-  );
+  const reducerFn = React.useRef(createCalendarStateReducer(Boolean(reduceAnimations), utils));
+  const [{ loadingQueue, ...calendarState }, dispatch] = React.useReducer(reducerFn.current, {
+    isMonthSwitchingAnimating: false,
+    loadingQueue: 0,
+    focusedDay: date,
+    currentMonth: utils.startOfMonth(date),
+    slideDirection: 'left',
+  });
 
   const handleChangeMonth = React.useCallback(
     (payload: ChangeMonthPayload) => {

@@ -14,14 +14,15 @@ import {
 
 type BaseCalendarPropsToReuse = Omit<ExportedCalendarViewProps, 'onYearChange'>;
 
-export interface DateRangePickerCalendarProps
+export interface DateRangePickerViewProps
   extends BaseCalendarPropsToReuse,
     ExportedDesktopDateRangeCalendarProps,
     SharedPickerProps<RangeInput, DateRange> {
-  reduceAnimations?: boolean;
+  currentlySelectingRangeEnd: 'start' | 'end';
+  setCurrentlySelectingRangeEnd: (newSelectingEnd: 'start' | 'end') => void;
 }
 
-export const DateRangePickerCalendar: React.FC<DateRangePickerCalendarProps> = ({
+export const DateRangePickerView: React.FC<DateRangePickerViewProps> = ({
   date,
   calendars,
   minDate: unparsedMinDate = new Date('1900-01-01'),
@@ -32,6 +33,7 @@ export const DateRangePickerCalendar: React.FC<DateRangePickerCalendarProps> = (
   disableHighlightToday,
   onMonthChange,
   onDateChange,
+  setCurrentlySelectingRangeEnd,
   reduceAnimations = defaultReduceAnimations,
 }) => {
   const utils = useUtils();
@@ -59,9 +61,15 @@ export const DateRangePickerCalendar: React.FC<DateRangePickerCalendarProps> = (
 
   const handleChange = React.useCallback(
     (date: MaterialUiPickersDate) => {
-      onDateChange([date, end], wrapperVariant, false);
+      if (start === null || utils.isBefore(date, start)) {
+        setCurrentlySelectingRangeEnd('start');
+        onDateChange([date, end], wrapperVariant, false);
+      } else {
+        setCurrentlySelectingRangeEnd('end');
+        onDateChange([start, date], wrapperVariant, true);
+      }
     },
-    [end, onDateChange, wrapperVariant]
+    [end, onDateChange, setCurrentlySelectingRangeEnd, start, utils, wrapperVariant]
   );
 
   switch (wrapperVariant) {

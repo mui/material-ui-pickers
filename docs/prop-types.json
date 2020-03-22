@@ -443,6 +443,19 @@
         "name": "boolean"
       }
     },
+    "reduceAnimations": {
+      "defaultValue": null,
+      "description": "Disable heavy animations @default /(android)/i.test(window.navigator.userAgent)",
+      "name": "reduceAnimations",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/CalendarView.tsx",
+        "name": "CalendarViewProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
     "onMonthChange": {
       "defaultValue": null,
       "description": "Callback firing on month change. Return promise to render spinner till it will not be resolved",
@@ -1984,6 +1997,19 @@
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
         "name": "ExportedCalendarProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "reduceAnimations": {
+      "defaultValue": null,
+      "description": "Disable heavy animations @default /(android)/i.test(window.navigator.userAgent)",
+      "name": "reduceAnimations",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/CalendarView.tsx",
+        "name": "CalendarViewProps"
       },
       "required": false,
       "type": {

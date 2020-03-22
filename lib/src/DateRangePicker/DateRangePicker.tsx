@@ -10,7 +10,7 @@ import { SomeWrapper, ExtendWrapper } from '../wrappers/Wrapper';
 import { AllSharedPickerProps } from '../Picker/SharedPickerProps';
 import { MuiPickersAdapter, useUtils } from '../_shared/hooks/useUtils';
 import { makeWrapperComponent } from '../wrappers/makeWrapperComponent';
-import { DateRangePickerCalendar, DateRangePickerCalendarProps } from './DateRangePickerCalendar';
+import { DateRangePickerView, DateRangePickerViewProps } from './DateRangePickerView';
 
 export function parseRangeInputValue(
   now: MaterialUiPickersDate,
@@ -40,10 +40,14 @@ export function makeRangePicker<TWrapper extends SomeWrapper>(Wrapper: TWrapper)
     disableHighlightToday,
     reduceAnimations,
     ...other
-  }: DateRangePickerCalendarProps &
+  }: DateRangePickerViewProps &
     AllSharedPickerProps<RangeInput, DateRange> &
     ExtendWrapper<TWrapper>) {
     const utils = useUtils();
+    const [currentlySelectingRangeEnd, setCurrentlySelectingRangeEnd] = React.useState<
+      'start' | 'end'
+    >('start');
+
     const { pickerProps, inputProps, wrapperProps } = usePickerState<RangeInput, DateRange>(other, {
       parseInput: parseRangeInputValue,
       areValuesEqual: (a, b) => utils.isEqual(a[0], b[0]) && utils.isEqual(a[1], b[1]),
@@ -52,7 +56,7 @@ export function makeRangePicker<TWrapper extends SomeWrapper>(Wrapper: TWrapper)
 
     return (
       <WrapperComponent inputProps={inputProps} wrapperProps={wrapperProps} {...other}>
-        <DateRangePickerCalendar
+        <DateRangePickerView
           DateInputProps={inputProps}
           calendars={calendars}
           minDate={minDate}
@@ -64,6 +68,8 @@ export function makeRangePicker<TWrapper extends SomeWrapper>(Wrapper: TWrapper)
           onMonthChange={onMonthChange}
           disableHighlightToday={disableHighlightToday}
           reduceAnimations={reduceAnimations}
+          currentlySelectingRangeEnd={currentlySelectingRangeEnd}
+          setCurrentlySelectingRangeEnd={setCurrentlySelectingRangeEnd}
           {...pickerProps}
         />
       </WrapperComponent>

@@ -26,6 +26,8 @@ export interface ExportedArrowSwitcherProps {
 }
 
 interface ArrowSwitcherProps extends ExportedArrowSwitcherProps, React.HTMLProps<HTMLDivElement> {
+  isLeftHidden?: boolean;
+  isRightHidden?: boolean;
   isLeftDisabled: boolean;
   isRightDisabled: boolean;
   onLeftClick: () => void;
@@ -40,6 +42,9 @@ const useStyles = makeStyles(theme => ({
   previousMonthButton: {
     marginRight: 24,
   },
+  hidden: {
+    visibility: 'hidden',
+  },
 }));
 
 export const ArrowSwitcher: React.FC<ArrowSwitcherProps> = ({
@@ -48,12 +53,15 @@ export const ArrowSwitcher: React.FC<ArrowSwitcherProps> = ({
   leftArrowButtonText,
   rightArrowButtonProps,
   rightArrowButtonText,
+  isLeftHidden,
+  isRightHidden,
   isLeftDisabled,
   isRightDisabled,
   onLeftClick,
   onRightClick,
   leftArrowIcon = <ArrowLeftIcon />,
   rightArrowIcon = <ArrowRightIcon />,
+  children,
   ...other
 }) => {
   const classes = useStyles();
@@ -69,14 +77,15 @@ export const ArrowSwitcher: React.FC<ArrowSwitcherProps> = ({
         {...leftArrowButtonProps}
         disabled={isLeftDisabled}
         onClick={onLeftClick}
-        className={clsx(
-          classes.iconButton,
-          classes.previousMonthButton,
-          leftArrowButtonProps?.className
-        )}
+        className={clsx(classes.iconButton, leftArrowButtonProps?.className, {
+          [classes.hidden]: Boolean(isLeftHidden),
+          [classes.previousMonthButton]: !Boolean(className),
+        })}
       >
         {isRtl ? rightArrowIcon : leftArrowIcon}
       </IconButton>
+
+      {children}
 
       <IconButton
         data-mui-test="next-arrow-button"
@@ -85,7 +94,9 @@ export const ArrowSwitcher: React.FC<ArrowSwitcherProps> = ({
         {...rightArrowButtonProps}
         disabled={isRightDisabled}
         onClick={onRightClick}
-        className={clsx(classes.iconButton, rightArrowButtonProps?.className)}
+        className={clsx(classes.iconButton, rightArrowButtonProps?.className, {
+          [classes.hidden]: Boolean(isRightHidden),
+        })}
       >
         {isRtl ? leftArrowIcon : rightArrowIcon}
       </IconButton>
