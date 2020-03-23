@@ -58,7 +58,7 @@ export interface CalendarProps extends ExportedCalendarProps {
 
 export const useStyles = makeStyles(theme => ({
   transitionContainer: {
-    minHeight: (DAY_SIZE + DAY_MARGIN * 2) * 6,
+    minHeight: (DAY_SIZE + DAY_MARGIN * 4) * 6,
   },
   transitionContainerOverflowAllowed: {
     overflowX: 'visible',
@@ -71,7 +71,7 @@ export const useStyles = makeStyles(theme => ({
     alignItems: 'center',
   },
   week: {
-    margin: `${DAY_MARGIN}px 0`,
+    margin: `${DAY_MARGIN * 2}px 0`,
     display: 'flex',
     justifyContent: 'center',
   },

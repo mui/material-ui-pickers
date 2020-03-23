@@ -1,13 +1,19 @@
 import * as React from 'react';
 import clsx from 'clsx';
-import { DateRange } from './RangeTypes';
 import { makeStyles, fade } from '@material-ui/core';
 import { useUtils } from '../_shared/hooks/useUtils';
 import { DAY_MARGIN } from '../constants/dimensions';
 import { Day, DayProps } from '../views/Calendar/Day';
+import { MaterialUiPickersDate } from '../typings/date';
 
 interface DateRangeDayProps extends DayProps {
-  selectedRange: DateRange;
+  isHighlighting: boolean;
+  isEndOfHighlighting: boolean;
+  isStartOfHighlighting: boolean;
+  isPreviewing: boolean;
+  isEndOfPreviewing: boolean;
+  isStartOfPreviewing: boolean;
+  rangePreviewDay: MaterialUiPickersDate;
 }
 
 const endBorderStyle = {
@@ -42,47 +48,85 @@ const useStyles = makeStyles(
       paddingRight: 0,
       marginRight: DAY_MARGIN / 2,
     },
+    day: {
+      // Required to overlap preview border
+      transform: 'scale(1.1)',
+      '&:hover': {
+        border: `2px solid ${theme.palette.grey[500]}`,
+      },
+    },
     dayInsideRangeInterval: {
-      backgroundColor: 'transparent',
       color: theme.palette.getContrastText(fade(theme.palette.primary.light, 0.6)),
     },
-    rangeIntervalStart: {},
+    notSelectedDate: {
+      backgroundColor: 'transparent',
+    },
+    rangeIntervalPreview: {
+      borderTop: '2px solid transparent',
+      borderBottom: '2px solid transparent',
+    },
+    rangeIntervalDayPreview: {
+      borderRadius: 0,
+      borderTop: `2px dashed ${theme.palette.divider}`,
+      borderBottom: `2px dashed ${theme.palette.divider}`,
+    },
+    rangeIntervalDayPreviewStart: {
+      ...startBorderStyle,
+    },
+    rangeIntervalDayPreviewEnd: {
+      ...endBorderStyle,
+    },
   }),
   { name: 'MuiPickersDateRangeDay' }
 );
 
-export const DateRangeDay: React.FC<DateRangeDayProps> = ({
-  day,
-  selectedRange,
-  className,
-  selected,
-  ...other
-}) => {
-  const utils = useUtils();
-  const classes = useStyles(0);
-  const [start, end] = selectedRange;
+export const DateRangeDay: React.FC<DateRangeDayProps> = React.memo(
+  ({
+    day,
+    className,
+    selected,
+    isPreviewing,
+    isStartOfPreviewing,
+    isEndOfPreviewing,
+    isHighlighting,
+    isEndOfHighlighting,
+    isStartOfHighlighting,
+    ...other
+  }) => {
+    const classes = useStyles();
 
-  return (
-    <div
-      className={clsx(classes.rangeIntervalDay, {
-        [classes.rangeIntervalDayHighlight]: utils.isWithinRange(day, selectedRange),
-        [classes.rangeIntervalDayHighlightStart]: utils.isSameDay(day, start),
-        [classes.rangeIntervalDayHighlightEnd]: utils.isSameDay(day, end),
-      })}
-    >
-      <Day
-        {...other}
-        day={day}
-        selected={selected}
-        disableMargin
-        showDaysOutsideCurrentMonth
-        className={clsx(
-          {
-            [classes.dayInsideRangeInterval]: !selected && utils.isWithinRange(day, selectedRange),
-          },
-          className
-        )}
-      />
-    </div>
-  );
-};
+    return (
+      <div
+        className={clsx(classes.rangeIntervalDay, {
+          [classes.rangeIntervalDayHighlight]: isHighlighting,
+          [classes.rangeIntervalDayHighlightStart]: isStartOfHighlighting,
+          [classes.rangeIntervalDayHighlightEnd]: isEndOfHighlighting,
+        })}
+      >
+        <div
+          className={clsx(classes.rangeIntervalPreview, {
+            [classes.rangeIntervalDayPreviewStart]: isStartOfPreviewing,
+            [classes.rangeIntervalDayPreviewEnd]: isEndOfPreviewing,
+            [classes.rangeIntervalDayPreview]: isPreviewing,
+          })}
+        >
+          <Day
+            {...other}
+            day={day}
+            selected={selected}
+            disableMargin
+            showDaysOutsideCurrentMonth
+            className={clsx(
+              classes.day,
+              {
+                [classes.notSelectedDate]: !selected,
+                [classes.dayInsideRangeInterval]: !selected && isHighlighting,
+              },
+              className
+            )}
+          />
+        </div>
+      </div>
+    );
+  }
+);

@@ -32,6 +32,7 @@ export const useStyles = makeStyles(
     },
     calendar: {
       minWidth: 312,
+      minHeight: 288,
     },
     arrowSwitcher: {
       padding: '16px 16px 8px 16px',
@@ -53,11 +54,45 @@ export const DesktopDateRangeCalendar: React.FC<DesktopDateRangeCalendarProps> =
   rightArrowButtonProps,
   rightArrowButtonText,
   rightArrowIcon,
+  onChange,
   ...CalendarProps
 }) => {
   const utils = useUtils();
   const classes = useStyles();
   const { currentMonth } = CalendarProps;
+  const [start, end] = date;
+  const [rangePreviewDay, setRangePreviewDay] = React.useState<MaterialUiPickersDate>(
+    new Date('2020-04-24T14:34:19.027Z')
+  );
+
+  const previewingRange: DateRange | null = Boolean(rangePreviewDay)
+    ? utils.isAfter(start, rangePreviewDay)
+      ? [rangePreviewDay, start]
+      : [end, rangePreviewDay]
+    : null;
+
+  const handleDayChange = (day: MaterialUiPickersDate) => {
+    setRangePreviewDay(null);
+    onChange(day);
+  };
+
+  const handlePreviewDayChange = (newPreviewRequest: MaterialUiPickersDate) => {
+    if (!utils.isWithinRange(newPreviewRequest, date)) {
+      setRangePreviewDay(newPreviewRequest);
+    }
+  };
+
+  const isWithinRange = (day: MaterialUiPickersDate, range: DateRange | null) => {
+    return Boolean(range && utils.isWithinRange(day, range));
+  };
+
+  const isStartOfRange = (day: MaterialUiPickersDate, range: DateRange | null) => {
+    return Boolean(range && utils.isSameDay(day, range[0]));
+  };
+
+  const isEndOfRange = (day: MaterialUiPickersDate, range: DateRange | null) => {
+    return Boolean(range && utils.isSameDay(day, range[1]));
+  };
 
   return (
     <div className={classes.dateRangeContainer}>
@@ -87,12 +122,26 @@ export const DesktopDateRangeCalendar: React.FC<DesktopDateRangeCalendarProps> =
             </ArrowSwitcher>
 
             <Calendar
+              {...CalendarProps}
               key={index}
               date={date}
               className={classes.calendar}
-              {...CalendarProps}
+              onChange={handleDayChange}
               currentMonth={monthOnIteration}
-              renderDay={(day, _, DayProps) => <DateRangeDay selectedRange={date} {...DayProps} />}
+              renderDay={(day, _, DayProps) => (
+                <DateRangeDay
+                  rangePreviewDay={rangePreviewDay}
+                  isPreviewing={isWithinRange(day, previewingRange)}
+                  isStartOfPreviewing={isStartOfRange(day, previewingRange)}
+                  isEndOfPreviewing={isEndOfRange(day, previewingRange)}
+                  isHighlighting={isWithinRange(day, date)}
+                  isStartOfHighlighting={isStartOfRange(day, date)}
+                  isEndOfHighlighting={isEndOfRange(day, date)}
+                  onMouseOver={() => handlePreviewDayChange(day)}
+                  onMouseOut={() => handlePreviewDayChange(null)}
+                  {...DayProps}
+                />
+              )}
             />
           </div>
         );
