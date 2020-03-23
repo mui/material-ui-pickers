@@ -19,7 +19,11 @@ interface ChangeMonthPayload {
   newMonth: MaterialUiPickersDate;
 }
 
-export const createCalendarStateReducer = (reduceAnimations: boolean, utils: MuiPickersAdapter) => (
+export const createCalendarStateReducer = (
+  reduceAnimations: boolean,
+  disableSwitchToMonthOnDayFocus: boolean,
+  utils: MuiPickersAdapter
+) => (
   state: State,
   action:
     | ReducerAction<'popLoadingQueue'>
@@ -59,7 +63,9 @@ export const createCalendarStateReducer = (reduceAnimations: boolean, utils: Mui
       };
     }
     case 'changeFocusedDay': {
-      const needMonthSwitch = !utils.isSameMonth(state.currentMonth, action.focusedDay);
+      const needMonthSwitch =
+        !disableSwitchToMonthOnDayFocus &&
+        !utils.isSameMonth(state.currentMonth, action.focusedDay);
       return {
         ...state,
         focusedDay: action.focusedDay,
@@ -82,6 +88,7 @@ type CalendarStateInput = Pick<
 > & {
   minDate: MaterialUiPickersDate;
   maxDate: MaterialUiPickersDate;
+  disableSwitchToMonthOnDayFocus?: boolean;
 };
 
 export function useCalendarState({
@@ -93,10 +100,13 @@ export function useCalendarState({
   minDate,
   maxDate,
   shouldDisableDate,
+  disableSwitchToMonthOnDayFocus = false,
 }: CalendarStateInput) {
   const now = useNow();
   const utils = useUtils();
-  const reducerFn = React.useRef(createCalendarStateReducer(Boolean(reduceAnimations), utils));
+  const reducerFn = React.useRef(
+    createCalendarStateReducer(Boolean(reduceAnimations), disableSwitchToMonthOnDayFocus, utils)
+  );
   const [{ loadingQueue, ...calendarState }, dispatch] = React.useReducer(reducerFn.current, {
     isMonthSwitchingAnimating: false,
     loadingQueue: 0,

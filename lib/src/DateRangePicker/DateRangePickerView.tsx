@@ -57,6 +57,7 @@ export const DateRangePickerView: React.FC<DateRangePickerViewProps> = ({
     disableFuture,
     onMonthChange,
     shouldDisableDate,
+    disableSwitchToMonthOnDayFocus: true,
   });
 
   const handleChange = React.useCallback(

@@ -18,7 +18,7 @@ export function parseRangeInputValue(
   { value = [null, null], defaultHighlight }: BasePickerProps<RangeInput, DateRange>
 ) {
   return value.map(date =>
-    parsePickerInputValue(now, utils, { value: date, defaultHighlight })
+    utils.startOfDay(parsePickerInputValue(now, utils, { value: date, defaultHighlight }))
   ) as DateRange;
 }
 
