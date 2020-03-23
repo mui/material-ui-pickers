@@ -49,6 +49,9 @@ const useStyles = makeStyles(
     day: {
       // Required to overlap preview border
       transform: 'scale(1.1)',
+      '& > *': {
+        transform: 'scale(0.9)',
+      },
       '&:hover': {
         border: `2px solid ${theme.palette.grey[500]}`,
       },
@@ -131,6 +134,7 @@ const PureDateRangeDay: React.FC<DateRangeDayProps> = ({ ...props }) => {
 
 export const DateRangeDay = React.memo(PureDateRangeDay, (prevProps, nextProps) => {
   return (
+    prevProps.isHighlighting === nextProps.isHighlighting &&
     prevProps.isEndOfHighlighting === nextProps.isEndOfHighlighting &&
     prevProps.isStartOfHighlighting === nextProps.isStartOfHighlighting &&
     prevProps.isPreviewing === nextProps.isPreviewing &&

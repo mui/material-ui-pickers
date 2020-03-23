@@ -83,7 +83,7 @@ export const DesktopDateRangeCalendar: React.FC<DesktopDateRangeCalendarProps> =
   };
 
   const isWithinRange = (day: MaterialUiPickersDate, range: DateRange | null) => {
-    return Boolean(range && utils.isWithinRange(day, range));
+    return Boolean(range && utils.isBefore(range[0], range[1]) && utils.isWithinRange(day, range));
   };
 
   const isStartOfRange = (day: MaterialUiPickersDate, range: DateRange | null) => {
