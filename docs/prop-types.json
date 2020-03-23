@@ -2693,10 +2693,10 @@
         "name": "boolean"
       }
     },
-    "isInCurrentMonth": {
+    "inCurrentMonth": {
       "defaultValue": null,
       "description": "Is day in current month",
-      "name": "isInCurrentMonth",
+      "name": "inCurrentMonth",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Calendar/Day.tsx",
         "name": "DayProps"
@@ -2719,12 +2719,12 @@
         "name": "boolean"
       }
     },
-    "isToday": {
+    "today": {
       "defaultValue": {
         "value": false
       },
       "description": "Is today?",
-      "name": "isToday",
+      "name": "today",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Calendar/Day.tsx",
         "name": "DayProps"

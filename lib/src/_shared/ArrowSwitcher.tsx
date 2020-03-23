@@ -34,18 +34,21 @@ interface ArrowSwitcherProps extends ExportedArrowSwitcherProps, React.HTMLProps
   onRightClick: () => void;
 }
 
-const useStyles = makeStyles(theme => ({
-  iconButton: {
-    zIndex: 1,
-    backgroundColor: theme.palette.background.paper,
-  },
-  previousMonthButton: {
-    marginRight: 24,
-  },
-  hidden: {
-    visibility: 'hidden',
-  },
-}));
+export const useStyles = makeStyles(
+  theme => ({
+    iconButton: {
+      zIndex: 1,
+      backgroundColor: theme.palette.background.paper,
+    },
+    previousMonthButtonMargin: {
+      marginRight: 24,
+    },
+    hidden: {
+      visibility: 'hidden',
+    },
+  }),
+  { name: 'MuiPickersArrowSwitcher' }
+);
 
 export const ArrowSwitcher: React.FC<ArrowSwitcherProps> = ({
   className,
@@ -79,7 +82,7 @@ export const ArrowSwitcher: React.FC<ArrowSwitcherProps> = ({
         onClick={onLeftClick}
         className={clsx(classes.iconButton, leftArrowButtonProps?.className, {
           [classes.hidden]: Boolean(isLeftHidden),
-          [classes.previousMonthButton]: !Boolean(className),
+          [classes.previousMonthButtonMargin]: !Boolean(children),
         })}
       >
         {isRtl ? rightArrowIcon : leftArrowIcon}

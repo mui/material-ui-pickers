@@ -65,4 +65,5 @@ export interface MuiPickersOverrides {
   MuiPickersDesktopDateRangeCalendar?: Classes<
     typeof import('../DateRangePicker/DesktopDateRangePicker').useStyles
   >;
+  MuiPickersArrowSwitcher?: Classes<typeof import('../_shared/ArrowSwitcher').useStyles>;
 }

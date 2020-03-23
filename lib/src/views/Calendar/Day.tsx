@@ -6,13 +6,13 @@ import { useUtils } from '../../_shared/hooks/useUtils';
 import { MaterialUiPickersDate } from '../../typings/date';
 import { makeStyles, fade } from '@material-ui/core/styles';
 import { ButtonBase, ButtonBaseProps } from '@material-ui/core';
+import { DAY_SIZE, DAY_MARGIN } from '../../constants/dimensions';
 
-const daySize = 36;
 export const useStyles = makeStyles(
   theme => ({
     day: {
-      width: daySize + 4,
-      height: daySize + 2,
+      width: DAY_SIZE,
+      height: DAY_SIZE,
       borderRadius: '50%',
       padding: 0,
       // background required here to prevent collides with the other days when animating with transition group
@@ -32,9 +32,7 @@ export const useStyles = makeStyles(
       },
     },
     dayWithMargin: {
-      margin: '1px 2px',
-      width: daySize,
-      height: daySize,
+      margin: `0px ${DAY_MARGIN}px`,
     },
     dayOutsideMonth: {
       color: theme.palette.text.hint,
@@ -79,11 +77,11 @@ export interface DayProps extends ExtendMui<ButtonBaseProps> {
   /** Can be focused by tabbing in */
   focusable?: boolean;
   /** Is day in current month */
-  isInCurrentMonth: boolean;
+  inCurrentMonth: boolean;
   /** Is switching month animation going on right now */
   isAnimating?: boolean;
   /** Is today? */
-  isToday?: boolean;
+  today?: boolean;
   /** Disabled? */
   disabled?: boolean;
   /** Selected? */
@@ -107,8 +105,9 @@ export const Day: React.FC<DayProps> = ({
   className,
   day,
   disabled,
-  isInCurrentMonth,
-  isToday,
+  hidden,
+  inCurrentMonth: isInCurrentMonth,
+  today: isToday,
   selected,
   focused = false,
   focusable = false,
@@ -137,9 +136,10 @@ export const Day: React.FC<DayProps> = ({
     }
   }, [allowKeyboardControl, disabled, focused, isAnimating, isInCurrentMonth]);
 
+  const isHidden = !isInCurrentMonth && !showDaysOutsideCurrentMonth;
   return (
     <ButtonBase
-      aria-hidden={!isInCurrentMonth}
+      aria-hidden={isHidden}
       ref={ref}
       centerRipple
       data-mui-test="day"
@@ -152,7 +152,7 @@ export const Day: React.FC<DayProps> = ({
           [classes.dayDisabled]: disabled,
           [classes.dayWithMargin]: !disableMargin,
           [classes.today]: !disableHighlightToday && isToday,
-          [classes.hidden]: !isInCurrentMonth && !showDaysOutsideCurrentMonth,
+          [classes.hidden]: isHidden,
           [classes.dayOutsideMonth]: !isInCurrentMonth && showDaysOutsideCurrentMonth,
         },
         className
@@ -172,15 +172,13 @@ export const Day: React.FC<DayProps> = ({
 Day.displayName = 'Day';
 
 Day.propTypes = {
-  isToday: PropTypes.bool,
+  today: PropTypes.bool,
   disabled: PropTypes.bool,
-  hidden: PropTypes.bool,
   selected: PropTypes.bool,
 };
 
 Day.defaultProps = {
   disabled: false,
-  hidden: false,
-  isToday: false,
+  today: false,
   selected: false,
 };
