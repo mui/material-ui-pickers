@@ -1,7 +1,6 @@
 import * as React from 'react';
 import clsx from 'clsx';
 import { makeStyles, fade } from '@material-ui/core';
-import { useUtils } from '../_shared/hooks/useUtils';
 import { DAY_MARGIN } from '../constants/dimensions';
 import { Day, DayProps } from '../views/Calendar/Day';
 import { MaterialUiPickersDate } from '../typings/date';
@@ -13,7 +12,6 @@ interface DateRangeDayProps extends DayProps {
   isPreviewing: boolean;
   isEndOfPreviewing: boolean;
   isStartOfPreviewing: boolean;
-  rangePreviewDay: MaterialUiPickersDate;
 }
 
 const endBorderStyle = {
@@ -80,8 +78,8 @@ const useStyles = makeStyles(
   { name: 'MuiPickersDateRangeDay' }
 );
 
-export const DateRangeDay: React.FC<DateRangeDayProps> = React.memo(
-  ({
+const PureDateRangeDay: React.FC<DateRangeDayProps> = ({ ...props }) => {
+  const {
     day,
     className,
     selected,
@@ -92,41 +90,61 @@ export const DateRangeDay: React.FC<DateRangeDayProps> = React.memo(
     isEndOfHighlighting,
     isStartOfHighlighting,
     ...other
-  }) => {
-    const classes = useStyles();
+  } = props;
+  // useTraceUpdate(props);
+  const classes = useStyles();
 
-    return (
+  return (
+    <div
+      className={clsx(classes.rangeIntervalDay, {
+        [classes.rangeIntervalDayHighlight]: isHighlighting,
+        [classes.rangeIntervalDayHighlightStart]: isStartOfHighlighting,
+        [classes.rangeIntervalDayHighlightEnd]: isEndOfHighlighting,
+      })}
+    >
       <div
-        className={clsx(classes.rangeIntervalDay, {
-          [classes.rangeIntervalDayHighlight]: isHighlighting,
-          [classes.rangeIntervalDayHighlightStart]: isStartOfHighlighting,
-          [classes.rangeIntervalDayHighlightEnd]: isEndOfHighlighting,
+        className={clsx(classes.rangeIntervalPreview, {
+          [classes.rangeIntervalDayPreviewStart]: isStartOfPreviewing,
+          [classes.rangeIntervalDayPreviewEnd]: isEndOfPreviewing,
+          [classes.rangeIntervalDayPreview]: isPreviewing,
         })}
       >
-        <div
-          className={clsx(classes.rangeIntervalPreview, {
-            [classes.rangeIntervalDayPreviewStart]: isStartOfPreviewing,
-            [classes.rangeIntervalDayPreviewEnd]: isEndOfPreviewing,
-            [classes.rangeIntervalDayPreview]: isPreviewing,
-          })}
-        >
-          <Day
-            {...other}
-            day={day}
-            selected={selected}
-            disableMargin
-            showDaysOutsideCurrentMonth
-            className={clsx(
-              classes.day,
-              {
-                [classes.notSelectedDate]: !selected,
-                [classes.dayInsideRangeInterval]: !selected && isHighlighting,
-              },
-              className
-            )}
-          />
-        </div>
+        <Day
+          {...other}
+          day={day}
+          selected={selected}
+          disableMargin
+          showDaysOutsideCurrentMonth
+          className={clsx(
+            classes.day,
+            {
+              [classes.notSelectedDate]: !selected,
+              [classes.dayInsideRangeInterval]: !selected && isHighlighting,
+            },
+            className
+          )}
+        />
       </div>
-    );
-  }
-);
+    </div>
+  );
+};
+
+export const DateRangeDay = React.memo(PureDateRangeDay, (prevProps, nextProps) => {
+  return (
+    prevProps.isEndOfHighlighting === nextProps.isEndOfHighlighting &&
+    prevProps.isStartOfHighlighting === nextProps.isStartOfHighlighting &&
+    prevProps.isPreviewing === nextProps.isPreviewing &&
+    prevProps.isEndOfPreviewing === nextProps.isEndOfPreviewing &&
+    prevProps.isStartOfPreviewing === nextProps.isStartOfPreviewing &&
+    prevProps.focused === nextProps.focused &&
+    prevProps.focusable === nextProps.focusable &&
+    prevProps.isAnimating === nextProps.isAnimating &&
+    prevProps.today === nextProps.today &&
+    prevProps.disabled === nextProps.disabled &&
+    prevProps.selected === nextProps.selected &&
+    prevProps.allowKeyboardControl === nextProps.allowKeyboardControl &&
+    prevProps.disableMargin === nextProps.disableMargin &&
+    prevProps.showDaysOutsideCurrentMonth === nextProps.showDaysOutsideCurrentMonth &&
+    prevProps.disableHighlightToday === nextProps.disableHighlightToday
+  );
+});

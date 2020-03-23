@@ -94,6 +94,13 @@ export const DesktopDateRangeCalendar: React.FC<DesktopDateRangeCalendarProps> =
     return Boolean(range && utils.isSameDay(day, range[1]));
   };
 
+  const CalendarTransitionProps = React.useMemo(
+    () => ({
+      onMouseLeave: () => setRangePreviewDay(null),
+    }),
+    []
+  );
+
   return (
     <div className={classes.dateRangeContainer}>
       {new Array(calendars).fill(0).map((_, index) => {
@@ -128,9 +135,9 @@ export const DesktopDateRangeCalendar: React.FC<DesktopDateRangeCalendarProps> =
               className={classes.calendar}
               onChange={handleDayChange}
               currentMonth={monthOnIteration}
+              TransitionProps={CalendarTransitionProps}
               renderDay={(day, _, DayProps) => (
                 <DateRangeDay
-                  rangePreviewDay={rangePreviewDay}
                   isPreviewing={isWithinRange(day, previewingRange)}
                   isStartOfPreviewing={isStartOfRange(day, previewingRange)}
                   isEndOfPreviewing={isEndOfRange(day, previewingRange)}
@@ -138,7 +145,6 @@ export const DesktopDateRangeCalendar: React.FC<DesktopDateRangeCalendarProps> =
                   isStartOfHighlighting={isStartOfRange(day, date)}
                   isEndOfHighlighting={isEndOfRange(day, date)}
                   onMouseOver={() => handlePreviewDayChange(day)}
-                  onMouseOut={() => handlePreviewDayChange(null)}
                   {...DayProps}
                 />
               )}

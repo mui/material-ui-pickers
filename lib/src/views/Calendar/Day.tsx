@@ -101,7 +101,7 @@ export interface DayProps extends ExtendMui<ButtonBaseProps> {
   disableHighlightToday?: boolean;
 }
 
-export const Day: React.FC<DayProps> = ({
+const PureDay: React.FC<DayProps> = ({
   className,
   day,
   disabled,
@@ -169,15 +169,28 @@ export const Day: React.FC<DayProps> = ({
   );
 };
 
-Day.displayName = 'Day';
+export const Day = React.memo(PureDay, (prevProps, nextProps) => {
+  return (
+    prevProps.focused === nextProps.focused &&
+    prevProps.focusable === nextProps.focusable &&
+    prevProps.isAnimating === nextProps.isAnimating &&
+    prevProps.today === nextProps.today &&
+    prevProps.disabled === nextProps.disabled &&
+    prevProps.selected === nextProps.selected &&
+    prevProps.allowKeyboardControl === nextProps.allowKeyboardControl &&
+    prevProps.disableMargin === nextProps.disableMargin &&
+    prevProps.showDaysOutsideCurrentMonth === nextProps.showDaysOutsideCurrentMonth &&
+    prevProps.disableHighlightToday === nextProps.disableHighlightToday
+  );
+});
 
-Day.propTypes = {
+PureDay.propTypes = {
   today: PropTypes.bool,
   disabled: PropTypes.bool,
   selected: PropTypes.bool,
 };
 
-Day.defaultProps = {
+PureDay.defaultProps = {
   disabled: false,
   today: false,
   selected: false,

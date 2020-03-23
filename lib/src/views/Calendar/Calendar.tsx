@@ -1,6 +1,5 @@
 import * as React from 'react';
 import clsx from 'clsx';
-import SlideTransition, { SlideDirection } from './SlideTransition';
 import { Day, DayProps } from './Day';
 import { onSpaceOrEnter } from '../../_helpers/utils';
 import { MaterialUiPickersDate } from '../../typings/date';
@@ -8,6 +7,7 @@ import { useUtils, useNow } from '../../_shared/hooks/useUtils';
 import { PickerOnChangeFn } from '../../_shared/hooks/useViews';
 import { DAY_SIZE, DAY_MARGIN } from '../../constants/dimensions';
 import { findClosestEnabledDate } from '../../_helpers/date-utils';
+import { SlideTransition, SlideDirection } from './SlideTransition';
 import { makeStyles, useTheme, Typography } from '@material-ui/core';
 import { FORCE_FINISH_PICKER } from '../../_shared/hooks/usePickerState';
 import { useGlobalKeyDown, keycode } from '../../_shared/hooks/useKeyDown';
@@ -54,6 +54,7 @@ export interface CalendarProps extends ExportedCalendarProps {
   isMonthSwitchingAnimating: boolean;
   onMonthSwitchingAnimationEnd: () => void;
   className?: string;
+  TransitionProps?: Slide;
 }
 
 export const useStyles = makeStyles(theme => ({
@@ -119,6 +120,7 @@ export const Calendar: React.FC<CalendarProps> = ({
   disableHighlightToday,
   showDaysOutsideCurrentMonth,
   className,
+  TransitionProps,
 }) => {
   const now = useNow();
   const utils = useUtils();
@@ -188,6 +190,7 @@ export const Calendar: React.FC<CalendarProps> = ({
         reduceAnimations={reduceAnimations}
         slideDirection={slideDirection}
         className={clsx(classes.transitionContainer, className)}
+        {...TransitionProps}
       >
         <div role="grid" style={{ overflow: 'hidden' }}>
           {utils.getWeekArray(currentMonth).map(week => (
