@@ -8,7 +8,7 @@ import { useCalendarState } from '../views/Calendar/useCalendarState';
 import { WrapperVariantContext } from '../wrappers/WrapperVariantContext';
 import { ExportedCalendarViewProps, defaultReduceAnimations } from '../views/Calendar/CalendarView';
 import {
-  DesktopDateRangeCalendar,
+  DesktopDateRangePicker,
   ExportedDesktopDateRangeCalendarProps,
 } from './DesktopDateRangePicker';
 
@@ -76,7 +76,7 @@ export const DateRangePickerView: React.FC<DateRangePickerViewProps> = ({
   switch (wrapperVariant) {
     case 'desktop': {
       return (
-        <DesktopDateRangeCalendar
+        <DesktopDateRangePicker
           calendars={calendars}
           {...calendarState}
           date={date!}

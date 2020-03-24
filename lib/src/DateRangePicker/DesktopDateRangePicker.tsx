@@ -44,7 +44,7 @@ export const useStyles = makeStyles(
   { name: 'MuiPickersDesktopDateRangeCalendar' }
 );
 
-export const DesktopDateRangeCalendar: React.FC<DesktopDateRangeCalendarProps> = ({
+export const DesktopDateRangePicker: React.FC<DesktopDateRangeCalendarProps> = ({
   date,
   calendars = 2,
   changeMonth,
@@ -113,7 +113,7 @@ export const DesktopDateRangeCalendar: React.FC<DesktopDateRangeCalendarProps> =
         const monthOnIteration = utils.setMonth(currentMonth, utils.getMonth(currentMonth) + index);
 
         return (
-          <div className={classes.rangeCalendarContainer}>
+          <div key={monthOnIteration?.toString()} className={classes.rangeCalendarContainer}>
             <ArrowSwitcher
               className={classes.arrowSwitcher}
               onLeftClick={selectPreviousMonth}

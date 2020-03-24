@@ -200,6 +200,7 @@ export const Calendar: React.FC<CalendarProps> = ({
                 const isDayInCurrentMonth = utils.getMonth(day) === currentMonthNumber;
 
                 const dayProps: DayProps = {
+                  key: day?.toString(),
                   day: day,
                   role: 'cell',
                   isAnimating: isMonthSwitchingAnimating,

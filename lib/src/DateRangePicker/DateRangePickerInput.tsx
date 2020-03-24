@@ -45,8 +45,9 @@ export const DateRangePickerInput: React.FC<
   };
 
   const sharedInputProps =  {
+    onFocus: other.openPicker,
     // onClick: other.openPicker,
-    onFocus: other.openPicker
+    // onFocus: other.openPicker
   }
 
   return (
