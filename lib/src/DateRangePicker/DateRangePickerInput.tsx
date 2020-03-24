@@ -1,6 +1,7 @@
 import * as React from 'react';
 import KeyboardDateInput from '../_shared/KeyboardDateInput';
 import { RangeInput, DateRange } from './RangeTypes';
+import { useUtils } from '../_shared/hooks/useUtils';
 import { MaterialUiPickersDate } from '../typings/date';
 import { DateInputProps } from '../_shared/PureDateInput';
 import { makeStyles, Typography } from '@material-ui/core';
@@ -34,20 +35,23 @@ export const DateRangePickerInput: React.FC<
   parsedDateValue,
   ...other
 }) => {
+  const utils = useUtils()
   const classes = useStyles();
   const [start, end] = parsedDateValue ?? [null, null];
   const handleStartChange = (date: MaterialUiPickersDate, inputString?: string) => {
-    onChange([date, end], inputString);
+    if (date === null || utils.isValid(date)) {
+      onChange([date, end], inputString);
+    }
   };
 
   const handleEndChange = (date: MaterialUiPickersDate, inputString?: string) => {
-    onChange([start, date], inputString);
+    if (utils.isValid(date)) {
+      onChange([start, date], inputString);
+    }
   };
 
   const sharedInputProps =  {
     onFocus: other.openPicker,
-    // onClick: other.openPicker,
-    // onFocus: other.openPicker
   }
 
   return (

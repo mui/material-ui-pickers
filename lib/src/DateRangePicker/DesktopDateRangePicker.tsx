@@ -113,7 +113,7 @@ export const DesktopDateRangePicker: React.FC<DesktopDateRangeCalendarProps> = (
         const monthOnIteration = utils.setMonth(currentMonth, utils.getMonth(currentMonth) + index);
 
         return (
-          <div key={monthOnIteration?.toString()} className={classes.rangeCalendarContainer}>
+          <div key={index} className={classes.rangeCalendarContainer}>
             <ArrowSwitcher
               className={classes.arrowSwitcher}
               onLeftClick={selectPreviousMonth}

@@ -1,16 +1,14 @@
 import * as React from 'react';
 import clsx from 'clsx';
 import { Day, DayProps } from './Day';
-import { onSpaceOrEnter } from '../../_helpers/utils';
 import { MaterialUiPickersDate } from '../../typings/date';
 import { useUtils, useNow } from '../../_shared/hooks/useUtils';
 import { PickerOnChangeFn } from '../../_shared/hooks/useViews';
 import { DAY_SIZE, DAY_MARGIN } from '../../constants/dimensions';
 import { findClosestEnabledDate } from '../../_helpers/date-utils';
-import { SlideTransition, SlideDirection } from './SlideTransition';
 import { makeStyles, useTheme, Typography } from '@material-ui/core';
-import { FORCE_FINISH_PICKER } from '../../_shared/hooks/usePickerState';
 import { useGlobalKeyDown, keycode } from '../../_shared/hooks/useKeyDown';
+import { SlideTransition, SlideDirection, SlideTransitionProps } from './SlideTransition';
 
 export interface ExportedCalendarProps
   extends Pick<DayProps, 'disableHighlightToday' | 'showDaysOutsideCurrentMonth'> {
@@ -54,7 +52,7 @@ export interface CalendarProps extends ExportedCalendarProps {
   isMonthSwitchingAnimating: boolean;
   onMonthSwitchingAnimationEnd: () => void;
   className?: string;
-  TransitionProps?: Slide;
+  TransitionProps?: SlideTransitionProps;
 }
 
 export const useStyles = makeStyles(theme => ({
