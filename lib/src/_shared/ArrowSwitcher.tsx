@@ -2,7 +2,7 @@ import * as React from 'react';
 import clsx from 'clsx';
 import { ArrowLeftIcon } from './icons/ArrowLeftIcon';
 import { ArrowRightIcon } from './icons/ArrowRightIcon';
-import { IconButton, IconButtonProps, makeStyles, useTheme } from '@material-ui/core';
+import { IconButton, IconButtonProps, makeStyles, useTheme, Typography } from '@material-ui/core';
 
 export interface ExportedArrowSwitcherProps {
   /** Left arrow icon */
@@ -32,6 +32,7 @@ interface ArrowSwitcherProps extends ExportedArrowSwitcherProps, React.HTMLProps
   isRightDisabled: boolean;
   onLeftClick: () => void;
   onRightClick: () => void;
+  text?: string;
 }
 
 export const useStyles = makeStyles(
@@ -50,7 +51,7 @@ export const useStyles = makeStyles(
   { name: 'MuiPickersArrowSwitcher' }
 );
 
-export const ArrowSwitcher: React.FC<ArrowSwitcherProps> = ({
+const PureArrowSwitcher: React.FC<ArrowSwitcherProps> = ({
   className,
   leftArrowButtonProps,
   leftArrowButtonText,
@@ -64,7 +65,7 @@ export const ArrowSwitcher: React.FC<ArrowSwitcherProps> = ({
   onRightClick,
   leftArrowIcon = <ArrowLeftIcon />,
   rightArrowIcon = <ArrowRightIcon />,
-  children,
+  text,
   ...other
 }) => {
   const classes = useStyles();
@@ -82,13 +83,17 @@ export const ArrowSwitcher: React.FC<ArrowSwitcherProps> = ({
         onClick={onLeftClick}
         className={clsx(classes.iconButton, leftArrowButtonProps?.className, {
           [classes.hidden]: Boolean(isLeftHidden),
-          [classes.previousMonthButtonMargin]: !Boolean(children),
+          [classes.previousMonthButtonMargin]: !Boolean(text),
         })}
       >
         {isRtl ? rightArrowIcon : leftArrowIcon}
       </IconButton>
 
-      {children}
+      {text && (
+        <Typography variant="subtitle1" display="inline">
+          {text}
+        </Typography>
+      )}
 
       <IconButton
         data-mui-test="next-arrow-button"
@@ -106,3 +111,7 @@ export const ArrowSwitcher: React.FC<ArrowSwitcherProps> = ({
     </div>
   );
 };
+
+PureArrowSwitcher.displayName = 'ArrowSwitcher';
+
+export const ArrowSwitcher = React.memo(PureArrowSwitcher);

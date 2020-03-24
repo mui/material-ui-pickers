@@ -9,13 +9,20 @@ export function arrayIncludes<T>(array: T[] | readonly T[], itemOrItems: T | T[]
   return array.indexOf(itemOrItems) !== -1;
 }
 
-export const onSpaceOrEnter = (innerFn: () => void) => (e: React.KeyboardEvent) => {
+export const onSpaceOrEnter = (
+  innerFn: () => void,
+  onFocus?: (e: React.KeyboardEvent<any>) => void
+) => (e: React.KeyboardEvent) => {
   if (e.key === 'Enter' || e.key === ' ') {
     innerFn();
 
     // prevent any side effects
     e.preventDefault();
     e.stopPropagation();
+  }
+
+  if (onFocus) {
+    onFocus(e);
   }
 };
 

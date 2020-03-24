@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { DateRange } from './RangeTypes';
 import { DateRangeDay } from './DateRangeDay';
+import { makeStyles } from '@material-ui/core';
 import { useUtils } from '../_shared/hooks/useUtils';
 import { MaterialUiPickersDate } from '../typings/date';
-import { makeStyles, Typography } from '@material-ui/core';
 import { Calendar, CalendarProps } from '../views/Calendar/Calendar';
 import { ArrowSwitcher, ExportedArrowSwitcherProps } from '../_shared/ArrowSwitcher';
 
@@ -61,9 +61,7 @@ export const DesktopDateRangeCalendar: React.FC<DesktopDateRangeCalendarProps> =
   const classes = useStyles();
   const { currentMonth } = CalendarProps;
   const [start, end] = date;
-  const [rangePreviewDay, setRangePreviewDay] = React.useState<MaterialUiPickersDate>(
-    new Date('2020-04-24T14:34:19.027Z')
-  );
+  const [rangePreviewDay, setRangePreviewDay] = React.useState<MaterialUiPickersDate>(null);
 
   const previewingRange: DateRange | null = Boolean(rangePreviewDay)
     ? utils.isAfter(start, rangePreviewDay)
@@ -101,6 +99,14 @@ export const DesktopDateRangeCalendar: React.FC<DesktopDateRangeCalendarProps> =
     []
   );
 
+  const selectNextMonth = React.useCallback(() => {
+    changeMonth(utils.getNextMonth(currentMonth));
+  }, [changeMonth, currentMonth, utils]);
+
+  const selectPreviousMonth = React.useCallback(() => {
+    changeMonth(utils.getPreviousMonth(currentMonth));
+  }, [changeMonth, currentMonth, utils]);
+
   return (
     <div className={classes.dateRangeContainer}>
       {new Array(calendars).fill(0).map((_, index) => {
@@ -110,8 +116,8 @@ export const DesktopDateRangeCalendar: React.FC<DesktopDateRangeCalendarProps> =
           <div className={classes.rangeCalendarContainer}>
             <ArrowSwitcher
               className={classes.arrowSwitcher}
-              onLeftClick={() => changeMonth(utils.getPreviousMonth(currentMonth))}
-              onRightClick={() => changeMonth(utils.getNextMonth(currentMonth))}
+              onLeftClick={selectPreviousMonth}
+              onRightClick={selectNextMonth}
               isLeftHidden={index !== 0}
               isRightHidden={index !== calendars - 1}
               isLeftDisabled={false}
@@ -122,11 +128,8 @@ export const DesktopDateRangeCalendar: React.FC<DesktopDateRangeCalendarProps> =
               rightArrowButtonProps={rightArrowButtonProps}
               rightArrowButtonText={rightArrowButtonText}
               rightArrowIcon={rightArrowIcon}
-            >
-              <Typography display="inline" variant="subtitle1">
-                {utils.format(monthOnIteration, 'monthAndYear')}
-              </Typography>
-            </ArrowSwitcher>
+              text={utils.format(monthOnIteration, 'monthAndYear')}
+            />
 
             <Calendar
               {...CalendarProps}
@@ -144,7 +147,7 @@ export const DesktopDateRangeCalendar: React.FC<DesktopDateRangeCalendarProps> =
                   isHighlighting={isWithinRange(day, date)}
                   isStartOfHighlighting={isStartOfRange(day, date)}
                   isEndOfHighlighting={isEndOfRange(day, date)}
-                  onMouseOver={() => handlePreviewDayChange(day)}
+                  onMouseEnter={() => handlePreviewDayChange(day)}
                   {...DayProps}
                 />
               )}

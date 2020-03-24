@@ -214,11 +214,8 @@ export const Calendar: React.FC<CalendarProps> = ({
                   focusable:
                     Boolean(nowFocusedDay) &&
                     utils.toJsDate(nowFocusedDay).getDate() === utils.toJsDate(day).getDate(),
-                  onFocus: () => changeFocusedDay(day),
-                  onClick: () => !disabled && handleDaySelect(day, true),
-                  onKeyDown: onSpaceOrEnter(
-                    () => !disabled && handleDaySelect(day, FORCE_FINISH_PICKER)
-                  ),
+                  onDayFocus: changeFocusedDay,
+                  onDaySelect: handleDaySelect,
                 };
 
                 return renderDay ? renderDay(day, selectedDates, dayProps) : <Day {...dayProps} />;
