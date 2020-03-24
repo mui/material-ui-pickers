@@ -40,11 +40,10 @@ export function usePickerState<TInput, TDateValue>(
   const { isOpen, setIsOpen } = useOpenState(props);
 
   useEffect(() => {
-    // if value was changed in closed state or from mobile keyboard view - treat it as accepted
-    if ((!isOpen || isMobileKeyboardViewOpen) && !valueManager.areValuesEqual(pickerDate, date)) {
+    if (!valueManager.areValuesEqual(pickerDate, date)) {
       setPickerDate(date);
     }
-  }, [date, isMobileKeyboardViewOpen, isOpen, pickerDate, utils, valueManager]);
+  }, [value]); // eslint-disable-line
 
   const acceptDate = useCallback(
     (acceptedDate: TDateValue | null, needClosePicker: boolean) => {

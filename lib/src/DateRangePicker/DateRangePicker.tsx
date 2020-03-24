@@ -2,12 +2,12 @@ import * as React from 'react';
 import { DateRange, RangeInput } from './RangeTypes';
 import { MaterialUiPickersDate } from '../typings/date';
 import { BasePickerProps } from '../typings/BasePicker';
-import { DesktopWrapper } from '../wrappers/DesktopWrapper';
 import { DateRangePickerInput } from './DateRangePickerInput';
 import { parsePickerInputValue } from '../_helpers/date-utils';
 import { usePickerState } from '../_shared/hooks/usePickerState';
 import { SomeWrapper, ExtendWrapper } from '../wrappers/Wrapper';
 import { AllSharedPickerProps } from '../Picker/SharedPickerProps';
+import { DesktopPopperWrapper } from '../wrappers/DesktopPopperWrapper';
 import { MuiPickersAdapter, useUtils } from '../_shared/hooks/useUtils';
 import { makeWrapperComponent } from '../wrappers/makeWrapperComponent';
 import { DateRangePickerView, DateRangePickerViewProps } from './DateRangePickerView';
@@ -83,4 +83,4 @@ export function makeRangePicker<TWrapper extends SomeWrapper>(Wrapper: TWrapper)
   return RangePickerWithStateAndWrapper;
 }
 
-export const DateRangePicker = makeRangePicker(DesktopWrapper);
+export const DateRangePicker = makeRangePicker(DesktopPopperWrapper);
