@@ -13,7 +13,7 @@
     "docs"
   ],
   "engines": {
-    "node": "12.x"
+    "node": ">=8.0.0"
   },
   "scripts": {
     "start": "yarn dev",
@@ -22,6 +22,7 @@
     "e2e:open": "cypress open",
     "docgen": "node docs/scripts/docgen.js",
     "lint": "eslint './**/*.ts*' './**/*.js' './**/*.jsx'",
+    "prettier": "prettier --write './{lib,docs,e2e}/**/*.{js,jsx,ts,tsx,json,css,md,mdx}'",
     "build": "yarn workspaces run build & yarn workspaces run build:typescript",
     "release": "yarn workspace @material-ui/pickers release && git push && git push --tags"
   },
@@ -38,9 +39,9 @@
     "@typescript-eslint/parser": "^1.6.0",
     "cypress": "^4.0.2",
     "eslint": "^5.16.0",
-    "eslint-config-prettier": "^4.1.0",
+    "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-pretty-imports": "^1.0.2",
-    "eslint-plugin-react": "^7.12.4",
+    "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^1.6.0",
     "husky": "^4.2.3",
     "lint-staged": "^10.0.8",

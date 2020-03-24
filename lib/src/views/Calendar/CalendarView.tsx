@@ -9,9 +9,9 @@ import { MaterialUiPickersDate } from '../../typings/date';
 import { FadeTransitionGroup } from './FadeTransitionGroup';
 import { Calendar, ExportedCalendarProps } from './Calendar';
 import { PickerOnChangeFn } from '../../_shared/hooks/useViews';
+import { makeStyles, CircularProgress } from '@material-ui/core';
 import { useParsedDate } from '../../_shared/hooks/useParsedDate';
 import { CalendarHeader, CalendarHeaderProps } from './CalendarHeader';
-import { CircularProgress, Grid, makeStyles } from '@material-ui/core';
 import { WrapperVariantContext } from '../../wrappers/WrapperVariantContext';
 
 type PublicCalendarHeaderProps = Pick<

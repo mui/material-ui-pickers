@@ -4,8 +4,8 @@ import { ExtendMui } from '../typings/helpers';
 import { onSpaceOrEnter } from '../_helpers/utils';
 import { ParsableDate } from '../constants/prop-types';
 import { MaterialUiPickersDate } from '../typings/date';
-import { useUtils, MuiPickersAdapter } from './hooks/useUtils';
 import { IconButtonProps } from '@material-ui/core/IconButton';
+import { useUtils, MuiPickersAdapter } from './hooks/useUtils';
 import { InputAdornmentProps } from '@material-ui/core/InputAdornment';
 import { getDisplayDate, getTextFieldAriaText } from '../_helpers/text-field-helper';
 
@@ -66,6 +66,8 @@ export interface DateInputProps<TInputValue = ParsableDate, TDateValue = Materia
   getOpenDialogAriaText?: (value: ParsableDate, utils: MuiPickersAdapter) => string;
   // ?? TODO when it will be possible to display "empty" date in datepicker use it instead of ignoring invalid inputs
   ignoreInvalidInputs?: boolean;
+  containerRef?: React.Ref<HTMLDivElement>;
+  forwardedRef?: React.Ref<HTMLInputElement>;
 }
 
 export type ExportedDateInputProps<TInputValue, TDateValue> = Omit<
@@ -99,6 +101,8 @@ export const PureDateInput: React.FC<DateInputProps> = ({
   KeyboardButtonProps,
   disableMaskedInput,
   parsedDateValue,
+  forwardedRef,
+  containerRef,
   getOpenDialogAriaText = getTextFieldAriaText,
   ...other
 }) => {
@@ -118,6 +122,8 @@ export const PureDateInput: React.FC<DateInputProps> = ({
 
   return (
     <TextFieldComponent
+      ref={containerRef}
+      inputRef={forwardedRef}
       variant={variant as any}
       error={Boolean(validationError)}
       helperText={validationError}
