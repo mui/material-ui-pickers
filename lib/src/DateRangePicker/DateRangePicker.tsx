@@ -2,7 +2,6 @@ import * as React from 'react';
 import { DateRange, RangeInput } from './RangeTypes';
 import { MaterialUiPickersDate } from '../typings/date';
 import { BasePickerProps } from '../typings/BasePicker';
-import { DateRangePickerInput } from './DateRangePickerInput';
 import { parsePickerInputValue } from '../_helpers/date-utils';
 import { usePickerState } from '../_shared/hooks/usePickerState';
 import { SomeWrapper, ExtendWrapper } from '../wrappers/Wrapper';
@@ -11,6 +10,7 @@ import { DesktopPopperWrapper } from '../wrappers/DesktopPopperWrapper';
 import { MuiPickersAdapter, useUtils } from '../_shared/hooks/useUtils';
 import { makeWrapperComponent } from '../wrappers/makeWrapperComponent';
 import { DateRangePickerView, DateRangePickerViewProps } from './DateRangePickerView';
+import { DateRangePickerInput, DateRangePickerInputSpecificProps } from './DateRangePickerInput';
 
 export function parseRangeInputValue(
   now: MaterialUiPickersDate,
@@ -39,8 +39,10 @@ export function makeRangePicker<TWrapper extends SomeWrapper>(Wrapper: TWrapper)
     onMonthChange,
     disableHighlightToday,
     reduceAnimations,
+    inputFormat: passedInputFormat,
     ...other
   }: DateRangePickerViewProps &
+    DateRangePickerInputSpecificProps &
     AllSharedPickerProps<RangeInput, DateRange> &
     ExtendWrapper<TWrapper>) {
     const utils = useUtils();
@@ -48,11 +50,19 @@ export function makeRangePicker<TWrapper extends SomeWrapper>(Wrapper: TWrapper)
       'start' | 'end'
     >('start');
 
-    const { pickerProps, inputProps, wrapperProps } = usePickerState<RangeInput, DateRange>(other, {
-      parseInput: parseRangeInputValue,
-      areValuesEqual: (a, b) => utils.isEqual(a[0], b[0]) && utils.isEqual(a[1], b[1]),
-      validateInput: () => undefined,
-    });
+    const pickerStateProps = {
+      ...other,
+      inputFormat: passedInputFormat || utils.formats.keyboardDate,
+    };
+
+    const { pickerProps, inputProps, wrapperProps } = usePickerState<RangeInput, DateRange>(
+      pickerStateProps,
+      {
+        parseInput: parseRangeInputValue,
+        areValuesEqual: (a, b) => utils.isEqual(a[0], b[0]) && utils.isEqual(a[1], b[1]),
+        validateInput: () => undefined,
+      }
+    );
 
     return (
       <WrapperComponent inputProps={inputProps} wrapperProps={wrapperProps} {...other}>
@@ -77,7 +87,7 @@ export function makeRangePicker<TWrapper extends SomeWrapper>(Wrapper: TWrapper)
   }
 
   RangePickerWithStateAndWrapper.defaultProps = {
-    inputFormat: 'MM',
+    mask: '__/__/____',
   };
 
   return RangePickerWithStateAndWrapper;

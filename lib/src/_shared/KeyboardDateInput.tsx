@@ -37,6 +37,7 @@ export const KeyboardDateInput: React.FC<DateInputProps> = ({
   ignoreInvalidInputs,
   onFocus,
   onBlur,
+  parsedDateValue,
   getOpenDialogAriaText = getTextFieldAriaText,
   ...other
 }) => {

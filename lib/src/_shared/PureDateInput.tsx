@@ -12,6 +12,7 @@ import { getDisplayDate, getTextFieldAriaText } from '../_helpers/text-field-hel
 export interface DateInputProps<TInputValue = ParsableDate, TDateValue = MaterialUiPickersDate>
   extends ExtendMui<TextFieldProps, 'onError' | 'onChange' | 'value'> {
   rawValue: TInputValue;
+  parsedDateValue: TDateValue | null;
   inputFormat: string;
   onChange: (date: TDateValue | null, keyboardInputValue?: string) => void;
   openPicker: () => void;
@@ -97,6 +98,7 @@ export const PureDateInput: React.FC<DateInputProps> = ({
   ignoreInvalidInputs,
   KeyboardButtonProps,
   disableMaskedInput,
+  parsedDateValue,
   getOpenDialogAriaText = getTextFieldAriaText,
   ...other
 }) => {
