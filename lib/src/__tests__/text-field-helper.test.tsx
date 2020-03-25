@@ -1,11 +1,11 @@
 import LuxonUtils from '@date-io/luxon';
 import DateFnsUtils from '@date-io/date-fns';
-import { utilsToUse } from '../test-utils';
+import { utilsToUse } from './test-utils';
 import {
   maskedDateFormatter,
   pick12hOr24hFormat,
   checkMaskIsValidForCurrentFormat,
-} from '../../_helpers/text-field-helper';
+} from '../_helpers/text-field-helper';
 
 const refuse = /[\d]/gi;
 describe('test-field-helper', () => {
