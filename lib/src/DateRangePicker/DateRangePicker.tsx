@@ -10,7 +10,7 @@ import { DesktopPopperWrapper } from '../wrappers/DesktopPopperWrapper';
 import { MuiPickersAdapter, useUtils } from '../_shared/hooks/useUtils';
 import { makeWrapperComponent } from '../wrappers/makeWrapperComponent';
 import { DateRangePickerView, DateRangePickerViewProps } from './DateRangePickerView';
-import { DateRangePickerInput, DateRangePickerInputSpecificProps } from './DateRangePickerInput';
+import { DateRangePickerInput, ExportedDateRangePickerInputProps } from './DateRangePickerInput';
 
 export function parseRangeInputValue(
   now: MaterialUiPickersDate,
@@ -18,7 +18,9 @@ export function parseRangeInputValue(
   { value = [null, null], defaultHighlight }: BasePickerProps<RangeInput, DateRange>
 ) {
   return value.map(date =>
-    utils.startOfDay(parsePickerInputValue(now, utils, { value: date, defaultHighlight }))
+    date === null
+      ? null
+      : utils.startOfDay(parsePickerInputValue(now, utils, { value: date, defaultHighlight }))
   ) as DateRange;
 }
 
@@ -42,7 +44,7 @@ export function makeRangePicker<TWrapper extends SomeWrapper>(Wrapper: TWrapper)
     inputFormat: passedInputFormat,
     ...other
   }: DateRangePickerViewProps &
-    DateRangePickerInputSpecificProps &
+    ExportedDateRangePickerInputProps &
     AllSharedPickerProps<RangeInput, DateRange> &
     ExtendWrapper<TWrapper>) {
     const utils = useUtils();
@@ -65,7 +67,13 @@ export function makeRangePicker<TWrapper extends SomeWrapper>(Wrapper: TWrapper)
     );
 
     return (
-      <WrapperComponent inputProps={inputProps} wrapperProps={wrapperProps} {...other}>
+      <WrapperComponent
+        inputProps={inputProps}
+        wrapperProps={wrapperProps}
+        currentlySelectingRangeEnd={currentlySelectingRangeEnd}
+        setCurrentlySelectingRangeEnd={setCurrentlySelectingRangeEnd}
+        {...other}
+      >
         <DateRangePickerView
           DateInputProps={inputProps}
           calendars={calendars}
@@ -94,3 +102,5 @@ export function makeRangePicker<TWrapper extends SomeWrapper>(Wrapper: TWrapper)
 }
 
 export const DateRangePicker = makeRangePicker(DesktopPopperWrapper);
+
+export { DateRange };

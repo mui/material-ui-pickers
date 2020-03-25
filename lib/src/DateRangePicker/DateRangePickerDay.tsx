@@ -106,6 +106,7 @@ export const PureDateRangeDay = ({
 
   return (
     <div
+      data-mui-test={isHighlighting && inCurrentMonth ? 'DateRangeHighlight' : undefined}
       className={clsx(classes.rangeIntervalDay, {
         [classes.rangeIntervalDayHighlight]: isHighlighting && inCurrentMonth,
         [classes.rangeIntervalDayHighlightEnd]: isEndOfHighlighting || isEndOfMonth,
@@ -113,6 +114,7 @@ export const PureDateRangeDay = ({
       })}
     >
       <div
+        data-mui-test={isHighlighting && inCurrentMonth ? 'DateRangePreview' : undefined}
         className={clsx(classes.rangeIntervalPreview, {
           [classes.rangeIntervalDayPreview]: isPreviewing && inCurrentMonth,
           [classes.rangeIntervalDayPreviewEnd]: isEndOfPreviewing || isEndOfMonth,
@@ -120,11 +122,13 @@ export const PureDateRangeDay = ({
         })}
       >
         <Day
+          allowKeyboardControl={false}
           disableMargin
           {...other}
           day={day}
           selected={selected}
           inCurrentMonth={inCurrentMonth}
+          data-mui-test="DateRangeDay"
           className={clsx(
             classes.day,
             {

@@ -14,13 +14,13 @@ export function usePickerState<TInput, TDateValue>(
       now: MaterialUiPickersDate,
       utils: MuiPickersAdapter,
       props: BasePickerProps<TInput, TDateValue>
-    ) => TDateValue | null;
+    ) => TDateValue;
     validateInput: (
       value: TInput,
       utils: MuiPickersAdapter,
       props: BasePickerProps<TInput, TDateValue>
     ) => React.ReactNode | undefined;
-    areValuesEqual: (valueLeft: TDateValue | null, valueRight: TDateValue | null) => boolean;
+    areValuesEqual: (valueLeft: TDateValue, valueRight: TDateValue) => boolean;
   }
 ) {
   const { autoOk, inputFormat, disabled, readOnly, onAccept, onChange, onError, value } = props;
@@ -46,7 +46,7 @@ export function usePickerState<TInput, TDateValue>(
   }, [value]); // eslint-disable-line
 
   const acceptDate = useCallback(
-    (acceptedDate: TDateValue | null, needClosePicker: boolean) => {
+    (acceptedDate: TDateValue, needClosePicker: boolean) => {
       onChange(acceptedDate);
 
       if (needClosePicker) {
@@ -125,10 +125,10 @@ export function usePickerState<TInput, TDateValue>(
       inputFormat,
       rawValue: value,
       validationError,
-      parsedDateValue: date,
+      parsedDateValue: pickerDate,
       openPicker: () => !readOnly && !disabled && setIsOpen(true),
     }),
-    [date, disabled, inputFormat, onChange, readOnly, setIsOpen, validationError, value]
+    [pickerDate, disabled, inputFormat, onChange, readOnly, setIsOpen, validationError, value]
   );
 
   const pickerState = { pickerProps, inputProps, wrapperProps };

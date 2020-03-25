@@ -2,6 +2,7 @@ import * as React from 'react';
 import { RangeInput, DateRange } from './RangeTypes';
 import { useUtils } from '../_shared/hooks/useUtils';
 import { MaterialUiPickersDate } from '../typings/date';
+import { calculateRangeChange } from './date-range-manager';
 import { useParsedDate } from '../_shared/hooks/useParsedDate';
 import { SharedPickerProps } from '../Picker/SharedPickerProps';
 import { useCalendarState } from '../views/Calendar/useCalendarState';
@@ -33,6 +34,7 @@ export const DateRangePickerView: React.FC<DateRangePickerViewProps> = ({
   disableHighlightToday,
   onMonthChange,
   onDateChange,
+  currentlySelectingRangeEnd,
   setCurrentlySelectingRangeEnd,
   reduceAnimations = defaultReduceAnimations,
 }) => {
@@ -41,7 +43,7 @@ export const DateRangePickerView: React.FC<DateRangePickerViewProps> = ({
   const minDate = useParsedDate(unparsedMinDate)!;
   const maxDate = useParsedDate(unparsedMaxDate)!;
 
-  const [start, end] = date!;
+  const [start, end] = date;
   const {
     changeMonth,
     calendarState,
@@ -60,17 +62,35 @@ export const DateRangePickerView: React.FC<DateRangePickerViewProps> = ({
     disableSwitchToMonthOnDayFocus: true,
   });
 
+  React.useEffect(() => {
+    const monthToShow = currentlySelectingRangeEnd === 'start' ? start : end;
+
+    if (monthToShow && !utils.isSameMonth(monthToShow, calendarState.currentMonth)) {
+      changeMonth(monthToShow);
+    }
+  }, [currentlySelectingRangeEnd]); // eslint-disable-line
+
   const handleChange = React.useCallback(
-    (date: MaterialUiPickersDate) => {
-      if (start === null || utils.isBefore(date, start)) {
-        setCurrentlySelectingRangeEnd('start');
-        onDateChange([date, end], wrapperVariant, false);
-      } else {
-        setCurrentlySelectingRangeEnd('end');
-        onDateChange([start, date], wrapperVariant, true);
-      }
+    (newDate: MaterialUiPickersDate) => {
+      const { nextSelection, newRange } = calculateRangeChange({
+        newDate,
+        utils,
+        range: date,
+        currentlySelectingRangeEnd,
+      });
+
+      console.log(newRange);
+      setCurrentlySelectingRangeEnd(nextSelection);
+      onDateChange(newRange, wrapperVariant, false);
     },
-    [end, onDateChange, setCurrentlySelectingRangeEnd, start, utils, wrapperVariant]
+    [
+      currentlySelectingRangeEnd,
+      date,
+      onDateChange,
+      setCurrentlySelectingRangeEnd,
+      utils,
+      wrapperVariant,
+    ]
   );
 
   switch (wrapperVariant) {
@@ -87,6 +107,7 @@ export const DateRangePickerView: React.FC<DateRangePickerViewProps> = ({
           disableHighlightToday={disableHighlightToday}
           onMonthSwitchingAnimationEnd={onMonthSwitchingAnimationEnd}
           changeMonth={changeMonth}
+          currentlySelectingRangeEnd={currentlySelectingRangeEnd}
         />
       );
     }

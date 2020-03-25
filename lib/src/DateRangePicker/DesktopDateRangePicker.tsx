@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { DateRange } from './RangeTypes';
-import { DateRangeDay } from './DateRangeDay';
 import { makeStyles } from '@material-ui/core';
+import { DateRangeDay } from './DateRangePickerDay';
 import { useUtils } from '../_shared/hooks/useUtils';
 import { MaterialUiPickersDate } from '../typings/date';
+import { calculateRangeChange } from './date-range-manager';
 import { Calendar, CalendarProps } from '../views/Calendar/Calendar';
 import { ArrowSwitcher, ExportedArrowSwitcherProps } from '../_shared/ArrowSwitcher';
 
@@ -17,6 +18,7 @@ interface DesktopDateRangeCalendarProps
     ExportedArrowSwitcherProps {
   date: DateRange;
   changeMonth: (date: MaterialUiPickersDate) => void;
+  currentlySelectingRangeEnd: 'start' | 'end';
 }
 
 export const useStyles = makeStyles(
@@ -55,33 +57,32 @@ export const DesktopDateRangePicker: React.FC<DesktopDateRangeCalendarProps> = (
   rightArrowButtonText,
   rightArrowIcon,
   onChange,
+  currentlySelectingRangeEnd,
   ...CalendarProps
 }) => {
   const utils = useUtils();
   const classes = useStyles();
   const { currentMonth } = CalendarProps;
-  const [start, end] = date;
   const [rangePreviewDay, setRangePreviewDay] = React.useState<MaterialUiPickersDate>(null);
 
-  const previewingRange: DateRange | null = Boolean(rangePreviewDay)
-    ? utils.isAfter(start, rangePreviewDay)
-      ? [rangePreviewDay, start]
-      : [end, rangePreviewDay]
-    : null;
+  const previewingRange = calculateRangeChange({
+    utils,
+    range: date,
+    newDate: rangePreviewDay,
+    currentlySelectingRangeEnd,
+  }).newRange;
 
   const handleDayChange = (day: MaterialUiPickersDate) => {
     setRangePreviewDay(null);
     onChange(day);
   };
 
-  const handlePreviewDayChange = (newPreviewRequest: MaterialUiPickersDate) => {
-    if (!utils.isWithinRange(newPreviewRequest, date)) {
-      setRangePreviewDay(newPreviewRequest);
-    }
+  const isRangeValid = (range: DateRange | null) => {
+    return Boolean(range && utils.isBefore(range[0], range[1]));
   };
 
   const isWithinRange = (day: MaterialUiPickersDate, range: DateRange | null) => {
-    return Boolean(range && utils.isBefore(range[0], range[1]) && utils.isWithinRange(day, range));
+    return isRangeValid(range) && utils.isWithinRange(day, range);
   };
 
   const isStartOfRange = (day: MaterialUiPickersDate, range: DateRange | null) => {
@@ -90,6 +91,12 @@ export const DesktopDateRangePicker: React.FC<DesktopDateRangeCalendarProps> = (
 
   const isEndOfRange = (day: MaterialUiPickersDate, range: DateRange | null) => {
     return Boolean(range && utils.isSameDay(day, range[1]));
+  };
+
+  const handlePreviewDayChange = (newPreviewRequest: MaterialUiPickersDate) => {
+    if (!isWithinRange(newPreviewRequest, date)) {
+      setRangePreviewDay(newPreviewRequest);
+    }
   };
 
   const CalendarTransitionProps = React.useMemo(
