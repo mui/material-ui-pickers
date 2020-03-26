@@ -17,7 +17,7 @@ export const useStyles = makeStyles(
       margin: '0 16px',
     },
     highlighted: {
-      backgroundColor: theme.palette.grey[500],
+      backgroundColor: theme.palette.divider,
     },
   }),
   { name: 'MuiPickersDateRangePickerInput' }
@@ -97,7 +97,7 @@ export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
         hideOpenPickerButton
         openPicker={() => {}}
         onFocus={openRangeStartSelection}
-        className={clsx({ [classes.highlighted]: currentlySelectingRangeEnd !== 'end' })}
+        className={clsx({ [classes.highlighted]: currentlySelectingRangeEnd === 'start' })}
       />
 
       <Typography className={classes.toLabelDelimiter}>{toText}</Typography>
@@ -111,6 +111,7 @@ export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
         hideOpenPickerButton
         openPicker={() => {}}
         onFocus={openRangeEndSelection}
+        className={clsx({ [classes.highlighted]: currentlySelectingRangeEnd === 'end' })}
       />
     </div>
   );
