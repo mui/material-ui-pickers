@@ -41,8 +41,8 @@ export interface ExportedCalendarProps
 
 export interface CalendarProps extends ExportedCalendarProps {
   date: MaterialUiPickersDate | MaterialUiPickersDate[];
-  minDate?: MaterialUiPickersDate;
-  maxDate?: MaterialUiPickersDate;
+  minDate: MaterialUiPickersDate;
+  maxDate: MaterialUiPickersDate;
   isDateDisabled: (day: MaterialUiPickersDate) => boolean;
   slideDirection: SlideDirection;
   currentMonth: MaterialUiPickersDate;
@@ -52,7 +52,7 @@ export interface CalendarProps extends ExportedCalendarProps {
   isMonthSwitchingAnimating: boolean;
   onMonthSwitchingAnimationEnd: () => void;
   className?: string;
-  TransitionProps?: SlideTransitionProps;
+  TransitionProps?: Partial<SlideTransitionProps>;
 }
 
 export const useStyles = makeStyles(theme => ({

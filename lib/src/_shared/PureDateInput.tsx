@@ -66,6 +66,7 @@ export interface DateInputProps<TInputValue = ParsableDate, TDateValue = Materia
   getOpenDialogAriaText?: (value: ParsableDate, utils: MuiPickersAdapter) => string;
   // ?? TODO when it will be possible to display "empty" date in datepicker use it instead of ignoring invalid inputs
   ignoreInvalidInputs?: boolean;
+  open: boolean;
   containerRef?: React.Ref<HTMLDivElement>;
   forwardedRef?: React.Ref<HTMLInputElement>;
 }
@@ -104,6 +105,7 @@ export const PureDateInput: React.FC<DateInputProps> = ({
   parsedDateValue,
   forwardedRef,
   containerRef,
+  open,
   getOpenDialogAriaText = getTextFieldAriaText,
   ...other
 }) => {

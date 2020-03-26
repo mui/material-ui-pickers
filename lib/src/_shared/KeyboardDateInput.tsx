@@ -40,6 +40,7 @@ export const KeyboardDateInput: React.FC<DateInputProps> = ({
   parsedDateValue,
   forwardedRef,
   containerRef,
+  open,
   getOpenDialogAriaText = getTextFieldAriaText,
   ...other
 }) => {

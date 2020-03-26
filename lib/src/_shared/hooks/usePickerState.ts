@@ -123,6 +123,7 @@ export function usePickerState<TInput, TDateValue>(
     () => ({
       onChange,
       inputFormat,
+      open: isOpen,
       rawValue: value,
       validationError,
       parsedDateValue: pickerDate,

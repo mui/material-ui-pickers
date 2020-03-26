@@ -4,6 +4,8 @@ import PageMeta from '_shared/PageMeta';
 import LinkedComponents from '_shared/LinkedComponents';
 
 import * as BasicDateRangePicker from './BasicDateRangePicker.example';
+import * as MinMaxDateRangePicker from './MinMaxDateRangePicker.example';
+import * as CalendarsDateRangePicker from './CalendarsDateRangePicker.example';
 
 <PageMeta component="Datepicker" />
 
@@ -15,6 +17,16 @@ import * as BasicDateRangePicker from './BasicDateRangePicker.example';
 
 #### Basic usage
 
-Will be rendered to modal dialog on mobile and textfield with popover on desktop.
+Basic DateRangePicker example
 
 <Example testId="datepicker-example" source={BasicDateRangePicker} />
+
+#### Different amount of calendars
+
+<Example testId="datepicker-example" source={CalendarsDateRangePicker} />
+
+#### Disabling dates
+
+Disabling dates performs just like in simple `DatePicker`
+
+<Example testId="datepicker-example" source={MinMaxDateRangePicker} />

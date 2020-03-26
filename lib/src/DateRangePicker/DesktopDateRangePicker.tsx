@@ -7,9 +7,14 @@ import { MaterialUiPickersDate } from '../typings/date';
 import { calculateRangeChange } from './date-range-manager';
 import { Calendar, CalendarProps } from '../views/Calendar/Calendar';
 import { ArrowSwitcher, ExportedArrowSwitcherProps } from '../_shared/ArrowSwitcher';
+import {
+  usePreviousMonthDisabled,
+  useParsedDate,
+  useNextMonthDisabled,
+} from '../_shared/hooks/date-helpers-hooks';
 
 export interface ExportedDesktopDateRangeCalendarProps {
-  calendars?: 1 | 2;
+  calendars?: 1 | 2 | 3;
 }
 
 interface DesktopDateRangeCalendarProps
@@ -57,6 +62,10 @@ export const DesktopDateRangePicker: React.FC<DesktopDateRangeCalendarProps> = (
   rightArrowButtonText,
   rightArrowIcon,
   onChange,
+  disableFuture,
+  disablePast,
+  minDate,
+  maxDate,
   currentlySelectingRangeEnd,
   ...CalendarProps
 }) => {
@@ -64,6 +73,9 @@ export const DesktopDateRangePicker: React.FC<DesktopDateRangeCalendarProps> = (
   const classes = useStyles();
   const { currentMonth } = CalendarProps;
   const [rangePreviewDay, setRangePreviewDay] = React.useState<MaterialUiPickersDate>(null);
+
+  const isNextMonthDisabled = useNextMonthDisabled(currentMonth, { disableFuture, maxDate });
+  const isPreviousMonthDisabled = usePreviousMonthDisabled(currentMonth, { disablePast, minDate });
 
   const previewingRange = calculateRangeChange({
     utils,
@@ -127,8 +139,8 @@ export const DesktopDateRangePicker: React.FC<DesktopDateRangeCalendarProps> = (
               onRightClick={selectNextMonth}
               isLeftHidden={index !== 0}
               isRightHidden={index !== calendars - 1}
-              isLeftDisabled={false}
-              isRightDisabled={false}
+              isLeftDisabled={isPreviousMonthDisabled}
+              isRightDisabled={isNextMonthDisabled}
               leftArrowButtonProps={leftArrowButtonProps}
               leftArrowButtonText={leftArrowButtonText}
               leftArrowIcon={leftArrowIcon}
@@ -142,6 +154,10 @@ export const DesktopDateRangePicker: React.FC<DesktopDateRangeCalendarProps> = (
               {...CalendarProps}
               key={index}
               date={date}
+              minDate={minDate}
+              maxDate={maxDate}
+              disablePast={disablePast}
+              disableFuture={disableFuture}
               className={classes.calendar}
               onChange={handleDayChange}
               currentMonth={monthOnIteration}

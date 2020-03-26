@@ -75,6 +75,7 @@ export function makeRangePicker<TWrapper extends SomeWrapper>(Wrapper: TWrapper)
         {...other}
       >
         <DateRangePickerView
+          open={wrapperProps.open}
           DateInputProps={inputProps}
           calendars={calendars}
           minDate={minDate}

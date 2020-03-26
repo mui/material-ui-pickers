@@ -1,8 +1,10 @@
 import * as React from 'react';
+import clsx from 'clsx';
 import Paper from '@material-ui/core/Paper';
 import Popper, { PopperProps } from '@material-ui/core/Popper';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import { WrapperProps } from './Wrapper';
+import { makeStyles } from '@material-ui/core';
 import { InnerMobileWrapperProps } from './MobileWrapper';
 import { WrapperVariantContext } from './WrapperVariantContext';
 import { KeyboardDateInput } from '../_shared/KeyboardDateInput';
@@ -17,6 +19,12 @@ export interface DesktopWrapperProps
   extends InnerDesktopPopperWrapperProps,
     WrapperProps,
     Partial<InnerMobileWrapperProps> {}
+
+const useStyles = makeStyles(theme => ({
+  popper: {
+    zIndex: theme.zIndex.modal,
+  },
+}));
 
 export const DesktopPopperWrapper: React.FC<DesktopWrapperProps> = ({
   open,
@@ -40,6 +48,7 @@ export const DesktopPopperWrapper: React.FC<DesktopWrapperProps> = ({
   KeyboardDateInputComponent = KeyboardDateInput,
   ...other
 }) => {
+  const classes = useStyles();
   const ref = React.useRef<HTMLDivElement>(null);
 
   useGlobalKeyDown(open, {
@@ -61,7 +70,13 @@ export const DesktopPopperWrapper: React.FC<DesktopWrapperProps> = ({
         inputProps={{ 'data-mui-pickers-input': true }}
       />
 
-      <Popper placement="bottom" open={open} anchorEl={ref.current} {...PopperProps}>
+      <Popper
+        placement="bottom"
+        open={open}
+        anchorEl={ref.current}
+        {...PopperProps}
+        className={clsx(classes.popper, PopperProps?.className)}
+      >
         <ClickAwayListener onClickAway={handleClickAway}>
           <Paper>{children}</Paper>
         </ClickAwayListener>

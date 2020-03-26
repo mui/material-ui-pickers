@@ -389,7 +389,7 @@
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
         "name": "BasePickerProps"
       },
-      "required": false,
+      "required": true,
       "type": {
         "name": "boolean"
       }
@@ -1286,7 +1286,7 @@
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
         "name": "BasePickerProps"
       },
-      "required": false,
+      "required": true,
       "type": {
         "name": "boolean"
       }
@@ -2021,7 +2021,7 @@
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
         "name": "BasePickerProps"
       },
-      "required": false,
+      "required": true,
       "type": {
         "name": "boolean"
       }

@@ -1,18 +1,22 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import clsx from 'clsx';
+import Fade from '@material-ui/core/Fade';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
-import Fade from '@material-ui/core/Fade';
-import { makeStyles } from '@material-ui/core/styles';
 import { CalendarProps } from './Calendar';
 import { DatePickerView } from '../../DatePicker';
 import { SlideDirection } from './SlideTransition';
+import { makeStyles } from '@material-ui/core/styles';
 import { useUtils } from '../../_shared/hooks/useUtils';
 import { MaterialUiPickersDate } from '../../typings/date';
 import { FadeTransitionGroup } from './FadeTransitionGroup';
 import { ArrowDropDownIcon } from '../../_shared/icons/ArrowDropDownIcon';
 import { ArrowSwitcher, ExportedArrowSwitcherProps } from '../../_shared/ArrowSwitcher';
+import {
+  usePreviousMonthDisabled,
+  useNextMonthDisabled,
+} from '../../_shared/hooks/date-helpers-hooks';
 
 export interface CalendarHeaderProps
   extends ExportedArrowSwitcherProps,
@@ -102,23 +106,8 @@ export const CalendarHeader: React.SFC<CalendarHeaderProps> = ({
   const selectNextMonth = () => onMonthChange(utils.getNextMonth(month), 'left');
   const selectPreviousMonth = () => onMonthChange(utils.getPreviousMonth(month), 'right');
 
-  const isPreviousMonthDisabled = React.useMemo(() => {
-    const now = utils.date();
-    const firstEnabledMonth = utils.startOfMonth(
-      disablePast && utils.isAfter(now, minDate) ? now : minDate
-    );
-
-    return !utils.isBefore(firstEnabledMonth, month);
-  }, [disablePast, minDate, month, utils]);
-
-  const isNextMonthDisabled = React.useMemo(() => {
-    const now = utils.date();
-    const lastEnabledMonth = utils.startOfMonth(
-      disableFuture && utils.isBefore(now, maxDate) ? now : maxDate
-    );
-
-    return !utils.isAfter(lastEnabledMonth, month);
-  }, [disableFuture, maxDate, month, utils]);
+  const isNextMonthDisabled = useNextMonthDisabled(month, { disableFuture, maxDate });
+  const isPreviousMonthDisabled = usePreviousMonthDisabled(month, { disablePast, minDate });
 
   const toggleView = () => {
     if (views.length === 1) {

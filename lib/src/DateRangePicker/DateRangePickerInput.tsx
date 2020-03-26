@@ -43,7 +43,9 @@ export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
   onClick,
   parsedDateValue,
   id,
+  open,
   className,
+  containerRef,
   forwardedRef,
   currentlySelectingRangeEnd,
   setCurrentlySelectingRangeEnd,
@@ -57,12 +59,16 @@ export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
   const [start, end] = parsedDateValue ?? [null, null];
 
   React.useEffect(() => {
+    if (!open) {
+      return
+    }
+
     if (currentlySelectingRangeEnd === 'start') {
       startRef.current?.focus()
     } else {
       endRef.current?.focus()
     }
-  }, [currentlySelectingRangeEnd])
+  }, [currentlySelectingRangeEnd, open])
 
   const handleStartChange = (date: MaterialUiPickersDate, inputString?: string) => {
     if (date === null || utils.isValid(date)) {
@@ -87,9 +93,10 @@ export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
   }
 
   return (
-    <div id={id} className={clsx(classes.rangeInputsContainer, className)} ref={forwardedRef}>
+    <div id={id} className={clsx(classes.rangeInputsContainer, className)} ref={containerRef}>
       <KeyboardDateInput
         {...other}
+        open={open}
         forwardedRef={startRef}
         rawValue={start}
         parsedDateValue={start}
@@ -104,6 +111,7 @@ export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
 
       <KeyboardDateInput
         {...other}
+        open={open}
         forwardedRef={endRef}
         rawValue={end}
         parsedDateValue={end}
