@@ -9,7 +9,6 @@ import { Calendar, CalendarProps } from '../views/Calendar/Calendar';
 import { ArrowSwitcher, ExportedArrowSwitcherProps } from '../_shared/ArrowSwitcher';
 import {
   usePreviousMonthDisabled,
-  useParsedDate,
   useNextMonthDisabled,
 } from '../_shared/hooks/date-helpers-hooks';
 
@@ -89,7 +88,7 @@ export const DesktopDateRangePicker: React.FC<DesktopDateRangeCalendarProps> = (
     onChange(day);
   };
 
-  const isRangeValid = (range: DateRange | null) => {
+  const isRangeValid = (range: DateRange | null): range is DateRange => {
     return Boolean(range && utils.isBefore(range[0], range[1]));
   };
 
