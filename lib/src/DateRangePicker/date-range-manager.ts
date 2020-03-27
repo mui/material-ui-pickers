@@ -16,10 +16,6 @@ export function calculateRangeChange({
   currentlySelectingRangeEnd,
 }: CalculateRangeChangeOptions): { nextSelection: 'start' | 'end'; newRange: DateRange } {
   const [start, end] = range;
-  const isRangeFilledPartially = start === null || end === null;
-
-  if (isRangeFilledPartially) {
-  }
 
   if (currentlySelectingRangeEnd === 'start') {
     return utils.isAfter(selectedDate, end)
@@ -30,4 +26,23 @@ export function calculateRangeChange({
       ? { nextSelection: 'end', newRange: [selectedDate, null] }
       : { nextSelection: 'end', newRange: [start, selectedDate] };
   }
+}
+
+export function calculateRangePreview(options: CalculateRangeChangeOptions): DateRange {
+  if (!options.newDate) {
+    return [null, null];
+  }
+
+  const [start, end] = options.range;
+  const { newRange } = calculateRangeChange(options);
+
+  if (!start || !end) {
+    return newRange;
+  }
+
+  const [previewStart, previewEnd] = newRange;
+  // prettier-ignore
+  return options.currentlySelectingRangeEnd === 'end'
+    ? [end, previewEnd]
+    : [previewStart, start];
 }

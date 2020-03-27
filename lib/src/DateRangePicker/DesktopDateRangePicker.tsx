@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core';
 import { DateRangeDay } from './DateRangePickerDay';
 import { useUtils } from '../_shared/hooks/useUtils';
 import { MaterialUiPickersDate } from '../typings/date';
-import { calculateRangeChange } from './date-range-manager';
+import { calculateRangePreview } from './date-range-manager';
 import { Calendar, CalendarProps } from '../views/Calendar/Calendar';
 import { ArrowSwitcher, ExportedArrowSwitcherProps } from '../_shared/ArrowSwitcher';
 import {
@@ -76,12 +76,12 @@ export const DesktopDateRangePicker: React.FC<DesktopDateRangeCalendarProps> = (
   const isNextMonthDisabled = useNextMonthDisabled(currentMonth, { disableFuture, maxDate });
   const isPreviousMonthDisabled = usePreviousMonthDisabled(currentMonth, { disablePast, minDate });
 
-  const previewingRange = calculateRangeChange({
+  const previewingRange = calculateRangePreview({
     utils,
     range: date,
     newDate: rangePreviewDay,
     currentlySelectingRangeEnd,
-  }).newRange;
+  });
 
   const handleDayChange = (day: MaterialUiPickersDate) => {
     setRangePreviewDay(null);
@@ -107,6 +107,8 @@ export const DesktopDateRangePicker: React.FC<DesktopDateRangeCalendarProps> = (
   const handlePreviewDayChange = (newPreviewRequest: MaterialUiPickersDate) => {
     if (!isWithinRange(newPreviewRequest, date)) {
       setRangePreviewDay(newPreviewRequest);
+    } else {
+      setRangePreviewDay(null);
     }
   };
 
