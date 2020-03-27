@@ -32,3 +32,18 @@ export const pipe = (...fns: ((...args: any[]) => any)[]) =>
     (prevFn, nextFn) => (...args) => nextFn(prevFn(...args)),
     value => value
   );
+
+export const executeInTheNextEventLoopTick = (fn: () => void) => setTimeout(fn, 0);
+
+export function createDelegatedEventHandler<TEvent>(
+  fn: (e: TEvent) => void,
+  onEvent?: (e: TEvent) => void
+) {
+  return (e: TEvent) => {
+    fn(e);
+
+    if (onEvent) {
+      onEvent(e);
+    }
+  };
+}

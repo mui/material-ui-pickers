@@ -2,14 +2,16 @@ import * as React from 'react';
 import clsx from 'clsx';
 import Fade from '@material-ui/core/Fade';
 import Paper from '@material-ui/core/Paper';
+// @ts-ignore TODO make definitions
+import TrapFocus from '@material-ui/core/Modal/TrapFocus';
 import Popper, { PopperProps } from '@material-ui/core/Popper';
-import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import { WrapperProps } from './Wrapper';
 import { makeStyles } from '@material-ui/core/styles';
 import { InnerMobileWrapperProps } from './MobileWrapper';
 import { WrapperVariantContext } from './WrapperVariantContext';
 import { KeyboardDateInput } from '../_shared/KeyboardDateInput';
 import { useGlobalKeyDown, keycode } from '../_shared/hooks/useKeyDown';
+import { executeInTheNextEventLoopTick, createDelegatedEventHandler } from '../_helpers/utils';
 
 export interface InnerDesktopPopperWrapperProps {
   /** Popover props passed to material-ui Popover */
@@ -50,16 +52,24 @@ export const DesktopPopperWrapper: React.FC<DesktopWrapperProps> = ({
   ...other
 }) => {
   const classes = useStyles();
-  const ref = React.useRef<HTMLDivElement>(null);
+  const inputRef = React.useRef<HTMLDivElement>(null);
+  const popperRef = React.useRef<HTMLElement>(null);
 
   useGlobalKeyDown(open, {
     [keycode.Esc]: onDismiss,
   });
 
-  const handleClickAway = (e: React.MouseEvent<Document>) => {
-    if (!open || (e.target as HTMLElement)?.dataset?.muiPickersInput !== 'true') {
+  const handleBlur = () => {
+    executeInTheNextEventLoopTick(() => {
+      if (
+        inputRef.current?.contains(document.activeElement) ||
+        popperRef.current?.contains(document.activeElement)
+      ) {
+        return;
+      }
+
       onDismiss();
-    }
+    });
   };
 
   return (
@@ -67,24 +77,32 @@ export const DesktopPopperWrapper: React.FC<DesktopWrapperProps> = ({
       <KeyboardDateInputComponent
         {...other}
         {...DateInputProps}
-        containerRef={ref}
-        inputProps={{ 'data-mui-pickers-input': true }}
+        onBlur={createDelegatedEventHandler(handleBlur, DateInputProps.onBlur)}
+        containerRef={inputRef}
       />
 
       <Popper
         transition
         placement="bottom"
         open={open}
-        anchorEl={ref.current}
+        anchorEl={inputRef.current}
         {...PopperProps}
         className={clsx(classes.popper, PopperProps?.className)}
       >
         {({ TransitionProps }) => (
-          <ClickAwayListener onClickAway={handleClickAway}>
+          <TrapFocus
+            open={open}
+            disableEnforceFocus
+            disableAutoFocus
+            getDoc={() => popperRef.current?.ownerDocument ?? document}
+            isEnabled={() => true}
+          >
             <Fade {...TransitionProps} timeout={350}>
-              <Paper elevation={8}>{children}</Paper>
+              <Paper ref={popperRef} onBlur={handleBlur} tabIndex={-1} elevation={8}>
+                {children}
+              </Paper>
             </Fade>
-          </ClickAwayListener>
+          </TrapFocus>
         )}
       </Popper>
     </WrapperVariantContext.Provider>

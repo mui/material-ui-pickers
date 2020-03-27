@@ -6,6 +6,7 @@ import { useUtils } from '../_shared/hooks/useUtils';
 import { MaterialUiPickersDate } from '../typings/date';
 import { DateInputProps } from '../_shared/PureDateInput';
 import { makeStyles, Typography } from '@material-ui/core';
+import { createDelegatedEventHandler } from '../_helpers/utils';
 
 export const useStyles = makeStyles(
   theme => ({
@@ -50,6 +51,7 @@ export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
   currentlySelectingRangeEnd,
   setCurrentlySelectingRangeEnd,
   openPicker,
+  onFocus,
   ...other
 }) => {
   const utils = useUtils()
@@ -103,7 +105,7 @@ export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
         onChange={handleStartChange}
         hideOpenPickerButton
         openPicker={() => {}}
-        onFocus={openRangeStartSelection}
+        onFocus={createDelegatedEventHandler(openRangeStartSelection, onFocus)}
         className={clsx({ [classes.highlighted]: currentlySelectingRangeEnd === 'start' })}
       />
 
@@ -118,7 +120,7 @@ export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
         onChange={handleEndChange}
         hideOpenPickerButton
         openPicker={() => {}}
-        onFocus={openRangeEndSelection}
+        onFocus={createDelegatedEventHandler(openRangeEndSelection, onFocus)}
         className={clsx({ [classes.highlighted]: currentlySelectingRangeEnd === 'end' })}
       />
     </div>
