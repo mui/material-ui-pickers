@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { DateRange } from './RangeTypes';
-import { makeStyles } from '@material-ui/core';
 import { DateRangeDay } from './DateRangePickerDay';
 import { useUtils } from '../_shared/hooks/useUtils';
+import { makeStyles } from '@material-ui/core/styles';
 import { MaterialUiPickersDate } from '../typings/date';
 import { calculateRangePreview } from './date-range-manager';
 import { Calendar, CalendarProps } from '../views/Calendar/Calendar';

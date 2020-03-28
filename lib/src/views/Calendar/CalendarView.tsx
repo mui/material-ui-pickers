@@ -1,15 +1,17 @@
 import * as React from 'react';
+import Grid from '@material-ui/core/Grid';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { YearSelection } from './YearSelection';
 import { MonthSelection } from './MonthSelection';
 import { DatePickerView } from '../../DatePicker';
 import { useCalendarState } from './useCalendarState';
+import { makeStyles } from '@material-ui/core/styles';
 import { VIEW_HEIGHT } from '../../constants/dimensions';
 import { ParsableDate } from '../../constants/prop-types';
 import { MaterialUiPickersDate } from '../../typings/date';
 import { FadeTransitionGroup } from './FadeTransitionGroup';
 import { Calendar, ExportedCalendarProps } from './Calendar';
 import { PickerOnChangeFn } from '../../_shared/hooks/useViews';
-import { makeStyles, CircularProgress, Grid } from '@material-ui/core';
 import { useParsedDate } from '../../_shared/hooks/date-helpers-hooks';
 import { CalendarHeader, CalendarHeaderProps } from './CalendarHeader';
 import { WrapperVariantContext } from '../../wrappers/WrapperVariantContext';

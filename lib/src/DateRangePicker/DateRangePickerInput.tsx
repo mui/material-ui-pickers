@@ -1,11 +1,12 @@
 import * as React from 'react';
 import clsx from 'clsx';
+import Typography from '@material-ui/core/Typography';
 import KeyboardDateInput from '../_shared/KeyboardDateInput';
 import { RangeInput, DateRange } from './RangeTypes';
 import { useUtils } from '../_shared/hooks/useUtils';
+import { makeStyles } from '@material-ui/core/styles';
 import { MaterialUiPickersDate } from '../typings/date';
 import { DateInputProps } from '../_shared/PureDateInput';
-import { makeStyles, Typography } from '@material-ui/core';
 import { createDelegatedEventHandler } from '../_helpers/utils';
 
 export const useStyles = makeStyles(

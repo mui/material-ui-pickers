@@ -1,6 +1,6 @@
 import * as React from 'react';
 import clsx from 'clsx';
-import Fade from '@material-ui/core/Fade';
+import Grow from '@material-ui/core/Grow';
 import Paper from '@material-ui/core/Paper';
 // @ts-ignore TODO make definitions
 import TrapFocus from '@material-ui/core/Modal/TrapFocus';
@@ -11,11 +11,13 @@ import { InnerMobileWrapperProps } from './MobileWrapper';
 import { WrapperVariantContext } from './WrapperVariantContext';
 import { KeyboardDateInput } from '../_shared/KeyboardDateInput';
 import { useGlobalKeyDown, keycode } from '../_shared/hooks/useKeyDown';
+import { TransitionProps } from '@material-ui/core/transitions/transition';
 import { executeInTheNextEventLoopTick, createDelegatedEventHandler } from '../_helpers/utils';
 
 export interface InnerDesktopPopperWrapperProps {
   /** Popover props passed to material-ui Popover */
   PopperProps?: Partial<PopperProps>;
+  TransitionComponent?: React.ComponentType<TransitionProps>;
 }
 
 export interface DesktopWrapperProps
@@ -26,6 +28,15 @@ export interface DesktopWrapperProps
 const useStyles = makeStyles(theme => ({
   popper: {
     zIndex: theme.zIndex.modal,
+  },
+  paper: {
+    transformOrigin: 'top center',
+    '&:focus': {
+      outline: 'auto',
+      '@media (pointer:coarse)': {
+        outline: 0,
+      },
+    },
   },
 }));
 
@@ -48,6 +59,7 @@ export const DesktopPopperWrapper: React.FC<DesktopWrapperProps> = ({
   clearable,
   DialogProps,
   PureDateInputComponent,
+  TransitionComponent = Grow,
   KeyboardDateInputComponent = KeyboardDateInput,
   ...other
 }) => {
@@ -92,16 +104,22 @@ export const DesktopPopperWrapper: React.FC<DesktopWrapperProps> = ({
         {({ TransitionProps }) => (
           <TrapFocus
             open={open}
-            disableEnforceFocus
             disableAutoFocus
-            getDoc={() => popperRef.current?.ownerDocument ?? document}
+            disableEnforceFocus
             isEnabled={() => true}
+            getDoc={() => popperRef.current?.ownerDocument ?? document}
           >
-            <Fade {...TransitionProps} timeout={350}>
-              <Paper ref={popperRef} onBlur={handleBlur} tabIndex={-1} elevation={8}>
+            <TransitionComponent {...TransitionProps} timeout={350}>
+              <Paper
+                ref={popperRef}
+                onBlur={handleBlur}
+                tabIndex={-1}
+                elevation={8}
+                className={classes.paper}
+              >
                 {children}
               </Paper>
-            </Fade>
+            </TransitionComponent>
           </TrapFocus>
         )}
       </Popper>

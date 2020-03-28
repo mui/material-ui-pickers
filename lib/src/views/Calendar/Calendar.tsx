@@ -1,12 +1,13 @@
 import * as React from 'react';
 import clsx from 'clsx';
+import Typography from '@material-ui/core/Typography';
 import { Day, DayProps } from './Day';
 import { MaterialUiPickersDate } from '../../typings/date';
 import { useUtils, useNow } from '../../_shared/hooks/useUtils';
 import { PickerOnChangeFn } from '../../_shared/hooks/useViews';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { DAY_SIZE, DAY_MARGIN } from '../../constants/dimensions';
 import { findClosestEnabledDate } from '../../_helpers/date-utils';
-import { makeStyles, useTheme, Typography } from '@material-ui/core';
 import { useGlobalKeyDown, keycode } from '../../_shared/hooks/useKeyDown';
 import { SlideTransition, SlideDirection, SlideTransitionProps } from './SlideTransition';
 

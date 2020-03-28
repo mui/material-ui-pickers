@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { RangeInput, DateRange } from './RangeTypes';
-import { useUtils } from '../_shared/hooks/useUtils';
 import { MaterialUiPickersDate } from '../typings/date';
 import { calculateRangeChange } from './date-range-manager';
+import { useUtils, useNow } from '../_shared/hooks/useUtils';
 import { SharedPickerProps } from '../Picker/SharedPickerProps';
 import { useParsedDate } from '../_shared/hooks/date-helpers-hooks';
 import { useCalendarState } from '../views/Calendar/useCalendarState';
@@ -47,6 +47,7 @@ export const DateRangePickerView: React.FC<DateRangePickerViewProps> = ({
   shouldDisableDate,
   ...other
 }) => {
+  const now = useNow();
   const utils = useUtils();
   const wrapperVariant = React.useContext(WrapperVariantContext);
   const minDate = useParsedDate(unparsedMinDate)!;
@@ -60,7 +61,7 @@ export const DateRangePickerView: React.FC<DateRangePickerViewProps> = ({
     onMonthSwitchingAnimationEnd,
     changeFocusedDay,
   } = useCalendarState({
-    date: start || end || utils.date(),
+    date: start || end || now,
     minDate,
     maxDate,
     reduceAnimations,
@@ -72,18 +73,20 @@ export const DateRangePickerView: React.FC<DateRangePickerViewProps> = ({
   });
 
   const scrollToDayIfNeeded = (day: MaterialUiPickersDate) => {
-    const currentViewingRange = calendars - 1;
+    const displayingMonthRange = calendars - 1;
     const currentMonthNumber = utils.getMonth(calendarState.currentMonth);
     const requestedMonthNumber = utils.getMonth(day);
 
     if (
       requestedMonthNumber < currentMonthNumber ||
-      requestedMonthNumber > currentMonthNumber + currentViewingRange
+      requestedMonthNumber > currentMonthNumber + displayingMonthRange
     ) {
       const newMonth =
-        currentlySelectingRangeEnd === 'start' ? start : utils.addMonths(end, -currentViewingRange);
+        currentlySelectingRangeEnd === 'start'
+          ? start
+          : // If need to focus end, scroll to the state when "end" is displaying in the last calendar
+            utils.addMonths(end, -displayingMonthRange);
 
-      console.log('CHAING MONTH');
       changeMonth(newMonth);
     }
   };

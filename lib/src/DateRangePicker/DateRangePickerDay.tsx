@@ -1,8 +1,8 @@
 import * as React from 'react';
 import clsx from 'clsx';
-import { makeStyles, fade } from '@material-ui/core';
 import { DAY_MARGIN } from '../constants/dimensions';
 import { useUtils } from '../_shared/hooks/useUtils';
+import { makeStyles, fade } from '@material-ui/core/styles';
 import { Day, DayProps, areDayPropsEqual } from '../views/Calendar/Day';
 
 interface DateRangeDayProps extends DayProps {

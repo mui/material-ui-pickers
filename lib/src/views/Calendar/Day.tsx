@@ -140,7 +140,7 @@ const PureDay: React.FC<DayProps> = ({
       ref.current &&
       allowKeyboardControl
     ) {
-      // ref.current.focus();
+      ref.current.focus();
     }
   }, [allowKeyboardControl, disabled, focused, isAnimating, isInCurrentMonth]);
 
