@@ -27,9 +27,14 @@ const startBorderStyle = {
 const useStyles = makeStyles(
   theme => ({
     rangeIntervalDay: {
-      padding: `0 ${DAY_MARGIN}px`,
-      '&:first-child $rangeIntervalDayPreview': startBorderStyle,
-      '&:last-child $rangeIntervalDayPreview': endBorderStyle,
+      '&:first-child $rangeIntervalDayPreview': {
+        ...startBorderStyle,
+        borderLeftColor: theme.palette.divider,
+      },
+      '&:last-child $rangeIntervalDayPreview': {
+        ...endBorderStyle,
+        borderRightColor: theme.palette.divider,
+      },
     },
     rangeIntervalDayHighlight: {
       borderRadius: 0,
@@ -67,18 +72,20 @@ const useStyles = makeStyles(
       backgroundColor: 'transparent',
     },
     rangeIntervalPreview: {
-      borderTop: '2px solid transparent',
-      borderBottom: '2px solid transparent',
+      border: '2px solid transparent',
     },
     rangeIntervalDayPreview: {
       borderRadius: 0,
-      borderTop: `2px dashed ${theme.palette.divider}`,
-      borderBottom: `2px dashed ${theme.palette.divider}`,
+      border: `2px dashed ${theme.palette.divider}`,
+      borderLeftColor: 'transparent',
+      borderRightColor: 'transparent',
     },
     rangeIntervalDayPreviewStart: {
+      borderLeftColor: theme.palette.divider,
       ...startBorderStyle,
     },
     rangeIntervalDayPreviewEnd: {
+      borderRightColor: theme.palette.divider,
       ...endBorderStyle,
     },
   }),
@@ -104,21 +111,26 @@ export const PureDateRangeDay = ({
   const isEndOfMonth = utils.isSameDay(day, utils.endOfMonth(day));
   const isStartOfMonth = utils.isSameDay(day, utils.startOfMonth(day));
 
+  const shouldRenderHighlight = isHighlighting && inCurrentMonth;
+  const shouldRenderPreview = isPreviewing && inCurrentMonth;
+
   return (
     <div
-      data-mui-test={isHighlighting && inCurrentMonth ? 'DateRangeHighlight' : undefined}
+      data-mui-test={shouldRenderHighlight ? 'DateRangeHighlight' : undefined}
       className={clsx(classes.rangeIntervalDay, {
-        [classes.rangeIntervalDayHighlight]: isHighlighting && inCurrentMonth,
+        [classes.rangeIntervalDayHighlight]: shouldRenderHighlight,
         [classes.rangeIntervalDayHighlightEnd]: isEndOfHighlighting || isEndOfMonth,
         [classes.rangeIntervalDayHighlightStart]: isStartOfHighlighting || isStartOfMonth,
       })}
     >
       <div
-        data-mui-test={isHighlighting && inCurrentMonth ? 'DateRangePreview' : undefined}
+        data-mui-test={shouldRenderPreview ? 'DateRangePreview' : undefined}
         className={clsx(classes.rangeIntervalPreview, {
-          [classes.rangeIntervalDayPreview]: isPreviewing && inCurrentMonth,
-          [classes.rangeIntervalDayPreviewEnd]: isEndOfPreviewing || isEndOfMonth,
-          [classes.rangeIntervalDayPreviewStart]: isStartOfPreviewing || isStartOfMonth,
+          [classes.rangeIntervalDayPreview]: shouldRenderPreview,
+          [classes.rangeIntervalDayPreviewEnd]:
+            isEndOfPreviewing || (shouldRenderPreview && isEndOfMonth),
+          [classes.rangeIntervalDayPreviewStart]:
+            isStartOfPreviewing || (shouldRenderPreview && isStartOfMonth),
         })}
       >
         <Day
