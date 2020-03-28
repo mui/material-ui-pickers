@@ -29,7 +29,7 @@ export interface ExportedDateRangePickerInputProps {
   rangeChangingStrategy?: 'expand' | 'circular';
 }
 
-interface DateRangeInputProps
+export interface DateRangeInputProps
   extends ExportedDateRangePickerInputProps,
     DateInputProps<RangeInput, DateRange> {
   currentlySelectingRangeEnd: 'start' | 'end';

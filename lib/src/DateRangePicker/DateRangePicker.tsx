@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { DateRange, RangeInput } from './RangeTypes';
 import { MaterialUiPickersDate } from '../typings/date';
 import { BasePickerProps } from '../typings/BasePicker';
+import { DateRangeInputProps } from './DateRangePickerInput';
 import { parsePickerInputValue } from '../_helpers/date-utils';
 import { usePickerState } from '../_shared/hooks/usePickerState';
 import { SomeWrapper, ExtendWrapper } from '../wrappers/Wrapper';
 import { AllSharedPickerProps } from '../Picker/SharedPickerProps';
+import { DateRange as DateRangeType, RangeInput } from './RangeTypes';
 import { DesktopPopperWrapper } from '../wrappers/DesktopPopperWrapper';
 import { MuiPickersAdapter, useUtils } from '../_shared/hooks/useUtils';
 import { makeWrapperComponent } from '../wrappers/makeWrapperComponent';
@@ -25,10 +26,13 @@ export function parseRangeInputValue(
 }
 
 export function makeRangePicker<TWrapper extends SomeWrapper>(Wrapper: TWrapper) {
-  const WrapperComponent = makeWrapperComponent<RangeInput, DateRange>(Wrapper, {
-    KeyboardDateInputComponent: DateRangePickerInput,
-    PureDateInputComponent: DateRangePickerInput,
-  });
+  const WrapperComponent = makeWrapperComponent<DateRangeInputProps, RangeInput, DateRange>(
+    Wrapper,
+    {
+      KeyboardDateInputComponent: DateRangePickerInput,
+      PureDateInputComponent: DateRangePickerInput,
+    }
+  );
 
   function RangePickerWithStateAndWrapper({
     calendars,
@@ -63,15 +67,18 @@ export function makeRangePicker<TWrapper extends SomeWrapper>(Wrapper: TWrapper)
         parseInput: parseRangeInputValue,
         areValuesEqual: (a, b) => utils.isEqual(a[0], b[0]) && utils.isEqual(a[1], b[1]),
         validateInput: () => undefined,
+        emptyValue: [null, null],
       }
     );
 
     return (
       <WrapperComponent
-        inputProps={inputProps}
         wrapperProps={wrapperProps}
-        currentlySelectingRangeEnd={currentlySelectingRangeEnd}
-        setCurrentlySelectingRangeEnd={setCurrentlySelectingRangeEnd}
+        inputProps={{
+          ...inputProps,
+          currentlySelectingRangeEnd,
+          setCurrentlySelectingRangeEnd,
+        }}
         {...other}
       >
         <DateRangePickerView
@@ -102,6 +109,7 @@ export function makeRangePicker<TWrapper extends SomeWrapper>(Wrapper: TWrapper)
   return RangePickerWithStateAndWrapper;
 }
 
-export const DateRangePicker = makeRangePicker(DesktopPopperWrapper);
+// TODO replace with new export type syntax
+export type DateRange = DateRangeType;
 
-export { DateRange };
+export const DateRangePicker = makeRangePicker(DesktopPopperWrapper);

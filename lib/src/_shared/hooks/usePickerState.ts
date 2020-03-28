@@ -20,6 +20,7 @@ export function usePickerState<TInput, TDateValue>(
       utils: MuiPickersAdapter,
       props: BasePickerProps<TInput, TDateValue>
     ) => React.ReactNode | undefined;
+    emptyValue: TDateValue;
     areValuesEqual: (valueLeft: TDateValue, valueRight: TDateValue) => boolean;
   }
 ) {
@@ -64,7 +65,7 @@ export function usePickerState<TInput, TDateValue>(
     () => ({
       open: isOpen,
       format: inputFormat,
-      onClear: () => acceptDate(null, true),
+      onClear: () => acceptDate(valueManager.emptyValue, true),
       onAccept: () => acceptDate(pickerDate, true),
       onDismiss: () => setIsOpen(false),
       onSetToday: () => {
@@ -73,7 +74,7 @@ export function usePickerState<TInput, TDateValue>(
         acceptDate(now as any, Boolean(autoOk));
       },
     }),
-    [acceptDate, autoOk, inputFormat, isOpen, now, pickerDate, setIsOpen]
+    [acceptDate, autoOk, inputFormat, isOpen, now, pickerDate, setIsOpen, valueManager.emptyValue]
   );
 
   const pickerProps = useMemo(
@@ -129,7 +130,17 @@ export function usePickerState<TInput, TDateValue>(
       parsedDateValue: pickerDate,
       openPicker: () => !readOnly && !disabled && setIsOpen(true),
     }),
-    [pickerDate, disabled, inputFormat, onChange, readOnly, setIsOpen, validationError, value]
+    [
+      onChange,
+      inputFormat,
+      isOpen,
+      value,
+      validationError,
+      pickerDate,
+      readOnly,
+      disabled,
+      setIsOpen,
+    ]
   );
 
   const pickerState = { pickerProps, inputProps, wrapperProps };

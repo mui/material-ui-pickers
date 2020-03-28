@@ -154,7 +154,7 @@ const PureDay: React.FC<DayProps> = ({
     }
   };
 
-  const handleClick = (e: React.MouseEvent) => {
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (!disabled) {
       onDaySelect(day, true);
     }

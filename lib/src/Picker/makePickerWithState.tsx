@@ -2,7 +2,6 @@ import * as React from 'react';
 import { useUtils } from '../_shared/hooks/useUtils';
 import { ParsableDate } from '../constants/prop-types';
 import { MaterialUiPickersDate } from '../typings/date';
-import { PureDateInput } from '../_shared/PureDateInput';
 import { parsePickerInputValue } from '../_helpers/date-utils';
 import { KeyboardDateInput } from '../_shared/KeyboardDateInput';
 import { usePickerState } from '../_shared/hooks/usePickerState';
@@ -11,6 +10,7 @@ import { validateDateValue } from '../_helpers/text-field-helper';
 import { ResponsiveWrapper } from '../wrappers/ResponsiveWrapper';
 import { withDateAdapterProp } from '../_shared/withDateAdapterProp';
 import { makeWrapperComponent } from '../wrappers/makeWrapperComponent';
+import { PureDateInput, DateInputProps } from '../_shared/PureDateInput';
 import { AnyPickerView, AllSharedPickerProps } from './SharedPickerProps';
 import { Picker, ToolbarComponentProps, ExportedPickerProps } from './Picker';
 
@@ -25,10 +25,13 @@ export function makePickerWithStateAndWrapper<
   T extends AllAvailableForOverrideProps,
   TWrapper extends SomeWrapper = typeof ResponsiveWrapper
 >(Wrapper: TWrapper, { useDefaultProps, DefaultToolbarComponent }: MakePickerOptions<T>) {
-  const PickerWrapper = makeWrapperComponent(Wrapper, {
-    KeyboardDateInputComponent: KeyboardDateInput,
-    PureDateInputComponent: PureDateInput,
-  });
+  const PickerWrapper = makeWrapperComponent<DateInputProps, ParsableDate, MaterialUiPickersDate>(
+    Wrapper,
+    {
+      KeyboardDateInputComponent: KeyboardDateInput,
+      PureDateInputComponent: PureDateInput,
+    }
+  );
 
   function PickerWithState(props: T & AllSharedPickerProps & ExtendWrapper<TWrapper>) {
     const utils = useUtils();
@@ -39,6 +42,7 @@ export function makePickerWithStateAndWrapper<
       ParsableDate,
       MaterialUiPickersDate
     >(allProps, {
+      emptyValue: null,
       parseInput: parsePickerInputValue,
       validateInput: validateDateValue,
       areValuesEqual: utils.isEqual,
