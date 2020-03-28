@@ -72,6 +72,7 @@ const useStyles = makeStyles(
       backgroundColor: 'transparent',
     },
     rangeIntervalPreview: {
+      // replace default day component margin with transparent border to avoid jumping on preview
       border: '2px solid transparent',
     },
     rangeIntervalDayPreview: {
@@ -79,15 +80,18 @@ const useStyles = makeStyles(
       border: `2px dashed ${theme.palette.divider}`,
       borderLeftColor: 'transparent',
       borderRightColor: 'transparent',
+
+      '&$rangeIntervalDayPreviewStart': {
+        borderLeftColor: theme.palette.divider,
+        ...startBorderStyle,
+      },
+      '&$rangeIntervalDayPreviewEnd': {
+        borderRightColor: theme.palette.divider,
+        ...endBorderStyle,
+      },
     },
-    rangeIntervalDayPreviewStart: {
-      borderLeftColor: theme.palette.divider,
-      ...startBorderStyle,
-    },
-    rangeIntervalDayPreviewEnd: {
-      borderRightColor: theme.palette.divider,
-      ...endBorderStyle,
-    },
+    rangeIntervalDayPreviewStart: {},
+    rangeIntervalDayPreviewEnd: {},
   }),
   { name: 'MuiPickersDateRangeDay' }
 );
@@ -127,10 +131,8 @@ export const PureDateRangeDay = ({
         data-mui-test={shouldRenderPreview ? 'DateRangePreview' : undefined}
         className={clsx(classes.rangeIntervalPreview, {
           [classes.rangeIntervalDayPreview]: shouldRenderPreview,
-          [classes.rangeIntervalDayPreviewEnd]:
-            isEndOfPreviewing || (shouldRenderPreview && isEndOfMonth),
-          [classes.rangeIntervalDayPreviewStart]:
-            isStartOfPreviewing || (shouldRenderPreview && isStartOfMonth),
+          [classes.rangeIntervalDayPreviewEnd]: isEndOfPreviewing || isEndOfMonth,
+          [classes.rangeIntervalDayPreviewStart]: isStartOfPreviewing || isStartOfMonth,
         })}
       >
         <Day

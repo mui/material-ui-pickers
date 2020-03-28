@@ -114,7 +114,7 @@ export const DesktopDateRangePicker: React.FC<DesktopDateRangeCalendarProps> = (
 
   const CalendarTransitionProps = React.useMemo(
     () => ({
-      // onMouseLeave: () => setRangePreviewDay(null),
+      onMouseLeave: () => setRangePreviewDay(null),
     }),
     []
   );
