@@ -47,7 +47,7 @@
     "@date-io/date-fns": "^2.1.0",
     "@date-io/dayjs": "^2.1.0",
     "@date-io/luxon": "^2.1.0",
-    "@date-io/moment": "^2.1.0",
+    "@date-io/moment": "^2.5.0",
     "clsx": "^1.0.2",
     "prop-types": "^15.7.2",
     "react-transition-group": "^4.0.0",

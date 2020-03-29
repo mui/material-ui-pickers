@@ -1353,10 +1353,10 @@
     debug "^3.1.0"
     lodash.once "^4.1.1"
 
-"@date-io/core@^2.4.0":
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/@date-io/core/-/core-2.4.0.tgz#59e1c6de1d48ee63c6e97681b415076d04e7b5bf"
-  integrity sha512-XUr4TSwFmthcCn5QYnGqobbnBqOsSyCggRfvieMQHPSz5zei8KYpw4xlvFFQfu/MI3CmCHDjWMkVaPy/uFIDNA==
+"@date-io/core@^2.4.0", "@date-io/core@^2.5.0":
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/@date-io/core/-/core-2.5.0.tgz#afb3a82e989a925755cba139b71f95b6b396dce2"
+  integrity sha512-GifWlc0hyLdYwivltV8KVwE+OOVgYoHF4DvvKn6VOA73iVvqxbXXeL18PVFjMw8r0JUHmuhP6S+4TD8INBzXZA==
 
 "@date-io/date-fns@^2.1.0":
   version "2.4.0"
@@ -1393,12 +1393,12 @@
   dependencies:
     "@date-io/core" "^2.4.0"
 
-"@date-io/moment@^2.1.0", "@date-io/moment@^2.4.0":
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/@date-io/moment/-/moment-2.4.0.tgz#84612f4cf175ec8093c43a6b6176f874d2d1f007"
-  integrity sha512-857C9idmZGpD8NygxQsOXPa3OePC6UFAhU996dCUv8cY17p1tkjgj7/JZ3J7PTV2i8ybeUDUD/tAadACEtI05g==
+"@date-io/moment@^2.4.0", "@date-io/moment@^2.5.0":
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/@date-io/moment/-/moment-2.5.0.tgz#f66e604a38f0687dfb410a2ae8dd8ea139322a86"
+  integrity sha512-PRdmnbpNMWWQ6ykaMUF7rROWuGl0l9GOdsTO8wRnZjJG19tb+3gE03iGL+UajjB9EJrtgTmihIUoOt6wUhh5Bg==
   dependencies:
-    "@date-io/core" "^2.4.0"
+    "@date-io/core" "^2.5.0"
 
 "@emotion/hash@^0.8.0":
   version "0.8.0"
