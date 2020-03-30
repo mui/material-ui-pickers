@@ -205,13 +205,15 @@ export const Calendar: React.FC<CalendarProps> = ({
                   isAnimating: isMonthSwitchingAnimating,
                   disabled: disabled,
                   allowKeyboardControl: allowKeyboardControl,
-                  focused: Boolean(focusedDay) && utils.isSameDay(day, focusedDay),
+                  focused:
+                    allowKeyboardControl && Boolean(focusedDay) && utils.isSameDay(day, focusedDay),
                   today: utils.isSameDay(day, now),
                   inCurrentMonth: isDayInCurrentMonth,
                   selected: selectedDates.some(selectedDate => utils.isSameDay(selectedDate, day)),
                   disableHighlightToday,
                   showDaysOutsideCurrentMonth,
                   focusable:
+                    allowKeyboardControl &&
                     Boolean(nowFocusedDay) &&
                     utils.toJsDate(nowFocusedDay).getDate() === utils.toJsDate(day).getDate(),
                   onDayFocus: changeFocusedDay,

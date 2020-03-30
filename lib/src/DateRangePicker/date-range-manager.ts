@@ -18,11 +18,11 @@ export function calculateRangeChange({
   const [start, end] = range;
 
   if (currentlySelectingRangeEnd === 'start') {
-    return utils.isAfter(selectedDate, end)
+    return Boolean(end) && utils.isAfter(selectedDate, end)
       ? { nextSelection: 'end', newRange: [selectedDate, null] }
       : { nextSelection: 'end', newRange: [selectedDate, end] };
   } else {
-    return utils.isBefore(selectedDate, start)
+    return Boolean(start) && utils.isBefore(selectedDate, start)
       ? { nextSelection: 'end', newRange: [selectedDate, null] }
       : { nextSelection: 'end', newRange: [start, selectedDate] };
   }

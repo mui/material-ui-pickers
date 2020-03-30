@@ -83,10 +83,13 @@ export const DesktopDateRangePicker: React.FC<DesktopDateRangeCalendarProps> = (
     currentlySelectingRangeEnd,
   });
 
-  const handleDayChange = (day: MaterialUiPickersDate) => {
-    setRangePreviewDay(null);
-    onChange(day);
-  };
+  const handleDayChange = React.useCallback(
+    (day: MaterialUiPickersDate) => {
+      setRangePreviewDay(null);
+      onChange(day);
+    },
+    [onChange]
+  );
 
   const isRangeValid = (range: DateRange | null): range is DateRange => {
     return Boolean(range && utils.isBefore(range[0], range[1]));
@@ -152,6 +155,7 @@ export const DesktopDateRangePicker: React.FC<DesktopDateRangeCalendarProps> = (
             />
 
             <Calendar
+              allowKeyboardControl
               {...CalendarProps}
               key={index}
               date={date}

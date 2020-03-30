@@ -18,7 +18,7 @@ function MinMaxDateRangePicker() {
       disablePast
       value={selectedRange}
       shouldDisableDate={disableWeekends}
-      maxDate={utils.addMonths(selectedRange[0], 12)}
+      maxDate={utils.addMonths(utils.date(selectedRange[0]), 12)}
       onChange={date => handleDateChange(date)}
     />
   );
