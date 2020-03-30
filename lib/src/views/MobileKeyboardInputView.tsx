@@ -1,10 +1,11 @@
 import * as React from 'react';
-import KeyboardDateInput from '../_shared/KeyboardDateInput';
 import { makeStyles } from '@material-ui/core/styles';
 import { DateInputProps } from '../_shared/PureDateInput';
 import { InnerMobileWrapperProps } from '../wrappers/MobileWrapper';
 
-interface MobileKeyboardInputViewProps extends DateInputProps, Partial<InnerMobileWrapperProps> {}
+interface MobileKeyboardInputViewProps extends DateInputProps, Partial<InnerMobileWrapperProps> {
+  DateInputComponent: React.FC<DateInputProps>;
+}
 
 const useStyles = makeStyles(() => ({
   mobileKeyboardView: {
@@ -16,12 +17,13 @@ export const MobileKeyboardInputView: React.FC<MobileKeyboardInputViewProps> = (
   clearLabel,
   DialogProps,
   clearable,
+  DateInputComponent,
   ...other
 }) => {
   const classes = useStyles();
   return (
     <div className={classes.mobileKeyboardView}>
-      <KeyboardDateInput autoFocus fullWidth {...other} hideOpenPickerButton ignoreInvalidInputs />
+      <DateInputComponent autoFocus fullWidth {...other} disableOpenPicker ignoreInvalidInputs />
     </div>
   );
 };

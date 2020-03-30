@@ -47,7 +47,7 @@ export function makeRangePicker<TWrapper extends SomeWrapper>(Wrapper: TWrapper)
     disableHighlightToday,
     reduceAnimations,
     inputFormat: passedInputFormat,
-    ...other
+    ...restPropsForTextField
   }: DateRangePickerViewProps &
     ExportedDateRangePickerInputProps &
     AllSharedPickerProps<RangeInput, DateRange> &
@@ -58,7 +58,7 @@ export function makeRangePicker<TWrapper extends SomeWrapper>(Wrapper: TWrapper)
     >('start');
 
     const pickerStateProps = {
-      ...other,
+      ...restPropsForTextField,
       inputFormat: passedInputFormat || utils.formats.keyboardDate,
     };
 
@@ -77,15 +77,19 @@ export function makeRangePicker<TWrapper extends SomeWrapper>(Wrapper: TWrapper)
         wrapperProps={wrapperProps}
         inputProps={{
           ...inputProps,
-          readOnly: true,
           currentlySelectingRangeEnd,
           setCurrentlySelectingRangeEnd,
         }}
-        {...other}
+        {...restPropsForTextField}
       >
         <DateRangePickerView
           open={wrapperProps.open}
-          DateInputProps={inputProps}
+          DateInputProps={{
+            currentlySelectingRangeEnd,
+            setCurrentlySelectingRangeEnd,
+            ...restPropsForTextField,
+            ...inputProps,
+          }}
           calendars={calendars}
           minDate={minDate}
           maxDate={maxDate}
@@ -106,6 +110,7 @@ export function makeRangePicker<TWrapper extends SomeWrapper>(Wrapper: TWrapper)
 
   RangePickerWithStateAndWrapper.defaultProps = {
     mask: '__/__/____',
+    variant: 'outlined',
   };
 
   return RangePickerWithStateAndWrapper;

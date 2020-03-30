@@ -884,12 +884,12 @@
         "name": "(str: string) => string"
       }
     },
-    "hideOpenPickerButton": {
+    "disableOpenPicker": {
       "defaultValue": {
         "value": "false"
       },
       "description": "Do not render open picker button (renders only text field with validation)",
-      "name": "hideOpenPickerButton",
+      "name": "disableOpenPicker",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
         "name": "DateInputProps"
@@ -1509,12 +1509,12 @@
         "name": "(str: string) => string"
       }
     },
-    "hideOpenPickerButton": {
+    "disableOpenPicker": {
       "defaultValue": {
         "value": "false"
       },
       "description": "Do not render open picker button (renders only text field with validation)",
-      "name": "hideOpenPickerButton",
+      "name": "disableOpenPicker",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
         "name": "DateInputProps"
@@ -2503,12 +2503,12 @@
         "name": "(str: string) => string"
       }
     },
-    "hideOpenPickerButton": {
+    "disableOpenPicker": {
       "defaultValue": {
         "value": "false"
       },
       "description": "Do not render open picker button (renders only text field with validation)",
-      "name": "hideOpenPickerButton",
+      "name": "disableOpenPicker",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
         "name": "DateInputProps"

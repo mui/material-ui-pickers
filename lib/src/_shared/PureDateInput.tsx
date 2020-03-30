@@ -57,7 +57,7 @@ export interface DateInputProps<TInputValue = ParsableDate, TDateValue = Materia
    * Do not render open picker button (renders only text field with validation)
    * @default false
    */
-  hideOpenPickerButton?: boolean;
+  disableOpenPicker?: boolean;
   /**
    * Disable mask on the keyboard, this should be used rarely. Consider passing proper mask for your format
    * @default false
@@ -99,7 +99,7 @@ export const PureDateInput: React.FC<DateInputProps> = ({
   variant,
   emptyInputText: emptyLabel,
   keyboardIcon,
-  hideOpenPickerButton,
+  disableOpenPicker: hideOpenPickerButton,
   ignoreInvalidInputs,
   KeyboardButtonProps,
   disableMaskedInput,

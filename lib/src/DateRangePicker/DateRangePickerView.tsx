@@ -14,6 +14,9 @@ import {
   DateRangePickerViewDesktop,
   ExportedDesktopDateRangeCalendarProps,
 } from './DateRangePickerViewDesktop';
+import { BasePickerProps } from '../typings/BasePicker';
+import { MobileKeyboardInputView } from '../views/MobileKeyboardInputView';
+import { DateRangePickerInput } from './DateRangePickerInput';
 
 type BaseCalendarPropsToReuse = Omit<ExportedCalendarViewProps, 'onYearChange'>;
 
@@ -21,7 +24,8 @@ export interface DateRangePickerViewProps
   extends BaseCalendarPropsToReuse,
     ExportedDesktopDateRangeCalendarProps,
     SharedPickerProps<RangeInput, DateRange>,
-    CurrentlySelectingRangeEndProps {
+    CurrentlySelectingRangeEndProps,
+    Omit<BasePickerProps, 'value' | 'onChange'> {
   /**
    * if `true` after selecting `start` date  calendar will not automatically switch to the month of `end` date
    * @default false
@@ -48,6 +52,8 @@ export const DateRangePickerView: React.FC<DateRangePickerViewProps> = ({
   shouldDisableDate,
   toggleMobileKeyboardView,
   isMobileKeyboardViewOpen,
+  showToolbar,
+  DateInputProps,
   ...other
 }) => {
   const now = useNow();
@@ -74,6 +80,8 @@ export const DateRangePickerView: React.FC<DateRangePickerViewProps> = ({
     shouldDisableDate,
     disableSwitchToMonthOnDayFocus: true,
   });
+
+  const toShowToolbar = showToolbar ?? wrapperVariant !== 'desktop';
 
   const scrollToDayIfNeeded = (day: MaterialUiPickersDate) => {
     const displayingMonthRange = wrapperVariant === 'mobile' ? 0 : calendars - 1;
@@ -131,45 +139,33 @@ export const DateRangePickerView: React.FC<DateRangePickerViewProps> = ({
     ]
   );
 
-  if (isMobileKeyboardViewOpen) {
-    return <>"LOL KEK CHEBUREK"</>;
-  }
-
-  switch (wrapperVariant) {
-    case 'desktop': {
-      return (
-        <DateRangePickerViewDesktop
-          calendars={calendars}
-          date={date}
-          isDateDisabled={isDateDisabled}
-          changeFocusedDay={changeFocusedDay}
-          onChange={handleChange}
-          reduceAnimations={reduceAnimations}
-          disableHighlightToday={disableHighlightToday}
-          onMonthSwitchingAnimationEnd={onMonthSwitchingAnimationEnd}
-          changeMonth={changeMonth}
-          currentlySelectingRangeEnd={currentlySelectingRangeEnd}
-          disableFuture={disableFuture}
-          disablePast={disablePast}
-          minDate={minDate}
-          maxDate={maxDate}
-          {...calendarState}
-          {...other}
-        />
-      );
-    }
-
-    case 'mobile': {
-      return (
-        <>
-          <DateRangePickerToolbar
+  const renderView = () => {
+    switch (wrapperVariant) {
+      case 'desktop': {
+        return (
+          <DateRangePickerViewDesktop
+            calendars={calendars}
             date={date}
-            isMobileKeyboardViewOpen={isMobileKeyboardViewOpen}
-            toggleMobileKeyboardView={toggleMobileKeyboardView}
+            isDateDisabled={isDateDisabled}
+            changeFocusedDay={changeFocusedDay}
+            onChange={handleChange}
+            reduceAnimations={reduceAnimations}
+            disableHighlightToday={disableHighlightToday}
+            onMonthSwitchingAnimationEnd={onMonthSwitchingAnimationEnd}
+            changeMonth={changeMonth}
             currentlySelectingRangeEnd={currentlySelectingRangeEnd}
-            setCurrentlySelectingRangeEnd={setCurrentlySelectingRangeEnd}
+            disableFuture={disableFuture}
+            disablePast={disablePast}
+            minDate={minDate}
+            maxDate={maxDate}
+            {...calendarState}
+            {...other}
           />
+        );
+      }
 
+      case 'mobile': {
+        return (
           <DateRangePickerViewMobile
             date={date}
             isDateDisabled={isDateDisabled}
@@ -186,12 +182,32 @@ export const DateRangePickerView: React.FC<DateRangePickerViewProps> = ({
             {...calendarState}
             {...other}
           />
-        </>
-      );
-    }
+        );
+      }
 
-    default: {
-      throw new Error('Only desktop wrapper supported for DateRangePicker');
+      default: {
+        throw new Error('Only desktop wrapper supported for DateRangePicker');
+      }
     }
-  }
+  };
+
+  return (
+    <>
+      {toShowToolbar && (
+        <DateRangePickerToolbar
+          date={date}
+          isMobileKeyboardViewOpen={isMobileKeyboardViewOpen}
+          toggleMobileKeyboardView={toggleMobileKeyboardView}
+          currentlySelectingRangeEnd={currentlySelectingRangeEnd}
+          setCurrentlySelectingRangeEnd={setCurrentlySelectingRangeEnd}
+        />
+      )}
+
+      {isMobileKeyboardViewOpen ? (
+        <MobileKeyboardInputView DateInputComponent={DateRangePickerInput} {...DateInputProps} />
+      ) : (
+        renderView()
+      )}
+    </>
+  );
 };

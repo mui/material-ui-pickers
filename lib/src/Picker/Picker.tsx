@@ -1,5 +1,6 @@
 import * as React from 'react';
 import clsx from 'clsx';
+import KeyboardDateInput from '../_shared/KeyboardDateInput';
 import { useViews } from '../_shared/hooks/useViews';
 import { makeStyles } from '@material-ui/core/styles';
 import { DateTimePickerView } from '../DateTimePicker';
@@ -146,7 +147,7 @@ export function Picker({
         })}
       >
         {isMobileKeyboardViewOpen ? (
-          <MobileKeyboardInputView {...DateInputProps} />
+          <MobileKeyboardInputView DateInputComponent={KeyboardDateInput} {...DateInputProps} />
         ) : (
           <>
             {(openView === 'year' || openView === 'month' || openView === 'date') && (

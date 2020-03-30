@@ -7,6 +7,7 @@ import { useUtils } from '../_shared/hooks/useUtils';
 import { makeStyles } from '@material-ui/core/styles';
 import { MaterialUiPickersDate } from '../typings/date';
 import { DateInputProps } from '../_shared/PureDateInput';
+import { CurrentlySelectingRangeEndProps } from './RangeTypes';
 import { createDelegatedEventHandler } from '../_helpers/utils';
 
 export const useStyles = makeStyles(
@@ -21,6 +22,9 @@ export const useStyles = makeStyles(
     },
     toLabelDelimiter: {
       margin: '0 16px',
+      [theme.breakpoints.down('xs')]: {
+        margin: '8px 0',
+      },
     },
     highlighted: {
       backgroundColor: theme.palette.divider,
@@ -36,13 +40,9 @@ export interface ExportedDateRangePickerInputProps {
 
 export interface DateRangeInputProps
   extends ExportedDateRangePickerInputProps,
-    DateInputProps<RangeInput, DateRange> {
-  readOnly: boolean;
-  currentlySelectingRangeEnd: 'start' | 'end';
-  setCurrentlySelectingRangeEnd: (newSelectionEnd: 'start' | 'end') => void;
-}
+    CurrentlySelectingRangeEndProps,
+    DateInputProps<RangeInput, DateRange> {}
 
-// prettier-ignore
 export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
   toText = 'to',
   rawValue,
@@ -59,25 +59,26 @@ export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
   openPicker,
   onFocus,
   readOnly,
+  disableOpenPicker,
   ...other
 }) => {
-  const utils = useUtils()
+  const utils = useUtils();
   const classes = useStyles();
-  const startRef = React.useRef<HTMLInputElement>(null)
-  const endRef = React.useRef<HTMLInputElement>(null)
+  const startRef = React.useRef<HTMLInputElement>(null);
+  const endRef = React.useRef<HTMLInputElement>(null);
   const [start, end] = parsedDateValue ?? [null, null];
 
   React.useEffect(() => {
     if (!open) {
-      return
+      return;
     }
 
     if (currentlySelectingRangeEnd === 'start') {
-      startRef.current?.focus()
-    } else {
-      endRef.current?.focus()
+      startRef.current?.focus();
+    } else if (currentlySelectingRangeEnd === 'end') {
+      endRef.current?.focus();
     }
-  }, [currentlySelectingRangeEnd, open])
+  }, [currentlySelectingRangeEnd, open]);
 
   const handleStartChange = (date: MaterialUiPickersDate, inputString?: string) => {
     if (date === null || utils.isValid(date)) {
@@ -86,20 +87,24 @@ export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
   };
 
   const handleEndChange = (date: MaterialUiPickersDate, inputString?: string) => {
-    if (utils.isValid(date)) {
+    if (date === null || utils.isValid(date)) {
       onChange([start, date], inputString);
     }
   };
 
   const openRangeStartSelection = () => {
-    setCurrentlySelectingRangeEnd('start')
-    openPicker()
-  }
+    if (!disableOpenPicker && setCurrentlySelectingRangeEnd) {
+      setCurrentlySelectingRangeEnd('start');
+      openPicker();
+    }
+  };
 
   const openRangeEndSelection = () => {
-    setCurrentlySelectingRangeEnd('end')
-    openPicker()
-  }
+    if (!disableOpenPicker && setCurrentlySelectingRangeEnd) {
+      setCurrentlySelectingRangeEnd('end');
+      openPicker();
+    }
+  };
 
   return (
     <div id={id} className={clsx(classes.rangeInputsContainer, className)} ref={containerRef}>
@@ -110,11 +115,15 @@ export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
         rawValue={start}
         parsedDateValue={start}
         onChange={handleStartChange}
-        hideOpenPickerButton
+        disableOpenPicker
         openPicker={() => {}}
         readOnly={readOnly}
-        onClick={readOnly ? createDelegatedEventHandler(openRangeStartSelection, onClick) : undefined}
-        onFocus={!readOnly ? createDelegatedEventHandler(openRangeStartSelection, onFocus) : undefined}
+        onClick={
+          readOnly ? createDelegatedEventHandler(openRangeStartSelection, onClick) : undefined
+        }
+        onFocus={
+          !readOnly ? createDelegatedEventHandler(openRangeStartSelection, onFocus) : undefined
+        }
         className={clsx({ [classes.highlighted]: currentlySelectingRangeEnd === 'start' })}
       />
 
@@ -127,11 +136,13 @@ export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
         rawValue={end}
         parsedDateValue={end}
         onChange={handleEndChange}
-        hideOpenPickerButton
+        disableOpenPicker
         openPicker={() => {}}
         readOnly={readOnly}
         onClick={readOnly ? createDelegatedEventHandler(openRangeEndSelection, onClick) : undefined}
-        onFocus={!readOnly ? createDelegatedEventHandler(openRangeEndSelection, onFocus) : undefined}
+        onFocus={
+          !readOnly ? createDelegatedEventHandler(openRangeEndSelection, onFocus) : undefined
+        }
         className={clsx({ [classes.highlighted]: currentlySelectingRangeEnd === 'end' })}
       />
     </div>

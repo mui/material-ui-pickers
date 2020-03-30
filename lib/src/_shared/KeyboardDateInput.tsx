@@ -33,7 +33,7 @@ export const KeyboardDateInput: React.FC<DateInputProps> = ({
   keyboardIcon = <KeyboardIcon />,
   variant,
   emptyInputText: emptyLabel,
-  hideOpenPickerButton,
+  disableOpenPicker: hideOpenPickerButton,
   ignoreInvalidInputs,
   onFocus,
   onBlur,

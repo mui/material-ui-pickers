@@ -1,11 +1,11 @@
 import * as React from 'react';
 import PickerToolbar from '../_shared/PickerToolbar';
 import Typography from '@material-ui/core/Typography';
-import { DateRange, CurrentlySelectingRangeEndProps } from './RangeTypes';
 import { useUtils } from '../_shared/hooks/useUtils';
 import { makeStyles } from '@material-ui/core/styles';
 import { ToolbarComponentProps } from '../Picker/Picker';
 import { ToolbarButton } from '../_shared/ToolbarButton';
+import { DateRange, CurrentlySelectingRangeEndProps } from './RangeTypes';
 
 export const useStyles = makeStyles(
   {
