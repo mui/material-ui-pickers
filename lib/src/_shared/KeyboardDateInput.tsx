@@ -41,6 +41,8 @@ export const KeyboardDateInput: React.FC<DateInputProps> = ({
   forwardedRef,
   containerRef,
   open,
+  readOnly,
+  inputProps: inputPropsPassed,
   getOpenDialogAriaText = getTextFieldAriaText,
   ...other
 }) => {
@@ -105,6 +107,10 @@ export const KeyboardDateInput: React.FC<DateInputProps> = ({
     helperText: validationError,
     'data-mui-test': 'keyboard-date-input',
     ...other,
+    inputProps: {
+      ...inputPropsPassed,
+      readOnly,
+    },
     InputProps: {
       ...InputProps,
       [`${adornmentPosition}Adornment`]: hideOpenPickerButton ? (

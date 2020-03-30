@@ -132,7 +132,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
       <CalendarHeader
         {...other}
         view={view}
-        month={calendarState.currentMonth}
+        currentMonth={calendarState.currentMonth}
         changeView={changeView}
         onMonthChange={(newMonth, direction) => handleChangeMonth({ newMonth, direction })}
         minDate={minDate}

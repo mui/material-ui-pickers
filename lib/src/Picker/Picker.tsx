@@ -18,13 +18,14 @@ import { CalendarView, ExportedCalendarViewProps } from '../views/Calendar/Calen
 type CalendarAndClockProps = ExportedCalendarViewProps & ExportedClockViewProps;
 
 export type ToolbarComponentProps<
-  T extends AnyPickerView = AnyPickerView
+  TDate = MaterialUiPickersDate,
+  TView extends AnyPickerView = AnyPickerView
 > = CalendarAndClockProps & {
-  views: T[];
-  openView: T;
-  date: MaterialUiPickersDate;
-  setOpenView: (view: T) => void;
-  onChange: (date: MaterialUiPickersDate, isFinish?: boolean) => void;
+  views: TView[];
+  openView: TView;
+  date: TDate;
+  setOpenView: (view: TView) => void;
+  onChange: (date: TDate, isFinish?: boolean) => void;
   toolbarTitle?: React.ReactNode;
   toolbarFormat?: string;
   // TODO move out, cause it is DateTimePickerOnly

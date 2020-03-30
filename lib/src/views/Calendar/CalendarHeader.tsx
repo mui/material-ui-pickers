@@ -23,8 +23,7 @@ export interface CalendarHeaderProps
     Pick<CalendarProps, 'minDate' | 'maxDate' | 'disablePast' | 'disableFuture'> {
   view: DatePickerView;
   views: DatePickerView[];
-  month: MaterialUiPickersDate;
-
+  currentMonth: MaterialUiPickersDate;
   /** Get aria-label text for switching between views button */
   getViewSwitchingButtonText?: (currentView: DatePickerView) => string;
   reduceAnimations: boolean;
@@ -84,7 +83,7 @@ function getSwitchingViewAriaText(view: DatePickerView) {
 export const CalendarHeader: React.SFC<CalendarHeaderProps> = ({
   view,
   views,
-  month,
+  currentMonth: month,
   changeView,
   minDate,
   maxDate,
@@ -123,10 +122,6 @@ export const CalendarHeader: React.SFC<CalendarHeaderProps> = ({
     }
   };
 
-  if (views.length === 1) {
-    return null;
-  }
-
   return (
     <>
       <div className={classes.switchHeader}>
@@ -157,19 +152,21 @@ export const CalendarHeader: React.SFC<CalendarHeaderProps> = ({
             />
           </FadeTransitionGroup>
 
-          <IconButton
-            size="small"
-            data-mui-test="calendar-view-switcher"
-            onClick={toggleView}
-            className={classes.yearSelectionSwitcher}
-            aria-label={getViewSwitchingButtonText(view)}
-          >
-            <ArrowDropDownIcon
-              className={clsx(classes.switchViewDropdown, {
-                [classes.switchViewDropdownDown]: view === 'year',
-              })}
-            />
-          </IconButton>
+          {views.length > 1 && (
+            <IconButton
+              size="small"
+              data-mui-test="calendar-view-switcher"
+              onClick={toggleView}
+              className={classes.yearSelectionSwitcher}
+              aria-label={getViewSwitchingButtonText(view)}
+            >
+              <ArrowDropDownIcon
+                className={clsx(classes.switchViewDropdown, {
+                  [classes.switchViewDropdownDown]: view === 'year',
+                })}
+              />
+            </IconButton>
+          )}
         </div>
 
         <Fade in={view === 'date'}>

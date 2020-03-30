@@ -1,32 +1,33 @@
 import * as React from 'react';
-import { RangeInput, DateRange } from './RangeTypes';
 import { MaterialUiPickersDate } from '../typings/date';
 import { calculateRangeChange } from './date-range-manager';
 import { useUtils, useNow } from '../_shared/hooks/useUtils';
 import { SharedPickerProps } from '../Picker/SharedPickerProps';
+import { DateRangePickerToolbar } from './DateRangePickerToolbar';
 import { useParsedDate } from '../_shared/hooks/date-helpers-hooks';
 import { useCalendarState } from '../views/Calendar/useCalendarState';
+import { DateRangePickerViewMobile } from './DateRangePickerViewMobile';
 import { WrapperVariantContext } from '../wrappers/WrapperVariantContext';
+import { RangeInput, DateRange, CurrentlySelectingRangeEndProps } from './RangeTypes';
 import { ExportedCalendarViewProps, defaultReduceAnimations } from '../views/Calendar/CalendarView';
 import {
-  DesktopDateRangePicker,
+  DateRangePickerViewDesktop,
   ExportedDesktopDateRangeCalendarProps,
-} from './DesktopDateRangePicker';
+} from './DateRangePickerViewDesktop';
 
 type BaseCalendarPropsToReuse = Omit<ExportedCalendarViewProps, 'onYearChange'>;
 
 export interface DateRangePickerViewProps
   extends BaseCalendarPropsToReuse,
     ExportedDesktopDateRangeCalendarProps,
-    SharedPickerProps<RangeInput, DateRange> {
+    SharedPickerProps<RangeInput, DateRange>,
+    CurrentlySelectingRangeEndProps {
   /**
    * if `true` after selecting `start` date  calendar will not automatically switch to the month of `end` date
    * @default false
    */
   disableAutoMonthSwitching?: boolean;
   open: boolean;
-  currentlySelectingRangeEnd: 'start' | 'end';
-  setCurrentlySelectingRangeEnd: (newSelectingEnd: 'start' | 'end') => void;
 }
 
 export const DateRangePickerView: React.FC<DateRangePickerViewProps> = ({
@@ -45,6 +46,8 @@ export const DateRangePickerView: React.FC<DateRangePickerViewProps> = ({
   reduceAnimations = defaultReduceAnimations,
   setCurrentlySelectingRangeEnd,
   shouldDisableDate,
+  toggleMobileKeyboardView,
+  isMobileKeyboardViewOpen,
   ...other
 }) => {
   const now = useNow();
@@ -73,7 +76,7 @@ export const DateRangePickerView: React.FC<DateRangePickerViewProps> = ({
   });
 
   const scrollToDayIfNeeded = (day: MaterialUiPickersDate) => {
-    const displayingMonthRange = calendars - 1;
+    const displayingMonthRange = wrapperVariant === 'mobile' ? 0 : calendars - 1;
     const currentMonthNumber = utils.getMonth(calendarState.currentMonth);
     const requestedMonthNumber = utils.getMonth(day);
 
@@ -128,10 +131,14 @@ export const DateRangePickerView: React.FC<DateRangePickerViewProps> = ({
     ]
   );
 
+  if (isMobileKeyboardViewOpen) {
+    return <>"LOL KEK CHEBUREK"</>;
+  }
+
   switch (wrapperVariant) {
     case 'desktop': {
       return (
-        <DesktopDateRangePicker
+        <DateRangePickerViewDesktop
           calendars={calendars}
           date={date}
           isDateDisabled={isDateDisabled}
@@ -149,6 +156,37 @@ export const DateRangePickerView: React.FC<DateRangePickerViewProps> = ({
           {...calendarState}
           {...other}
         />
+      );
+    }
+
+    case 'mobile': {
+      return (
+        <>
+          <DateRangePickerToolbar
+            date={date}
+            isMobileKeyboardViewOpen={isMobileKeyboardViewOpen}
+            toggleMobileKeyboardView={toggleMobileKeyboardView}
+            currentlySelectingRangeEnd={currentlySelectingRangeEnd}
+            setCurrentlySelectingRangeEnd={setCurrentlySelectingRangeEnd}
+          />
+
+          <DateRangePickerViewMobile
+            date={date}
+            isDateDisabled={isDateDisabled}
+            changeFocusedDay={changeFocusedDay}
+            onChange={handleChange}
+            reduceAnimations={reduceAnimations}
+            disableHighlightToday={disableHighlightToday}
+            onMonthSwitchingAnimationEnd={onMonthSwitchingAnimationEnd}
+            changeMonth={changeMonth}
+            disableFuture={disableFuture}
+            disablePast={disablePast}
+            minDate={minDate}
+            maxDate={maxDate}
+            {...calendarState}
+            {...other}
+          />
+        </>
       );
     }
 

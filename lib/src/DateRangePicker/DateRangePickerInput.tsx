@@ -14,6 +14,10 @@ export const useStyles = makeStyles(
     rangeInputsContainer: {
       display: 'flex',
       alignItems: 'center',
+      // ? TBD
+      [theme.breakpoints.down('xs')]: {
+        flexDirection: 'column',
+      },
     },
     toLabelDelimiter: {
       margin: '0 16px',
@@ -33,6 +37,7 @@ export interface ExportedDateRangePickerInputProps {
 export interface DateRangeInputProps
   extends ExportedDateRangePickerInputProps,
     DateInputProps<RangeInput, DateRange> {
+  readOnly: boolean;
   currentlySelectingRangeEnd: 'start' | 'end';
   setCurrentlySelectingRangeEnd: (newSelectionEnd: 'start' | 'end') => void;
 }
@@ -53,6 +58,7 @@ export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
   setCurrentlySelectingRangeEnd,
   openPicker,
   onFocus,
+  readOnly,
   ...other
 }) => {
   const utils = useUtils()
@@ -106,7 +112,9 @@ export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
         onChange={handleStartChange}
         hideOpenPickerButton
         openPicker={() => {}}
-        onFocus={createDelegatedEventHandler(openRangeStartSelection, onFocus)}
+        readOnly={readOnly}
+        onClick={readOnly ? createDelegatedEventHandler(openRangeStartSelection, onClick) : undefined}
+        onFocus={!readOnly ? createDelegatedEventHandler(openRangeStartSelection, onFocus) : undefined}
         className={clsx({ [classes.highlighted]: currentlySelectingRangeEnd === 'start' })}
       />
 
@@ -121,7 +129,9 @@ export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
         onChange={handleEndChange}
         hideOpenPickerButton
         openPicker={() => {}}
-        onFocus={createDelegatedEventHandler(openRangeEndSelection, onFocus)}
+        readOnly={readOnly}
+        onClick={readOnly ? createDelegatedEventHandler(openRangeEndSelection, onClick) : undefined}
+        onFocus={!readOnly ? createDelegatedEventHandler(openRangeEndSelection, onFocus) : undefined}
         className={clsx({ [classes.highlighted]: currentlySelectingRangeEnd === 'end' })}
       />
     </div>

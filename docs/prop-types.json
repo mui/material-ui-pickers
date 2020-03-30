@@ -430,7 +430,7 @@
       },
       "required": false,
       "type": {
-        "name": "ComponentClass<ToolbarComponentProps<DateTimePickerView>, any> | FunctionComponent<ToolbarComponentProps<DateTimePickerView>>"
+        "name": "ComponentClass<ToolbarComponentProps<any, DateTimePickerView>, any> | FunctionComponent<ToolbarComponentProps<any, DateTimePickerView>>"
       }
     },
     "toolbarTitle": {
@@ -1327,7 +1327,7 @@
       },
       "required": false,
       "type": {
-        "name": "ComponentClass<ToolbarComponentProps<DateTimePickerView>, any> | FunctionComponent<ToolbarComponentProps<DateTimePickerView>>"
+        "name": "ComponentClass<ToolbarComponentProps<any, DateTimePickerView>, any> | FunctionComponent<ToolbarComponentProps<any, DateTimePickerView>>"
       }
     },
     "toolbarTitle": {
@@ -2062,7 +2062,7 @@
       },
       "required": false,
       "type": {
-        "name": "ComponentClass<ToolbarComponentProps<DateTimePickerView>, any> | FunctionComponent<ToolbarComponentProps<DateTimePickerView>>"
+        "name": "ComponentClass<ToolbarComponentProps<any, DateTimePickerView>, any> | FunctionComponent<ToolbarComponentProps<any, DateTimePickerView>>"
       }
     },
     "toolbarTitle": {

@@ -6,6 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { MaterialUiPickersDate } from '../typings/date';
 import { calculateRangePreview } from './date-range-manager';
 import { Calendar, CalendarProps } from '../views/Calendar/Calendar';
+import { isWithinRange, isStartOfRange, isEndOfRange } from '../_helpers/date-utils';
 import { ArrowSwitcher, ExportedArrowSwitcherProps } from '../_shared/ArrowSwitcher';
 import {
   usePreviousMonthDisabled,
@@ -50,7 +51,7 @@ export const useStyles = makeStyles(
   { name: 'MuiPickersDesktopDateRangeCalendar' }
 );
 
-export const DesktopDateRangePicker: React.FC<DesktopDateRangeCalendarProps> = ({
+export const DateRangePickerViewDesktop: React.FC<DesktopDateRangeCalendarProps> = ({
   date,
   calendars = 2,
   changeMonth,
@@ -91,24 +92,8 @@ export const DesktopDateRangePicker: React.FC<DesktopDateRangeCalendarProps> = (
     [onChange]
   );
 
-  const isRangeValid = (range: DateRange | null): range is DateRange => {
-    return Boolean(range && utils.isBefore(range[0], range[1]));
-  };
-
-  const isWithinRange = (day: MaterialUiPickersDate, range: DateRange | null) => {
-    return isRangeValid(range) && utils.isWithinRange(day, range);
-  };
-
-  const isStartOfRange = (day: MaterialUiPickersDate, range: DateRange | null) => {
-    return Boolean(range && utils.isSameDay(day, range[0]));
-  };
-
-  const isEndOfRange = (day: MaterialUiPickersDate, range: DateRange | null) => {
-    return Boolean(range && utils.isSameDay(day, range[1]));
-  };
-
   const handlePreviewDayChange = (newPreviewRequest: MaterialUiPickersDate) => {
-    if (!isWithinRange(newPreviewRequest, date)) {
+    if (!isWithinRange(utils, newPreviewRequest, date)) {
       setRangePreviewDay(newPreviewRequest);
     } else {
       setRangePreviewDay(null);
@@ -155,7 +140,6 @@ export const DesktopDateRangePicker: React.FC<DesktopDateRangeCalendarProps> = (
             />
 
             <Calendar
-              allowKeyboardControl
               {...CalendarProps}
               key={index}
               date={date}
@@ -169,12 +153,12 @@ export const DesktopDateRangePicker: React.FC<DesktopDateRangeCalendarProps> = (
               TransitionProps={CalendarTransitionProps}
               renderDay={(day, _, DayProps) => (
                 <DateRangeDay
-                  isPreviewing={isWithinRange(day, previewingRange)}
-                  isStartOfPreviewing={isStartOfRange(day, previewingRange)}
-                  isEndOfPreviewing={isEndOfRange(day, previewingRange)}
-                  isHighlighting={isWithinRange(day, date)}
-                  isStartOfHighlighting={isStartOfRange(day, date)}
-                  isEndOfHighlighting={isEndOfRange(day, date)}
+                  isPreviewing={isWithinRange(utils, day, previewingRange)}
+                  isStartOfPreviewing={isStartOfRange(utils, day, previewingRange)}
+                  isEndOfPreviewing={isEndOfRange(utils, day, previewingRange)}
+                  isHighlighting={isWithinRange(utils, day, date)}
+                  isStartOfHighlighting={isStartOfRange(utils, day, date)}
+                  isEndOfHighlighting={isEndOfRange(utils, day, date)}
                   onMouseEnter={() => handlePreviewDayChange(day)}
                   {...DayProps}
                 />

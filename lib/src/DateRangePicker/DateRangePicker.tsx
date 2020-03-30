@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { MaterialUiPickersDate } from '../typings/date';
 import { BasePickerProps } from '../typings/BasePicker';
+import { MobileWrapper } from '../wrappers/MobileWrapper';
 import { DateRangeInputProps } from './DateRangePickerInput';
 import { parsePickerInputValue } from '../_helpers/date-utils';
 import { usePickerState } from '../_shared/hooks/usePickerState';
@@ -76,6 +77,7 @@ export function makeRangePicker<TWrapper extends SomeWrapper>(Wrapper: TWrapper)
         wrapperProps={wrapperProps}
         inputProps={{
           ...inputProps,
+          readOnly: true,
           currentlySelectingRangeEnd,
           setCurrentlySelectingRangeEnd,
         }}
@@ -113,3 +115,5 @@ export function makeRangePicker<TWrapper extends SomeWrapper>(Wrapper: TWrapper)
 export type DateRange = DateRangeType;
 
 export const DateRangePicker = makeRangePicker(DesktopPopperWrapper);
+
+export const MobileDateRangePicker = makeRangePicker(MobileWrapper);

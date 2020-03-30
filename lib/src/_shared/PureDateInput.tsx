@@ -16,6 +16,7 @@ export interface DateInputProps<TInputValue = ParsableDate, TDateValue = Materia
   inputFormat: string;
   onChange: (date: TDateValue, keyboardInputValue?: string) => void;
   openPicker: () => void;
+  readOnly?: boolean;
   validationError?: React.ReactNode;
   /** Override input component */
   TextFieldComponent?: React.ComponentType<TextFieldProps>;
