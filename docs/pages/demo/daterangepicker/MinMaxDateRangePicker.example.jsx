@@ -11,7 +11,9 @@ function disableWeekends(date) {
 
 function MinMaxDateRangePicker() {
   const utils = useUtils();
-  const [selectedRange, handleDateChange] = useState([new Date(), null]);
+  /** @type import('@material-ui/pickers').DateRange */
+  const initialValue = [new Date(), null];
+  const [selectedRange, handleDateChange] = useState(initialValue);
 
   return (
     <DateRangePicker
