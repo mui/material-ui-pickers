@@ -71,7 +71,7 @@ export const useStyles = makeStyles(theme => ({
     alignItems: 'center',
   },
   week: {
-    margin: `${DAY_MARGIN * 2}px 0`,
+    margin: `${DAY_MARGIN}px 0`,
     display: 'flex',
     justifyContent: 'center',
   },

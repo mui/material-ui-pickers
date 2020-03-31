@@ -1,22 +1,22 @@
 import * as React from 'react';
 import { MaterialUiPickersDate } from '../typings/date';
+import { BasePickerProps } from '../typings/BasePicker';
 import { calculateRangeChange } from './date-range-manager';
 import { useUtils, useNow } from '../_shared/hooks/useUtils';
+import { DateRangePickerInput } from './DateRangePickerInput';
 import { SharedPickerProps } from '../Picker/SharedPickerProps';
 import { DateRangePickerToolbar } from './DateRangePickerToolbar';
 import { useParsedDate } from '../_shared/hooks/date-helpers-hooks';
 import { useCalendarState } from '../views/Calendar/useCalendarState';
 import { DateRangePickerViewMobile } from './DateRangePickerViewMobile';
 import { WrapperVariantContext } from '../wrappers/WrapperVariantContext';
+import { MobileKeyboardInputView } from '../views/MobileKeyboardInputView';
 import { RangeInput, DateRange, CurrentlySelectingRangeEndProps } from './RangeTypes';
 import { ExportedCalendarViewProps, defaultReduceAnimations } from '../views/Calendar/CalendarView';
 import {
   DateRangePickerViewDesktop,
   ExportedDesktopDateRangeCalendarProps,
 } from './DateRangePickerViewDesktop';
-import { BasePickerProps } from '../typings/BasePicker';
-import { MobileKeyboardInputView } from '../views/MobileKeyboardInputView';
-import { DateRangePickerInput } from './DateRangePickerInput';
 
 type BaseCalendarPropsToReuse = Omit<ExportedCalendarViewProps, 'onYearChange'>;
 
@@ -140,53 +140,31 @@ export const DateRangePickerView: React.FC<DateRangePickerViewProps> = ({
   );
 
   const renderView = () => {
+    const sharedCalendarProps = {
+      date,
+      isDateDisabled,
+      changeFocusedDay,
+      onChange: handleChange,
+      reduceAnimations,
+      disableHighlightToday,
+      onMonthSwitchingAnimationEnd,
+      changeMonth,
+      currentlySelectingRangeEnd,
+      disableFuture,
+      disablePast,
+      minDate,
+      maxDate,
+      ...calendarState,
+      ...other,
+    };
+
     switch (wrapperVariant) {
       case 'desktop': {
-        return (
-          <DateRangePickerViewDesktop
-            calendars={calendars}
-            date={date}
-            isDateDisabled={isDateDisabled}
-            changeFocusedDay={changeFocusedDay}
-            onChange={handleChange}
-            reduceAnimations={reduceAnimations}
-            disableHighlightToday={disableHighlightToday}
-            onMonthSwitchingAnimationEnd={onMonthSwitchingAnimationEnd}
-            changeMonth={changeMonth}
-            currentlySelectingRangeEnd={currentlySelectingRangeEnd}
-            disableFuture={disableFuture}
-            disablePast={disablePast}
-            minDate={minDate}
-            maxDate={maxDate}
-            {...calendarState}
-            {...other}
-          />
-        );
-      }
-
-      case 'mobile': {
-        return (
-          <DateRangePickerViewMobile
-            date={date}
-            isDateDisabled={isDateDisabled}
-            changeFocusedDay={changeFocusedDay}
-            onChange={handleChange}
-            reduceAnimations={reduceAnimations}
-            disableHighlightToday={disableHighlightToday}
-            onMonthSwitchingAnimationEnd={onMonthSwitchingAnimationEnd}
-            changeMonth={changeMonth}
-            disableFuture={disableFuture}
-            disablePast={disablePast}
-            minDate={minDate}
-            maxDate={maxDate}
-            {...calendarState}
-            {...other}
-          />
-        );
+        return <DateRangePickerViewDesktop calendars={calendars} {...sharedCalendarProps} />;
       }
 
       default: {
-        throw new Error('Only desktop wrapper supported for DateRangePicker');
+        return <DateRangePickerViewMobile {...sharedCalendarProps} />;
       }
     }
   };
@@ -204,7 +182,15 @@ export const DateRangePickerView: React.FC<DateRangePickerViewProps> = ({
       )}
 
       {isMobileKeyboardViewOpen ? (
-        <MobileKeyboardInputView DateInputComponent={DateRangePickerInput} {...DateInputProps} />
+        <MobileKeyboardInputView>
+          <DateRangePickerInput
+            disableOpenPicker
+            ignoreInvalidInputs
+            currentlySelectingRangeEnd={currentlySelectingRangeEnd}
+            setCurrentlySelectingRangeEnd={setCurrentlySelectingRangeEnd}
+            {...DateInputProps}
+          />
+        </MobileKeyboardInputView>
       ) : (
         renderView()
       )}

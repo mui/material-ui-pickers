@@ -48,6 +48,7 @@ export const KeyboardDateInput: React.FC<DateInputProps> = ({
 }) => {
   const utils = useUtils();
   const [isFocused, setIsFocused] = React.useState(false);
+
   const getInputValue = () =>
     getDisplayDate(rawValue, utils, {
       inputFormat,

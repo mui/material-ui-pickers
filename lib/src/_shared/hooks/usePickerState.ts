@@ -64,7 +64,6 @@ export function usePickerState<TInput, TDateValue>(
   const wrapperProps = useMemo(
     () => ({
       open: isOpen,
-      format: inputFormat,
       onClear: () => acceptDate(valueManager.emptyValue, true),
       onAccept: () => acceptDate(pickerDate, true),
       onDismiss: () => setIsOpen(false),
@@ -74,7 +73,7 @@ export function usePickerState<TInput, TDateValue>(
         acceptDate(now as any, Boolean(autoOk));
       },
     }),
-    [acceptDate, autoOk, inputFormat, isOpen, now, pickerDate, setIsOpen, valueManager.emptyValue]
+    [acceptDate, autoOk, isOpen, now, pickerDate, setIsOpen, valueManager.emptyValue]
   );
 
   const pickerProps = useMemo(

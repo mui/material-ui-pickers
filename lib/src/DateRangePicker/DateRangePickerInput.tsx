@@ -93,15 +93,19 @@ export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
   };
 
   const openRangeStartSelection = () => {
-    if (!disableOpenPicker && setCurrentlySelectingRangeEnd) {
+    if (setCurrentlySelectingRangeEnd) {
       setCurrentlySelectingRangeEnd('start');
+    }
+    if (!disableOpenPicker) {
       openPicker();
     }
   };
 
   const openRangeEndSelection = () => {
-    if (!disableOpenPicker && setCurrentlySelectingRangeEnd) {
+    if (setCurrentlySelectingRangeEnd) {
       setCurrentlySelectingRangeEnd('end');
+    }
+    if (!disableOpenPicker) {
       openPicker();
     }
   };

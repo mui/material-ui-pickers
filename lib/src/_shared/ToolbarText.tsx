@@ -1,9 +1,9 @@
 import * as React from 'react';
 import clsx from 'clsx';
 import Typography, { TypographyProps } from '@material-ui/core/Typography';
+import { ExtendMui } from '../typings/helpers';
 import { makeStyles } from '@material-ui/core/styles';
 import { fade } from '@material-ui/core/styles/colorManipulator';
-import { ExtendMui } from '../typings/helpers';
 export interface ToolbarTextProps extends ExtendMui<TypographyProps> {
   selected?: boolean;
   label: string;
@@ -18,6 +18,7 @@ export const useStyles = makeStyles(
 
     return {
       toolbarTxt: {
+        transition: theme.transitions.create('color'),
         color: fade(textColor, 0.54),
       },
       toolbarBtnSelected: {

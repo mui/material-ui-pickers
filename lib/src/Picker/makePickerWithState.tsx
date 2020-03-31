@@ -73,6 +73,7 @@ export function makePickerWithStateAndWrapper<
       shouldDisableDate,
       shouldDisableTime,
       timeIcon,
+      value,
       toolbarFormat,
       ToolbarComponent = DefaultToolbarComponent,
       views,

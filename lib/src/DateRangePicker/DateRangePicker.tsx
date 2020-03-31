@@ -46,6 +46,8 @@ export function makeRangePicker<TWrapper extends SomeWrapper>(Wrapper: TWrapper)
     onMonthChange,
     disableHighlightToday,
     reduceAnimations,
+    value,
+    onChange,
     inputFormat: passedInputFormat,
     ...restPropsForTextField
   }: DateRangePickerViewProps &
@@ -59,6 +61,8 @@ export function makeRangePicker<TWrapper extends SomeWrapper>(Wrapper: TWrapper)
 
     const pickerStateProps = {
       ...restPropsForTextField,
+      value,
+      onChange,
       inputFormat: passedInputFormat || utils.formats.keyboardDate,
     };
 

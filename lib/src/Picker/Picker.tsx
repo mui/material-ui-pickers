@@ -147,7 +147,14 @@ export function Picker({
         })}
       >
         {isMobileKeyboardViewOpen ? (
-          <MobileKeyboardInputView DateInputComponent={KeyboardDateInput} {...DateInputProps} />
+          <MobileKeyboardInputView>
+            <KeyboardDateInput
+              {...DateInputProps}
+              ignoreInvalidInputs
+              disableOpenPicker
+              fullWidth
+            />
+          </MobileKeyboardInputView>
         ) : (
           <>
             {(openView === 'year' || openView === 'month' || openView === 'date') && (

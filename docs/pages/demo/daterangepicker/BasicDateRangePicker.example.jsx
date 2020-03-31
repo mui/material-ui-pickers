@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { MobileDateRangePicker } from '@material-ui/pickers';
+import { DateRangePicker } from '@material-ui/pickers';
 
 function BasicDateRangePicker() {
-  const [selectedDate, handleDateChange] = useState([new Date(), null]);
+  const [selectedDate, handleDateChange] = useState([null, null]);
 
-  return <MobileDateRangePicker value={selectedDate} onChange={date => handleDateChange(date)} />;
+  return <DateRangePicker value={selectedDate} onChange={date => handleDateChange(date)} />;
 }
 
 export default BasicDateRangePicker;
