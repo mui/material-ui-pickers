@@ -14,6 +14,10 @@ import {
 } from '../_shared/hooks/date-helpers-hooks';
 
 export interface ExportedDesktopDateRangeCalendarProps {
+  /**
+   * How many calendars render on **desktop** DateRangePicker
+   * @default 2
+   */
   calendars?: 1 | 2 | 3;
 }
 

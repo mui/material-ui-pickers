@@ -11,7 +11,7 @@ import { DateRange as DateRangeType, RangeInput } from './RangeTypes';
 import { DesktopPopperWrapper } from '../wrappers/DesktopPopperWrapper';
 import { MuiPickersAdapter, useUtils } from '../_shared/hooks/useUtils';
 import { makeWrapperComponent } from '../wrappers/makeWrapperComponent';
-import { DateRangePickerView, DateRangePickerViewProps } from './DateRangePickerView';
+import { DateRangePickerView, ExportedDateRangePickerViewProps } from './DateRangePickerView';
 import { DateRangePickerInput, ExportedDateRangePickerInputProps } from './DateRangePickerInput';
 
 export function parseRangeInputValue(
@@ -50,7 +50,7 @@ export function makeRangePicker<TWrapper extends SomeWrapper>(Wrapper: TWrapper)
     onChange,
     inputFormat: passedInputFormat,
     ...restPropsForTextField
-  }: DateRangePickerViewProps &
+  }: ExportedDateRangePickerViewProps &
     ExportedDateRangePickerInputProps &
     AllSharedPickerProps<RangeInput, DateRange> &
     ExtendWrapper<TWrapper>) {

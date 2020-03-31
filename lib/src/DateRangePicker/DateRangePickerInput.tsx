@@ -35,7 +35,6 @@ export const useStyles = makeStyles(
 
 export interface ExportedDateRangePickerInputProps {
   toText?: React.ReactNode;
-  rangeChangingStrategy?: 'expand' | 'circular';
 }
 
 export interface DateRangeInputProps

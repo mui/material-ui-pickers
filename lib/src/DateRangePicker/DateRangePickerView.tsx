@@ -20,17 +20,21 @@ import {
 
 type BaseCalendarPropsToReuse = Omit<ExportedCalendarViewProps, 'onYearChange'>;
 
-export interface DateRangePickerViewProps
+export interface ExportedDateRangePickerViewProps
   extends BaseCalendarPropsToReuse,
     ExportedDesktopDateRangeCalendarProps,
-    SharedPickerProps<RangeInput, DateRange>,
-    CurrentlySelectingRangeEndProps,
     Omit<BasePickerProps, 'value' | 'onChange'> {
   /**
    * if `true` after selecting `start` date  calendar will not automatically switch to the month of `end` date
    * @default false
    */
   disableAutoMonthSwitching?: boolean;
+}
+
+interface DateRangePickerViewProps
+  extends ExportedDateRangePickerViewProps,
+    CurrentlySelectingRangeEndProps,
+    SharedPickerProps<RangeInput, DateRange> {
   open: boolean;
 }
 

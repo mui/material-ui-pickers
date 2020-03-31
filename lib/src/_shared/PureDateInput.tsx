@@ -82,6 +82,7 @@ export type ExportedDateInputProps<TInputValue, TDateValue> = Omit<
   | 'rawValue'
   | 'forwardedRef'
   | 'parsedDateValue'
+  | 'open'
 >;
 
 export const PureDateInput: React.FC<DateInputProps> = ({
