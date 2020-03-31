@@ -66,6 +66,7 @@ export const useStyles = makeStyles(
       display: 'flex',
       maxHeight: 30,
       overflow: 'hidden',
+      cursor: 'pointer',
     },
     monthText: {
       marginRight: 4,
@@ -125,7 +126,7 @@ export const CalendarHeader: React.SFC<CalendarHeaderProps> = ({
   return (
     <>
       <div className={classes.switchHeader}>
-        <div className={classes.monthTitleContainer}>
+        <div className={classes.monthTitleContainer} onClick={toggleView}>
           <FadeTransitionGroup
             reduceAnimations={reduceAnimations}
             transKey={utils.format(month, 'month')}
