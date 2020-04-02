@@ -41,7 +41,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export const DesktopPopperWrapper: React.FC<DesktopWrapperProps> = ({
+export const DesktopPopperWrapper: React.FC<DesktopPopperWrapperProps> = ({
   open,
   wider,
   children,
