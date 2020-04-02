@@ -1,5 +1,4 @@
 import * as React from 'react';
-// import { act } from 'react-dom'
 import { ReactWrapper } from 'enzyme';
 import { Picker } from '../Picker/Picker';
 import { mount, utilsToUse } from './test-utils';
