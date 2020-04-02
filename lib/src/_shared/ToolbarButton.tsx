@@ -49,4 +49,6 @@ export const ToolbarButton: React.FunctionComponent<ToolbarButtonProps> = ({
   );
 };
 
+ToolbarButton.displayName = 'ToolbarButton';
+
 export default ToolbarButton;

@@ -5,7 +5,7 @@ export function useOpenState({ open, onOpen, onClose }: BasePickerProps<any, any
   const isControllingOpenProp = React.useRef(typeof open === 'boolean').current;
   const [_open, _setIsOpen] = React.useState(false);
 
-  // It is required to update inner state in useEffect in order to aviod situation when
+  // It is required to update inner state in useEffect in order to avoid situation when
   // Our component is not mounted yet, but `open` state is set to `true` (e.g. initially opened)
   React.useEffect(() => {
     if (isControllingOpenProp) {
