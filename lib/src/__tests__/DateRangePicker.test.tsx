@@ -11,8 +11,8 @@ describe('DateRangePicker', () => {
         open
         onChange={jest.fn()}
         value={[
-          utilsToUse.date('2018-01-01T00:00:00.000'),
-          utilsToUse.date('2018-01-31T00:00:00.000'),
+          utilsToUse.date(new Date('2018-01-01T00:00:00.000Z')),
+          utilsToUse.date(new Date('2018-01-31T00:00:00.000Z')),
         ]}
       />
     );

@@ -45,7 +45,7 @@ export function makePickerWithStateAndWrapper<
       emptyValue: null,
       parseInput: parsePickerInputValue,
       validateInput: validateDateValue,
-      areValuesEqual: utils.isEqual,
+      areValuesEqual: (a, b) => utils.isEqual(a, b),
     });
 
     const {

@@ -4,8 +4,12 @@ import { Theme } from '@material-ui/core/styles';
 import { MobileWrapperProps, MobileWrapper } from './MobileWrapper';
 import { DesktopWrapperProps, DesktopWrapper } from './DesktopWrapper';
 import { Breakpoint } from '@material-ui/core/styles/createBreakpoints';
+import { DesktopPopperWrapperProps, DesktopPopperWrapper } from './DesktopPopperWrapper';
 
-export interface ResponsiveWrapperProps extends DesktopWrapperProps, MobileWrapperProps {
+export interface ResponsiveWrapperProps
+  extends DesktopWrapperProps,
+    DesktopPopperWrapperProps,
+    MobileWrapperProps {
   /** Breakpoint when `Desktop` mode will be changed to `Mobile`
    * @default 'md'
    */
@@ -13,7 +17,7 @@ export interface ResponsiveWrapperProps extends DesktopWrapperProps, MobileWrapp
 }
 
 export const makeResponsiveWrapper = (
-  DesktopWrapperComponent: React.FC<DesktopWrapperProps>,
+  DesktopWrapperComponent: React.FC<DesktopWrapperProps | DesktopPopperWrapperProps>,
   MobileWrapperComponent: React.FC<MobileWrapperProps>
 ) => {
   const ResponsiveWrapper: React.FC<ResponsiveWrapperProps> = ({
@@ -26,12 +30,19 @@ export const makeResponsiveWrapper = (
     clearable,
     DialogProps,
     PopoverProps,
+    PopperProps,
+    TransitionComponent,
     ...other
   }) => {
     const isDesktop = useMediaQuery<Theme>(theme => theme.breakpoints.up(desktopModeBreakpoint));
 
     return isDesktop ? (
-      <DesktopWrapperComponent PopoverProps={PopoverProps} {...other} />
+      <DesktopWrapperComponent
+        PopperProps={PopperProps}
+        TransitionComponent={TransitionComponent}
+        PopoverProps={PopoverProps}
+        {...other}
+      />
     ) : (
       <MobileWrapperComponent
         okLabel={okLabel}
@@ -50,3 +61,5 @@ export const makeResponsiveWrapper = (
 };
 
 export const ResponsiveWrapper = makeResponsiveWrapper(DesktopWrapper, MobileWrapper);
+
+export const ResponsivePopperWrapper = makeResponsiveWrapper(DesktopPopperWrapper, MobileWrapper);

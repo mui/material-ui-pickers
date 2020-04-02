@@ -6,7 +6,14 @@ function BasicDateRangePicker() {
   const initialValue = [null, null];
   const [selectedDate, handleDateChange] = useState(initialValue);
 
-  return <DateRangePicker value={selectedDate} onChange={date => handleDateChange(date)} />;
+  // prettier-ignore
+  return (
+    <DateRangePicker
+      value={selectedDate}
+      onChange={date => handleDateChange(date)}
+      value={[new Date('2018-01-01T00:00:00.000Z'), new Date('2018-01-31T00:00:00.000Z')]}
+    />
+  );
 }
 
 export default BasicDateRangePicker;

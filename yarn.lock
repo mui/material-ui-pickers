@@ -1366,37 +1366,37 @@
     "@date-io/core" "^2.5.0"
 
 "@date-io/dayjs@^2.1.0":
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/@date-io/dayjs/-/dayjs-2.5.0.tgz#41d4b627914da8e4ac20ec7e15f9de507449fa0a"
-  integrity sha512-FCgx9Vql+BJMhu0t6Ou474b2O52EEwy1nfznvzeWewMUa1vJkeXrCQm11LlUZQcAOcUhF7L7zuSUST8IlFKyDQ==
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/@date-io/dayjs/-/dayjs-2.5.1.tgz#a27159390c47cf5755e4053e377e275d0663b66f"
+  integrity sha512-fUEaDwIc3Dq+UisDHeNTY/5P/BYU4yihh93teW1Z2PYeOYKraTQX639EoDLG5XnA0jsxig6lS7Z3Pw4BBpapKw==
   dependencies:
     "@date-io/core" "^2.5.0"
 
 "@date-io/hijri@^2.2.0":
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/@date-io/hijri/-/hijri-2.5.0.tgz#dd803611561ed55bed5d0ddc77fc187f86e49119"
-  integrity sha512-3CBDxPUmVhwX38OwTXK6VfvvYsBHZOxE5CuDjPGyhDilMW7Nl1Y4EYcaNXY8b/0FhDCyAVK7I/7PbaN25q9SvQ==
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/@date-io/hijri/-/hijri-2.5.1.tgz#6bcc20a2097731d8f4e268393946fd3bee3c6797"
+  integrity sha512-v0Iszo++y2sqlzDQhACBCHr38X01dCV5uDIatwvk1mj3IQoYzhi60imd9BYD6VVaUhwH04mONbC4U2IsYSqsPQ==
   dependencies:
-    "@date-io/moment" "^2.5.0"
+    "@date-io/moment" "^2.5.1"
 
 "@date-io/jalaali@^2.0.0":
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/@date-io/jalaali/-/jalaali-2.5.0.tgz#d13ffd06896c0d8944682042cd086c8e217d0a48"
-  integrity sha512-3taCWs9AbWHQHdg1tg4jTBHX1f+/XmYnfps/ufAe8nKL8KnR6Bbs/gGoObw6VoD+jLy6+utXDpmyX1WsKsX/0g==
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/@date-io/jalaali/-/jalaali-2.5.1.tgz#d22c7a9d748f07d80ab73a5376ee3f1fb5bd919b"
+  integrity sha512-+/lrgjIARXQcjr9ARRN0bygYeoP43lE95Ec1skeq9P6X4q1eLk0xyhGtsygUNeFxFenrFk1n19Z5d2qC9U/Hsw==
   dependencies:
-    "@date-io/moment" "^2.5.0"
+    "@date-io/moment" "^2.5.1"
 
 "@date-io/luxon@^2.1.0":
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/@date-io/luxon/-/luxon-2.5.0.tgz#0b29de3a64ad31aa5f8ccb9295df821148993525"
-  integrity sha512-N1bBoU1+5eTI+F8t06N3MoMd4Q46UMPCe20Hr/rGGKPfxEWDsG9uz6UU1orYWtZbWRyaBMPHZbzOKt+DKtC4/w==
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/@date-io/luxon/-/luxon-2.5.1.tgz#75986a0d42a6a7a0de9a6c606bec0773db4d7b48"
+  integrity sha512-wRxE8/aKgLSsAVC/+joRs4GKswuxEbSQd+D/b2QEBpak0+FUPad/MwnmImcbRIkqV8n5Oc3NZ+JISDGVpgpa7w==
   dependencies:
     "@date-io/core" "^2.5.0"
 
-"@date-io/moment@^2.1.0", "@date-io/moment@^2.5.0":
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/@date-io/moment/-/moment-2.5.0.tgz#f66e604a38f0687dfb410a2ae8dd8ea139322a86"
-  integrity sha512-PRdmnbpNMWWQ6ykaMUF7rROWuGl0l9GOdsTO8wRnZjJG19tb+3gE03iGL+UajjB9EJrtgTmihIUoOt6wUhh5Bg==
+"@date-io/moment@^2.1.0", "@date-io/moment@^2.5.1":
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/@date-io/moment/-/moment-2.5.1.tgz#6f2c4437f718a51dc0675a97ea2d1d435e9d4b76"
+  integrity sha512-B7IF8yfEf6dnKX3bFml18IQ8cpToYrkQQPKjscSjVZS72xO5gXW5pRqYZx0pbZbHnpw/WS5Fy/lnHPwTyIWCWA==
   dependencies:
     "@date-io/core" "^2.5.0"
 

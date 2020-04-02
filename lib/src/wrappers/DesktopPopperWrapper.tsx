@@ -15,12 +15,13 @@ import { TransitionProps } from '@material-ui/core/transitions/transition';
 import { executeInTheNextEventLoopTick, createDelegatedEventHandler } from '../_helpers/utils';
 
 export interface InnerDesktopPopperWrapperProps {
-  /** Popover props passed to material-ui Popover */
+  /** Popper props passed to material-ui [Popper](https://material-ui.com/api/popper/#popper-api) */
   PopperProps?: Partial<PopperProps>;
+  /** Custom component for [transition](https://material-ui.com/components/transitions/#transitioncomponent-prop)  */
   TransitionComponent?: React.ComponentType<TransitionProps>;
 }
 
-export interface DesktopWrapperProps
+export interface DesktopPopperWrapperProps
   extends InnerDesktopPopperWrapperProps,
     WrapperProps,
     Partial<InnerMobileWrapperProps> {}

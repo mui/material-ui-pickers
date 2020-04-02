@@ -7,7 +7,7 @@ import { parsePickerInputValue } from '../_helpers/date-utils';
 import { usePickerState } from '../_shared/hooks/usePickerState';
 import { AllSharedPickerProps } from '../Picker/SharedPickerProps';
 import { DateRange as DateRangeType, RangeInput } from './RangeTypes';
-import { makeResponsiveWrapper } from '../wrappers/ResponsiveWrapper';
+import { ResponsivePopperWrapper } from '../wrappers/ResponsiveWrapper';
 import { DesktopPopperWrapper } from '../wrappers/DesktopPopperWrapper';
 import { MuiPickersAdapter, useUtils } from '../_shared/hooks/useUtils';
 import { makeWrapperComponent } from '../wrappers/makeWrapperComponent';
@@ -124,9 +124,7 @@ export function makeRangePicker<TWrapper extends SomeWrapper>(Wrapper: TWrapper)
 // TODO replace with new export type syntax
 export type DateRange = DateRangeType;
 
-export const DateRangePicker = makeRangePicker(
-  makeResponsiveWrapper(DesktopPopperWrapper, MobileWrapper)
-);
+export const DateRangePicker = makeRangePicker(ResponsivePopperWrapper);
 
 export const DesktopDateRangePicker = makeRangePicker(DesktopPopperWrapper);
 
