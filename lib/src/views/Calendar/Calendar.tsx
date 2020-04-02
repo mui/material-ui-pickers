@@ -135,7 +135,7 @@ export const Calendar: React.FC<CalendarProps> = ({
 
   const initialDate = Array.isArray(date) ? date[0] : date;
   React.useEffect(() => {
-    if (isDateDisabled(initialDate)) {
+    if (initialDate && isDateDisabled(initialDate)) {
       const closestEnabledDate = findClosestEnabledDate({
         utils,
         date: initialDate,
@@ -193,13 +193,13 @@ export const Calendar: React.FC<CalendarProps> = ({
       >
         <div role="grid" style={{ overflow: 'hidden' }}>
           {utils.getWeekArray(currentMonth).map(week => (
-            <div role="row" key={`week-${week[0]!.toString()}`} className={classes.week}>
+            <div role="row" key={`week-${(week[0] as any)!.toString()}`} className={classes.week}>
               {week.map(day => {
                 const disabled = isDateDisabled(day);
                 const isDayInCurrentMonth = utils.getMonth(day) === currentMonthNumber;
 
                 const dayProps: DayProps = {
-                  key: day?.toString(),
+                  key: (day as any)?.toString(),
                   day: day,
                   role: 'cell',
                   isAnimating: isMonthSwitchingAnimating,
@@ -229,5 +229,7 @@ export const Calendar: React.FC<CalendarProps> = ({
     </>
   );
 };
+
+Calendar.displayName = 'Calendar';
 
 export default Calendar;

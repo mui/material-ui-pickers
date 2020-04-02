@@ -112,7 +112,7 @@ export const isRangeValid = (
   utils: MuiPickersAdapter,
   range: DateRange | null
 ): range is DateRange => {
-  return Boolean(range && utils.isBefore(range[0], range[1]));
+  return Boolean(range && range[0] && range[1] && utils.isBefore(range[0], range[1]));
 };
 
 export const isWithinRange = (
@@ -128,7 +128,7 @@ export const isStartOfRange = (
   day: MaterialUiPickersDate,
   range: DateRange | null
 ) => {
-  return Boolean(range && utils.isSameDay(day, range[0]));
+  return isRangeValid(utils, range) && utils.isSameDay(day, range[0]);
 };
 
 export const isEndOfRange = (
@@ -136,5 +136,5 @@ export const isEndOfRange = (
   day: MaterialUiPickersDate,
   range: DateRange | null
 ) => {
-  return Boolean(range && utils.isSameDay(day, range[1]));
+  return isRangeValid(utils, range) && utils.isSameDay(day, range[1]);
 };

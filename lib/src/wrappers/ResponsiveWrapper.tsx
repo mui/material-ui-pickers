@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Theme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { Theme } from '@material-ui/core/styles';
 import { MobileWrapperProps, MobileWrapper } from './MobileWrapper';
 import { DesktopWrapperProps, DesktopWrapper } from './DesktopWrapper';
 import { Breakpoint } from '@material-ui/core/styles/createBreakpoints';
@@ -12,32 +12,41 @@ export interface ResponsiveWrapperProps extends DesktopWrapperProps, MobileWrapp
   desktopModeBreakpoint?: Breakpoint;
 }
 
-export const ResponsiveWrapper: React.FC<ResponsiveWrapperProps> = ({
-  desktopModeBreakpoint = 'md',
-  okLabel,
-  cancelLabel,
-  clearLabel,
-  todayLabel,
-  showTodayButton,
-  clearable,
-  DialogProps,
-  PopoverProps,
-  ...other
-}) => {
-  const isDesktop = useMediaQuery<Theme>(theme => theme.breakpoints.up(desktopModeBreakpoint));
+export const makeResponsiveWrapper = (
+  DesktopWrapperComponent: React.FC<DesktopWrapperProps>,
+  MobileWrapperComponent: React.FC<MobileWrapperProps>
+) => {
+  const ResponsiveWrapper: React.FC<ResponsiveWrapperProps> = ({
+    desktopModeBreakpoint = 'md',
+    okLabel,
+    cancelLabel,
+    clearLabel,
+    todayLabel,
+    showTodayButton,
+    clearable,
+    DialogProps,
+    PopoverProps,
+    ...other
+  }) => {
+    const isDesktop = useMediaQuery<Theme>(theme => theme.breakpoints.up(desktopModeBreakpoint));
 
-  return isDesktop ? (
-    <DesktopWrapper PopoverProps={PopoverProps} {...other} />
-  ) : (
-    <MobileWrapper
-      okLabel={okLabel}
-      cancelLabel={cancelLabel}
-      clearLabel={clearLabel}
-      todayLabel={todayLabel}
-      showTodayButton={showTodayButton}
-      clearable={clearable}
-      DialogProps={DialogProps}
-      {...other}
-    />
-  );
+    return isDesktop ? (
+      <DesktopWrapperComponent PopoverProps={PopoverProps} {...other} />
+    ) : (
+      <MobileWrapperComponent
+        okLabel={okLabel}
+        cancelLabel={cancelLabel}
+        clearLabel={clearLabel}
+        todayLabel={todayLabel}
+        showTodayButton={showTodayButton}
+        clearable={clearable}
+        DialogProps={DialogProps}
+        {...other}
+      />
+    );
+  };
+
+  return ResponsiveWrapper;
 };
+
+export const ResponsiveWrapper = makeResponsiveWrapper(DesktopWrapper, MobileWrapper);

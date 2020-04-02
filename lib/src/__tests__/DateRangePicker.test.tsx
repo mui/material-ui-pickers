@@ -1,14 +1,13 @@
 // Note that most of use cases are covered in cypress tests e2e/integration/DateRange.spec.ts
-// Note that most of use cases are covered in cypress tests e2e/integration/DateRange.spec.ts
 import * as React from 'react';
 import { isWeekend } from 'date-fns';
 import { mount, utilsToUse } from './test-utils';
-import { DateRangePicker } from '../DateRangePicker/DateRangePicker';
+import { DesktopDateRangePicker } from '../DateRangePicker/DateRangePicker';
 
 describe('DateRangePicker', () => {
   test('allows select range', () => {
     const component = mount(
-      <DateRangePicker
+      <DesktopDateRangePicker
         open
         onChange={jest.fn()}
         value={[
@@ -23,7 +22,7 @@ describe('DateRangePicker', () => {
 
   test('allows disabling dates', () => {
     const component = mount(
-      <DateRangePicker
+      <DesktopDateRangePicker
         open
         minDate={new Date('2005-01-01')}
         shouldDisableDate={date => isWeekend(utilsToUse.toJsDate(date))}
@@ -44,7 +43,7 @@ describe('DateRangePicker', () => {
 
   test('prop: calendars', () => {
     const component = mount(
-      <DateRangePicker
+      <DesktopDateRangePicker
         open
         calendars={3}
         onChange={jest.fn()}

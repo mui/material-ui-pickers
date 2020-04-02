@@ -18,6 +18,8 @@ interface DesktopDateRangeCalendarProps
   changeMonth: (date: MaterialUiPickersDate) => void;
 }
 
+const onlyDateView = ['date'] as ['date'];
+
 export const DateRangePickerViewMobile: React.FC<DesktopDateRangeCalendarProps> = ({
   date,
   changeMonth,
@@ -36,7 +38,7 @@ export const DateRangePickerViewMobile: React.FC<DesktopDateRangeCalendarProps> 
     <>
       <CalendarHeader
         view="date"
-        views={['date']}
+        views={onlyDateView}
         changeView={() => ({})}
         onMonthChange={changeMonth}
         leftArrowButtonProps={leftArrowButtonProps}
