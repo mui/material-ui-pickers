@@ -1060,7 +1060,7 @@
     },
     "dateAdapter": {
       "defaultValue": null,
-      "description": "Allows to pass configured date-io adapter directly. More info [here](/guides/date-adapter-passing)\n```jsx\ndateAdapter={new DateFnsAdapter({ locale: ruLocale })}\n```",
+      "description": "Allows to pass configured date-io adapter directly. More info [here](https://material-ui-pickers.dev/guides/date-adapter-passing)\n```jsx\ndateAdapter={new DateFnsAdapter({ locale: ruLocale })}\n```",
       "name": "dateAdapter",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/withDateAdapterProp.tsx",
@@ -1795,7 +1795,7 @@
     },
     "dateAdapter": {
       "defaultValue": null,
-      "description": "Allows to pass configured date-io adapter directly. More info [here](/guides/date-adapter-passing)\n```jsx\ndateAdapter={new DateFnsAdapter({ locale: ruLocale })}\n```",
+      "description": "Allows to pass configured date-io adapter directly. More info [here](https://material-ui-pickers.dev/guides/date-adapter-passing)\n```jsx\ndateAdapter={new DateFnsAdapter({ locale: ruLocale })}\n```",
       "name": "dateAdapter",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/withDateAdapterProp.tsx",
@@ -2854,7 +2854,7 @@
     },
     "dateAdapter": {
       "defaultValue": null,
-      "description": "Allows to pass configured date-io adapter directly. More info [here](/guides/date-adapter-passing)\n```jsx\ndateAdapter={new DateFnsAdapter({ locale: ruLocale })}\n```",
+      "description": "Allows to pass configured date-io adapter directly. More info [here](https://material-ui-pickers.dev/guides/date-adapter-passing)\n```jsx\ndateAdapter={new DateFnsAdapter({ locale: ruLocale })}\n```",
       "name": "dateAdapter",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/withDateAdapterProp.tsx",
@@ -3611,7 +3611,7 @@
     },
     "dateAdapter": {
       "defaultValue": null,
-      "description": "Allows to pass configured date-io adapter directly. More info [here](/guides/date-adapter-passing)\n```jsx\ndateAdapter={new DateFnsAdapter({ locale: ruLocale })}\n```",
+      "description": "Allows to pass configured date-io adapter directly. More info [here](https://material-ui-pickers.dev/guides/date-adapter-passing)\n```jsx\ndateAdapter={new DateFnsAdapter({ locale: ruLocale })}\n```",
       "name": "dateAdapter",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/withDateAdapterProp.tsx",
