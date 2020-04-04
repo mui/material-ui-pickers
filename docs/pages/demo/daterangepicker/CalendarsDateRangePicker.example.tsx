@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
+import * as React from 'react';
 import { Grid, Typography } from '@material-ui/core';
-import { DateRangePicker } from '@material-ui/pickers';
+import { DateRangePicker, DateRange } from '@material-ui/pickers';
 
 function CalendarsDateRangePicker() {
-  /** @type import('@material-ui/pickers').DateRange */
-  const initialValue = [null, null];
-  const [selectedDate, handleDateChange] = useState(initialValue);
+  const [selectedDate, handleDateChange] = React.useState<DateRange>([null, null]);
 
   return (
     <Grid container direction="column" alignItems="center">
