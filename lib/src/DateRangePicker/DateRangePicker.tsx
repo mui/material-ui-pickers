@@ -27,6 +27,21 @@ export function parseRangeInputValue(
   ) as DateRange;
 }
 
+interface DateRangePickerProps
+  extends ExportedDateRangePickerViewProps,
+    ExportedDateRangePickerInputProps {
+  /**
+   * Text for start input label and toolbar placeholder
+   * @default "Start"
+   */
+  startText?: React.ReactNode;
+  /**
+   * Text for end input label and toolbar placeholder
+   * @default "end"
+   */
+  endText?: React.ReactNode;
+}
+
 export function makeRangePicker<TWrapper extends SomeWrapper>(Wrapper: TWrapper) {
   const WrapperComponent = makeWrapperComponent<DateRangeInputProps, RangeInput, DateRange>(
     Wrapper,
@@ -49,12 +64,11 @@ export function makeRangePicker<TWrapper extends SomeWrapper>(Wrapper: TWrapper)
     reduceAnimations,
     value,
     onChange,
+    startText = 'Start',
+    endText = 'End',
     inputFormat: passedInputFormat,
     ...restPropsForTextField
-  }: ExportedDateRangePickerViewProps &
-    ExportedDateRangePickerInputProps &
-    AllSharedPickerProps<RangeInput, DateRange> &
-    ExtendWrapper<TWrapper>) {
+  }: DateRangePickerProps & AllSharedPickerProps<RangeInput, DateRange> & ExtendWrapper<TWrapper>) {
     const utils = useUtils();
     const [currentlySelectingRangeEnd, setCurrentlySelectingRangeEnd] = React.useState<
       'start' | 'end'
@@ -77,24 +91,23 @@ export function makeRangePicker<TWrapper extends SomeWrapper>(Wrapper: TWrapper)
       }
     );
 
+    const DateInputProps = {
+      ...inputProps,
+      currentlySelectingRangeEnd,
+      setCurrentlySelectingRangeEnd,
+      startText,
+      endText,
+    };
+
     return (
       <WrapperComponent
         wrapperProps={wrapperProps}
-        inputProps={{
-          ...inputProps,
-          currentlySelectingRangeEnd,
-          setCurrentlySelectingRangeEnd,
-        }}
+        inputProps={DateInputProps}
         {...restPropsForTextField}
       >
         <DateRangePickerView
           open={wrapperProps.open}
-          DateInputProps={{
-            currentlySelectingRangeEnd,
-            setCurrentlySelectingRangeEnd,
-            ...restPropsForTextField,
-            ...inputProps,
-          }}
+          DateInputProps={DateInputProps}
           calendars={calendars}
           minDate={minDate}
           maxDate={maxDate}
@@ -107,6 +120,8 @@ export function makeRangePicker<TWrapper extends SomeWrapper>(Wrapper: TWrapper)
           reduceAnimations={reduceAnimations}
           currentlySelectingRangeEnd={currentlySelectingRangeEnd}
           setCurrentlySelectingRangeEnd={setCurrentlySelectingRangeEnd}
+          startText={startText}
+          endText={endText}
           {...pickerProps}
         />
       </WrapperComponent>

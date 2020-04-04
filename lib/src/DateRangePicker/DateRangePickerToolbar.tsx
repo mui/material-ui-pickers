@@ -27,6 +27,8 @@ interface DateRangePickerToolbarProps
       'isMobileKeyboardViewOpen' | 'toggleMobileKeyboardView' | 'toolbarTitle' | 'toolbarFormat'
     > {
   date: DateRange;
+  startText: React.ReactNode;
+  endText: React.ReactNode;
   currentlySelectingRangeEnd: 'start' | 'end';
   setCurrentlySelectingRangeEnd: (newSelectingEnd: 'start' | 'end') => void;
 }
@@ -38,16 +40,20 @@ export const DateRangePickerToolbar: React.FC<DateRangePickerToolbarProps> = ({
   toggleMobileKeyboardView,
   currentlySelectingRangeEnd,
   setCurrentlySelectingRangeEnd,
+  startText,
+  endText,
   toolbarTitle = 'SELECT DATE RANGE',
 }) => {
   const utils = useUtils();
   const classes = useStyles();
 
-  const startText = start
+  const startDateValue = start
     ? utils.formatByString(start, toolbarFormat || utils.formats.shortDate)
-    : 'Start';
+    : startText;
 
-  const endText = end ? utils.formatByString(end, toolbarFormat || utils.formats.shortDate) : 'End';
+  const endDateValue = end
+    ? utils.formatByString(end, toolbarFormat || utils.formats.shortDate)
+    : endText;
 
   return (
     <PickerToolbar
@@ -60,14 +66,14 @@ export const DateRangePickerToolbar: React.FC<DateRangePickerToolbarProps> = ({
       <div className={classes.dateTextContainer}>
         <ToolbarButton
           variant="h5"
-          label={startText}
+          value={startDateValue}
           selected={currentlySelectingRangeEnd === 'start'}
           onClick={() => setCurrentlySelectingRangeEnd('start')}
         />
         <Typography variant="h5">&nbsp;{'–'}&nbsp;</Typography>
         <ToolbarButton
           variant="h5"
-          label={endText}
+          value={endDateValue}
           selected={currentlySelectingRangeEnd === 'end'}
           onClick={() => setCurrentlySelectingRangeEnd('end')}
         />

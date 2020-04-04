@@ -3005,6 +3005,36 @@
     }
   },
   "DateRangePicker": {
+    "startText": {
+      "defaultValue": {
+        "value": "\"Start\""
+      },
+      "description": "Text for start input label and toolbar placeholder",
+      "name": "startText",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/DateRangePicker/DateRangePicker.tsx",
+        "name": "DateRangePickerProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "endText": {
+      "defaultValue": {
+        "value": "\"end\""
+      },
+      "description": "Text for end input label and toolbar placeholder",
+      "name": "endText",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/DateRangePicker/DateRangePicker.tsx",
+        "name": "DateRangePickerProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
     "disableAutoMonthSwitching": {
       "defaultValue": {
         "value": "false"

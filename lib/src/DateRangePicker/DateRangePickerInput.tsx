@@ -40,7 +40,10 @@ export interface ExportedDateRangePickerInputProps {
 export interface DateRangeInputProps
   extends ExportedDateRangePickerInputProps,
     CurrentlySelectingRangeEndProps,
-    DateInputProps<RangeInput, DateRange> {}
+    DateInputProps<RangeInput, DateRange> {
+  startText: React.ReactNode;
+  endText: React.ReactNode;
+}
 
 export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
   toText = 'to',
@@ -59,6 +62,8 @@ export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
   onFocus,
   readOnly,
   disableOpenPicker,
+  startText,
+  endText,
   ...other
 }) => {
   const utils = useUtils();
@@ -121,6 +126,7 @@ export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
         disableOpenPicker
         openPicker={() => {}}
         readOnly={readOnly}
+        label={startText}
         onClick={
           readOnly ? createDelegatedEventHandler(openRangeStartSelection, onClick) : undefined
         }
@@ -142,6 +148,7 @@ export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
         disableOpenPicker
         openPicker={() => {}}
         readOnly={readOnly}
+        label={endText}
         onClick={readOnly ? createDelegatedEventHandler(openRangeEndSelection, onClick) : undefined}
         onFocus={
           !readOnly ? createDelegatedEventHandler(openRangeEndSelection, onFocus) : undefined

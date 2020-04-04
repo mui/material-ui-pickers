@@ -36,6 +36,8 @@ interface DateRangePickerViewProps
     CurrentlySelectingRangeEndProps,
     SharedPickerProps<RangeInput, DateRange> {
   open: boolean;
+  startText: React.ReactNode;
+  endText: React.ReactNode;
 }
 
 export const DateRangePickerView: React.FC<DateRangePickerViewProps> = ({
@@ -57,6 +59,8 @@ export const DateRangePickerView: React.FC<DateRangePickerViewProps> = ({
   toggleMobileKeyboardView,
   isMobileKeyboardViewOpen,
   showToolbar,
+  startText,
+  endText,
   DateInputProps,
   ...other
 }) => {
@@ -182,6 +186,8 @@ export const DateRangePickerView: React.FC<DateRangePickerViewProps> = ({
           toggleMobileKeyboardView={toggleMobileKeyboardView}
           currentlySelectingRangeEnd={currentlySelectingRangeEnd}
           setCurrentlySelectingRangeEnd={setCurrentlySelectingRangeEnd}
+          startText={startText}
+          endText={endText}
         />
       )}
 
