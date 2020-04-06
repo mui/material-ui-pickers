@@ -101,7 +101,11 @@ export function makeRangePicker<TWrapper extends SomeWrapper>(Wrapper: TWrapper)
     };
 
     return (
-      <WrapperComponent wrapperProps={wrapperProps} inputProps={DateInputProps}>
+      <WrapperComponent
+        wrapperProps={wrapperProps}
+        inputProps={DateInputProps}
+        {...restPropsForTextField}
+      >
         <DateRangePickerView
           open={wrapperProps.open}
           DateInputProps={DateInputProps}

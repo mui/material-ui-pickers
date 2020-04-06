@@ -1,32 +1,24 @@
 import * as React from 'react';
-import isWeekend from 'date-fns/isWeekend';
+import addWeeks from 'date-fns/addWeeks';
 import { Dayjs } from 'dayjs';
 import { Moment } from 'moment';
 import { DateTime } from 'luxon';
-import { addYears } from 'date-fns';
-// this guy required only on the docs site to work with dynamic date library
 import { makeJSDateObject } from '../../../utils/helpers';
 import { DateRangePicker, DateRange } from '@material-ui/pickers';
 
-function disableWeekends(date: Moment | DateTime | Dayjs | Date) {
+function getWeeksAfter(date: Moment | DateTime | Dayjs | Date, amount: number) {
   // TODO: replace with implementation for your date library
-  return isWeekend(makeJSDateObject(date));
-}
-
-function getOneYearAfter(date: Moment | DateTime | Dayjs | Date) {
-  // TODO: replace with implementation for your date library
-  return addYears(makeJSDateObject(date), 1);
+  return date ? addWeeks(makeJSDateObject(date), amount) : undefined;
 }
 
 function MinMaxDateRangePicker() {
-  const [selectedRange, handleDateChange] = React.useState<DateRange>([new Date(), null]);
+  const [selectedRange, handleDateChange] = React.useState<DateRange>([null, null]);
 
   return (
     <DateRangePicker
       disablePast
       value={selectedRange}
-      shouldDisableDate={disableWeekends}
-      maxDate={getOneYearAfter(selectedRange[0])}
+      maxDate={getWeeksAfter(selectedRange[0], 4)}
       onChange={date => handleDateChange(date)}
     />
   );

@@ -1,4 +1,5 @@
 import React from 'react';
+import { StaticWrapperProps } from './StaticWrapper';
 import { BasePickerProps } from '../typings/BasePicker';
 import { DateInputProps } from '../_shared/PureDateInput';
 import { ResponsiveWrapperProps } from './ResponsiveWrapper';
@@ -30,7 +31,7 @@ export function makeWrapperComponent<
     props: Partial<BasePickerProps<TInputValue, TDateValue>> &
       DateValidationProps &
       WithWrapperProps<TInputProps> &
-      Partial<OmitInnerWrapperProps<ResponsiveWrapperProps>>
+      Partial<OmitInnerWrapperProps<ResponsiveWrapperProps> & StaticWrapperProps>
   ) {
     const {
       open,
@@ -58,6 +59,7 @@ export function makeWrapperComponent<
       onClose,
       onOpen,
       onError,
+      displayStaticWrapperAs,
       strictCompareDates,
       ...restPropsForTextField
     } = props;
@@ -79,6 +81,7 @@ export function makeWrapperComponent<
         PureDateInputComponent={PureDateInputComponent}
         wider={wider}
         showTabs={showTabs}
+        displayStaticWrapperAs={displayStaticWrapperAs}
         {...wrapperProps}
         {...restPropsForTextField}
       >

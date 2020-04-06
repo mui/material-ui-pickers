@@ -1,8 +1,9 @@
-import { StaticWrapper } from './StaticWrapper';
 import { DateInputProps } from '../_shared/PureDateInput';
+import { StaticWrapper, StaticWrapperProps } from './StaticWrapper';
 import { MobileWrapper, MobileWrapperProps } from './MobileWrapper';
 import { DesktopWrapper, DesktopWrapperProps } from './DesktopWrapper';
 import { ResponsiveWrapper, ResponsiveWrapperProps } from './ResponsiveWrapper';
+import { DesktopPopperWrapper, DesktopPopperWrapperProps } from './DesktopPopperWrapper';
 
 export interface WrapperProps<TInputProps = DateInputProps<any, any>> {
   open: boolean;
@@ -21,16 +22,21 @@ export type SomeWrapper =
   | typeof ResponsiveWrapper
   | typeof StaticWrapper
   | typeof MobileWrapper
-  | typeof DesktopWrapper;
+  | typeof DesktopWrapper
+  | typeof DesktopPopperWrapper;
 
 export type ExtendWrapper<TWrapper extends SomeWrapper> = TWrapper extends typeof StaticWrapper
-  ? {} // no additional props
+  ? StaticWrapperProps
   : TWrapper extends typeof ResponsiveWrapper
   ? OmitInnerWrapperProps<ResponsiveWrapperProps>
   : TWrapper extends typeof MobileWrapper
   ? OmitInnerWrapperProps<MobileWrapperProps>
   : TWrapper extends typeof DesktopWrapper
   ? OmitInnerWrapperProps<DesktopWrapperProps>
+  : TWrapper extends typeof DesktopWrapper
+  ? OmitInnerWrapperProps<DesktopWrapperProps>
+  : TWrapper extends typeof DesktopPopperWrapper
+  ? OmitInnerWrapperProps<DesktopPopperWrapperProps>
   : never;
 
 export function getWrapperVariant(wrapper: SomeWrapper) {
