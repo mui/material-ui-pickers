@@ -5,7 +5,6 @@ import { MaterialUiPickersDate } from '../typings/date';
 import { parsePickerInputValue } from '../_helpers/date-utils';
 import { KeyboardDateInput } from '../_shared/KeyboardDateInput';
 import { usePickerState } from '../_shared/hooks/usePickerState';
-import { SomeWrapper, ExtendWrapper } from '../wrappers/Wrapper';
 import { validateDateValue } from '../_helpers/text-field-helper';
 import { ResponsiveWrapper } from '../wrappers/ResponsiveWrapper';
 import { withDateAdapterProp } from '../_shared/withDateAdapterProp';
@@ -13,6 +12,7 @@ import { makeWrapperComponent } from '../wrappers/makeWrapperComponent';
 import { PureDateInput, DateInputProps } from '../_shared/PureDateInput';
 import { AnyPickerView, AllSharedPickerProps } from './SharedPickerProps';
 import { Picker, ToolbarComponentProps, ExportedPickerProps } from './Picker';
+import { SomeWrapper, ExtendWrapper, StaticWrapper } from '../wrappers/Wrapper';
 
 type AllAvailableForOverrideProps = ExportedPickerProps<AnyPickerView>;
 
@@ -23,7 +23,7 @@ export interface MakePickerOptions<T extends unknown> {
 
 export function makePickerWithStateAndWrapper<
   T extends AllAvailableForOverrideProps,
-  TWrapper extends SomeWrapper = typeof ResponsiveWrapper
+  TWrapper extends SomeWrapper = typeof ResponsiveWrapper | typeof StaticWrapper
 >(Wrapper: TWrapper, { useDefaultProps, DefaultToolbarComponent }: MakePickerOptions<T>) {
   const PickerWrapper = makeWrapperComponent<DateInputProps, ParsableDate, MaterialUiPickersDate>(
     Wrapper,
