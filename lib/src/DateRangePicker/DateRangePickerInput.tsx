@@ -70,7 +70,7 @@ export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
   const classes = useStyles();
   const startRef = React.useRef<HTMLInputElement>(null);
   const endRef = React.useRef<HTMLInputElement>(null);
-  const [start, end] = parsedDateValue ?? [null, null];
+  const [start, end] = parsedDateValue;
 
   React.useEffect(() => {
     if (!open) {
