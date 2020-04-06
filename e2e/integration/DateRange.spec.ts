@@ -37,7 +37,29 @@ describe('DateRangePicker', () => {
     cy.get('[aria-label="Jan 24, 2019"').trigger('mouseover');
   });
 
-  it.only('Allows pure keyboard input control', () => {
+  it('Properly handles selection when starting from end', () => {
+    cy.get('#desktop-range-picker input')
+      .first()
+      .clear();
+
+    cy.get('#desktop-range-picker input')
+      .eq(1)
+      .focus();
+
+    cy.get('[aria-label="Jan 30, 2019"]')
+      .first()
+      .click();
+    cy.get('[aria-label="Jan 19, 2019"]').click();
+
+    cy.get('[data-mui-test="DateRangeHighlight"]').should('have.length', 12);
+
+    cy.get('[aria-label="Jan 24, 2019"]')
+      .first()
+      .click();
+    cy.get('div[role="tooltip"]').should('not.be.visible');
+  });
+
+  it('Allows pure keyboard input control', () => {
     cy.get('#desktop-range-picker input')
       .eq(0)
       .clear()
@@ -58,16 +80,15 @@ describe('DateRangePicker', () => {
     cy.get('[data-mui-test="DateRangeHighlight"]').should('have.length', 39);
   });
 
-  it('Scrolls current month to the active selection on focusing start field', () => {
+  it('Scrolls current month to the active selection on focusing appropriate field', () => {
     cy.get('#desktop-range-picker input')
       .first()
       .click();
 
     cy.get('[aria-label="Jan 19, 2019"]').click();
-    cy.get('[aria-label="Feb 19, 2019"]').click();
 
-    cy.get('[data-mui-test="previous-arrow-button"]')
-      .eq(0)
+    cy.get('[data-mui-test="next-arrow-button"]')
+      .eq(1)
       .click()
       .click();
 
@@ -78,7 +99,7 @@ describe('DateRangePicker', () => {
     cy.contains('January 2019');
   });
 
-  it('Scrolls current month to the active selection on focusing end field', () => {
+  it('Opens on the current selecting range end', () => {
     cy.get('#desktop-range-picker input')
       .first()
       .click();
@@ -90,15 +111,7 @@ describe('DateRangePicker', () => {
 
     cy.get('[aria-label="Mar 19, 2019"]').click();
 
-    cy.get('[data-mui-test="previous-arrow-button"]')
-      .eq(0)
-      .click()
-      .click();
-
-    cy.get('#desktop-range-picker input')
-      .eq(0)
-      .click();
-
+    // reopen picker
     cy.get('#desktop-range-picker input')
       .eq(1)
       .click();

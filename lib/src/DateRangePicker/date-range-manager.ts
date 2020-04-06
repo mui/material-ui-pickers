@@ -24,7 +24,7 @@ export function calculateRangeChange({
   } else {
     return Boolean(start) && utils.isBefore(selectedDate, start)
       ? { nextSelection: 'end', newRange: [selectedDate, null] }
-      : { nextSelection: 'end', newRange: [start, selectedDate] };
+      : { nextSelection: 'start', newRange: [start, selectedDate] };
   }
 }
 
