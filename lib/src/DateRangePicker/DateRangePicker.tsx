@@ -71,8 +71,8 @@ export function makeRangePicker<TWrapper extends SomeWrapper>(Wrapper: TWrapper)
   }: DateRangePickerProps & AllSharedPickerProps<RangeInput, DateRange> & ExtendWrapper<TWrapper>) {
     const utils = useUtils();
     const [currentlySelectingRangeEnd, setCurrentlySelectingRangeEnd] = React.useState<
-      'start' | 'end' | null
-    >(null);
+      'start' | 'end'
+    >('start');
 
     const pickerStateProps = {
       ...restPropsForTextField,

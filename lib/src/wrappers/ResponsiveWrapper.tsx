@@ -1,11 +1,12 @@
 import * as React from 'react';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { Theme, useTheme } from '@material-ui/core/styles';
+import { useTheme } from '@material-ui/core/styles';
 import { MobileWrapperProps, MobileWrapper } from './MobileWrapper';
 import { DesktopWrapperProps, DesktopWrapper } from './DesktopWrapper';
 import { Breakpoint } from '@material-ui/core/styles/createBreakpoints';
 import { DesktopPopperWrapperProps, DesktopPopperWrapper } from './DesktopPopperWrapper';
 
+// @ts-ignore TODO remove when fully move to Popper based pickers
 export interface ResponsiveWrapperProps
   extends DesktopWrapperProps,
     DesktopPopperWrapperProps,

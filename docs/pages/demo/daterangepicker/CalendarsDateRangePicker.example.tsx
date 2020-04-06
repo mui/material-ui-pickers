@@ -7,19 +7,19 @@ function CalendarsDateRangePicker() {
 
   return (
     <Grid container direction="column" alignItems="center">
-      <Typography> 1 calendar </Typography>
+      <Typography gutterBottom> 1 calendar </Typography>
       <DateRangePicker
         calendars={1}
         value={selectedDate}
         onChange={date => handleDateChange(date)}
       />
-      <Typography> 2 calendars</Typography>
+      <Typography gutterBottom> 2 calendars</Typography>
       <DateRangePicker
         calendars={2}
         value={selectedDate}
         onChange={date => handleDateChange(date)}
       />
-      <Typography> 3 calendars</Typography>
+      <Typography gutterBottom> 3 calendars</Typography>
       <DateRangePicker
         calendars={3}
         value={selectedDate}

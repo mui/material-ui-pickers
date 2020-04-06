@@ -20,7 +20,7 @@ export interface InnerDesktopPopperWrapperProps {
   /** Custom component for [transition](https://material-ui.com/components/transitions/#transitioncomponent-prop)  */
   TransitionComponent?: React.ComponentType<TransitionProps>;
   // required for spreading
-  PopoverProps: any;
+  PopoverProps?: any;
 }
 
 export interface DesktopPopperWrapperProps

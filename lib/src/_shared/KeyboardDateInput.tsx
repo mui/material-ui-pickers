@@ -6,6 +6,7 @@ import { Rifm } from 'rifm';
 import { useUtils } from './hooks/useUtils';
 import { DateInputProps } from './PureDateInput';
 import { KeyboardIcon } from './icons/KeyboardIcon';
+import { createDelegatedEventHandler } from '../_helpers/utils';
 import {
   maskedDateFormatter,
   getDisplayDate,
@@ -139,14 +140,8 @@ export const KeyboardDateInput: React.FC<DateInputProps> = ({
         value={innerInputValue || ''}
         onChange={e => handleChange(e.currentTarget.value)}
         {...inputProps}
-        onFocus={e => {
-          setIsFocused(true);
-          onFocus && onFocus(e);
-        }}
-        onBlur={e => {
-          setIsFocused(false);
-          onBlur && onBlur(e);
-        }}
+        onFocus={createDelegatedEventHandler(() => setIsFocused(true), onFocus)}
+        onBlur={createDelegatedEventHandler(() => setIsFocused(true), onBlur)}
       />
     );
   }

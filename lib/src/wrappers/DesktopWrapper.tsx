@@ -11,8 +11,8 @@ export interface InnerDesktopWrapperProps {
   /** Popover props passed to material-ui Popover */
   PopoverProps?: Partial<PopoverProps>;
   // required for spreading
-  PopperProps: any;
-  TransitionComponent: any;
+  PopperProps?: any;
+  TransitionComponent?: any;
 }
 
 export interface DesktopWrapperProps
