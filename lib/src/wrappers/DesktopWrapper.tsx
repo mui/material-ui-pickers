@@ -10,6 +10,9 @@ import { WrapperVariantContext } from './WrapperVariantContext';
 export interface InnerDesktopWrapperProps {
   /** Popover props passed to material-ui Popover */
   PopoverProps?: Partial<PopoverProps>;
+  // required for spreading
+  PopperProps: any;
+  TransitionComponent: any;
 }
 
 export interface DesktopWrapperProps
@@ -33,6 +36,8 @@ export const DesktopWrapper: React.FC<DesktopWrapperProps> = ({
   wider,
   children,
   PopoverProps,
+  PopperProps,
+  TransitionComponent,
   onClear,
   onDismiss,
   onSetToday,

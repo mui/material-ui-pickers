@@ -65,14 +65,14 @@ export const DateRangePickerToolbar: React.FC<DateRangePickerToolbarProps> = ({
     >
       <div className={classes.dateTextContainer}>
         <ToolbarButton
-          variant="h5"
+          variant={Boolean(start) ? 'h5' : 'h6'}
           value={startDateValue}
           selected={currentlySelectingRangeEnd === 'start'}
           onClick={() => setCurrentlySelectingRangeEnd('start')}
         />
         <Typography variant="h5">&nbsp;{'–'}&nbsp;</Typography>
         <ToolbarButton
-          variant="h5"
+          variant={Boolean(end) ? 'h5' : 'h6'}
           value={endDateValue}
           selected={currentlySelectingRangeEnd === 'end'}
           onClick={() => setCurrentlySelectingRangeEnd('end')}

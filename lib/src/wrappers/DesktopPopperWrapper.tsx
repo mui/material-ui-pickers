@@ -19,6 +19,8 @@ export interface InnerDesktopPopperWrapperProps {
   PopperProps?: Partial<PopperProps>;
   /** Custom component for [transition](https://material-ui.com/components/transitions/#transitioncomponent-prop)  */
   TransitionComponent?: React.ComponentType<TransitionProps>;
+  // required for spreading
+  PopoverProps: any;
 }
 
 export interface DesktopPopperWrapperProps
@@ -46,6 +48,7 @@ export const DesktopPopperWrapper: React.FC<DesktopPopperWrapperProps> = ({
   wider,
   children,
   PopperProps,
+  PopoverProps,
   onClear,
   onDismiss,
   onSetToday,

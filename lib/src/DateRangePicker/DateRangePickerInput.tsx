@@ -26,9 +26,6 @@ export const useStyles = makeStyles(
         margin: '8px 0',
       },
     },
-    highlighted: {
-      backgroundColor: theme.palette.divider,
-    },
   }),
   { name: 'MuiPickersDateRangePickerInput' }
 );
@@ -127,13 +124,13 @@ export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
         openPicker={() => {}}
         readOnly={readOnly}
         label={startText}
+        focused={open && currentlySelectingRangeEnd === 'start'}
         onClick={
           readOnly ? createDelegatedEventHandler(openRangeStartSelection, onClick) : undefined
         }
         onFocus={
           !readOnly ? createDelegatedEventHandler(openRangeStartSelection, onFocus) : undefined
         }
-        className={clsx({ [classes.highlighted]: currentlySelectingRangeEnd === 'start' })}
       />
 
       <Typography className={classes.toLabelDelimiter}>{toText}</Typography>
@@ -149,11 +146,11 @@ export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
         openPicker={() => {}}
         readOnly={readOnly}
         label={endText}
+        focused={open && currentlySelectingRangeEnd === 'end'}
         onClick={readOnly ? createDelegatedEventHandler(openRangeEndSelection, onClick) : undefined}
         onFocus={
           !readOnly ? createDelegatedEventHandler(openRangeEndSelection, onFocus) : undefined
         }
-        className={clsx({ [classes.highlighted]: currentlySelectingRangeEnd === 'end' })}
       />
     </div>
   );

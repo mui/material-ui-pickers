@@ -71,8 +71,8 @@ export function makeRangePicker<TWrapper extends SomeWrapper>(Wrapper: TWrapper)
   }: DateRangePickerProps & AllSharedPickerProps<RangeInput, DateRange> & ExtendWrapper<TWrapper>) {
     const utils = useUtils();
     const [currentlySelectingRangeEnd, setCurrentlySelectingRangeEnd] = React.useState<
-      'start' | 'end'
-    >('start');
+      'start' | 'end' | null
+    >(null);
 
     const pickerStateProps = {
       ...restPropsForTextField,
@@ -93,6 +93,7 @@ export function makeRangePicker<TWrapper extends SomeWrapper>(Wrapper: TWrapper)
 
     const DateInputProps = {
       ...inputProps,
+      ...restPropsForTextField,
       currentlySelectingRangeEnd,
       setCurrentlySelectingRangeEnd,
       startText,
@@ -100,11 +101,7 @@ export function makeRangePicker<TWrapper extends SomeWrapper>(Wrapper: TWrapper)
     };
 
     return (
-      <WrapperComponent
-        wrapperProps={wrapperProps}
-        inputProps={DateInputProps}
-        {...restPropsForTextField}
-      >
+      <WrapperComponent wrapperProps={wrapperProps} inputProps={DateInputProps}>
         <DateRangePickerView
           open={wrapperProps.open}
           DateInputProps={DateInputProps}

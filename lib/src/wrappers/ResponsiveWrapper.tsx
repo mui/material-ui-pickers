@@ -1,6 +1,6 @@
 import * as React from 'react';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { Theme } from '@material-ui/core/styles';
+import { Theme, useTheme } from '@material-ui/core/styles';
 import { MobileWrapperProps, MobileWrapper } from './MobileWrapper';
 import { DesktopWrapperProps, DesktopWrapper } from './DesktopWrapper';
 import { Breakpoint } from '@material-ui/core/styles/createBreakpoints';
@@ -34,7 +34,8 @@ export const makeResponsiveWrapper = (
     TransitionComponent,
     ...other
   }) => {
-    const isDesktop = useMediaQuery<Theme>(theme => theme.breakpoints.up(desktopModeBreakpoint));
+    const theme = useTheme();
+    const isDesktop = useMediaQuery(theme.breakpoints.up(desktopModeBreakpoint));
 
     return isDesktop ? (
       <DesktopWrapperComponent

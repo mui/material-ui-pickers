@@ -5,6 +5,6 @@ export type RangeInput = [ParsableDate, ParsableDate];
 export type DateRange = [MaterialUiPickersDate, MaterialUiPickersDate];
 
 export interface CurrentlySelectingRangeEndProps {
-  currentlySelectingRangeEnd: 'start' | 'end';
+  currentlySelectingRangeEnd: 'start' | 'end' | null;
   setCurrentlySelectingRangeEnd: (newSelectingEnd: 'start' | 'end') => void;
 }

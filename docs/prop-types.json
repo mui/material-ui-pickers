@@ -1043,19 +1043,6 @@
         "name": "Partial<PopoverProps>"
       }
     },
-    "TransitionComponent": {
-      "defaultValue": null,
-      "description": "Custom component for [transition](https://material-ui.com/components/transitions/#transitioncomponent-prop)",
-      "name": "TransitionComponent",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/DesktopPopperWrapper.tsx",
-        "name": "InnerDesktopPopperWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ComponentClass<TransitionProps, any> | FunctionComponent<TransitionProps>"
-      }
-    },
     "desktopModeBreakpoint": {
       "defaultValue": {
         "value": "'md'"
@@ -1069,19 +1056,6 @@
       "required": false,
       "type": {
         "name": "\"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\""
-      }
-    },
-    "PopperProps": {
-      "defaultValue": null,
-      "description": "Popper props passed to material-ui [Popper](https://material-ui.com/api/popper/#popper-api)",
-      "name": "PopperProps",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/DesktopPopperWrapper.tsx",
-        "name": "InnerDesktopPopperWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "Partial<PopperProps>"
       }
     },
     "dateAdapter": {
@@ -1804,19 +1778,6 @@
         "name": "Partial<PopoverProps>"
       }
     },
-    "TransitionComponent": {
-      "defaultValue": null,
-      "description": "Custom component for [transition](https://material-ui.com/components/transitions/#transitioncomponent-prop)",
-      "name": "TransitionComponent",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/DesktopPopperWrapper.tsx",
-        "name": "InnerDesktopPopperWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ComponentClass<TransitionProps, any> | FunctionComponent<TransitionProps>"
-      }
-    },
     "desktopModeBreakpoint": {
       "defaultValue": {
         "value": "'md'"
@@ -1830,19 +1791,6 @@
       "required": false,
       "type": {
         "name": "\"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\""
-      }
-    },
-    "PopperProps": {
-      "defaultValue": null,
-      "description": "Popper props passed to material-ui [Popper](https://material-ui.com/api/popper/#popper-api)",
-      "name": "PopperProps",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/DesktopPopperWrapper.tsx",
-        "name": "InnerDesktopPopperWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "Partial<PopperProps>"
       }
     },
     "dateAdapter": {
@@ -2889,19 +2837,6 @@
         "name": "Partial<PopoverProps>"
       }
     },
-    "TransitionComponent": {
-      "defaultValue": null,
-      "description": "Custom component for [transition](https://material-ui.com/components/transitions/#transitioncomponent-prop)",
-      "name": "TransitionComponent",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/DesktopPopperWrapper.tsx",
-        "name": "InnerDesktopPopperWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ComponentClass<TransitionProps, any> | FunctionComponent<TransitionProps>"
-      }
-    },
     "desktopModeBreakpoint": {
       "defaultValue": {
         "value": "'md'"
@@ -2915,19 +2850,6 @@
       "required": false,
       "type": {
         "name": "\"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\""
-      }
-    },
-    "PopperProps": {
-      "defaultValue": null,
-      "description": "Popper props passed to material-ui [Popper](https://material-ui.com/api/popper/#popper-api)",
-      "name": "PopperProps",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/DesktopPopperWrapper.tsx",
-        "name": "InnerDesktopPopperWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "Partial<PopperProps>"
       }
     },
     "dateAdapter": {
@@ -3365,17 +3287,17 @@
         "name": "boolean"
       }
     },
-    "inputFormat": {
+    "onAccept": {
       "defaultValue": null,
-      "description": "Format string",
-      "name": "inputFormat",
+      "description": "Callback fired when date is accepted",
+      "name": "onAccept",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
         "name": "BasePickerProps"
       },
       "required": false,
       "type": {
-        "name": "string"
+        "name": "((date: DateIOType) => void) & ((date: DateRange) => void)"
       }
     },
     "disabled": {
@@ -3404,17 +3326,17 @@
         "name": "boolean"
       }
     },
-    "onAccept": {
+    "inputFormat": {
       "defaultValue": null,
-      "description": "Callback fired when date is accepted",
-      "name": "onAccept",
+      "description": "Format string",
+      "name": "inputFormat",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
         "name": "BasePickerProps"
       },
       "required": false,
       "type": {
-        "name": "((date: DateIOType) => void) & ((date: DateRange) => void)"
+        "name": "string"
       }
     },
     "autoOk": {
@@ -3906,19 +3828,6 @@
         "name": "Partial<MuiDialogProps>"
       }
     },
-    "TransitionComponent": {
-      "defaultValue": null,
-      "description": "Custom component for [transition](https://material-ui.com/components/transitions/#transitioncomponent-prop)",
-      "name": "TransitionComponent",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/DesktopPopperWrapper.tsx",
-        "name": "InnerDesktopPopperWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ComponentClass<TransitionProps, any> | FunctionComponent<TransitionProps>"
-      }
-    },
     "desktopModeBreakpoint": {
       "defaultValue": {
         "value": "'md'"
@@ -3932,19 +3841,6 @@
       "required": false,
       "type": {
         "name": "\"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\""
-      }
-    },
-    "PopperProps": {
-      "defaultValue": null,
-      "description": "Popper props passed to material-ui [Popper](https://material-ui.com/api/popper/#popper-api)",
-      "name": "PopperProps",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/DesktopPopperWrapper.tsx",
-        "name": "InnerDesktopPopperWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "Partial<PopperProps>"
       }
     }
   },
