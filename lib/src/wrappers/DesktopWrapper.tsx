@@ -3,22 +3,21 @@ import * as PropTypes from 'prop-types';
 import KeyboardDateInput from '../_shared/KeyboardDateInput';
 import Popover, { PopoverProps } from '@material-ui/core/Popover';
 import { WrapperProps } from './Wrapper';
+import { StaticWrapperProps } from './StaticWrapper';
 import { makeStyles } from '@material-ui/core/styles';
 import { InnerMobileWrapperProps } from './MobileWrapper';
 import { WrapperVariantContext } from './WrapperVariantContext';
+import { InnerDesktopPopperWrapperProps } from './DesktopPopperWrapper';
 
 export interface InnerDesktopWrapperProps {
   /** Popover props passed to material-ui Popover */
   PopoverProps?: Partial<PopoverProps>;
-  // required for spreading
-  PopperProps?: any;
-  TransitionComponent?: any;
 }
 
 export interface DesktopWrapperProps
   extends InnerDesktopWrapperProps,
     WrapperProps,
-    Partial<InnerMobileWrapperProps> {}
+    Partial<InnerMobileWrapperProps & InnerDesktopPopperWrapperProps & StaticWrapperProps> {}
 
 const useStyles = makeStyles({
   popover: {
@@ -52,6 +51,7 @@ export const DesktopWrapper: React.FC<DesktopWrapperProps> = ({
   clearable,
   DialogProps,
   PureDateInputComponent,
+  displayStaticWrapperAs,
   KeyboardDateInputComponent = KeyboardDateInput,
   ...other
 }) => {

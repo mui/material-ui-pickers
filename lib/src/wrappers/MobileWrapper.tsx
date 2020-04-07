@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import ModalDialog from '../_shared/ModalDialog';
 import { WrapperProps } from './Wrapper';
+import { StaticWrapperProps } from './StaticWrapper';
 import { PureDateInput } from '../_shared/PureDateInput';
 import { InnerDesktopWrapperProps } from './DesktopWrapper';
 import { WrapperVariantContext } from './WrapperVariantContext';
@@ -50,7 +51,7 @@ export interface InnerMobileWrapperProps {
 export interface MobileWrapperProps
   extends InnerMobileWrapperProps,
     WrapperProps,
-    Partial<InnerDesktopWrapperProps> {}
+    Partial<InnerDesktopWrapperProps & StaticWrapperProps> {}
 
 export const MobileWrapper: React.FC<MobileWrapperProps> = ({
   open,

@@ -6,7 +6,6 @@ import { DesktopWrapperProps, DesktopWrapper } from './DesktopWrapper';
 import { Breakpoint } from '@material-ui/core/styles/createBreakpoints';
 import { DesktopPopperWrapperProps, DesktopPopperWrapper } from './DesktopPopperWrapper';
 
-// @ts-ignore TODO remove when fully move to Popper based pickers
 export interface ResponsiveWrapperProps
   extends DesktopWrapperProps,
     DesktopPopperWrapperProps,
@@ -33,6 +32,7 @@ export const makeResponsiveWrapper = (
     PopoverProps,
     PopperProps,
     TransitionComponent,
+    displayStaticWrapperAs,
     ...other
   }) => {
     const theme = useTheme();

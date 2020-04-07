@@ -6,8 +6,10 @@ import Paper from '@material-ui/core/Paper';
 import TrapFocus from '@material-ui/core/Modal/TrapFocus';
 import Popper, { PopperProps } from '@material-ui/core/Popper';
 import { WrapperProps } from './Wrapper';
+import { StaticWrapperProps } from './StaticWrapper';
 import { makeStyles } from '@material-ui/core/styles';
 import { InnerMobileWrapperProps } from './MobileWrapper';
+import { InnerDesktopWrapperProps } from './DesktopWrapper';
 import { WrapperVariantContext } from './WrapperVariantContext';
 import { KeyboardDateInput } from '../_shared/KeyboardDateInput';
 import { useGlobalKeyDown, keycode } from '../_shared/hooks/useKeyDown';
@@ -19,14 +21,12 @@ export interface InnerDesktopPopperWrapperProps {
   PopperProps?: Partial<PopperProps>;
   /** Custom component for [transition](https://material-ui.com/components/transitions/#transitioncomponent-prop)  */
   TransitionComponent?: React.ComponentType<TransitionProps>;
-  // required for spreading
-  PopoverProps?: any;
 }
 
 export interface DesktopPopperWrapperProps
   extends InnerDesktopPopperWrapperProps,
     WrapperProps,
-    Partial<InnerMobileWrapperProps> {}
+    Partial<InnerMobileWrapperProps & StaticWrapperProps & InnerDesktopWrapperProps> {}
 
 const useStyles = makeStyles(theme => ({
   popper: {
@@ -66,6 +66,7 @@ export const DesktopPopperWrapper: React.FC<DesktopPopperWrapperProps> = ({
   clearable,
   DialogProps,
   PureDateInputComponent,
+  displayStaticWrapperAs,
   TransitionComponent = Grow,
   KeyboardDateInputComponent = KeyboardDateInput,
   ...other
