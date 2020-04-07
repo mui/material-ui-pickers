@@ -54,14 +54,19 @@ export function makePickerWithStateAndWrapper<
       ampmInClock,
       dateRangeIcon,
       disableFuture,
+      disableHighlightToday,
       disablePast,
-      showToolbar,
+      disableTimeValidationIgnoreDatePart,
       hideTabs,
       leftArrowButtonProps,
+      leftArrowButtonText,
       leftArrowIcon,
       loadingIndicator,
       maxDate,
+      maxTime,
       minDate,
+      minDateTime,
+      minTime,
       minutesStep,
       onMonthChange,
       onYearChange,
@@ -69,20 +74,18 @@ export function makePickerWithStateAndWrapper<
       orientation,
       renderDay,
       rightArrowButtonProps,
+      rightArrowButtonText,
       rightArrowIcon,
       shouldDisableDate,
       shouldDisableTime,
-      timeIcon,
-      value,
-      toolbarFormat,
-      ToolbarComponent = DefaultToolbarComponent,
-      views,
-      toolbarTitle,
-      disableTimeValidationIgnoreDatePart,
       showDaysOutsideCurrentMonth,
-      disableHighlightToday,
-      minTime,
-      maxTime,
+      showToolbar,
+      timeIcon,
+      ToolbarComponent = DefaultToolbarComponent,
+      toolbarFormat,
+      toolbarTitle,
+      value,
+      views,
       ...restPropsForTextField
     } = allProps;
 
@@ -102,6 +105,7 @@ export function makePickerWithStateAndWrapper<
           hideTabs={hideTabs}
           leftArrowButtonProps={leftArrowButtonProps}
           leftArrowIcon={leftArrowIcon}
+          leftArrowButtonText={leftArrowButtonText}
           loadingIndicator={loadingIndicator}
           maxDate={maxDate}
           maxTime={maxTime}
@@ -115,13 +119,14 @@ export function makePickerWithStateAndWrapper<
           renderDay={renderDay}
           rightArrowButtonProps={rightArrowButtonProps}
           rightArrowIcon={rightArrowIcon}
+          rightArrowButtonText={rightArrowButtonText}
           shouldDisableDate={shouldDisableDate}
           shouldDisableTime={shouldDisableTime}
           showDaysOutsideCurrentMonth={showDaysOutsideCurrentMonth}
           showToolbar={showToolbar}
           timeIcon={timeIcon}
-          toolbarFormat={toolbarFormat}
           ToolbarComponent={ToolbarComponent}
+          toolbarFormat={toolbarFormat}
           toolbarTitle={toolbarTitle || restPropsForTextField?.label}
           views={views}
         />
