@@ -73,7 +73,7 @@ export const useStyles = makeStyles(
 );
 
 export const defaultReduceAnimations =
-  typeof window !== 'undefined' && /(android)/i.test(window.navigator.userAgent);
+  typeof navigator !== 'undefined' && /(android)/i.test(navigator.userAgent);
 
 export const CalendarView: React.FC<CalendarViewProps> = ({
   date,
