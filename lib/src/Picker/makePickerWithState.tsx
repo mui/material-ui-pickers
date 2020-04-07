@@ -3,7 +3,7 @@ import { useUtils } from '../_shared/hooks/useUtils';
 import { ParsableDate } from '../constants/prop-types';
 import { MaterialUiPickersDate } from '../typings/date';
 import { parsePickerInputValue } from '../_helpers/date-utils';
-import { SomeWrapper, ExtendWrappe } from '../wrappers/Wrapper';
+import { SomeWrapper, ExtendWrapper } from '../wrappers/Wrapper';
 import { KeyboardDateInput } from '../_shared/KeyboardDateInput';
 import { usePickerState } from '../_shared/hooks/usePickerState';
 import { validateDateValue } from '../_helpers/text-field-helper';
@@ -65,7 +65,10 @@ export function makePickerWithStateAndWrapper<
       maxDate,
       maxTime,
       minDate,
+      // @ts-ignore Especial DateTimePicker only prop that are needed only on the upper level
       minDateTime,
+      // @ts-ignore Especial DateTimePicker only prop that are needed only on the upper level
+      maxDateTime,
       minTime,
       minutesStep,
       onMonthChange,
