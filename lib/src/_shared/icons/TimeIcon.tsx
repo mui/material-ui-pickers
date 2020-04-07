@@ -1,5 +1,5 @@
 import React from 'react';
-import createSvgIcon from '@material-ui/core/utils/createSvgIcon';
+import { createSvgIcon } from '@material-ui/core/utils';
 
 export const TimeIcon = createSvgIcon(
   <>

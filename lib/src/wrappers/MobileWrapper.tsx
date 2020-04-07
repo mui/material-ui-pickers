@@ -70,6 +70,7 @@ export const MobileWrapper: React.FC<MobileWrapperProps> = ({
   onDismiss,
   onSetToday,
   PopoverProps,
+  displayStaticWrapperAs,
   KeyboardDateInputComponent,
   PureDateInputComponent = PureDateInput,
   ...other

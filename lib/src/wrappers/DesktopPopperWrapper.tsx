@@ -41,6 +41,9 @@ const useStyles = makeStyles(theme => ({
       },
     },
   },
+  topTransition: {
+    transformOrigin: 'bottom center',
+  },
 }));
 
 export const DesktopPopperWrapper: React.FC<DesktopPopperWrapperProps> = ({
@@ -105,7 +108,7 @@ export const DesktopPopperWrapper: React.FC<DesktopPopperWrapperProps> = ({
         {...PopperProps}
         className={clsx(classes.popper, PopperProps?.className)}
       >
-        {({ TransitionProps }) => (
+        {({ TransitionProps, placement }) => (
           <TrapFocus
             open={open}
             disableAutoFocus
@@ -119,7 +122,9 @@ export const DesktopPopperWrapper: React.FC<DesktopPopperWrapperProps> = ({
                 onBlur={handleBlur}
                 tabIndex={-1}
                 elevation={8}
-                className={classes.paper}
+                className={clsx(classes.paper, {
+                  [classes.topTransition]: placement === 'top',
+                })}
               >
                 {children}
               </Paper>

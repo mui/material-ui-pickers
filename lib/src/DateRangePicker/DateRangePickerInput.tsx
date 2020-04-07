@@ -21,9 +21,9 @@ export const useStyles = makeStyles(
       },
     },
     toLabelDelimiter: {
-      margin: '0 16px',
-      [theme.breakpoints.down('xs')]: {
-        margin: '8px 0',
+      margin: '8px 0',
+      [theme.breakpoints.up('sm')]: {
+        margin: '0 16px',
       },
     },
   }),
