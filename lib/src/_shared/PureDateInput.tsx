@@ -68,8 +68,6 @@ export interface DateInputProps<TInputValue = ParsableDate, TDateValue = Materia
   // ?? TODO when it will be possible to display "empty" date in datepicker use it instead of ignoring invalid inputs
   ignoreInvalidInputs?: boolean;
   open: boolean;
-  containerRef?: React.Ref<HTMLDivElement>;
-  forwardedRef?: React.Ref<HTMLInputElement>;
 }
 
 export type ExportedDateInputProps<TInputValue, TDateValue> = Omit<
@@ -85,7 +83,12 @@ export type ExportedDateInputProps<TInputValue, TDateValue> = Omit<
   | 'open'
 >;
 
-export const PureDateInput: React.FC<DateInputProps> = ({
+export interface DateInputRefs {
+  containerRef?: React.Ref<HTMLDivElement>;
+  forwardedRef?: React.Ref<HTMLInputElement>;
+}
+
+export const PureDateInput: React.FC<DateInputProps & DateInputRefs> = ({
   onChange,
   inputFormat,
   rifmFormatter,

@@ -41,6 +41,33 @@ describe('DateRangePicker', () => {
     ).toBe(70);
   });
 
+  test('forwardRef', () => {
+    const Component = () => {
+      const ref = React.useRef<HTMLDivElement>(null);
+
+      React.useEffect(() => {
+        expect(ref?.current?.id).toBe('test-ref');
+        expect(ref?.current).toBeInstanceOf(HTMLDivElement);
+      });
+
+      return (
+        <DesktopDateRangePicker
+          open
+          id="test-ref"
+          ref={ref}
+          calendars={3}
+          onChange={jest.fn()}
+          value={[
+            utilsToUse.date('2018-01-01T00:00:00.000'),
+            utilsToUse.date('2018-01-31T00:00:00.000'),
+          ]}
+        />
+      );
+    };
+
+    mount(<Component />);
+  });
+
   test('prop: calendars', () => {
     const component = mount(
       <DesktopDateRangePicker

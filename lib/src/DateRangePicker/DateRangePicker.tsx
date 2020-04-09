@@ -24,7 +24,7 @@ export function parseRangeInputValue(
     date === null
       ? null
       : utils.startOfDay(parsePickerInputValue(now, utils, { value: date, defaultHighlight }))
-  ) as DateRange;
+  ) as DateRangeType;
 }
 
 interface DateRangePickerProps
@@ -64,6 +64,8 @@ export function makeRangePicker<TWrapper extends SomeWrapper>(Wrapper: TWrapper)
     reduceAnimations,
     value,
     onChange,
+    mask = '__/__/____',
+    variant = 'outlined',
     startText = 'Start',
     endText = 'End',
     inputFormat: passedInputFormat,
@@ -98,6 +100,8 @@ export function makeRangePicker<TWrapper extends SomeWrapper>(Wrapper: TWrapper)
       setCurrentlySelectingRangeEnd,
       startText,
       endText,
+      mask,
+      variant,
     };
 
     return (
@@ -129,12 +133,10 @@ export function makeRangePicker<TWrapper extends SomeWrapper>(Wrapper: TWrapper)
     );
   }
 
-  RangePickerWithStateAndWrapper.defaultProps = {
-    mask: '__/__/____',
-    variant: 'outlined',
-  };
-
-  return RangePickerWithStateAndWrapper;
+  return React.forwardRef<
+    HTMLDivElement,
+    React.ComponentProps<typeof RangePickerWithStateAndWrapper>
+  >((props, ref) => <RangePickerWithStateAndWrapper {...props} forwardedRef={ref} />);
 }
 
 // TODO replace with new export type syntax

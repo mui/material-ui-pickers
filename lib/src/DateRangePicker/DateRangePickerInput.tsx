@@ -8,7 +8,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { MaterialUiPickersDate } from '../typings/date';
 import { DateInputProps } from '../_shared/PureDateInput';
 import { CurrentlySelectingRangeEndProps } from './RangeTypes';
-import { createDelegatedEventHandler, doNothing } from '../_helpers/utils';
+import { mergeRefs, createDelegatedEventHandler, doNothing } from '../_helpers/utils';
 
 export const useStyles = makeStyles(
   theme => ({
@@ -36,9 +36,11 @@ export interface ExportedDateRangePickerInputProps {
 export interface DateRangeInputProps
   extends ExportedDateRangePickerInputProps,
     CurrentlySelectingRangeEndProps,
-    DateInputProps<RangeInput, DateRange> {
+    Omit<DateInputProps<RangeInput, DateRange>, 'forwardedRef'> {
   startText: React.ReactNode;
   endText: React.ReactNode;
+  forwardedRef?: React.Ref<HTMLDivElement>;
+  containerRef?: React.Ref<HTMLDivElement>;
 }
 
 export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
@@ -46,7 +48,7 @@ export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
   rawValue,
   onChange,
   onClick,
-  parsedDateValue,
+  parsedDateValue: [start, end],
   id,
   open,
   className,
@@ -66,7 +68,6 @@ export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
   const classes = useStyles();
   const startRef = React.useRef<HTMLInputElement>(null);
   const endRef = React.useRef<HTMLInputElement>(null);
-  const [start, end] = parsedDateValue;
 
   React.useEffect(() => {
     if (!open) {
@@ -111,7 +112,11 @@ export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
   };
 
   return (
-    <div id={id} className={clsx(classes.rangeInputsContainer, className)} ref={containerRef}>
+    <div
+      id={id}
+      className={clsx(classes.rangeInputsContainer, className)}
+      ref={mergeRefs([containerRef, forwardedRef])}
+    >
       <KeyboardDateInput
         {...other}
         open={open}

@@ -4,8 +4,8 @@ import IconButton from '@material-ui/core/IconButton';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import { Rifm } from 'rifm';
 import { useUtils } from './hooks/useUtils';
-import { DateInputProps } from './PureDateInput';
 import { KeyboardIcon } from './icons/KeyboardIcon';
+import { DateInputProps, DateInputRefs } from './PureDateInput';
 import { createDelegatedEventHandler } from '../_helpers/utils';
 import {
   maskedDateFormatter,
@@ -15,7 +15,7 @@ import {
   staticDateWith2DigitTokens,
 } from '../_helpers/text-field-helper';
 
-export const KeyboardDateInput: React.FC<DateInputProps> = ({
+export const KeyboardDateInput: React.FC<DateInputProps & DateInputRefs> = ({
   disableMaskedInput,
   rawValue,
   validationError,

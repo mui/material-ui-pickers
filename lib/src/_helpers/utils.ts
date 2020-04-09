@@ -48,4 +48,17 @@ export function createDelegatedEventHandler<TEvent>(
   };
 }
 
+export function mergeRefs<T>(refs: (React.Ref<T | null> | undefined)[]) {
+  return (value: T) => {
+    refs.forEach(ref => {
+      if (typeof ref === 'function') {
+        ref(value);
+      } else if (typeof ref === 'object' && ref != null) {
+        // @ts-ignore .current is not a readonly, hold on ts
+        ref.current = value;
+      }
+    });
+  };
+}
+
 export const doNothing = () => {};
