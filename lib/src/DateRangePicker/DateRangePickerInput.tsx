@@ -8,14 +8,13 @@ import { makeStyles } from '@material-ui/core/styles';
 import { MaterialUiPickersDate } from '../typings/date';
 import { DateInputProps } from '../_shared/PureDateInput';
 import { CurrentlySelectingRangeEndProps } from './RangeTypes';
-import { createDelegatedEventHandler } from '../_helpers/utils';
+import { createDelegatedEventHandler, doNothing } from '../_helpers/utils';
 
 export const useStyles = makeStyles(
   theme => ({
     rangeInputsContainer: {
       display: 'flex',
       alignItems: 'center',
-      // ? TBD
       [theme.breakpoints.down('xs')]: {
         flexDirection: 'column',
       },
@@ -121,7 +120,7 @@ export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
         parsedDateValue={start}
         onChange={handleStartChange}
         disableOpenPicker
-        openPicker={() => {}}
+        openPicker={doNothing}
         readOnly={readOnly}
         label={startText}
         focused={open && currentlySelectingRangeEnd === 'start'}
@@ -143,7 +142,7 @@ export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
         parsedDateValue={end}
         onChange={handleEndChange}
         disableOpenPicker
-        openPicker={() => {}}
+        openPicker={doNothing}
         readOnly={readOnly}
         label={endText}
         focused={open && currentlySelectingRangeEnd === 'end'}

@@ -30,7 +30,7 @@ export const DateRangePickerViewMobile: React.FC<DesktopDateRangeCalendarProps> 
   rightArrowButtonText,
   rightArrowIcon,
   onChange,
-  ...CalendarProps
+  ...other
 }) => {
   const utils = useUtils();
 
@@ -47,11 +47,11 @@ export const DateRangePickerViewMobile: React.FC<DesktopDateRangeCalendarProps> 
         rightArrowButtonProps={rightArrowButtonProps}
         rightArrowButtonText={rightArrowButtonText}
         rightArrowIcon={rightArrowIcon}
-        {...CalendarProps}
+        {...other}
       />
 
       <Calendar
-        {...CalendarProps}
+        {...other}
         date={date}
         onChange={onChange}
         renderDay={(day, _, DayProps) => (

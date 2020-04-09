@@ -55,6 +55,20 @@ export const useStyles = makeStyles(
   { name: 'MuiPickersDesktopDateRangeCalendar' }
 );
 
+function getCalendarsArray(calendars: ExportedDesktopDateRangeCalendarProps['calendars']) {
+  switch (calendars) {
+    case 1:
+      return [0];
+    case 2:
+      return [0, 0];
+    case 3:
+      return [0, 0, 0];
+    // this will not work in IE11, but allows to support any amount of calendars
+    default:
+      return new Array(calendars).fill(0);
+  }
+}
+
 export const DateRangePickerViewDesktop: React.FC<DesktopDateRangeCalendarProps> = ({
   date,
   calendars = 2,
@@ -71,11 +85,11 @@ export const DateRangePickerViewDesktop: React.FC<DesktopDateRangeCalendarProps>
   minDate,
   maxDate,
   currentlySelectingRangeEnd,
-  ...CalendarProps
+  currentMonth,
+  ...other
 }) => {
   const utils = useUtils();
   const classes = useStyles();
-  const { currentMonth } = CalendarProps;
   const [rangePreviewDay, setRangePreviewDay] = React.useState<MaterialUiPickersDate>(null);
 
   const isNextMonthDisabled = useNextMonthDisabled(currentMonth, { disableFuture, maxDate });
@@ -121,7 +135,7 @@ export const DateRangePickerViewDesktop: React.FC<DesktopDateRangeCalendarProps>
 
   return (
     <div className={classes.dateRangeContainer}>
-      {new Array(calendars).fill(0).map((_, index) => {
+      {getCalendarsArray(calendars).map((_, index) => {
         const monthOnIteration = utils.setMonth(currentMonth, utils.getMonth(currentMonth) + index);
 
         return (
@@ -144,7 +158,7 @@ export const DateRangePickerViewDesktop: React.FC<DesktopDateRangeCalendarProps>
             />
 
             <Calendar
-              {...CalendarProps}
+              {...other}
               key={index}
               date={date}
               minDate={minDate}

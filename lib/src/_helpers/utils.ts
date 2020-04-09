@@ -47,3 +47,5 @@ export function createDelegatedEventHandler<TEvent>(
     }
   };
 }
+
+export const doNothing = () => {};
