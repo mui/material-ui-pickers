@@ -52,7 +52,7 @@
     "moment": "^2.24.0",
     "moment-hijri": "^2.1.2",
     "moment-jalaali": "^0.9.2",
-    "next": "8.0.4",
+    "next": "9.3.2",
     "next-cookies": "2.0.3",
     "next-images": "^1.4.0",
     "next-transpile-modules": "^2.0.0",
