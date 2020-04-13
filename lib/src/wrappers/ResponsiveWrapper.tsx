@@ -10,8 +10,8 @@ export interface ResponsiveWrapperProps
   extends DesktopWrapperProps,
     DesktopPopperWrapperProps,
     MobileWrapperProps {
-  /** Breakpoint when `Desktop` mode will be changed to `Mobile`
-   * @default 'md'
+  /** Breakpoint when `Mobile` mode will be changed to `Desktop`
+   * @default 'sm'
    */
   desktopModeBreakpoint?: Breakpoint;
 }
@@ -21,7 +21,7 @@ export const makeResponsiveWrapper = (
   MobileWrapperComponent: React.FC<MobileWrapperProps>
 ) => {
   const ResponsiveWrapper: React.FC<ResponsiveWrapperProps> = ({
-    desktopModeBreakpoint = 'md',
+    desktopModeBreakpoint = 'sm',
     okLabel,
     cancelLabel,
     clearLabel,

@@ -1142,9 +1142,9 @@
     },
     "desktopModeBreakpoint": {
       "defaultValue": {
-        "value": "'md'"
+        "value": "'sm'"
       },
-      "description": "Breakpoint when `Desktop` mode will be changed to `Mobile`",
+      "description": "Breakpoint when `Mobile` mode will be changed to `Desktop`",
       "name": "desktopModeBreakpoint",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/wrappers/ResponsiveWrapper.tsx",
@@ -1918,9 +1918,9 @@
     },
     "desktopModeBreakpoint": {
       "defaultValue": {
-        "value": "'md'"
+        "value": "'sm'"
       },
-      "description": "Breakpoint when `Desktop` mode will be changed to `Mobile`",
+      "description": "Breakpoint when `Mobile` mode will be changed to `Desktop`",
       "name": "desktopModeBreakpoint",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/wrappers/ResponsiveWrapper.tsx",
@@ -3018,9 +3018,9 @@
     },
     "desktopModeBreakpoint": {
       "defaultValue": {
-        "value": "'md'"
+        "value": "'sm'"
       },
-      "description": "Breakpoint when `Desktop` mode will be changed to `Mobile`",
+      "description": "Breakpoint when `Mobile` mode will be changed to `Desktop`",
       "name": "desktopModeBreakpoint",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/wrappers/ResponsiveWrapper.tsx",
@@ -3548,9 +3548,9 @@
     },
     "desktopModeBreakpoint": {
       "defaultValue": {
-        "value": "'md'"
+        "value": "'sm'"
       },
-      "description": "Breakpoint when `Desktop` mode will be changed to `Mobile`",
+      "description": "Breakpoint when `Mobile` mode will be changed to `Desktop`",
       "name": "desktopModeBreakpoint",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/wrappers/ResponsiveWrapper.tsx",
