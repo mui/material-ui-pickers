@@ -1360,11 +1360,6 @@
     debug "^3.1.0"
     lodash.once "^4.1.1"
 
-"@date-io/core@^2.5.0":
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/@date-io/core/-/core-2.5.0.tgz#afb3a82e989a925755cba139b71f95b6b396dce2"
-  integrity sha512-GifWlc0hyLdYwivltV8KVwE+OOVgYoHF4DvvKn6VOA73iVvqxbXXeL18PVFjMw8r0JUHmuhP6S+4TD8INBzXZA==
-
 "@date-io/core@^2.6.0":
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/@date-io/core/-/core-2.6.0.tgz#01efa47b225d1a94d3138583588b919442149ee8"
@@ -1384,19 +1379,19 @@
   dependencies:
     "@date-io/core" "^2.6.0"
 
-"@date-io/hijri@^2.2.0":
-  version "2.5.1"
-  resolved "https://registry.yarnpkg.com/@date-io/hijri/-/hijri-2.5.1.tgz#6bcc20a2097731d8f4e268393946fd3bee3c6797"
-  integrity sha512-v0Iszo++y2sqlzDQhACBCHr38X01dCV5uDIatwvk1mj3IQoYzhi60imd9BYD6VVaUhwH04mONbC4U2IsYSqsPQ==
+"@date-io/hijri@^2.6.0":
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/@date-io/hijri/-/hijri-2.6.0.tgz#b5f8aef55ae3483134069cbe3b8cf1b392f228ca"
+  integrity sha512-hA7c1EKLhj7f1+O0EUoXHbcvHd3djaDYZx/WUoJ7qqULN/5QgC1v2LhOJCBJllUBZRal8a/iQBEeo+OWbueCCg==
   dependencies:
-    "@date-io/moment" "^2.5.1"
+    "@date-io/moment" "^2.6.0"
 
-"@date-io/jalaali@^2.0.0":
-  version "2.5.1"
-  resolved "https://registry.yarnpkg.com/@date-io/jalaali/-/jalaali-2.5.1.tgz#d22c7a9d748f07d80ab73a5376ee3f1fb5bd919b"
-  integrity sha512-+/lrgjIARXQcjr9ARRN0bygYeoP43lE95Ec1skeq9P6X4q1eLk0xyhGtsygUNeFxFenrFk1n19Z5d2qC9U/Hsw==
+"@date-io/jalaali@^2.6.0":
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/@date-io/jalaali/-/jalaali-2.6.0.tgz#7adf6d7deb3422b88f579e69fb208c5c47c690b0"
+  integrity sha512-7kxrE5z2ndj+Z/QUORX20tAG4CI9zohgUfxz+2fst0b/mEC9AR7wgWWGV/JWZveJAzxEDsKaPJOxhA+hoFXwkQ==
   dependencies:
-    "@date-io/moment" "^2.5.1"
+    "@date-io/moment" "^2.6.0"
 
 "@date-io/luxon@^2.6.0":
   version "2.6.0"
@@ -1404,13 +1399,6 @@
   integrity sha512-oVTx69VjrGcOh0alqrPye1ddaxmL++YXm7ga51lc328f9yCV6/hTsw9xNryn1BbcNlusHWSTQVwv7LGG09IS8g==
   dependencies:
     "@date-io/core" "^2.6.0"
-
-"@date-io/moment@^2.5.1":
-  version "2.5.1"
-  resolved "https://registry.yarnpkg.com/@date-io/moment/-/moment-2.5.1.tgz#6f2c4437f718a51dc0675a97ea2d1d435e9d4b76"
-  integrity sha512-B7IF8yfEf6dnKX3bFml18IQ8cpToYrkQQPKjscSjVZS72xO5gXW5pRqYZx0pbZbHnpw/WS5Fy/lnHPwTyIWCWA==
-  dependencies:
-    "@date-io/core" "^2.5.0"
 
 "@date-io/moment@^2.6.0":
   version "2.6.0"
