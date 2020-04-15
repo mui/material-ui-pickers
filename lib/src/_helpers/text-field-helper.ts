@@ -180,32 +180,33 @@ export function checkMaskIsValidForCurrentFormat(
     );
   }
 
-  return { isMaskValid, placeholder: formattedDateWith1Digit };
+  return isMaskValid;
 }
 
-export const maskedDateFormatter = (mask: string, numberMaskChar: string, accept: RegExp) => (
+export const maskedDateFormatter = (mask: string, userInputChar: string, acceptRegexp: RegExp) => (
   value: string
 ) => {
-  let result = '';
-  const parsed = value.match(accept) || [];
+  return value
+    .split('')
+    .map((char, i) => {
+      acceptRegexp.lastIndex = 0;
 
-  if (parsed.length === 0) {
-    return '';
-  }
+      if (i > mask.length - 1) {
+        return '';
+      }
 
-  let i = 0;
-  let n = 0;
-  while (i < mask.length) {
-    const maskChar = mask[i];
-    if (maskChar === numberMaskChar && n < parsed.length) {
-      const parsedChar = parsed[n];
-      result += parsedChar;
-      n += 1;
-    } else {
-      result += maskChar;
-    }
-    i += 1;
-  }
+      const maskChar = mask[i];
+      const nextMaskChar = mask[i + 1];
 
-  return result;
+      const acceptedChar = acceptRegexp.test(char) ? char : '';
+      const formattedChar = maskChar === userInputChar ? acceptedChar : maskChar + acceptedChar;
+
+      if (i === value.length - 1 && nextMaskChar && nextMaskChar !== userInputChar) {
+        // when cursor at the end of mask part (e.g. month) prerender next symbol "21" -> "21/"
+        return formattedChar ? formattedChar + nextMaskChar : '';
+      } else {
+        return formattedChar;
+      }
+    })
+    .join('');
 };
