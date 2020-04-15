@@ -44,7 +44,7 @@ export function usePickerState<TInput, TDateValue>(
     if (!valueManager.areValuesEqual(pickerDate, date)) {
       setPickerDate(date);
     }
-  }, [value]); // eslint-disable-line
+  }, [value, utils]); // eslint-disable-line
 
   const acceptDate = useCallback(
     (acceptedDate: TDateValue, needClosePicker: boolean) => {
