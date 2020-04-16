@@ -48,7 +48,8 @@ export function usePickerState<TInput, TDateValue>(
 
       return currentPickerDate;
     });
-  }, [value, utils, valueManager, date]);
+    // We need to react only on value change, because `date` could potentially return new Date() on each render
+  }, [value, utils]); // eslint-disable-line
 
   const acceptDate = useCallback(
     (acceptedDate: TDateValue, needClosePicker: boolean) => {
