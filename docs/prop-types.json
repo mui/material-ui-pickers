@@ -1140,12 +1140,12 @@
         "name": "Partial<PopoverProps>"
       }
     },
-    "desktopModeBreakpoint": {
+    "desktopModeMediaQuery": {
       "defaultValue": {
-        "value": "'sm'"
+        "value": "\"(hover: hover)\""
       },
-      "description": "Breakpoint when `Mobile` mode will be changed to `Desktop`",
-      "name": "desktopModeBreakpoint",
+      "description": "Css media query when `Mobile` mode will be changed to `Desktop`\n@example \"(min-width: 720px)\" or theme.breakpoints.up(\"sm\")",
+      "name": "desktopModeMediaQuery",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/wrappers/ResponsiveWrapper.tsx",
         "name": "ResponsiveWrapperProps"
@@ -1916,12 +1916,12 @@
         "name": "Partial<PopoverProps>"
       }
     },
-    "desktopModeBreakpoint": {
+    "desktopModeMediaQuery": {
       "defaultValue": {
-        "value": "'sm'"
+        "value": "\"(hover: hover)\""
       },
-      "description": "Breakpoint when `Mobile` mode will be changed to `Desktop`",
-      "name": "desktopModeBreakpoint",
+      "description": "Css media query when `Mobile` mode will be changed to `Desktop`\n@example \"(min-width: 720px)\" or theme.breakpoints.up(\"sm\")",
+      "name": "desktopModeMediaQuery",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/wrappers/ResponsiveWrapper.tsx",
         "name": "ResponsiveWrapperProps"
@@ -3016,12 +3016,12 @@
         "name": "Partial<PopoverProps>"
       }
     },
-    "desktopModeBreakpoint": {
+    "desktopModeMediaQuery": {
       "defaultValue": {
-        "value": "'sm'"
+        "value": "\"(hover: hover)\""
       },
-      "description": "Breakpoint when `Mobile` mode will be changed to `Desktop`",
-      "name": "desktopModeBreakpoint",
+      "description": "Css media query when `Mobile` mode will be changed to `Desktop`\n@example \"(min-width: 720px)\" or theme.breakpoints.up(\"sm\")",
+      "name": "desktopModeMediaQuery",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/wrappers/ResponsiveWrapper.tsx",
         "name": "ResponsiveWrapperProps"
@@ -3546,12 +3546,12 @@
         "name": "() => void"
       }
     },
-    "desktopModeBreakpoint": {
+    "desktopModeMediaQuery": {
       "defaultValue": {
-        "value": "'sm'"
+        "value": "\"(hover: hover)\""
       },
-      "description": "Breakpoint when `Mobile` mode will be changed to `Desktop`",
-      "name": "desktopModeBreakpoint",
+      "description": "Css media query when `Mobile` mode will be changed to `Desktop`\n@example \"(min-width: 720px)\" or theme.breakpoints.up(\"sm\")",
+      "name": "desktopModeMediaQuery",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/wrappers/ResponsiveWrapper.tsx",
         "name": "ResponsiveWrapperProps"

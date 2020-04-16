@@ -1,6 +1,5 @@
 import * as React from 'react';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { useTheme } from '@material-ui/core/styles';
 import { MobileWrapperProps, MobileWrapper } from './MobileWrapper';
 import { DesktopWrapperProps, DesktopWrapper } from './DesktopWrapper';
 import { Breakpoint } from '@material-ui/core/styles/createBreakpoints';
@@ -10,10 +9,11 @@ export interface ResponsiveWrapperProps
   extends DesktopWrapperProps,
     DesktopPopperWrapperProps,
     MobileWrapperProps {
-  /** Breakpoint when `Mobile` mode will be changed to `Desktop`
-   * @default 'sm'
+  /** Css media query when `Mobile` mode will be changed to `Desktop`
+   * @default "(hover: hover)"
+   * @example "(min-width: 720px)" or theme.breakpoints.up("sm")
    */
-  desktopModeBreakpoint?: Breakpoint;
+  desktopModeMediaQuery?: Breakpoint;
 }
 
 export const makeResponsiveWrapper = (
@@ -21,7 +21,7 @@ export const makeResponsiveWrapper = (
   MobileWrapperComponent: React.FC<MobileWrapperProps>
 ) => {
   const ResponsiveWrapper: React.FC<ResponsiveWrapperProps> = ({
-    desktopModeBreakpoint = 'sm',
+    desktopModeMediaQuery = '(hover: hover)',
     okLabel,
     cancelLabel,
     clearLabel,
@@ -35,8 +35,7 @@ export const makeResponsiveWrapper = (
     displayStaticWrapperAs,
     ...other
   }) => {
-    const theme = useTheme();
-    const isDesktop = useMediaQuery(theme.breakpoints.up(desktopModeBreakpoint));
+    const isDesktop = useMediaQuery(desktopModeMediaQuery);
 
     return isDesktop ? (
       <DesktopWrapperComponent

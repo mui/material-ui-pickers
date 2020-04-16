@@ -36,7 +36,7 @@ const useStyles = makeStyles(theme => ({
     transformOrigin: 'top center',
     '&:focus': {
       outline: 'auto',
-      '@media (pointer:coarse)': {
+      '@media (hover: none)': {
         outline: 0,
       },
     },
