@@ -5,7 +5,7 @@ import { MaterialUiPickersDate } from '../../typings/date';
 import { useUtils, useNow, MuiPickersAdapter } from './useUtils';
 import { useCallback, useDebugValue, useEffect, useMemo, useState } from 'react';
 
-export const FORCE_FINISH_PICKER = Symbol('Force closing picker, used for accessibility ');
+export const FORCE_FINISH_PICKER = Symbol('Force closing picker, useful for accessibility');
 
 export function usePickerState<TInput, TDateValue>(
   props: BasePickerProps<TInput, TDateValue>,
@@ -41,10 +41,14 @@ export function usePickerState<TInput, TDateValue>(
   const { isOpen, setIsOpen } = useOpenState(props);
 
   useEffect(() => {
-    if (!valueManager.areValuesEqual(pickerDate, date)) {
-      setPickerDate(date);
-    }
-  }, [value, utils]); // eslint-disable-line
+    setPickerDate(currentPickerDate => {
+      if (!valueManager.areValuesEqual(currentPickerDate, date)) {
+        return date;
+      }
+
+      return currentPickerDate;
+    });
+  }, [value, utils, valueManager, date]);
 
   const acceptDate = useCallback(
     (acceptedDate: TDateValue, needClosePicker: boolean) => {

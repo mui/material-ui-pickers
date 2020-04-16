@@ -64,7 +64,7 @@ export const KeyboardDateInput: React.FC<DateInputProps & DateInputRefs> = ({
     }
 
     return checkMaskIsValidForCurrentFormat(mask, maskChar, inputFormat, acceptRegex, utils);
-  }, [inputFormat, mask]); // eslint-disable-line
+  }, [acceptRegex, disableMaskedInput, inputFormat, mask, maskChar, utils]);
 
   const formatter = React.useMemo(
     () =>
