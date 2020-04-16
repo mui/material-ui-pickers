@@ -75,8 +75,8 @@ export const KeyboardDateInput: React.FC<DateInputProps & DateInputRefs> = ({
   );
 
   React.useEffect(() => {
-    // If not using mask don't update input on state change when focused to avoid such weird thing:
-    // When parsing format "yyyy" with input value "2" value parsed and input value updating to "0002"
+    // We do not need to update the input value on keystroke
+    // Because library formatters can change inputs from 12/12/2 to 12/12/0002
     if ((rawValue === null || utils.isValid(rawValue)) && !isFocused) {
       setInnerInputValue(getInputValue());
     }
@@ -111,7 +111,7 @@ export const KeyboardDateInput: React.FC<DateInputProps & DateInputRefs> = ({
       readOnly,
     },
     onFocus: createDelegatedEventHandler(() => setIsFocused(true), onFocus),
-    onBlur: createDelegatedEventHandler(() => setIsFocused(true), onBlur),
+    onBlur: createDelegatedEventHandler(() => setIsFocused(false), onBlur),
     InputProps: {
       ...InputProps,
       [`${adornmentPosition}Adornment`]: hideOpenPickerButton ? (

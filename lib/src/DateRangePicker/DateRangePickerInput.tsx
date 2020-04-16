@@ -82,6 +82,7 @@ export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
   }, [currentlySelectingRangeEnd, open]);
 
   const handleStartChange = (date: MaterialUiPickersDate, inputString?: string) => {
+    console.log(date);
     if (date === null || utils.isValid(date)) {
       onChange([date, end], inputString);
     }
