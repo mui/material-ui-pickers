@@ -90,7 +90,6 @@ export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
   // TODO: so simply break 1 react's commit phase in 2 (first for input and second for calendars) by executing onChange in the next tick
   const lazyHandleChangeCallback = React.useCallback(
     (...args: Parameters<typeof onChange>) =>
-      // actually setTimeout(fn, 0)
       executeInTheNextEventLoopTick(() => onChange(...args)),
     []
   );
