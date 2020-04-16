@@ -9,7 +9,7 @@ import {
 
 describe('test-field-helper', () => {
   test('maskedDateFormatter for date', () => {
-    const formatterFn = maskedDateFormatter('__/__/____', '_', /[\d]/gi);
+    const formatterFn = maskedDateFormatter('__/__/____', /[\d]/gi);
 
     expect(formatterFn('21')).toBe('21/');
     expect(formatterFn('21/1')).toBe('21/1');
@@ -22,7 +22,7 @@ describe('test-field-helper', () => {
   });
 
   test('maskedDateFormatter for time', () => {
-    const formatterFn = maskedDateFormatter('__:__ _M', '_', /[\dap]/gi);
+    const formatterFn = maskedDateFormatter('__:__ _M', /[\dap]/gi);
 
     expect(formatterFn('10')).toBe('10:');
     expect(formatterFn('10:00')).toBe('10:00 ');
@@ -66,7 +66,7 @@ describe('test-field-helper', () => {
       }
 
       expect(
-        checkMaskIsValidForCurrentFormat(mask, '_', formatForCurrentLib, /[\dap]/gi, utilsToUse)
+        checkMaskIsValidForCurrentFormat(mask, formatForCurrentLib, /[\dap]/gi, utilsToUse)
       ).toBe(expected);
     }
   );
