@@ -2,7 +2,6 @@ import * as React from 'react';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { MobileWrapperProps, MobileWrapper } from './MobileWrapper';
 import { DesktopWrapperProps, DesktopWrapper } from './DesktopWrapper';
-import { Breakpoint } from '@material-ui/core/styles/createBreakpoints';
 import { DesktopPopperWrapperProps, DesktopPopperWrapper } from './DesktopPopperWrapper';
 
 export interface ResponsiveWrapperProps
@@ -13,7 +12,7 @@ export interface ResponsiveWrapperProps
    * @default "(hover: hover)"
    * @example "(min-width: 720px)" or theme.breakpoints.up("sm")
    */
-  desktopModeMediaQuery?: Breakpoint;
+  desktopModeMediaQuery?: string;
 }
 
 export const makeResponsiveWrapper = (
