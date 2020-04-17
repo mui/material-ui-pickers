@@ -46,13 +46,16 @@ export const KeyboardDateInput: React.FC<DateInputProps & DateInputRefs> = ({
   ...other
 }) => {
   const utils = useUtils();
-  const [isFocused, setIsFocused] = React.useState(false);
+  const isFocusedRef = React.useRef(false);
 
-  const getInputValue = () =>
-    getDisplayDate(rawValue, utils, {
-      inputFormat,
-      emptyInputText: emptyLabel,
-    });
+  const getInputValue = React.useCallback(
+    () =>
+      getDisplayDate(rawValue, utils, {
+        inputFormat,
+        emptyInputText: emptyLabel,
+      }),
+    [emptyLabel, inputFormat, rawValue, utils]
+  );
 
   const formatHelperText = utils.getFormatHelperText(inputFormat);
   const [innerInputValue, setInnerInputValue] = React.useState<string | null>(getInputValue());
@@ -74,10 +77,10 @@ export const KeyboardDateInput: React.FC<DateInputProps & DateInputRefs> = ({
   React.useEffect(() => {
     // We do not need to update the input value on keystroke
     // Because library formatters can change inputs from 12/12/2 to 12/12/0002
-    if ((rawValue === null || utils.isValid(rawValue)) && !isFocused) {
+    if ((rawValue === null || utils.isValid(rawValue)) && !isFocusedRef.current) {
       setInnerInputValue(getInputValue());
     }
-  }, [rawValue, utils, inputFormat]); // eslint-disable-line
+  }, [rawValue, utils, inputFormat, getInputValue]);
 
   const handleChange = (text: string) => {
     const finalString = text === '' || text === mask ? null : text;
@@ -107,8 +110,8 @@ export const KeyboardDateInput: React.FC<DateInputProps & DateInputRefs> = ({
       ...inputPropsPassed,
       readOnly,
     },
-    onFocus: createDelegatedEventHandler(() => setIsFocused(true), onFocus),
-    onBlur: createDelegatedEventHandler(() => setIsFocused(false), onBlur),
+    onFocus: createDelegatedEventHandler(() => (isFocusedRef.current = true), onFocus),
+    onBlur: createDelegatedEventHandler(() => (isFocusedRef.current = false), onBlur),
     InputProps: {
       ...InputProps,
       [`${adornmentPosition}Adornment`]: hideOpenPickerButton ? (
