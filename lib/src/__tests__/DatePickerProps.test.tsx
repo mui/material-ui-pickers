@@ -101,11 +101,10 @@ describe('DatePicker - different props', () => {
       return (
         <>
           <DatePicker
-            renderInput={props => <TextField {...props} />}
             ref={ref}
-            id="focusing-picker"
             value={null}
             onChange={jest.fn()}
+            renderInput={props => <TextField id="focusing-picker" {...props} />}
           />
 
           <button id="focus-picker" onClick={focusPicker} />

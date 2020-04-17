@@ -87,6 +87,7 @@ describe.only('e2e - DatePicker inline variant', () => {
     jest.clearAllMocks();
     component = mount(
       <DesktopDatePicker
+        renderInput={props => <TextField {...props} />}
         autoOk
         onChange={onChangeMock}
         onClose={onCloseMock}
@@ -225,7 +226,6 @@ test('Custom toolbar component', () => {
       renderInput={props => <TextField {...props} />}
       open
       disableHighlightToday
-      inputProps={{}}
       value={new Date()}
       onChange={jest.fn()}
       ToolbarComponent={() => <div id="custom-toolbar" />}

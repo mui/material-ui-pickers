@@ -51,7 +51,7 @@ export function makeWrapperComponent<
       okLabel,
       cancelLabel,
       todayLabel,
-      inputProps,
+      DateInputProps,
       wrapperProps,
       wider,
       showTabs,
@@ -74,7 +74,7 @@ export function makeWrapperComponent<
         okLabel={okLabel}
         todayLabel={todayLabel}
         cancelLabel={cancelLabel}
-        DateInputProps={inputProps}
+        DateInputProps={DateInputProps}
         // @ts-ignore
         KeyboardDateInputComponent={KeyboardDateInputComponent}
         // @ts-ignore
