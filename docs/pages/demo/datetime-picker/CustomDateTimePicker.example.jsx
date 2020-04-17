@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import AlarmIcon from '@material-ui/icons/Alarm';
 import SnoozeIcon from '@material-ui/icons/Snooze';
 import ClockIcon from '@material-ui/icons/AccessTime';
+import { TextField } from '@material-ui/core';
 import { DateTimePicker, MobileDateTimePicker } from '@material-ui/pickers';
 
 function CustomDateTimePicker(props) {
@@ -11,6 +12,7 @@ function CustomDateTimePicker(props) {
   return (
     <>
       <DateTimePicker
+        renderInput={props => <TextField variant="outlined" {...props} />}
         autoOk
         disableFuture
         hideTabs
@@ -31,6 +33,7 @@ function CustomDateTimePicker(props) {
       />
 
       <MobileDateTimePicker
+        renderInput={props => <TextField variant="outlined" {...props} />}
         value={selectedDate}
         onChange={date => handleDateChange(date)}
         label="With error handler"
@@ -44,6 +47,7 @@ function CustomDateTimePicker(props) {
       />
 
       <DateTimePicker
+        renderInput={props => <TextField {...props} />}
         clearable
         value={clearedDate}
         onChange={handleClearedDateChange}

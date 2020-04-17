@@ -2,6 +2,7 @@ import React from 'react';
 import { mount } from './test-utils';
 import { DatePicker } from '../DatePicker';
 import { TextField } from '@material-ui/core';
+import { TextField } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/core/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { DateTimePicker } from '../DateTimePicker/DateTimePicker';
@@ -15,7 +16,13 @@ const theme = createMuiTheme({
 test('Should renders without crash in dark theme', () => {
   const component = mount(
     <ThemeProvider theme={theme}>
-      <DateTimePicker open openTo="hours" value={null} onChange={jest.fn()} />
+      <DateTimePicker
+        renderInput={props => <TextField {...props} />}
+        open
+        openTo="hours"
+        value={null}
+        onChange={jest.fn()}
+      />
     </ThemeProvider>
   );
 

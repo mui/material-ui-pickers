@@ -24,6 +24,7 @@ function PersianExample() {
       />
 
       <TimePicker
+        renderInput={props => <TextField {...props} />}
         clearable
         okLabel="تأیید"
         cancelLabel="لغو"
@@ -34,6 +35,7 @@ function PersianExample() {
       />
 
       <DateTimePicker
+        renderInput={props => <TextField {...props} />}
         okLabel="تأیید"
         cancelLabel="لغو"
         inputFormat="jYYYY/iMM/iDD"

@@ -1,8 +1,8 @@
 import React, { useState, useContext } from 'react';
 import LeftArrowIcon from '@material-ui/icons/KeyboardArrowLeft';
 import RightArrowIcon from '@material-ui/icons/KeyboardArrowRight';
-import { TextField } from '@material-ui/core';
 import { Grid, Typography } from '@material-ui/core';
+import { TextField, TextFieldProps } from '@material-ui/core';
 import { MuiPickersContext, DateRangePicker } from '@material-ui/pickers';
 import { createRegressionDay as createRegressionDayRenderer } from './RegressionDay';
 import {
@@ -12,6 +12,10 @@ import {
   MobileTimePicker,
   DesktopTimePicker,
 } from '@material-ui/pickers';
+
+const makeRenderInputProp = ({ id }: { id: string }) => ({
+  renderInput: (props: TextFieldProps) => <TextField {...props} id={id} />,
+});
 
 function Regression() {
   const utils = useContext(MuiPickersContext);
@@ -41,39 +45,34 @@ function Regression() {
       </Typography>
 
       <Grid container justify="center" wrap="wrap">
+        <MobileDatePicker {...makeRenderInputProp({ id: 'basic-datepicker' })} {...sharedProps} />
         <MobileDatePicker
-          renderInput={props => <TextField {...props} />}
-          id="basic-datepicker"
-          {...sharedProps}
-        />
-        <MobileDatePicker
-          renderInput={props => <TextField {...props} />}
-          id="clearable-datepicker"
+          {...makeRenderInputProp({ id: 'clearable-datepicker' })}
           clearable
           {...sharedProps}
         />
         <DesktopDatePicker
           autoOk
-          id="keyboard-mask-datepicker"
+          {...makeRenderInputProp({ id: 'keyboard-mask-datepicker' })}
           {...sharedProps}
           inputFormat="MM/dd/yyyy"
         />
         <DesktopDatePicker
           autoOk
-          id="keyboard-invalid-mask-datepicker"
+          {...makeRenderInputProp({ id: 'keyboard-invalid-mask-datepicker' })}
           {...sharedProps}
           mask="__"
         />
         <MobileDatePicker
           renderInput={props => <TextField {...props} />}
           disabled
-          id="disabled"
+          {...makeRenderInputProp({ id: 'disabled' })}
           {...sharedProps}
         />
         <MobileDatePicker
           renderInput={props => <TextField {...props} />}
           readOnly
-          id="readonly"
+          {...makeRenderInputProp({ id: 'readonly' })}
           {...sharedProps}
         />
       </Grid>
@@ -83,15 +82,27 @@ function Regression() {
       </Typography>
 
       <Grid container justify="center" wrap="wrap">
-        <MobileTimePicker id="mobile-timepicker" value={date} onChange={changeDate} />
-        <DesktopTimePicker id="desktop-timepicker" value={date} onChange={changeDate} />
+        <MobileTimePicker
+          {...makeRenderInputProp({ id: 'mobile-timepicker' })}
+          value={date}
+          onChange={changeDate}
+        />
+        <DesktopTimePicker
+          {...makeRenderInputProp({ id: 'desktop-timepicker' })}
+          value={date}
+          onChange={changeDate}
+        />
       </Grid>
 
       <Typography align="center" variant="h4" component="span" gutterBottom>
         DateRangePicker
       </Typography>
 
-      <DateRangePicker id="desktop-range-picker" value={range} onChange={changeRange} />
+      <DateRangePicker
+        {...makeRenderInputProp({ id: 'desktop-range-picker' })}
+        value={range}
+        onChange={changeRange}
+      />
     </div>
   );
 }

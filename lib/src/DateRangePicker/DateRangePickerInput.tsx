@@ -141,13 +141,11 @@ export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
         openPicker={doNothing}
         readOnly={readOnly}
         label={startText}
-        focused={open && currentlySelectingRangeEnd === 'start'}
-        onClick={
-          readOnly ? createDelegatedEventHandler(openRangeStartSelection, onClick) : undefined
-        }
-        onFocus={
-          !readOnly ? createDelegatedEventHandler(openRangeStartSelection, onFocus) : undefined
-        }
+        TextFieldProps={{
+          focused: open && currentlySelectingRangeEnd === 'start',
+          onClick: readOnly ? openRangeStartSelection : undefined,
+          onFocus: !readOnly ? openRangeStartSelection : undefined,
+        }}
       />
 
       <Typography className={classes.toLabelDelimiter}>{toText}</Typography>
@@ -163,11 +161,11 @@ export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
         openPicker={doNothing}
         readOnly={readOnly}
         label={endText}
-        focused={open && currentlySelectingRangeEnd === 'end'}
-        onClick={readOnly ? createDelegatedEventHandler(openRangeEndSelection, onClick) : undefined}
-        onFocus={
-          !readOnly ? createDelegatedEventHandler(openRangeEndSelection, onFocus) : undefined
-        }
+        TextFieldProps={{
+          focused: open && currentlySelectingRangeEnd === 'end',
+          onClick: readOnly ? openRangeEndSelection : undefined,
+          onFocus: !readOnly ? openRangeEndSelection : undefined,
+        }}
       />
     </div>
   );
