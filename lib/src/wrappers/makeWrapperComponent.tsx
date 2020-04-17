@@ -13,7 +13,7 @@ interface MakePickerOptions<TInputProps> {
 
 interface WithWrapperProps<TInputProps = DateInputProps> {
   children: React.ReactNode;
-  inputProps: TInputProps;
+  DateInputProps: TInputProps;
   wrapperProps: Omit<WrapperProps, 'DateInputProps'>;
 }
 

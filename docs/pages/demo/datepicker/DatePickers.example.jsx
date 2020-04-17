@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from 'react';
+import { TextField } from '@material-ui/core';
 import { MobileDatePicker, DesktopDatePicker, DatePicker } from '@material-ui/pickers';
 
 function DatePickersVariants(props) {
@@ -8,6 +9,7 @@ function DatePickersVariants(props) {
     <Fragment>
       <MobileDatePicker
         clearable
+        renderInput={props => <TextField {...props} />}
         label="For mobile"
         value={selectedDate}
         placeholder="10/10/2018"
@@ -21,6 +23,7 @@ function DatePickersVariants(props) {
       <DesktopDatePicker
         autoOk
         label="For desktop"
+        renderInput={props => <TextField {...props} />}
         minDate={new Date('2017-01-01')}
         value={selectedDate}
         onChange={date => handleDateChange(date)}
@@ -28,7 +31,7 @@ function DatePickersVariants(props) {
 
       <DatePicker
         disableFuture
-        showTodayButton
+        renderInput={props => <TextField {...props} />}
         label="Responsive"
         openTo="year"
         views={['year', 'month', 'date']}

@@ -80,6 +80,8 @@ export const useStyles = makeStyles(
   { name: 'MuiPickersBasePicker' }
 );
 
+const MobileKeyboardTextFieldProps = { fullWidth: true };
+
 const isTimePickerByViews = (views: DateTimePickerView[]) =>
   !views.some(view => view === 'year' || view === 'month' || view === 'date');
 
@@ -152,7 +154,7 @@ export function Picker({
               {...DateInputProps}
               ignoreInvalidInputs
               disableOpenPicker
-              fullWidth
+              TextFieldProps={MobileKeyboardTextFieldProps}
             />
           </MobileKeyboardInputView>
         ) : (

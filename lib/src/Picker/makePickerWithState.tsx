@@ -3,7 +3,6 @@ import { useUtils } from '../_shared/hooks/useUtils';
 import { ParsableDate } from '../constants/prop-types';
 import { MaterialUiPickersDate } from '../typings/date';
 import { parsePickerInputValue } from '../_helpers/date-utils';
-import { SomeWrapper, ExtendWrapper } from '../wrappers/Wrapper';
 import { KeyboardDateInput } from '../_shared/KeyboardDateInput';
 import { usePickerState } from '../_shared/hooks/usePickerState';
 import { validateDateValue } from '../_helpers/text-field-helper';
@@ -12,7 +11,8 @@ import { withDateAdapterProp } from '../_shared/withDateAdapterProp';
 import { makeWrapperComponent } from '../wrappers/makeWrapperComponent';
 import { PureDateInput, DateInputProps } from '../_shared/PureDateInput';
 import { AnyPickerView, AllSharedPickerProps } from './SharedPickerProps';
-import { Picker, ToolbarComponentProps, ExportedPickerProps } from './Picker';
+import { SomeWrapper, ExtendWrapper, WrapperProps } from '../wrappers/Wrapper';
+import { Picker, ToolbarComponentProps, ExportedPickerProps, PickerProps } from './Picker';
 
 type AllAvailableForOverrideProps = ExportedPickerProps<AnyPickerView>;
 
@@ -48,90 +48,19 @@ export function makePickerWithStateAndWrapper<
       areValuesEqual: (a, b) => utils.isEqual(a, b),
     });
 
-    const {
-      allowKeyboardControl,
-      ampm,
-      ampmInClock,
-      dateRangeIcon,
-      disableFuture,
-      disableHighlightToday,
-      disablePast,
-      disableTimeValidationIgnoreDatePart,
-      hideTabs,
-      leftArrowButtonProps,
-      leftArrowButtonText,
-      leftArrowIcon,
-      loadingIndicator,
-      maxDate,
-      maxTime,
-      minDate,
-      // @ts-ignore Especial DateTimePicker only prop that are needed only on the upper level
-      minDateTime,
-      // @ts-ignore Especial DateTimePicker only prop that are needed only on the upper level
-      maxDateTime,
-      minTime,
-      minutesStep,
-      onMonthChange,
-      onYearChange,
-      openTo,
-      orientation,
-      renderDay,
-      rightArrowButtonProps,
-      rightArrowButtonText,
-      rightArrowIcon,
-      shouldDisableDate,
-      shouldDisableTime,
-      showDaysOutsideCurrentMonth,
-      showToolbar,
-      timeIcon,
-      ToolbarComponent = DefaultToolbarComponent,
-      toolbarFormat,
-      toolbarTitle,
-      value,
-      views,
-      ...restPropsForTextField
-    } = allProps;
-
+    // Note that we are passing down all the value without spread.
+    // It saves us 0.9kb gzip and automatic prop availability without requirement of spreading each new prop.
     return (
-      <PickerWrapper inputProps={inputProps} wrapperProps={wrapperProps} {...restPropsForTextField}>
+      <PickerWrapper
+        DateInputProps={({ ...inputProps, ...allProps } as unknown) as DateInputProps}
+        wrapperProps={wrapperProps}
+        {...((allProps as unknown) as WrapperProps)}
+      >
         <Picker
           {...pickerProps}
-          DateInputProps={{ ...inputProps, ...restPropsForTextField }}
-          allowKeyboardControl={allowKeyboardControl}
-          ampm={ampm}
-          ampmInClock={ampmInClock}
-          dateRangeIcon={dateRangeIcon}
-          disableFuture={disableFuture}
-          disableHighlightToday={disableHighlightToday}
-          disablePast={disablePast}
-          disableTimeValidationIgnoreDatePart={disableTimeValidationIgnoreDatePart}
-          hideTabs={hideTabs}
-          leftArrowButtonProps={leftArrowButtonProps}
-          leftArrowIcon={leftArrowIcon}
-          leftArrowButtonText={leftArrowButtonText}
-          loadingIndicator={loadingIndicator}
-          maxDate={maxDate}
-          maxTime={maxTime}
-          minDate={minDate}
-          minTime={minTime}
-          minutesStep={minutesStep}
-          onMonthChange={onMonthChange}
-          onYearChange={onYearChange}
-          openTo={openTo}
-          orientation={orientation}
-          renderDay={renderDay}
-          rightArrowButtonProps={rightArrowButtonProps}
-          rightArrowIcon={rightArrowIcon}
-          rightArrowButtonText={rightArrowButtonText}
-          shouldDisableDate={shouldDisableDate}
-          shouldDisableTime={shouldDisableTime}
-          showDaysOutsideCurrentMonth={showDaysOutsideCurrentMonth}
-          showToolbar={showToolbar}
-          timeIcon={timeIcon}
-          ToolbarComponent={ToolbarComponent}
-          toolbarFormat={toolbarFormat}
-          toolbarTitle={toolbarTitle || restPropsForTextField?.label}
-          views={views}
+          DateInputProps={{ ...inputProps, ...allProps }}
+          ToolbarComponent={allProps.ToolbarComponent || DefaultToolbarComponent}
+          {...((allProps as unknown) as PickerProps<any>)}
         />
       </PickerWrapper>
     );
@@ -139,6 +68,6 @@ export function makePickerWithStateAndWrapper<
 
   const FinalPickerComponent = withDateAdapterProp(PickerWithState);
   return React.forwardRef<HTMLInputElement, React.ComponentProps<typeof FinalPickerComponent>>(
-    (props, ref) => <FinalPickerComponent {...props} forwardedRef={ref} />
+    (props, ref) => <FinalPickerComponent {...(props as any)} forwardedRef={ref} />
   );
 }

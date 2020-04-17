@@ -1,12 +1,10 @@
 import * as React from 'react';
-import TextField from '@material-ui/core/TextField';
 import IconButton from '@material-ui/core/IconButton';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import { Rifm } from 'rifm';
 import { useUtils } from './hooks/useUtils';
 import { KeyboardIcon } from './icons/KeyboardIcon';
 import { DateInputProps, DateInputRefs } from './PureDateInput';
-import { createDelegatedEventHandler } from '../_helpers/utils';
 import {
   maskedDateFormatter,
   getDisplayDate,
@@ -28,22 +26,16 @@ export const KeyboardDateInput: React.FC<DateInputProps & DateInputRefs> = ({
   inputFormat,
   disabled,
   rifmFormatter,
-  TextFieldComponent = TextField,
+  renderInput,
   keyboardIcon = <KeyboardIcon />,
-  variant,
   emptyInputText: emptyLabel,
   disableOpenPicker: hideOpenPickerButton,
   ignoreInvalidInputs,
-  onFocus,
-  onBlur,
-  parsedDateValue,
   forwardedRef,
   containerRef,
-  open,
   readOnly,
-  inputProps: inputPropsPassed,
+  TextFieldProps,
   getOpenDialogAriaText = getTextFieldAriaText,
-  ...other
 }) => {
   const utils = useUtils();
   const isFocusedRef = React.useRef(false);
@@ -101,17 +93,12 @@ export const KeyboardDateInput: React.FC<DateInputProps & DateInputRefs> = ({
     type: shouldUseMaskedInput ? 'tel' : 'text',
     disabled,
     placeholder: formatHelperText,
-    variant: variant,
     error: Boolean(validationError),
     helperText: formatHelperText || validationError,
     'data-mui-test': 'keyboard-date-input',
-    ...other,
-    inputProps: {
-      ...inputPropsPassed,
-      readOnly,
-    },
-    onFocus: createDelegatedEventHandler(() => (isFocusedRef.current = true), onFocus),
-    onBlur: createDelegatedEventHandler(() => (isFocusedRef.current = false), onBlur),
+    inputProps: { readOnly },
+    onFocus: () => (isFocusedRef.current = true),
+    onBlur: () => (isFocusedRef.current = false),
     InputProps: {
       ...InputProps,
       [`${adornmentPosition}Adornment`]: hideOpenPickerButton ? (
@@ -131,16 +118,15 @@ export const KeyboardDateInput: React.FC<DateInputProps & DateInputRefs> = ({
         </InputAdornment>
       ),
     },
+    ...TextFieldProps,
   };
 
   if (!shouldUseMaskedInput) {
-    return (
-      <TextFieldComponent
-        value={innerInputValue || ''}
-        onChange={e => handleChange(e.currentTarget.value)}
-        {...inputProps}
-      />
-    );
+    return renderInput({
+      ...inputProps,
+      value: innerInputValue || '',
+      onChange: e => handleChange(e.currentTarget.value),
+    });
   }
 
   return (
@@ -151,15 +137,12 @@ export const KeyboardDateInput: React.FC<DateInputProps & DateInputRefs> = ({
       accept={acceptRegex}
       format={rifmFormatter || formatter}
     >
-      {({ onChange, value }) => (
-        <TextFieldComponent
-          value={value}
-          onChange={onChange}
-          onFocus={onFocus}
-          onBlur={onBlur}
-          {...inputProps}
-        />
-      )}
+      {rifmProps =>
+        renderInput({
+          ...inputProps,
+          ...rifmProps,
+        })
+      }
     </Rifm>
   );
 };
