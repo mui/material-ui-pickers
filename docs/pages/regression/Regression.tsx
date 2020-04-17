@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import LeftArrowIcon from '@material-ui/icons/KeyboardArrowLeft';
 import RightArrowIcon from '@material-ui/icons/KeyboardArrowRight';
+import { TextField } from '@material-ui/core';
 import { Grid, Typography } from '@material-ui/core';
 import { MuiPickersContext, DateRangePicker } from '@material-ui/pickers';
 import { createRegressionDay as createRegressionDayRenderer } from './RegressionDay';
@@ -40,8 +41,17 @@ function Regression() {
       </Typography>
 
       <Grid container justify="center" wrap="wrap">
-        <MobileDatePicker id="basic-datepicker" {...sharedProps} />
-        <MobileDatePicker id="clearable-datepicker" clearable {...sharedProps} />
+        <MobileDatePicker
+          renderInput={props => <TextField {...props} />}
+          id="basic-datepicker"
+          {...sharedProps}
+        />
+        <MobileDatePicker
+          renderInput={props => <TextField {...props} />}
+          id="clearable-datepicker"
+          clearable
+          {...sharedProps}
+        />
         <DesktopDatePicker
           autoOk
           id="keyboard-mask-datepicker"
@@ -54,8 +64,18 @@ function Regression() {
           {...sharedProps}
           mask="__"
         />
-        <MobileDatePicker disabled id="disabled" {...sharedProps} />
-        <MobileDatePicker readOnly id="readonly" {...sharedProps} />
+        <MobileDatePicker
+          renderInput={props => <TextField {...props} />}
+          disabled
+          id="disabled"
+          {...sharedProps}
+        />
+        <MobileDatePicker
+          renderInput={props => <TextField {...props} />}
+          readOnly
+          id="readonly"
+          {...sharedProps}
+        />
       </Grid>
 
       <Typography align="center" variant="h4" component="span" gutterBottom>

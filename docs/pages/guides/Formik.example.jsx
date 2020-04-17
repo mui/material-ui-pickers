@@ -2,6 +2,7 @@ import React from 'react';
 import Code from '../../_shared/Code';
 import { Grid } from '@material-ui/core';
 import { Formik, Form, Field } from 'formik';
+import { TextField } from '@material-ui/core';
 import { DatePicker } from '@material-ui/pickers';
 
 const DatePickerField = ({ field, form, ...other }) => {
@@ -9,6 +10,7 @@ const DatePickerField = ({ field, form, ...other }) => {
 
   return (
     <DatePicker
+      renderInput={props => <TextField {...props} />}
       clearable
       disablePast
       name={field.name}

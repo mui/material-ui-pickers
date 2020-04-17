@@ -25,7 +25,11 @@ function App() {
 
   return (
     <LocalizationProvider dateAdapter={DateFnsUtils}>
-      <DatePicker value={selectedDate} onChange={date => handleDateChange(date)} />
+      <DatePicker
+        renderInput={props => <TextField {...props} />}
+        value={selectedDate}
+        onChange={date => handleDateChange(date)}
+      />
       <TimePicker value={selectedDate} onChange={date => handleDateChange(date)} />
       <DateTimePicker value={selectedDate} onChange={date => handleDateChange(date)} />
     </LocalizationProvider>

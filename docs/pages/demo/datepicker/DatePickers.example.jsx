@@ -8,8 +8,8 @@ function DatePickersVariants(props) {
   return (
     <Fragment>
       <MobileDatePicker
-        clearable
         renderInput={props => <TextField {...props} />}
+        clearable
         label="For mobile"
         value={selectedDate}
         placeholder="10/10/2018"

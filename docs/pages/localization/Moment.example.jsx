@@ -1,6 +1,7 @@
 import moment from 'moment';
 import React, { useState, useCallback } from 'react';
 import MomentAdapter from '@material-ui/pickers/adapter/moment';
+import { TextField } from '@material-ui/core';
 import { Button, ButtonGroup } from '@material-ui/core';
 import { DatePicker, LocalizationProvider } from '@material-ui/pickers';
 import 'moment/locale/fr';
@@ -33,6 +34,7 @@ function MomentLocalizationExample() {
   return (
     <LocalizationProvider dateLibInstance={moment} dateAdapter={MomentAdapter} locale={locale}>
       <DatePicker
+        renderInput={props => <TextField {...props} />}
         mask={maskMap[locale]}
         value={selectedDate}
         onChange={date => handleDateChange(date)}

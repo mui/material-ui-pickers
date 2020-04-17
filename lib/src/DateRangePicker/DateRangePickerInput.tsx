@@ -91,7 +91,7 @@ export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
   const lazyHandleChangeCallback = React.useCallback(
     (...args: Parameters<typeof onChange>) =>
       executeInTheNextEventLoopTick(() => onChange(...args)),
-    []
+    [onChange]
   );
 
   const handleStartChange = (date: MaterialUiPickersDate, inputString?: string) => {
