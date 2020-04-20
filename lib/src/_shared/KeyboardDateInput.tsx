@@ -31,7 +31,7 @@ export const KeyboardDateInput: React.FC<DateInputProps & DateInputRefs> = ({
   disabled,
   rifmFormatter,
   TextFieldComponent = TextField,
-  keyboardIcon = <CalendarIcon />,
+  openPickerIcon = <CalendarIcon />,
   variant,
   emptyInputText: emptyLabel,
   disableOpenPicker: hideOpenPickerButton,
@@ -127,7 +127,7 @@ export const KeyboardDateInput: React.FC<DateInputProps & DateInputRefs> = ({
             {...KeyboardButtonProps}
             onClick={onOpen}
           >
-            {keyboardIcon}
+            {openPickerIcon}
           </IconButton>
         </InputAdornment>
       ),
