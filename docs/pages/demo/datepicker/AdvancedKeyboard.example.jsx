@@ -10,9 +10,7 @@ function AdvancedKeyboardExample(props) {
     <Fragment>
       <DesktopDatePicker
         autoOk
-        variant="outlined"
         label="Advanced keyboard"
-        placeholder="2018/01/01"
         inputFormat={props.__willBeReplacedGetFormatString({
           moment: 'YYYY/MM/DD',
           dateFns: 'yyyy/MM/dd',
@@ -21,7 +19,7 @@ function AdvancedKeyboardExample(props) {
         keyboardIcon={<EventNoteIcon />}
         value={selectedDate}
         onChange={date => handleDateChange(date)}
-        renderInput={props => <TextField {...props} />}
+        renderInput={props => <TextField {...props} variant="outlined" />}
       />
     </Fragment>
   );

@@ -12,7 +12,6 @@ function DatePickersVariants(props) {
         clearable
         label="For mobile"
         value={selectedDate}
-        placeholder="10/10/2018"
         onChange={date => handleDateChange(date)}
         inputFormat={props.__willBeReplacedGetFormatString({
           moment: 'MM/DD/YYYY',

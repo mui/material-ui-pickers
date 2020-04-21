@@ -10,14 +10,9 @@ const DatePickerField = ({ field, form, ...other }) => {
 
   return (
     <DatePicker
-      renderInput={props => <TextField {...props} />}
       clearable
       disablePast
-      name={field.name}
       value={field.value}
-      inputFormat="dd/MM/yyyy"
-      helperText={currentError}
-      error={Boolean(currentError)}
       onError={error => {
         // handle as a side effect
         if (error !== currentError) {
@@ -26,6 +21,14 @@ const DatePickerField = ({ field, form, ...other }) => {
       }}
       // if you are using custom validation schema you probably want to pass `true` as third argument
       onChange={date => form.setFieldValue(field.name, date, false)}
+      renderInput={props => (
+        <TextField
+          name={field.name}
+          {...props}
+          error={Boolean(currentError)}
+          helperText={currentError ?? props.helperText}
+        />
+      )}
       {...other}
     />
   );

@@ -12,7 +12,6 @@ function CustomDateTimePicker(props) {
   return (
     <>
       <DateTimePicker
-        renderInput={props => <TextField variant="outlined" {...props} />}
         autoOk
         disableFuture
         hideTabs
@@ -22,7 +21,6 @@ function CustomDateTimePicker(props) {
         value={selectedDate}
         onChange={date => handleDateChange(date)}
         minDate={new Date('2018-01-01')}
-        helperText="Hardcoded helper text"
         leftArrowIcon={<AlarmIcon />}
         rightArrowIcon={<SnoozeIcon />}
         leftArrowButtonText="Open previous month"
@@ -30,10 +28,12 @@ function CustomDateTimePicker(props) {
         keyboardIcon={<ClockIcon />}
         minTime={new Date(0, 0, 0, 9)}
         maxTime={new Date(0, 0, 0, 20)}
+        renderInput={props => (
+          <TextField {...props} variant="outlined" helperText="Hardcoded helper text" />
+        )}
       />
 
       <MobileDateTimePicker
-        renderInput={props => <TextField variant="outlined" {...props} />}
         value={selectedDate}
         onChange={date => handleDateChange(date)}
         label="With error handler"
@@ -44,14 +44,14 @@ function CustomDateTimePicker(props) {
           dateFns: 'yyyy/MM/dd hh:mm a',
         })}
         mask="___/__/__ __:__ _M"
+        renderInput={props => <TextField variant="outlined" {...props} />}
       />
 
       <DateTimePicker
-        renderInput={props => <TextField {...props} />}
         clearable
         value={clearedDate}
         onChange={handleClearedDateChange}
-        helperText="Clear Initial State"
+        renderInput={props => <TextField {...props} helperText="Clear Initial State" />}
       />
     </>
   );
