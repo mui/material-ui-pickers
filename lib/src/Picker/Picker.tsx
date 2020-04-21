@@ -98,6 +98,7 @@ export function Picker({
   isMobileKeyboardViewOpen,
   toggleMobileKeyboardView,
   toolbarFormat,
+  className,
   ...other
 }: PickerProps<AnyPickerView>) {
   const classes = useStyles();
@@ -123,7 +124,7 @@ export function Picker({
 
   return (
     <div
-      className={clsx(classes.container, {
+      className={clsx(classes.container, className, {
         [classes.containerLandscape]: isLandscape,
       })}
     >

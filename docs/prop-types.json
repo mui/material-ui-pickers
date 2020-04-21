@@ -817,6 +817,19 @@
         "name": "string"
       }
     },
+    "className": {
+      "defaultValue": null,
+      "description": "className applied to the root component",
+      "name": "className",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
+        "name": "BasePickerProps"
+      },
+      "required": false,
+      "type": {
+        "name": "string"
+      }
+    },
     "mask": {
       "defaultValue": null,
       "description": "Custom mask. Can be used to override generate from format. (e.g. __/__/____ __:__ or __/__/____ __:__ _M)",
@@ -1571,6 +1584,19 @@
       "defaultValue": null,
       "description": "Date format, that is displaying in toolbar",
       "name": "toolbarFormat",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
+        "name": "BasePickerProps"
+      },
+      "required": false,
+      "type": {
+        "name": "string"
+      }
+    },
+    "className": {
+      "defaultValue": null,
+      "description": "className applied to the root component",
+      "name": "className",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
         "name": "BasePickerProps"
@@ -2667,6 +2693,19 @@
         "name": "ReactNode"
       }
     },
+    "className": {
+      "defaultValue": null,
+      "description": "className applied to the root component",
+      "name": "className",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
+        "name": "BasePickerProps"
+      },
+      "required": false,
+      "type": {
+        "name": "string"
+      }
+    },
     "mask": {
       "defaultValue": null,
       "description": "Custom mask. Can be used to override generate from format. (e.g. __/__/____ __:__ or __/__/____ __:__ _M)",
@@ -3451,6 +3490,19 @@
       "required": false,
       "type": {
         "name": "((date: DateIOType) => void) & ((date: DateRange) => void)"
+      }
+    },
+    "className": {
+      "defaultValue": null,
+      "description": "className applied to the root component",
+      "name": "className",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
+        "name": "BasePickerProps"
+      },
+      "required": false,
+      "type": {
+        "name": "string"
       }
     },
     "onError": {
