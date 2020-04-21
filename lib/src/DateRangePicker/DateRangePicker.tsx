@@ -10,8 +10,8 @@ import { DateRange as DateRangeType, RangeInput } from './RangeTypes';
 import { DesktopPopperWrapper } from '../wrappers/DesktopPopperWrapper';
 import { MuiPickersAdapter, useUtils } from '../_shared/hooks/useUtils';
 import { makeWrapperComponent } from '../wrappers/makeWrapperComponent';
+import { ResponsivePopperWrapper } from '../wrappers/ResponsiveWrapper';
 import { SomeWrapper, ExtendWrapper, StaticWrapper } from '../wrappers/Wrapper';
-import { ResponsivePopperWrapper, ResponsiveWrapper } from '../wrappers/ResponsiveWrapper';
 import { DateRangePickerView, ExportedDateRangePickerViewProps } from './DateRangePickerView';
 import { DateRangePickerInput, ExportedDateRangePickerInputProps } from './DateRangePickerInput';
 
