@@ -103,6 +103,7 @@ export const PureDateInput: React.FC<DateInputProps & DateInputRefs> = ({
   containerRef,
   getOpenDialogAriaText = getTextFieldAriaText,
   disabled,
+  label,
   TextFieldProps = {},
 }) => {
   const utils = useUtils();
@@ -120,6 +121,7 @@ export const PureDateInput: React.FC<DateInputProps & DateInputRefs> = ({
   });
 
   return renderInput({
+    label,
     disabled,
     ref: containerRef,
     inputRef: forwardedRef,

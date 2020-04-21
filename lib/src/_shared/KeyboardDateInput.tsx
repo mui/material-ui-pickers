@@ -35,6 +35,7 @@ export const KeyboardDateInput: React.FC<DateInputProps & DateInputRefs> = ({
   containerRef,
   readOnly,
   TextFieldProps,
+  label,
   getOpenDialogAriaText = getTextFieldAriaText,
 }) => {
   const utils = useUtils();
@@ -88,10 +89,11 @@ export const KeyboardDateInput: React.FC<DateInputProps & DateInputRefs> = ({
 
   const adornmentPosition = InputAdornmentProps?.position || 'end';
   const inputProps = {
+    label,
+    disabled,
     ref: containerRef,
     inputRef: forwardedRef,
     type: shouldUseMaskedInput ? 'tel' : 'text',
-    disabled,
     placeholder: formatHelperText,
     error: Boolean(validationError),
     helperText: formatHelperText || validationError,
