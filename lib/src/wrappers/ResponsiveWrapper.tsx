@@ -1,5 +1,6 @@
 import * as React from 'react';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { IS_TOUCH_DEVICE_MEDIA } from '../constants/dimensions';
 import { MobileWrapperProps, MobileWrapper } from './MobileWrapper';
 import { DesktopWrapperProps, DesktopWrapper } from './DesktopWrapper';
 import { DesktopPopperWrapperProps, DesktopPopperWrapper } from './DesktopPopperWrapper';
@@ -9,8 +10,8 @@ export interface ResponsiveWrapperProps
     DesktopPopperWrapperProps,
     MobileWrapperProps {
   /** Css media query when `Mobile` mode will be changed to `Desktop`
-   * @default "(hover: hover)"
-   * @example "(min-width: 720px)" or theme.breakpoints.up("sm")
+   * @default "@media (pointer: fine)"
+   * @example "@media (min-width: 720px)" or theme.breakpoints.up("sm")
    */
   desktopModeMediaQuery?: string;
 }
@@ -20,7 +21,7 @@ export const makeResponsiveWrapper = (
   MobileWrapperComponent: React.FC<MobileWrapperProps>
 ) => {
   const ResponsiveWrapper: React.FC<ResponsiveWrapperProps> = ({
-    desktopModeMediaQuery = '(hover: hover)',
+    desktopModeMediaQuery = IS_TOUCH_DEVICE_MEDIA,
     okLabel,
     cancelLabel,
     clearLabel,

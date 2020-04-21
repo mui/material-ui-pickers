@@ -1142,9 +1142,9 @@
     },
     "desktopModeMediaQuery": {
       "defaultValue": {
-        "value": "\"(hover: hover)\""
+        "value": "\""
       },
-      "description": "Css media query when `Mobile` mode will be changed to `Desktop`\n@example \"(min-width: 720px)\" or theme.breakpoints.up(\"sm\")",
+      "description": "Css media query when `Mobile` mode will be changed to `Desktop`\n@media (pointer: fine)\"\n@example \"\n@media (min-width: 720px)\" or theme.breakpoints.up(\"sm\")",
       "name": "desktopModeMediaQuery",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/wrappers/ResponsiveWrapper.tsx",
@@ -1918,9 +1918,9 @@
     },
     "desktopModeMediaQuery": {
       "defaultValue": {
-        "value": "\"(hover: hover)\""
+        "value": "\""
       },
-      "description": "Css media query when `Mobile` mode will be changed to `Desktop`\n@example \"(min-width: 720px)\" or theme.breakpoints.up(\"sm\")",
+      "description": "Css media query when `Mobile` mode will be changed to `Desktop`\n@media (pointer: fine)\"\n@example \"\n@media (min-width: 720px)\" or theme.breakpoints.up(\"sm\")",
       "name": "desktopModeMediaQuery",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/wrappers/ResponsiveWrapper.tsx",
@@ -3018,9 +3018,9 @@
     },
     "desktopModeMediaQuery": {
       "defaultValue": {
-        "value": "\"(hover: hover)\""
+        "value": "\""
       },
-      "description": "Css media query when `Mobile` mode will be changed to `Desktop`\n@example \"(min-width: 720px)\" or theme.breakpoints.up(\"sm\")",
+      "description": "Css media query when `Mobile` mode will be changed to `Desktop`\n@media (pointer: fine)\"\n@example \"\n@media (min-width: 720px)\" or theme.breakpoints.up(\"sm\")",
       "name": "desktopModeMediaQuery",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/wrappers/ResponsiveWrapper.tsx",
@@ -3548,9 +3548,9 @@
     },
     "desktopModeMediaQuery": {
       "defaultValue": {
-        "value": "\"(hover: hover)\""
+        "value": "\""
       },
-      "description": "Css media query when `Mobile` mode will be changed to `Desktop`\n@example \"(min-width: 720px)\" or theme.breakpoints.up(\"sm\")",
+      "description": "Css media query when `Mobile` mode will be changed to `Desktop`\n@media (pointer: fine)\"\n@example \"\n@media (min-width: 720px)\" or theme.breakpoints.up(\"sm\")",
       "name": "desktopModeMediaQuery",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/wrappers/ResponsiveWrapper.tsx",

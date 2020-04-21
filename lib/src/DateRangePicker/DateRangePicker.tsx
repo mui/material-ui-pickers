@@ -7,11 +7,11 @@ import { parsePickerInputValue } from '../_helpers/date-utils';
 import { usePickerState } from '../_shared/hooks/usePickerState';
 import { AllSharedPickerProps } from '../Picker/SharedPickerProps';
 import { DateRange as DateRangeType, RangeInput } from './RangeTypes';
-import { ResponsivePopperWrapper } from '../wrappers/ResponsiveWrapper';
 import { DesktopPopperWrapper } from '../wrappers/DesktopPopperWrapper';
 import { MuiPickersAdapter, useUtils } from '../_shared/hooks/useUtils';
 import { makeWrapperComponent } from '../wrappers/makeWrapperComponent';
 import { SomeWrapper, ExtendWrapper, StaticWrapper } from '../wrappers/Wrapper';
+import { ResponsivePopperWrapper, ResponsiveWrapper } from '../wrappers/ResponsiveWrapper';
 import { DateRangePickerView, ExportedDateRangePickerViewProps } from './DateRangePickerView';
 import { DateRangePickerInput, ExportedDateRangePickerInputProps } from './DateRangePickerInput';
 
