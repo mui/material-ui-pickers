@@ -1,5 +1,4 @@
 import * as React from 'react';
-import clsx from 'clsx';
 import Typography from '@material-ui/core/Typography';
 import KeyboardDateInput from '../_shared/KeyboardDateInput';
 import { RangeInput, DateRange } from './RangeTypes';
@@ -8,12 +7,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { MaterialUiPickersDate } from '../typings/date';
 import { DateInputProps } from '../_shared/PureDateInput';
 import { CurrentlySelectingRangeEndProps } from './RangeTypes';
-import {
-  mergeRefs,
-  createDelegatedEventHandler,
-  doNothing,
-  executeInTheNextEventLoopTick,
-} from '../_helpers/utils';
+import { mergeRefs, doNothing, executeInTheNextEventLoopTick } from '../_helpers/utils';
 
 export const useStyles = makeStyles(
   theme => ({
@@ -52,17 +46,13 @@ export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
   toText = 'to',
   rawValue,
   onChange,
-  onClick,
   parsedDateValue: [start, end],
-  id,
   open,
-  className,
   containerRef,
   forwardedRef,
   currentlySelectingRangeEnd,
   setCurrentlySelectingRangeEnd,
   openPicker,
-  onFocus,
   readOnly,
   disableOpenPicker,
   startText,
@@ -125,11 +115,7 @@ export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
   };
 
   return (
-    <div
-      id={id}
-      className={clsx(classes.rangeInputsContainer, className)}
-      ref={mergeRefs([containerRef, forwardedRef])}
-    >
+    <div className={classes.rangeInputsContainer} ref={mergeRefs([containerRef, forwardedRef])}>
       <KeyboardDateInput
         {...other}
         open={open}
@@ -142,6 +128,7 @@ export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
         readOnly={readOnly}
         label={startText}
         TextFieldProps={{
+          variant: 'outlined',
           focused: open && currentlySelectingRangeEnd === 'start',
           onClick: readOnly ? openRangeStartSelection : undefined,
           onFocus: !readOnly ? openRangeStartSelection : undefined,
@@ -162,6 +149,7 @@ export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
         readOnly={readOnly}
         label={endText}
         TextFieldProps={{
+          variant: 'outlined',
           focused: open && currentlySelectingRangeEnd === 'end',
           onClick: readOnly ? openRangeEndSelection : undefined,
           onFocus: !readOnly ? openRangeEndSelection : undefined,

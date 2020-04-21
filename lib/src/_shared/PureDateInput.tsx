@@ -8,6 +8,8 @@ import { useUtils, MuiPickersAdapter } from './hooks/useUtils';
 import { InputAdornmentProps } from '@material-ui/core/InputAdornment';
 import { getDisplayDate, getTextFieldAriaText } from '../_helpers/text-field-helper';
 
+type MuiTextFieldProps = TextFieldProps | Omit<TextFieldProps, 'variant'>;
+
 export interface DateInputProps<TInputValue = ParsableDate, TDateValue = MaterialUiPickersDate> {
   open: boolean;
   rawValue: TInputValue;
@@ -20,11 +22,11 @@ export interface DateInputProps<TInputValue = ParsableDate, TDateValue = Materia
   validationError?: React.ReactNode;
   label?: TextFieldProps['label'];
   InputProps?: TextFieldProps['InputProps'];
-  TextFieldProps?: Partial<Omit<TextFieldProps, 'variant'>>;
+  TextFieldProps?: Partial<MuiTextFieldProps>;
   // ?? TODO when it will be possible to display "empty" date in datepicker use it instead of ignoring invalid inputs
   ignoreInvalidInputs?: boolean;
   /** Override input component */
-  renderInput: (props: TextFieldProps) => React.ReactElement;
+  renderInput: (props: MuiTextFieldProps) => React.ReactElement;
   /**
    * Message displaying in read-only text field when null passed
    * @default ' '
