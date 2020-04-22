@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import AlarmIcon from '@material-ui/icons/Alarm';
 import SnoozeIcon from '@material-ui/icons/Snooze';
 import ClockIcon from '@material-ui/icons/AccessTime';
+import PenIcon from '@material-ui/icons/Edit';
 import { TextField } from '@material-ui/core';
 import { DateTimePicker, MobileDateTimePicker } from '@material-ui/pickers';
 
@@ -26,6 +27,8 @@ function CustomDateTimePicker(props) {
         leftArrowButtonText="Open previous month"
         rightArrowButtonText="Open next month"
         openPickerIcon={<ClockIcon />}
+        mobileKeyboardViewIcon={<PenIcon color="black" />}
+        mobileDefaultViewIcon={<ClockIcon />}
         minTime={new Date(0, 0, 0, 9)}
         maxTime={new Date(0, 0, 0, 20)}
         renderInput={props => (

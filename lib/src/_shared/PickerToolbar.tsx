@@ -48,6 +48,8 @@ interface PickerToolbarProps
       ToolbarComponentProps,
       | 'getMobileKeyboardInputViewButtonText'
       | 'isMobileKeyboardViewOpen'
+      | 'mobileKeyboardViewIcon'
+      | 'mobileDefaultViewIcon'
       | 'toggleMobileKeyboardView'
     > {
   toolbarTitle: React.ReactNode;
@@ -68,6 +70,8 @@ const PickerToolbar: React.SFC<PickerToolbarProps> = ({
   toolbarTitle,
   landscapeDirection = 'column',
   className = null,
+  mobileKeyboardViewIcon = <PenIcon color="inherit" />,
+  mobileDefaultViewIcon = <CalendarIcon color="inherit" />,
   mobileKeyboardViewButtonClassName,
   toggleMobileKeyboardView,
   isMobileKeyboardViewOpen,
@@ -100,11 +104,7 @@ const PickerToolbar: React.SFC<PickerToolbarProps> = ({
           data-mui-test="toggle-mobile-keyboard-view"
           aria-label={getMobileKeyboardInputViewButtonText(isMobileKeyboardViewOpen)}
         >
-          {isMobileKeyboardViewOpen ? (
-            <CalendarIcon color="inherit" />
-          ) : (
-            <PenIcon color="inherit" />
-          )}
+          {isMobileKeyboardViewOpen ? mobileDefaultViewIcon : mobileKeyboardViewIcon}
         </IconButton>
       </Grid>
     </Toolbar>

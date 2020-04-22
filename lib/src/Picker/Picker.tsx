@@ -35,6 +35,8 @@ export type ToolbarComponentProps<
   timeIcon?: React.ReactNode;
   isLandscape: boolean;
   ampmInClock?: boolean;
+  mobileKeyboardViewIcon?: React.ReactNode;
+  mobileDefaultViewIcon?: React.ReactNode;
   isMobileKeyboardViewOpen: boolean;
   toggleMobileKeyboardView: () => void;
   getMobileKeyboardInputViewButtonText?: () => string;
