@@ -43,7 +43,7 @@ export const useStyles = makeStyles(
     ampmLabel: {
       fontSize: 17,
     },
-    penIconLandscape: {
+    mobileKeyboardViewButtonLandscape: {
       marginTop: 'auto',
     },
   },
@@ -107,7 +107,7 @@ export const TimePickerToolbar: React.FC<ToolbarComponentProps> = ({
       isLandscape={isLandscape}
       isMobileKeyboardViewOpen={isMobileKeyboardViewOpen}
       toggleMobileKeyboardView={toggleMobileKeyboardView}
-      penIconClassName={clsx({ [classes.penIconLandscape]: isLandscape })}
+      mobileKeyboardViewButtonClassName={clsx({ [classes.mobileKeyboardViewButtonLandscape]: isLandscape })}
     >
       <div
         className={clsx(classes.hourMinuteLabel, {

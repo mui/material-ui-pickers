@@ -28,7 +28,7 @@ export const useStyles = makeStyles(
       alignItems: 'flex-start',
     },
     timeTypography: {},
-    penIcon: {
+    mobileKeyboardViewButton: {
       position: 'absolute',
       top: 8,
       right: 8,
@@ -59,7 +59,7 @@ export const DateTimePickerToolbar: React.FC<ToolbarComponentProps> = ({
       <PickerToolbar
         toolbarTitle={toolbarTitle}
         isLandscape={false}
-        penIconClassName={classes.penIcon}
+        mobileKeyboardViewButtonClassName={classes.mobileKeyboardViewButton}
         className={classes.toolbar}
         isMobileKeyboardViewOpen={isMobileKeyboardViewOpen}
         toggleMobileKeyboardView={toggleMobileKeyboardView}

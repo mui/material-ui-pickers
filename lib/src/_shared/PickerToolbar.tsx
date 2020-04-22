@@ -53,7 +53,7 @@ interface PickerToolbarProps
   toolbarTitle: React.ReactNode;
   landscapeDirection?: 'row' | 'column';
   isLandscape: boolean;
-  penIconClassName?: string;
+  mobileKeyboardViewButtonClassName?: string;
 }
 
 function defaultGetKeyboardInputSwitchingButtonText(isKeyboardInputOpen: boolean) {
@@ -68,7 +68,7 @@ const PickerToolbar: React.SFC<PickerToolbarProps> = ({
   toolbarTitle,
   landscapeDirection = 'column',
   className = null,
-  penIconClassName,
+  mobileKeyboardViewButtonClassName,
   toggleMobileKeyboardView,
   isMobileKeyboardViewOpen,
   getMobileKeyboardInputViewButtonText = defaultGetKeyboardInputSwitchingButtonText,
@@ -95,7 +95,7 @@ const PickerToolbar: React.SFC<PickerToolbarProps> = ({
         {children}
         <IconButton
           onClick={toggleMobileKeyboardView}
-          className={penIconClassName}
+          className={mobileKeyboardViewButtonClassName}
           color="inherit"
           data-mui-test="toggle-mobile-keyboard-view"
           aria-label={getMobileKeyboardInputViewButtonText(isMobileKeyboardViewOpen)}

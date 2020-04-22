@@ -13,7 +13,7 @@ export const useStyles = makeStyles(
     dateTitleLandscape: {
       margin: 'auto 16px auto auto',
     },
-    penIcon: {
+    mobileKeyboardViewButton: {
       position: 'relative',
       top: 4,
     },
@@ -60,7 +60,7 @@ export const DatePickerToolbar: React.FC<ToolbarComponentProps> = ({
       isMobileKeyboardViewOpen={isMobileKeyboardViewOpen}
       toggleMobileKeyboardView={toggleMobileKeyboardView}
       isLandscape={isLandscape}
-      penIconClassName={classes.penIcon}
+      mobileKeyboardViewButtonClassName={classes.mobileKeyboardViewButton}
     >
       <Typography
         variant="h4"

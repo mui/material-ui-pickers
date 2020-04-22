@@ -9,7 +9,7 @@ import { DateRange, CurrentlySelectingRangeEndProps } from './RangeTypes';
 
 export const useStyles = makeStyles(
   {
-    penIcon: {
+    mobileKeyboardViewButton: {
       position: 'relative',
       top: 4,
     },
@@ -61,7 +61,7 @@ export const DateRangePickerToolbar: React.FC<DateRangePickerToolbarProps> = ({
       isMobileKeyboardViewOpen={isMobileKeyboardViewOpen}
       toggleMobileKeyboardView={toggleMobileKeyboardView}
       isLandscape={false}
-      penIconClassName={classes.penIcon}
+      mobileKeyboardViewButtonClassName={classes.mobileKeyboardViewButton}
     >
       <div className={classes.dateTextContainer}>
         <ToolbarButton
