@@ -36,10 +36,10 @@ describe('DatePicker - different props', () => {
   it('toolbarTitle – should use label if no toolbar title', () => {
     const component = mount(
       <MobileDatePicker
-        renderInput={props => <TextField {...props} />}
         open
         label="Default label"
         onChange={jest.fn()}
+        renderInput={props => <TextField {...props} />}
         value={utilsToUse.date('2018-01-01T00:00:00.000Z')}
       />
     );

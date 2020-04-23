@@ -104,7 +104,7 @@ export function Picker({
   const classes = useStyles();
   const isLandscape = useIsLandscape(views, orientation);
   const wrapperVariant = React.useContext(WrapperVariantContext);
-  const onChange = React.useCallback(
+  const handleDateChange = React.useCallback(
     (date: MaterialUiPickersDate, isFinish?: boolean | symbol) => {
       onDateChange(date, wrapperVariant, isFinish);
     },
@@ -117,7 +117,7 @@ export function Picker({
   const { openView, nextView, previousView, setOpenView, handleChangeAndOpenNext } = useViews({
     views,
     openTo,
-    onChange,
+    onChange: handleDateChange,
     isMobileKeyboardViewOpen,
     toggleMobileKeyboardView,
   });
@@ -134,7 +134,7 @@ export function Picker({
           views={views}
           isLandscape={isLandscape}
           date={date}
-          onChange={onChange}
+          onChange={handleDateChange}
           setOpenView={setOpenView}
           openView={openView}
           toolbarTitle={toolbarTitle}
@@ -177,7 +177,7 @@ export function Picker({
                 {...other}
                 date={date}
                 type={openView as 'hours' | 'minutes' | 'seconds'}
-                onDateChange={onChange}
+                onDateChange={handleDateChange}
                 onChange={handleChangeAndOpenNext}
                 openNextView={() => setOpenView(nextView)}
                 openPreviousView={() => setOpenView(previousView)}

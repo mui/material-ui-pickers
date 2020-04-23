@@ -33,10 +33,10 @@ export function makePickerWithStateAndWrapper<
     }
   );
 
-  function PickerWithState(props: T & AllSharedPickerProps & ExtendWrapper<TWrapper>) {
+  function PickerWithState(__props: T & AllSharedPickerProps & ExtendWrapper<TWrapper>) {
     const utils = useUtils();
-    const defaultProps = useDefaultProps(props);
-    const allProps = { ...defaultProps, ...props };
+    const defaultProps = useDefaultProps(__props);
+    const allProps = { ...defaultProps, ...__props };
 
     const { pickerProps, inputProps, wrapperProps } = usePickerState<
       ParsableDate,
@@ -49,18 +49,21 @@ export function makePickerWithStateAndWrapper<
     });
 
     // Note that we are passing down all the value without spread.
-    // It saves us 0.9kb gzip and automatic prop availability without requirement of spreading each new prop.
+    // It saves us >1kb gzip and make any prop available automatically on any level down.
+    const { value, onChange, ...other } = allProps;
+
     return (
       <PickerWrapper
-        DateInputProps={({ ...inputProps, ...allProps } as unknown) as DateInputProps}
+        DateInputProps={({ ...inputProps, ...other } as unknown) as DateInputProps}
         wrapperProps={wrapperProps}
-        {...((allProps as unknown) as WrapperProps)}
+        {...((other as unknown) as WrapperProps)}
       >
         <Picker
           {...pickerProps}
+          toolbarTitle={allProps.label || allProps.toolbarTitle}
           DateInputProps={{ ...inputProps, ...allProps }}
-          ToolbarComponent={allProps.ToolbarComponent || DefaultToolbarComponent}
-          {...((allProps as unknown) as PickerProps<any>)}
+          ToolbarComponent={other.ToolbarComponent || DefaultToolbarComponent}
+          {...((other as unknown) as PickerProps<any>)}
         />
       </PickerWrapper>
     );
