@@ -13,7 +13,7 @@ import {
   DesktopTimePicker,
 } from '@material-ui/pickers';
 
-const makeRenderInputProp = (overrideProps: Partial<TextFieldProps>) => ({
+const makeRenderInputProp = (overrideProps: Omit<Partial<TextFieldProps>, 'variant'>) => ({
   renderInput: (props: TextFieldProps) => <TextField {...props} {...overrideProps} />,
 });
 
