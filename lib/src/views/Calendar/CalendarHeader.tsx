@@ -49,7 +49,6 @@ export const useStyles = makeStyles(
     yearSelectionSwitcher: {
       marginRight: 'auto',
     },
-
     previousMonthButton: {
       marginRight: 24,
     },
@@ -62,11 +61,11 @@ export const useStyles = makeStyles(
       transform: 'rotate(180deg)',
     },
     monthTitleContainer: {
-      flex: 1,
       display: 'flex',
       maxHeight: 30,
       overflow: 'hidden',
       cursor: 'pointer',
+      marginRight: 'auto',
     },
     monthText: {
       marginRight: 4,
