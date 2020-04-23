@@ -5,6 +5,7 @@ import { Rifm } from 'rifm';
 import { useUtils } from './hooks/useUtils';
 import { KeyboardIcon } from './icons/KeyboardIcon';
 import { DateInputProps, DateInputRefs } from './PureDateInput';
+import { createDelegatedEventHandler } from '../_helpers/utils';
 import {
   maskedDateFormatter,
   getDisplayDate,
@@ -99,8 +100,6 @@ export const KeyboardDateInput: React.FC<DateInputProps & DateInputRefs> = ({
     helperText: formatHelperText || validationError,
     'data-mui-test': 'keyboard-date-input',
     inputProps: { readOnly },
-    onFocus: () => (isFocusedRef.current = true),
-    onBlur: () => (isFocusedRef.current = false),
     InputProps: {
       ...InputProps,
       [`${adornmentPosition}Adornment`]: hideOpenPickerButton ? (
@@ -121,6 +120,14 @@ export const KeyboardDateInput: React.FC<DateInputProps & DateInputRefs> = ({
       ),
     },
     ...TextFieldProps,
+    onFocus: createDelegatedEventHandler(
+      () => (isFocusedRef.current = true),
+      TextFieldProps?.onFocus
+    ),
+    onBlur: createDelegatedEventHandler(
+      () => (isFocusedRef.current = false),
+      TextFieldProps?.onBlur
+    ),
   };
 
   if (!shouldUseMaskedInput) {

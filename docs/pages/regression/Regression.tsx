@@ -13,8 +13,8 @@ import {
   DesktopTimePicker,
 } from '@material-ui/pickers';
 
-const makeRenderInputProp = ({ id }: { id: string }) => ({
-  renderInput: (props: TextFieldProps) => <TextField {...props} id={id} />,
+const makeRenderInputProp = (overrideProps: Partial<TextFieldProps>) => ({
+  renderInput: (props: TextFieldProps) => <TextField {...props} {...overrideProps} />,
 });
 
 function Regression() {
@@ -99,7 +99,7 @@ function Regression() {
       </Typography>
 
       <DateRangePicker
-        {...makeRenderInputProp({ id: 'desktop-range-picker' })}
+        {...makeRenderInputProp({ inputProps: { 'data-mui-test': 'desktop-range-picker' } })}
         value={range}
         onChange={changeRange}
       />
