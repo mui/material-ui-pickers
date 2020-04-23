@@ -16,6 +16,7 @@ export const useStyles = makeStyles(
       alignItems: 'baseline',
       [theme.breakpoints.down('xs')]: {
         flexDirection: 'column',
+        alignItems: 'center',
       },
     },
     toLabelDelimiter: {

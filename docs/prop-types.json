@@ -871,10 +871,10 @@
         "name": "string"
       }
     },
-    "keyboardIcon": {
+    "openPickerIcon": {
       "defaultValue": null,
       "description": "Icon displaying for open picker button",
-      "name": "keyboardIcon",
+      "name": "openPickerIcon",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
         "name": "DateInputProps"
@@ -1213,19 +1213,19 @@
         "name": "Partial<PopoverProps>"
       }
     },
-    "desktopModeBreakpoint": {
+    "desktopModeMediaQuery": {
       "defaultValue": {
-        "value": "'md'"
+        "value": "\""
       },
-      "description": "Breakpoint when `Desktop` mode will be changed to `Mobile`",
-      "name": "desktopModeBreakpoint",
+      "description": "Css media query when `Mobile` mode will be changed to `Desktop`\n@media (pointer: fine)\"\n@example \"\n@media (min-width: 720px)\" or theme.breakpoints.up(\"sm\")",
+      "name": "desktopModeMediaQuery",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/wrappers/ResponsiveWrapper.tsx",
         "name": "ResponsiveWrapperProps"
       },
       "required": false,
       "type": {
-        "name": "\"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\""
+        "name": "string"
       }
     }
   },
@@ -1647,10 +1647,10 @@
         "name": "string"
       }
     },
-    "keyboardIcon": {
+    "openPickerIcon": {
       "defaultValue": null,
       "description": "Icon displaying for open picker button",
-      "name": "keyboardIcon",
+      "name": "openPickerIcon",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
         "name": "DateInputProps"
@@ -1989,19 +1989,19 @@
         "name": "Partial<PopoverProps>"
       }
     },
-    "desktopModeBreakpoint": {
+    "desktopModeMediaQuery": {
       "defaultValue": {
-        "value": "'md'"
+        "value": "\""
       },
-      "description": "Breakpoint when `Desktop` mode will be changed to `Mobile`",
-      "name": "desktopModeBreakpoint",
+      "description": "Css media query when `Mobile` mode will be changed to `Desktop`\n@media (pointer: fine)\"\n@example \"\n@media (min-width: 720px)\" or theme.breakpoints.up(\"sm\")",
+      "name": "desktopModeMediaQuery",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/wrappers/ResponsiveWrapper.tsx",
         "name": "ResponsiveWrapperProps"
       },
       "required": false,
       "type": {
-        "name": "\"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\""
+        "name": "string"
       }
     }
   },
@@ -2747,10 +2747,10 @@
         "name": "string"
       }
     },
-    "keyboardIcon": {
+    "openPickerIcon": {
       "defaultValue": null,
       "description": "Icon displaying for open picker button",
-      "name": "keyboardIcon",
+      "name": "openPickerIcon",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
         "name": "DateInputProps"
@@ -3089,19 +3089,19 @@
         "name": "Partial<PopoverProps>"
       }
     },
-    "desktopModeBreakpoint": {
+    "desktopModeMediaQuery": {
       "defaultValue": {
-        "value": "'md'"
+        "value": "\""
       },
-      "description": "Breakpoint when `Desktop` mode will be changed to `Mobile`",
-      "name": "desktopModeBreakpoint",
+      "description": "Css media query when `Mobile` mode will be changed to `Desktop`\n@media (pointer: fine)\"\n@example \"\n@media (min-width: 720px)\" or theme.breakpoints.up(\"sm\")",
+      "name": "desktopModeMediaQuery",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/wrappers/ResponsiveWrapper.tsx",
         "name": "ResponsiveWrapperProps"
       },
       "required": false,
       "type": {
-        "name": "\"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\""
+        "name": "string"
       }
     }
   },
@@ -3706,10 +3706,10 @@
         "name": "string"
       }
     },
-    "keyboardIcon": {
+    "openPickerIcon": {
       "defaultValue": null,
       "description": "Icon displaying for open picker button",
-      "name": "keyboardIcon",
+      "name": "openPickerIcon",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
         "name": "DateInputProps"
@@ -4048,19 +4048,19 @@
         "name": "Partial<PopoverProps>"
       }
     },
-    "desktopModeBreakpoint": {
+    "desktopModeMediaQuery": {
       "defaultValue": {
-        "value": "'md'"
+        "value": "\""
       },
-      "description": "Breakpoint when `Desktop` mode will be changed to `Mobile`",
-      "name": "desktopModeBreakpoint",
+      "description": "Css media query when `Mobile` mode will be changed to `Desktop`\n@media (pointer: fine)\"\n@example \"\n@media (min-width: 720px)\" or theme.breakpoints.up(\"sm\")",
+      "name": "desktopModeMediaQuery",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/wrappers/ResponsiveWrapper.tsx",
         "name": "ResponsiveWrapperProps"
       },
       "required": false,
       "type": {
-        "name": "\"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\""
+        "name": "string"
       }
     }
   },
