@@ -81,7 +81,7 @@ function getSwitchingViewAriaText(view: DatePickerView) {
 }
 
 export const CalendarHeader: React.SFC<CalendarHeaderProps> = ({
-  view,
+  view: currentView,
   views,
   currentMonth: month,
   changeView,
@@ -114,10 +114,10 @@ export const CalendarHeader: React.SFC<CalendarHeaderProps> = ({
     }
 
     if (views.length === 2) {
-      changeView(views.find(v => v !== view) || views[0]);
+      changeView(views.find(view => view !== currentView) || views[0]);
     } else {
       // switching only between first 2
-      const nextIndexToOpen = views.indexOf(view) !== 0 ? 0 : 1;
+      const nextIndexToOpen = views.indexOf(currentView) !== 0 ? 0 : 1;
       changeView(views[nextIndexToOpen]);
     }
   };
@@ -158,18 +158,18 @@ export const CalendarHeader: React.SFC<CalendarHeaderProps> = ({
               data-mui-test="calendar-view-switcher"
               onClick={toggleView}
               className={classes.yearSelectionSwitcher}
-              aria-label={getViewSwitchingButtonText(view)}
+              aria-label={getViewSwitchingButtonText(currentView)}
             >
               <ArrowDropDownIcon
                 className={clsx(classes.switchViewDropdown, {
-                  [classes.switchViewDropdownDown]: view === 'year',
+                  [classes.switchViewDropdownDown]: currentView === 'year',
                 })}
               />
             </IconButton>
           )}
         </div>
 
-        <Fade in={view === 'date'}>
+        <Fade in={currentView === 'date'}>
           <ArrowSwitcher
             leftArrowButtonProps={leftArrowButtonProps}
             rightArrowButtonProps={rightArrowButtonProps}
