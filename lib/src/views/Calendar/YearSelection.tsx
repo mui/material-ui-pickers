@@ -52,7 +52,7 @@ export const YearSelection: React.FC<YearSelectionProps> = ({
   const [focusedYear, setFocusedYear] = React.useState<number | null>(currentYear);
 
   React.useEffect(() => {
-    if (selectedYearRef.current && selectedYearRef.current.scrollIntoView) {
+    if (allowKeyboardControl && selectedYearRef.current && selectedYearRef.current.scrollIntoView) {
       try {
         selectedYearRef.current.scrollIntoView({
           block: wrapperVariant === 'static' ? 'nearest' : 'center',
