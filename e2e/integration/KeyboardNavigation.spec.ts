@@ -53,6 +53,42 @@ describe('Keyboard navigation', () => {
       cy.get('div[role="dialog"]').should('not.be.visible');
       cy.get('#basic-datepicker').should('have.value', '01/08/2019');
     });
+
+    it('Allows to navigate in year selection with only keyboard', () => {
+      cy.get('#keyboard-mask-datepicker')
+        .clear()
+        .type('01/01/2090');
+      cy.get('[data-mui-test="open-picker-from-keyboard"]')
+        .eq(1)
+        .type(' ', { force: true });
+
+      cy.get('[aria-label="calendar view is open, switch to year view"]').click();
+      cy.get('body').type('{downarrow}{downarrow}');
+
+      cy.contains('2098').should('be.focused');
+      cy.get('body').type('{leftarrow}');
+      cy.contains('2097').should('be.focused');
+      cy.get('body').type('{rightarrow}');
+      cy.contains('2098').should('be.focused');
+    });
+
+    it("Doesn't allow to select disabled year from keyboard", () => {
+      cy.get('#keyboard-mask-datepicker')
+        .clear()
+        .type('01/01/2090');
+      cy.get('[data-mui-test="open-picker-from-keyboard"]')
+        .eq(1)
+        .type(' ', { force: true });
+
+      cy.get('[aria-label="calendar view is open, switch to year view"]').click();
+      cy.get('body').type('{downarrow}{downarrow}');
+
+      cy.contains('2098').should('be.focused');
+      cy.get('body').type('{downarrow}{downarrow}');
+
+      // it doesn't focus days outside the range
+      cy.contains('2098').should('be.focused');
+    });
   });
 
   context('TimePicker', () => {
