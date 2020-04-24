@@ -54,6 +54,24 @@ describe('Keyboard navigation', () => {
       cy.get('#basic-datepicker').should('have.value', '01/08/2019');
     });
 
+    it("Doesn't allow to select disabled date from keyboard", () => {
+      cy.get('#keyboard-mask-datepicker')
+        .clear()
+        .type('01/02/1900');
+      cy.get('[data-mui-test="open-picker-from-keyboard"]')
+        .eq(1)
+        .click();
+
+      cy.get('body').type('{leftarrow}');
+
+      cy.get('[data-mui-test="day"][aria-label="Jan 1, 1900"]').should('be.focused');
+      cy.get('body').type('{leftarrow}');
+
+      // doesn't switch month and leaves focus on the same day
+      cy.contains('January');
+      cy.get('[data-mui-test="day"][aria-label="Jan 1, 1900"]').should('be.focused');
+    });
+
     it('Allows to navigate in year selection with only keyboard', () => {
       cy.get('#keyboard-mask-datepicker')
         .clear()
