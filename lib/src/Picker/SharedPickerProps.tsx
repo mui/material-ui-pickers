@@ -17,10 +17,14 @@ export type AllSharedPickerProps<
   WithDateAdapterProps &
   DateValidationProps;
 
-export interface SharedPickerProps<TInputValue, TDateValue> {
+export interface SharedPickerProps<
+  TInputValue,
+  TDateValue,
+  TInputProps = DateInputPropsLike<TInputValue, TDateValue>
+> {
   isMobileKeyboardViewOpen: boolean;
   toggleMobileKeyboardView: () => void;
-  DateInputProps: DateInputPropsLike<TInputValue, TDateValue>;
+  DateInputProps: TInputProps;
   date: TDateValue;
   onDateChange: (
     date: TDateValue,
