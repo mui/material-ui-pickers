@@ -5,7 +5,7 @@ import { DesktopWrapper, DesktopWrapperProps } from './DesktopWrapper';
 import { ResponsiveWrapper, ResponsiveWrapperProps } from './ResponsiveWrapper';
 import { DesktopPopperWrapper, DesktopPopperWrapperProps } from './DesktopPopperWrapper';
 
-export interface WrapperProps<TInputProps = DateInputProps<any, any>> {
+export interface WrapperProps<TInputProps = Omit<DateInputProps<any, any>, 'renderInput'>> {
   open: boolean;
   onAccept: () => void;
   onDismiss: () => void;

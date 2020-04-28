@@ -20,7 +20,7 @@ export type AllSharedPickerProps<
 export interface SharedPickerProps<TInputValue, TDateValue> {
   isMobileKeyboardViewOpen: boolean;
   toggleMobileKeyboardView: () => void;
-  DateInputProps: DateInputProps<TInputValue, TDateValue>;
+  DateInputProps: Omit<DateInputProps<TInputValue, TDateValue>, 'renderInput'>;
   date: TDateValue;
   onDateChange: (
     date: TDateValue,

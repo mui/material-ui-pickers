@@ -1,6 +1,4 @@
 import * as React from 'react';
-import Typography from '@material-ui/core/Typography';
-import KeyboardDateInput from '../_shared/KeyboardDateInput';
 import { RangeInput, DateRange } from './RangeTypes';
 import { useUtils } from '../_shared/hooks/useUtils';
 import { makeStyles } from '@material-ui/core/styles';
@@ -8,7 +6,7 @@ import { MaterialUiPickersDate } from '../typings/date';
 import { CurrentlySelectingRangeEndProps } from './RangeTypes';
 import { useMaskedInput } from '../_shared/hooks/useMaskedInput';
 import { DateInputProps, MuiTextFieldProps } from '../_shared/PureDateInput';
-import { mergeRefs, doNothing, executeInTheNextEventLoopTick } from '../_helpers/utils';
+import { mergeRefs, executeInTheNextEventLoopTick } from '../_helpers/utils';
 
 export const useStyles = makeStyles(
   theme => ({
@@ -31,15 +29,6 @@ export const useStyles = makeStyles(
 );
 
 export interface ExportedDateRangePickerInputProps {
-  toText?: React.ReactNode;
-}
-
-export interface DateRangeInputProps
-  extends ExportedDateRangePickerInputProps,
-    CurrentlySelectingRangeEndProps,
-    Omit<DateInputProps<RangeInput, DateRange>, 'renderInput' | 'forwardedRef'> {
-  startText: React.ReactNode;
-  endText: React.ReactNode;
   /**
    * Render input component for date range. Where `props` – [TextField](https://material-ui.com/api/text-field/#textfield-api) component props
    * @example ```jsx
@@ -55,12 +44,19 @@ export interface DateRangeInputProps
    * ````
    */
   renderInput: (startProps: MuiTextFieldProps, endProps: MuiTextFieldProps) => React.ReactElement;
+}
+
+export interface DateRangeInputProps
+  extends ExportedDateRangePickerInputProps,
+    CurrentlySelectingRangeEndProps,
+    Omit<DateInputProps<RangeInput, DateRange>, 'renderInput' | 'forwardedRef'> {
+  startText: React.ReactNode;
+  endText: React.ReactNode;
   forwardedRef?: React.Ref<HTMLDivElement>;
   containerRef?: React.Ref<HTMLDivElement>;
 }
 
 export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
-  toText = 'to',
   rawValue,
   onChange,
   parsedDateValue: [start, end],
@@ -70,10 +66,11 @@ export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
   currentlySelectingRangeEnd,
   setCurrentlySelectingRangeEnd,
   openPicker,
-  readOnly,
   disableOpenPicker,
   startText,
   endText,
+  readOnly,
+  renderInput,
   ...other
 }) => {
   const utils = useUtils();
@@ -131,48 +128,41 @@ export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
     }
   };
 
-  const startInputProps = useMaskedInput();
+  const startInputProps = useMaskedInput({
+    ...other,
+    readOnly,
+    rawValue: start,
+    parsedDateValue: start,
+    onChange: handleStartChange,
+    label: startText,
+    TextFieldProps: {
+      ref: startRef,
+      variant: 'outlined',
+      focused: open && currentlySelectingRangeEnd === 'start',
+      onClick: !readOnly ? openRangeStartSelection : undefined,
+      onFocus: !readOnly ? openRangeStartSelection : undefined,
+    },
+  });
+
+  const endInputProps = useMaskedInput({
+    ...other,
+    readOnly,
+    label: endText,
+    rawValue: end,
+    parsedDateValue: end,
+    onChange: handleEndChange,
+    TextFieldProps: {
+      ref: endRef,
+      variant: 'outlined',
+      focused: open && currentlySelectingRangeEnd === 'end',
+      onClick: !readOnly ? openRangeEndSelection : undefined,
+      onFocus: !readOnly ? openRangeEndSelection : undefined,
+    },
+  });
+
   return (
     <div className={classes.rangeInputsContainer} ref={mergeRefs([containerRef, forwardedRef])}>
-      <KeyboardDateInput
-        {...other}
-        open={open}
-        forwardedRef={startRef}
-        rawValue={start}
-        parsedDateValue={start}
-        onChange={handleStartChange}
-        disableOpenPicker
-        openPicker={doNothing}
-        readOnly={readOnly}
-        label={startText}
-        TextFieldProps={{
-          variant: 'outlined',
-          focused: open && currentlySelectingRangeEnd === 'start',
-          onClick: readOnly ? openRangeStartSelection : undefined,
-          onFocus: !readOnly ? openRangeStartSelection : undefined,
-        }}
-      />
-
-      <Typography className={classes.toLabelDelimiter}>{toText}</Typography>
-
-      <KeyboardDateInput
-        {...other}
-        open={open}
-        forwardedRef={endRef}
-        rawValue={end}
-        parsedDateValue={end}
-        onChange={handleEndChange}
-        disableOpenPicker
-        openPicker={doNothing}
-        readOnly={readOnly}
-        label={endText}
-        TextFieldProps={{
-          variant: 'outlined',
-          focused: open && currentlySelectingRangeEnd === 'end',
-          onClick: readOnly ? openRangeEndSelection : undefined,
-          onFocus: !readOnly ? openRangeEndSelection : undefined,
-        }}
-      />
+      {renderInput(startInputProps, endInputProps)}
     </div>
   );
 };

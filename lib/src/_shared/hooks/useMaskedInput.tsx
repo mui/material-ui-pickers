@@ -11,6 +11,7 @@ import {
 
 type MaskedInputProps = Omit<
   DateInputProps,
+  | 'open'
   | 'adornmentPosition'
   | 'renderInput'
   | 'openPicker'
@@ -34,7 +35,6 @@ export function useMaskedInput({
   rifmFormatter,
   emptyInputText: emptyLabel,
   ignoreInvalidInputs,
-
   readOnly,
   TextFieldProps,
   label,
