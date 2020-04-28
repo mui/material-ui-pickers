@@ -12,6 +12,14 @@ describe('DateRangePicker', () => {
     cy.get('[data-mui-test="DateRangeHighlight"]').should('have.length', 24);
   });
 
+  it('Should close when focused moved outside of picker popper', () => {
+    cy.get('[data-mui-test="desktop-range-picker"]').click();
+    cy.get('div[role="tooltip"]').should('be.visible');
+
+    cy.get('#basic-datepicker').focus();
+    cy.get('div[role="tooltip"]').should('not.be.visible');
+  });
+
   it('Opens and selecting a range on the next month', () => {
     cy.get('[data-mui-test="desktop-range-picker"]').focus();
 

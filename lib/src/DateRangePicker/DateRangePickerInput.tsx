@@ -71,6 +71,8 @@ export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
   endText,
   readOnly,
   renderInput,
+  TextFieldProps,
+  onBlur,
   ...other
 }) => {
   const utils = useUtils();
@@ -136,6 +138,7 @@ export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
     onChange: handleStartChange,
     label: startText,
     TextFieldProps: {
+      ...TextFieldProps,
       ref: startRef,
       variant: 'outlined',
       focused: open && currentlySelectingRangeEnd === 'start',
@@ -152,6 +155,7 @@ export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
     parsedDateValue: end,
     onChange: handleEndChange,
     TextFieldProps: {
+      ...TextFieldProps,
       ref: endRef,
       variant: 'outlined',
       focused: open && currentlySelectingRangeEnd === 'end',
@@ -161,7 +165,11 @@ export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
   });
 
   return (
-    <div className={classes.rangeInputsContainer} ref={mergeRefs([containerRef, forwardedRef])}>
+    <div
+      onBlur={onBlur}
+      className={classes.rangeInputsContainer}
+      ref={mergeRefs([containerRef, forwardedRef])}
+    >
       {renderInput(startInputProps, endInputProps)}
     </div>
   );
