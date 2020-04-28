@@ -34,11 +34,11 @@ export interface ExportedDateRangePickerInputProps {
    * @example ```jsx
    * <DateRangePicker
    * renderInput={(startProps, endProps) => (
-       <Stack>
+       <>
          <TextField {...startProps} />
          <Typography> to <Typography>
          <TextField {...endProps} />
-       </Stack>;
+       </>;
      )}
      />
    * ````

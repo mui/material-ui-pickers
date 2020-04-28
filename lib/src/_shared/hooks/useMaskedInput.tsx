@@ -53,6 +53,7 @@ export function useMaskedInput({
 
   const formatHelperText = utils.getFormatHelperText(inputFormat);
   const [innerInputValue, setInnerInputValue] = React.useState<string | null>(getInputValue());
+
   const shouldUseMaskedInput = React.useMemo(() => {
     // formatting of dates is a quite slow thing, so do not make useless .format calls
     if (!mask || disableMaskedInput) {
@@ -95,7 +96,7 @@ export function useMaskedInput({
   });
 
   return {
-    ...rifmProps,
+    ...(shouldUseMaskedInput ? rifmProps : {}),
     label,
     disabled,
     type: shouldUseMaskedInput ? 'tel' : 'text',
@@ -104,7 +105,6 @@ export function useMaskedInput({
     helperText: formatHelperText || validationError,
     'data-mui-test': 'keyboard-date-input',
     inputProps: { readOnly },
-
     ...TextFieldProps,
     onFocus: createDelegatedEventHandler(
       () => (isFocusedRef.current = true),
