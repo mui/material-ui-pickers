@@ -5,8 +5,9 @@ import { RangeInput, DateRange } from './RangeTypes';
 import { useUtils } from '../_shared/hooks/useUtils';
 import { makeStyles } from '@material-ui/core/styles';
 import { MaterialUiPickersDate } from '../typings/date';
-import { DateInputProps } from '../_shared/PureDateInput';
 import { CurrentlySelectingRangeEndProps } from './RangeTypes';
+import { useMaskedInput } from '../_shared/hooks/useMaskedInput';
+import { DateInputProps, MuiTextFieldProps } from '../_shared/PureDateInput';
 import { mergeRefs, doNothing, executeInTheNextEventLoopTick } from '../_helpers/utils';
 
 export const useStyles = makeStyles(
@@ -36,9 +37,24 @@ export interface ExportedDateRangePickerInputProps {
 export interface DateRangeInputProps
   extends ExportedDateRangePickerInputProps,
     CurrentlySelectingRangeEndProps,
-    Omit<DateInputProps<RangeInput, DateRange>, 'forwardedRef'> {
+    Omit<DateInputProps<RangeInput, DateRange>, 'renderInput' | 'forwardedRef'> {
   startText: React.ReactNode;
   endText: React.ReactNode;
+  /**
+   * Render input component for date range. Where `props` – [TextField](https://material-ui.com/api/text-field/#textfield-api) component props
+   * @example ```jsx
+   * <DateRangePicker
+   * renderInput={(startProps, endProps) => (
+       <Stack>
+         <TextField {...startProps} />
+         <Typography> to <Typography>
+         <TextField {...endProps} />
+       </Stack>;
+     )}
+     />
+   * ````
+   */
+  renderInput: (startProps: MuiTextFieldProps, endProps: MuiTextFieldProps) => React.ReactElement;
   forwardedRef?: React.Ref<HTMLDivElement>;
   containerRef?: React.Ref<HTMLDivElement>;
 }
@@ -115,6 +131,7 @@ export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
     }
   };
 
+  const startInputProps = useMaskedInput();
   return (
     <div className={classes.rangeInputsContainer} ref={mergeRefs([containerRef, forwardedRef])}>
       <KeyboardDateInput

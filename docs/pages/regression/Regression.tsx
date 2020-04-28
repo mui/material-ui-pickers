@@ -99,9 +99,15 @@ function Regression() {
       </Typography>
 
       <DateRangePicker
-        {...makeRenderInputProp({ inputProps: { 'data-mui-test': 'desktop-range-picker' } })}
         value={range}
         onChange={changeRange}
+        renderInput={(startProps, endProps) => {
+          <>
+            <TextField {...startProps} />
+            <Typography> to </Typography>
+            <TextField {...endProps} />
+          </>;
+        }}
       />
     </div>
   );
