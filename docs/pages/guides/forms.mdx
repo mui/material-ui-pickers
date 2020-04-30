@@ -1,0 +1,22 @@
+import Ad from '_shared/Ad';
+import Example from '_shared/Example';
+import PageMeta from '_shared/PageMeta';
+import * as FormikOurValidationExample from './FormikOurValidation.example';
+
+<PageMeta title="Form integration" />
+
+## Integration into forms
+
+Pickers are quite complex controls, where date can be submitted
+from different places, so we can't provide events as arguments in
+an `onChange` callback. Also we are providing date validation out of
+the box, so it may be tricky to integrate pickers to the form.
+Here are some examples!
+
+<Ad />
+
+#### Formik Integration
+
+Here is an example of how to integrate @material-ui/pickers with Formik
+
+<Example source={FormikOurValidationExample} />
