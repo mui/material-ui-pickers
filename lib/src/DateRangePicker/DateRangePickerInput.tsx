@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { MaterialUiPickersDate } from '../typings/date';
 import { CurrentlySelectingRangeEndProps } from './RangeTypes';
 import { useMaskedInput } from '../_shared/hooks/useMaskedInput';
+import { WrapperVariantContext } from '../wrappers/WrapperVariantContext';
 import { DateInputProps, MuiTextFieldProps } from '../_shared/PureDateInput';
 import { mergeRefs, executeInTheNextEventLoopTick } from '../_helpers/utils';
 
@@ -79,6 +80,7 @@ export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
   const classes = useStyles();
   const startRef = React.useRef<HTMLInputElement>(null);
   const endRef = React.useRef<HTMLInputElement>(null);
+  const wrapperVariant = React.useContext(WrapperVariantContext);
 
   React.useEffect(() => {
     if (!open) {
@@ -130,6 +132,7 @@ export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
     }
   };
 
+  const openOnFocus = wrapperVariant === 'desktop';
   const startInputProps = useMaskedInput({
     ...other,
     readOnly,
@@ -142,8 +145,8 @@ export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
       ref: startRef,
       variant: 'outlined',
       focused: open && currentlySelectingRangeEnd === 'start',
-      onClick: !readOnly ? openRangeStartSelection : undefined,
-      onFocus: !readOnly ? openRangeStartSelection : undefined,
+      onClick: !openOnFocus ? openRangeStartSelection : undefined,
+      onFocus: openOnFocus ? openRangeStartSelection : undefined,
     },
   });
 
@@ -159,8 +162,8 @@ export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
       ref: endRef,
       variant: 'outlined',
       focused: open && currentlySelectingRangeEnd === 'end',
-      onClick: !readOnly ? openRangeEndSelection : undefined,
-      onFocus: !readOnly ? openRangeEndSelection : undefined,
+      onClick: !openOnFocus ? openRangeEndSelection : undefined,
+      onFocus: openOnFocus ? openRangeEndSelection : undefined,
     },
   });
 
