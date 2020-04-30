@@ -87,7 +87,6 @@ export function makeRangePicker<TWrapper extends SomeWrapper>(Wrapper: TWrapper)
       {
         parseInput: parseRangeInputValue,
         areValuesEqual: (a, b) => utils.isEqual(a[0], b[0]) && utils.isEqual(a[1], b[1]),
-        validateInput: () => undefined,
         emptyValue: [null, null],
       }
     );

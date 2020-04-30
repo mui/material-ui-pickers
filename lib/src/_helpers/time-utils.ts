@@ -95,7 +95,7 @@ export const createIsAfterIgnoreDatePart = (
   disableTimeValidationIgnoreDatePart: boolean,
   utils: MuiPickersAdapter
 ) => (dateLeft: MaterialUiPickersDate, dateRight: MaterialUiPickersDate) => {
-  if (!disableTimeValidationIgnoreDatePart) {
+  if (disableTimeValidationIgnoreDatePart) {
     return utils.isAfter;
   }
 

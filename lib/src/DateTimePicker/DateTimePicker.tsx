@@ -106,5 +106,3 @@ export const StaticDateTimePicker = makePickerWithStateAndWrapper<DateTimePicker
   StaticWrapper,
   dateTimePickerConfig
 );
-
-<DateTimePicker onError={console.log} />;
