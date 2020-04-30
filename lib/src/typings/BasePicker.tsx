@@ -4,7 +4,8 @@ import { ToolbarComponentProps } from '../Picker/Picker';
 
 export interface BasePickerProps<
   TInputValue = ParsableDate,
-  TDateValue = MaterialUiPickersDate | null
+  TDateValue = MaterialUiPickersDate | null,
+  TErrorReason extends string = never
 > {
   /** Picker value */
   value: TInputValue;
@@ -25,10 +26,7 @@ export interface BasePickerProps<
   defaultHighlight?: ParsableDate;
   /** Callback fired when date is accepted @DateIOType */
   onAccept?: (date: TDateValue) => void;
-  /** Callback fired when new error should be displayed
-   * (!! This is a side effect. Be careful if you want to rerender the component) @DateIOType
-   */
-  onError?: (error: React.ReactNode, value: TInputValue | TDateValue) => void;
+
   /** On open callback */
   onOpen?: () => void;
   /** On close callback */

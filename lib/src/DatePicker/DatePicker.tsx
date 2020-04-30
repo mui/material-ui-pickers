@@ -1,20 +1,25 @@
 import { useUtils } from '../_shared/hooks/useUtils';
 import { DatePickerToolbar } from './DatePickerToolbar';
-import { getFormatByViews } from '../_helpers/date-utils';
 import { WithViewsProps } from '../Picker/SharedPickerProps';
-import { datePickerDefaultProps } from '../constants/prop-types';
 import { ResponsiveWrapper } from '../wrappers/ResponsiveWrapper';
 import { ExportedCalendarViewProps } from '../views/Calendar/CalendarView';
 import { makePickerWithStateAndWrapper } from '../Picker/makePickerWithState';
+import { datePickerDefaultProps, ParsableDate } from '../constants/prop-types';
 import { ModalWrapper, InlineWrapper, StaticWrapper } from '../wrappers/Wrapper';
+import { makeValidationHook, ValidationProps } from '../_shared/hooks/useValidation';
+import { getFormatByViews, validateDate, DateValidationError } from '../_helpers/date-utils';
 
 export type DatePickerView = 'year' | 'date' | 'month';
 
 export interface DatePickerProps
   extends WithViewsProps<'year' | 'date' | 'month'>,
+    ValidationProps<DateValidationError, ParsableDate>,
     ExportedCalendarViewProps {}
 
 const datePickerConfig = {
+  useValidation: makeValidationHook<DateValidationError, ParsableDate, DatePickerProps>(
+    validateDate
+  ),
   DefaultToolbarComponent: DatePickerToolbar,
   useDefaultProps: ({ openTo = 'date', views = ['year', 'date'] }: DatePickerProps) => {
     const utils = useUtils();

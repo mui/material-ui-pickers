@@ -19,7 +19,7 @@ export interface DateInputProps<TInputValue = ParsableDate, TDateValue = Materia
   openPicker: () => void;
   readOnly?: boolean;
   disabled?: boolean;
-  validationError?: React.ReactNode;
+  validationError?: boolean;
   label?: TextFieldProps['label'];
   InputProps?: TextFieldProps['InputProps'];
   TextFieldProps?: Partial<MuiTextFieldProps>;
@@ -125,8 +125,7 @@ export const PureDateInput: React.FC<DateInputProps & DateInputRefs> = ({
     disabled,
     ref: containerRef,
     inputRef: forwardedRef,
-    error: Boolean(validationError),
-    helperText: validationError,
+    error: validationError,
     'aria-label': getOpenDialogAriaText(rawValue, utils),
     onClick: onOpen,
     value: inputValue,

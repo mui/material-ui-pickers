@@ -1,5 +1,6 @@
 import { arrayIncludes } from './utils';
 import { IUtils } from '@date-io/core/IUtils';
+import { ParsableDate } from '../constants/prop-types';
 import { MaterialUiPickersDate } from '../typings/date';
 import { BasePickerProps } from '../typings/BasePicker';
 import { DatePickerView } from '../DatePicker/DatePicker';
@@ -138,3 +139,62 @@ export const isEndOfRange = (
 ) => {
   return isRangeValid(utils, range) && utils.isSameDay(day, range[1]);
 };
+
+export interface DateValidationProps {
+  /**
+   * Min selectable date
+   * @default Date(1900-01-01)
+   */
+  minDate?: MaterialUiPickersDate;
+  /**
+   * Max selectable date
+   * @default Date(2100-01-01)
+   */
+  maxDate?: MaterialUiPickersDate;
+  /** Disable specific date @DateIOType */
+  shouldDisableDate?: (day: MaterialUiPickersDate) => boolean;
+  /**
+   * Disable past dates
+   * @default false
+   */
+  disablePast?: boolean;
+  /**
+   * Disable future dates
+   * @default false
+   */
+  disableFuture?: boolean;
+}
+
+export const validateDate = (
+  utils: MuiPickersAdapter,
+  value: MaterialUiPickersDate | ParsableDate,
+  { minDate, maxDate, disableFuture, shouldDisableDate, disablePast }: DateValidationProps
+) => {
+  const now = utils.date();
+  const date = utils.date(value);
+
+  switch (true) {
+    case !utils.isValid(value):
+      return 'invalidDate';
+
+    case Boolean(shouldDisableDate && shouldDisableDate(date)):
+      return 'shouldDisableDate';
+
+    case Boolean(disableFuture && utils.isAfterDay(date, now)):
+      return 'disableFuture';
+
+    case Boolean(disablePast && utils.isBeforeDay(date, now)):
+      return 'disablePast';
+
+    case Boolean(minDate && utils.isBeforeDay(date, minDate)):
+      return 'minDate';
+
+    case Boolean(maxDate && utils.isAfterDay(date, maxDate)):
+      return 'maxDate';
+
+    default:
+      return null;
+  }
+};
+
+export type DateValidationError = NonNullable<ReturnType<typeof validateDate>>;

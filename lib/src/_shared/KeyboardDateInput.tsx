@@ -96,8 +96,8 @@ export const KeyboardDateInput: React.FC<DateInputProps & DateInputRefs> = ({
     inputRef: forwardedRef,
     type: shouldUseMaskedInput ? 'tel' : 'text',
     placeholder: formatHelperText,
-    error: Boolean(validationError),
-    helperText: formatHelperText || validationError,
+    error: validationError,
+    helperText: formatHelperText,
     'data-mui-test': 'keyboard-date-input',
     inputProps: { readOnly },
     InputProps: {

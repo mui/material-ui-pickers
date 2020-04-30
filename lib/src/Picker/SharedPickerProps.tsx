@@ -3,7 +3,6 @@ import { DateTimePickerView } from '../DateTimePicker';
 import { ParsableDate } from '../constants/prop-types';
 import { BasePickerProps } from '../typings/BasePicker';
 import { MaterialUiPickersDate } from '../typings/date';
-import { DateValidationProps } from '../_helpers/text-field-helper';
 import { WithDateAdapterProps } from '../_shared/withDateAdapterProp';
 import { ExportedDateInputProps, DateInputProps } from '../_shared/PureDateInput';
 
@@ -14,8 +13,7 @@ export type AllSharedPickerProps<
   TDateValue = MaterialUiPickersDate
 > = BasePickerProps<TInputValue, TDateValue> &
   ExportedDateInputProps<TInputValue, TDateValue> &
-  WithDateAdapterProps &
-  DateValidationProps;
+  WithDateAdapterProps;
 
 export interface SharedPickerProps<TInputValue, TDateValue> {
   isMobileKeyboardViewOpen: boolean;

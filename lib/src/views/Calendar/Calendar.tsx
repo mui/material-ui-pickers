@@ -15,16 +15,7 @@ export interface ExportedCalendarProps
   extends Pick<DayProps, 'disableHighlightToday' | 'showDaysOutsideCurrentMonth'> {
   /** Calendar onChange */
   onChange: PickerOnChangeFn;
-  /**
-   * Disable past dates
-   * @default false
-   */
-  disablePast?: boolean;
-  /**
-   * Disable future dates
-   * @default false
-   */
-  disableFuture?: boolean;
+
   /** Custom renderer for day. Check [DayComponentProps api](https://material-ui-pickers.dev/api/Day) @DateIOType */
   renderDay?: (
     day: MaterialUiPickersDate,
