@@ -1,7 +1,7 @@
 import * as PropTypes from 'prop-types';
 import { MaterialUiPickersDate } from '../typings/date';
-import { DatePickerProps } from '../DatePicker/DatePicker';
 import { ExportedClockViewProps } from '../views/Clock/ClockView';
+import { ExportedCalendarViewProps } from '../views/Calendar/CalendarView';
 
 const date = PropTypes.oneOfType([
   PropTypes.object,
@@ -27,10 +27,10 @@ export const datePickerDefaultProps = {
   invalidDateMessage: 'Invalid Date Format',
   minDateMessage: 'Date should not be before minimal date',
   maxDateMessage: 'Date should not be after maximal date',
-} as DatePickerProps;
+} as ExportedCalendarViewProps;
 
 export const dateTimePickerDefaultProps = {
   ...timePickerDefaultProps,
   ...datePickerDefaultProps,
   showTabs: true,
-} as ExportedClockViewProps & DatePickerProps;
+};

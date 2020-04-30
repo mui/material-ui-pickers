@@ -5,13 +5,16 @@ import { ExportedClockViewProps } from '../views/Clock/ClockView';
 import { ResponsiveWrapper } from '../wrappers/ResponsiveWrapper';
 import { pick12hOr24hFormat } from '../_helpers/text-field-helper';
 import { useUtils, MuiPickersAdapter } from '../_shared/hooks/useUtils';
+import { validateTime, TimeValidationError } from '../_helpers/time-utils';
 import { makePickerWithStateAndWrapper } from '../Picker/makePickerWithState';
 import { timePickerDefaultProps, ParsableDate } from '../constants/prop-types';
 import { ModalWrapper, InlineWrapper, StaticWrapper } from '../wrappers/Wrapper';
 import { WithViewsProps, AllSharedPickerProps } from '../Picker/SharedPickerProps';
+import { ValidationProps, makeValidationHook } from '../_shared/hooks/useValidation';
 
 export interface TimePickerProps
   extends ExportedClockViewProps,
+    ValidationProps<TimeValidationError, ParsableDate>,
     WithViewsProps<'hours' | 'minutes' | 'seconds'> {}
 
 export function getTextFieldAriaText(value: ParsableDate, utils: MuiPickersAdapter) {
@@ -47,22 +50,30 @@ function useDefaultProps({
   };
 }
 
-export const TimePicker = makePickerWithStateAndWrapper<TimePickerProps>(ResponsiveWrapper, {
+const timePickerConfig = {
   useDefaultProps,
+  useValidation: makeValidationHook<TimeValidationError, ParsableDate, TimePickerProps>(
+    validateTime
+  ),
   DefaultToolbarComponent: TimePickerToolbar,
-});
+};
 
-export const DesktopTimePicker = makePickerWithStateAndWrapper<TimePickerProps>(InlineWrapper, {
-  useDefaultProps,
-  DefaultToolbarComponent: TimePickerToolbar,
-});
+export const TimePicker = makePickerWithStateAndWrapper<TimePickerProps>(
+  ResponsiveWrapper,
+  timePickerConfig
+);
 
-export const MobileTimePicker = makePickerWithStateAndWrapper<TimePickerProps>(ModalWrapper, {
-  useDefaultProps,
-  DefaultToolbarComponent: TimePickerToolbar,
-});
+export const DesktopTimePicker = makePickerWithStateAndWrapper<TimePickerProps>(
+  InlineWrapper,
+  timePickerConfig
+);
 
-export const StaticTimePicker = makePickerWithStateAndWrapper<TimePickerProps>(StaticWrapper, {
-  useDefaultProps,
-  DefaultToolbarComponent: TimePickerToolbar,
-});
+export const MobileTimePicker = makePickerWithStateAndWrapper<TimePickerProps>(
+  ModalWrapper,
+  timePickerConfig
+);
+
+export const StaticTimePicker = makePickerWithStateAndWrapper<TimePickerProps>(
+  StaticWrapper,
+  timePickerConfig
+);

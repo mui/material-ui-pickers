@@ -2,6 +2,7 @@ import * as React from 'react';
 import { useUtils } from '../_shared/hooks/useUtils';
 import { ParsableDate } from '../constants/prop-types';
 import { MaterialUiPickersDate } from '../typings/date';
+import { parsePickerInputValue } from '../_helpers/date-utils';
 import { KeyboardDateInput } from '../_shared/KeyboardDateInput';
 import { usePickerState } from '../_shared/hooks/usePickerState';
 import { ResponsiveWrapper } from '../wrappers/ResponsiveWrapper';
@@ -10,14 +11,15 @@ import { makeWrapperComponent } from '../wrappers/makeWrapperComponent';
 import { PureDateInput, DateInputProps } from '../_shared/PureDateInput';
 import { AnyPickerView, AllSharedPickerProps } from './SharedPickerProps';
 import { SomeWrapper, ExtendWrapper, WrapperProps } from '../wrappers/Wrapper';
-import { parsePickerInputValue, DateValidationError } from '../_helpers/date-utils';
 import { Picker, ToolbarComponentProps, ExportedPickerProps, PickerProps } from './Picker';
 
 type AllAvailableForOverrideProps = ExportedPickerProps<AnyPickerView>;
 
 export interface MakePickerOptions<T extends unknown> {
-  useValidation: (value: any, props: T) => boolean;
-  useDefaultProps: (props: T & AllSharedPickerProps) => Partial<T> & { inputFormat: string };
+  useValidation: (value: ParsableDate, props: T) => boolean;
+  useDefaultProps: (
+    props: T & AllSharedPickerProps
+  ) => Partial<T & AllSharedPickerProps> & { inputFormat: string };
   DefaultToolbarComponent: React.ComponentType<ToolbarComponentProps>;
 }
 
@@ -44,8 +46,7 @@ export function makePickerWithStateAndWrapper<
     const validationError = useValidation(allProps.value, allProps);
     const { pickerProps, inputProps, wrapperProps } = usePickerState<
       ParsableDate,
-      MaterialUiPickersDate,
-      DateValidationError
+      MaterialUiPickersDate
     >(allProps, {
       emptyValue: null,
       parseInput: parsePickerInputValue,

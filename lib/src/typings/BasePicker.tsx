@@ -4,8 +4,7 @@ import { ToolbarComponentProps } from '../Picker/Picker';
 
 export interface BasePickerProps<
   TInputValue = ParsableDate,
-  TDateValue = MaterialUiPickersDate | null,
-  TErrorReason extends string = never
+  TDateValue = MaterialUiPickersDate | null
 > {
   /** Picker value */
   value: TInputValue;

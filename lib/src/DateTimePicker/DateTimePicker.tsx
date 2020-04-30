@@ -3,16 +3,20 @@ import { DateTimePickerToolbar } from './DateTimePickerToolbar';
 import { ExportedClockViewProps } from '../views/Clock/ClockView';
 import { ResponsiveWrapper } from '../wrappers/ResponsiveWrapper';
 import { pick12hOr24hFormat } from '../_helpers/text-field-helper';
+import { useParsedDate } from '../_shared/hooks/date-helpers-hooks';
 import { ExportedCalendarViewProps } from '../views/Calendar/CalendarView';
 import { makePickerWithStateAndWrapper } from '../Picker/makePickerWithState';
 import { InlineWrapper, ModalWrapper, StaticWrapper } from '../wrappers/Wrapper';
 import { WithViewsProps, AllSharedPickerProps } from '../Picker/SharedPickerProps';
 import { dateTimePickerDefaultProps, ParsableDate } from '../constants/prop-types';
+import { DateAndTimeValidationError, validateDateAndTime } from './date-time-utils';
+import { makeValidationHook, ValidationProps } from '../_shared/hooks/useValidation';
 
 export type DateTimePickerView = 'year' | 'date' | 'month' | 'hours' | 'minutes' | 'seconds';
 
 export interface DateTimePickerProps
   extends WithViewsProps<'year' | 'date' | 'month' | 'hours' | 'minutes'>,
+    ValidationProps<DateAndTimeValidationError, ParsableDate>,
     ExportedClockViewProps,
     ExportedCalendarViewProps {
   /** To show tabs */
@@ -33,13 +37,15 @@ function useDefaultProps({
   ampm,
   mask,
   inputFormat,
-  maxDateTime,
-  minDateTime,
   orientation = 'portrait',
+  maxDateTime: __maxDateTime,
+  minDateTime: __minDateTime,
   openTo = 'date',
   views = ['year', 'date', 'hours', 'minutes'],
 }: DateTimePickerProps & AllSharedPickerProps) {
   const utils = useUtils();
+  const minDateTime = useParsedDate(__minDateTime);
+  const maxDateTime = useParsedDate(__maxDateTime);
   const willUseAmPm = ampm ?? utils.is12HourCycleInCurrentLocale();
 
   if (orientation !== 'portrait') {
@@ -51,7 +57,6 @@ function useDefaultProps({
     openTo,
     views,
     ampm: willUseAmPm,
-    wider: true,
     ampmInClock: true,
     orientation,
     showToolbar: true,
@@ -70,34 +75,36 @@ function useDefaultProps({
   };
 }
 
+const useValidation = makeValidationHook<
+  DateAndTimeValidationError,
+  ParsableDate,
+  DateTimePickerProps
+>(validateDateAndTime);
+
+const dateTimePickerConfig = {
+  useDefaultProps,
+  useValidation,
+  DefaultToolbarComponent: DateTimePickerToolbar,
+};
+
 export const DateTimePicker = makePickerWithStateAndWrapper<DateTimePickerProps>(
   ResponsiveWrapper,
-  {
-    useDefaultProps,
-    DefaultToolbarComponent: DateTimePickerToolbar,
-  }
+  dateTimePickerConfig
 );
 
 export const DesktopDateTimePicker = makePickerWithStateAndWrapper<DateTimePickerProps>(
   InlineWrapper,
-  {
-    useDefaultProps,
-    DefaultToolbarComponent: DateTimePickerToolbar,
-  }
+  dateTimePickerConfig
 );
 
 export const MobileDateTimePicker = makePickerWithStateAndWrapper<DateTimePickerProps>(
   ModalWrapper,
-  {
-    useDefaultProps,
-    DefaultToolbarComponent: DateTimePickerToolbar,
-  }
+  dateTimePickerConfig
 );
 
 export const StaticDateTimePicker = makePickerWithStateAndWrapper<DateTimePickerProps>(
   StaticWrapper,
-  {
-    useDefaultProps,
-    DefaultToolbarComponent: DateTimePickerToolbar,
-  }
+  dateTimePickerConfig
 );
+
+<DateTimePicker onError={console.log} />;

@@ -7,8 +7,8 @@ import { useCallback, useDebugValue, useEffect, useMemo, useState } from 'react'
 
 export const FORCE_FINISH_PICKER = Symbol('Force closing picker, useful for accessibility');
 
-export function usePickerState<TInput, TDateValue, TErrorReason extends string>(
-  props: BasePickerProps<TInput, TDateValue, TErrorReason>,
+export function usePickerState<TInput, TDateValue>(
+  props: BasePickerProps<TInput, TDateValue>,
   valueManager: {
     parseInput: (
       now: MaterialUiPickersDate,

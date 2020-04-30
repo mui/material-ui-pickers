@@ -320,7 +320,7 @@
     },
     "onError": {
       "defaultValue": null,
-      "description": "Callback fired when new error should be displayed\n(!! This is a side effect. Be careful if you want to rerender the component)",
+      "description": "Callback that fired when input value or new `value` prop is disabled.\nand `TextField` is displaying in `error` state. This can be used to render appropriate form error.\n\n[Read the guide](https://next.material-ui-pickers.dev/guides/form-integration) about form integration and error displaying.",
       "name": "onError",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/hooks/useValidation.ts",
@@ -328,7 +328,7 @@
       },
       "required": false,
       "type": {
-        "name": "(reason: \"shouldDisableDate\" | \"invalidDate\" | \"disableFuture\" | \"disablePast\" | \"minDate\" | \"maxDate\" | null, value: DateIOType) => void"
+        "name": "(reason: \"shouldDisableDate\" | \"invalidDate\" | \"disableFuture\" | \"disablePast\" | \"minDate\" | \"maxDate\" | null, value: any) => void"
       }
     },
     "disableHighlightToday": {
@@ -1235,8 +1235,8 @@
       "description": "Min time, date part by default, will be ignored",
       "name": "minTime",
       "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
-        "name": "ExportedClockViewProps"
+        "fileName": "material-ui-pickers/lib/src/_helpers/time-utils.ts",
+        "name": "TimeValidationProps"
       },
       "required": false,
       "type": {
@@ -1248,8 +1248,8 @@
       "description": "Max time, date part by default, will be ignored",
       "name": "maxTime",
       "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
-        "name": "ExportedClockViewProps"
+        "fileName": "material-ui-pickers/lib/src/_helpers/time-utils.ts",
+        "name": "TimeValidationProps"
       },
       "required": false,
       "type": {
@@ -1261,8 +1261,8 @@
       "description": "Dynamically check if time is disabled or not",
       "name": "shouldDisableTime",
       "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
-        "name": "ExportedClockViewProps"
+        "fileName": "material-ui-pickers/lib/src/_helpers/time-utils.ts",
+        "name": "TimeValidationProps"
       },
       "required": false,
       "type": {
@@ -1274,12 +1274,25 @@
       "description": "Do not ignore date part when validating min/max time",
       "name": "disableTimeValidationIgnoreDatePart",
       "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
-        "name": "ExportedClockViewProps"
+        "fileName": "material-ui-pickers/lib/src/_helpers/time-utils.ts",
+        "name": "TimeValidationProps"
       },
       "required": false,
       "type": {
         "name": "boolean"
+      }
+    },
+    "onError": {
+      "defaultValue": null,
+      "description": "Callback that fired when input value or new `value` prop is disabled.\nand `TextField` is displaying in `error` state. This can be used to render appropriate form error.\n\n[Read the guide](https://next.material-ui-pickers.dev/guides/form-integration) about form integration and error displaying.",
+      "name": "onError",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/hooks/useValidation.ts",
+        "name": "ValidationProps"
+      },
+      "required": false,
+      "type": {
+        "name": "(reason: \"invalidDate\" | \"minTime\" | \"maxTime\" | \"shouldDisableTime-hours\" | \"shouldDisableTime-minutes\" | \"shouldDisableTime-seconds\" | null, value: any) => void"
       }
     },
     "views": {
@@ -1699,6 +1712,135 @@
         "name": "MuiPickersAdapter"
       }
     },
+    "okLabel": {
+      "defaultValue": {
+        "value": "\"OK\""
+      },
+      "description": "\"OK\" label message",
+      "name": "okLabel",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
+        "name": "InnerMobileWrapperProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "cancelLabel": {
+      "defaultValue": {
+        "value": "\"CANCEL\""
+      },
+      "description": "\"CANCEL\" label message",
+      "name": "cancelLabel",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
+        "name": "InnerMobileWrapperProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "clearLabel": {
+      "defaultValue": {
+        "value": "\"CLEAR\""
+      },
+      "description": "\"CLEAR\" label message",
+      "name": "clearLabel",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
+        "name": "InnerMobileWrapperProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "todayLabel": {
+      "defaultValue": {
+        "value": "\"TODAY\""
+      },
+      "description": "\"TODAY\" label message",
+      "name": "todayLabel",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
+        "name": "InnerMobileWrapperProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "showTodayButton": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "If true today button will be displayed. **Note** that clear button has higher priority",
+      "name": "showTodayButton",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
+        "name": "InnerMobileWrapperProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "clearable": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "Show clear action in picker dialog",
+      "name": "clearable",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
+        "name": "InnerMobileWrapperProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "DialogProps": {
+      "defaultValue": null,
+      "description": "Props to be passed directly to material-ui Dialog",
+      "name": "DialogProps",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
+        "name": "InnerMobileWrapperProps"
+      },
+      "required": false,
+      "type": {
+        "name": "Partial<MuiDialogProps>"
+      }
+    },
+    "PopperProps": {
+      "defaultValue": null,
+      "description": "Popper props passed to material-ui [Popper](https://material-ui.com/api/popper/#popper-api)",
+      "name": "PopperProps",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/wrappers/DesktopPopperWrapper.tsx",
+        "name": "InnerDesktopPopperWrapperProps"
+      },
+      "required": false,
+      "type": {
+        "name": "Partial<PopperProps>"
+      }
+    },
+    "TransitionComponent": {
+      "defaultValue": null,
+      "description": "Custom component for [transition](https://material-ui.com/components/transitions/#transitioncomponent-prop)",
+      "name": "TransitionComponent",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/wrappers/DesktopPopperWrapper.tsx",
+        "name": "InnerDesktopPopperWrapperProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ComponentClass<TransitionProps, any> | FunctionComponent<TransitionProps>"
+      }
+    },
     "displayStaticWrapperAs": {
       "defaultValue": {
         "value": "\"static\""
@@ -1712,6 +1854,34 @@
       "required": false,
       "type": {
         "name": "\"desktop\" | \"mobile\" | \"static\""
+      }
+    },
+    "PopoverProps": {
+      "defaultValue": null,
+      "description": "Popover props passed to material-ui Popover",
+      "name": "PopoverProps",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/wrappers/DesktopWrapper.tsx",
+        "name": "InnerDesktopWrapperProps"
+      },
+      "required": false,
+      "type": {
+        "name": "Partial<PopoverProps>"
+      }
+    },
+    "desktopModeMediaQuery": {
+      "defaultValue": {
+        "value": "\""
+      },
+      "description": "Css media query when `Mobile` mode will be changed to `Desktop`\n@media (pointer: fine)\"\n@example \"\n@media (min-width: 720px)\" or theme.breakpoints.up(\"sm\")",
+      "name": "desktopModeMediaQuery",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/wrappers/ResponsiveWrapper.tsx",
+        "name": "ResponsiveWrapperProps"
+      },
+      "required": false,
+      "type": {
+        "name": "string"
       }
     }
   },
@@ -1820,6 +1990,19 @@
         "name": "\"year\" | \"date\" | \"month\" | \"hours\" | \"minutes\""
       }
     },
+    "onError": {
+      "defaultValue": null,
+      "description": "Callback that fired when input value or new `value` prop is disabled.\nand `TextField` is displaying in `error` state. This can be used to render appropriate form error.\n\n[Read the guide](https://next.material-ui-pickers.dev/guides/form-integration) about form integration and error displaying.",
+      "name": "onError",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/hooks/useValidation.ts",
+        "name": "ValidationProps"
+      },
+      "required": false,
+      "type": {
+        "name": "(reason: \"shouldDisableDate\" | \"invalidDate\" | \"disableFuture\" | \"disablePast\" | \"minDate\" | \"maxDate\" | \"minTime\" | \"maxTime\" | \"shouldDisableTime-hours\" | \"shouldDisableTime-minutes\" | \"shouldDisableTime-seconds\" | null, value: any) => void"
+      }
+    },
     "ampm": {
       "defaultValue": {
         "value": "true"
@@ -1885,8 +2068,8 @@
       "description": "Min time, date part by default, will be ignored",
       "name": "minTime",
       "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
-        "name": "ExportedClockViewProps"
+        "fileName": "material-ui-pickers/lib/src/_helpers/time-utils.ts",
+        "name": "TimeValidationProps"
       },
       "required": false,
       "type": {
@@ -1898,8 +2081,8 @@
       "description": "Max time, date part by default, will be ignored",
       "name": "maxTime",
       "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
-        "name": "ExportedClockViewProps"
+        "fileName": "material-ui-pickers/lib/src/_helpers/time-utils.ts",
+        "name": "TimeValidationProps"
       },
       "required": false,
       "type": {
@@ -1911,8 +2094,8 @@
       "description": "Dynamically check if time is disabled or not",
       "name": "shouldDisableTime",
       "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
-        "name": "ExportedClockViewProps"
+        "fileName": "material-ui-pickers/lib/src/_helpers/time-utils.ts",
+        "name": "TimeValidationProps"
       },
       "required": false,
       "type": {
@@ -1924,8 +2107,8 @@
       "description": "Do not ignore date part when validating min/max time",
       "name": "disableTimeValidationIgnoreDatePart",
       "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
-        "name": "ExportedClockViewProps"
+        "fileName": "material-ui-pickers/lib/src/_helpers/time-utils.ts",
+        "name": "TimeValidationProps"
       },
       "required": false,
       "type": {
@@ -2050,7 +2233,7 @@
       },
       "required": false,
       "type": {
-        "name": "(currentView: \"year\" | \"date\" | \"month\") => string"
+        "name": "(currentView: DatePickerView) => string"
       }
     },
     "shouldDisableDate": {
@@ -2569,6 +2752,135 @@
         "name": "MuiPickersAdapter"
       }
     },
+    "okLabel": {
+      "defaultValue": {
+        "value": "\"OK\""
+      },
+      "description": "\"OK\" label message",
+      "name": "okLabel",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
+        "name": "InnerMobileWrapperProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "cancelLabel": {
+      "defaultValue": {
+        "value": "\"CANCEL\""
+      },
+      "description": "\"CANCEL\" label message",
+      "name": "cancelLabel",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
+        "name": "InnerMobileWrapperProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "clearLabel": {
+      "defaultValue": {
+        "value": "\"CLEAR\""
+      },
+      "description": "\"CLEAR\" label message",
+      "name": "clearLabel",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
+        "name": "InnerMobileWrapperProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "todayLabel": {
+      "defaultValue": {
+        "value": "\"TODAY\""
+      },
+      "description": "\"TODAY\" label message",
+      "name": "todayLabel",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
+        "name": "InnerMobileWrapperProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "showTodayButton": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "If true today button will be displayed. **Note** that clear button has higher priority",
+      "name": "showTodayButton",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
+        "name": "InnerMobileWrapperProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "clearable": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "Show clear action in picker dialog",
+      "name": "clearable",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
+        "name": "InnerMobileWrapperProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "DialogProps": {
+      "defaultValue": null,
+      "description": "Props to be passed directly to material-ui Dialog",
+      "name": "DialogProps",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
+        "name": "InnerMobileWrapperProps"
+      },
+      "required": false,
+      "type": {
+        "name": "Partial<MuiDialogProps>"
+      }
+    },
+    "PopperProps": {
+      "defaultValue": null,
+      "description": "Popper props passed to material-ui [Popper](https://material-ui.com/api/popper/#popper-api)",
+      "name": "PopperProps",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/wrappers/DesktopPopperWrapper.tsx",
+        "name": "InnerDesktopPopperWrapperProps"
+      },
+      "required": false,
+      "type": {
+        "name": "Partial<PopperProps>"
+      }
+    },
+    "TransitionComponent": {
+      "defaultValue": null,
+      "description": "Custom component for [transition](https://material-ui.com/components/transitions/#transitioncomponent-prop)",
+      "name": "TransitionComponent",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/wrappers/DesktopPopperWrapper.tsx",
+        "name": "InnerDesktopPopperWrapperProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ComponentClass<TransitionProps, any> | FunctionComponent<TransitionProps>"
+      }
+    },
     "displayStaticWrapperAs": {
       "defaultValue": {
         "value": "\"static\""
@@ -2582,6 +2894,34 @@
       "required": false,
       "type": {
         "name": "\"desktop\" | \"mobile\" | \"static\""
+      }
+    },
+    "PopoverProps": {
+      "defaultValue": null,
+      "description": "Popover props passed to material-ui Popover",
+      "name": "PopoverProps",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/wrappers/DesktopWrapper.tsx",
+        "name": "InnerDesktopWrapperProps"
+      },
+      "required": false,
+      "type": {
+        "name": "Partial<PopoverProps>"
+      }
+    },
+    "desktopModeMediaQuery": {
+      "defaultValue": {
+        "value": "\""
+      },
+      "description": "Css media query when `Mobile` mode will be changed to `Desktop`\n@media (pointer: fine)\"\n@example \"\n@media (min-width: 720px)\" or theme.breakpoints.up(\"sm\")",
+      "name": "desktopModeMediaQuery",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/wrappers/ResponsiveWrapper.tsx",
+        "name": "ResponsiveWrapperProps"
+      },
+      "required": false,
+      "type": {
+        "name": "string"
       }
     }
   },
@@ -3472,6 +3812,32 @@
     }
   },
   "Calendar": {
+    "minDate": {
+      "defaultValue": null,
+      "description": "Min selectable date",
+      "name": "minDate",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
+        "name": "CalendarProps"
+      },
+      "required": true,
+      "type": {
+        "name": "any"
+      }
+    },
+    "maxDate": {
+      "defaultValue": null,
+      "description": "Max selectable date",
+      "name": "maxDate",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
+        "name": "CalendarProps"
+      },
+      "required": true,
+      "type": {
+        "name": "any"
+      }
+    },
     "onChange": {
       "defaultValue": null,
       "description": "Calendar onChange",
@@ -3550,6 +3916,49 @@
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Calendar/Day.tsx",
         "name": "DayProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "shouldDisableDate": {
+      "defaultValue": null,
+      "description": "Disable specific date",
+      "name": "shouldDisableDate",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_helpers/date-utils.ts",
+        "name": "DateValidationProps"
+      },
+      "required": false,
+      "type": {
+        "name": "(day: DateIOType) => boolean"
+      }
+    },
+    "disablePast": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "Disable past dates",
+      "name": "disablePast",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_helpers/date-utils.ts",
+        "name": "DateValidationProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "disableFuture": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "Disable future dates",
+      "name": "disableFuture",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_helpers/date-utils.ts",
+        "name": "DateValidationProps"
       },
       "required": false,
       "type": {
@@ -3894,8 +4303,8 @@
       "description": "Min time, date part by default, will be ignored",
       "name": "minTime",
       "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
-        "name": "ExportedClockViewProps"
+        "fileName": "material-ui-pickers/lib/src/_helpers/time-utils.ts",
+        "name": "TimeValidationProps"
       },
       "required": false,
       "type": {
@@ -3907,8 +4316,8 @@
       "description": "Max time, date part by default, will be ignored",
       "name": "maxTime",
       "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
-        "name": "ExportedClockViewProps"
+        "fileName": "material-ui-pickers/lib/src/_helpers/time-utils.ts",
+        "name": "TimeValidationProps"
       },
       "required": false,
       "type": {
@@ -3920,8 +4329,8 @@
       "description": "Dynamically check if time is disabled or not",
       "name": "shouldDisableTime",
       "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
-        "name": "ExportedClockViewProps"
+        "fileName": "material-ui-pickers/lib/src/_helpers/time-utils.ts",
+        "name": "TimeValidationProps"
       },
       "required": false,
       "type": {
@@ -3933,8 +4342,8 @@
       "description": "Do not ignore date part when validating min/max time",
       "name": "disableTimeValidationIgnoreDatePart",
       "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
-        "name": "ExportedClockViewProps"
+        "fileName": "material-ui-pickers/lib/src/_helpers/time-utils.ts",
+        "name": "TimeValidationProps"
       },
       "required": false,
       "type": {
