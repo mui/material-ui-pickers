@@ -3,6 +3,7 @@ import { isWeekend } from 'date-fns';
 import { MaterialUiPickersDate } from '../typings/date';
 import { DesktopDatePicker } from '../DatePicker/DatePicker';
 import { mountPickerWithState, utilsToUse } from './test-utils';
+import { TimePickerProps, DesktopTimePicker } from '../TimePicker/TimePicker';
 
 const disableWeekends = (date: MaterialUiPickersDate) => {
   return isWeekend(utilsToUse.toJsDate(date));
@@ -53,5 +54,34 @@ describe('DatePicker validation', () => {
     });
 
     expect(onErrorMock).toHaveBeenCalledWith(null, expect.anything());
+  });
+});
+
+describe('TimePicker validation', () => {
+  const createTime = (time: string) => new Date('01/01/2000 ' + time);
+  const shouldDisableTime: TimePickerProps['shouldDisableTime'] = (value, _clockType) => {
+    return value === 10;
+  };
+
+  test.each`
+    props                               | input            | expectedError
+    ${{}}                               | ${'invalidText'} | ${'invalidDate'}
+    ${{ minTime: createTime('08:00') }} | ${'03:00'}       | ${'minTime'}
+    ${{ maxTime: createTime('08:00') }} | ${'12:00'}       | ${'maxTime'}
+    ${{ shouldDisableTime }}            | ${'10:00'}       | ${'shouldDisableTime-hours'}
+    ${{ shouldDisableTime }}            | ${'00:10'}       | ${'shouldDisableTime-minutes'}
+  `('TimePicker should dispatch onError $expectedError', ({ props, input, expectedError }) => {
+    const onErrorMock = jest.fn();
+    const component = mountPickerWithState(utilsToUse.date(), stateProps => (
+      <DesktopTimePicker ampm={false} {...stateProps} {...props} onError={onErrorMock} />
+    ));
+
+    component.find('input').simulate('change', {
+      target: {
+        value: input,
+      },
+    });
+
+    expect(onErrorMock).toBeCalledWith(expectedError, expect.anything());
   });
 });
