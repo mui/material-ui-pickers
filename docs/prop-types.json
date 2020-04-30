@@ -320,7 +320,7 @@
     },
     "onError": {
       "defaultValue": null,
-      "description": "Callback that fired when input value or new `value` prop is disabled.\nand `TextField` is displaying in `error` state. This can be used to render appropriate form error.\n\n[Read the guide](https://next.material-ui-pickers.dev/guides/form-integration) about form integration and error displaying.",
+      "description": "Callback that fired when input value or new `value` prop is disabled.\nand `TextField` is displaying in `error` state. This can be used to render appropriate form error.\n\n[Read the guide](https://next.material-ui-pickers.dev/guides/forms) about form integration and error displaying.",
       "name": "onError",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/hooks/useValidation.ts",
@@ -1284,7 +1284,7 @@
     },
     "onError": {
       "defaultValue": null,
-      "description": "Callback that fired when input value or new `value` prop is disabled.\nand `TextField` is displaying in `error` state. This can be used to render appropriate form error.\n\n[Read the guide](https://next.material-ui-pickers.dev/guides/form-integration) about form integration and error displaying.",
+      "description": "Callback that fired when input value or new `value` prop is disabled.\nand `TextField` is displaying in `error` state. This can be used to render appropriate form error.\n\n[Read the guide](https://next.material-ui-pickers.dev/guides/forms) about form integration and error displaying.",
       "name": "onError",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/hooks/useValidation.ts",
@@ -1992,7 +1992,7 @@
     },
     "onError": {
       "defaultValue": null,
-      "description": "Callback that fired when input value or new `value` prop is disabled.\nand `TextField` is displaying in `error` state. This can be used to render appropriate form error.\n\n[Read the guide](https://next.material-ui-pickers.dev/guides/form-integration) about form integration and error displaying.",
+      "description": "Callback that fired when input value or new `value` prop is disabled.\nand `TextField` is displaying in `error` state. This can be used to render appropriate form error.\n\n[Read the guide](https://next.material-ui-pickers.dev/guides/forms) about form integration and error displaying.",
       "name": "onError",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/hooks/useValidation.ts",

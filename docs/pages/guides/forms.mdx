@@ -2,6 +2,7 @@ import Ad from '_shared/Ad';
 import Example from '_shared/Example';
 import PageMeta from '_shared/PageMeta';
 import * as FormikOurValidationExample from './FormikOurValidation.example';
+import * as FormikValidationSchema from './FormikValidationSchema.example';
 
 <PageMeta title="Form integration" />
 
@@ -9,14 +10,22 @@ import * as FormikOurValidationExample from './FormikOurValidation.example';
 
 Pickers are quite complex controls, where date can be submitted
 from different places, so we can't provide events as arguments in
-an `onChange` callback. Also we are providing date validation out of
-the box, so it may be tricky to integrate pickers to the form.
-Here are some examples!
+an `onChange` callback. So you need to set up form field manually, based on the `onChange` param.
+
+Also we are providing prop `onError` that is ready-to-use for validation. This callback fires once
+the selected value by user is becomes invalid based on passed props (such like `minDate`, `minTime` or `shouldDisableDate`).
+It returns you a reason why error was occured so it is possible to render custom error message.
 
 <Ad />
 
-#### Formik Integration
+#### Formik
 
-Here is an example of how to integrate @material-ui/pickers with Formik
+Here is an example how to use `onError` callback with [`Formik`](https://jaredpalmer.com/formik)
 
-<Example source={FormikOurValidationExample} />
+<Example source={FormikValidationSchema} />
+
+#### Formik with validation schema
+
+This example shows how to use formik and custom validation schema
+
+<Example source={FormikValidationSchema} />
