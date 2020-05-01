@@ -4,8 +4,8 @@ import { TextField } from '@material-ui/core';
 import { MaterialUiPickersDate } from '../typings/date';
 import { DesktopDatePicker } from '../DatePicker/DatePicker';
 import { mountPickerWithState, utilsToUse } from './test-utils';
+import { DesktopDateRangePicker } from '../DateRangePicker/DateRangePicker';
 import { TimePickerProps, DesktopTimePicker } from '../TimePicker/TimePicker';
-import { DesktopDateRangePicker, DateRangeDelimiter } from '../DateRangePicker/DateRangePicker';
 
 const disableWeekends = (date: MaterialUiPickersDate) => {
   return isWeekend(utilsToUse.toJsDate(date));
@@ -96,7 +96,7 @@ describe('TimePicker validation', () => {
   });
 });
 
-describe.skip.only('DateRangePicker validation', () => {
+describe.only.skip('DateRangePicker validation', () => {
   test.each`
     props                                     | startInput       | endInput         | expectedError
     ${{}}                                     | ${'invalidText'} | ${''}            | ${[null, null]}
