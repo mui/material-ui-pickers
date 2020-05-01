@@ -8,7 +8,6 @@ import { MaterialUiPickersDate } from '../../typings/date';
 import { PickerOnChangeFn } from '../../_shared/hooks/useViews';
 import { getHourNumbers, getMinutesNumbers } from './ClockNumbers';
 import { useMeridiemMode } from '../../TimePicker/TimePickerToolbar';
-import { useParsedDate } from '../../_shared/hooks/date-helpers-hooks';
 import { ArrowSwitcher, ExportedArrowSwitcherProps } from '../../_shared/ArrowSwitcher';
 import {
   convertValueToMeridiem,
@@ -84,8 +83,8 @@ export const ClockView: React.FC<ClockViewProps> = ({
   date,
   minutesStep = 1,
   ampmInClock,
-  minTime: unparsedMinTime,
-  maxTime: unparsedMaxTime,
+  minTime,
+  maxTime,
   allowKeyboardControl,
   shouldDisableTime,
   getHoursClockNumberText = getHoursAriaText,
@@ -106,8 +105,6 @@ export const ClockView: React.FC<ClockViewProps> = ({
 }) => {
   const utils = useUtils();
   const classes = useStyles();
-  const minTime = useParsedDate(unparsedMinTime);
-  const maxTime = useParsedDate(unparsedMaxTime);
   const { meridiemMode, handleMeridiemChange } = useMeridiemMode(date, ampm, onDateChange);
 
   const isTimeDisabled = React.useCallback(

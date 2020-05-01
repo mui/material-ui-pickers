@@ -72,8 +72,8 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
   onChange,
   changeView,
   onMonthChange,
-  minDate: unparsedMinDate = new Date('1900-01-01'),
-  maxDate: unparsedMaxDate = new Date('2100-01-01'),
+  minDate,
+  maxDate,
   reduceAnimations = defaultReduceAnimations,
   loadingIndicator = <CircularProgress data-mui-test="loading-progress" />,
   shouldDisableDate,
@@ -83,9 +83,6 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
   ...other
 }) => {
   const classes = useStyles();
-  const minDate = useParsedDate(unparsedMinDate)!;
-  const maxDate = useParsedDate(unparsedMaxDate)!;
-
   const isStatic = React.useContext(IsStaticVariantContext);
   const allowKeyboardControl = __allowKeyboardControlProp ?? !isStatic;
 

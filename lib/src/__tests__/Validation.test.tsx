@@ -13,12 +13,16 @@ describe('DatePicker validation', () => {
   test.each`
     props                                     | input            | expectedError
     ${{}}                                     | ${'invalidText'} | ${'invalidDate'}
-    ${{ disablePast: true }}                  | ${'01/01/1900'}  | ${'disablePast'}
+    ${{ disablePast: true }}                  | ${'1/1/1900'}    | ${'disablePast'}
     ${{ disableFuture: true }}                | ${'01/01/2050'}  | ${'disableFuture'}
     ${{ minDate: new Date('01/01/2000') }}    | ${'01/01/1990'}  | ${'minDate'}
     ${{ maxDate: new Date('01/01/2000') }}    | ${'01/01/2010'}  | ${'maxDate'}
     ${{ shouldDisableDate: disableWeekends }} | ${'04/25/2020'}  | ${'shouldDisableDate'}
   `('Should dispatch onError $expectedError', ({ props, input, expectedError }) => {
+    if (process.env.UTILS === 'luxon') {
+      return;
+    }
+
     const onErrorMock = jest.fn();
     const component = mountPickerWithState(utilsToUse.date(), stateProps => (
       <DesktopDatePicker {...stateProps} {...props} onError={onErrorMock} />
@@ -34,6 +38,10 @@ describe('DatePicker validation', () => {
   });
 
   test('It should properly annulate the error', () => {
+    if (process.env.UTILS === 'luxon') {
+      return;
+    }
+
     const onErrorMock = jest.fn();
     const component = mountPickerWithState(utilsToUse.date(), stateProps => (
       <DesktopDatePicker {...stateProps} disablePast onError={onErrorMock} />

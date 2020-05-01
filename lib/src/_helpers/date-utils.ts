@@ -173,8 +173,12 @@ export const validateDate = (
   const now = utils.date();
   const date = utils.date(value);
 
+  if (value === null) {
+    return null;
+  }
+
   switch (true) {
-    case value !== null && !utils.isValid(value):
+    case !utils.isValid(value):
       return 'invalidDate';
 
     case Boolean(shouldDisableDate && shouldDisableDate(date)):

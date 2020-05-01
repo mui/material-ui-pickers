@@ -8,9 +8,9 @@ import { ExportedCalendarViewProps } from '../views/Calendar/CalendarView';
 import { makePickerWithStateAndWrapper } from '../Picker/makePickerWithState';
 import { InlineWrapper, ModalWrapper, StaticWrapper } from '../wrappers/Wrapper';
 import { WithViewsProps, AllSharedPickerProps } from '../Picker/SharedPickerProps';
-import { dateTimePickerDefaultProps, ParsableDate } from '../constants/prop-types';
 import { DateAndTimeValidationError, validateDateAndTime } from './date-time-utils';
 import { makeValidationHook, ValidationProps } from '../_shared/hooks/useValidation';
+import { ParsableDate, defaultMinDate, defaultMaxDate } from '../constants/prop-types';
 
 export type DateTimePickerView = 'year' | 'date' | 'month' | 'hours' | 'minutes' | 'seconds';
 
@@ -33,17 +33,26 @@ export interface DateTimePickerProps
   toolbarFormat?: string;
 }
 
-function useDefaultProps({
+function useInterceptProps({
   ampm,
   mask,
   inputFormat,
   orientation = 'portrait',
+  minTime: __minTime,
+  maxTime: __maxTime,
+  minDate: __minDate = defaultMinDate,
+  maxDate: __maxDate = defaultMaxDate,
   maxDateTime: __maxDateTime,
   minDateTime: __minDateTime,
   openTo = 'date',
   views = ['year', 'date', 'hours', 'minutes'],
+  ...other
 }: DateTimePickerProps & AllSharedPickerProps) {
   const utils = useUtils();
+  const minTime = useParsedDate(__minTime);
+  const maxTime = useParsedDate(__maxTime);
+  const minDate = useParsedDate(__minDate);
+  const maxDate = useParsedDate(__maxDate);
   const minDateTime = useParsedDate(__minDateTime);
   const maxDateTime = useParsedDate(__maxDateTime);
   const willUseAmPm = ampm ?? utils.is12HourCycleInCurrentLocale();
@@ -53,17 +62,17 @@ function useDefaultProps({
   }
 
   return {
-    ...dateTimePickerDefaultProps,
     openTo,
     views,
     ampm: willUseAmPm,
     ampmInClock: true,
     orientation,
     showToolbar: true,
-    minDate: minDateTime,
-    minTime: minDateTime,
-    maxDate: maxDateTime,
-    maxTime: maxDateTime,
+    showTabs: true,
+    minDate: minDateTime || minDate,
+    minTime: minDateTime || minTime,
+    maxDate: maxDateTime || maxDate,
+    maxTime: maxDateTime || maxTime,
     disableTimeValidationIgnoreDatePart: Boolean(minDateTime || maxDateTime),
     acceptRegex: willUseAmPm ? /[\dap]/gi : /\d/gi,
     mask: mask || willUseAmPm ? '__/__/____ __:__ _M' : '__/__/____ __:__',
@@ -72,6 +81,7 @@ function useDefaultProps({
       '12h': utils.formats.keyboardDateTime12h,
       '24h': utils.formats.keyboardDateTime24h,
     }),
+    ...other,
   };
 }
 
@@ -82,7 +92,7 @@ const useValidation = makeValidationHook<
 >(validateDateAndTime);
 
 const dateTimePickerConfig = {
-  useDefaultProps,
+  useInterceptProps,
   useValidation,
   DefaultToolbarComponent: DateTimePickerToolbar,
 };
