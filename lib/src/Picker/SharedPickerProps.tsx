@@ -1,10 +1,9 @@
-import { WrapperVariant } from '../wrappers/Wrapper';
 import { DateTimePickerView } from '../DateTimePicker';
 import { ParsableDate } from '../constants/prop-types';
 import { BasePickerProps } from '../typings/BasePicker';
 import { MaterialUiPickersDate } from '../typings/date';
 import { WithDateAdapterProps } from '../_shared/withDateAdapterProp';
-import { ExportedDateInputProps, DateInputProps } from '../_shared/PureDateInput';
+import { WrapperVariant, DateInputPropsLike } from '../wrappers/Wrapper';
 
 export type AnyPickerView = DateTimePickerView;
 
@@ -15,10 +14,14 @@ export type AllSharedPickerProps<
   ExportedDateInputProps<TInputValue, TDateValue> &
   WithDateAdapterProps;
 
-export interface SharedPickerProps<TInputValue, TDateValue> {
+export interface SharedPickerProps<
+  TInputValue,
+  TDateValue,
+  TInputProps = DateInputPropsLike<TInputValue, TDateValue>
+> {
   isMobileKeyboardViewOpen: boolean;
   toggleMobileKeyboardView: () => void;
-  DateInputProps: DateInputProps<TInputValue, TDateValue>;
+  DateInputProps: TInputProps;
   date: TDateValue;
   onDateChange: (
     date: TDateValue,
