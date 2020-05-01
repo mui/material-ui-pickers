@@ -10,7 +10,7 @@ export type DateInputPropsLike<TInputValue, TDateValue> = Omit<
   'renderInput' | 'validationError'
 > & {
   renderInput: (...args: any) => JSX.Element;
-  validationError: unknown;
+  validationError?: any;
 };
 
 export interface WrapperProps<TInputProps = DateInputPropsLike<any, any>> {
