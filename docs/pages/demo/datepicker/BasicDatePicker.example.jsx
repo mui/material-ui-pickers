@@ -10,7 +10,6 @@ function BasicDatePicker() {
       label="Basic example"
       value={selectedDate}
       onChange={date => handleDateChange(date)}
-      onError={console.log}
       renderInput={props => <TextField {...props} />}
     />
   );

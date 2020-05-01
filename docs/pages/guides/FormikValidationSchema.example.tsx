@@ -19,7 +19,7 @@ const DatePickerField: React.FC<DatePickerFieldProps> = ({
   ...other
 }) => {
   const currentError = form.errors[field.name];
-  console.log(form.errors, field.name);
+
   return (
     <DatePicker
       autoOk
@@ -50,7 +50,7 @@ const schema = object({
 
 const FormikExample = () => {
   return (
-    <Formik validationSchema={schema} onSubmit={console.log} initialValues={{ date: new Date() }}>
+    <Formik validationSchema={schema} onSubmit={alert} initialValues={{ date: new Date() }}>
       {({ values, errors }) => (
         <Form>
           <Grid container>

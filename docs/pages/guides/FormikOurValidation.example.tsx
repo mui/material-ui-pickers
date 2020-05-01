@@ -18,7 +18,6 @@ const DatePickerField: React.FC<DatePickerFieldProps> = ({
   getShouldDisableDateError,
   ...other
 }) => {
-  console.log(value);
   const currentError = form.errors[name];
   const toShowError = Boolean(currentError && form.touched[name]);
 
@@ -77,7 +76,7 @@ const DatePickerField: React.FC<DatePickerFieldProps> = ({
 
 const FormikExample = () => {
   return (
-    <Formik onSubmit={console.log} initialValues={{ date: new Date() }}>
+    <Formik onSubmit={alert} initialValues={{ date: new Date() }}>
       {({ values, errors }) => (
         <Form>
           <Grid container>

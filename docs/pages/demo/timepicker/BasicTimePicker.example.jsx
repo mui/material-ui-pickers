@@ -11,7 +11,6 @@ function BasicTimePicker() {
         renderInput={props => <TextField {...props} />}
         label="12 hours"
         value={selectedDate}
-        onError={console.log}
         onChange={date => handleDateChange(date)}
       />
 
