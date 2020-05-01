@@ -6,6 +6,7 @@ import { MonthSelection } from './MonthSelection';
 import { DatePickerView } from '../../DatePicker';
 import { useCalendarState } from './useCalendarState';
 import { makeStyles } from '@material-ui/core/styles';
+import { useUtils } from '../../_shared/hooks/useUtils';
 import { VIEW_HEIGHT } from '../../constants/dimensions';
 import { MaterialUiPickersDate } from '../../typings/date';
 import { FadeTransitionGroup } from './FadeTransitionGroup';
@@ -13,7 +14,7 @@ import { Calendar, ExportedCalendarProps } from './Calendar';
 import { DateValidationProps } from '../../_helpers/date-utils';
 import { PickerOnChangeFn } from '../../_shared/hooks/useViews';
 import { CalendarHeader, CalendarHeaderProps } from './CalendarHeader';
-import { useParsedDate } from '../../_shared/hooks/date-helpers-hooks';
+import { defaultMinDate, defaultMaxDate } from '../../constants/prop-types';
 import { IsStaticVariantContext } from '../../wrappers/WrapperVariantContext';
 
 type PublicCalendarHeaderProps = Pick<
@@ -72,8 +73,8 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
   onChange,
   changeView,
   onMonthChange,
-  minDate,
-  maxDate,
+  minDate: __minDate,
+  maxDate: __maxDate,
   reduceAnimations = defaultReduceAnimations,
   loadingIndicator = <CircularProgress data-mui-test="loading-progress" />,
   shouldDisableDate,
@@ -82,9 +83,13 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
   disableFuture,
   ...other
 }) => {
+  const utils = useUtils();
   const classes = useStyles();
   const isStatic = React.useContext(IsStaticVariantContext);
   const allowKeyboardControl = __allowKeyboardControlProp ?? !isStatic;
+
+  const minDate = __minDate || utils.date(defaultMinDate);
+  const maxDate = __maxDate || utils.date(defaultMaxDate);
 
   const {
     loadingQueue,

@@ -3,7 +3,6 @@ import { StaticWrapperProps } from './StaticWrapper';
 import { BasePickerProps } from '../typings/BasePicker';
 import { DateInputProps } from '../_shared/PureDateInput';
 import { ResponsiveWrapperProps } from './ResponsiveWrapper';
-import { DateValidationProps } from '../_helpers/text-field-helper';
 import { OmitInnerWrapperProps, SomeWrapper, WrapperProps, DateInputPropsLike } from './Wrapper';
 
 interface MakePickerOptions<TInputProps> {

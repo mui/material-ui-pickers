@@ -1,5 +1,4 @@
 import { ParsableDate } from '../constants/prop-types';
-import { MaterialUiPickersDate } from '../typings/date';
 import { DateInputProps } from '../_shared/PureDateInput';
 import { MuiPickersAdapter } from '../_shared/hooks/useUtils';
 

@@ -2,6 +2,7 @@ import { DateTimePickerView } from '../DateTimePicker';
 import { ParsableDate } from '../constants/prop-types';
 import { BasePickerProps } from '../typings/BasePicker';
 import { MaterialUiPickersDate } from '../typings/date';
+import { ExportedDateInputProps } from '../_shared/PureDateInput';
 import { WithDateAdapterProps } from '../_shared/withDateAdapterProp';
 import { WrapperVariant, DateInputPropsLike } from '../wrappers/Wrapper';
 
