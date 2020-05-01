@@ -47,6 +47,7 @@ const DatePickerField: React.FC<DatePickerFieldProps> = ({
             break;
 
           case 'shouldDisableDate':
+            // shouldDisableDate returned true, render custom message according to the `shouldDisableDate` logic
             form.setFieldError(name, getShouldDisableDateError(value));
             break;
 

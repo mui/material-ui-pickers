@@ -33,7 +33,6 @@ export function useMaskedInput({
   inputFormat,
   disabled,
   rifmFormatter,
-  emptyInputText: emptyLabel,
   ignoreInvalidInputs,
   readOnly,
   TextFieldProps,
@@ -42,14 +41,11 @@ export function useMaskedInput({
   const utils = useUtils();
   const isFocusedRef = React.useRef(false);
 
-  const getInputValue = React.useCallback(
-    () =>
-      getDisplayDate(rawValue, utils, {
-        inputFormat,
-        emptyInputText: emptyLabel,
-      }),
-    [emptyLabel, inputFormat, rawValue, utils]
-  );
+  const getInputValue = React.useCallback(() => getDisplayDate(utils, rawValue, inputFormat), [
+    inputFormat,
+    rawValue,
+    utils,
+  ]);
 
   const formatHelperText = utils.getFormatHelperText(inputFormat);
   const [innerInputValue, setInnerInputValue] = React.useState<string>(getInputValue());

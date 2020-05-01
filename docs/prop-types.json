@@ -856,21 +856,6 @@
         "name": "(props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>"
       }
     },
-    "emptyInputText": {
-      "defaultValue": {
-        "value": "' '"
-      },
-      "description": "Message displaying in read-only text field when null passed",
-      "name": "emptyInputText",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
-        "name": "DateInputProps"
-      },
-      "required": false,
-      "type": {
-        "name": "string"
-      }
-    },
     "openPickerIcon": {
       "defaultValue": null,
       "description": "Icon displaying for open picker button",
@@ -1570,21 +1555,6 @@
       "required": true,
       "type": {
         "name": "(props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>"
-      }
-    },
-    "emptyInputText": {
-      "defaultValue": {
-        "value": "' '"
-      },
-      "description": "Message displaying in read-only text field when null passed",
-      "name": "emptyInputText",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
-        "name": "DateInputProps"
-      },
-      "required": false,
-      "type": {
-        "name": "string"
       }
     },
     "openPickerIcon": {
@@ -2612,21 +2582,6 @@
         "name": "(props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>"
       }
     },
-    "emptyInputText": {
-      "defaultValue": {
-        "value": "' '"
-      },
-      "description": "Message displaying in read-only text field when null passed",
-      "name": "emptyInputText",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
-        "name": "DateInputProps"
-      },
-      "required": false,
-      "type": {
-        "name": "string"
-      }
-    },
     "openPickerIcon": {
       "defaultValue": null,
       "description": "Icon displaying for open picker button",
@@ -3483,21 +3438,6 @@
       "required": true,
       "type": {
         "name": "(date: DateRange, keyboardInputValue?: string) => void"
-      }
-    },
-    "emptyInputText": {
-      "defaultValue": {
-        "value": "' '"
-      },
-      "description": "Message displaying in read-only text field when null passed",
-      "name": "emptyInputText",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
-        "name": "DateInputProps"
-      },
-      "required": false,
-      "type": {
-        "name": "string"
       }
     },
     "openPickerIcon": {

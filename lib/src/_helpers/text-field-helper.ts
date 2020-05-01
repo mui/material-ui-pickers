@@ -1,5 +1,4 @@
 import { ParsableDate } from '../constants/prop-types';
-import { DateInputProps } from '../_shared/PureDateInput';
 import { MuiPickersAdapter } from '../_shared/hooks/useUtils';
 
 export function getTextFieldAriaText(rawValue: ParsableDate, utils: MuiPickersAdapter) {
@@ -9,15 +8,15 @@ export function getTextFieldAriaText(rawValue: ParsableDate, utils: MuiPickersAd
 }
 
 export const getDisplayDate = (
-  value: ParsableDate,
   utils: MuiPickersAdapter,
-  { inputFormat, emptyInputText }: Pick<DateInputProps, 'inputFormat' | 'emptyInputText'>
+  value: ParsableDate,
+  inputFormat: string
 ) => {
   const date = utils.date(value);
   const isEmpty = value === null;
 
   if (isEmpty) {
-    return emptyInputText || '';
+    return '';
   }
 
   return utils.isValid(date) ? utils.formatByString(date, inputFormat) : '';
