@@ -1,8 +1,10 @@
+/* eslint-disable pretty-imports/sorted*/
+import prism from 'prismjs';
+import { ThemeType } from '../layout/PageWithContext';
+
 import 'prismjs/components/prism-jsx';
 import 'prismjs/components/prism-diff';
 import 'prismjs/components/prism-typescript';
-import prism from 'prismjs';
-import { ThemeType } from '../layout/PageWithContext';
 
 export type AvailableLanguages = 'jsx' | 'typescript' | 'markup' | 'json' | 'diff';
 export const prismThemes = {
