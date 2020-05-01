@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { MaterialUiPickersDate } from '../typings/date';
 import { CurrentlySelectingRangeEndProps } from './RangeTypes';
 import { useMaskedInput } from '../_shared/hooks/useMaskedInput';
+import { DateRangeValidationError } from '../_helpers/date-utils';
 import { WrapperVariantContext } from '../wrappers/WrapperVariantContext';
 import { DateInputProps, MuiTextFieldProps } from '../_shared/PureDateInput';
 import { mergeRefs, executeInTheNextEventLoopTick } from '../_helpers/utils';
@@ -50,11 +51,15 @@ export interface ExportedDateRangePickerInputProps {
 export interface DateRangeInputProps
   extends ExportedDateRangePickerInputProps,
     CurrentlySelectingRangeEndProps,
-    Omit<DateInputProps<RangeInput, DateRange>, 'renderInput' | 'forwardedRef'> {
+    Omit<
+      DateInputProps<RangeInput, DateRange>,
+      'validationError' | 'renderInput' | 'forwardedRef'
+    > {
   startText: React.ReactNode;
   endText: React.ReactNode;
   forwardedRef?: React.Ref<HTMLDivElement>;
   containerRef?: React.Ref<HTMLDivElement>;
+  validationError: DateRangeValidationError;
 }
 
 export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
@@ -74,6 +79,7 @@ export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
   renderInput,
   TextFieldProps,
   onBlur,
+  validationError: [startValidationError, endValidationError],
   ...other
 }) => {
   const utils = useUtils();
@@ -140,6 +146,7 @@ export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
     parsedDateValue: start,
     onChange: handleStartChange,
     label: startText,
+    validationError: startValidationError !== null,
     TextFieldProps: {
       ...TextFieldProps,
       ref: startRef,
@@ -157,6 +164,7 @@ export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
     rawValue: end,
     parsedDateValue: end,
     onChange: handleEndChange,
+    validationError: endValidationError !== null,
     TextFieldProps: {
       ...TextFieldProps,
       ref: endRef,

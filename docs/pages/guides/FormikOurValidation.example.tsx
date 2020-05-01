@@ -77,7 +77,7 @@ const DatePickerField: React.FC<DatePickerFieldProps> = ({
 
 const FormikExample = () => {
   return (
-    <Formik onSubmit={alert} initialValues={{ date: new Date() }}>
+    <Formik onSubmit={console.log} initialValues={{ date: new Date() }}>
       {({ values, errors }) => (
         <Form>
           <Grid container>

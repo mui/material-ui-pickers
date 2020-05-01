@@ -148,4 +148,4 @@ export const validateTime = (
   }
 };
 
-export type TimeValidationError = NonNullable<ReturnType<typeof validateTime>>;
+export type TimeValidationError = ReturnType<typeof validateTime>;

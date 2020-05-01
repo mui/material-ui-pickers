@@ -8,19 +8,17 @@ export interface ValidationProps<TError, TDateValue> {
    *
    * [Read the guide](https://next.material-ui-pickers.dev/guides/forms) about form integration and error displaying.
    */
-  onError?: (reason: TError | null, value: TDateValue) => void;
+  onError?: (reason: TError, value: TDateValue) => void;
 }
 
 export function makeValidationHook<
   TError,
   TDateValue,
   TProps extends ValidationProps<TError, TDateValue>
->(validateFn: (utils: MuiPickersAdapter, value: TDateValue, props: TProps) => TError | null) {
+>(validateFn: (utils: MuiPickersAdapter, value: TDateValue, props: TProps) => TError) {
   return (value: TDateValue, props: TProps) => {
     const utils = useUtils();
-    const previousValidationErrorRef = React.useRef<TError | null>(
-      null
-    ) as React.MutableRefObject<TError | null>;
+    const previousValidationErrorRef = React.useRef<TError>(null) as React.MutableRefObject<TError>;
 
     const validationError = validateFn(utils, value, props);
 
@@ -32,6 +30,6 @@ export function makeValidationHook<
       previousValidationErrorRef.current = validationError;
     }, [previousValidationErrorRef, props, validationError, value]);
 
-    return validationError !== null;
+    return validationError;
   };
 }

@@ -50,7 +50,7 @@ const schema = object({
 
 const FormikExample = () => {
   return (
-    <Formik validationSchema={schema} onSubmit={alert} initialValues={{ date: new Date() }}>
+    <Formik validationSchema={schema} onSubmit={console.log} initialValues={{ date: new Date() }}>
       {({ values, errors }) => (
         <Form>
           <Grid container>

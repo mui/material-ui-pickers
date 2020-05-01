@@ -21,7 +21,7 @@ export type AllPickerProps<T, TWrapper extends SomeWrapper = SomeWrapper> = T &
 
 export interface MakePickerOptions<T extends unknown> {
   /** Hook that running validation for the `value` and input */
-  useValidation: (value: ParsableDate, props: T) => boolean;
+  useValidation: (value: ParsableDate, props: T) => string | null;
   /** Intercept props to override or inject default props specifically for picker */
   useInterceptProps: (props: AllPickerProps<T>) => AllPickerProps<T> & { inputFormat: string };
   DefaultToolbarComponent: React.ComponentType<ToolbarComponentProps>;
@@ -46,7 +46,7 @@ export function makePickerWithStateAndWrapper<
     const utils = useUtils();
     const allProps = useInterceptProps(__props) as AllPickerProps<T, TWrapper>;
 
-    const validationError = useValidation(allProps.value, allProps);
+    const validationError = useValidation(allProps.value, allProps) !== null;
     const { pickerProps, inputProps, wrapperProps } = usePickerState<
       ParsableDate,
       MaterialUiPickersDate

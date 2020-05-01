@@ -1,6 +1,7 @@
 import { DateRange } from './DateRangePicker';
 import { MaterialUiPickersDate } from '../typings/date';
 import { MuiPickersAdapter } from '../_shared/hooks/useUtils';
+import { makeValidationHook } from '../_shared/hooks/useValidation';
 
 interface CalculateRangeChangeOptions {
   utils: MuiPickersAdapter;

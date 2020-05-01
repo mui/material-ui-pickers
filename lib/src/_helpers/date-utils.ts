@@ -4,8 +4,8 @@ import { ParsableDate } from '../constants/prop-types';
 import { MaterialUiPickersDate } from '../typings/date';
 import { BasePickerProps } from '../typings/BasePicker';
 import { DatePickerView } from '../DatePicker/DatePicker';
-import { DateRange } from '../DateRangePicker/RangeTypes';
 import { MuiPickersAdapter } from '../_shared/hooks/useUtils';
+import { DateRange, RangeInput } from '../DateRangePicker/RangeTypes';
 
 interface FindClosestDateParams {
   date: MaterialUiPickersDate;
@@ -109,6 +109,18 @@ export function parsePickerInputValue(
   return parsedValue && utils.isValid(parsedValue) ? parsedValue : now;
 }
 
+export function parseRangeInputValue(
+  now: MaterialUiPickersDate,
+  utils: MuiPickersAdapter,
+  { value = [null, null], defaultHighlight }: BasePickerProps<RangeInput, DateRange>
+) {
+  return value.map(date =>
+    date === null
+      ? null
+      : utils.startOfDay(parsePickerInputValue(now, utils, { value: date, defaultHighlight }))
+  ) as DateRange;
+}
+
 export const isRangeValid = (
   utils: MuiPickersAdapter,
   range: DateRange | null
@@ -201,4 +213,31 @@ export const validateDate = (
   }
 };
 
-export type DateValidationError = NonNullable<ReturnType<typeof validateDate>>;
+export type DateValidationError = ReturnType<typeof validateDate>;
+
+type DateRangeValidationErrorValue = DateValidationError | 'invalidRange' | null;
+
+export type DateRangeValidationError = [
+  DateRangeValidationErrorValue,
+  DateRangeValidationErrorValue
+];
+
+export const validateDateRange = (
+  utils: MuiPickersAdapter,
+  value: DateRange,
+  dateValidationProps: DateValidationProps
+): [DateRangeValidationErrorValue, DateRangeValidationErrorValue] => {
+  // for partial input
+  if (value[0] === null || value[1] === null) {
+    return [null, null];
+  }
+
+  if (!isRangeValid(utils, value)) {
+    return ['invalidRange', 'invalidRange'];
+  }
+
+  return [
+    validateDate(utils, value[0], dateValidationProps),
+    validateDate(utils, value[1], dateValidationProps),
+  ];
+};

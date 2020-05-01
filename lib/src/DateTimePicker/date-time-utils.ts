@@ -31,4 +31,4 @@ export function validateDateAndTime(
   return validateTime(utils, value, timeValidationProps);
 }
 
-export type DateAndTimeValidationError = NonNullable<ReturnType<typeof validateDateAndTime>>;
+export type DateAndTimeValidationError = ReturnType<typeof validateDateAndTime>;

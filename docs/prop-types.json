@@ -3199,13 +3199,13 @@
       },
       "required": false,
       "type": {
-        "name": "2 | 1 | 3"
+        "name": "2 | 3 | 1"
       }
     },
-    "inputFormat": {
+    "className": {
       "defaultValue": null,
-      "description": "Format string",
-      "name": "inputFormat",
+      "description": "className applied to the root component",
+      "name": "className",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
         "name": "BasePickerProps"
@@ -3213,32 +3213,6 @@
       "required": false,
       "type": {
         "name": "string"
-      }
-    },
-    "open": {
-      "defaultValue": null,
-      "description": "Controlled picker open state",
-      "name": "open",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
-        "name": "BasePickerProps"
-      },
-      "required": false,
-      "type": {
-        "name": "boolean"
-      }
-    },
-    "readOnly": {
-      "defaultValue": null,
-      "description": "Make picker read only",
-      "name": "readOnly",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
-        "name": "BasePickerProps"
-      },
-      "required": false,
-      "type": {
-        "name": "boolean"
       }
     },
     "disabled": {
@@ -3260,6 +3234,32 @@
       },
       "description": "Auto accept date on selection",
       "name": "autoOk",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
+        "name": "BasePickerProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "inputFormat": {
+      "defaultValue": null,
+      "description": "Format string",
+      "name": "inputFormat",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
+        "name": "BasePickerProps"
+      },
+      "required": false,
+      "type": {
+        "name": "string"
+      }
+    },
+    "readOnly": {
+      "defaultValue": null,
+      "description": "Make picker read only",
+      "name": "readOnly",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
         "name": "BasePickerProps"
@@ -3319,6 +3319,19 @@
       "required": false,
       "type": {
         "name": "() => void"
+      }
+    },
+    "open": {
+      "defaultValue": null,
+      "description": "Controlled picker open state",
+      "name": "open",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
+        "name": "BasePickerProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
       }
     },
     "showToolbar": {
@@ -3388,17 +3401,17 @@
         "name": "string"
       }
     },
-    "className": {
+    "onError": {
       "defaultValue": null,
-      "description": "className applied to the root component",
-      "name": "className",
+      "description": "Callback that fired when input value or new `value` prop is disabled.\nand `TextField` is displaying in `error` state. This can be used to render appropriate form error.\n\n[Read the guide](https://next.material-ui-pickers.dev/guides/forms) about form integration and error displaying.",
+      "name": "onError",
       "parent": {
-        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
-        "name": "BasePickerProps"
+        "fileName": "material-ui-pickers/lib/src/_shared/hooks/useValidation.ts",
+        "name": "ValidationProps"
       },
       "required": false,
       "type": {
-        "name": "string"
+        "name": "(reason: DateRangeValidationError, value: DateRange) => void"
       }
     },
     "renderInput": {
@@ -3414,6 +3427,19 @@
         "name": "(props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>"
       }
     },
+    "onChange": {
+      "defaultValue": null,
+      "description": "onChange callback",
+      "name": "onChange",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
+        "name": "BasePickerProps"
+      },
+      "required": true,
+      "type": {
+        "name": "(date: DateRange, keyboardInputValue?: string) => void"
+      }
+    },
     "mask": {
       "defaultValue": null,
       "description": "Custom mask. Can be used to override generate from format. (e.g. __/__/____ __:__ or __/__/____ __:__ _M)",
@@ -3427,17 +3453,17 @@
         "name": "string"
       }
     },
-    "onChange": {
+    "value": {
       "defaultValue": null,
-      "description": "onChange callback",
-      "name": "onChange",
+      "description": "Picker value",
+      "name": "value",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
         "name": "BasePickerProps"
       },
       "required": true,
       "type": {
-        "name": "(date: DateRange, keyboardInputValue?: string) => void"
+        "name": "RangeInput"
       }
     },
     "openPickerIcon": {
@@ -3550,19 +3576,6 @@
       "required": false,
       "type": {
         "name": "(value: any, utils: MuiPickersAdapter) => string"
-      }
-    },
-    "value": {
-      "defaultValue": null,
-      "description": "Picker value",
-      "name": "value",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
-        "name": "BasePickerProps"
-      },
-      "required": true,
-      "type": {
-        "name": "RangeInput"
       }
     },
     "dateAdapter": {
