@@ -13,7 +13,7 @@ describe('DatePicker validation', () => {
   test.each`
     props                                     | input            | expectedError
     ${{}}                                     | ${'invalidText'} | ${'invalidDate'}
-    ${{ disablePast: true }}                  | ${'1/1/1900'}    | ${'disablePast'}
+    ${{ disablePast: true }}                  | ${'01/01/1900'}  | ${'disablePast'}
     ${{ disableFuture: true }}                | ${'01/01/2050'}  | ${'disableFuture'}
     ${{ minDate: new Date('01/01/2000') }}    | ${'01/01/1990'}  | ${'minDate'}
     ${{ maxDate: new Date('01/01/2000') }}    | ${'01/01/2010'}  | ${'maxDate'}
