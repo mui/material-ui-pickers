@@ -34,7 +34,7 @@ export const useStyles = makeStyles(
       right: 8,
     },
   }),
-  { name: 'MuiPickerDTToolbar' }
+  { name: 'MuiPickersDateTimePickerToolbar' }
 );
 
 export const DateTimePickerToolbar: React.FC<ToolbarComponentProps> = ({

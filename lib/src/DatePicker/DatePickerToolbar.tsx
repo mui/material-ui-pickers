@@ -18,7 +18,7 @@ export const useStyles = makeStyles(
       top: 4,
     },
   },
-  { name: 'MuiPickersDatePickerRoot' }
+  { name: 'MuiPickersDatePickerToolbar' }
 );
 
 export const DatePickerToolbar: React.FC<ToolbarComponentProps> = ({

@@ -845,7 +845,7 @@
     },
     "renderInput": {
       "defaultValue": null,
-      "description": "Render input component. Where `props` – [TextField](https://material-ui.com/api/text-field/#textfield-api) component props\n@example ```jsx\nrenderInput={props => <TextField {...props} />}\n````",
+      "description": "Render input component. Where `props` – [TextField](https://material-ui.com/api/text-field/#textfield-api) component props\n@example ```jsx\rrenderInput={props => <TextField {...props} />}\r````",
       "name": "renderInput",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
@@ -985,7 +985,7 @@
     },
     "dateAdapter": {
       "defaultValue": null,
-      "description": "Allows to pass configured date-io adapter directly. More info [here](https://material-ui-pickers.dev/guides/date-adapter-passing)\n```jsx\ndateAdapter={new DateFnsAdapter({ locale: ruLocale })}\n```",
+      "description": "Allows to pass configured date-io adapter directly. More info [here](https://material-ui-pickers.dev/guides/date-adapter-passing)\n```jsx\r\ndateAdapter={new DateFnsAdapter({ locale: ruLocale })}\r\n```",
       "name": "dateAdapter",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/withDateAdapterProp.tsx",
@@ -1621,7 +1621,7 @@
     },
     "renderInput": {
       "defaultValue": null,
-      "description": "Render input component. Where `props` – [TextField](https://material-ui.com/api/text-field/#textfield-api) component props\n@example ```jsx\nrenderInput={props => <TextField {...props} />}\n````",
+      "description": "Render input component. Where `props` – [TextField](https://material-ui.com/api/text-field/#textfield-api) component props\n@example ```jsx\rrenderInput={props => <TextField {...props} />}\r````",
       "name": "renderInput",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
@@ -1761,7 +1761,7 @@
     },
     "dateAdapter": {
       "defaultValue": null,
-      "description": "Allows to pass configured date-io adapter directly. More info [here](https://material-ui-pickers.dev/guides/date-adapter-passing)\n```jsx\ndateAdapter={new DateFnsAdapter({ locale: ruLocale })}\n```",
+      "description": "Allows to pass configured date-io adapter directly. More info [here](https://material-ui-pickers.dev/guides/date-adapter-passing)\n```jsx\r\ndateAdapter={new DateFnsAdapter({ locale: ruLocale })}\r\n```",
       "name": "dateAdapter",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/withDateAdapterProp.tsx",
@@ -2721,7 +2721,7 @@
     },
     "renderInput": {
       "defaultValue": null,
-      "description": "Render input component. Where `props` – [TextField](https://material-ui.com/api/text-field/#textfield-api) component props\n@example ```jsx\nrenderInput={props => <TextField {...props} />}\n````",
+      "description": "Render input component. Where `props` – [TextField](https://material-ui.com/api/text-field/#textfield-api) component props\n@example ```jsx\rrenderInput={props => <TextField {...props} />}\r````",
       "name": "renderInput",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
@@ -2861,7 +2861,7 @@
     },
     "dateAdapter": {
       "defaultValue": null,
-      "description": "Allows to pass configured date-io adapter directly. More info [here](https://material-ui-pickers.dev/guides/date-adapter-passing)\n```jsx\ndateAdapter={new DateFnsAdapter({ locale: ruLocale })}\n```",
+      "description": "Allows to pass configured date-io adapter directly. More info [here](https://material-ui-pickers.dev/guides/date-adapter-passing)\n```jsx\r\ndateAdapter={new DateFnsAdapter({ locale: ruLocale })}\r\n```",
       "name": "dateAdapter",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/withDateAdapterProp.tsx",
@@ -3641,7 +3641,7 @@
     },
     "renderInput": {
       "defaultValue": null,
-      "description": "Render input component for date range. Where `props` – [TextField](https://material-ui.com/api/text-field/#textfield-api) component props\n@example ```jsx\n<DateRangePicker\nrenderInput={(startProps, endProps) => (\n<>\n<TextField {...startProps} />\n<Typography> to <Typography>\n<TextField {...endProps} />\n</>;\n)}\n/>\n````",
+      "description": "Render input component for date range. Where `props` – [TextField](https://material-ui.com/api/text-field/#textfield-api) component props\n@example ```jsx\r<DateRangePicker\rrenderInput={(startProps, endProps) => (\r<>\r<TextField {...startProps} />\r<Typography> to <Typography>\r<TextField {...endProps} />\r</>;\r)}\r/>\r````",
       "name": "renderInput",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/DateRangePicker/DateRangePickerInput.tsx",
@@ -3820,7 +3820,7 @@
     },
     "dateAdapter": {
       "defaultValue": null,
-      "description": "Allows to pass configured date-io adapter directly. More info [here](https://material-ui-pickers.dev/guides/date-adapter-passing)\n```jsx\ndateAdapter={new DateFnsAdapter({ locale: ruLocale })}\n```",
+      "description": "Allows to pass configured date-io adapter directly. More info [here](https://material-ui-pickers.dev/guides/date-adapter-passing)\n```jsx\r\ndateAdapter={new DateFnsAdapter({ locale: ruLocale })}\r\n```",
       "name": "dateAdapter",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/withDateAdapterProp.tsx",
