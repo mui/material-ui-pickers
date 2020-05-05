@@ -52,7 +52,7 @@ export const useStyles = makeStyles(
       justifyContent: 'space-between',
     },
   }),
-  { name: 'MuiPickersDesktopDateRangeCalendar' }
+  { name: 'PrivateDateRangePickerViewDesktop' }
 );
 
 function getCalendarsArray(calendars: ExportedDesktopDateRangeCalendarProps['calendars']) {

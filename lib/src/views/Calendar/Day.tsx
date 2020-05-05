@@ -67,7 +67,7 @@ export const useStyles = makeStyles(
       // need for overrides
     },
   }),
-  { name: 'MuiPickersDay' }
+  { name: 'MuiDay' }
 );
 
 export interface DayProps extends ExtendMui<ButtonBaseProps> {

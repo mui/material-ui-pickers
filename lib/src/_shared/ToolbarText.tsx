@@ -26,7 +26,7 @@ export const useStyles = makeStyles(
       },
     };
   },
-  { name: 'MuiPickersToolbarText' }
+  { name: 'PrivateToolbarText' }
 );
 
 const ToolbarText: React.FC<ToolbarTextProps> = ({

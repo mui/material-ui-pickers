@@ -64,7 +64,7 @@ export const useStyles = makeStyles(
       },
     };
   },
-  { name: 'MuiPickersSlideTransition' }
+  { name: 'PrivateSlideTransition' }
 );
 
 export const SlideTransition: React.SFC<SlideTransitionProps> = ({

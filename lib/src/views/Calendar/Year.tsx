@@ -52,7 +52,7 @@ export const useStyles = makeStyles(
       color: theme.palette.text.hint,
     },
   }),
-  { name: 'MuiPickersYear' }
+  { name: 'PrivateYear' }
 );
 
 export const Year: React.FC<YearProps> = ({

@@ -69,7 +69,7 @@ export const useStyles = makeStyles(
       height: '100%',
     },
   },
-  { name: 'MuiPickersCalendarView' }
+  { name: 'MuiCalendarView' }
 );
 
 export const defaultReduceAnimations =

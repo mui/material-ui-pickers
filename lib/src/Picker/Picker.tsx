@@ -77,7 +77,7 @@ export const useStyles = makeStyles(
       padding: '0 8px',
     },
   },
-  { name: 'MuiPickersBasePicker' }
+  { name: 'MuiBasePicker' }
 );
 
 const MobileKeyboardTextFieldProps = { fullWidth: true };

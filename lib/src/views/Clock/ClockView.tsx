@@ -74,7 +74,7 @@ export const useStyles = makeStyles(
       top: 8,
     },
   }),
-  { name: 'MuiPickersClockView' }
+  { name: 'MuiClockView' }
 );
 
 const getHoursAriaText = (hour: string) => `${hour} hours`;

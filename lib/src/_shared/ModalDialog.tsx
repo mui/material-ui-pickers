@@ -53,7 +53,7 @@ export const useStyles = makeStyles(
       },
     },
   },
-  { name: 'MuiPickersModal' }
+  { name: 'PrivateModalDialog' }
 );
 
 export const ModalDialog: React.FC<ModalDialogProps> = ({

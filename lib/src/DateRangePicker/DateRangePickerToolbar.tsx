@@ -17,7 +17,7 @@ export const useStyles = makeStyles(
       display: 'flex',
     },
   },
-  { name: 'MuiPickersDateRangePickerToolbar' }
+  { name: 'PrivateDateRangePickerToolbar' }
 );
 
 interface DateRangePickerToolbarProps

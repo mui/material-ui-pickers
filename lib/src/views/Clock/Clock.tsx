@@ -89,7 +89,7 @@ export const useStyles = makeStyles(
     },
   }),
   {
-    name: 'MuiPickersClock',
+    name: 'MuiClock',
   }
 );
 

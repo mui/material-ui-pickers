@@ -50,7 +50,7 @@ export const useStyles = makeStyles(
       visibility: 'hidden',
     },
   }),
-  { name: 'MuiPickersArrowSwitcher' }
+  { name: 'PrivateArrowSwitcher' }
 );
 
 const PureArrowSwitcher: React.FC<ArrowSwitcherProps> = ({

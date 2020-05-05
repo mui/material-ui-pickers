@@ -37,7 +37,7 @@ export const useStyles = makeStyles(
       color: theme.palette.text.hint,
     },
   }),
-  { name: 'MuiPickersMonth' }
+  { name: 'PrivateMonth' }
 );
 
 export const Month: React.FC<MonthProps> = ({

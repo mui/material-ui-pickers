@@ -44,7 +44,7 @@ export const useStyles = makeStyles(
       },
     };
   },
-  { name: 'MuiPickersDateTimePickerTabs' }
+  { name: 'PrivateDateTimePickerTabs' }
 );
 
 export const DateTimePickerTabs: React.SFC<DateTimePickerTabsProps> = ({
