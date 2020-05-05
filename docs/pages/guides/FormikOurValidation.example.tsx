@@ -1,5 +1,4 @@
 import React from 'react';
-import Code from '../../_shared/Code';
 import { Grid } from '@material-ui/core';
 import { TextField } from '@material-ui/core';
 import { Formik, Form, Field, FieldProps } from 'formik';
@@ -96,7 +95,9 @@ const FormikExample = () => {
             </Grid>
 
             <Grid item xs={12} sm={12} style={{ margin: '24px' }}>
-              <Code children={JSON.stringify({ errors, values }, null, 2)} />
+              <pre>
+                <code>{JSON.stringify({ errors, values }, null, 2)}</code>
+              </pre>
             </Grid>
           </Grid>
         </Form>
