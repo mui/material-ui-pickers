@@ -1,11 +1,14 @@
 import * as React from 'react';
 import { isWeekend } from 'date-fns';
+import { act } from 'react-dom/test-utils';
 import { TextField } from '@material-ui/core';
 import { MaterialUiPickersDate } from '../typings/date';
 import { DesktopDatePicker } from '../DatePicker/DatePicker';
 import { mountPickerWithState, utilsToUse } from './test-utils';
 import { DesktopDateRangePicker } from '../DateRangePicker/DateRangePicker';
 import { TimePickerProps, DesktopTimePicker } from '../TimePicker/TimePicker';
+
+jest.useFakeTimers();
 
 const disableWeekends = (date: MaterialUiPickersDate) => {
   return isWeekend(utilsToUse.toJsDate(date));
@@ -96,23 +99,24 @@ describe('TimePicker validation', () => {
   });
 });
 
-describe.only.skip('DateRangePicker validation', () => {
+describe('DateRangePicker validation', () => {
   test.each`
-    props                                     | startInput       | endInput         | expectedError
-    ${{}}                                     | ${'invalidText'} | ${''}            | ${[null, null]}
-    ${{}}                                     | ${''}            | ${'invalidText'} | ${[null, null]}
-    ${{}}                                     | ${'01/01/2020'}  | ${'01/01/1920'}  | ${['invalidRange', 'invalidRange']}
-    ${{ disablePast: true }}                  | ${'01/01/1900'}  | ${'01/01/2020'}  | ${['disablePast', null]}
-    ${{ disableFuture: true }}                | ${'01/01/2010'}  | ${'01/01/2050'}  | ${[null, 'disableFuture']}
-    ${{ minDate: new Date('01/01/2000') }}    | ${'01/01/1990'}  | ${'01/01/1990'}  | ${['minDate', 'minDate']}
-    ${{ maxDate: new Date('01/01/2000') }}    | ${'01/01/2010'}  | ${'01/01/2010'}  | ${['maxDate', 'maxDate']}
-    ${{ shouldDisableDate: disableWeekends }} | ${'04/25/2020'}  | ${'06/25/2020'}  | ${['shouldDisableDate', null]}
+    props                                     | startInput      | endInput        | expectedError
+    ${{}}                                     | ${'99/99/9999'} | ${'99/99/9999'} | ${['invalidDate', 'invalidDate']}
+    ${{}}                                     | ${'01/01/2020'} | ${'01/01/1920'} | ${['invalidRange', 'invalidRange']}
+    ${{ minDate: new Date('01/01/2000') }}    | ${'01/01/1990'} | ${'01/01/1990'} | ${['minDate', 'minDate']}
+    ${{ maxDate: new Date('01/01/2000') }}    | ${'01/01/2010'} | ${'01/01/2010'} | ${['maxDate', 'maxDate']}
+    ${{ disablePast: true }}                  | ${'01/01/1800'} | ${'01/01/2120'} | ${['disablePast', 'maxDate']}
+    ${{ disablePast: true }}                  | ${'01/01/1800'} | ${'01/01/2090'} | ${['disablePast', null]}
+    ${{ disableFuture: true }}                | ${'01/01/2010'} | ${'01/01/2050'} | ${[null, 'disableFuture']}
+    ${{ shouldDisableDate: disableWeekends }} | ${'04/25/2020'} | ${'06/25/2020'} | ${['shouldDisableDate', null]}
   `('Should dispatch onError $expectedError', ({ props, startInput, endInput, expectedError }) => {
     if (process.env.UTILS === 'luxon') {
       return;
     }
 
     const onErrorMock = jest.fn();
+
     const component = mountPickerWithState([null, null], stateProps => (
       <DesktopDateRangePicker
         {...stateProps}
@@ -136,6 +140,10 @@ describe.only.skip('DateRangePicker validation', () => {
         },
       });
 
+    act(() => {
+      jest.runAllTimers();
+    });
+
     component
       .find('input')
       .at(1)
@@ -143,8 +151,11 @@ describe.only.skip('DateRangePicker validation', () => {
         target: {
           value: endInput,
         },
-      })
-      .simulate('blur');
+      });
+
+    act(() => {
+      jest.runAllTimers();
+    });
 
     expect(onErrorMock).toBeCalledWith(expectedError, expect.anything());
   });

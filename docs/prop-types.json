@@ -3411,7 +3411,7 @@
       },
       "required": false,
       "type": {
-        "name": "(reason: DateRangeValidationError, value: DateRange) => void"
+        "name": "(reason: DateRangeValidationError, value: RangeInput) => void"
       }
     },
     "renderInput": {

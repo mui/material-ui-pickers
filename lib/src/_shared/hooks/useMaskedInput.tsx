@@ -21,6 +21,7 @@ type MaskedInputProps = Omit<
   | 'disableOpenPicker'
   | 'getOpenDialogAriaText'
   | 'OpenPickerButtonProps'
+  | 'parsedDateValue'
 >;
 
 export function useMaskedInput({

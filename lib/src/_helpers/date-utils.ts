@@ -112,13 +112,9 @@ export function parsePickerInputValue(
 export function parseRangeInputValue(
   now: MaterialUiPickersDate,
   utils: MuiPickersAdapter,
-  { value = [null, null], defaultHighlight }: BasePickerProps<RangeInput, DateRange>
+  { value = [null, null] }: BasePickerProps<RangeInput, DateRange>
 ) {
-  return value.map(date =>
-    date === null
-      ? null
-      : utils.startOfDay(parsePickerInputValue(now, utils, { value: date, defaultHighlight }))
-  ) as DateRange;
+  return value.map(date => (date === null ? null : utils.date(date))) as DateRange;
 }
 
 export const isRangeValid = (
@@ -224,20 +220,28 @@ export type DateRangeValidationError = [
 
 export const validateDateRange = (
   utils: MuiPickersAdapter,
-  value: DateRange,
+  value: RangeInput,
   dateValidationProps: DateValidationProps
 ): [DateRangeValidationErrorValue, DateRangeValidationErrorValue] => {
+  const [start, end] = value;
+
   // for partial input
-  if (value[0] === null || value[1] === null) {
+  if (start === null || end === null) {
     return [null, null];
   }
 
-  if (!isRangeValid(utils, value)) {
+  const dateValidations = [
+    validateDate(utils, start, dateValidationProps),
+    validateDate(utils, end, dateValidationProps),
+  ] as [DateRangeValidationErrorValue, DateRangeValidationErrorValue];
+
+  if (dateValidations[0] || dateValidations[1]) {
+    return dateValidations;
+  }
+
+  if (!isRangeValid(utils, [utils.date(start), utils.date(end)])) {
     return ['invalidRange', 'invalidRange'];
   }
 
-  return [
-    validateDate(utils, value[0], dateValidationProps),
-    validateDate(utils, value[1], dateValidationProps),
-  ];
+  return [null, null];
 };

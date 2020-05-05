@@ -25,7 +25,7 @@ import {
 
 export interface DateRangePickerProps
   extends ExportedDateRangePickerViewProps,
-    ValidationProps<DateRangeValidationError, DateRangeType>,
+    ValidationProps<DateRangeValidationError, RangeInput>,
     ExportedDateRangePickerInputProps {
   /**
    * Text for start input label and toolbar placeholder
@@ -41,9 +41,12 @@ export interface DateRangePickerProps
 
 export const useDateRangeValidation = makeValidationHook<
   DateRangeValidationError,
-  DateRangeType,
+  RangeInput,
   DateRangePickerProps
->(validateDateRange);
+>(validateDateRange, {
+  defaultValidationError: [null, null],
+  isSameError: (a, b) => a[1] === b[1] && a[0] === b[0],
+});
 
 export function makeRangePicker<TWrapper extends SomeWrapper>(Wrapper: TWrapper) {
   const WrapperComponent = makeWrapperComponent<DateRangeInputProps, RangeInput, DateRange>(
@@ -95,7 +98,7 @@ export function makeRangePicker<TWrapper extends SomeWrapper>(Wrapper: TWrapper)
       }
     );
 
-    const validationError = useDateRangeValidation(pickerProps.date, restProps);
+    const validationError = useDateRangeValidation(value, restProps);
 
     const DateInputProps = {
       ...inputProps,
