@@ -61,8 +61,8 @@ const DatePickerField: React.FC<DatePickerFieldProps> = ({
       onChange={date => form.setFieldValue(name, date, false)}
       renderInput={props => (
         <TextField
-          name={name}
           {...props}
+          name={name}
           error={toShowError}
           helperText={toShowError ? currentError ?? props.helperText : undefined}
           // Make sure that your 3d param is set to `true` on order to not clear errors
