@@ -14035,14 +14035,6 @@ yauzl@2.10.0, yauzl@^2.10.0:
   dependencies:
     buffer-crc32 "~0.2.3"
     fd-slicer "~1.1.0"
-<<<<<<< HEAD
-
-yauzl@2.4.1:
-  version "2.4.1"
-  resolved "https://registry.yarnpkg.com/yauzl/-/yauzl-2.4.1.tgz#9528f442dab1b2284e58b4379bb194e22e0c4005"
-  integrity sha1-lSj0QtqxsihOWLQ3m7GU4i4MQAU=
-  dependencies:
-    fd-slicer "~1.0.1"
 
 yup@^0.28.5:
   version "0.28.5"
@@ -14056,5 +14048,3 @@ yup@^0.28.5:
     property-expr "^2.0.2"
     synchronous-promise "^2.0.10"
     toposort "^2.0.2"
-=======
->>>>>>> next
