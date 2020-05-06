@@ -19,6 +19,7 @@ export interface YearProps {
 export const useStyles = makeStyles(
   theme => ({
     yearButtonContainer: {
+      color: 'unset',
       backgroundColor: 'transparent',
       border: 'none',
       outline: 0,
