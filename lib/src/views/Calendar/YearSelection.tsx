@@ -1,6 +1,5 @@
 import * as React from 'react';
 import Year from './Year';
-import { DateType } from '@date-io/type';
 import { MaterialUiPickersDate } from '../../typings/date';
 import { useUtils, useNow } from '../../_shared/hooks/useUtils';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
@@ -16,8 +15,8 @@ export interface ExportedYearSelectionProps {
 
 export interface YearSelectionProps extends ExportedYearSelectionProps {
   date: MaterialUiPickersDate;
-  minDate: DateType;
-  maxDate: DateType;
+  minDate: MaterialUiPickersDate;
+  maxDate: MaterialUiPickersDate;
   onChange: (date: MaterialUiPickersDate, isFinish: boolean) => void;
   disablePast?: boolean | null | undefined;
   disableFuture?: boolean | null | undefined;

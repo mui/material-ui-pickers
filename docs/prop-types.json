@@ -318,6 +318,19 @@
         "name": "\"year\" | \"date\" | \"month\""
       }
     },
+    "onError": {
+      "defaultValue": null,
+      "description": "Callback that fired when input value or new `value` prop validation returns **new** validation error (or value is valid after error).\nIn case of validation error detected `reason` prop return non-null value and `TextField` must be displayed in `error` state.\nThis can be used to render appropriate form error.\n\n[Read the guide](https://next.material-ui-pickers.dev/guides/forms) about form integration and error displaying.\n@DateIOType",
+      "name": "onError",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/hooks/useValidation.ts",
+        "name": "ValidationProps"
+      },
+      "required": false,
+      "type": {
+        "name": "(reason: \"shouldDisableDate\" | \"invalidDate\" | \"disableFuture\" | \"disablePast\" | \"minDate\" | \"maxDate\" | null, value: DateIOType) => void"
+      }
+    },
     "disableHighlightToday": {
       "defaultValue": {
         "value": "false"
@@ -439,6 +452,19 @@
         "name": "(currentView: \"year\" | \"date\" | \"month\") => string"
       }
     },
+    "shouldDisableDate": {
+      "defaultValue": null,
+      "description": "Disable specific date",
+      "name": "shouldDisableDate",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_helpers/date-utils.ts",
+        "name": "DateValidationProps"
+      },
+      "required": false,
+      "type": {
+        "name": "(day: DateIOType) => boolean"
+      }
+    },
     "minDate": {
       "defaultValue": {
         "value": "Date(1900-01-01)"
@@ -446,8 +472,8 @@
       "description": "Min selectable date",
       "name": "minDate",
       "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Calendar/CalendarView.tsx",
-        "name": "CalendarViewProps"
+        "fileName": "material-ui-pickers/lib/src/_helpers/date-utils.ts",
+        "name": "DateValidationProps"
       },
       "required": false,
       "type": {
@@ -461,8 +487,8 @@
       "description": "Max selectable date",
       "name": "maxDate",
       "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Calendar/CalendarView.tsx",
-        "name": "CalendarViewProps"
+        "fileName": "material-ui-pickers/lib/src/_helpers/date-utils.ts",
+        "name": "DateValidationProps"
       },
       "required": false,
       "type": {
@@ -476,8 +502,8 @@
       "description": "Disable past dates",
       "name": "disablePast",
       "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
-        "name": "ExportedCalendarProps"
+        "fileName": "material-ui-pickers/lib/src/_helpers/date-utils.ts",
+        "name": "DateValidationProps"
       },
       "required": false,
       "type": {
@@ -491,8 +517,8 @@
       "description": "Disable future dates",
       "name": "disableFuture",
       "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
-        "name": "ExportedCalendarProps"
+        "fileName": "material-ui-pickers/lib/src/_helpers/date-utils.ts",
+        "name": "DateValidationProps"
       },
       "required": false,
       "type": {
@@ -523,19 +549,6 @@
       "required": false,
       "type": {
         "name": "(date: DateIOType) => void | Promise<void>"
-      }
-    },
-    "shouldDisableDate": {
-      "defaultValue": null,
-      "description": "Disable specific date",
-      "name": "shouldDisableDate",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Calendar/CalendarView.tsx",
-        "name": "CalendarViewProps"
-      },
-      "required": false,
-      "type": {
-        "name": "(day: DateIOType) => boolean"
       }
     },
     "renderDay": {
@@ -711,19 +724,6 @@
         "name": "(date: DateIOType) => void"
       }
     },
-    "onError": {
-      "defaultValue": null,
-      "description": "Callback fired when new error should be displayed\n(!! This is a side effect. Be careful if you want to rerender the component)",
-      "name": "onError",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
-        "name": "BasePickerProps"
-      },
-      "required": false,
-      "type": {
-        "name": "(error: ReactNode, value: DateIOType) => void"
-      }
-    },
     "onOpen": {
       "defaultValue": null,
       "description": "On open callback",
@@ -869,21 +869,6 @@
         "name": "(props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>"
       }
     },
-    "emptyInputText": {
-      "defaultValue": {
-        "value": "' '"
-      },
-      "description": "Message displaying in read-only text field when null passed",
-      "name": "emptyInputText",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
-        "name": "DateInputProps"
-      },
-      "required": false,
-      "type": {
-        "name": "string"
-      }
-    },
     "openPickerIcon": {
       "defaultValue": null,
       "description": "Icon displaying for open picker button",
@@ -1007,66 +992,6 @@
       "required": false,
       "type": {
         "name": "MuiPickersAdapter"
-      }
-    },
-    "minDateMessage": {
-      "defaultValue": {
-        "value": "'Date should not be before minimal date'"
-      },
-      "description": "Error message, shown if date is less then minimal date",
-      "name": "minDateMessage",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/_helpers/text-field-helper.ts",
-        "name": "DateValidationProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ReactNode"
-      }
-    },
-    "maxDateMessage": {
-      "defaultValue": {
-        "value": "'Date should not be after maximal date'"
-      },
-      "description": "Error message, shown if date is more then maximal date",
-      "name": "maxDateMessage",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/_helpers/text-field-helper.ts",
-        "name": "DateValidationProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ReactNode"
-      }
-    },
-    "strictCompareDates": {
-      "defaultValue": {
-        "value": "false"
-      },
-      "description": "Compare dates by the exact timestamp, instead of start/end of date",
-      "name": "strictCompareDates",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/_helpers/text-field-helper.ts",
-        "name": "DateValidationProps"
-      },
-      "required": false,
-      "type": {
-        "name": "boolean"
-      }
-    },
-    "invalidDateMessage": {
-      "defaultValue": {
-        "value": "'Invalid Date Format'"
-      },
-      "description": "Message, appearing when date cannot be parsed",
-      "name": "invalidDateMessage",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/_helpers/text-field-helper.ts",
-        "name": "BaseValidationProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ReactNode"
       }
     },
     "okLabel": {
@@ -1308,8 +1233,8 @@
       "description": "Min time, date part by default, will be ignored",
       "name": "minTime",
       "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
-        "name": "ExportedClockViewProps"
+        "fileName": "material-ui-pickers/lib/src/_helpers/time-utils.ts",
+        "name": "TimeValidationProps"
       },
       "required": false,
       "type": {
@@ -1321,8 +1246,8 @@
       "description": "Max time, date part by default, will be ignored",
       "name": "maxTime",
       "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
-        "name": "ExportedClockViewProps"
+        "fileName": "material-ui-pickers/lib/src/_helpers/time-utils.ts",
+        "name": "TimeValidationProps"
       },
       "required": false,
       "type": {
@@ -1334,8 +1259,8 @@
       "description": "Dynamically check if time is disabled or not",
       "name": "shouldDisableTime",
       "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
-        "name": "ExportedClockViewProps"
+        "fileName": "material-ui-pickers/lib/src/_helpers/time-utils.ts",
+        "name": "TimeValidationProps"
       },
       "required": false,
       "type": {
@@ -1347,12 +1272,25 @@
       "description": "Do not ignore date part when validating min/max time",
       "name": "disableTimeValidationIgnoreDatePart",
       "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
-        "name": "ExportedClockViewProps"
+        "fileName": "material-ui-pickers/lib/src/_helpers/time-utils.ts",
+        "name": "TimeValidationProps"
       },
       "required": false,
       "type": {
         "name": "boolean"
+      }
+    },
+    "onError": {
+      "defaultValue": null,
+      "description": "Callback that fired when input value or new `value` prop validation returns **new** validation error (or value is valid after error).\nIn case of validation error detected `reason` prop return non-null value and `TextField` must be displayed in `error` state.\nThis can be used to render appropriate form error.\n\n[Read the guide](https://next.material-ui-pickers.dev/guides/forms) about form integration and error displaying.\n@DateIOType",
+      "name": "onError",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/hooks/useValidation.ts",
+        "name": "ValidationProps"
+      },
+      "required": false,
+      "type": {
+        "name": "(reason: \"invalidDate\" | \"minTime\" | \"maxTime\" | \"shouldDisableTime-hours\" | \"shouldDisableTime-minutes\" | \"shouldDisableTime-seconds\" | null, value: DateIOType) => void"
       }
     },
     "views": {
@@ -1485,19 +1423,6 @@
       "required": false,
       "type": {
         "name": "(date: DateIOType) => void"
-      }
-    },
-    "onError": {
-      "defaultValue": null,
-      "description": "Callback fired when new error should be displayed\n(!! This is a side effect. Be careful if you want to rerender the component)",
-      "name": "onError",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
-        "name": "BasePickerProps"
-      },
-      "required": false,
-      "type": {
-        "name": "(error: ReactNode, value: DateIOType) => void"
       }
     },
     "onOpen": {
@@ -1645,21 +1570,6 @@
         "name": "(props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>"
       }
     },
-    "emptyInputText": {
-      "defaultValue": {
-        "value": "' '"
-      },
-      "description": "Message displaying in read-only text field when null passed",
-      "name": "emptyInputText",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
-        "name": "DateInputProps"
-      },
-      "required": false,
-      "type": {
-        "name": "string"
-      }
-    },
     "openPickerIcon": {
       "defaultValue": null,
       "description": "Icon displaying for open picker button",
@@ -1783,66 +1693,6 @@
       "required": false,
       "type": {
         "name": "MuiPickersAdapter"
-      }
-    },
-    "minDateMessage": {
-      "defaultValue": {
-        "value": "'Date should not be before minimal date'"
-      },
-      "description": "Error message, shown if date is less then minimal date",
-      "name": "minDateMessage",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/_helpers/text-field-helper.ts",
-        "name": "DateValidationProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ReactNode"
-      }
-    },
-    "maxDateMessage": {
-      "defaultValue": {
-        "value": "'Date should not be after maximal date'"
-      },
-      "description": "Error message, shown if date is more then maximal date",
-      "name": "maxDateMessage",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/_helpers/text-field-helper.ts",
-        "name": "DateValidationProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ReactNode"
-      }
-    },
-    "strictCompareDates": {
-      "defaultValue": {
-        "value": "false"
-      },
-      "description": "Compare dates by the exact timestamp, instead of start/end of date",
-      "name": "strictCompareDates",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/_helpers/text-field-helper.ts",
-        "name": "DateValidationProps"
-      },
-      "required": false,
-      "type": {
-        "name": "boolean"
-      }
-    },
-    "invalidDateMessage": {
-      "defaultValue": {
-        "value": "'Invalid Date Format'"
-      },
-      "description": "Message, appearing when date cannot be parsed",
-      "name": "invalidDateMessage",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/_helpers/text-field-helper.ts",
-        "name": "BaseValidationProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ReactNode"
       }
     },
     "okLabel": {
@@ -2123,6 +1973,19 @@
         "name": "\"year\" | \"date\" | \"month\" | \"hours\" | \"minutes\""
       }
     },
+    "onError": {
+      "defaultValue": null,
+      "description": "Callback that fired when input value or new `value` prop validation returns **new** validation error (or value is valid after error).\nIn case of validation error detected `reason` prop return non-null value and `TextField` must be displayed in `error` state.\nThis can be used to render appropriate form error.\n\n[Read the guide](https://next.material-ui-pickers.dev/guides/forms) about form integration and error displaying.\n@DateIOType",
+      "name": "onError",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/hooks/useValidation.ts",
+        "name": "ValidationProps"
+      },
+      "required": false,
+      "type": {
+        "name": "(reason: \"shouldDisableDate\" | \"invalidDate\" | \"disableFuture\" | \"disablePast\" | \"minDate\" | \"maxDate\" | \"minTime\" | \"maxTime\" | \"shouldDisableTime-hours\" | \"shouldDisableTime-minutes\" | \"shouldDisableTime-seconds\" | null, value: DateIOType) => void"
+      }
+    },
     "ampm": {
       "defaultValue": {
         "value": "true"
@@ -2188,8 +2051,8 @@
       "description": "Min time, date part by default, will be ignored",
       "name": "minTime",
       "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
-        "name": "ExportedClockViewProps"
+        "fileName": "material-ui-pickers/lib/src/_helpers/time-utils.ts",
+        "name": "TimeValidationProps"
       },
       "required": false,
       "type": {
@@ -2201,8 +2064,8 @@
       "description": "Max time, date part by default, will be ignored",
       "name": "maxTime",
       "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
-        "name": "ExportedClockViewProps"
+        "fileName": "material-ui-pickers/lib/src/_helpers/time-utils.ts",
+        "name": "TimeValidationProps"
       },
       "required": false,
       "type": {
@@ -2214,8 +2077,8 @@
       "description": "Dynamically check if time is disabled or not",
       "name": "shouldDisableTime",
       "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
-        "name": "ExportedClockViewProps"
+        "fileName": "material-ui-pickers/lib/src/_helpers/time-utils.ts",
+        "name": "TimeValidationProps"
       },
       "required": false,
       "type": {
@@ -2227,8 +2090,8 @@
       "description": "Do not ignore date part when validating min/max time",
       "name": "disableTimeValidationIgnoreDatePart",
       "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
-        "name": "ExportedClockViewProps"
+        "fileName": "material-ui-pickers/lib/src/_helpers/time-utils.ts",
+        "name": "TimeValidationProps"
       },
       "required": false,
       "type": {
@@ -2353,7 +2216,20 @@
       },
       "required": false,
       "type": {
-        "name": "(currentView: \"year\" | \"date\" | \"month\") => string"
+        "name": "(currentView: DatePickerView) => string"
+      }
+    },
+    "shouldDisableDate": {
+      "defaultValue": null,
+      "description": "Disable specific date",
+      "name": "shouldDisableDate",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_helpers/date-utils.ts",
+        "name": "DateValidationProps"
+      },
+      "required": false,
+      "type": {
+        "name": "(day: DateIOType) => boolean"
       }
     },
     "minDate": {
@@ -2363,8 +2239,8 @@
       "description": "Min selectable date",
       "name": "minDate",
       "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Calendar/CalendarView.tsx",
-        "name": "CalendarViewProps"
+        "fileName": "material-ui-pickers/lib/src/_helpers/date-utils.ts",
+        "name": "DateValidationProps"
       },
       "required": false,
       "type": {
@@ -2378,8 +2254,8 @@
       "description": "Max selectable date",
       "name": "maxDate",
       "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Calendar/CalendarView.tsx",
-        "name": "CalendarViewProps"
+        "fileName": "material-ui-pickers/lib/src/_helpers/date-utils.ts",
+        "name": "DateValidationProps"
       },
       "required": false,
       "type": {
@@ -2393,8 +2269,8 @@
       "description": "Disable past dates",
       "name": "disablePast",
       "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
-        "name": "ExportedCalendarProps"
+        "fileName": "material-ui-pickers/lib/src/_helpers/date-utils.ts",
+        "name": "DateValidationProps"
       },
       "required": false,
       "type": {
@@ -2408,8 +2284,8 @@
       "description": "Disable future dates",
       "name": "disableFuture",
       "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
-        "name": "ExportedCalendarProps"
+        "fileName": "material-ui-pickers/lib/src/_helpers/date-utils.ts",
+        "name": "DateValidationProps"
       },
       "required": false,
       "type": {
@@ -2440,19 +2316,6 @@
       "required": false,
       "type": {
         "name": "(date: DateIOType) => void | Promise<void>"
-      }
-    },
-    "shouldDisableDate": {
-      "defaultValue": null,
-      "description": "Disable specific date",
-      "name": "shouldDisableDate",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Calendar/CalendarView.tsx",
-        "name": "CalendarViewProps"
-      },
-      "required": false,
-      "type": {
-        "name": "(day: DateIOType) => boolean"
       }
     },
     "renderDay": {
@@ -2613,19 +2476,6 @@
         "name": "(date: DateIOType) => void"
       }
     },
-    "onError": {
-      "defaultValue": null,
-      "description": "Callback fired when new error should be displayed\n(!! This is a side effect. Be careful if you want to rerender the component)",
-      "name": "onError",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
-        "name": "BasePickerProps"
-      },
-      "required": false,
-      "type": {
-        "name": "(error: ReactNode, value: DateIOType) => void"
-      }
-    },
     "onOpen": {
       "defaultValue": null,
       "description": "On open callback",
@@ -2758,21 +2608,6 @@
         "name": "(props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>"
       }
     },
-    "emptyInputText": {
-      "defaultValue": {
-        "value": "' '"
-      },
-      "description": "Message displaying in read-only text field when null passed",
-      "name": "emptyInputText",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
-        "name": "DateInputProps"
-      },
-      "required": false,
-      "type": {
-        "name": "string"
-      }
-    },
     "openPickerIcon": {
       "defaultValue": null,
       "description": "Icon displaying for open picker button",
@@ -2896,66 +2731,6 @@
       "required": false,
       "type": {
         "name": "MuiPickersAdapter"
-      }
-    },
-    "minDateMessage": {
-      "defaultValue": {
-        "value": "'Date should not be before minimal date'"
-      },
-      "description": "Error message, shown if date is less then minimal date",
-      "name": "minDateMessage",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/_helpers/text-field-helper.ts",
-        "name": "DateValidationProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ReactNode"
-      }
-    },
-    "maxDateMessage": {
-      "defaultValue": {
-        "value": "'Date should not be after maximal date'"
-      },
-      "description": "Error message, shown if date is more then maximal date",
-      "name": "maxDateMessage",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/_helpers/text-field-helper.ts",
-        "name": "DateValidationProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ReactNode"
-      }
-    },
-    "strictCompareDates": {
-      "defaultValue": {
-        "value": "false"
-      },
-      "description": "Compare dates by the exact timestamp, instead of start/end of date",
-      "name": "strictCompareDates",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/_helpers/text-field-helper.ts",
-        "name": "DateValidationProps"
-      },
-      "required": false,
-      "type": {
-        "name": "boolean"
-      }
-    },
-    "invalidDateMessage": {
-      "defaultValue": {
-        "value": "'Invalid Date Format'"
-      },
-      "description": "Message, appearing when date cannot be parsed",
-      "name": "invalidDateMessage",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/_helpers/text-field-helper.ts",
-        "name": "BaseValidationProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ReactNode"
       }
     },
     "okLabel": {
@@ -3298,6 +3073,19 @@
         "name": "(currentView: DatePickerView) => string"
       }
     },
+    "shouldDisableDate": {
+      "defaultValue": null,
+      "description": "Disable specific date",
+      "name": "shouldDisableDate",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_helpers/date-utils.ts",
+        "name": "DateValidationProps"
+      },
+      "required": false,
+      "type": {
+        "name": "(day: DateIOType) => boolean"
+      }
+    },
     "minDate": {
       "defaultValue": {
         "value": "Date(1900-01-01)"
@@ -3305,8 +3093,8 @@
       "description": "Min selectable date",
       "name": "minDate",
       "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Calendar/CalendarView.tsx",
-        "name": "CalendarViewProps"
+        "fileName": "material-ui-pickers/lib/src/_helpers/date-utils.ts",
+        "name": "DateValidationProps"
       },
       "required": false,
       "type": {
@@ -3320,8 +3108,8 @@
       "description": "Max selectable date",
       "name": "maxDate",
       "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Calendar/CalendarView.tsx",
-        "name": "CalendarViewProps"
+        "fileName": "material-ui-pickers/lib/src/_helpers/date-utils.ts",
+        "name": "DateValidationProps"
       },
       "required": false,
       "type": {
@@ -3335,8 +3123,8 @@
       "description": "Disable past dates",
       "name": "disablePast",
       "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
-        "name": "ExportedCalendarProps"
+        "fileName": "material-ui-pickers/lib/src/_helpers/date-utils.ts",
+        "name": "DateValidationProps"
       },
       "required": false,
       "type": {
@@ -3350,8 +3138,8 @@
       "description": "Disable future dates",
       "name": "disableFuture",
       "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
-        "name": "ExportedCalendarProps"
+        "fileName": "material-ui-pickers/lib/src/_helpers/date-utils.ts",
+        "name": "DateValidationProps"
       },
       "required": false,
       "type": {
@@ -3382,19 +3170,6 @@
       "required": false,
       "type": {
         "name": "(date: DateIOType) => void | Promise<void>"
-      }
-    },
-    "shouldDisableDate": {
-      "defaultValue": null,
-      "description": "Disable specific date",
-      "name": "shouldDisableDate",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Calendar/CalendarView.tsx",
-        "name": "CalendarViewProps"
-      },
-      "required": false,
-      "type": {
-        "name": "(day: DateIOType) => boolean"
       }
     },
     "renderDay": {
@@ -3463,13 +3238,13 @@
       },
       "required": false,
       "type": {
-        "name": "2 | 1 | 3"
+        "name": "2 | 3 | 1"
       }
     },
-    "inputFormat": {
+    "className": {
       "defaultValue": null,
-      "description": "Format string",
-      "name": "inputFormat",
+      "description": "className applied to the root component",
+      "name": "className",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
         "name": "BasePickerProps"
@@ -3477,32 +3252,6 @@
       "required": false,
       "type": {
         "name": "string"
-      }
-    },
-    "open": {
-      "defaultValue": null,
-      "description": "Controlled picker open state",
-      "name": "open",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
-        "name": "BasePickerProps"
-      },
-      "required": false,
-      "type": {
-        "name": "boolean"
-      }
-    },
-    "readOnly": {
-      "defaultValue": null,
-      "description": "Make picker read only",
-      "name": "readOnly",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
-        "name": "BasePickerProps"
-      },
-      "required": false,
-      "type": {
-        "name": "boolean"
       }
     },
     "disabled": {
@@ -3524,6 +3273,32 @@
       },
       "description": "Auto accept date on selection",
       "name": "autoOk",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
+        "name": "BasePickerProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "inputFormat": {
+      "defaultValue": null,
+      "description": "Format string",
+      "name": "inputFormat",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
+        "name": "BasePickerProps"
+      },
+      "required": false,
+      "type": {
+        "name": "string"
+      }
+    },
+    "readOnly": {
+      "defaultValue": null,
+      "description": "Make picker read only",
+      "name": "readOnly",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
         "name": "BasePickerProps"
@@ -3559,19 +3334,6 @@
         "name": "((date: DateIOType) => void) & ((date: DateRange) => void)"
       }
     },
-    "onError": {
-      "defaultValue": null,
-      "description": "Callback fired when new error should be displayed\n(!! This is a side effect. Be careful if you want to rerender the component)",
-      "name": "onError",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
-        "name": "BasePickerProps"
-      },
-      "required": false,
-      "type": {
-        "name": "((error: ReactNode, value: DateIOType) => void) & ((error: ReactNode, value: RangeInput | DateRange) => void)"
-      }
-    },
     "onOpen": {
       "defaultValue": null,
       "description": "On open callback",
@@ -3596,6 +3358,19 @@
       "required": false,
       "type": {
         "name": "() => void"
+      }
+    },
+    "open": {
+      "defaultValue": null,
+      "description": "Controlled picker open state",
+      "name": "open",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
+        "name": "BasePickerProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
       }
     },
     "showToolbar": {
@@ -3665,17 +3440,17 @@
         "name": "string"
       }
     },
-    "className": {
+    "onError": {
       "defaultValue": null,
-      "description": "className applied to the root component",
-      "name": "className",
+      "description": "Callback that fired when input value or new `value` prop validation returns **new** validation error (or value is valid after error).\nIn case of validation error detected `reason` prop return non-null value and `TextField` must be displayed in `error` state.\nThis can be used to render appropriate form error.\n\n[Read the guide](https://next.material-ui-pickers.dev/guides/forms) about form integration and error displaying.\n@DateIOType",
+      "name": "onError",
       "parent": {
-        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
-        "name": "BasePickerProps"
+        "fileName": "material-ui-pickers/lib/src/_shared/hooks/useValidation.ts",
+        "name": "ValidationProps"
       },
       "required": false,
       "type": {
-        "name": "string"
+        "name": "(reason: DateRangeValidationError, value: RangeInput) => void"
       }
     },
     "renderInput": {
@@ -3691,19 +3466,6 @@
         "name": "(props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>"
       }
     },
-    "mask": {
-      "defaultValue": null,
-      "description": "Custom mask. Can be used to override generate from format. (e.g. __/__/____ __:__ or __/__/____ __:__ _M)",
-      "name": "mask",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
-        "name": "DateInputProps"
-      },
-      "required": false,
-      "type": {
-        "name": "string"
-      }
-    },
     "onChange": {
       "defaultValue": null,
       "description": "onChange callback",
@@ -3717,12 +3479,10 @@
         "name": "(date: DateRange, keyboardInputValue?: string) => void"
       }
     },
-    "emptyInputText": {
-      "defaultValue": {
-        "value": "' '"
-      },
-      "description": "Message displaying in read-only text field when null passed",
-      "name": "emptyInputText",
+    "mask": {
+      "defaultValue": null,
+      "description": "Custom mask. Can be used to override generate from format. (e.g. __/__/____ __:__ or __/__/____ __:__ _M)",
+      "name": "mask",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
         "name": "DateInputProps"
@@ -3730,6 +3490,19 @@
       "required": false,
       "type": {
         "name": "string"
+      }
+    },
+    "value": {
+      "defaultValue": null,
+      "description": "Picker value",
+      "name": "value",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
+        "name": "BasePickerProps"
+      },
+      "required": true,
+      "type": {
+        "name": "RangeInput"
       }
     },
     "openPickerIcon": {
@@ -3844,19 +3617,6 @@
         "name": "(value: any, utils: MuiPickersAdapter) => string"
       }
     },
-    "value": {
-      "defaultValue": null,
-      "description": "Picker value",
-      "name": "value",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
-        "name": "BasePickerProps"
-      },
-      "required": true,
-      "type": {
-        "name": "RangeInput"
-      }
-    },
     "dateAdapter": {
       "defaultValue": null,
       "description": "Allows to pass configured date-io adapter directly. More info [here](https://material-ui-pickers.dev/guides/date-adapter-passing)\n```jsx\ndateAdapter={new DateFnsAdapter({ locale: ruLocale })}\n```",
@@ -3868,66 +3628,6 @@
       "required": false,
       "type": {
         "name": "MuiPickersAdapter"
-      }
-    },
-    "minDateMessage": {
-      "defaultValue": {
-        "value": "'Date should not be before minimal date'"
-      },
-      "description": "Error message, shown if date is less then minimal date",
-      "name": "minDateMessage",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/_helpers/text-field-helper.ts",
-        "name": "DateValidationProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ReactNode"
-      }
-    },
-    "maxDateMessage": {
-      "defaultValue": {
-        "value": "'Date should not be after maximal date'"
-      },
-      "description": "Error message, shown if date is more then maximal date",
-      "name": "maxDateMessage",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/_helpers/text-field-helper.ts",
-        "name": "DateValidationProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ReactNode"
-      }
-    },
-    "strictCompareDates": {
-      "defaultValue": {
-        "value": "false"
-      },
-      "description": "Compare dates by the exact timestamp, instead of start/end of date",
-      "name": "strictCompareDates",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/_helpers/text-field-helper.ts",
-        "name": "DateValidationProps"
-      },
-      "required": false,
-      "type": {
-        "name": "boolean"
-      }
-    },
-    "invalidDateMessage": {
-      "defaultValue": {
-        "value": "'Invalid Date Format'"
-      },
-      "description": "Message, appearing when date cannot be parsed",
-      "name": "invalidDateMessage",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/_helpers/text-field-helper.ts",
-        "name": "BaseValidationProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ReactNode"
       }
     },
     "okLabel": {
@@ -4104,6 +3804,32 @@
     }
   },
   "Calendar": {
+    "minDate": {
+      "defaultValue": null,
+      "description": "Min selectable date",
+      "name": "minDate",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
+        "name": "CalendarProps"
+      },
+      "required": true,
+      "type": {
+        "name": "any"
+      }
+    },
+    "maxDate": {
+      "defaultValue": null,
+      "description": "Max selectable date",
+      "name": "maxDate",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
+        "name": "CalendarProps"
+      },
+      "required": true,
+      "type": {
+        "name": "any"
+      }
+    },
     "onChange": {
       "defaultValue": null,
       "description": "Calendar onChange",
@@ -4115,36 +3841,6 @@
       "required": true,
       "type": {
         "name": "PickerOnChangeFn"
-      }
-    },
-    "disablePast": {
-      "defaultValue": {
-        "value": "false"
-      },
-      "description": "Disable past dates",
-      "name": "disablePast",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
-        "name": "ExportedCalendarProps"
-      },
-      "required": false,
-      "type": {
-        "name": "boolean"
-      }
-    },
-    "disableFuture": {
-      "defaultValue": {
-        "value": "false"
-      },
-      "description": "Disable future dates",
-      "name": "disableFuture",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
-        "name": "ExportedCalendarProps"
-      },
-      "required": false,
-      "type": {
-        "name": "boolean"
       }
     },
     "renderDay": {
@@ -4212,6 +3908,49 @@
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Calendar/Day.tsx",
         "name": "DayProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "shouldDisableDate": {
+      "defaultValue": null,
+      "description": "Disable specific date",
+      "name": "shouldDisableDate",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_helpers/date-utils.ts",
+        "name": "DateValidationProps"
+      },
+      "required": false,
+      "type": {
+        "name": "(day: DateIOType) => boolean"
+      }
+    },
+    "disablePast": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "Disable past dates",
+      "name": "disablePast",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_helpers/date-utils.ts",
+        "name": "DateValidationProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "disableFuture": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "Disable future dates",
+      "name": "disableFuture",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_helpers/date-utils.ts",
+        "name": "DateValidationProps"
       },
       "required": false,
       "type": {
@@ -4556,8 +4295,8 @@
       "description": "Min time, date part by default, will be ignored",
       "name": "minTime",
       "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
-        "name": "ExportedClockViewProps"
+        "fileName": "material-ui-pickers/lib/src/_helpers/time-utils.ts",
+        "name": "TimeValidationProps"
       },
       "required": false,
       "type": {
@@ -4569,8 +4308,8 @@
       "description": "Max time, date part by default, will be ignored",
       "name": "maxTime",
       "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
-        "name": "ExportedClockViewProps"
+        "fileName": "material-ui-pickers/lib/src/_helpers/time-utils.ts",
+        "name": "TimeValidationProps"
       },
       "required": false,
       "type": {
@@ -4582,8 +4321,8 @@
       "description": "Dynamically check if time is disabled or not",
       "name": "shouldDisableTime",
       "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
-        "name": "ExportedClockViewProps"
+        "fileName": "material-ui-pickers/lib/src/_helpers/time-utils.ts",
+        "name": "TimeValidationProps"
       },
       "required": false,
       "type": {
@@ -4595,8 +4334,8 @@
       "description": "Do not ignore date part when validating min/max time",
       "name": "disableTimeValidationIgnoreDatePart",
       "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
-        "name": "ExportedClockViewProps"
+        "fileName": "material-ui-pickers/lib/src/_helpers/time-utils.ts",
+        "name": "TimeValidationProps"
       },
       "required": false,
       "type": {
