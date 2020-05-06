@@ -9,14 +9,14 @@ interface DatePickerFieldProps extends FieldProps, DatePickerProps {
   getShouldDisableDateError: (date: Date) => string;
 }
 
-const DatePickerField: React.FC<DatePickerFieldProps> = ({
+function DatePickerField({
   form,
   field: { value, name },
   maxDate = new Date('2100-01-01'),
   minDate = new Date('1900-01-01'),
   getShouldDisableDateError,
   ...other
-}) => {
+}: DatePickerFieldProps) {
   const currentError = form.errors[name];
   const toShowError = Boolean(currentError && form.touched[name]);
 
@@ -57,7 +57,7 @@ const DatePickerField: React.FC<DatePickerFieldProps> = ({
             });
         }
       }}
-      // Make sure that your 3d param is set to `true` on order to not clear errors
+      // Make sure that your 3d param is set to `false` on order to not clear errors
       onChange={date => form.setFieldValue(name, date, false)}
       renderInput={props => (
         <TextField
@@ -65,16 +65,28 @@ const DatePickerField: React.FC<DatePickerFieldProps> = ({
           name={name}
           error={toShowError}
           helperText={toShowError ? currentError ?? props.helperText : undefined}
-          // Make sure that your 3d param is set to `true` on order to not clear errors
+          // Make sure that your 3d param is set to `false` on order to not clear errors
           onBlur={() => form.setFieldTouched(name, true, false)}
         />
       )}
       {...other}
     />
   );
-};
+}
 
-const FormikExample = () => {
+function validateDatePickerValue(date: Date) {
+  if (isWeekend(date)) {
+    return 'Weekends are not allowed';
+  }
+
+  if (isWednesday(date)) {
+    return 'Wednesdays are not allowed';
+  }
+
+  return null;
+}
+
+export default function FormikExample() {
   return (
     <Formik onSubmit={console.log} initialValues={{ date: new Date() }}>
       {({ values, errors }) => (
@@ -85,12 +97,8 @@ const FormikExample = () => {
                 name="date"
                 disablePast
                 component={DatePickerField}
-                shouldDisableDate={(date: Date) => isWeekend(date) || isWednesday(date)}
-                getShouldDisableDateError={(date: Date) => {
-                  return isWeekend(date)
-                    ? 'Weekends are not allowed'
-                    : 'Wednesdays are not allowed';
-                }}
+                shouldDisableDate={(date: Date) => validateDatePickerValue(date) !== null}
+                getShouldDisableDateError={validateDatePickerValue}
               />
             </Grid>
 
@@ -104,6 +112,4 @@ const FormikExample = () => {
       )}
     </Formik>
   );
-};
-
-export default FormikExample;
+}

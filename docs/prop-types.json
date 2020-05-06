@@ -320,7 +320,7 @@
     },
     "onError": {
       "defaultValue": null,
-      "description": "Callback that fired when input value or new `value` prop is disabled.\nand `TextField` is displaying in `error` state. This can be used to render appropriate form error.\n\n[Read the guide](https://next.material-ui-pickers.dev/guides/forms) about form integration and error displaying.",
+      "description": "Callback that fired when input value or new `value` prop validation returns **new** validation error (or value is valid after error).\nIn case of validation error detected `reason` prop return non-null value and `TextField` must be displayed in `error` state.\nThis can be used to render appropriate form error.\n\n[Read the guide](https://next.material-ui-pickers.dev/guides/forms) about form integration and error displaying.\n@DateIOType",
       "name": "onError",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/hooks/useValidation.ts",
@@ -328,7 +328,7 @@
       },
       "required": false,
       "type": {
-        "name": "(reason: \"shouldDisableDate\" | \"invalidDate\" | \"disableFuture\" | \"disablePast\" | \"minDate\" | \"maxDate\" | null, value: any) => void"
+        "name": "(reason: \"shouldDisableDate\" | \"invalidDate\" | \"disableFuture\" | \"disablePast\" | \"minDate\" | \"maxDate\" | null, value: DateIOType) => void"
       }
     },
     "disableHighlightToday": {
@@ -1269,7 +1269,7 @@
     },
     "onError": {
       "defaultValue": null,
-      "description": "Callback that fired when input value or new `value` prop is disabled.\nand `TextField` is displaying in `error` state. This can be used to render appropriate form error.\n\n[Read the guide](https://next.material-ui-pickers.dev/guides/forms) about form integration and error displaying.",
+      "description": "Callback that fired when input value or new `value` prop validation returns **new** validation error (or value is valid after error).\nIn case of validation error detected `reason` prop return non-null value and `TextField` must be displayed in `error` state.\nThis can be used to render appropriate form error.\n\n[Read the guide](https://next.material-ui-pickers.dev/guides/forms) about form integration and error displaying.\n@DateIOType",
       "name": "onError",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/hooks/useValidation.ts",
@@ -1277,7 +1277,7 @@
       },
       "required": false,
       "type": {
-        "name": "(reason: \"invalidDate\" | \"minTime\" | \"maxTime\" | \"shouldDisableTime-hours\" | \"shouldDisableTime-minutes\" | \"shouldDisableTime-seconds\" | null, value: any) => void"
+        "name": "(reason: \"invalidDate\" | \"minTime\" | \"maxTime\" | \"shouldDisableTime-hours\" | \"shouldDisableTime-minutes\" | \"shouldDisableTime-seconds\" | null, value: DateIOType) => void"
       }
     },
     "views": {
@@ -1962,7 +1962,7 @@
     },
     "onError": {
       "defaultValue": null,
-      "description": "Callback that fired when input value or new `value` prop is disabled.\nand `TextField` is displaying in `error` state. This can be used to render appropriate form error.\n\n[Read the guide](https://next.material-ui-pickers.dev/guides/forms) about form integration and error displaying.",
+      "description": "Callback that fired when input value or new `value` prop validation returns **new** validation error (or value is valid after error).\nIn case of validation error detected `reason` prop return non-null value and `TextField` must be displayed in `error` state.\nThis can be used to render appropriate form error.\n\n[Read the guide](https://next.material-ui-pickers.dev/guides/forms) about form integration and error displaying.\n@DateIOType",
       "name": "onError",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/hooks/useValidation.ts",
@@ -1970,7 +1970,7 @@
       },
       "required": false,
       "type": {
-        "name": "(reason: \"shouldDisableDate\" | \"invalidDate\" | \"disableFuture\" | \"disablePast\" | \"minDate\" | \"maxDate\" | \"minTime\" | \"maxTime\" | \"shouldDisableTime-hours\" | \"shouldDisableTime-minutes\" | \"shouldDisableTime-seconds\" | null, value: any) => void"
+        "name": "(reason: \"shouldDisableDate\" | \"invalidDate\" | \"disableFuture\" | \"disablePast\" | \"minDate\" | \"maxDate\" | \"minTime\" | \"maxTime\" | \"shouldDisableTime-hours\" | \"shouldDisableTime-minutes\" | \"shouldDisableTime-seconds\" | null, value: DateIOType) => void"
       }
     },
     "ampm": {
@@ -3403,7 +3403,7 @@
     },
     "onError": {
       "defaultValue": null,
-      "description": "Callback that fired when input value or new `value` prop is disabled.\nand `TextField` is displaying in `error` state. This can be used to render appropriate form error.\n\n[Read the guide](https://next.material-ui-pickers.dev/guides/forms) about form integration and error displaying.",
+      "description": "Callback that fired when input value or new `value` prop validation returns **new** validation error (or value is valid after error).\nIn case of validation error detected `reason` prop return non-null value and `TextField` must be displayed in `error` state.\nThis can be used to render appropriate form error.\n\n[Read the guide](https://next.material-ui-pickers.dev/guides/forms) about form integration and error displaying.\n@DateIOType",
       "name": "onError",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/hooks/useValidation.ts",

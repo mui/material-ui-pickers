@@ -3,10 +3,12 @@ import { useUtils, MuiPickersAdapter } from './useUtils';
 
 export interface ValidationProps<TError, TDateValue> {
   /**
-   * Callback that fired when input value or new `value` prop is disabled.
-   * and `TextField` is displaying in `error` state. This can be used to render appropriate form error.
+   * Callback that fired when input value or new `value` prop validation returns **new** validation error (or value is valid after error).
+   * In case of validation error detected `reason` prop return non-null value and `TextField` must be displayed in `error` state.
+   * This can be used to render appropriate form error.
    *
    * [Read the guide](https://next.material-ui-pickers.dev/guides/forms) about form integration and error displaying.
+   * @DateIOType
    */
   onError?: (reason: TError, value: TDateValue) => void;
 }

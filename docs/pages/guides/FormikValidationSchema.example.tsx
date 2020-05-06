@@ -9,14 +9,14 @@ interface DatePickerFieldProps extends FieldProps, BaseDatePickerProps {
   getShouldDisableDateError: (date: Date) => string;
 }
 
-const DatePickerField: React.FC<DatePickerFieldProps> = ({
+function DatePickerField({
   field,
   form,
   maxDate = new Date('2100-01-01'),
   minDate = new Date('1900-01-01'),
   getShouldDisableDateError,
   ...other
-}) => {
+}: DatePickerFieldProps) {
   const currentError = form.errors[field.name];
 
   return (
@@ -26,6 +26,7 @@ const DatePickerField: React.FC<DatePickerFieldProps> = ({
       minDate={minDate}
       maxDate={maxDate}
       value={field.value}
+      // Make sure that your 3d param is set to `true` in order to run validation
       onChange={date => form.setFieldValue(field.name, date, true)}
       renderInput={props => (
         <TextField
@@ -33,12 +34,14 @@ const DatePickerField: React.FC<DatePickerFieldProps> = ({
           {...props}
           error={Boolean(currentError)}
           helperText={currentError ?? props.helperText}
+          // Make sure that your 3d param is set to `true` in order to run validation
+          onBlur={() => form.setFieldTouched(name, true, true)}
         />
       )}
       {...other}
     />
   );
-};
+}
 
 const schema = object({
   date: date()
@@ -47,7 +50,7 @@ const schema = object({
     .max(new Date('2100-10-10')),
 });
 
-const FormikExample = () => {
+export default function FormikValidationSchemaExample() {
   return (
     <Formik validationSchema={schema} onSubmit={console.log} initialValues={{ date: new Date() }}>
       {({ values, errors }) => (
@@ -67,6 +70,4 @@ const FormikExample = () => {
       )}
     </Formik>
   );
-};
-
-export default FormikExample;
+}
