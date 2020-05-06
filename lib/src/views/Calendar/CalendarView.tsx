@@ -1,7 +1,6 @@
 import * as React from 'react';
 import Grid from '@material-ui/core/Grid';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { YearSelection } from './YearSelection';
 import { MonthSelection } from './MonthSelection';
 import { DatePickerView } from '../../DatePicker';
 import { useCalendarState } from './useCalendarState';
@@ -14,6 +13,7 @@ import { Calendar, ExportedCalendarProps } from './Calendar';
 import { PickerOnChangeFn } from '../../_shared/hooks/useViews';
 import { useParsedDate } from '../../_shared/hooks/date-helpers-hooks';
 import { CalendarHeader, CalendarHeaderProps } from './CalendarHeader';
+import { YearSelection, ExportedYearSelectionProps } from './YearSelection';
 import { IsStaticVariantContext } from '../../wrappers/WrapperVariantContext';
 
 type PublicCalendarHeaderProps = Pick<
@@ -27,7 +27,10 @@ type PublicCalendarHeaderProps = Pick<
   | 'getViewSwitchingButtonText'
 >;
 
-export interface CalendarViewProps extends ExportedCalendarProps, PublicCalendarHeaderProps {
+export interface CalendarViewProps
+  extends ExportedCalendarProps,
+    ExportedYearSelectionProps,
+    PublicCalendarHeaderProps {
   date: MaterialUiPickersDate;
   view: DatePickerView;
   views: DatePickerView[];
@@ -49,8 +52,6 @@ export interface CalendarViewProps extends ExportedCalendarProps, PublicCalendar
   maxDate?: ParsableDate;
   /** Disable specific date @DateIOType */
   shouldDisableDate?: (day: MaterialUiPickersDate) => boolean;
-  /** Callback firing on year change @DateIOType */
-  onYearChange?: (date: MaterialUiPickersDate) => void;
 }
 
 export type ExportedCalendarViewProps = Omit<
@@ -89,6 +90,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
   allowKeyboardControl: __allowKeyboardControlProp,
   disablePast,
   disableFuture,
+  shouldDisableYear,
   ...other
 }) => {
   const classes = useStyles();
@@ -96,7 +98,6 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
   const maxDate = useParsedDate(unparsedMaxDate)!;
 
   const isStatic = React.useContext(IsStaticVariantContext);
-  console.log(isStatic);
   const allowKeyboardControl = __allowKeyboardControlProp ?? !isStatic;
 
   const {
@@ -154,8 +155,11 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
               onChange={onChange}
               minDate={minDate}
               maxDate={maxDate}
+              disableFuture={disableFuture}
+              disablePast={disablePast}
               isDateDisabled={isDateDisabled}
               allowKeyboardControl={allowKeyboardControl}
+              shouldDisableYear={shouldDisableYear}
             />
           )}
 

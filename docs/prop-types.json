@@ -538,19 +538,6 @@
         "name": "(day: DateIOType) => boolean"
       }
     },
-    "onYearChange": {
-      "defaultValue": null,
-      "description": "Callback firing on year change",
-      "name": "onYearChange",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Calendar/CalendarView.tsx",
-        "name": "CalendarViewProps"
-      },
-      "required": false,
-      "type": {
-        "name": "(date: DateIOType) => void"
-      }
-    },
     "renderDay": {
       "defaultValue": null,
       "description": "Custom renderer for day. Check [DayComponentProps api](https://material-ui-pickers.dev/api/Day)",
@@ -2440,19 +2427,6 @@
       "required": false,
       "type": {
         "name": "(day: DateIOType) => boolean"
-      }
-    },
-    "onYearChange": {
-      "defaultValue": null,
-      "description": "Callback firing on year change",
-      "name": "onYearChange",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Calendar/CalendarView.tsx",
-        "name": "CalendarViewProps"
-      },
-      "required": false,
-      "type": {
-        "name": "(date: DateIOType) => void"
       }
     },
     "renderDay": {
