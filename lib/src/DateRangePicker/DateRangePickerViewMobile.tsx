@@ -6,13 +6,19 @@ import { useUtils } from '../_shared/hooks/useUtils';
 import { MaterialUiPickersDate } from '../typings/date';
 import { Calendar, CalendarProps } from '../views/Calendar/Calendar';
 import { ExportedArrowSwitcherProps } from '../_shared/ArrowSwitcher';
-import { isWithinRange, isStartOfRange, isEndOfRange } from '../_helpers/date-utils';
+import {
+  isWithinRange,
+  isStartOfRange,
+  isEndOfRange,
+  DateValidationProps,
+} from '../_helpers/date-utils';
 
 export interface ExportedMobileDateRangeCalendarProps {}
 
 interface DesktopDateRangeCalendarProps
   extends ExportedMobileDateRangeCalendarProps,
     CalendarProps,
+    DateValidationProps,
     ExportedArrowSwitcherProps {
   date: DateRange;
   changeMonth: (date: MaterialUiPickersDate) => void;
@@ -30,6 +36,8 @@ export const DateRangePickerViewMobile: React.FC<DesktopDateRangeCalendarProps> 
   rightArrowButtonText,
   rightArrowIcon,
   onChange,
+  minDate,
+  maxDate,
   ...other
 }) => {
   const utils = useUtils();
@@ -47,6 +55,8 @@ export const DateRangePickerViewMobile: React.FC<DesktopDateRangeCalendarProps> 
         rightArrowButtonProps={rightArrowButtonProps}
         rightArrowButtonText={rightArrowButtonText}
         rightArrowIcon={rightArrowIcon}
+        minDate={minDate}
+        maxDate={maxDate}
         {...other}
       />
 

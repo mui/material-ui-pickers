@@ -1,9 +1,8 @@
 // Note that most of use cases are covered in cypress tests e2e/integration/DateRange.spec.ts
 import * as React from 'react';
 import { isWeekend } from 'date-fns';
-import { DateRange } from '../DateRangePicker/RangeTypes';
+import { mount, utilsToUse } from './test-utils';
 import { TextField, TextFieldProps } from '@material-ui/core';
-import { mount, utilsToUse, mountPickerWithState } from './test-utils';
 import { DesktopDateRangePicker } from '../DateRangePicker/DateRangePicker';
 
 const defaultRangeRenderInput = (startProps: TextFieldProps, endProps: TextFieldProps) => (
