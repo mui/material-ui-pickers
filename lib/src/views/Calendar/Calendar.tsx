@@ -57,6 +57,9 @@ export const useStyles = makeStyles(theme => ({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  weekContainer: {
+    overflow: 'hidden',
+  },
   week: {
     margin: `${DAY_MARGIN}px 0`,
     display: 'flex',
@@ -159,7 +162,7 @@ export const Calendar: React.FC<CalendarProps> = ({
         className={clsx(classes.transitionContainer, className)}
         {...TransitionProps}
       >
-        <div role="grid" style={{ overflow: 'hidden' }}>
+        <div role="grid" className={classes.weekContainer}>
           {utils.getWeekArray(currentMonth).map(week => (
             <div role="row" key={`week-${week[0]}`} className={classes.week}>
               {week.map(day => {
