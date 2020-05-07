@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { RangeInput, DateRange } from './RangeTypes';
+import { useUtils } from '../_shared/hooks/useUtils';
 import { makeStyles } from '@material-ui/core/styles';
 import { MaterialUiPickersDate } from '../typings/date';
 import { CurrentlySelectingRangeEndProps } from './RangeTypes';
@@ -81,6 +82,7 @@ export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
   validationError: [startValidationError, endValidationError],
   ...other
 }) => {
+  const utils = useUtils();
   const classes = useStyles();
   const startRef = React.useRef<HTMLInputElement>(null);
   const endRef = React.useRef<HTMLInputElement>(null);
