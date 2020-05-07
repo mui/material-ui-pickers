@@ -6,6 +6,7 @@ import { useUtils } from '../_shared/hooks/useUtils';
 import { MaterialUiPickersDate } from '../typings/date';
 import { Calendar, CalendarProps } from '../views/Calendar/Calendar';
 import { ExportedArrowSwitcherProps } from '../_shared/ArrowSwitcher';
+import { defaultMinDate, defaultMaxDate } from '../constants/prop-types';
 import {
   isWithinRange,
   isStartOfRange,
@@ -36,11 +37,13 @@ export const DateRangePickerViewMobile: React.FC<DesktopDateRangeCalendarProps> 
   rightArrowButtonText,
   rightArrowIcon,
   onChange,
-  minDate,
-  maxDate,
+  minDate: __minDate,
+  maxDate: __maxDate,
   ...other
 }) => {
   const utils = useUtils();
+  const minDate = __minDate || utils.date(defaultMinDate);
+  const maxDate = __maxDate || utils.date(defaultMaxDate);
 
   return (
     <>

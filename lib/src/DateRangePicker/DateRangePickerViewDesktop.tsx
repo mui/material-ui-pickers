@@ -4,9 +4,9 @@ import { DateRangeDay } from './DateRangePickerDay';
 import { useUtils } from '../_shared/hooks/useUtils';
 import { makeStyles } from '@material-ui/core/styles';
 import { MaterialUiPickersDate } from '../typings/date';
-import { defaultMinDate } from '../constants/prop-types';
 import { calculateRangePreview } from './date-range-manager';
 import { Calendar, CalendarProps } from '../views/Calendar/Calendar';
+import { defaultMinDate, defaultMaxDate } from '../constants/prop-types';
 import { ArrowSwitcher, ExportedArrowSwitcherProps } from '../_shared/ArrowSwitcher';
 import {
   usePreviousMonthDisabled,
@@ -171,10 +171,6 @@ export const DateRangePickerViewDesktop: React.FC<DesktopDateRangeCalendarProps>
               {...other}
               key={index}
               date={date}
-              minDate={minDate}
-              maxDate={maxDate}
-              disablePast={disablePast}
-              disableFuture={disableFuture}
               className={classes.calendar}
               onChange={handleDayChange}
               currentMonth={monthOnIteration}
