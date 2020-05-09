@@ -3,6 +3,7 @@ import { RangeInput, DateRange } from './RangeTypes';
 import { useUtils } from '../_shared/hooks/useUtils';
 import { makeStyles } from '@material-ui/core/styles';
 import { MaterialUiPickersDate } from '../typings/date';
+import { inputPropTypes } from '../constants/prop-types';
 import { CurrentlySelectingRangeEndProps } from './RangeTypes';
 import { useMaskedInput } from '../_shared/hooks/useMaskedInput';
 import { DateRangeValidationError } from '../_helpers/date-utils';
@@ -183,3 +184,5 @@ export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
     </div>
   );
 };
+
+DateRangePickerInput.propTypes = inputPropTypes;

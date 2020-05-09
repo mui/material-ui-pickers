@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { onSpaceOrEnter } from '../_helpers/utils';
-import { ParsableDate } from '../constants/prop-types';
 import { MaterialUiPickersDate } from '../typings/date';
 import { TextFieldProps } from '@material-ui/core/TextField';
 import { IconButtonProps } from '@material-ui/core/IconButton';
 import { useUtils, MuiPickersAdapter } from './hooks/useUtils';
+import { ParsableDate, inputPropTypes } from '../constants/prop-types';
 import { InputAdornmentProps } from '@material-ui/core/InputAdornment';
 import { getDisplayDate, getTextFieldAriaText } from '../_helpers/text-field-helper';
 
@@ -136,4 +136,4 @@ export const PureDateInput: React.FC<DateInputProps & DateInputRefs> = ({
   });
 };
 
-PureDateInput.displayName = 'PureDateInput';
+PureDateInput.propTypes = inputPropTypes;

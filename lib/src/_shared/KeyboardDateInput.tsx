@@ -4,6 +4,7 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import { useUtils } from './hooks/useUtils';
 import { CalendarIcon } from './icons/CalendarIcon';
 import { useMaskedInput } from './hooks/useMaskedInput';
+import { inputPropTypes } from '../constants/prop-types';
 import { DateInputProps, DateInputRefs } from './PureDateInput';
 import { getTextFieldAriaText } from '../_helpers/text-field-helper';
 
@@ -50,4 +51,4 @@ export const KeyboardDateInput: React.FC<DateInputProps & DateInputRefs> = ({
   });
 };
 
-export default KeyboardDateInput;
+KeyboardDateInput.propTypes = inputPropTypes;
