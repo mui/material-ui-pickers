@@ -18,7 +18,7 @@ function CustomInput() {
       renderInput={({ ref, inputProps, InputProps }) => (
         <InputContainer ref={ref}>
           <input {...inputProps} />
-          {InputProps.endAdornment}
+          {InputProps?.endAdornment}
         </InputContainer>
       )}
     />
