@@ -104,8 +104,6 @@ export function useMaskedInput({
     disabled,
     error: validationError,
     helperText: formatHelperText,
-    // @ts-ignore ??? fix typings for textfield finally
-    'data-mui-test': 'keyboard-date-input',
     inputProps: {
       ...inputStateArgs,
       disabled, // make spreading in custom input easier
