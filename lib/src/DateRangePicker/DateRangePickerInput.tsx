@@ -33,8 +33,12 @@ export const useStyles = makeStyles(
 
 export interface ExportedDateRangePickerInputProps {
   /**
-   * Render input component for date range. Where `props` – [TextField](https://material-ui.com/api/text-field/#textfield-api) component props
-   * @example ```jsx
+   * The `renderInput` prop allows you to customize the rendered input.
+   * The `startProps` and `endProps` arguments of this render prop contains props of [TextField](https://material-ui.com/api/text-field/#textfield-api),
+   * that you need to forward to the range start/end inputs respectively.
+   * Pay specific attention to the `ref` and `inputProps` keys.
+   * @example
+   * ```jsx
    * <DateRangePicker
    * renderInput={(startProps, endProps) => (
        <>

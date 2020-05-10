@@ -28,7 +28,9 @@ export interface DateInputProps<TInputValue = ParsableDate, TDateValue = Materia
   // ?? TODO when it will be possible to display "empty" date in datepicker use it instead of ignoring invalid inputs
   ignoreInvalidInputs?: boolean;
   /**
-   * Render input component. Where `props` – [TextField](https://material-ui.com/api/text-field/#textfield-api) component props
+   * The `renderInput` prop allows you to customize the rendered input.
+   * The `props` argument of this render prop contains props of [TextField](https://material-ui.com/api/text-field/#textfield-api) that you need to forward.
+   * Pay specific attention to the `ref` and `inputProps` keys.
    * @example ```jsx
    * renderInput={props => <TextField {...props} />}
    * ````
