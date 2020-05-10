@@ -1,9 +1,9 @@
 import * as React from 'react';
+import * as PropTypes from 'prop-types';
 import { RangeInput, DateRange } from './RangeTypes';
 import { useUtils } from '../_shared/hooks/useUtils';
 import { makeStyles } from '@material-ui/core/styles';
 import { MaterialUiPickersDate } from '../typings/date';
-import { inputPropTypes } from '../constants/prop-types';
 import { CurrentlySelectingRangeEndProps } from './RangeTypes';
 import { useMaskedInput } from '../_shared/hooks/useMaskedInput';
 import { DateRangeValidationError } from '../_helpers/date-utils';
@@ -185,4 +185,12 @@ export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
   );
 };
 
-DateRangePickerInput.propTypes = inputPropTypes;
+DateRangePickerInput.propTypes = {
+  acceptRegex: PropTypes.instanceOf(RegExp),
+  getOpenDialogAriaText: PropTypes.func,
+  mask: PropTypes.string,
+  OpenPickerButtonProps: PropTypes.object,
+  openPickerIcon: PropTypes.node,
+  renderInput: PropTypes.func.isRequired,
+  rifmFormatter: PropTypes.func,
+};

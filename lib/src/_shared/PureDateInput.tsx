@@ -1,10 +1,11 @@
 import * as React from 'react';
+import * as PropTypes from 'prop-types';
 import { onSpaceOrEnter } from '../_helpers/utils';
+import { ParsableDate } from '../constants/prop-types';
 import { MaterialUiPickersDate } from '../typings/date';
 import { TextFieldProps } from '@material-ui/core/TextField';
 import { IconButtonProps } from '@material-ui/core/IconButton';
 import { useUtils, MuiPickersAdapter } from './hooks/useUtils';
-import { ParsableDate, inputPropTypes } from '../constants/prop-types';
 import { InputAdornmentProps } from '@material-ui/core/InputAdornment';
 import { getDisplayDate, getTextFieldAriaText } from '../_helpers/text-field-helper';
 
@@ -136,4 +137,12 @@ export const PureDateInput: React.FC<DateInputProps & DateInputRefs> = ({
   });
 };
 
-PureDateInput.propTypes = inputPropTypes;
+PureDateInput.propTypes = {
+  acceptRegex: PropTypes.instanceOf(RegExp),
+  getOpenDialogAriaText: PropTypes.func,
+  mask: PropTypes.string,
+  OpenPickerButtonProps: PropTypes.object,
+  openPickerIcon: PropTypes.node,
+  renderInput: PropTypes.func.isRequired,
+  rifmFormatter: PropTypes.func,
+};
