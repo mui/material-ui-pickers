@@ -34,6 +34,10 @@ export const DatePickerToolbar: React.FC<ToolbarComponentProps> = ({
   const classes = useStyles();
 
   const dateText = React.useMemo(() => {
+    if (!date) {
+      return '––';
+    }
+
     if (toolbarFormat) {
       return utils.formatByString(date, toolbarFormat);
     }
