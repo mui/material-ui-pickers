@@ -73,7 +73,7 @@ export const YearSelection: React.FC<YearSelectionProps> = ({
 
   const handleYearSelection = React.useCallback(
     (year: number, isFinish = true) => {
-      const newDate = utils.setYear(date, year);
+      const newDate = utils.setYear(date || now, year);
       if (isDateDisabled(newDate)) {
         return;
       }
@@ -84,7 +84,7 @@ export const YearSelection: React.FC<YearSelectionProps> = ({
 
       onChange(newDate, isFinish);
     },
-    [date, isDateDisabled, onChange, onYearChange, utils]
+    [date, isDateDisabled, now, onChange, onYearChange, utils]
   );
 
   const focusYear = React.useCallback(
