@@ -209,14 +209,16 @@ export const Clock: React.FC<ClockProps> = ({
           <>
             <div className={classes.pin} />
 
-            <ClockPointer
-              type={type}
-              value={value}
-              isInner={isPointerInner}
-              hasSelected={hasSelected}
-              aria-live="polite"
-              aria-label={`Selected time ${utils.format(date, 'fullTime')}`}
-            />
+            {date && (
+              <ClockPointer
+                type={type}
+                value={value}
+                isInner={isPointerInner}
+                hasSelected={hasSelected}
+                aria-live="polite"
+                aria-label={`Selected time ${utils.format(date, 'fullTime')}`}
+              />
+            )}
           </>
         )}
 
