@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as PropTypes from 'prop-types';
 import { RangeInput, DateRange } from './RangeTypes';
 import { useUtils } from '../_shared/hooks/useUtils';
 import { makeStyles } from '@material-ui/core/styles';
@@ -7,8 +8,8 @@ import { CurrentlySelectingRangeEndProps } from './RangeTypes';
 import { useMaskedInput } from '../_shared/hooks/useMaskedInput';
 import { DateRangeValidationError } from '../_helpers/date-utils';
 import { WrapperVariantContext } from '../wrappers/WrapperVariantContext';
-import { DateInputProps, MuiTextFieldProps } from '../_shared/PureDateInput';
 import { mergeRefs, executeInTheNextEventLoopTick } from '../_helpers/utils';
+import { DateInputProps, MuiTextFieldProps } from '../_shared/PureDateInput';
 
 export const useStyles = makeStyles(
   theme => ({
@@ -32,8 +33,12 @@ export const useStyles = makeStyles(
 
 export interface ExportedDateRangePickerInputProps {
   /**
-   * Render input component for date range. Where `props` – [TextField](https://material-ui.com/api/text-field/#textfield-api) component props
-   * @example ```jsx
+   * The `renderInput` prop allows you to customize the rendered input.
+   * The `startProps` and `endProps` arguments of this render prop contains props of [TextField](https://material-ui.com/api/text-field/#textfield-api),
+   * that you need to forward to the range start/end inputs respectively.
+   * Pay specific attention to the `ref` and `inputProps` keys.
+   * @example
+   * ```jsx
    * <DateRangePicker
    * renderInput={(startProps, endProps) => (
        <>
@@ -147,6 +152,8 @@ export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
       ref: startRef,
       variant: 'outlined',
       focused: open && currentlySelectingRangeEnd === 'start',
+    },
+    inputProps: {
       onClick: !openOnFocus ? openRangeStartSelection : undefined,
       onFocus: openOnFocus ? openRangeStartSelection : undefined,
     },
@@ -164,6 +171,8 @@ export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
       ref: endRef,
       variant: 'outlined',
       focused: open && currentlySelectingRangeEnd === 'end',
+    },
+    inputProps: {
       onClick: !openOnFocus ? openRangeEndSelection : undefined,
       onFocus: openOnFocus ? openRangeEndSelection : undefined,
     },
@@ -178,4 +187,14 @@ export const DateRangePickerInput: React.FC<DateRangeInputProps> = ({
       {renderInput(startInputProps, endInputProps)}
     </div>
   );
+};
+
+DateRangePickerInput.propTypes = {
+  acceptRegex: PropTypes.instanceOf(RegExp),
+  getOpenDialogAriaText: PropTypes.func,
+  mask: PropTypes.string,
+  OpenPickerButtonProps: PropTypes.object,
+  openPickerIcon: PropTypes.node,
+  renderInput: PropTypes.func.isRequired,
+  rifmFormatter: PropTypes.func,
 };

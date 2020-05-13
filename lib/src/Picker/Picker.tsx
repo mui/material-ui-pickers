@@ -1,6 +1,5 @@
 import * as React from 'react';
 import clsx from 'clsx';
-import KeyboardDateInput from '../_shared/KeyboardDateInput';
 import { useViews } from '../_shared/hooks/useViews';
 import { makeStyles } from '@material-ui/core/styles';
 import { DateTimePickerView } from '../DateTimePicker';
@@ -8,6 +7,7 @@ import { ParsableDate } from '../constants/prop-types';
 import { BasePickerProps } from '../typings/BasePicker';
 import { MaterialUiPickersDate } from '../typings/date';
 import { DatePickerView } from '../DatePicker/DatePicker';
+import { KeyboardDateInput } from '../_shared/KeyboardDateInput';
 import { useIsLandscape } from '../_shared/hooks/useIsLandscape';
 import { DIALOG_WIDTH, VIEW_HEIGHT } from '../constants/dimensions';
 import { WrapperVariantContext } from '../wrappers/WrapperVariantContext';
@@ -28,6 +28,7 @@ export type ToolbarComponentProps<
   setOpenView: (view: TView) => void;
   onChange: (date: TDate, isFinish?: boolean) => void;
   toolbarTitle?: React.ReactNode;
+  toolbarPlaceholder?: React.ReactNode;
   toolbarFormat?: string;
   // TODO move out, cause it is DateTimePickerOnly
   hideTabs?: boolean;
@@ -99,6 +100,7 @@ export function Picker({
   toggleMobileKeyboardView,
   toolbarFormat,
   className,
+  toolbarPlaceholder,
   ...other
 }: PickerProps<AnyPickerView>) {
   const classes = useStyles();
@@ -139,6 +141,7 @@ export function Picker({
           openView={openView}
           toolbarTitle={toolbarTitle}
           toolbarFormat={toolbarFormat}
+          toolbarPlaceholder={toolbarPlaceholder}
           isMobileKeyboardViewOpen={isMobileKeyboardViewOpen}
           toggleMobileKeyboardView={toggleMobileKeyboardView}
         />

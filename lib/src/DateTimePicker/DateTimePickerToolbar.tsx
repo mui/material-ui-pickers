@@ -48,6 +48,7 @@ export const DateTimePickerToolbar: React.FC<ToolbarComponentProps> = ({
   dateRangeIcon,
   timeIcon,
   toolbarFormat,
+  toolbarPlaceholder = '––',
   isMobileKeyboardViewOpen,
   toggleMobileKeyboardView,
   toolbarTitle = 'SELECT DATE & TIME',
@@ -62,7 +63,7 @@ export const DateTimePickerToolbar: React.FC<ToolbarComponentProps> = ({
 
   const dateText = React.useMemo(() => {
     if (!date) {
-      return '––';
+      return toolbarPlaceholder;
     }
 
     if (toolbarFormat) {
@@ -70,7 +71,7 @@ export const DateTimePickerToolbar: React.FC<ToolbarComponentProps> = ({
     }
 
     return utils.format(date, 'shortDate');
-  }, [date, toolbarFormat, utils]);
+  }, [date, toolbarFormat, toolbarPlaceholder, utils]);
 
   return (
     <>
@@ -89,7 +90,7 @@ export const DateTimePickerToolbar: React.FC<ToolbarComponentProps> = ({
               variant="subtitle1"
               onClick={() => setOpenView('year')}
               selected={openView === 'year'}
-              value={date ? utils.format(date, 'year') : '-  Z'}
+              value={date ? utils.format(date, 'year') : '-'}
             />
 
             <ToolbarButton
