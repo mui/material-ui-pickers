@@ -817,6 +817,21 @@
         "name": "ReactNode"
       }
     },
+    "toolbarPlaceholder": {
+      "defaultValue": {
+        "value": "\"–\""
+      },
+      "description": "Mobile picker date value placeholder, displaying if `value` === `null`",
+      "name": "toolbarPlaceholder",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
+        "name": "BasePickerProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
     "toolbarFormat": {
       "defaultValue": null,
       "description": "Date format, that is displaying in toolbar",
@@ -1509,6 +1524,21 @@
       },
       "description": "Mobile picker title, displaying in the toolbar",
       "name": "toolbarTitle",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
+        "name": "BasePickerProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "toolbarPlaceholder": {
+      "defaultValue": {
+        "value": "\"–\""
+      },
+      "description": "Mobile picker date value placeholder, displaying if `value` === `null`",
+      "name": "toolbarPlaceholder",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
         "name": "BasePickerProps"
@@ -2569,6 +2599,21 @@
         "name": "ReactNode"
       }
     },
+    "toolbarPlaceholder": {
+      "defaultValue": {
+        "value": "\"–\""
+      },
+      "description": "Mobile picker date value placeholder, displaying if `value` === `null`",
+      "name": "toolbarPlaceholder",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
+        "name": "BasePickerProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
     "className": {
       "defaultValue": null,
       "description": "className applied to the root component",
@@ -3418,6 +3463,21 @@
       },
       "description": "Mobile picker title, displaying in the toolbar",
       "name": "toolbarTitle",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
+        "name": "BasePickerProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "toolbarPlaceholder": {
+      "defaultValue": {
+        "value": "\"–\""
+      },
+      "description": "Mobile picker date value placeholder, displaying if `value` === `null`",
+      "name": "toolbarPlaceholder",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
         "name": "BasePickerProps"

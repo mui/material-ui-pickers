@@ -28,6 +28,7 @@ export const DatePickerToolbar: React.FC<ToolbarComponentProps> = ({
   isMobileKeyboardViewOpen,
   toggleMobileKeyboardView,
   toolbarFormat,
+  toolbarPlaceholder = '––',
   toolbarTitle = 'SELECT DATE',
 }) => {
   const utils = useUtils();
@@ -35,7 +36,7 @@ export const DatePickerToolbar: React.FC<ToolbarComponentProps> = ({
 
   const dateText = React.useMemo(() => {
     if (!date) {
-      return '––';
+      return toolbarPlaceholder;
     }
 
     if (toolbarFormat) {
@@ -56,7 +57,7 @@ export const DatePickerToolbar: React.FC<ToolbarComponentProps> = ({
     return /en/.test(utils.getCurrentLocaleCode())
       ? utils.format(date, 'normalDateWithWeekday')
       : utils.format(date, 'normalDate');
-  }, [date, toolbarFormat, utils, views]);
+  }, [date, toolbarFormat, toolbarPlaceholder, utils, views]);
 
   return (
     <PickerToolbar
