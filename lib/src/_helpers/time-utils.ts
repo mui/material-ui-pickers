@@ -3,14 +3,20 @@ import { ParsableDate } from '../constants/prop-types';
 import { MaterialUiPickersDate } from '../typings/date';
 import { MuiPickersAdapter } from '../_shared/hooks/useUtils';
 
+type Meridiem = 'am' | 'pm' | null;
+
 export const getMeridiem = (
   date: MaterialUiPickersDate,
   utils: IUtils<MaterialUiPickersDate>
-): 'am' | 'pm' => {
+): Meridiem => {
+  if (!date) {
+    return null;
+  }
+
   return utils.getHours(date) >= 12 ? 'pm' : 'am';
 };
 
-export const convertValueToMeridiem = (value: number, meridiem: 'am' | 'pm', ampm: boolean) => {
+export const convertValueToMeridiem = (value: number, meridiem: Meridiem, ampm: boolean) => {
   if (ampm) {
     const currentMeridiem = value >= 12 ? 'pm' : 'am';
     if (currentMeridiem !== meridiem) {
