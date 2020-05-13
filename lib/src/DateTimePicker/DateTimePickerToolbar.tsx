@@ -8,6 +8,7 @@ import { DateTimePickerView } from './DateTimePicker';
 import { makeStyles } from '@material-ui/core/styles';
 import { MaterialUiPickersDate } from '../typings/date';
 import { ToolbarComponentProps } from '../Picker/Picker';
+import { WrapperVariantContext } from '../wrappers/WrapperVariantContext';
 
 export const useStyles = makeStyles(
   _ => ({
@@ -53,6 +54,7 @@ export const DateTimePickerToolbar: React.FC<ToolbarComponentProps> = ({
 }) => {
   const utils = useUtils();
   const classes = useStyles();
+  const wrapperVariant = React.useContext(WrapperVariantContext);
   const showTabs = !hideTabs && typeof window !== 'undefined' && window.innerHeight > 667;
 
   const formatHours = (time: MaterialUiPickersDate) =>
@@ -72,55 +74,57 @@ export const DateTimePickerToolbar: React.FC<ToolbarComponentProps> = ({
 
   return (
     <>
-      <PickerToolbar
-        toolbarTitle={toolbarTitle}
-        isLandscape={false}
-        penIconClassName={classes.penIcon}
-        className={classes.toolbar}
-        isMobileKeyboardViewOpen={isMobileKeyboardViewOpen}
-        toggleMobileKeyboardView={toggleMobileKeyboardView}
-      >
-        <div className={classes.dateContainer}>
-          <ToolbarButton
-            tabIndex={-1}
-            variant="subtitle1"
-            onClick={() => setOpenView('year')}
-            selected={openView === 'year'}
-            value={date ? utils.format(date, 'year') : '-  Z'}
-          />
+      {wrapperVariant !== 'desktop' && (
+        <PickerToolbar
+          toolbarTitle={toolbarTitle}
+          isLandscape={false}
+          penIconClassName={classes.penIcon}
+          className={classes.toolbar}
+          isMobileKeyboardViewOpen={isMobileKeyboardViewOpen}
+          toggleMobileKeyboardView={toggleMobileKeyboardView}
+        >
+          <div className={classes.dateContainer}>
+            <ToolbarButton
+              tabIndex={-1}
+              variant="subtitle1"
+              onClick={() => setOpenView('year')}
+              selected={openView === 'year'}
+              value={date ? utils.format(date, 'year') : '-  Z'}
+            />
 
-          <ToolbarButton
-            tabIndex={-1}
-            variant="h4"
-            data-mui-test="datetimepicker-toolbar-date"
-            onClick={() => setOpenView('date')}
-            selected={openView === 'date'}
-            value={dateText}
-          />
-        </div>
+            <ToolbarButton
+              tabIndex={-1}
+              variant="h4"
+              data-mui-test="datetimepicker-toolbar-date"
+              onClick={() => setOpenView('date')}
+              selected={openView === 'date'}
+              value={dateText}
+            />
+          </div>
 
-        <div className={classes.timeContainer}>
-          <ToolbarButton
-            tabIndex={-1}
-            variant="h3"
-            onClick={() => setOpenView('hours')}
-            selected={openView === 'hours'}
-            value={date ? formatHours(date) : '--'}
-            typographyClassName={classes.timeTypography}
-          />
+          <div className={classes.timeContainer}>
+            <ToolbarButton
+              tabIndex={-1}
+              variant="h3"
+              onClick={() => setOpenView('hours')}
+              selected={openView === 'hours'}
+              value={date ? formatHours(date) : '--'}
+              typographyClassName={classes.timeTypography}
+            />
 
-          <ToolbarText variant="h3" value=":" className={classes.separator} />
+            <ToolbarText variant="h3" value=":" className={classes.separator} />
 
-          <ToolbarButton
-            tabIndex={-1}
-            variant="h3"
-            onClick={() => setOpenView('minutes')}
-            selected={openView === 'minutes'}
-            value={date ? utils.format(date, 'minutes') : '--'}
-            typographyClassName={classes.timeTypography}
-          />
-        </div>
-      </PickerToolbar>
+            <ToolbarButton
+              tabIndex={-1}
+              variant="h3"
+              onClick={() => setOpenView('minutes')}
+              selected={openView === 'minutes'}
+              value={date ? utils.format(date, 'minutes') : '--'}
+              typographyClassName={classes.timeTypography}
+            />
+          </div>
+        </PickerToolbar>
+      )}
 
       {showTabs && (
         <DateTimePickerTabs
