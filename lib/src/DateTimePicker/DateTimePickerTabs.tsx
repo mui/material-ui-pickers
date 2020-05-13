@@ -36,7 +36,7 @@ export const useStyles = makeStyles(
   theme => {
     // prettier-ignore
     const tabsBackground = theme.palette.type === 'light'
-    ? theme.palette.background.default
+    ? theme.palette.primary.main
     : theme.palette.background.default;
 
     return {
@@ -44,8 +44,7 @@ export const useStyles = makeStyles(
         order: 1,
       },
       tabs: {
-        color: theme.palette.text.primary,
-        // color: theme.palette.getContrastText(tabsBackground),
+        color: theme.palette.getContrastText(tabsBackground),
         backgroundColor: tabsBackground,
       },
     };
