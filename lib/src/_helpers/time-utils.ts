@@ -130,6 +130,10 @@ export const validateTime = (
     utils
   );
 
+  if (value === null) {
+    return null;
+  }
+
   switch (true) {
     case !utils.isValid(value):
       return 'invalidDate';
