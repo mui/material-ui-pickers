@@ -109,13 +109,15 @@ export const createIsAfterIgnoreDatePart = (
 };
 
 export interface TimeValidationProps {
-  /** Min time, date part by default, will be ignored */
+  /** Min time acceptable time. For input validation date part of passed object will be ignored if `disableTimeValidationIgnoreDatePart` not specified. */
   minTime?: MaterialUiPickersDate;
-  /** Max time, date part by default, will be ignored */
+  /** Max time acceptable time. For input validation date part of passed object will be ignored if `disableTimeValidationIgnoreDatePart` not specified. */
   maxTime?: MaterialUiPickersDate;
-  /** Dynamically check if time is disabled or not */
+  /** Dynamically check if time is disabled or not. If returns `false` appropriate time point will ot be acceptable. */
   shouldDisableTime?: (timeValue: number, clockType: 'hours' | 'minutes' | 'seconds') => boolean;
-  /** Do not ignore date part when validating min/max time */
+  /** Do not ignore date part when validating min/max time
+   * @default false
+   */
   disableTimeValidationIgnoreDatePart?: boolean;
 }
 
