@@ -1,95 +1,5 @@
 {
   "MobileWrapper": {
-    "okLabel": {
-      "defaultValue": {
-        "value": "OK"
-      },
-      "description": "\"OK\" label message",
-      "name": "okLabel",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
-        "name": "InnerMobileWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ReactNode"
-      }
-    },
-    "cancelLabel": {
-      "defaultValue": {
-        "value": "Cancel"
-      },
-      "description": "\"CANCEL\" label message",
-      "name": "cancelLabel",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
-        "name": "InnerMobileWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ReactNode"
-      }
-    },
-    "clearLabel": {
-      "defaultValue": {
-        "value": "Clear"
-      },
-      "description": "\"CLEAR\" label message",
-      "name": "clearLabel",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
-        "name": "InnerMobileWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ReactNode"
-      }
-    },
-    "todayLabel": {
-      "defaultValue": {
-        "value": "Today"
-      },
-      "description": "\"TODAY\" label message",
-      "name": "todayLabel",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
-        "name": "InnerMobileWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ReactNode"
-      }
-    },
-    "showTodayButton": {
-      "defaultValue": {
-        "value": false
-      },
-      "description": "If true today button will be displayed. **Note** that clear button has higher priority",
-      "name": "showTodayButton",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
-        "name": "InnerMobileWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "boolean"
-      }
-    },
-    "clearable": {
-      "defaultValue": {
-        "value": false
-      },
-      "description": "Show clear action in picker dialog",
-      "name": "clearable",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
-        "name": "InnerMobileWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "boolean"
-      }
-    },
     "DialogProps": {
       "defaultValue": null,
       "description": "Props to be passed directly to material-ui Dialog",
@@ -101,6 +11,96 @@
       "required": false,
       "type": {
         "name": "Partial<MuiDialogProps>"
+      }
+    },
+    "okText": {
+      "defaultValue": {
+        "value": "\"OK\""
+      },
+      "description": "\"OK\" button text",
+      "name": "okText",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "cancelText": {
+      "defaultValue": {
+        "value": "\"CANCEL\""
+      },
+      "description": "\"CANCEL\" Text message",
+      "name": "cancelText",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "clearText": {
+      "defaultValue": {
+        "value": "\"CLEAR\""
+      },
+      "description": "\"CLEAR\" Text message",
+      "name": "clearText",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "todayText": {
+      "defaultValue": {
+        "value": "\"TODAY\""
+      },
+      "description": "\"TODAY\" Text message",
+      "name": "todayText",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "clearable": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "Show clear action in picker dialog",
+      "name": "clearable",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "showTodayButton": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "If `true` today button will be displayed. **Note** that `showClearButton` has higher priority",
+      "name": "showTodayButton",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
       }
     },
     "PopoverProps": {
@@ -146,96 +146,6 @@
         "name": "Partial<PopoverProps>"
       }
     },
-    "okLabel": {
-      "defaultValue": {
-        "value": "\"OK\""
-      },
-      "description": "\"OK\" label message",
-      "name": "okLabel",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
-        "name": "InnerMobileWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ReactNode"
-      }
-    },
-    "cancelLabel": {
-      "defaultValue": {
-        "value": "\"CANCEL\""
-      },
-      "description": "\"CANCEL\" label message",
-      "name": "cancelLabel",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
-        "name": "InnerMobileWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ReactNode"
-      }
-    },
-    "clearLabel": {
-      "defaultValue": {
-        "value": "\"CLEAR\""
-      },
-      "description": "\"CLEAR\" label message",
-      "name": "clearLabel",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
-        "name": "InnerMobileWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ReactNode"
-      }
-    },
-    "todayLabel": {
-      "defaultValue": {
-        "value": "\"TODAY\""
-      },
-      "description": "\"TODAY\" label message",
-      "name": "todayLabel",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
-        "name": "InnerMobileWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ReactNode"
-      }
-    },
-    "showTodayButton": {
-      "defaultValue": {
-        "value": "false"
-      },
-      "description": "If true today button will be displayed. **Note** that clear button has higher priority",
-      "name": "showTodayButton",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
-        "name": "InnerMobileWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "boolean"
-      }
-    },
-    "clearable": {
-      "defaultValue": {
-        "value": "false"
-      },
-      "description": "Show clear action in picker dialog",
-      "name": "clearable",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
-        "name": "InnerMobileWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "boolean"
-      }
-    },
     "DialogProps": {
       "defaultValue": null,
       "description": "Props to be passed directly to material-ui Dialog",
@@ -247,6 +157,96 @@
       "required": false,
       "type": {
         "name": "Partial<MuiDialogProps>"
+      }
+    },
+    "okText": {
+      "defaultValue": {
+        "value": "\"OK\""
+      },
+      "description": "\"OK\" button text",
+      "name": "okText",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "cancelText": {
+      "defaultValue": {
+        "value": "\"CANCEL\""
+      },
+      "description": "\"CANCEL\" Text message",
+      "name": "cancelText",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "clearText": {
+      "defaultValue": {
+        "value": "\"CLEAR\""
+      },
+      "description": "\"CLEAR\" Text message",
+      "name": "clearText",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "todayText": {
+      "defaultValue": {
+        "value": "\"TODAY\""
+      },
+      "description": "\"TODAY\" Text message",
+      "name": "todayText",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "clearable": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "Show clear action in picker dialog",
+      "name": "clearable",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "showTodayButton": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "If `true` today button will be displayed. **Note** that `showClearButton` has higher priority",
+      "name": "showTodayButton",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
       }
     },
     "PopperProps": {
@@ -1009,96 +1009,6 @@
         "name": "MuiPickersAdapter"
       }
     },
-    "okLabel": {
-      "defaultValue": {
-        "value": "\"OK\""
-      },
-      "description": "\"OK\" label message",
-      "name": "okLabel",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
-        "name": "InnerMobileWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ReactNode"
-      }
-    },
-    "cancelLabel": {
-      "defaultValue": {
-        "value": "\"CANCEL\""
-      },
-      "description": "\"CANCEL\" label message",
-      "name": "cancelLabel",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
-        "name": "InnerMobileWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ReactNode"
-      }
-    },
-    "clearLabel": {
-      "defaultValue": {
-        "value": "\"CLEAR\""
-      },
-      "description": "\"CLEAR\" label message",
-      "name": "clearLabel",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
-        "name": "InnerMobileWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ReactNode"
-      }
-    },
-    "todayLabel": {
-      "defaultValue": {
-        "value": "\"TODAY\""
-      },
-      "description": "\"TODAY\" label message",
-      "name": "todayLabel",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
-        "name": "InnerMobileWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ReactNode"
-      }
-    },
-    "showTodayButton": {
-      "defaultValue": {
-        "value": "false"
-      },
-      "description": "If true today button will be displayed. **Note** that clear button has higher priority",
-      "name": "showTodayButton",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
-        "name": "InnerMobileWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "boolean"
-      }
-    },
-    "clearable": {
-      "defaultValue": {
-        "value": "false"
-      },
-      "description": "Show clear action in picker dialog",
-      "name": "clearable",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
-        "name": "InnerMobileWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "boolean"
-      }
-    },
     "DialogProps": {
       "defaultValue": null,
       "description": "Props to be passed directly to material-ui Dialog",
@@ -1110,6 +1020,96 @@
       "required": false,
       "type": {
         "name": "Partial<MuiDialogProps>"
+      }
+    },
+    "okText": {
+      "defaultValue": {
+        "value": "\"OK\""
+      },
+      "description": "\"OK\" button text",
+      "name": "okText",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "cancelText": {
+      "defaultValue": {
+        "value": "\"CANCEL\""
+      },
+      "description": "\"CANCEL\" Text message",
+      "name": "cancelText",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "clearText": {
+      "defaultValue": {
+        "value": "\"CLEAR\""
+      },
+      "description": "\"CLEAR\" Text message",
+      "name": "clearText",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "todayText": {
+      "defaultValue": {
+        "value": "\"TODAY\""
+      },
+      "description": "\"TODAY\" Text message",
+      "name": "todayText",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "clearable": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "Show clear action in picker dialog",
+      "name": "clearable",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "showTodayButton": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "If `true` today button will be displayed. **Note** that `showClearButton` has higher priority",
+      "name": "showTodayButton",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
       }
     },
     "PopperProps": {
@@ -1727,96 +1727,6 @@
         "name": "MuiPickersAdapter"
       }
     },
-    "okLabel": {
-      "defaultValue": {
-        "value": "\"OK\""
-      },
-      "description": "\"OK\" label message",
-      "name": "okLabel",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
-        "name": "InnerMobileWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ReactNode"
-      }
-    },
-    "cancelLabel": {
-      "defaultValue": {
-        "value": "\"CANCEL\""
-      },
-      "description": "\"CANCEL\" label message",
-      "name": "cancelLabel",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
-        "name": "InnerMobileWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ReactNode"
-      }
-    },
-    "clearLabel": {
-      "defaultValue": {
-        "value": "\"CLEAR\""
-      },
-      "description": "\"CLEAR\" label message",
-      "name": "clearLabel",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
-        "name": "InnerMobileWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ReactNode"
-      }
-    },
-    "todayLabel": {
-      "defaultValue": {
-        "value": "\"TODAY\""
-      },
-      "description": "\"TODAY\" label message",
-      "name": "todayLabel",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
-        "name": "InnerMobileWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ReactNode"
-      }
-    },
-    "showTodayButton": {
-      "defaultValue": {
-        "value": "false"
-      },
-      "description": "If true today button will be displayed. **Note** that clear button has higher priority",
-      "name": "showTodayButton",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
-        "name": "InnerMobileWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "boolean"
-      }
-    },
-    "clearable": {
-      "defaultValue": {
-        "value": "false"
-      },
-      "description": "Show clear action in picker dialog",
-      "name": "clearable",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
-        "name": "InnerMobileWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "boolean"
-      }
-    },
     "DialogProps": {
       "defaultValue": null,
       "description": "Props to be passed directly to material-ui Dialog",
@@ -1828,6 +1738,96 @@
       "required": false,
       "type": {
         "name": "Partial<MuiDialogProps>"
+      }
+    },
+    "okText": {
+      "defaultValue": {
+        "value": "\"OK\""
+      },
+      "description": "\"OK\" button text",
+      "name": "okText",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "cancelText": {
+      "defaultValue": {
+        "value": "\"CANCEL\""
+      },
+      "description": "\"CANCEL\" Text message",
+      "name": "cancelText",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "clearText": {
+      "defaultValue": {
+        "value": "\"CLEAR\""
+      },
+      "description": "\"CLEAR\" Text message",
+      "name": "clearText",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "todayText": {
+      "defaultValue": {
+        "value": "\"TODAY\""
+      },
+      "description": "\"TODAY\" Text message",
+      "name": "todayText",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "clearable": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "Show clear action in picker dialog",
+      "name": "clearable",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "showTodayButton": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "If `true` today button will be displayed. **Note** that `showClearButton` has higher priority",
+      "name": "showTodayButton",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
       }
     },
     "PopperProps": {
@@ -2782,96 +2782,6 @@
         "name": "MuiPickersAdapter"
       }
     },
-    "okLabel": {
-      "defaultValue": {
-        "value": "\"OK\""
-      },
-      "description": "\"OK\" label message",
-      "name": "okLabel",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
-        "name": "InnerMobileWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ReactNode"
-      }
-    },
-    "cancelLabel": {
-      "defaultValue": {
-        "value": "\"CANCEL\""
-      },
-      "description": "\"CANCEL\" label message",
-      "name": "cancelLabel",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
-        "name": "InnerMobileWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ReactNode"
-      }
-    },
-    "clearLabel": {
-      "defaultValue": {
-        "value": "\"CLEAR\""
-      },
-      "description": "\"CLEAR\" label message",
-      "name": "clearLabel",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
-        "name": "InnerMobileWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ReactNode"
-      }
-    },
-    "todayLabel": {
-      "defaultValue": {
-        "value": "\"TODAY\""
-      },
-      "description": "\"TODAY\" label message",
-      "name": "todayLabel",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
-        "name": "InnerMobileWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ReactNode"
-      }
-    },
-    "showTodayButton": {
-      "defaultValue": {
-        "value": "false"
-      },
-      "description": "If true today button will be displayed. **Note** that clear button has higher priority",
-      "name": "showTodayButton",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
-        "name": "InnerMobileWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "boolean"
-      }
-    },
-    "clearable": {
-      "defaultValue": {
-        "value": "false"
-      },
-      "description": "Show clear action in picker dialog",
-      "name": "clearable",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
-        "name": "InnerMobileWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "boolean"
-      }
-    },
     "DialogProps": {
       "defaultValue": null,
       "description": "Props to be passed directly to material-ui Dialog",
@@ -2883,6 +2793,96 @@
       "required": false,
       "type": {
         "name": "Partial<MuiDialogProps>"
+      }
+    },
+    "okText": {
+      "defaultValue": {
+        "value": "\"OK\""
+      },
+      "description": "\"OK\" button text",
+      "name": "okText",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "cancelText": {
+      "defaultValue": {
+        "value": "\"CANCEL\""
+      },
+      "description": "\"CANCEL\" Text message",
+      "name": "cancelText",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "clearText": {
+      "defaultValue": {
+        "value": "\"CLEAR\""
+      },
+      "description": "\"CLEAR\" Text message",
+      "name": "clearText",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "todayText": {
+      "defaultValue": {
+        "value": "\"TODAY\""
+      },
+      "description": "\"TODAY\" Text message",
+      "name": "todayText",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "clearable": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "Show clear action in picker dialog",
+      "name": "clearable",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "showTodayButton": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "If `true` today button will be displayed. **Note** that `showClearButton` has higher priority",
+      "name": "showTodayButton",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
       }
     },
     "PopperProps": {
@@ -3694,96 +3694,6 @@
         "name": "MuiPickersAdapter"
       }
     },
-    "okLabel": {
-      "defaultValue": {
-        "value": "\"OK\""
-      },
-      "description": "\"OK\" label message",
-      "name": "okLabel",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
-        "name": "InnerMobileWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ReactNode"
-      }
-    },
-    "cancelLabel": {
-      "defaultValue": {
-        "value": "\"CANCEL\""
-      },
-      "description": "\"CANCEL\" label message",
-      "name": "cancelLabel",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
-        "name": "InnerMobileWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ReactNode"
-      }
-    },
-    "clearLabel": {
-      "defaultValue": {
-        "value": "\"CLEAR\""
-      },
-      "description": "\"CLEAR\" label message",
-      "name": "clearLabel",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
-        "name": "InnerMobileWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ReactNode"
-      }
-    },
-    "todayLabel": {
-      "defaultValue": {
-        "value": "\"TODAY\""
-      },
-      "description": "\"TODAY\" label message",
-      "name": "todayLabel",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
-        "name": "InnerMobileWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ReactNode"
-      }
-    },
-    "showTodayButton": {
-      "defaultValue": {
-        "value": "false"
-      },
-      "description": "If true today button will be displayed. **Note** that clear button has higher priority",
-      "name": "showTodayButton",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
-        "name": "InnerMobileWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "boolean"
-      }
-    },
-    "clearable": {
-      "defaultValue": {
-        "value": "false"
-      },
-      "description": "Show clear action in picker dialog",
-      "name": "clearable",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
-        "name": "InnerMobileWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "boolean"
-      }
-    },
     "DialogProps": {
       "defaultValue": null,
       "description": "Props to be passed directly to material-ui Dialog",
@@ -3795,6 +3705,96 @@
       "required": false,
       "type": {
         "name": "Partial<MuiDialogProps>"
+      }
+    },
+    "okText": {
+      "defaultValue": {
+        "value": "\"OK\""
+      },
+      "description": "\"OK\" button text",
+      "name": "okText",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "cancelText": {
+      "defaultValue": {
+        "value": "\"CANCEL\""
+      },
+      "description": "\"CANCEL\" Text message",
+      "name": "cancelText",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "clearText": {
+      "defaultValue": {
+        "value": "\"CLEAR\""
+      },
+      "description": "\"CLEAR\" Text message",
+      "name": "clearText",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "todayText": {
+      "defaultValue": {
+        "value": "\"TODAY\""
+      },
+      "description": "\"TODAY\" Text message",
+      "name": "todayText",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "clearable": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "Show clear action in picker dialog",
+      "name": "clearable",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "showTodayButton": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "If `true` today button will be displayed. **Note** that `showClearButton` has higher priority",
+      "name": "showTodayButton",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
       }
     },
     "PopperProps": {
