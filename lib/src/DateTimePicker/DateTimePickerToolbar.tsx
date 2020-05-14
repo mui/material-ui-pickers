@@ -104,6 +104,7 @@ export const DateTimePickerToolbar: React.FC<ToolbarComponentProps> = ({
           <ToolbarButton
             tabIndex={-1}
             variant="h3"
+            data-mui-test="hours"
             onClick={() => setOpenView('hours')}
             selected={openView === 'hours'}
             value={date ? formatHours(date) : '--'}
@@ -115,6 +116,7 @@ export const DateTimePickerToolbar: React.FC<ToolbarComponentProps> = ({
           <ToolbarButton
             tabIndex={-1}
             variant="h3"
+            data-mui-test="minutes"
             onClick={() => setOpenView('minutes')}
             selected={openView === 'minutes'}
             value={date ? utils.format(date, 'minutes') : '--'}
