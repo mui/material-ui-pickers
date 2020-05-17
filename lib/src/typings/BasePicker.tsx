@@ -21,8 +21,6 @@ export interface BasePickerProps<
   disabled?: boolean;
   /** Make picker read only */
   readOnly?: boolean;
-  /** Date that will be initially highlighted if null was passed */
-  defaultHighlight?: ParsableDate;
   /** Callback fired when date is accepted @DateIOType */
   onAccept?: (date: TDateValue) => void;
   /** On open callback */

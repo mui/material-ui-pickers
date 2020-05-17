@@ -698,19 +698,6 @@
         "name": "boolean"
       }
     },
-    "defaultHighlight": {
-      "defaultValue": null,
-      "description": "Date that will be initially highlighted if null was passed",
-      "name": "defaultHighlight",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
-        "name": "BasePickerProps"
-      },
-      "required": false,
-      "type": {
-        "name": "any"
-      }
-    },
     "onAccept": {
       "defaultValue": null,
       "description": "Callback fired when date is accepted",
@@ -1414,19 +1401,6 @@
       "required": false,
       "type": {
         "name": "boolean"
-      }
-    },
-    "defaultHighlight": {
-      "defaultValue": null,
-      "description": "Date that will be initially highlighted if null was passed",
-      "name": "defaultHighlight",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
-        "name": "BasePickerProps"
-      },
-      "required": false,
-      "type": {
-        "name": "any"
       }
     },
     "onAccept": {
@@ -2484,19 +2458,6 @@
         "name": "boolean"
       }
     },
-    "defaultHighlight": {
-      "defaultValue": null,
-      "description": "Date that will be initially highlighted if null was passed",
-      "name": "defaultHighlight",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
-        "name": "BasePickerProps"
-      },
-      "required": false,
-      "type": {
-        "name": "any"
-      }
-    },
     "onAccept": {
       "defaultValue": null,
       "description": "Callback fired when date is accepted",
@@ -3355,19 +3316,6 @@
       "required": false,
       "type": {
         "name": "boolean"
-      }
-    },
-    "defaultHighlight": {
-      "defaultValue": null,
-      "description": "Date that will be initially highlighted if null was passed",
-      "name": "defaultHighlight",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
-        "name": "BasePickerProps"
-      },
-      "required": false,
-      "type": {
-        "name": "any"
       }
     },
     "onAccept": {
