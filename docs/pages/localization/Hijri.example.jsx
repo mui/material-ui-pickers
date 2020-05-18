@@ -13,7 +13,7 @@ function HijriExample() {
       <DatePicker
         renderInput={props => <TextField {...props} />}
         clearable
-        okLabel="موافق"
+        okText="موافق"
         cancelLabel="الغاء"
         clearLabel="مسح"
         inputFormat="iYYYY/iMM/iDD"
@@ -26,7 +26,7 @@ function HijriExample() {
       <TimePicker
         renderInput={props => <TextField {...props} />}
         clearable
-        okLabel="موافق"
+        okText="موافق"
         cancelLabel="الغاء"
         clearLabel="مسح"
         inputFormat="hh:mm A"
@@ -36,7 +36,7 @@ function HijriExample() {
 
       <DateTimePicker
         renderInput={props => <TextField {...props} />}
-        okLabel="موافق"
+        okText="موافق"
         cancelLabel="الغاء"
         inputFormat="iYYYY/iMM/iDD"
         value={selectedDate}
