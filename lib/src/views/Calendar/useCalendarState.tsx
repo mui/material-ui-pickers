@@ -160,17 +160,14 @@ export function useCalendarState({
   );
 
   const isDateDisabled = React.useCallback(
-    (day: MaterialUiPickersDate) => {
-      return (
-        validateDate(utils, day, {
-          disablePast,
-          disableFuture,
-          minDate,
-          maxDate,
-          shouldDisableDate,
-        }) !== null
-      );
-    },
+    (day: MaterialUiPickersDate) =>
+      validateDate(utils, day, {
+        disablePast,
+        disableFuture,
+        minDate,
+        maxDate,
+        shouldDisableDate,
+      }) !== null,
     [disableFuture, disablePast, maxDate, minDate, shouldDisableDate, utils]
   );
 

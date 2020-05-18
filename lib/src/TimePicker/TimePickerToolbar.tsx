@@ -87,8 +87,9 @@ export const TimePickerToolbar: React.FC<ToolbarComponentProps> = ({
   const utils = useUtils();
   const theme = useTheme();
   const classes = useStyles();
-  const showAmPmControl = ampm && !ampmInClock;
+  const showAmPmControl = Boolean(ampm && !ampmInClock);
   const { meridiemMode, handleMeridiemChange } = useMeridiemMode(date, ampm, onChange);
+
   const formatHours = (time: MaterialUiPickersDate) =>
     ampm ? utils.format(time, 'hours12h') : utils.format(time, 'hours24h');
 
@@ -124,7 +125,7 @@ export const TimePickerToolbar: React.FC<ToolbarComponentProps> = ({
             variant={clockTypographyVariant}
             onClick={() => setOpenView('hours')}
             selected={openView === 'hours'}
-            value={!date ? '--' : formatHours(date)}
+            value={date ? formatHours(date) : '--'}
           />
         )}
 

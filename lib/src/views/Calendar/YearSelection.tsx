@@ -22,6 +22,7 @@ export interface YearSelectionProps extends ExportedYearSelectionProps {
   disableFuture?: boolean | null | undefined;
   allowKeyboardControl?: boolean;
   isDateDisabled: (day: MaterialUiPickersDate) => boolean;
+  changeFocusedDay: (day: MaterialUiPickersDate) => void;
 }
 
 export const useStyles = makeStyles(
@@ -47,6 +48,7 @@ export const YearSelection: React.FC<YearSelectionProps> = ({
   disableFuture,
   isDateDisabled,
   shouldDisableYear,
+  changeFocusedDay,
   allowKeyboardControl,
 }) => {
   const now = useNow();
@@ -83,8 +85,9 @@ export const YearSelection: React.FC<YearSelectionProps> = ({
       }
 
       onChange(newDate, isFinish);
+      changeFocusedDay(newDate);
     },
-    [date, isDateDisabled, now, onChange, onYearChange, utils]
+    [changeFocusedDay, date, isDateDisabled, now, onChange, onYearChange, utils]
   );
 
   const focusYear = React.useCallback(

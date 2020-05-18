@@ -260,7 +260,7 @@ describe('e2e - TimePicker time validation', () => {
 
 test('e2e - TimePicker empty date', () => {
   const component = mountPickerWithState(null as MaterialUiPickersDate, props => (
-    <MobileTimePicker open toolbarPlaceholder="Enter Date" {...props} />
+    <TimePicker open {...props} />
   ));
 
   expect(component.find('button[data-mui-test="hours"]').text()).toBe('--');

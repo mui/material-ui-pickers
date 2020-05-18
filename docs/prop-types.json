@@ -698,19 +698,6 @@
         "name": "boolean"
       }
     },
-    "defaultHighlight": {
-      "defaultValue": null,
-      "description": "Date that will be initially highlighted if null was passed",
-      "name": "defaultHighlight",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
-        "name": "BasePickerProps"
-      },
-      "required": false,
-      "type": {
-        "name": "any"
-      }
-    },
     "onAccept": {
       "defaultValue": null,
       "description": "Callback fired when date is accepted",
@@ -1245,7 +1232,7 @@
     },
     "minTime": {
       "defaultValue": null,
-      "description": "Min time, date part by default, will be ignored",
+      "description": "Min time acceptable time. For input validation date part of passed object will be ignored if `disableTimeValidationIgnoreDatePart` not specified.",
       "name": "minTime",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_helpers/time-utils.ts",
@@ -1258,7 +1245,7 @@
     },
     "maxTime": {
       "defaultValue": null,
-      "description": "Max time, date part by default, will be ignored",
+      "description": "Max time acceptable time. For input validation date part of passed object will be ignored if `disableTimeValidationIgnoreDatePart` not specified.",
       "name": "maxTime",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_helpers/time-utils.ts",
@@ -1271,7 +1258,7 @@
     },
     "shouldDisableTime": {
       "defaultValue": null,
-      "description": "Dynamically check if time is disabled or not",
+      "description": "Dynamically check if time is disabled or not. If returns `false` appropriate time point will ot be acceptable.",
       "name": "shouldDisableTime",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_helpers/time-utils.ts",
@@ -1283,7 +1270,9 @@
       }
     },
     "disableTimeValidationIgnoreDatePart": {
-      "defaultValue": null,
+      "defaultValue": {
+        "value": "false"
+      },
       "description": "Do not ignore date part when validating min/max time",
       "name": "disableTimeValidationIgnoreDatePart",
       "parent": {
@@ -1412,19 +1401,6 @@
       "required": false,
       "type": {
         "name": "boolean"
-      }
-    },
-    "defaultHighlight": {
-      "defaultValue": null,
-      "description": "Date that will be initially highlighted if null was passed",
-      "name": "defaultHighlight",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
-        "name": "BasePickerProps"
-      },
-      "required": false,
-      "type": {
-        "name": "any"
       }
     },
     "onAccept": {
@@ -2078,7 +2054,7 @@
     },
     "minTime": {
       "defaultValue": null,
-      "description": "Min time, date part by default, will be ignored",
+      "description": "Min time acceptable time. For input validation date part of passed object will be ignored if `disableTimeValidationIgnoreDatePart` not specified.",
       "name": "minTime",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_helpers/time-utils.ts",
@@ -2091,7 +2067,7 @@
     },
     "maxTime": {
       "defaultValue": null,
-      "description": "Max time, date part by default, will be ignored",
+      "description": "Max time acceptable time. For input validation date part of passed object will be ignored if `disableTimeValidationIgnoreDatePart` not specified.",
       "name": "maxTime",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_helpers/time-utils.ts",
@@ -2104,7 +2080,7 @@
     },
     "shouldDisableTime": {
       "defaultValue": null,
-      "description": "Dynamically check if time is disabled or not",
+      "description": "Dynamically check if time is disabled or not. If returns `false` appropriate time point will ot be acceptable.",
       "name": "shouldDisableTime",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_helpers/time-utils.ts",
@@ -2116,7 +2092,9 @@
       }
     },
     "disableTimeValidationIgnoreDatePart": {
-      "defaultValue": null,
+      "defaultValue": {
+        "value": "false"
+      },
       "description": "Do not ignore date part when validating min/max time",
       "name": "disableTimeValidationIgnoreDatePart",
       "parent": {
@@ -2478,19 +2456,6 @@
       "required": false,
       "type": {
         "name": "boolean"
-      }
-    },
-    "defaultHighlight": {
-      "defaultValue": null,
-      "description": "Date that will be initially highlighted if null was passed",
-      "name": "defaultHighlight",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
-        "name": "BasePickerProps"
-      },
-      "required": false,
-      "type": {
-        "name": "any"
       }
     },
     "onAccept": {
@@ -3351,19 +3316,6 @@
       "required": false,
       "type": {
         "name": "boolean"
-      }
-    },
-    "defaultHighlight": {
-      "defaultValue": null,
-      "description": "Date that will be initially highlighted if null was passed",
-      "name": "defaultHighlight",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
-        "name": "BasePickerProps"
-      },
-      "required": false,
-      "type": {
-        "name": "any"
       }
     },
     "onAccept": {
@@ -4283,7 +4235,7 @@
     },
     "minTime": {
       "defaultValue": null,
-      "description": "Min time, date part by default, will be ignored",
+      "description": "Min time acceptable time. For input validation date part of passed object will be ignored if `disableTimeValidationIgnoreDatePart` not specified.",
       "name": "minTime",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_helpers/time-utils.ts",
@@ -4296,7 +4248,7 @@
     },
     "maxTime": {
       "defaultValue": null,
-      "description": "Max time, date part by default, will be ignored",
+      "description": "Max time acceptable time. For input validation date part of passed object will be ignored if `disableTimeValidationIgnoreDatePart` not specified.",
       "name": "maxTime",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_helpers/time-utils.ts",
@@ -4309,7 +4261,7 @@
     },
     "shouldDisableTime": {
       "defaultValue": null,
-      "description": "Dynamically check if time is disabled or not",
+      "description": "Dynamically check if time is disabled or not. If returns `false` appropriate time point will ot be acceptable.",
       "name": "shouldDisableTime",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_helpers/time-utils.ts",
@@ -4321,7 +4273,9 @@
       }
     },
     "disableTimeValidationIgnoreDatePart": {
-      "defaultValue": null,
+      "defaultValue": {
+        "value": "false"
+      },
       "description": "Do not ignore date part when validating min/max time",
       "name": "disableTimeValidationIgnoreDatePart",
       "parent": {

@@ -101,7 +101,7 @@ export const getFormatByViews = (
 
 export function parsePickerInputValue(
   utils: MuiPickersAdapter,
-  { value }: Pick<BasePickerProps, 'value' | 'defaultHighlight'>
+  { value }: BasePickerProps
 ): MaterialUiPickersDate | null {
   const parsedValue = utils.date(value);
 
