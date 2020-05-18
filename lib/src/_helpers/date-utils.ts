@@ -123,7 +123,12 @@ export const isRangeValid = (
   utils: MuiPickersAdapter,
   range: DateRange | null
 ): range is DateRange => {
-  return Boolean(range && range[0] && range[1] && utils.isBefore(range[0], range[1]));
+  return Boolean(
+    range &&
+      range[0] &&
+      range[1] &&
+      (utils.isBefore(range[0], range[1]) || utils.isEqual(range[0], range[1]))
+  );
 };
 
 export const isWithinRange = (
