@@ -29,7 +29,7 @@ export interface ExportedPickerModalProps {
    */
   todayText?: React.ReactNode;
   /**
-   * Show clear action in picker dialog
+   * If `true`, it shows the clear action in the picker dialog.
    * @default false
    */
   clearable?: boolean;
