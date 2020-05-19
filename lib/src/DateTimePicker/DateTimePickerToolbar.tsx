@@ -56,7 +56,10 @@ export const DateTimePickerToolbar: React.FC<ToolbarComponentProps> = ({
   const utils = useUtils();
   const classes = useStyles();
   const wrapperVariant = React.useContext(WrapperVariantContext);
-  const showTabs = !hideTabs && typeof window !== 'undefined' && window.innerHeight > 667;
+  const showTabs =
+    wrapperVariant === 'desktop'
+      ? true
+      : !hideTabs && typeof window !== 'undefined' && window.innerHeight > 667;
 
   const formatHours = (time: MaterialUiPickersDate) =>
     ampm ? utils.format(time, 'hours12h') : utils.format(time, 'hours24h');
