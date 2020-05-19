@@ -34,7 +34,7 @@ export interface ExportedPickerModalProps {
    */
   clearable?: boolean;
   /**
-   * If `true` today button will be displayed. **Note** that `showClearButton` has higher priority
+   * If `true`, the today button will be displayed. **Note** that `showClearButton` has a higher priority.
    * @default false
    */
   showTodayButton?: boolean;
