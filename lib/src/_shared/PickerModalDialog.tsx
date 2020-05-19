@@ -9,7 +9,7 @@ import { DIALOG_WIDTH, DIALOG_WIDTH_WIDER } from '../constants/dimensions';
 
 export interface ExportedPickerModalProps {
   /**
-   * "OK" button text
+   * "OK" button text.
    * @default "OK"
    */
   okText?: React.ReactNode;
