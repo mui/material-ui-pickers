@@ -1,13 +1,10 @@
-// import { MuiPickersOverrides } from '@material-ui/pickers/typings/overrides';
-// import '@material-ui/core/styles/overrides';
+import { DateType } from '@date-io/type';
+import { MaterialUiPickersDate } from '@material-ui/pickers';
+import { MuiPickersComponentsToClassName } from '@material-ui/pickers/src/typings/overrides';
 
-// declare module '@material-ui/core/styles/overrides' {
-//   type overridesNameToClassKey = {
-//     [P in keyof MuiPickersOverrides]: keyof MuiPickersOverrides[P];
-//   };
-
-//   export interface ComponentNameToClassKey extends overridesNameToClassKey {}
-// }
+declare module '@material-ui/core/styles/overrides' {
+  export interface ComponentNameToClassKey extends MuiPickersComponentsToClassName {}
+}
 
 interface NavigatorClipboard {
   clipboard: {
@@ -24,4 +21,8 @@ declare module '*.mdx' {
 
 declare module '@date-io/type' {
   export type DateType = any;
+}
+
+declare module '@material-ui/pickers' {
+  export type MaterialUiPickersDate = any;
 }

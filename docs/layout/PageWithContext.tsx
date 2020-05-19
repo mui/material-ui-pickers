@@ -37,6 +37,10 @@ const createCustomMuiTheme = (theme: ThemeType, direction: Theme['direction']) =
       secondary: orange,
       type: theme,
     },
+    overrides: {},
+    // props: {
+    //   MuiPickersCalendarView: {},
+    // },
   });
 };
 
@@ -105,7 +109,7 @@ export const PageWithContexts: React.SFC<Props> = ({
     >
       <ThemeProvider theme={muiTheme}>
         <SnackbarProvider maxSnack={3}>
-          <LocalizationProvider dateAdapter={utilsMap[lib]}>
+          <LocalizationProvider dateAdapter={utilsMap[lib] as any}>
             <ThemeContext.Provider value={theme}>
               <UtilsContext.Provider value={createUtilsService(lib)}>
                 <CssBaseline />

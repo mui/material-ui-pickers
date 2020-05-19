@@ -36,6 +36,8 @@ export { useUtils } from './_shared/hooks/useUtils';
 
 export { usePickerState } from './_shared/hooks/usePickerState';
 
+export * from './typings/date';
+
 export {
   LocalizationProvider,
   MuiPickersAdapterContext as MuiPickersContext,
