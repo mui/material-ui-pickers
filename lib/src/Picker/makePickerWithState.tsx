@@ -1,18 +1,18 @@
 import * as React from 'react';
+import Picker, { ToolbarComponentProps, ExportedPickerProps } from './Picker';
 import { ParsableDate } from '../constants/prop-types';
 import { MaterialUiPickersDate } from '../typings/date';
 import { MuiPickersAdapter } from '../_shared/hooks/useUtils';
 import { parsePickerInputValue } from '../_helpers/date-utils';
 import { withDefaultProps } from '../_shared/withDefaultProps';
 import { KeyboardDateInput } from '../_shared/KeyboardDateInput';
+import { SomeWrapper, ExtendWrapper } from '../wrappers/Wrapper';
 import { ResponsiveWrapper } from '../wrappers/ResponsiveWrapper';
 import { withDateAdapterProp } from '../_shared/withDateAdapterProp';
 import { makeWrapperComponent } from '../wrappers/makeWrapperComponent';
 import { PureDateInput, DateInputProps } from '../_shared/PureDateInput';
 import { AnyPickerView, AllSharedPickerProps } from './SharedPickerProps';
-import { SomeWrapper, ExtendWrapper, WrapperProps } from '../wrappers/Wrapper';
 import { usePickerState, PickerStateValueManager } from '../_shared/hooks/usePickerState';
-import { Picker, ToolbarComponentProps, ExportedPickerProps, PickerProps } from './Picker';
 
 type AllAvailableForOverrideProps = ExportedPickerProps<AnyPickerView>;
 
@@ -63,20 +63,16 @@ export function makePickerWithStateAndWrapper<
     // Note that we are passing down all the value without spread.
     // It saves us >1kb gzip and make any prop available automatically on any level down.
     const { value, onChange, ...other } = allProps;
-    const DateInputProps = { ...inputProps, ...other, validationError };
+    const AllDateInputProps = { ...inputProps, ...other, validationError };
 
     return (
-      <PickerWrapper
-        DateInputProps={DateInputProps}
-        wrapperProps={wrapperProps}
-        {...((other as unknown) as WrapperProps)}
-      >
+      <PickerWrapper wrapperProps={wrapperProps} DateInputProps={AllDateInputProps} {...other}>
         <Picker
           {...pickerProps}
           toolbarTitle={allProps.label || allProps.toolbarTitle}
-          DateInputProps={DateInputProps}
           ToolbarComponent={other.ToolbarComponent || DefaultToolbarComponent}
-          {...((other as unknown) as PickerProps<any>)}
+          DateInputProps={AllDateInputProps}
+          {...other}
         />
       </PickerWrapper>
     );

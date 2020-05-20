@@ -1,5 +1,3 @@
-import { DayProps as DayPropsType } from './views/Calendar/Day';
-
 export * from './DatePicker';
 
 export { DatePickerToolbar } from './DatePicker/DatePickerToolbar';
@@ -16,21 +14,17 @@ export * from './DateRangePicker/DateRangePicker';
 
 export { DateRangePickerToolbar } from './DateRangePicker/DateRangePickerToolbar';
 
-export { Calendar } from './views/Calendar/Calendar';
+export { Calendar, CalendarProps } from './views/Calendar/Calendar';
 
-export * from './views/Calendar/CalendarView';
+export { CalendarView, CalendarViewProps } from './views/Calendar/CalendarView';
 
-export { Day } from './views/Calendar/Day';
+export { Day, DayProps } from './views/Calendar/Day';
 
-export type DayProps = DayPropsType;
+export { ClockView, ClockViewProps } from './views/Clock/ClockView';
 
-export { default as TimePickerView, ClockView } from './views/Clock/ClockView';
+export { Clock, ClockProps } from './views/Clock/Clock';
 
-export { default as Clock } from './views/Clock/Clock';
-
-export { Picker } from './Picker/Picker';
-
-export { makePickerWithStateAndWrapper as makePickerWithState } from './Picker/makePickerWithState';
+export { default as Picker, PickerProps, ToolbarComponentProps } from './Picker/Picker';
 
 export { useUtils } from './_shared/hooks/useUtils';
 
@@ -39,6 +33,7 @@ export { usePickerState } from './_shared/hooks/usePickerState';
 export * from './typings/date';
 
 export {
-  LocalizationProvider,
+  default as LocalizationProvider,
+  LocalizationProviderProps,
   MuiPickersAdapterContext as MuiPickersContext,
 } from './LocalizationProvider';
