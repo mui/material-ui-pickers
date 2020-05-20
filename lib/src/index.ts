@@ -14,17 +14,17 @@ export * from './DateRangePicker/DateRangePicker';
 
 export { DateRangePickerToolbar } from './DateRangePicker/DateRangePickerToolbar';
 
-export { Calendar, CalendarProps } from './views/Calendar/Calendar';
+export { Calendar } from './views/Calendar/Calendar';
 
-export { CalendarView, CalendarViewProps } from './views/Calendar/CalendarView';
+export { CalendarView } from './views/Calendar/CalendarView';
 
-export { Day, DayProps } from './views/Calendar/Day';
+export { Day } from './views/Calendar/Day';
 
-export { ClockView, ClockViewProps } from './views/Clock/ClockView';
+export { ClockView } from './views/Clock/ClockView';
 
-export { Clock, ClockProps } from './views/Clock/Clock';
+export { Clock } from './views/Clock/Clock';
 
-export { default as Picker, PickerProps, ToolbarComponentProps } from './Picker/Picker';
+export { default as Picker } from './Picker/Picker';
 
 export { useUtils } from './_shared/hooks/useUtils';
 
@@ -34,6 +34,16 @@ export * from './typings/date';
 
 export {
   default as LocalizationProvider,
-  LocalizationProviderProps,
   MuiPickersAdapterContext as MuiPickersContext,
 } from './LocalizationProvider';
+
+// TODO replace the following syntax with new ts export type { } syntax when will be supported by rollup
+
+export type CalendarProps = import('./views/Calendar/Calendar').CalendarProps;
+export type CalendarViewProps = import('./views/Calendar/CalendarView').CalendarViewProps;
+export type DayProps = import('./views/Calendar/Day').DayProps;
+export type ClockViewProps = import('./views/Clock/ClockView').ClockViewProps;
+export type ClockProps = import('./views/Clock/Clock').ClockProps;
+export type ToolbarComponentProps = import('./Picker/Picker').ToolbarComponentProps;
+export type DateRangeDelimiterProps = import('./DateRangePicker/DateRangeDelimiter').DateRangeDelimiterProps;
+export type LocalizationProviderProps = import('./LocalizationProvider').LocalizationProviderProps;

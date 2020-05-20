@@ -183,4 +183,4 @@ export const StaticDateRangePicker = makeRangePicker(
 
 export type StaticDateRangePickerProps = React.ComponentProps<typeof StaticDateRangePicker>;
 
-export { DateRangeDelimiter, DateRangeDelimiterProps } from './DateRangeDelimiter';
+export { DateRangeDelimiter } from './DateRangeDelimiter';

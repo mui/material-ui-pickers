@@ -1,5 +1,6 @@
+import { PickerProps } from '../Picker/Picker';
+import { DateRangeDelimiterProps } from '../DateRangePicker/DateRangeDelimiter';
 import {
-  PickerProps,
   ToolbarComponentProps,
   LocalizationProviderProps,
   ClockViewProps,
@@ -23,7 +24,6 @@ import {
   MobileDateRangePickerProps,
   DesktopDateRangePickerProps,
   StaticDateRangePickerProps,
-  DateRangeDelimiterProps,
 } from '..';
 
 export interface MuiPickersComponentsPropsList {
