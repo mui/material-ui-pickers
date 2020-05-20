@@ -3,6 +3,12 @@ import { createMuiTheme } from '@material-ui/core';
 
 createMuiTheme({
   props: {
+    MuiPickersDatePicker: {
+      disableMaskedInput: true,
+    },
+    MuiPickersTimePicker: {
+      ampmInClock: true,
+    },
     MuiPickersDay: {
       showDaysOutsideCurrentMonth: true,
     },

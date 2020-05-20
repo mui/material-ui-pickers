@@ -3,6 +3,7 @@ import { ParsableDate } from '../constants/prop-types';
 import { MaterialUiPickersDate } from '../typings/date';
 import { MuiPickersAdapter } from '../_shared/hooks/useUtils';
 import { parsePickerInputValue } from '../_helpers/date-utils';
+import { withDefaultProps } from '../_shared/withDefaultProps';
 import { KeyboardDateInput } from '../_shared/KeyboardDateInput';
 import { ResponsiveWrapper } from '../wrappers/ResponsiveWrapper';
 import { withDateAdapterProp } from '../_shared/withDateAdapterProp';
@@ -20,6 +21,7 @@ export type AllPickerProps<T, TWrapper extends SomeWrapper = SomeWrapper> = T &
   ExtendWrapper<TWrapper>;
 
 export interface MakePickerOptions<T extends unknown> {
+  name: string;
   /** Hook that running validation for the `value` and input */
   useValidation: (value: ParsableDate, props: T) => string | null;
   /** Intercept props to override or inject default props specifically for picker */
@@ -39,7 +41,7 @@ export function makePickerWithStateAndWrapper<
   TWrapper extends SomeWrapper = typeof ResponsiveWrapper
 >(
   Wrapper: TWrapper,
-  { useInterceptProps, useValidation, DefaultToolbarComponent }: MakePickerOptions<T>
+  { name, useInterceptProps, useValidation, DefaultToolbarComponent }: MakePickerOptions<T>
 ) {
   const PickerWrapper = makeWrapperComponent<DateInputProps, ParsableDate, MaterialUiPickersDate>(
     Wrapper,
@@ -80,7 +82,7 @@ export function makePickerWithStateAndWrapper<
     );
   }
 
-  const FinalPickerComponent = withDateAdapterProp(PickerWithState);
+  const FinalPickerComponent = withDefaultProps({ name }, withDateAdapterProp(PickerWithState));
   return React.forwardRef<HTMLInputElement, React.ComponentProps<typeof FinalPickerComponent>>(
     (props, ref) => <FinalPickerComponent {...(props as any)} forwardedRef={ref} />
   );

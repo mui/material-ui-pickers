@@ -1881,7 +1881,7 @@
       "name": "hideTabs",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/DateTimePicker/DateTimePicker.tsx",
-        "name": "DateTimePickerProps"
+        "name": "BaseDateTimePickerProps"
       },
       "required": false,
       "type": {
@@ -1894,7 +1894,7 @@
       "name": "dateRangeIcon",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/DateTimePicker/DateTimePicker.tsx",
-        "name": "DateTimePickerProps"
+        "name": "BaseDateTimePickerProps"
       },
       "required": false,
       "type": {
@@ -1907,7 +1907,7 @@
       "name": "timeIcon",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/DateTimePicker/DateTimePicker.tsx",
-        "name": "DateTimePickerProps"
+        "name": "BaseDateTimePickerProps"
       },
       "required": false,
       "type": {
@@ -1920,7 +1920,7 @@
       "name": "minDateTime",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/DateTimePicker/DateTimePicker.tsx",
-        "name": "DateTimePickerProps"
+        "name": "BaseDateTimePickerProps"
       },
       "required": false,
       "type": {
@@ -1933,7 +1933,7 @@
       "name": "maxDateTime",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/DateTimePicker/DateTimePicker.tsx",
-        "name": "DateTimePickerProps"
+        "name": "BaseDateTimePickerProps"
       },
       "required": false,
       "type": {
@@ -1946,7 +1946,7 @@
       "name": "toolbarFormat",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/DateTimePicker/DateTimePicker.tsx",
-        "name": "DateTimePickerProps"
+        "name": "BaseDateTimePickerProps"
       },
       "required": false,
       "type": {
