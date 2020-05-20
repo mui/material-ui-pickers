@@ -9,7 +9,7 @@ import { DIALOG_WIDTH, DIALOG_WIDTH_WIDER } from '../constants/dimensions';
 
 export interface ExportedPickerModalProps {
   /**
-   * "OK" button text
+   * "OK" button text.
    * @default "OK"
    */
   okText?: React.ReactNode;
@@ -29,12 +29,12 @@ export interface ExportedPickerModalProps {
    */
   todayText?: React.ReactNode;
   /**
-   * Show clear action in picker dialog
+   * If `true`, it shows the clear action in the picker dialog.
    * @default false
    */
   clearable?: boolean;
   /**
-   * If `true` today button will be displayed. **Note** that `showClearButton` has higher priority
+   * If `true`, the today button will be displayed. **Note** that `showClearButton` has a higher priority.
    * @default false
    */
   showTodayButton?: boolean;

@@ -11,24 +11,24 @@ function HijriExample() {
   return (
     <LocalizationProvider dateAdapter={HijriAdapter} locale="ar-SA">
       <DatePicker
-        renderInput={props => <TextField {...props} />}
         clearable
+        renderInput={props => <TextField {...props} />}
         okText="موافق"
-        cancelLabel="الغاء"
-        clearLabel="مسح"
+        cancelText="الغاء"
+        clearText="مسح"
         inputFormat="iYYYY/iMM/iDD"
         value={selectedDate}
         onChange={date => handleDateChange(date)}
-        minDate="1937-03-14"
-        maxDate="2076-11-26"
+        minDate={moment('1937-03-14')}
+        maxDate={moment('2076-11-26')}
       />
 
       <TimePicker
-        renderInput={props => <TextField {...props} />}
         clearable
+        renderInput={props => <TextField {...props} />}
         okText="موافق"
-        cancelLabel="الغاء"
-        clearLabel="مسح"
+        cancelText="الغاء"
+        clearText="مسح"
         inputFormat="hh:mm A"
         value={selectedDate}
         onChange={date => handleDateChange(date)}
@@ -37,12 +37,12 @@ function HijriExample() {
       <DateTimePicker
         renderInput={props => <TextField {...props} />}
         okText="موافق"
-        cancelLabel="الغاء"
+        cancelText="الغاء"
         inputFormat="iYYYY/iMM/iDD"
         value={selectedDate}
         onChange={date => handleDateChange(date)}
-        minDate="1937-03-14"
-        maxDate="2076-11-26"
+        minDate={moment('1937-03-14')}
+        maxDate={moment('2076-11-26')}
       />
     </LocalizationProvider>
   );

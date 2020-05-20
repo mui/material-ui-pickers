@@ -45,7 +45,6 @@ export interface CalendarProps extends ExportedCalendarProps {
 }
 
 const muiComponentConfig = { name: 'MuiPickersCalendar' };
-
 export const useStyles = makeStyles(
   theme => ({
     transitionContainer: {
