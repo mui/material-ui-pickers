@@ -38,9 +38,7 @@ const createCustomMuiTheme = (theme: ThemeType, direction: Theme['direction']) =
       type: theme,
     },
     overrides: {},
-    // props: {
-    //   MuiPickersCalendarView: {},
-    // },
+    props: {},
   });
 };
 
