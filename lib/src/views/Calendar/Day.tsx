@@ -34,7 +34,7 @@ export const useStyles = makeStyles(
       },
     },
     dayWithMargin: {
-      margin: `0px ${DAY_MARGIN}px`,
+      margin: `0 ${DAY_MARGIN}px`,
     },
     dayOutsideMonth: {
       color: theme.palette.text.hint,
