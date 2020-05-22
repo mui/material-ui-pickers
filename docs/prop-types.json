@@ -294,7 +294,7 @@
   "DatePicker": {
     "views": {
       "defaultValue": null,
-      "description": "Array of views to show",
+      "description": "Array of views to show.",
       "name": "views",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/Picker/SharedPickerProps.tsx",
@@ -307,7 +307,7 @@
     },
     "openTo": {
       "defaultValue": null,
-      "description": "First view to show",
+      "description": "First view to show.",
       "name": "openTo",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/Picker/SharedPickerProps.tsx",
@@ -454,7 +454,7 @@
     },
     "shouldDisableDate": {
       "defaultValue": null,
-      "description": "Disable specific date",
+      "description": "Disable specific date.",
       "name": "shouldDisableDate",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_helpers/date-utils.ts",
@@ -469,7 +469,7 @@
       "defaultValue": {
         "value": "Date(1900-01-01)"
       },
-      "description": "Min selectable date",
+      "description": "Min selectable date.",
       "name": "minDate",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_helpers/date-utils.ts",
@@ -484,7 +484,7 @@
       "defaultValue": {
         "value": "Date(2100-01-01)"
       },
-      "description": "Max selectable date",
+      "description": "Max selectable date.",
       "name": "maxDate",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_helpers/date-utils.ts",
@@ -499,7 +499,7 @@
       "defaultValue": {
         "value": "false"
       },
-      "description": "Disable past dates",
+      "description": "Disable past dates.",
       "name": "disablePast",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_helpers/date-utils.ts",
@@ -514,7 +514,7 @@
       "defaultValue": {
         "value": "false"
       },
-      "description": "Disable future dates",
+      "description": "Disable future dates.",
       "name": "disableFuture",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_helpers/date-utils.ts",
@@ -1299,7 +1299,7 @@
     },
     "views": {
       "defaultValue": null,
-      "description": "Array of views to show",
+      "description": "Array of views to show.",
       "name": "views",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/Picker/SharedPickerProps.tsx",
@@ -1312,7 +1312,7 @@
     },
     "openTo": {
       "defaultValue": null,
-      "description": "First view to show",
+      "description": "First view to show.",
       "name": "openTo",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/Picker/SharedPickerProps.tsx",
@@ -1955,7 +1955,7 @@
     },
     "views": {
       "defaultValue": null,
-      "description": "Array of views to show",
+      "description": "Array of views to show.",
       "name": "views",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/Picker/SharedPickerProps.tsx",
@@ -1968,7 +1968,7 @@
     },
     "openTo": {
       "defaultValue": null,
-      "description": "First view to show",
+      "description": "First view to show.",
       "name": "openTo",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/Picker/SharedPickerProps.tsx",
@@ -2229,7 +2229,7 @@
     },
     "shouldDisableDate": {
       "defaultValue": null,
-      "description": "Disable specific date",
+      "description": "Disable specific date.",
       "name": "shouldDisableDate",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_helpers/date-utils.ts",
@@ -2244,7 +2244,7 @@
       "defaultValue": {
         "value": "Date(1900-01-01)"
       },
-      "description": "Min selectable date",
+      "description": "Min selectable date.",
       "name": "minDate",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_helpers/date-utils.ts",
@@ -2259,7 +2259,7 @@
       "defaultValue": {
         "value": "Date(2100-01-01)"
       },
-      "description": "Max selectable date",
+      "description": "Max selectable date.",
       "name": "maxDate",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_helpers/date-utils.ts",
@@ -2274,7 +2274,7 @@
       "defaultValue": {
         "value": "false"
       },
-      "description": "Disable past dates",
+      "description": "Disable past dates.",
       "name": "disablePast",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_helpers/date-utils.ts",
@@ -2289,7 +2289,7 @@
       "defaultValue": {
         "value": "false"
       },
-      "description": "Disable future dates",
+      "description": "Disable future dates.",
       "name": "disableFuture",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_helpers/date-utils.ts",
@@ -3085,7 +3085,7 @@
     },
     "shouldDisableDate": {
       "defaultValue": null,
-      "description": "Disable specific date",
+      "description": "Disable specific date.",
       "name": "shouldDisableDate",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_helpers/date-utils.ts",
@@ -3100,7 +3100,7 @@
       "defaultValue": {
         "value": "Date(1900-01-01)"
       },
-      "description": "Min selectable date",
+      "description": "Min selectable date.",
       "name": "minDate",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_helpers/date-utils.ts",
@@ -3115,7 +3115,7 @@
       "defaultValue": {
         "value": "Date(2100-01-01)"
       },
-      "description": "Max selectable date",
+      "description": "Max selectable date.",
       "name": "maxDate",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_helpers/date-utils.ts",
@@ -3130,7 +3130,7 @@
       "defaultValue": {
         "value": "false"
       },
-      "description": "Disable past dates",
+      "description": "Disable past dates.",
       "name": "disablePast",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_helpers/date-utils.ts",
@@ -3145,7 +3145,7 @@
       "defaultValue": {
         "value": "false"
       },
-      "description": "Disable future dates",
+      "description": "Disable future dates.",
       "name": "disableFuture",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_helpers/date-utils.ts",

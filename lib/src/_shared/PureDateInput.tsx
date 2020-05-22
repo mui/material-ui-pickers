@@ -100,18 +100,18 @@ export interface DateInputRefs {
 }
 
 export const PureDateInput: React.FC<DateInputProps & DateInputRefs> = ({
-  inputFormat,
-  rawValue,
-  validationError,
-  InputProps,
-  openPicker: onOpen,
-  renderInput,
-  forwardedRef,
   containerRef,
-  getOpenDialogAriaText = getTextFieldAriaText,
   disabled,
+  forwardedRef,
+  getOpenDialogAriaText = getTextFieldAriaText,
+  inputFormat,
+  InputProps,
   label,
+  openPicker: onOpen,
+  rawValue,
+  renderInput,
   TextFieldProps = {},
+  validationError,
 }) => {
   const utils = useUtils();
   const PureDateInputProps = React.useMemo(

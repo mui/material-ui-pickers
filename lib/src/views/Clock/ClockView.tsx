@@ -284,10 +284,10 @@ export const ClockView: React.FC<ClockViewProps> = ({
 };
 
 ClockView.propTypes = {
-  date: PropTypes.object,
-  onChange: PropTypes.func.isRequired,
   ampm: PropTypes.bool,
+  date: PropTypes.object,
   minutesStep: PropTypes.number,
+  onChange: PropTypes.func.isRequired,
   type: PropTypes.oneOf(['minutes', 'hours', 'seconds']).isRequired,
 } as any;
 

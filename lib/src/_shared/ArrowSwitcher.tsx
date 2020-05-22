@@ -36,10 +36,10 @@ export interface ExportedArrowSwitcherProps {
 }
 
 interface ArrowSwitcherProps extends ExportedArrowSwitcherProps, React.HTMLProps<HTMLDivElement> {
-  isLeftHidden?: boolean;
-  isRightHidden?: boolean;
   isLeftDisabled: boolean;
+  isLeftHidden?: boolean;
   isRightDisabled: boolean;
+  isRightHidden?: boolean;
   onLeftClick: () => void;
   onRightClick: () => void;
   text?: string;
@@ -63,17 +63,17 @@ export const useStyles = makeStyles(
 
 const PureArrowSwitcher: React.FC<ArrowSwitcherProps> = ({
   className,
+  isLeftDisabled,
+  isLeftHidden,
+  isRightDisabled,
+  isRightHidden,
   leftArrowButtonProps,
   leftArrowButtonText,
-  rightArrowButtonProps,
-  rightArrowButtonText,
-  isLeftHidden,
-  isRightHidden,
-  isLeftDisabled,
-  isRightDisabled,
+  leftArrowIcon = <ArrowLeftIcon />,
   onLeftClick,
   onRightClick,
-  leftArrowIcon = <ArrowLeftIcon />,
+  rightArrowButtonProps,
+  rightArrowButtonText,
   rightArrowIcon = <ArrowRightIcon />,
   text,
   ...other

@@ -7,11 +7,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import { TypographyProps } from '@material-ui/core/Typography';
 
 export interface ToolbarButtonProps extends ExtendMui<ButtonProps, 'value' | 'variant'> {
-  variant: TypographyProps['variant'];
-  selected: boolean;
-  value: React.ReactNode;
   align?: TypographyProps['align'];
+  selected: boolean;
   typographyClassName?: string;
+  value: React.ReactNode;
+  variant: TypographyProps['variant'];
 }
 
 export const useStyles = makeStyles(
