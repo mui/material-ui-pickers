@@ -7,13 +7,21 @@ import { ArrowRightIcon } from './icons/ArrowRightIcon';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 
 export interface ExportedArrowSwitcherProps {
-  /** Left arrow icon */
+  /**
+   * Left arrow icon
+   */
   leftArrowIcon?: React.ReactNode;
-  /** Right arrow icon */
+  /**
+   * Right arrow icon
+   */
   rightArrowIcon?: React.ReactNode;
-  /** Left arrow icon aria-label text */
+  /**
+   * Left arrow icon aria-label text
+   */
   leftArrowButtonText?: string;
-  /** Right arrow icon aria-label text */
+  /**
+   * Right arrow icon aria-label text
+   */
   rightArrowButtonText?: string;
   /**
    * Props to pass to left arrow button

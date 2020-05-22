@@ -159,7 +159,9 @@ export interface DateValidationProps {
    * @default Date(2100-01-01)
    */
   maxDate?: MaterialUiPickersDate;
-  /** Disable specific date @DateIOType */
+  /**
+   * Disable specific date @DateIOType
+   */
   shouldDisableDate?: (day: MaterialUiPickersDate) => boolean;
   /**
    * Disable past dates
