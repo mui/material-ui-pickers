@@ -30,7 +30,7 @@ export const ToolbarButton: React.FunctionComponent<ToolbarButtonProps> = ({
   className,
   selected,
   typographyClassName,
-  value: label,
+  value,
   variant,
   ...other
 }) => {
@@ -47,7 +47,7 @@ export const ToolbarButton: React.FunctionComponent<ToolbarButtonProps> = ({
         align={align}
         className={typographyClassName}
         variant={variant}
-        value={label}
+        value={value}
         selected={selected}
       />
     </Button>
