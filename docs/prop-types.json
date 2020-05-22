@@ -526,8 +526,10 @@
       }
     },
     "reduceAnimations": {
-      "defaultValue": null,
-      "description": "Disable heavy animations @default /(android)/i.test(window.navigator.userAgent).",
+      "defaultValue": {
+        "value": "/(android)/i.test(window.navigator.userAgent)."
+      },
+      "description": "Disable heavy animations.",
       "name": "reduceAnimations",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Calendar/CalendarView.tsx",
@@ -2301,8 +2303,10 @@
       }
     },
     "reduceAnimations": {
-      "defaultValue": null,
-      "description": "Disable heavy animations @default /(android)/i.test(window.navigator.userAgent).",
+      "defaultValue": {
+        "value": "/(android)/i.test(window.navigator.userAgent)."
+      },
+      "description": "Disable heavy animations.",
       "name": "reduceAnimations",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Calendar/CalendarView.tsx",
@@ -3157,8 +3161,10 @@
       }
     },
     "reduceAnimations": {
-      "defaultValue": null,
-      "description": "Disable heavy animations @default /(android)/i.test(window.navigator.userAgent).",
+      "defaultValue": {
+        "value": "/(android)/i.test(window.navigator.userAgent)."
+      },
+      "description": "Disable heavy animations.",
       "name": "reduceAnimations",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Calendar/CalendarView.tsx",

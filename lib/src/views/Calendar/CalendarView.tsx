@@ -39,7 +39,8 @@ export interface CalendarViewProps
   changeView: (view: DatePickerView) => void;
   onChange: PickerOnChangeFn;
   /**
-   * Disable heavy animations @default /(android)/i.test(window.navigator.userAgent).
+   * Disable heavy animations.
+   * @default /(android)/i.test(window.navigator.userAgent).
    */
   reduceAnimations?: boolean;
   /**
