@@ -26,12 +26,12 @@ export const useStyles = makeStyles(
 );
 
 export const ToolbarButton: React.FunctionComponent<ToolbarButtonProps> = ({
-  className = null,
-  value: label,
-  selected,
-  variant,
   align,
+  className,
+  selected,
   typographyClassName,
+  value: label,
+  variant,
   ...other
 }) => {
   const classes = useStyles();

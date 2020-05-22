@@ -67,7 +67,7 @@ const PickerToolbar: React.SFC<PickerToolbarProps> = ({
   isLandscape,
   toolbarTitle,
   landscapeDirection = 'column',
-  className = null,
+  className,
   penIconClassName,
   toggleMobileKeyboardView,
   isMobileKeyboardViewOpen,
