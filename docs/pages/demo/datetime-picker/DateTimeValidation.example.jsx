@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { TextField } from '@material-ui/core';
 import { DateTimePicker } from '@material-ui/pickers';
+import { LocalizationProvider } from '@material-ui/pickers';
+import DateFnsUtils from '@material-ui/pickers/adapter/date-fns';  // choose your date lib
 
 function DateTimePickerValidation() {
   const [selectedDate, handleDateChange] = useState(new Date());
 
   return (
-    <>
+    <LocalizationProvider dateAdapter={DateFnsUtils}>
       <DateTimePicker
         renderInput={props => <TextField {...props} />}
         label="Ignore date and time"
@@ -24,7 +26,7 @@ function DateTimePickerValidation() {
         minTime={new Date(0, 0, 0, 8)}
         maxTime={new Date(0, 0, 0, 18, 45)}
       />
-    </>
+    </LocalizationProvider>
   );
 }
 
