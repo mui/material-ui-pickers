@@ -105,7 +105,7 @@
     },
     "PopoverProps": {
       "defaultValue": null,
-      "description": "Popover props passed to material-ui Popover",
+      "description": "Popover props passed to material-ui Popover.",
       "name": "PopoverProps",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/wrappers/DesktopWrapper.tsx",
@@ -135,7 +135,7 @@
   "DesktopWrapper": {
     "PopoverProps": {
       "defaultValue": null,
-      "description": "Popover props passed to material-ui Popover",
+      "description": "Popover props passed to material-ui Popover.",
       "name": "PopoverProps",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/wrappers/DesktopWrapper.tsx",
@@ -251,7 +251,7 @@
     },
     "PopperProps": {
       "defaultValue": null,
-      "description": "Popper props passed to material-ui [Popper](https://material-ui.com/api/popper/#popper-api)",
+      "description": "Popper props passed to material-ui [Popper](https://material-ui.com/api/popper/#popper-api).",
       "name": "PopperProps",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/wrappers/DesktopPopperWrapper.tsx",
@@ -264,7 +264,7 @@
     },
     "TransitionComponent": {
       "defaultValue": null,
-      "description": "Custom component for [transition](https://material-ui.com/components/transitions/#transitioncomponent-prop)",
+      "description": "Custom component for [transition](https://material-ui.com/components/transitions/#transitioncomponent-prop).",
       "name": "TransitionComponent",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/wrappers/DesktopPopperWrapper.tsx",
@@ -294,7 +294,7 @@
   "DatePicker": {
     "views": {
       "defaultValue": null,
-      "description": "Array of views to show",
+      "description": "Array of views to show.",
       "name": "views",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/Picker/SharedPickerProps.tsx",
@@ -307,7 +307,7 @@
     },
     "openTo": {
       "defaultValue": null,
-      "description": "First view to show",
+      "description": "First view to show.",
       "name": "openTo",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/Picker/SharedPickerProps.tsx",
@@ -335,7 +335,7 @@
       "defaultValue": {
         "value": "false"
       },
-      "description": "Disable highlighting today date with a circle",
+      "description": "Disable highlighting today date with a circle.",
       "name": "disableHighlightToday",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Calendar/Day.tsx",
@@ -350,7 +350,7 @@
       "defaultValue": {
         "value": "false"
       },
-      "description": "Display disabled dates outside the current month",
+      "description": "Display disabled dates outside the current month.",
       "name": "showDaysOutsideCurrentMonth",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Calendar/Day.tsx",
@@ -441,7 +441,7 @@
     },
     "getViewSwitchingButtonText": {
       "defaultValue": null,
-      "description": "Get aria-label text for switching between views button",
+      "description": "Get aria-label text for switching between views button.",
       "name": "getViewSwitchingButtonText",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Calendar/CalendarHeader.tsx",
@@ -454,7 +454,7 @@
     },
     "shouldDisableDate": {
       "defaultValue": null,
-      "description": "Disable specific date",
+      "description": "Disable specific date.",
       "name": "shouldDisableDate",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_helpers/date-utils.ts",
@@ -469,7 +469,7 @@
       "defaultValue": {
         "value": "Date(1900-01-01)"
       },
-      "description": "Min selectable date",
+      "description": "Min selectable date.",
       "name": "minDate",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_helpers/date-utils.ts",
@@ -484,7 +484,7 @@
       "defaultValue": {
         "value": "Date(2100-01-01)"
       },
-      "description": "Max selectable date",
+      "description": "Max selectable date.",
       "name": "maxDate",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_helpers/date-utils.ts",
@@ -499,7 +499,7 @@
       "defaultValue": {
         "value": "false"
       },
-      "description": "Disable past dates",
+      "description": "Disable past dates.",
       "name": "disablePast",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_helpers/date-utils.ts",
@@ -514,7 +514,7 @@
       "defaultValue": {
         "value": "false"
       },
-      "description": "Disable future dates",
+      "description": "Disable future dates.",
       "name": "disableFuture",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_helpers/date-utils.ts",
@@ -526,8 +526,10 @@
       }
     },
     "reduceAnimations": {
-      "defaultValue": null,
-      "description": "Disable heavy animations @default /(android)/i.test(window.navigator.userAgent)",
+      "defaultValue": {
+        "value": "/(android)/i.test(window.navigator.userAgent)."
+      },
+      "description": "Disable heavy animations.",
       "name": "reduceAnimations",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Calendar/CalendarView.tsx",
@@ -540,7 +542,7 @@
     },
     "onMonthChange": {
       "defaultValue": null,
-      "description": "Callback firing on month change. Return promise to render spinner till it will not be resolved",
+      "description": "Callback firing on month change. Return promise to render spinner till it will not be resolved.",
       "name": "onMonthChange",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Calendar/CalendarView.tsx",
@@ -553,7 +555,7 @@
     },
     "renderDay": {
       "defaultValue": null,
-      "description": "Custom renderer for day. Check [DayComponentProps api](https://material-ui-pickers.dev/api/Day)",
+      "description": "Custom renderer for day. Check [DayComponentProps api](https://material-ui-pickers.dev/api/Day).",
       "name": "renderDay",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
@@ -568,7 +570,7 @@
       "defaultValue": {
         "value": "currentWrapper !== 'static'"
       },
-      "description": "Enables keyboard listener for moving between days in calendar",
+      "description": "Enables keyboard listener for moving between days in calendar.",
       "name": "allowKeyboardControl",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
@@ -581,7 +583,7 @@
     },
     "loadingIndicator": {
       "defaultValue": null,
-      "description": "Custom loading indicator",
+      "description": "Custom loading indicator.",
       "name": "loadingIndicator",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
@@ -594,7 +596,7 @@
     },
     "onYearChange": {
       "defaultValue": null,
-      "description": "Callback firing on year change",
+      "description": "Callback firing on year change.",
       "name": "onYearChange",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Calendar/YearSelection.tsx",
@@ -607,7 +609,7 @@
     },
     "shouldDisableYear": {
       "defaultValue": null,
-      "description": "Disable specific years dynamically. Works like `shouldDisableDate` but for year selection view.",
+      "description": "Disable specific years dynamically.\nWorks like `shouldDisableDate` but for year selection view..",
       "name": "shouldDisableYear",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Calendar/YearSelection.tsx",
@@ -620,7 +622,7 @@
     },
     "value": {
       "defaultValue": null,
-      "description": "Picker value",
+      "description": "Picker value.",
       "name": "value",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
@@ -633,7 +635,7 @@
     },
     "onChange": {
       "defaultValue": null,
-      "description": "onChange callback",
+      "description": "onChange callback.",
       "name": "onChange",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
@@ -648,7 +650,7 @@
       "defaultValue": {
         "value": "false"
       },
-      "description": "Auto accept date on selection",
+      "description": "Auto accept date on selection.",
       "name": "autoOk",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
@@ -661,7 +663,7 @@
     },
     "inputFormat": {
       "defaultValue": null,
-      "description": "Format string",
+      "description": "Format string.",
       "name": "inputFormat",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
@@ -674,7 +676,7 @@
     },
     "disabled": {
       "defaultValue": null,
-      "description": "Disable picker and text field",
+      "description": "Disable picker and text field.",
       "name": "disabled",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
@@ -687,7 +689,7 @@
     },
     "readOnly": {
       "defaultValue": null,
-      "description": "Make picker read only",
+      "description": "Make picker read only.",
       "name": "readOnly",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
@@ -700,7 +702,7 @@
     },
     "onAccept": {
       "defaultValue": null,
-      "description": "Callback fired when date is accepted",
+      "description": "Callback fired when date is accepted.",
       "name": "onAccept",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
@@ -713,7 +715,7 @@
     },
     "onOpen": {
       "defaultValue": null,
-      "description": "On open callback",
+      "description": "On open callback.",
       "name": "onOpen",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
@@ -726,7 +728,7 @@
     },
     "onClose": {
       "defaultValue": null,
-      "description": "On close callback",
+      "description": "On close callback.",
       "name": "onClose",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
@@ -739,7 +741,7 @@
     },
     "open": {
       "defaultValue": null,
-      "description": "Controlled picker open state",
+      "description": "Controlled picker open state.",
       "name": "open",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
@@ -752,7 +754,7 @@
     },
     "showToolbar": {
       "defaultValue": null,
-      "description": "Show toolbar even in desktop mode",
+      "description": "Show toolbar even in desktop mode.",
       "name": "showToolbar",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
@@ -765,7 +767,7 @@
     },
     "orientation": {
       "defaultValue": null,
-      "description": "Force rendering in particular orientation",
+      "description": "Force rendering in particular orientation.",
       "name": "orientation",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
@@ -778,7 +780,7 @@
     },
     "ToolbarComponent": {
       "defaultValue": null,
-      "description": "Component that will replace default toolbar renderer",
+      "description": "Component that will replace default toolbar renderer.",
       "name": "ToolbarComponent",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
@@ -793,7 +795,7 @@
       "defaultValue": {
         "value": "\"SELECT DATE\""
       },
-      "description": "Mobile picker title, displaying in the toolbar",
+      "description": "Mobile picker title, displaying in the toolbar.",
       "name": "toolbarTitle",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
@@ -808,7 +810,7 @@
       "defaultValue": {
         "value": "\"–\""
       },
-      "description": "Mobile picker date value placeholder, displaying if `value` === `null`",
+      "description": "Mobile picker date value placeholder, displaying if `value` === `null`.",
       "name": "toolbarPlaceholder",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
@@ -821,7 +823,7 @@
     },
     "toolbarFormat": {
       "defaultValue": null,
-      "description": "Date format, that is displaying in toolbar",
+      "description": "Date format, that is displaying in toolbar.",
       "name": "toolbarFormat",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
@@ -834,7 +836,7 @@
     },
     "className": {
       "defaultValue": null,
-      "description": "className applied to the root component",
+      "description": "className applied to the root component.",
       "name": "className",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
@@ -873,7 +875,7 @@
     },
     "openPickerIcon": {
       "defaultValue": null,
-      "description": "Icon displaying for open picker button",
+      "description": "Icon displaying for open picker button.",
       "name": "openPickerIcon",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
@@ -888,7 +890,7 @@
       "defaultValue": {
         "value": "/\\dap/gi"
       },
-      "description": "Regular expression to detect \"accepted\" symbols",
+      "description": "Regular expression to detect \"accepted\" symbols.",
       "name": "acceptRegex",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
@@ -901,7 +903,7 @@
     },
     "InputAdornmentProps": {
       "defaultValue": null,
-      "description": "Props to pass to keyboard input adornment",
+      "description": "Props to pass to keyboard input adornment.",
       "name": "InputAdornmentProps",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
@@ -914,7 +916,7 @@
     },
     "OpenPickerButtonProps": {
       "defaultValue": null,
-      "description": "Props to pass to keyboard adornment button",
+      "description": "Props to pass to keyboard adornment button.",
       "name": "OpenPickerButtonProps",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
@@ -927,7 +929,7 @@
     },
     "rifmFormatter": {
       "defaultValue": null,
-      "description": "Custom formatter to be passed into Rifm component",
+      "description": "Custom formatter to be passed into Rifm component.",
       "name": "rifmFormatter",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
@@ -942,7 +944,7 @@
       "defaultValue": {
         "value": "false"
       },
-      "description": "Do not render open picker button (renders only text field with validation)",
+      "description": "Do not render open picker button (renders only text field with validation).",
       "name": "disableOpenPicker",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
@@ -957,7 +959,7 @@
       "defaultValue": {
         "value": "false"
       },
-      "description": "Disable mask on the keyboard, this should be used rarely. Consider passing proper mask for your format",
+      "description": "Disable mask on the keyboard, this should be used rarely. Consider passing proper mask for your format.",
       "name": "disableMaskedInput",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
@@ -1101,7 +1103,7 @@
     },
     "PopperProps": {
       "defaultValue": null,
-      "description": "Popper props passed to material-ui [Popper](https://material-ui.com/api/popper/#popper-api)",
+      "description": "Popper props passed to material-ui [Popper](https://material-ui.com/api/popper/#popper-api).",
       "name": "PopperProps",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/wrappers/DesktopPopperWrapper.tsx",
@@ -1114,7 +1116,7 @@
     },
     "TransitionComponent": {
       "defaultValue": null,
-      "description": "Custom component for [transition](https://material-ui.com/components/transitions/#transitioncomponent-prop)",
+      "description": "Custom component for [transition](https://material-ui.com/components/transitions/#transitioncomponent-prop).",
       "name": "TransitionComponent",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/wrappers/DesktopPopperWrapper.tsx",
@@ -1142,7 +1144,7 @@
     },
     "PopoverProps": {
       "defaultValue": null,
-      "description": "Popover props passed to material-ui Popover",
+      "description": "Popover props passed to material-ui Popover.",
       "name": "PopoverProps",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/wrappers/DesktopWrapper.tsx",
@@ -1157,7 +1159,7 @@
       "defaultValue": {
         "value": "\""
       },
-      "description": "Css media query when `Mobile` mode will be changed to `Desktop`\n@media (pointer: fine)\"\n@example \"\n@media (min-width: 720px)\" or theme.breakpoints.up(\"sm\")",
+      "description": "CSS media query when `Mobile` mode will be changed to `Desktop`.\n@media (pointer: fine)\"\n@example \"\n@media (min-width: 720px)\" or theme.breakpoints.up(\"sm\")",
       "name": "desktopModeMediaQuery",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/wrappers/ResponsiveWrapper.tsx",
@@ -1232,7 +1234,7 @@
     },
     "minTime": {
       "defaultValue": null,
-      "description": "Min time acceptable time. For input validation date part of passed object will be ignored if `disableTimeValidationIgnoreDatePart` not specified.",
+      "description": "Min time acceptable time.\nFor input validation date part of passed object will be ignored if `disableTimeValidationIgnoreDatePart` not specified.",
       "name": "minTime",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_helpers/time-utils.ts",
@@ -1245,7 +1247,7 @@
     },
     "maxTime": {
       "defaultValue": null,
-      "description": "Max time acceptable time. For input validation date part of passed object will be ignored if `disableTimeValidationIgnoreDatePart` not specified.",
+      "description": "Max time acceptable time.\nFor input validation date part of passed object will be ignored if `disableTimeValidationIgnoreDatePart` not specified.",
       "name": "maxTime",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_helpers/time-utils.ts",
@@ -1258,7 +1260,7 @@
     },
     "shouldDisableTime": {
       "defaultValue": null,
-      "description": "Dynamically check if time is disabled or not. If returns `false` appropriate time point will ot be acceptable.",
+      "description": "Dynamically check if time is disabled or not.\nIf returns `false` appropriate time point will ot be acceptable.",
       "name": "shouldDisableTime",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_helpers/time-utils.ts",
@@ -1299,7 +1301,7 @@
     },
     "views": {
       "defaultValue": null,
-      "description": "Array of views to show",
+      "description": "Array of views to show.",
       "name": "views",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/Picker/SharedPickerProps.tsx",
@@ -1312,7 +1314,7 @@
     },
     "openTo": {
       "defaultValue": null,
-      "description": "First view to show",
+      "description": "First view to show.",
       "name": "openTo",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/Picker/SharedPickerProps.tsx",
@@ -1325,7 +1327,7 @@
     },
     "value": {
       "defaultValue": null,
-      "description": "Picker value",
+      "description": "Picker value.",
       "name": "value",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
@@ -1338,7 +1340,7 @@
     },
     "onChange": {
       "defaultValue": null,
-      "description": "onChange callback",
+      "description": "onChange callback.",
       "name": "onChange",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
@@ -1353,7 +1355,7 @@
       "defaultValue": {
         "value": "false"
       },
-      "description": "Auto accept date on selection",
+      "description": "Auto accept date on selection.",
       "name": "autoOk",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
@@ -1366,7 +1368,7 @@
     },
     "inputFormat": {
       "defaultValue": null,
-      "description": "Format string",
+      "description": "Format string.",
       "name": "inputFormat",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
@@ -1379,7 +1381,7 @@
     },
     "disabled": {
       "defaultValue": null,
-      "description": "Disable picker and text field",
+      "description": "Disable picker and text field.",
       "name": "disabled",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
@@ -1392,7 +1394,7 @@
     },
     "readOnly": {
       "defaultValue": null,
-      "description": "Make picker read only",
+      "description": "Make picker read only.",
       "name": "readOnly",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
@@ -1405,7 +1407,7 @@
     },
     "onAccept": {
       "defaultValue": null,
-      "description": "Callback fired when date is accepted",
+      "description": "Callback fired when date is accepted.",
       "name": "onAccept",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
@@ -1418,7 +1420,7 @@
     },
     "onOpen": {
       "defaultValue": null,
-      "description": "On open callback",
+      "description": "On open callback.",
       "name": "onOpen",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
@@ -1431,7 +1433,7 @@
     },
     "onClose": {
       "defaultValue": null,
-      "description": "On close callback",
+      "description": "On close callback.",
       "name": "onClose",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
@@ -1444,7 +1446,7 @@
     },
     "open": {
       "defaultValue": null,
-      "description": "Controlled picker open state",
+      "description": "Controlled picker open state.",
       "name": "open",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
@@ -1457,7 +1459,7 @@
     },
     "showToolbar": {
       "defaultValue": null,
-      "description": "Show toolbar even in desktop mode",
+      "description": "Show toolbar even in desktop mode.",
       "name": "showToolbar",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
@@ -1470,7 +1472,7 @@
     },
     "orientation": {
       "defaultValue": null,
-      "description": "Force rendering in particular orientation",
+      "description": "Force rendering in particular orientation.",
       "name": "orientation",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
@@ -1483,7 +1485,7 @@
     },
     "ToolbarComponent": {
       "defaultValue": null,
-      "description": "Component that will replace default toolbar renderer",
+      "description": "Component that will replace default toolbar renderer.",
       "name": "ToolbarComponent",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
@@ -1498,7 +1500,7 @@
       "defaultValue": {
         "value": "\"SELECT DATE\""
       },
-      "description": "Mobile picker title, displaying in the toolbar",
+      "description": "Mobile picker title, displaying in the toolbar.",
       "name": "toolbarTitle",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
@@ -1513,7 +1515,7 @@
       "defaultValue": {
         "value": "\"–\""
       },
-      "description": "Mobile picker date value placeholder, displaying if `value` === `null`",
+      "description": "Mobile picker date value placeholder, displaying if `value` === `null`.",
       "name": "toolbarPlaceholder",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
@@ -1526,7 +1528,7 @@
     },
     "toolbarFormat": {
       "defaultValue": null,
-      "description": "Date format, that is displaying in toolbar",
+      "description": "Date format, that is displaying in toolbar.",
       "name": "toolbarFormat",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
@@ -1539,7 +1541,7 @@
     },
     "className": {
       "defaultValue": null,
-      "description": "className applied to the root component",
+      "description": "className applied to the root component.",
       "name": "className",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
@@ -1578,7 +1580,7 @@
     },
     "openPickerIcon": {
       "defaultValue": null,
-      "description": "Icon displaying for open picker button",
+      "description": "Icon displaying for open picker button.",
       "name": "openPickerIcon",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
@@ -1593,7 +1595,7 @@
       "defaultValue": {
         "value": "/\\dap/gi"
       },
-      "description": "Regular expression to detect \"accepted\" symbols",
+      "description": "Regular expression to detect \"accepted\" symbols.",
       "name": "acceptRegex",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
@@ -1606,7 +1608,7 @@
     },
     "InputAdornmentProps": {
       "defaultValue": null,
-      "description": "Props to pass to keyboard input adornment",
+      "description": "Props to pass to keyboard input adornment.",
       "name": "InputAdornmentProps",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
@@ -1619,7 +1621,7 @@
     },
     "OpenPickerButtonProps": {
       "defaultValue": null,
-      "description": "Props to pass to keyboard adornment button",
+      "description": "Props to pass to keyboard adornment button.",
       "name": "OpenPickerButtonProps",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
@@ -1632,7 +1634,7 @@
     },
     "rifmFormatter": {
       "defaultValue": null,
-      "description": "Custom formatter to be passed into Rifm component",
+      "description": "Custom formatter to be passed into Rifm component.",
       "name": "rifmFormatter",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
@@ -1647,7 +1649,7 @@
       "defaultValue": {
         "value": "false"
       },
-      "description": "Do not render open picker button (renders only text field with validation)",
+      "description": "Do not render open picker button (renders only text field with validation).",
       "name": "disableOpenPicker",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
@@ -1662,7 +1664,7 @@
       "defaultValue": {
         "value": "false"
       },
-      "description": "Disable mask on the keyboard, this should be used rarely. Consider passing proper mask for your format",
+      "description": "Disable mask on the keyboard, this should be used rarely. Consider passing proper mask for your format.",
       "name": "disableMaskedInput",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
@@ -1806,7 +1808,7 @@
     },
     "PopperProps": {
       "defaultValue": null,
-      "description": "Popper props passed to material-ui [Popper](https://material-ui.com/api/popper/#popper-api)",
+      "description": "Popper props passed to material-ui [Popper](https://material-ui.com/api/popper/#popper-api).",
       "name": "PopperProps",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/wrappers/DesktopPopperWrapper.tsx",
@@ -1819,7 +1821,7 @@
     },
     "TransitionComponent": {
       "defaultValue": null,
-      "description": "Custom component for [transition](https://material-ui.com/components/transitions/#transitioncomponent-prop)",
+      "description": "Custom component for [transition](https://material-ui.com/components/transitions/#transitioncomponent-prop).",
       "name": "TransitionComponent",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/wrappers/DesktopPopperWrapper.tsx",
@@ -1847,7 +1849,7 @@
     },
     "PopoverProps": {
       "defaultValue": null,
-      "description": "Popover props passed to material-ui Popover",
+      "description": "Popover props passed to material-ui Popover.",
       "name": "PopoverProps",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/wrappers/DesktopWrapper.tsx",
@@ -1862,7 +1864,7 @@
       "defaultValue": {
         "value": "\""
       },
-      "description": "Css media query when `Mobile` mode will be changed to `Desktop`\n@media (pointer: fine)\"\n@example \"\n@media (min-width: 720px)\" or theme.breakpoints.up(\"sm\")",
+      "description": "CSS media query when `Mobile` mode will be changed to `Desktop`.\n@media (pointer: fine)\"\n@example \"\n@media (min-width: 720px)\" or theme.breakpoints.up(\"sm\")",
       "name": "desktopModeMediaQuery",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/wrappers/ResponsiveWrapper.tsx",
@@ -1877,7 +1879,7 @@
   "DateTimePicker": {
     "hideTabs": {
       "defaultValue": null,
-      "description": "To show tabs",
+      "description": "To show tabs.",
       "name": "hideTabs",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/DateTimePicker/DateTimePicker.tsx",
@@ -1890,7 +1892,7 @@
     },
     "dateRangeIcon": {
       "defaultValue": null,
-      "description": "Date tab icon",
+      "description": "Date tab icon.",
       "name": "dateRangeIcon",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/DateTimePicker/DateTimePicker.tsx",
@@ -1903,7 +1905,7 @@
     },
     "timeIcon": {
       "defaultValue": null,
-      "description": "Time tab icon",
+      "description": "Time tab icon.",
       "name": "timeIcon",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/DateTimePicker/DateTimePicker.tsx",
@@ -1916,7 +1918,7 @@
     },
     "minDateTime": {
       "defaultValue": null,
-      "description": "Minimal selectable moment of time with binding to date, to set min time in each day use `minTime`",
+      "description": "Minimal selectable moment of time with binding to date, to set min time in each day use `minTime`.",
       "name": "minDateTime",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/DateTimePicker/DateTimePicker.tsx",
@@ -1929,7 +1931,7 @@
     },
     "maxDateTime": {
       "defaultValue": null,
-      "description": "Minimal selectable moment of time with binding to date, to set max time in each day use `maxTime`",
+      "description": "Minimal selectable moment of time with binding to date, to set max time in each day use `maxTime`.",
       "name": "maxDateTime",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/DateTimePicker/DateTimePicker.tsx",
@@ -1942,7 +1944,7 @@
     },
     "toolbarFormat": {
       "defaultValue": null,
-      "description": "Date format, that is displaying in toolbar\nDate format, that is displaying in toolbar",
+      "description": "Date format, that is displaying in toolbar.\nDate format, that is displaying in toolbar.",
       "name": "toolbarFormat",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/DateTimePicker/DateTimePicker.tsx",
@@ -1955,7 +1957,7 @@
     },
     "views": {
       "defaultValue": null,
-      "description": "Array of views to show",
+      "description": "Array of views to show.",
       "name": "views",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/Picker/SharedPickerProps.tsx",
@@ -1968,7 +1970,7 @@
     },
     "openTo": {
       "defaultValue": null,
-      "description": "First view to show",
+      "description": "First view to show.",
       "name": "openTo",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/Picker/SharedPickerProps.tsx",
@@ -2054,7 +2056,7 @@
     },
     "minTime": {
       "defaultValue": null,
-      "description": "Min time acceptable time. For input validation date part of passed object will be ignored if `disableTimeValidationIgnoreDatePart` not specified.",
+      "description": "Min time acceptable time.\nFor input validation date part of passed object will be ignored if `disableTimeValidationIgnoreDatePart` not specified.",
       "name": "minTime",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_helpers/time-utils.ts",
@@ -2067,7 +2069,7 @@
     },
     "maxTime": {
       "defaultValue": null,
-      "description": "Max time acceptable time. For input validation date part of passed object will be ignored if `disableTimeValidationIgnoreDatePart` not specified.",
+      "description": "Max time acceptable time.\nFor input validation date part of passed object will be ignored if `disableTimeValidationIgnoreDatePart` not specified.",
       "name": "maxTime",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_helpers/time-utils.ts",
@@ -2080,7 +2082,7 @@
     },
     "shouldDisableTime": {
       "defaultValue": null,
-      "description": "Dynamically check if time is disabled or not. If returns `false` appropriate time point will ot be acceptable.",
+      "description": "Dynamically check if time is disabled or not.\nIf returns `false` appropriate time point will ot be acceptable.",
       "name": "shouldDisableTime",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_helpers/time-utils.ts",
@@ -2110,7 +2112,7 @@
       "defaultValue": {
         "value": "false"
       },
-      "description": "Disable highlighting today date with a circle",
+      "description": "Disable highlighting today date with a circle.",
       "name": "disableHighlightToday",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Calendar/Day.tsx",
@@ -2125,7 +2127,7 @@
       "defaultValue": {
         "value": "false"
       },
-      "description": "Display disabled dates outside the current month",
+      "description": "Display disabled dates outside the current month.",
       "name": "showDaysOutsideCurrentMonth",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Calendar/Day.tsx",
@@ -2216,7 +2218,7 @@
     },
     "getViewSwitchingButtonText": {
       "defaultValue": null,
-      "description": "Get aria-label text for switching between views button",
+      "description": "Get aria-label text for switching between views button.",
       "name": "getViewSwitchingButtonText",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Calendar/CalendarHeader.tsx",
@@ -2229,7 +2231,7 @@
     },
     "shouldDisableDate": {
       "defaultValue": null,
-      "description": "Disable specific date",
+      "description": "Disable specific date.",
       "name": "shouldDisableDate",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_helpers/date-utils.ts",
@@ -2244,7 +2246,7 @@
       "defaultValue": {
         "value": "Date(1900-01-01)"
       },
-      "description": "Min selectable date",
+      "description": "Min selectable date.",
       "name": "minDate",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_helpers/date-utils.ts",
@@ -2259,7 +2261,7 @@
       "defaultValue": {
         "value": "Date(2100-01-01)"
       },
-      "description": "Max selectable date",
+      "description": "Max selectable date.",
       "name": "maxDate",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_helpers/date-utils.ts",
@@ -2274,7 +2276,7 @@
       "defaultValue": {
         "value": "false"
       },
-      "description": "Disable past dates",
+      "description": "Disable past dates.",
       "name": "disablePast",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_helpers/date-utils.ts",
@@ -2289,7 +2291,7 @@
       "defaultValue": {
         "value": "false"
       },
-      "description": "Disable future dates",
+      "description": "Disable future dates.",
       "name": "disableFuture",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_helpers/date-utils.ts",
@@ -2301,8 +2303,10 @@
       }
     },
     "reduceAnimations": {
-      "defaultValue": null,
-      "description": "Disable heavy animations @default /(android)/i.test(window.navigator.userAgent)",
+      "defaultValue": {
+        "value": "/(android)/i.test(window.navigator.userAgent)."
+      },
+      "description": "Disable heavy animations.",
       "name": "reduceAnimations",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Calendar/CalendarView.tsx",
@@ -2315,7 +2319,7 @@
     },
     "onMonthChange": {
       "defaultValue": null,
-      "description": "Callback firing on month change. Return promise to render spinner till it will not be resolved",
+      "description": "Callback firing on month change. Return promise to render spinner till it will not be resolved.",
       "name": "onMonthChange",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Calendar/CalendarView.tsx",
@@ -2328,7 +2332,7 @@
     },
     "renderDay": {
       "defaultValue": null,
-      "description": "Custom renderer for day. Check [DayComponentProps api](https://material-ui-pickers.dev/api/Day)",
+      "description": "Custom renderer for day. Check [DayComponentProps api](https://material-ui-pickers.dev/api/Day).",
       "name": "renderDay",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
@@ -2341,7 +2345,7 @@
     },
     "loadingIndicator": {
       "defaultValue": null,
-      "description": "Custom loading indicator",
+      "description": "Custom loading indicator.",
       "name": "loadingIndicator",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
@@ -2354,7 +2358,7 @@
     },
     "onYearChange": {
       "defaultValue": null,
-      "description": "Callback firing on year change",
+      "description": "Callback firing on year change.",
       "name": "onYearChange",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Calendar/YearSelection.tsx",
@@ -2367,7 +2371,7 @@
     },
     "shouldDisableYear": {
       "defaultValue": null,
-      "description": "Disable specific years dynamically. Works like `shouldDisableDate` but for year selection view.",
+      "description": "Disable specific years dynamically.\nWorks like `shouldDisableDate` but for year selection view..",
       "name": "shouldDisableYear",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Calendar/YearSelection.tsx",
@@ -2380,7 +2384,7 @@
     },
     "value": {
       "defaultValue": null,
-      "description": "Picker value",
+      "description": "Picker value.",
       "name": "value",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
@@ -2393,7 +2397,7 @@
     },
     "onChange": {
       "defaultValue": null,
-      "description": "onChange callback",
+      "description": "onChange callback.",
       "name": "onChange",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
@@ -2408,7 +2412,7 @@
       "defaultValue": {
         "value": "false"
       },
-      "description": "Auto accept date on selection",
+      "description": "Auto accept date on selection.",
       "name": "autoOk",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
@@ -2421,7 +2425,7 @@
     },
     "inputFormat": {
       "defaultValue": null,
-      "description": "Format string",
+      "description": "Format string.",
       "name": "inputFormat",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
@@ -2434,7 +2438,7 @@
     },
     "disabled": {
       "defaultValue": null,
-      "description": "Disable picker and text field",
+      "description": "Disable picker and text field.",
       "name": "disabled",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
@@ -2447,7 +2451,7 @@
     },
     "readOnly": {
       "defaultValue": null,
-      "description": "Make picker read only",
+      "description": "Make picker read only.",
       "name": "readOnly",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
@@ -2460,7 +2464,7 @@
     },
     "onAccept": {
       "defaultValue": null,
-      "description": "Callback fired when date is accepted",
+      "description": "Callback fired when date is accepted.",
       "name": "onAccept",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
@@ -2473,7 +2477,7 @@
     },
     "onOpen": {
       "defaultValue": null,
-      "description": "On open callback",
+      "description": "On open callback.",
       "name": "onOpen",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
@@ -2486,7 +2490,7 @@
     },
     "onClose": {
       "defaultValue": null,
-      "description": "On close callback",
+      "description": "On close callback.",
       "name": "onClose",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
@@ -2499,7 +2503,7 @@
     },
     "open": {
       "defaultValue": null,
-      "description": "Controlled picker open state",
+      "description": "Controlled picker open state.",
       "name": "open",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
@@ -2512,7 +2516,7 @@
     },
     "showToolbar": {
       "defaultValue": null,
-      "description": "Show toolbar even in desktop mode",
+      "description": "Show toolbar even in desktop mode.",
       "name": "showToolbar",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
@@ -2525,7 +2529,7 @@
     },
     "orientation": {
       "defaultValue": null,
-      "description": "Force rendering in particular orientation",
+      "description": "Force rendering in particular orientation.",
       "name": "orientation",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
@@ -2538,7 +2542,7 @@
     },
     "ToolbarComponent": {
       "defaultValue": null,
-      "description": "Component that will replace default toolbar renderer",
+      "description": "Component that will replace default toolbar renderer.",
       "name": "ToolbarComponent",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
@@ -2553,7 +2557,7 @@
       "defaultValue": {
         "value": "\"SELECT DATE\""
       },
-      "description": "Mobile picker title, displaying in the toolbar",
+      "description": "Mobile picker title, displaying in the toolbar.",
       "name": "toolbarTitle",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
@@ -2568,7 +2572,7 @@
       "defaultValue": {
         "value": "\"–\""
       },
-      "description": "Mobile picker date value placeholder, displaying if `value` === `null`",
+      "description": "Mobile picker date value placeholder, displaying if `value` === `null`.",
       "name": "toolbarPlaceholder",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
@@ -2581,7 +2585,7 @@
     },
     "className": {
       "defaultValue": null,
-      "description": "className applied to the root component",
+      "description": "className applied to the root component.",
       "name": "className",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
@@ -2620,7 +2624,7 @@
     },
     "openPickerIcon": {
       "defaultValue": null,
-      "description": "Icon displaying for open picker button",
+      "description": "Icon displaying for open picker button.",
       "name": "openPickerIcon",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
@@ -2635,7 +2639,7 @@
       "defaultValue": {
         "value": "/\\dap/gi"
       },
-      "description": "Regular expression to detect \"accepted\" symbols",
+      "description": "Regular expression to detect \"accepted\" symbols.",
       "name": "acceptRegex",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
@@ -2648,7 +2652,7 @@
     },
     "InputAdornmentProps": {
       "defaultValue": null,
-      "description": "Props to pass to keyboard input adornment",
+      "description": "Props to pass to keyboard input adornment.",
       "name": "InputAdornmentProps",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
@@ -2661,7 +2665,7 @@
     },
     "OpenPickerButtonProps": {
       "defaultValue": null,
-      "description": "Props to pass to keyboard adornment button",
+      "description": "Props to pass to keyboard adornment button.",
       "name": "OpenPickerButtonProps",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
@@ -2674,7 +2678,7 @@
     },
     "rifmFormatter": {
       "defaultValue": null,
-      "description": "Custom formatter to be passed into Rifm component",
+      "description": "Custom formatter to be passed into Rifm component.",
       "name": "rifmFormatter",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
@@ -2689,7 +2693,7 @@
       "defaultValue": {
         "value": "false"
       },
-      "description": "Do not render open picker button (renders only text field with validation)",
+      "description": "Do not render open picker button (renders only text field with validation).",
       "name": "disableOpenPicker",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
@@ -2704,7 +2708,7 @@
       "defaultValue": {
         "value": "false"
       },
-      "description": "Disable mask on the keyboard, this should be used rarely. Consider passing proper mask for your format",
+      "description": "Disable mask on the keyboard, this should be used rarely. Consider passing proper mask for your format.",
       "name": "disableMaskedInput",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
@@ -2848,7 +2852,7 @@
     },
     "PopperProps": {
       "defaultValue": null,
-      "description": "Popper props passed to material-ui [Popper](https://material-ui.com/api/popper/#popper-api)",
+      "description": "Popper props passed to material-ui [Popper](https://material-ui.com/api/popper/#popper-api).",
       "name": "PopperProps",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/wrappers/DesktopPopperWrapper.tsx",
@@ -2861,7 +2865,7 @@
     },
     "TransitionComponent": {
       "defaultValue": null,
-      "description": "Custom component for [transition](https://material-ui.com/components/transitions/#transitioncomponent-prop)",
+      "description": "Custom component for [transition](https://material-ui.com/components/transitions/#transitioncomponent-prop).",
       "name": "TransitionComponent",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/wrappers/DesktopPopperWrapper.tsx",
@@ -2889,7 +2893,7 @@
     },
     "PopoverProps": {
       "defaultValue": null,
-      "description": "Popover props passed to material-ui Popover",
+      "description": "Popover props passed to material-ui Popover.",
       "name": "PopoverProps",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/wrappers/DesktopWrapper.tsx",
@@ -2904,7 +2908,7 @@
       "defaultValue": {
         "value": "\""
       },
-      "description": "Css media query when `Mobile` mode will be changed to `Desktop`\n@media (pointer: fine)\"\n@example \"\n@media (min-width: 720px)\" or theme.breakpoints.up(\"sm\")",
+      "description": "CSS media query when `Mobile` mode will be changed to `Desktop`.\n@media (pointer: fine)\"\n@example \"\n@media (min-width: 720px)\" or theme.breakpoints.up(\"sm\")",
       "name": "desktopModeMediaQuery",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/wrappers/ResponsiveWrapper.tsx",
@@ -2917,6 +2921,907 @@
     }
   },
   "DateRangePicker": {
+    "startText": {
+      "defaultValue": {
+        "value": "\"Start\""
+      },
+      "description": "Text for start input label and toolbar placeholder",
+      "name": "startText",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/DateRangePicker/DateRangePicker.tsx",
+        "name": "BaseDateRangePickerProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "endText": {
+      "defaultValue": {
+        "value": "\"end\""
+      },
+      "description": "Text for end input label and toolbar placeholder",
+      "name": "endText",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/DateRangePicker/DateRangePicker.tsx",
+        "name": "BaseDateRangePickerProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "disableAutoMonthSwitching": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "if `true` after selecting `start` date  calendar will not automatically switch to the month of `end` date",
+      "name": "disableAutoMonthSwitching",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/DateRangePicker/DateRangePickerView.tsx",
+        "name": "ExportedDateRangePickerViewProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "disableHighlightToday": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "Disable highlighting today date with a circle.",
+      "name": "disableHighlightToday",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/Day.tsx",
+        "name": "DayProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "showDaysOutsideCurrentMonth": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "Display disabled dates outside the current month.",
+      "name": "showDaysOutsideCurrentMonth",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/Day.tsx",
+        "name": "DayProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "leftArrowIcon": {
+      "defaultValue": null,
+      "description": "Left arrow icon",
+      "name": "leftArrowIcon",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/ArrowSwitcher.tsx",
+        "name": "ExportedArrowSwitcherProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "rightArrowIcon": {
+      "defaultValue": null,
+      "description": "Right arrow icon",
+      "name": "rightArrowIcon",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/ArrowSwitcher.tsx",
+        "name": "ExportedArrowSwitcherProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "leftArrowButtonProps": {
+      "defaultValue": null,
+      "description": "Props to pass to left arrow button",
+      "name": "leftArrowButtonProps",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/ArrowSwitcher.tsx",
+        "name": "ExportedArrowSwitcherProps"
+      },
+      "required": false,
+      "type": {
+        "name": "Partial<IconButtonProps>"
+      }
+    },
+    "rightArrowButtonProps": {
+      "defaultValue": null,
+      "description": "Props to pass to right arrow button",
+      "name": "rightArrowButtonProps",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/ArrowSwitcher.tsx",
+        "name": "ExportedArrowSwitcherProps"
+      },
+      "required": false,
+      "type": {
+        "name": "Partial<IconButtonProps>"
+      }
+    },
+    "leftArrowButtonText": {
+      "defaultValue": null,
+      "description": "Left arrow icon aria-label text",
+      "name": "leftArrowButtonText",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/ArrowSwitcher.tsx",
+        "name": "ExportedArrowSwitcherProps"
+      },
+      "required": false,
+      "type": {
+        "name": "string"
+      }
+    },
+    "rightArrowButtonText": {
+      "defaultValue": null,
+      "description": "Right arrow icon aria-label text",
+      "name": "rightArrowButtonText",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/ArrowSwitcher.tsx",
+        "name": "ExportedArrowSwitcherProps"
+      },
+      "required": false,
+      "type": {
+        "name": "string"
+      }
+    },
+    "getViewSwitchingButtonText": {
+      "defaultValue": null,
+      "description": "Get aria-label text for switching between views button.",
+      "name": "getViewSwitchingButtonText",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/CalendarHeader.tsx",
+        "name": "CalendarHeaderProps"
+      },
+      "required": false,
+      "type": {
+        "name": "(currentView: DatePickerView) => string"
+      }
+    },
+    "shouldDisableDate": {
+      "defaultValue": null,
+      "description": "Disable specific date.",
+      "name": "shouldDisableDate",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_helpers/date-utils.ts",
+        "name": "DateValidationProps"
+      },
+      "required": false,
+      "type": {
+        "name": "(day: DateIOType) => boolean"
+      }
+    },
+    "minDate": {
+      "defaultValue": {
+        "value": "Date(1900-01-01)"
+      },
+      "description": "Min selectable date.",
+      "name": "minDate",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_helpers/date-utils.ts",
+        "name": "DateValidationProps"
+      },
+      "required": false,
+      "type": {
+        "name": "any"
+      }
+    },
+    "maxDate": {
+      "defaultValue": {
+        "value": "Date(2100-01-01)"
+      },
+      "description": "Max selectable date.",
+      "name": "maxDate",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_helpers/date-utils.ts",
+        "name": "DateValidationProps"
+      },
+      "required": false,
+      "type": {
+        "name": "any"
+      }
+    },
+    "disablePast": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "Disable past dates.",
+      "name": "disablePast",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_helpers/date-utils.ts",
+        "name": "DateValidationProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "disableFuture": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "Disable future dates.",
+      "name": "disableFuture",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_helpers/date-utils.ts",
+        "name": "DateValidationProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "reduceAnimations": {
+      "defaultValue": {
+        "value": "/(android)/i.test(window.navigator.userAgent)."
+      },
+      "description": "Disable heavy animations.",
+      "name": "reduceAnimations",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/CalendarView.tsx",
+        "name": "CalendarViewProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "onMonthChange": {
+      "defaultValue": null,
+      "description": "Callback firing on month change. Return promise to render spinner till it will not be resolved.",
+      "name": "onMonthChange",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/CalendarView.tsx",
+        "name": "CalendarViewProps"
+      },
+      "required": false,
+      "type": {
+        "name": "(date: DateIOType) => void | Promise<void>"
+      }
+    },
+    "renderDay": {
+      "defaultValue": null,
+      "description": "Custom renderer for day. Check [DayComponentProps api](https://material-ui-pickers.dev/api/Day).",
+      "name": "renderDay",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
+        "name": "ExportedCalendarProps"
+      },
+      "required": false,
+      "type": {
+        "name": "(day: DateIOType, selectedDates: DateIOType[], DayComponentProps: DayProps) => Element"
+      }
+    },
+    "allowKeyboardControl": {
+      "defaultValue": {
+        "value": "currentWrapper !== 'static'"
+      },
+      "description": "Enables keyboard listener for moving between days in calendar.",
+      "name": "allowKeyboardControl",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
+        "name": "ExportedCalendarProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "loadingIndicator": {
+      "defaultValue": null,
+      "description": "Custom loading indicator.",
+      "name": "loadingIndicator",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
+        "name": "ExportedCalendarProps"
+      },
+      "required": false,
+      "type": {
+        "name": "Element"
+      }
+    },
+    "shouldDisableYear": {
+      "defaultValue": null,
+      "description": "Disable specific years dynamically.\nWorks like `shouldDisableDate` but for year selection view..",
+      "name": "shouldDisableYear",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/YearSelection.tsx",
+        "name": "ExportedYearSelectionProps"
+      },
+      "required": false,
+      "type": {
+        "name": "(day: DateIOType) => boolean"
+      }
+    },
+    "calendars": {
+      "defaultValue": {
+        "value": "2"
+      },
+      "description": "How many calendars render on **desktop** DateRangePicker",
+      "name": "calendars",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/DateRangePicker/DateRangePickerViewDesktop.tsx",
+        "name": "ExportedDesktopDateRangeCalendarProps"
+      },
+      "required": false,
+      "type": {
+        "name": "2 | 3 | 1"
+      }
+    },
+    "className": {
+      "defaultValue": null,
+      "description": "className applied to the root component.",
+      "name": "className",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
+        "name": "BasePickerProps"
+      },
+      "required": false,
+      "type": {
+        "name": "string"
+      }
+    },
+    "disabled": {
+      "defaultValue": null,
+      "description": "Disable picker and text field.",
+      "name": "disabled",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
+        "name": "BasePickerProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "autoOk": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "Auto accept date on selection.",
+      "name": "autoOk",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
+        "name": "BasePickerProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "inputFormat": {
+      "defaultValue": null,
+      "description": "Format string.",
+      "name": "inputFormat",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
+        "name": "BasePickerProps"
+      },
+      "required": false,
+      "type": {
+        "name": "string"
+      }
+    },
+    "readOnly": {
+      "defaultValue": null,
+      "description": "Make picker read only.",
+      "name": "readOnly",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
+        "name": "BasePickerProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "onAccept": {
+      "defaultValue": null,
+      "description": "Callback fired when date is accepted.",
+      "name": "onAccept",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
+        "name": "BasePickerProps"
+      },
+      "required": false,
+      "type": {
+        "name": "(date: DateIOType) => void) | ((date: DateRange) => void"
+      }
+    },
+    "onOpen": {
+      "defaultValue": null,
+      "description": "On open callback.",
+      "name": "onOpen",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
+        "name": "BasePickerProps"
+      },
+      "required": false,
+      "type": {
+        "name": "() => void"
+      }
+    },
+    "onClose": {
+      "defaultValue": null,
+      "description": "On close callback.",
+      "name": "onClose",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
+        "name": "BasePickerProps"
+      },
+      "required": false,
+      "type": {
+        "name": "() => void"
+      }
+    },
+    "open": {
+      "defaultValue": null,
+      "description": "Controlled picker open state.",
+      "name": "open",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
+        "name": "BasePickerProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "showToolbar": {
+      "defaultValue": null,
+      "description": "Show toolbar even in desktop mode.",
+      "name": "showToolbar",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
+        "name": "BasePickerProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "orientation": {
+      "defaultValue": null,
+      "description": "Force rendering in particular orientation.",
+      "name": "orientation",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
+        "name": "BasePickerProps"
+      },
+      "required": false,
+      "type": {
+        "name": "\"portrait\" | \"landscape\""
+      }
+    },
+    "ToolbarComponent": {
+      "defaultValue": null,
+      "description": "Component that will replace default toolbar renderer.",
+      "name": "ToolbarComponent",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
+        "name": "BasePickerProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ComponentClass<ToolbarComponentProps<any, DateTimePickerView>, any> | FunctionComponent<ToolbarComponentProps<any, DateTimePickerView>>"
+      }
+    },
+    "toolbarTitle": {
+      "defaultValue": {
+        "value": "\"SELECT DATE\""
+      },
+      "description": "Mobile picker title, displaying in the toolbar.",
+      "name": "toolbarTitle",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
+        "name": "BasePickerProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "toolbarPlaceholder": {
+      "defaultValue": {
+        "value": "\"–\""
+      },
+      "description": "Mobile picker date value placeholder, displaying if `value` === `null`.",
+      "name": "toolbarPlaceholder",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
+        "name": "BasePickerProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "toolbarFormat": {
+      "defaultValue": null,
+      "description": "Date format, that is displaying in toolbar.",
+      "name": "toolbarFormat",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
+        "name": "BasePickerProps"
+      },
+      "required": false,
+      "type": {
+        "name": "string"
+      }
+    },
+    "onError": {
+      "defaultValue": null,
+      "description": "Callback that fired when input value or new `value` prop validation returns **new** validation error (or value is valid after error).\nIn case of validation error detected `reason` prop return non-null value and `TextField` must be displayed in `error` state.\nThis can be used to render appropriate form error.\n\n[Read the guide](https://next.material-ui-pickers.dev/guides/forms) about form integration and error displaying.\n@DateIOType",
+      "name": "onError",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/hooks/useValidation.ts",
+        "name": "ValidationProps"
+      },
+      "required": false,
+      "type": {
+        "name": "(reason: DateRangeValidationError, value: RangeInput) => void"
+      }
+    },
+    "renderInput": {
+      "defaultValue": null,
+      "description": "The `renderInput` prop allows you to customize the rendered input.\nThe `startProps` and `endProps` arguments of this render prop contains props of [TextField](https://material-ui.com/api/text-field/#textfield-api),\nthat you need to forward to the range start/end inputs respectively.\nPay specific attention to the `ref` and `inputProps` keys.\n@example ```jsx\n<DateRangePicker\nrenderInput={(startProps, endProps) => (\n  <>\n    <TextField {...startProps} />\n    <Typography> to <Typography>\n    <TextField {...endProps} />\n  </>;\n)}\n/>\n````",
+      "name": "renderInput",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/DateRangePicker/DateRangePickerInput.tsx",
+        "name": "ExportedDateRangePickerInputProps"
+      },
+      "required": true,
+      "type": {
+        "name": "(props: any) => ReactElement<any, string | ... | (new (props: any) => Component<any, any, any>)> | null) | (new (props: any) => Component<...>"
+      }
+    },
+    "onChange": {
+      "defaultValue": null,
+      "description": "onChange callback.",
+      "name": "onChange",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
+        "name": "BasePickerProps"
+      },
+      "required": true,
+      "type": {
+        "name": "(date: DateRange, keyboardInputValue?: string) => void"
+      }
+    },
+    "mask": {
+      "defaultValue": null,
+      "description": "Custom mask. Can be used to override generate from format. (e.g. __/__/____ __:__ or __/__/____ __:__ _M)",
+      "name": "mask",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
+        "name": "DateInputProps"
+      },
+      "required": false,
+      "type": {
+        "name": "string"
+      }
+    },
+    "value": {
+      "defaultValue": null,
+      "description": "Picker value.",
+      "name": "value",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
+        "name": "BasePickerProps"
+      },
+      "required": true,
+      "type": {
+        "name": "RangeInput"
+      }
+    },
+    "openPickerIcon": {
+      "defaultValue": null,
+      "description": "Icon displaying for open picker button.",
+      "name": "openPickerIcon",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
+        "name": "DateInputProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "acceptRegex": {
+      "defaultValue": {
+        "value": "/\\dap/gi"
+      },
+      "description": "Regular expression to detect \"accepted\" symbols.",
+      "name": "acceptRegex",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
+        "name": "DateInputProps"
+      },
+      "required": false,
+      "type": {
+        "name": "RegExp"
+      }
+    },
+    "InputAdornmentProps": {
+      "defaultValue": null,
+      "description": "Props to pass to keyboard input adornment.",
+      "name": "InputAdornmentProps",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
+        "name": "DateInputProps"
+      },
+      "required": false,
+      "type": {
+        "name": "Partial<InputAdornmentProps>"
+      }
+    },
+    "OpenPickerButtonProps": {
+      "defaultValue": null,
+      "description": "Props to pass to keyboard adornment button.",
+      "name": "OpenPickerButtonProps",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
+        "name": "DateInputProps"
+      },
+      "required": false,
+      "type": {
+        "name": "Partial<IconButtonProps>"
+      }
+    },
+    "rifmFormatter": {
+      "defaultValue": null,
+      "description": "Custom formatter to be passed into Rifm component.",
+      "name": "rifmFormatter",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
+        "name": "DateInputProps"
+      },
+      "required": false,
+      "type": {
+        "name": "(str: string) => string"
+      }
+    },
+    "disableOpenPicker": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "Do not render open picker button (renders only text field with validation).",
+      "name": "disableOpenPicker",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
+        "name": "DateInputProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "disableMaskedInput": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "Disable mask on the keyboard, this should be used rarely. Consider passing proper mask for your format.",
+      "name": "disableMaskedInput",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
+        "name": "DateInputProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "getOpenDialogAriaText": {
+      "defaultValue": {
+        "value": "(value, utils) => `Choose date, selected date is ${utils.format(utils.date(value), 'fullDate')}`"
+      },
+      "description": "Get aria-label text for control that opens picker dialog. Aria-label text must include selected date.",
+      "name": "getOpenDialogAriaText",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
+        "name": "DateInputProps"
+      },
+      "required": false,
+      "type": {
+        "name": "(value: any, utils: MuiPickersAdapter) => string"
+      }
+    },
+    "dateAdapter": {
+      "defaultValue": null,
+      "description": "Allows to pass configured date-io adapter directly. More info [here](https://material-ui-pickers.dev/guides/date-adapter-passing)\n```jsx\ndateAdapter={new DateFnsAdapter({ locale: ruLocale })}\n```",
+      "name": "dateAdapter",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/withDateAdapterProp.tsx",
+        "name": "WithDateAdapterProps"
+      },
+      "required": false,
+      "type": {
+        "name": "MuiPickersAdapter"
+      }
+    },
+    "DialogProps": {
+      "defaultValue": null,
+      "description": "Props to be passed directly to material-ui Dialog",
+      "name": "DialogProps",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
+        "name": "InnerMobileWrapperProps"
+      },
+      "required": false,
+      "type": {
+        "name": "Partial<MuiDialogProps>"
+      }
+    },
+    "okText": {
+      "defaultValue": {
+        "value": "\"OK\""
+      },
+      "description": "\"OK\" button text.",
+      "name": "okText",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "cancelText": {
+      "defaultValue": {
+        "value": "\"CANCEL\""
+      },
+      "description": "\"CANCEL\" Text message",
+      "name": "cancelText",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "clearText": {
+      "defaultValue": {
+        "value": "\"CLEAR\""
+      },
+      "description": "\"CLEAR\" Text message",
+      "name": "clearText",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "todayText": {
+      "defaultValue": {
+        "value": "\"TODAY\""
+      },
+      "description": "\"TODAY\" Text message",
+      "name": "todayText",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "clearable": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "If `true`, it shows the clear action in the picker dialog.",
+      "name": "clearable",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "showTodayButton": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "If `true`, the today button will be displayed. **Note** that `showClearButton` has a higher priority.",
+      "name": "showTodayButton",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "PopperProps": {
+      "defaultValue": null,
+      "description": "Popper props passed to material-ui [Popper](https://material-ui.com/api/popper/#popper-api).",
+      "name": "PopperProps",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/wrappers/DesktopPopperWrapper.tsx",
+        "name": "InnerDesktopPopperWrapperProps"
+      },
+      "required": false,
+      "type": {
+        "name": "Partial<PopperProps>"
+      }
+    },
+    "TransitionComponent": {
+      "defaultValue": null,
+      "description": "Custom component for [transition](https://material-ui.com/components/transitions/#transitioncomponent-prop).",
+      "name": "TransitionComponent",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/wrappers/DesktopPopperWrapper.tsx",
+        "name": "InnerDesktopPopperWrapperProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ComponentClass<TransitionProps, any> | FunctionComponent<TransitionProps>"
+      }
+    },
+    "displayStaticWrapperAs": {
+      "defaultValue": {
+        "value": "\"static\""
+      },
+      "description": "Force static wrapper inner components to be rendered in mobile or desktop mode",
+      "name": "displayStaticWrapperAs",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/wrappers/StaticWrapper.tsx",
+        "name": "StaticWrapperProps"
+      },
+      "required": false,
+      "type": {
+        "name": "\"desktop\" | \"mobile\" | \"static\""
+      }
+    },
+    "PopoverProps": {
+      "defaultValue": null,
+      "description": "Popover props passed to material-ui Popover.",
+      "name": "PopoverProps",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/wrappers/DesktopWrapper.tsx",
+        "name": "InnerDesktopWrapperProps"
+      },
+      "required": false,
+      "type": {
+        "name": "Partial<PopoverProps>"
+      }
+    },
+    "desktopModeMediaQuery": {
+      "defaultValue": {
+        "value": "\""
+      },
+      "description": "CSS media query when `Mobile` mode will be changed to `Desktop`.\n@media (pointer: fine)\"\n@example \"\n@media (min-width: 720px)\" or theme.breakpoints.up(\"sm\")",
+      "name": "desktopModeMediaQuery",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/wrappers/ResponsiveWrapper.tsx",
+        "name": "ResponsiveWrapperProps"
+      },
+      "required": false,
+      "type": {
+        "name": "string"
+      }
+    }
+  },
+  "DateRangeDelimiter": {
     "classes": {
       "defaultValue": null,
       "description": "Override or extend the styles applied to the component.",
@@ -2934,7 +3839,7 @@
   "Calendar": {
     "onChange": {
       "defaultValue": null,
-      "description": "Calendar onChange",
+      "description": "Calendar onChange.",
       "name": "onChange",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
@@ -2947,7 +3852,7 @@
     },
     "renderDay": {
       "defaultValue": null,
-      "description": "Custom renderer for day. Check [DayComponentProps api](https://material-ui-pickers.dev/api/Day)",
+      "description": "Custom renderer for day. Check [DayComponentProps api](https://material-ui-pickers.dev/api/Day).",
       "name": "renderDay",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
@@ -2962,7 +3867,7 @@
       "defaultValue": {
         "value": "currentWrapper !== 'static'"
       },
-      "description": "Enables keyboard listener for moving between days in calendar",
+      "description": "Enables keyboard listener for moving between days in calendar.",
       "name": "allowKeyboardControl",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
@@ -2975,7 +3880,7 @@
     },
     "loadingIndicator": {
       "defaultValue": null,
-      "description": "Custom loading indicator",
+      "description": "Custom loading indicator.",
       "name": "loadingIndicator",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
@@ -2990,7 +3895,7 @@
       "defaultValue": {
         "value": "false"
       },
-      "description": "Disable highlighting today date with a circle",
+      "description": "Disable highlighting today date with a circle.",
       "name": "disableHighlightToday",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Calendar/Day.tsx",
@@ -3005,7 +3910,7 @@
       "defaultValue": {
         "value": "false"
       },
-      "description": "Display disabled dates outside the current month",
+      "description": "Display disabled dates outside the current month.",
       "name": "showDaysOutsideCurrentMonth",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Calendar/Day.tsx",
@@ -3020,7 +3925,7 @@
   "Day": {
     "day": {
       "defaultValue": null,
-      "description": "The date to show",
+      "description": "The date to show.",
       "name": "day",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Calendar/Day.tsx",
@@ -3035,7 +3940,7 @@
       "defaultValue": {
         "value": false
       },
-      "description": "Is focused by keyboard navigation",
+      "description": "Is focused by keyboard navigation.",
       "name": "focused",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Calendar/Day.tsx",
@@ -3050,7 +3955,7 @@
       "defaultValue": {
         "value": false
       },
-      "description": "Can be focused by tabbing in",
+      "description": "Can be focused by tabbing in.",
       "name": "focusable",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Calendar/Day.tsx",
@@ -3063,7 +3968,7 @@
     },
     "inCurrentMonth": {
       "defaultValue": null,
-      "description": "Is day in current month",
+      "description": "Is day in current month.",
       "name": "inCurrentMonth",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Calendar/Day.tsx",
@@ -3076,7 +3981,7 @@
     },
     "isAnimating": {
       "defaultValue": null,
-      "description": "Is switching month animation going on right now",
+      "description": "Is switching month animation going on right now.",
       "name": "isAnimating",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Calendar/Day.tsx",
@@ -3106,7 +4011,7 @@
       "defaultValue": {
         "value": false
       },
-      "description": "Disabled?",
+      "description": "Disabled?.",
       "name": "disabled",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Calendar/Day.tsx",
@@ -3134,7 +4039,7 @@
     },
     "allowKeyboardControl": {
       "defaultValue": null,
-      "description": "Is keyboard control and focus management enabled",
+      "description": "Is keyboard control and focus management enabled.",
       "name": "allowKeyboardControl",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Calendar/Day.tsx",
@@ -3149,7 +4054,7 @@
       "defaultValue": {
         "value": false
       },
-      "description": "Disable margin between days, useful for displaying range of days",
+      "description": "Disable margin between days, useful for displaying range of days.",
       "name": "disableMargin",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Calendar/Day.tsx",
@@ -3164,7 +4069,7 @@
       "defaultValue": {
         "value": false
       },
-      "description": "Display disabled dates outside the current month",
+      "description": "Display disabled dates outside the current month.",
       "name": "showDaysOutsideCurrentMonth",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Calendar/Day.tsx",
@@ -3179,7 +4084,7 @@
       "defaultValue": {
         "value": false
       },
-      "description": "Disable highlighting today date with a circle",
+      "description": "Disable highlighting today date with a circle.",
       "name": "disableHighlightToday",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Calendar/Day.tsx",
@@ -3194,7 +4099,7 @@
   "ClockView": {
     "date": {
       "defaultValue": null,
-      "description": "Selected date",
+      "description": "Selected date.",
       "name": "date",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
@@ -3207,7 +4112,7 @@
     },
     "type": {
       "defaultValue": null,
-      "description": "Clock type",
+      "description": "Clock type.",
       "name": "type",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
@@ -3220,7 +4125,7 @@
     },
     "onDateChange": {
       "defaultValue": null,
-      "description": "On change date without moving between views",
+      "description": "On change date without moving between views.",
       "name": "onDateChange",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
@@ -3233,7 +4138,7 @@
     },
     "onChange": {
       "defaultValue": null,
-      "description": "On change callback",
+      "description": "On change callback.",
       "name": "onChange",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
@@ -3246,7 +4151,7 @@
     },
     "getHoursClockNumberText": {
       "defaultValue": null,
-      "description": "Get clock number aria-text for hours",
+      "description": "Get clock number aria-text for hours.",
       "name": "getHoursClockNumberText",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
@@ -3259,7 +4164,7 @@
     },
     "getMinutesClockNumberText": {
       "defaultValue": null,
-      "description": "Get clock number aria-text for minutes",
+      "description": "Get clock number aria-text for minutes.",
       "name": "getMinutesClockNumberText",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
@@ -3272,7 +4177,7 @@
     },
     "getSecondsClockNumberText": {
       "defaultValue": null,
-      "description": "Get clock number aria-text for seconds",
+      "description": "Get clock number aria-text for seconds.",
       "name": "getSecondsClockNumberText",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/views/Clock/ClockView.tsx",
@@ -3345,7 +4250,7 @@
     },
     "minTime": {
       "defaultValue": null,
-      "description": "Min time acceptable time. For input validation date part of passed object will be ignored if `disableTimeValidationIgnoreDatePart` not specified.",
+      "description": "Min time acceptable time.\nFor input validation date part of passed object will be ignored if `disableTimeValidationIgnoreDatePart` not specified.",
       "name": "minTime",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_helpers/time-utils.ts",
@@ -3358,7 +4263,7 @@
     },
     "maxTime": {
       "defaultValue": null,
-      "description": "Max time acceptable time. For input validation date part of passed object will be ignored if `disableTimeValidationIgnoreDatePart` not specified.",
+      "description": "Max time acceptable time.\nFor input validation date part of passed object will be ignored if `disableTimeValidationIgnoreDatePart` not specified.",
       "name": "maxTime",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_helpers/time-utils.ts",
@@ -3371,7 +4276,7 @@
     },
     "shouldDisableTime": {
       "defaultValue": null,
-      "description": "Dynamically check if time is disabled or not. If returns `false` appropriate time point will ot be acceptable.",
+      "description": "Dynamically check if time is disabled or not.\nIf returns `false` appropriate time point will ot be acceptable.",
       "name": "shouldDisableTime",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_helpers/time-utils.ts",
