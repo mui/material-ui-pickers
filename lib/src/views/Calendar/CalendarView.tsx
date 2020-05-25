@@ -1,6 +1,4 @@
 import * as React from 'react';
-import Grid from '@material-ui/core/Grid';
-import CircularProgress from '@material-ui/core/CircularProgress';
 import { MonthSelection } from './MonthSelection';
 import { DatePickerView } from '../../DatePicker';
 import { useCalendarState } from './useCalendarState';
@@ -73,8 +71,11 @@ export const useStyles = makeStyles(
     viewTransitionContainer: {
       overflowY: 'auto',
     },
-    gridFullHeight: {
+    fullHeightContainer: {
       flex: 1,
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
       minHeight: VIEW_HEIGHT - 60,
       height: '100%',
     },
@@ -203,7 +204,9 @@ export const CalendarView: React.FC<CalendarViewProps> = withDefaultProps(
 
             {view === 'date' &&
               (loading ? (
-                <LoadingComponent />
+                <div className={classes.fullHeightContainer}>
+                  <LoadingComponent />
+                </div>
               ) : (
                 <Calendar
                   {...other}

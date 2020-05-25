@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import * as React from 'react';
 import { Badge } from '@material-ui/core';
 import { TextField } from '@material-ui/core';
 import { DatePicker, Day } from '@material-ui/pickers';
@@ -9,23 +9,25 @@ function getRandomNumber(min, max) {
 }
 
 function ServerRequest() {
-  const [selectedDays, setSelectedDays] = useState([1, 2, 15]);
-  const [selectedDate, handleDateChange] = useState(new Date());
+  const savedRequestRef = React.useRef(null);
+  const [selectedDays, setSelectedDays] = React.useState([1, 2, 15]);
+  const [selectedDate, handleDateChange] = React.useState(new Date());
 
-  const handleMonthChange = async () => {
+  const handleMonthChange = () => {
+    window.clearTimeout(savedRequestRef.current)
+    setSelectedDays(null);
+
     // just select random days to simulate server side based data
-    return new Promise(resolve => {
-      setTimeout(() => {
-        setSelectedDays([1, 2, 3].map(() => getRandomNumber(1, 28)));
-        resolve();
-      }, 1000);
-    });
+    savedRequestRef.current = setTimeout(() => {
+      setSelectedDays([1, 2, 3].map(() => getRandomNumber(1, 28)));
+    }, 1000);
   };
 
   return (
     <>
       <DatePicker
         value={selectedDate}
+        loading={selectedDays === null}
         onChange={date => handleDateChange(date)}
         onMonthChange={handleMonthChange}
         renderInput={props => <TextField {...props} />}
