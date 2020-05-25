@@ -4,12 +4,12 @@ import { DatePickerView } from '../../DatePicker';
 import { useCalendarState } from './useCalendarState';
 import { makeStyles } from '@material-ui/core/styles';
 import { useUtils } from '../../_shared/hooks/useUtils';
-import { VIEW_HEIGHT } from '../../constants/dimensions';
 import { MaterialUiPickersDate } from '../../typings/date';
 import { FadeTransitionGroup } from './FadeTransitionGroup';
 import { Calendar, ExportedCalendarProps } from './Calendar';
 import { PickerOnChangeFn } from '../../_shared/hooks/useViews';
 import { withDefaultProps } from '../../_shared/withDefaultProps';
+import {  DAY_SIZE, DAY_MARGIN } from '../../constants/dimensions';
 import { CalendarHeader, CalendarHeaderProps } from './CalendarHeader';
 import { YearSelection, ExportedYearSelectionProps } from './YearSelection';
 import { defaultMinDate, defaultMaxDate } from '../../constants/prop-types';
@@ -76,7 +76,7 @@ export const useStyles = makeStyles(
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      minHeight: VIEW_HEIGHT - 60,
+      minHeight: (DAY_SIZE + DAY_MARGIN * 4) * 7,
       height: '100%',
     },
   },

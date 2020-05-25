@@ -4,23 +4,29 @@ import { TextField } from '@material-ui/core';
 import { DatePicker, Day } from '@material-ui/pickers';
 import { makeJSDateObject } from '../../../utils/helpers';
 
-function getRandomNumber(min, max) {
-  return Math.round(Math.random() * (max - min) + min);
-}
-
 function ServerRequest() {
-  const savedRequestRef = React.useRef(null);
+  const requestAbortController = React.useRef(null);
   const [selectedDays, setSelectedDays] = React.useState([1, 2, 15]);
   const [selectedDate, handleDateChange] = React.useState(new Date());
 
-  const handleMonthChange = () => {
-    window.clearTimeout(savedRequestRef.current)
-    setSelectedDays(null);
+  const handleMonthChange = date => {
+    if (requestAbortController.current) {
+      requestAbortController.current.abort();
+    }
 
-    // just select random days to simulate server side based data
-    savedRequestRef.current = setTimeout(() => {
-      setSelectedDays([1, 2, 3].map(() => getRandomNumber(1, 28)));
-    }, 1000);
+    setSelectedDays(null)
+
+    const controller = new AbortController();
+    fetch(`/fakeApi/randomDate?month=${date.toString()}`, {
+      signal: controller.signal,
+    })
+      .then(res => res.json())
+      .then(({ daysToHighlight }) => {
+        setSelectedDays(daysToHighlight);
+      })
+      .catch(() => console.log("Ooopsy, something went wrong"))
+
+    requestAbortController.current = controller;
   };
 
   return (
