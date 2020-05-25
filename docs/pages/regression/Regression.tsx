@@ -59,18 +59,8 @@ function Regression() {
           {...sharedProps}
           mask="__"
         />
-        <MobileDatePicker
-          renderInput={props => <TextField {...props} />}
-          disabled
-          {...makeRenderInputProp({ id: 'disabled' })}
-          {...sharedProps}
-        />
-        <MobileDatePicker
-          renderInput={props => <TextField {...props} />}
-          readOnly
-          {...makeRenderInputProp({ id: 'readonly' })}
-          {...sharedProps}
-        />
+        <MobileDatePicker disabled {...makeRenderInputProp({ id: 'disabled' })} {...sharedProps} />
+        <MobileDatePicker readOnly {...makeRenderInputProp({ id: 'readonly' })} {...sharedProps} />
       </Grid>
 
       <Typography align="center" variant="h4" component="span" gutterBottom>
