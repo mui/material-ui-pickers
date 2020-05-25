@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import lightBlue from '@material-ui/core/colors/lightBlue';
 import { TextField } from '@material-ui/core';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core';
-import { DatePicker, MaterialUiPickersDate } from '@material-ui/pickers';
+import { DatePicker, DatePickerProps } from '@material-ui/pickers';
 
 const materialTheme = createMuiTheme({
   overrides: {
@@ -40,7 +40,7 @@ const materialTheme = createMuiTheme({
 });
 
 function CssOverrides() {
-  const [selectedDate, handleDateChange] = useState<MaterialUiPickersDate>(new Date());
+  const [selectedDate, handleDateChange] = useState<DatePickerProps['value']>(new Date());
 
   return (
     <ThemeProvider theme={materialTheme}>
