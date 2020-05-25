@@ -70,7 +70,7 @@
     "sinon": "^9.0.2",
     "styled-jsx": "^3.3.0",
     "ts-loader": "^6.0.2",
-    "typescript": "^3.8.3",
+    "typescript": "^3.9.3",
     "yup": "^0.28.5"
   },
   "devDependencies": {
