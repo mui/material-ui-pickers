@@ -30,10 +30,6 @@ export interface ExportedCalendarProps
    * @default currentWrapper !== 'static'
    */
   allowKeyboardControl?: boolean;
-  /**
-   * Custom loading indicator.
-   */
-  loadingIndicator?: JSX.Element;
 }
 
 export interface CalendarProps extends ExportedCalendarProps {

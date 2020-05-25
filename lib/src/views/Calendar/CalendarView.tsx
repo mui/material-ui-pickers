@@ -40,14 +40,25 @@ export interface CalendarViewProps
   changeView: (view: DatePickerView) => void;
   onChange: PickerOnChangeFn;
   /**
+   * If `true` renders `LoadingComponent` in calendar instead of calendar view.
+   * Can be used to preload information and show it in calendar.
+   * @default false
+   */
+  loading?: boolean;
+  /**
+   * Component displaying when passed `loading` true.
+   * @default () => "..."
+   */
+  renderLoading?: React.ComponentType;
+  /**
    * Disable heavy animations.
    * @default /(android)/i.test(window.navigator.userAgent).
    */
   reduceAnimations?: boolean;
   /**
-   * Callback firing on month change. Return promise to render spinner till it will not be resolved @DateIOType.
+   * Callback firing on month change.
    */
-  onMonthChange?: (date: MaterialUiPickersDate) => void | Promise<void>;
+  onMonthChange?: (date: MaterialUiPickersDate) => void;
 }
 
 export type ExportedCalendarViewProps = Omit<
@@ -85,12 +96,13 @@ export const CalendarView: React.FC<CalendarViewProps> = withDefaultProps(
     minDate: __minDate,
     maxDate: __maxDate,
     reduceAnimations = defaultReduceAnimations,
-    loadingIndicator = <CircularProgress data-mui-test="loading-progress" />,
     shouldDisableDate,
     allowKeyboardControl: __allowKeyboardControlProp,
     disablePast,
     disableFuture,
     shouldDisableYear,
+    loading,
+    renderLoading: LoadingComponent = () => <span data-mui-test="loading-progress">...</span>,
     ...other
   }) => {
     const utils = useUtils();
@@ -102,7 +114,6 @@ export const CalendarView: React.FC<CalendarViewProps> = withDefaultProps(
     const maxDate = __maxDate || utils.date(defaultMaxDate);
 
     const {
-      loadingQueue,
       calendarState,
       changeFocusedDay,
       changeMonth,
@@ -191,15 +202,8 @@ export const CalendarView: React.FC<CalendarViewProps> = withDefaultProps(
             )}
 
             {view === 'date' &&
-              (loadingQueue > 0 ? (
-                <Grid
-                  className={classes.gridFullHeight}
-                  container
-                  alignItems="center"
-                  justify="center"
-                >
-                  {loadingIndicator}
-                </Grid>
+              (loading ? (
+                <LoadingComponent />
               ) : (
                 <Calendar
                   {...other}
