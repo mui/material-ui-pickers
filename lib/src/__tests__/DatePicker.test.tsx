@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Picker from '../Picker/Picker';
+import CalendarSkeleton from '../CalendarSkeleton';
 import { ReactWrapper } from 'enzyme';
 import { TextField } from '@material-ui/core';
 import { MaterialUiPickersDate } from '../typings/date';
@@ -181,13 +182,13 @@ describe('e2e - DatePicker loading prop', () => {
         loading
         renderInput={props => <TextField {...props} />}
         onChange={jest.fn()}
-        renderLoading={() => <div data-mui-test="custom-loading" />}
+        renderLoading={() => <CalendarSkeleton data-mui-test="custom-loading" />}
         value={utilsToUse.date('2018-01-01T00:00:00.000Z')}
       />
     );
 
     expect(component.find('[data-mui-test="loading-progress"]').length).toBe(0);
-    expect(component.find('[data-mui-test="custom-loading"]').length).toBe(1);
+    expect(component.find('div[data-mui-test="custom-loading"]').length).toBe(1);
   });
 });
 

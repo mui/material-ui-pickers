@@ -3,6 +3,7 @@ import { Badge } from '@material-ui/core';
 import { TextField } from '@material-ui/core';
 import { DatePicker, Day } from '@material-ui/pickers';
 import { makeJSDateObject } from '../../../utils/helpers';
+import { CalendarSkeleton } from '@material-ui/pickers/CalendarSkeleton';
 
 function ServerRequest() {
   const requestAbortController = React.useRef(null);
@@ -29,7 +30,7 @@ function ServerRequest() {
     })
       .then(res => res.json())
       .then(({ daysToHighlight }) => setHighlightedDays(daysToHighlight))
-      .catch(() => console.log('Ooopsy, something went wrong'));
+      .catch(() => console.log('Wow, you are switching months too quickly 🐕'));
 
     requestAbortController.current = controller;
   };
@@ -41,14 +42,20 @@ function ServerRequest() {
         loading={highlightedDays === null}
         onChange={date => handleDateChange(date)}
         onMonthChange={handleMonthChange}
+        // loading
         renderInput={props => <TextField {...props} />}
+        renderLoading={() => <CalendarSkeleton />}
         renderDay={(day, selectedDate, DayComponentProps) => {
           const date = makeJSDateObject(day); // skip this step, it is required to support date libs
           const isSelected =
             DayComponentProps.inCurrentMonth && highlightedDays.includes(date.getDate());
 
           return (
-            <Badge overlap="circle" badgeContent={isSelected ? '🌚' : undefined}>
+            <Badge
+              key={date.toString()}
+              overlap="circle"
+              badgeContent={isSelected ? '🌚' : undefined}
+            >
               <Day {...DayComponentProps} />
             </Badge>
           );

@@ -9,7 +9,7 @@ import { FadeTransitionGroup } from './FadeTransitionGroup';
 import { Calendar, ExportedCalendarProps } from './Calendar';
 import { PickerOnChangeFn } from '../../_shared/hooks/useViews';
 import { withDefaultProps } from '../../_shared/withDefaultProps';
-import {  DAY_SIZE, DAY_MARGIN } from '../../constants/dimensions';
+import { DAY_SIZE, DAY_MARGIN } from '../../constants/dimensions';
 import { CalendarHeader, CalendarHeaderProps } from './CalendarHeader';
 import { YearSelection, ExportedYearSelectionProps } from './YearSelection';
 import { defaultMinDate, defaultMaxDate } from '../../constants/prop-types';
@@ -37,17 +37,6 @@ export interface CalendarViewProps
   views: DatePickerView[];
   changeView: (view: DatePickerView) => void;
   onChange: PickerOnChangeFn;
-  /**
-   * If `true` renders `LoadingComponent` in calendar instead of calendar view.
-   * Can be used to preload information and show it in calendar.
-   * @default false
-   */
-  loading?: boolean;
-  /**
-   * Component displaying when passed `loading` true.
-   * @default () => "..."
-   */
-  renderLoading?: React.ComponentType;
   /**
    * Disable heavy animations.
    * @default /(android)/i.test(window.navigator.userAgent).
@@ -103,7 +92,7 @@ export const CalendarView: React.FC<CalendarViewProps> = withDefaultProps(
     disableFuture,
     shouldDisableYear,
     loading,
-    renderLoading: LoadingComponent = () => <span data-mui-test="loading-progress">...</span>,
+    renderLoading,
     ...other
   }) => {
     const utils = useUtils();
@@ -202,24 +191,21 @@ export const CalendarView: React.FC<CalendarViewProps> = withDefaultProps(
               />
             )}
 
-            {view === 'date' &&
-              (loading ? (
-                <div className={classes.fullHeightContainer}>
-                  <LoadingComponent />
-                </div>
-              ) : (
-                <Calendar
-                  {...other}
-                  {...calendarState}
-                  onMonthSwitchingAnimationEnd={onMonthSwitchingAnimationEnd}
-                  changeFocusedDay={changeFocusedDay}
-                  reduceAnimations={reduceAnimations}
-                  date={date}
-                  onChange={onChange}
-                  isDateDisabled={isDateDisabled}
-                  allowKeyboardControl={allowKeyboardControl}
-                />
-              ))}
+            {view === 'date' && (
+              <Calendar
+                {...other}
+                {...calendarState}
+                onMonthSwitchingAnimationEnd={onMonthSwitchingAnimationEnd}
+                changeFocusedDay={changeFocusedDay}
+                reduceAnimations={reduceAnimations}
+                date={date}
+                onChange={onChange}
+                isDateDisabled={isDateDisabled}
+                allowKeyboardControl={allowKeyboardControl}
+                loading={loading}
+                renderLoading={renderLoading}
+              />
+            )}
           </div>
         </FadeTransitionGroup>
       </>
