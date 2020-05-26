@@ -7,6 +7,7 @@ function getRandomNumber(min: number, max: number) {
 
 export default function(req: NowRequest, res: NowResponse) {
   const { month } = req.query;
+
   if (!month || typeof month !== 'string') {
     res.status(400);
     return res.json({
@@ -18,7 +19,7 @@ export default function(req: NowRequest, res: NowResponse) {
   if (!isValid(date)) {
     res.status(422);
     return res.json({
-      reason: 'cannot parsable month value',
+      reason: 'cannot parse month value',
     });
   }
 
