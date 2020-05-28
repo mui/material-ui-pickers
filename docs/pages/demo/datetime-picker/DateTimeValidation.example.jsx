@@ -13,6 +13,7 @@ function DateTimePickerValidation() {
         value={selectedDate}
         onChange={date => handleDateChange(date)}
         minDateTime={new Date()}
+        onError={console.log}
       />
 
       <DateTimePicker

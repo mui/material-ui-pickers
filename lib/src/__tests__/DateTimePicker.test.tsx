@@ -18,31 +18,6 @@ const format = process.env.UTILS === 'moment' ? 'MM/DD/YYYY HH:mm' : 'MM/dd/yyyy
 
 describe('DateTimePicker', () => {
   const render = createClientRender();
-
-  describe('prop: mask', () => {
-    it('should take the mask prop into account', () => {
-      const { getByRole } = render(
-        <LocalizationProvider dateAdapter={DateFnsUtils} locale={DateFnsLocaleDe}>
-          <DesktopDateTimePicker
-            renderInput={props => <TextField autoFocus {...props} />}
-            mask="__.__.____ __:__"
-            onChange={() => {}}
-            value={null}
-          />
-        </LocalizationProvider>
-      );
-      const textbox = getByRole('textbox');
-      fireEvent.change(textbox, {
-        target: {
-          value: '12',
-        },
-      });
-      expect(textbox.value).toBe('12.');
-    });
-  });
-});
-
-describe('e2e - DateTimePicker', () => {
   let component: ReactWrapper<DateTimePickerProps>;
 
   const onCloseMock = jest.fn();
@@ -70,6 +45,28 @@ describe('e2e - DateTimePicker', () => {
     expect(component.find('WithStyles(ForwardRef(Dialog))').prop('open')).toBeTruthy();
   });
 
+  it('prop: mask – should take the mask prop into account', () => {
+    const { getByRole } = render(
+      <LocalizationProvider dateAdapter={DateFnsUtils} locale={DateFnsLocaleDe}>
+        <DesktopDateTimePicker
+          renderInput={props => <TextField autoFocus {...props} />}
+          mask="__.__.____ __:__"
+          onChange={() => {}}
+          value={null}
+        />
+      </LocalizationProvider>
+    );
+
+    const textbox = getByRole('textbox') as HTMLInputElement;
+    fireEvent.change(textbox, {
+      target: {
+        value: '12',
+      },
+    });
+
+    expect(textbox.value).toBe('12.');
+  });
+
   it('Should change internal state on update', () => {
     component.find('input').simulate('click');
     component
@@ -83,7 +80,44 @@ describe('e2e - DateTimePicker', () => {
         .at(0)
         .text()
     ).toBe('2018');
-    // expect(component.find('ToolbarButton').at(1).text()).toBe('Jan 3');
+  });
+
+  it('prop: minDateTime – hours is disabled by date part', () => {
+    const { getByLabelText } = render(
+      <DesktopDateTimePicker
+        open
+        openTo="hours"
+        dateAdapter={new DateFnsUtils()}
+        renderInput={props => <TextField autoFocus {...props} />}
+        mask="__.__.____ __:__"
+        onChange={() => {}}
+        value={utilsToUse.date('2018-01-01T00:00:00.000Z')}
+        minDateTime={utilsToUse.date('2018-01-01T12:30:00.000Z')}
+      />,
+      { strict: false }
+    );
+
+    expect(getByLabelText('11 hours').getAttribute('aria-disabled')).toBe("true");
+  });
+
+  it('prop: maxDateTime – minutes is disabled by date part', () => {
+    const { getByLabelText } = render(
+      <DesktopDateTimePicker
+        open
+        openTo="minutes"
+        dateAdapter={new DateFnsUtils()}
+        renderInput={props => <TextField autoFocus {...props} />}
+        mask="__.__.____ __:__"
+        onChange={() => {}}
+        value={utilsToUse.date('2018-01-01T12:00:00.000Z')}
+        minDateTime={utilsToUse.date('2018-01-01T12:30:00.000Z')}
+      />,
+      { strict: false }
+    );
+
+
+    expect(getByLabelText('25 minutes').getAttribute('aria-disabled')).toBe("true");
+    expect(getByLabelText('35 minutes').getAttribute('aria-disabled')).toBe("false");
   });
 });
 
