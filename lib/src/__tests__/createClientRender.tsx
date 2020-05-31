@@ -3,6 +3,8 @@
  */
 import * as React from 'react';
 import PropTypes from 'prop-types';
+import { UtilClassToUse } from './test-utils';
+import { LocalizationProvider } from '../LocalizationProvider';
 import {
   act,
   buildQueries,
@@ -77,7 +79,13 @@ export function createClientRender(globalOptions: { strict?: boolean } = {}) {
   return function configuredClientRender(element: any, options: { strict?: boolean } = {}) {
     const { strict = globalStrict, ...localOptions } = options;
 
-    return clientRender(element, { ...localOptions, strict });
+    return clientRender(
+      <LocalizationProvider dateAdapter={UtilClassToUse}>{element}</LocalizationProvider>,
+      {
+        ...localOptions,
+        strict,
+      }
+    );
   };
 }
 

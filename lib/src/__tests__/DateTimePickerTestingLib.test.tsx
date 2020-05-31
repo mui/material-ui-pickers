@@ -5,7 +5,7 @@ import { DesktopDateTimePicker } from '../DateTimePicker';
 import { createClientRender } from './createClientRender';
 import { fireEvent, screen } from '@testing-library/react';
 
-describe('DatePicker testing lib', () => {
+describe('DateTimePicker testing lib', () => {
   const render = createClientRender({ strict: false });
 
   it('prop: mask – should take the mask prop into account', () => {
