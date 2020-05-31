@@ -4,7 +4,7 @@ import { TextField } from '@material-ui/core';
 import { screen } from '@testing-library/react';
 import { createClientRender } from './createClientRender';
 
-describe('DatePicker testing lib', () => {
+describe('<DatePicker />', () => {
   const render = createClientRender({ strict: false });
   it('Allows to select edge years from list', () => {
     render(
