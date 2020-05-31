@@ -49,8 +49,6 @@ export const YearSelection: React.FC<YearSelectionProps> = ({
   onYearChange,
   minDate,
   maxDate,
-  disablePast,
-  disableFuture,
   isDateDisabled,
   shouldDisableYear,
   changeFocusedDay,
@@ -129,11 +127,11 @@ export const YearSelection: React.FC<YearSelectionProps> = ({
               allowKeyboardControl={allowKeyboardControl}
               focused={yearNumber === focusedYear}
               ref={selected ? selectedYearRef : undefined}
-              disabled={Boolean(
-                (disablePast && utils.isBeforeYear(year, now)) ||
-                  (disableFuture && utils.isAfterYear(year, now)) ||
-                  (shouldDisableYear && shouldDisableYear(year))
-              )}
+              disabled={
+                // Make sure that final date will be enabled
+                isDateDisabled(utils.setYear(date || now, yearNumber)) ||
+                (shouldDisableYear && shouldDisableYear(year))
+              }
             >
               {utils.format(year, 'year')}
             </Year>
