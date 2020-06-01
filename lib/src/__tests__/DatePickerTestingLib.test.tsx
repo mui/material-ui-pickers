@@ -13,12 +13,12 @@ describe('<DatePicker />', () => {
         value={null}
         onChange={jest.fn()}
         views={['year']}
-        minDate="2000-01-01"
-        maxDate="2010-01-01"
+        minDate={new Date('2000-01-01')}
+        maxDate={new Date('2010-01-01')}
         renderInput={props => <TextField {...props} />}
       />
     );
 
-    expect(screen.getByText('2010').parentElement).toBeDisabled();
+    expect(screen.getByRole('button', { name: '2010' })).toBeDisabled();
   });
 });

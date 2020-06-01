@@ -130,7 +130,7 @@ export const YearSelection: React.FC<YearSelectionProps> = ({
               focused={yearNumber === focusedYear}
               ref={selected ? selectedYearRef : undefined}
               disabled={
-                // Make sure that final date will be enabled
+                // Make sure that final date (with month and day included) will be enabled
                 isDateDisabled(utils.setYear(selectedDate, yearNumber)) ||
                 (shouldDisableYear && shouldDisableYear(year))
               }
