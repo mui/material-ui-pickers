@@ -1,9 +1,10 @@
 import * as React from 'react';
 import clsx from 'clsx';
+import Grow from '@material-ui/core/Grow';
 import Paper, { PaperProps } from '@material-ui/core/Paper';
 import Popper, { PopperProps } from '@material-ui/core/Popper';
 import TrapFocus, { TrapFocusProps } from '@material-ui/core/Unstable_TrapFocus';
-import { Grow, useForkRef } from '@material-ui/core';
+import { useForkRef } from '@material-ui/core/utils'
 import { makeStyles } from '@material-ui/core/styles';
 import { useGlobalKeyDown, keycode } from './hooks/useKeyDown';
 import { IS_TOUCH_DEVICE_MEDIA } from '../constants/dimensions';

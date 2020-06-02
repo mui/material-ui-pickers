@@ -11,12 +11,12 @@ import { ExportedPickerPopperProps, PickerPopper } from '../_shared/PickerPopper
 
 export interface InnerDesktopTooltipWrapperProps extends ExportedPickerPopperProps {}
 
-export interface DesktopPopperWrapperProps
+export interface DesktopTooltipWrapperProps
   extends InnerDesktopTooltipWrapperProps,
     WrapperProps,
     Partial<InnerMobileWrapperProps & StaticWrapperProps & InnerDesktopWrapperProps> {}
 
-export const DesktopTooltipWrapper: React.FC<DesktopPopperWrapperProps> = ({
+export const DesktopTooltipWrapper: React.FC<DesktopTooltipWrapperProps> = ({
   open,
   children,
   PopperProps,

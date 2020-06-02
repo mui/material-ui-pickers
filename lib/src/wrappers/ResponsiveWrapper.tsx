@@ -31,7 +31,6 @@ export const makeResponsiveWrapper = (
     showTodayButton,
     clearable,
     DialogProps,
-    PopoverProps,
     PopperProps,
     TransitionComponent,
     displayStaticWrapperAs,
@@ -43,7 +42,6 @@ export const makeResponsiveWrapper = (
       <DesktopWrapperComponent
         PopperProps={PopperProps}
         TransitionComponent={TransitionComponent}
-        PopoverProps={PopoverProps}
         {...other}
       />
     ) : (
