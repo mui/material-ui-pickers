@@ -9,14 +9,14 @@ import { executeInTheNextEventLoopTick } from '../_helpers/utils';
 import { useGlobalKeyDown, keycode } from '../_shared/hooks/useKeyDown';
 import { ExportedPickerPopperProps, PickerPopper } from '../_shared/PickerPopper';
 
-export interface InnerDesktopPopperWrapperProps extends ExportedPickerPopperProps {}
+export interface InnerDesktopTooltipWrapperProps extends ExportedPickerPopperProps {}
 
 export interface DesktopPopperWrapperProps
-  extends InnerDesktopPopperWrapperProps,
+  extends InnerDesktopTooltipWrapperProps,
     WrapperProps,
     Partial<InnerMobileWrapperProps & StaticWrapperProps & InnerDesktopWrapperProps> {}
 
-export const DesktopPopperWrapper: React.FC<DesktopPopperWrapperProps> = ({
+export const DesktopTooltipWrapper: React.FC<DesktopPopperWrapperProps> = ({
   open,
   children,
   PopperProps,
@@ -57,6 +57,7 @@ export const DesktopPopperWrapper: React.FC<DesktopPopperWrapperProps> = ({
         TransitionComponent={TransitionComponent}
         PopperProps={PopperProps}
         onBlur={handleBlur}
+        onClose={onDismiss}
       >
         {children}
       </PickerPopper>

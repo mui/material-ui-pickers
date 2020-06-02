@@ -5,7 +5,9 @@ import Popper, { PopperProps } from '@material-ui/core/Popper';
 import TrapFocus, { TrapFocusProps } from '@material-ui/core/Unstable_TrapFocus';
 import { Grow, useForkRef } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import { useGlobalKeyDown, keycode } from './hooks/useKeyDown';
 import { IS_TOUCH_DEVICE_MEDIA } from '../constants/dimensions';
+import { executeInTheNextEventLoopTick } from '../_helpers/utils';
 import { TransitionProps } from '@material-ui/core/transitions/transition';
 
 export interface ExportedPickerPopperProps {
@@ -24,6 +26,8 @@ export interface PickerPopperProps extends ExportedPickerPopperProps, PaperProps
   TrapFocusProps?: Partial<TrapFocusProps>;
   anchorEl: PopperProps['anchorEl'];
   open: PopperProps['open'];
+  onClose: () => void;
+  canClose?: () => boolean;
 }
 
 export const useStyles = makeStyles(
@@ -56,11 +60,28 @@ export const PickerPopper: React.FC<PickerPopperProps> = ({
   innerRef = null,
   anchorEl,
   children,
+  onClose,
+  canClose,
   ...other
 }) => {
   const classes = useStyles();
   const paperRef = React.useRef<HTMLElement>(null);
   const handlePopperRef = useForkRef(paperRef, innerRef);
+
+  useGlobalKeyDown(open, {
+    [keycode.Esc]: onClose,
+  });
+
+  const handleBlur = () => {
+    // document.activeElement is updating on the next tick after `blur` called
+    executeInTheNextEventLoopTick(() => {
+      if (paperRef.current?.contains(document.activeElement) || (canClose && canClose())) {
+        return;
+      }
+
+      onClose();
+    });
+  };
 
   return (
     <Popper
@@ -75,9 +96,9 @@ export const PickerPopper: React.FC<PickerPopperProps> = ({
       {({ TransitionProps, placement }) => (
         <TrapFocus
           open={open}
-          disableAutoFocus
-          disableEnforceFocus
-          isEnabled={() => role === 'dialog'}
+          disableAutoFocus={role === 'tooltip'}
+          disableEnforceFocus={role === 'tooltip'}
+          isEnabled={() => true}
           getDoc={() => paperRef.current?.ownerDocument ?? document}
         >
           <TransitionComponent {...TransitionProps} timeout={350}>
@@ -88,6 +109,7 @@ export const PickerPopper: React.FC<PickerPopperProps> = ({
               className={clsx(classes.paper, {
                 [classes.topTransition]: placement === 'top',
               })}
+              onBlur={handleBlur}
               {...other}
             >
               {children}
