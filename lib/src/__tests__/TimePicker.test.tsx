@@ -139,7 +139,7 @@ describe('e2e - TimePicker with seconds', () => {
   });
 });
 
-describe('e2e - Timepicker view navigation', () => {
+describe.skip('e2e - Timepicker view navigation', () => {
   let component: ReactWrapper<TimePickerProps>;
 
   beforeEach(() => {
