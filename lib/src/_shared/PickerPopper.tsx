@@ -28,7 +28,6 @@ export interface PickerPopperProps extends ExportedPickerPopperProps, PaperProps
   anchorEl: PopperProps['anchorEl'];
   open: PopperProps['open'];
   onClose: () => void;
-  canClose?: () => boolean;
 }
 
 export const useStyles = makeStyles(
@@ -62,7 +61,6 @@ export const PickerPopper: React.FC<PickerPopperProps> = ({
   anchorEl,
   children,
   onClose,
-  canClose,
   ...other
 }) => {
   const classes = useStyles();
@@ -76,7 +74,7 @@ export const PickerPopper: React.FC<PickerPopperProps> = ({
   const handleBlur = () => {
     // document.activeElement is updating on the next tick after `blur` called
     executeInTheNextEventLoopTick(() => {
-      if (paperRef.current?.contains(document.activeElement) || (canClose && canClose())) {
+      if (paperRef.current?.contains(document.activeElement)) {
         return;
       }
 

@@ -6,7 +6,6 @@ import { InnerDesktopWrapperProps } from './DesktopWrapper';
 import { WrapperVariantContext } from './WrapperVariantContext';
 import { KeyboardDateInput } from '../_shared/KeyboardDateInput';
 import { executeInTheNextEventLoopTick } from '../_helpers/utils';
-import { useGlobalKeyDown, keycode } from '../_shared/hooks/useKeyDown';
 import { ExportedPickerPopperProps, PickerPopper } from '../_shared/PickerPopper';
 
 export interface InnerDesktopTooltipWrapperProps extends ExportedPickerPopperProps {}
@@ -27,10 +26,6 @@ export const DesktopTooltipWrapper: React.FC<DesktopTooltipWrapperProps> = ({
 }) => {
   const inputRef = React.useRef<HTMLDivElement>(null);
   const popperRef = React.useRef<HTMLElement>(null);
-
-  useGlobalKeyDown(open, {
-    [keycode.Esc]: onDismiss,
-  });
 
   const handleBlur = () => {
     executeInTheNextEventLoopTick(() => {
