@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Picker from '../Picker/Picker';
 import CalendarSkeleton from '../CalendarSkeleton';
 import { ReactWrapper } from 'enzyme';
 import { TextField } from '@material-ui/core';
@@ -8,7 +7,6 @@ import { mount, utilsToUse, mountPickerWithState } from './test-utils';
 import {
   DatePicker,
   MobileDatePicker,
-  DesktopDatePicker,
   DatePickerProps,
   StaticDatePicker,
 } from '../DatePicker/DatePicker';
