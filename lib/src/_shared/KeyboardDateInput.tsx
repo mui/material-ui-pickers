@@ -104,7 +104,6 @@ export const KeyboardDateInput: React.FunctionComponent<KeyboardDateInputProps> 
           onChange={onChange}
           variant={inputVariant as any}
           InputProps={{
-            ...InputProps,
             [`${position}Adornment`]: (
               <InputAdornment position={position} {...InputAdornmentProps}>
                 <IconButton disabled={disabled} {...KeyboardButtonProps} onClick={onOpen}>
@@ -112,6 +111,7 @@ export const KeyboardDateInput: React.FunctionComponent<KeyboardDateInputProps> 
                 </IconButton>
               </InputAdornment>
             ),
+            ...InputProps,
           }}
         />
       )}
