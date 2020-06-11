@@ -29,7 +29,7 @@ Will be rendered to modal dialog on mobile and textfield with popover on desktop
 #### Responsiveness
 
 Date/Time pickers experience is extremely different on mobile and desktop. Here is how components will look on different devices.
-The default `Datepicker` component is responsive, which means that `Mobile` or `Desktop` mode will be rendered according to device viewport.
+The default `Datepicker` component is responsive, which means that `Mobile` or `Desktop` mode will be rendered according to pointer support of the device. If the pointer is touch, it uses the `Mobile` mode. If the pointer is mouse, it uses the `Desktop` mode.
 
 <Example source={DatePickers} />
 
