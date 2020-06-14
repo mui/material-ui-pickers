@@ -65,7 +65,7 @@
     "react": "^16.13.0",
     "react-docgen-typescript": "^1.16.5",
     "react-dom": "^16.13.0",
-    "react-jss": "^8.6.1",
+    "react-jss": "^10.3.0",
     "react-kawaii": "^0.16.0",
     "react-markdown": "^4.3.1",
     "remark-slug": "^6.0.0",
