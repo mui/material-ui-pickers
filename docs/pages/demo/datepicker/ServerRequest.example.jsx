@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Badge } from '@material-ui/core';
 import { TextField } from '@material-ui/core';
-import { DatePicker, Day } from '@material-ui/pickers';
+import { DatePicker, Day, Month } from '@material-ui/pickers';
 import { makeJSDateObject } from '../../../utils/helpers';
 import { CalendarSkeleton } from '@material-ui/pickers/CalendarSkeleton';
 
@@ -45,6 +45,9 @@ function ServerRequest() {
         // loading
         renderInput={props => <TextField {...props} />}
         renderLoading={() => <CalendarSkeleton />}
+        renderMonth={(month, MonthComponentProps) => {
+          return <Month {...MonthComponentProps} />;
+        }}
         renderDay={(day, selectedDate, DayComponentProps) => {
           const date = makeJSDateObject(day); // skip this step, it is required to support date libs
           const isSelected =
