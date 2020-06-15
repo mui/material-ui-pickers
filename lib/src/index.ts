@@ -20,6 +20,8 @@ export { CalendarView } from './views/Calendar/CalendarView';
 
 export { Day } from './views/Calendar/Day';
 
+export { Month } from './views/Calendar/Month';
+
 export { ClockView } from './views/Clock/ClockView';
 
 export { Clock } from './views/Clock/Clock';
