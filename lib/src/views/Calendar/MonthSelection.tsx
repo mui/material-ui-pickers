@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Month from './Month';
+import Month, { MonthProps } from './Month';
 import { makeStyles } from '@material-ui/core/styles';
 import { useUtils } from '../../_shared/hooks/useUtils';
 import { ParsableDate } from '../../constants/prop-types';
@@ -13,6 +13,7 @@ export interface MonthSelectionProps {
   disablePast?: boolean | null | undefined;
   disableFuture?: boolean | null | undefined;
   onMonthChange?: (date: MaterialUiPickersDate) => void | Promise<void>;
+  renderMonth?: (date: MaterialUiPickersDate, monthProps: MonthProps) => JSX.Element;
 }
 
 export const useStyles = makeStyles(
@@ -35,6 +36,7 @@ export const MonthSelection: React.FC<MonthSelectionProps> = ({
   date,
   onMonthChange,
   onChange,
+  renderMonth,
 }) => {
   const utils = useUtils();
   const classes = useStyles();
@@ -77,17 +79,16 @@ export const MonthSelection: React.FC<MonthSelectionProps> = ({
         const monthNumber = utils.getMonth(month);
         const monthText = utils.format(month, 'monthShort');
 
-        return (
-          <Month
-            key={monthText}
-            value={monthNumber}
-            selected={monthNumber === currentMonth}
-            onSelect={onMonthSelect}
-            disabled={shouldDisableMonth(month)}
-          >
-            {monthText}
-          </Month>
-        );
+        const monthProps = {
+          key: monthText,
+          value: monthNumber,
+          selected: monthNumber === currentMonth,
+          onSelect: onMonthSelect,
+          disabled: shouldDisableMonth(month),
+          children: monthText,
+        };
+
+        return renderMonth ? renderMonth(month, monthProps) : <Month {...monthProps} />;
       })}
     </div>
   );
