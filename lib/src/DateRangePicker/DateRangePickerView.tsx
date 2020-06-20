@@ -67,6 +67,8 @@ export const DateRangePickerView: React.FC<DateRangePickerViewProps> = ({
   endText,
   className,
   DateInputProps,
+  toolbarTitle,
+  toolbarFormat,
   ...other
 }) => {
   const now = useNow();
@@ -201,6 +203,8 @@ export const DateRangePickerView: React.FC<DateRangePickerViewProps> = ({
           setCurrentlySelectingRangeEnd={setCurrentlySelectingRangeEnd}
           startText={startText}
           endText={endText}
+          toolbarTitle={toolbarTitle}
+          toolbarFormat={toolbarFormat}
         />
       )}
 
