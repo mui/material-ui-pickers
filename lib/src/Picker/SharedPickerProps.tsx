@@ -25,7 +25,7 @@ export interface SharedPickerProps<
   toggleMobileKeyboardView: () => void;
   DateInputProps: TInputProps;
   date: TDateValue;
-  onDateChange: PickerOnChangeFn;
+  onDateChange: PickerOnChangeFn<TDateValue>;
 }
 
 export interface WithViewsProps<T extends AnyPickerView> {

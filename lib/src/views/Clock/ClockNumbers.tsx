@@ -2,14 +2,13 @@ import * as React from 'react';
 import ClockNumber from './ClockNumber';
 import { IUtils } from '@date-io/core/IUtils';
 import { MaterialUiPickersDate } from '../../typings/date';
-import { PickerOnChangeFn } from '../../_shared/hooks/useViews';
 import { PickerSelectionState } from '../../_shared/hooks/usePickerState';
 
 interface GetHourNumbersOptions {
   ampm: boolean;
   utils: IUtils<MaterialUiPickersDate>;
   date: MaterialUiPickersDate;
-  onChange: PickerOnChangeFn;
+  onChange: (value: number, isFinish: PickerSelectionState) => void;
   getClockNumberText: (hour: string) => string;
   isDisabled: (value: number) => boolean;
 }

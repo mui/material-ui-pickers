@@ -183,7 +183,7 @@ const _ClockView: React.FC<ClockViewProps> = ({
   const viewProps = React.useMemo(() => {
     switch (type) {
       case 'hours':
-        const handleHoursChange: PickerOnChangeFn = (value, isFinish) => {
+        const handleHoursChange = (value: number, isFinish?: PickerSelectionState) => {
           const valueWithMeridiem = convertValueToMeridiem(value, meridiemMode, Boolean(ampm));
           onChange(utils.setHours(dateOrNow, valueWithMeridiem), isFinish);
         };
@@ -203,7 +203,7 @@ const _ClockView: React.FC<ClockViewProps> = ({
 
       case 'minutes':
         const minutesValue = utils.getMinutes(dateOrNow);
-        const handleMinutesChange: PickerOnChangeFn = (value, isFinish) => {
+        const handleMinutesChange = (value: number, isFinish?: PickerSelectionState) => {
           onChange(utils.setMinutes(dateOrNow, value), isFinish);
         };
 

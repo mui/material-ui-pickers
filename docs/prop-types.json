@@ -3898,7 +3898,7 @@
       },
       "required": true,
       "type": {
-        "name": "PickerOnChangeFn"
+        "name": "PickerOnChangeFn<any>"
       }
     },
     "renderDay": {
@@ -4201,7 +4201,7 @@
       },
       "required": true,
       "type": {
-        "name": "PickerOnChangeFn"
+        "name": "PickerOnChangeFn<DateIOType>"
       }
     },
     "onChange": {
@@ -4214,7 +4214,7 @@
       },
       "required": true,
       "type": {
-        "name": "PickerOnChangeFn"
+        "name": "PickerOnChangeFn<DateIOType>"
       }
     },
     "getHoursClockNumberText": {

@@ -4,8 +4,8 @@ import { PickerSelectionState } from './usePickerState';
 import { MaterialUiPickersDate } from '../../typings/date';
 import { AnyPickerView } from '../../Picker/SharedPickerProps';
 
-export type PickerOnChangeFn = (
-  date: MaterialUiPickersDate,
+export type PickerOnChangeFn<TDate = MaterialUiPickersDate> = (
+  date: TDate,
   isFinish?: PickerSelectionState
 ) => void;
 
