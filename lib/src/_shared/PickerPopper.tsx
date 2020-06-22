@@ -4,7 +4,7 @@ import Grow from '@material-ui/core/Grow';
 import Paper, { PaperProps } from '@material-ui/core/Paper';
 import Popper, { PopperProps } from '@material-ui/core/Popper';
 import TrapFocus, { TrapFocusProps } from '@material-ui/core/Unstable_TrapFocus';
-import { useForkRef } from '@material-ui/core/utils'
+import { useForkRef } from '@material-ui/core/utils';
 import { makeStyles } from '@material-ui/core/styles';
 import { useGlobalKeyDown, keycode } from './hooks/useKeyDown';
 import { IS_TOUCH_DEVICE_MEDIA } from '../constants/dimensions';
@@ -64,12 +64,24 @@ export const PickerPopper: React.FC<PickerPopperProps> = ({
   ...other
 }) => {
   const classes = useStyles();
+  const lastFocusedElementRef = React.useRef<Element | null>(null);
   const paperRef = React.useRef<HTMLElement>(null);
   const handlePopperRef = useForkRef(paperRef, innerRef);
 
   useGlobalKeyDown(open, {
     [keycode.Esc]: onClose,
   });
+
+  React.useEffect(() => {
+    if (open) {
+      lastFocusedElementRef.current = document.activeElement;
+    } else if (
+      lastFocusedElementRef.current &&
+      lastFocusedElementRef.current instanceof HTMLElement
+    ) {
+      lastFocusedElementRef.current.focus();
+    }
+  }, [open]);
 
   const handleBlur = () => {
     // document.activeElement is updating on the next tick after `blur` called
@@ -95,6 +107,7 @@ export const PickerPopper: React.FC<PickerPopperProps> = ({
       {({ TransitionProps, placement }) => (
         <TrapFocus
           open={open}
+          disableRestoreFocus={false}
           disableAutoFocus={role === 'tooltip'}
           disableEnforceFocus={role === 'tooltip'}
           isEnabled={() => true}

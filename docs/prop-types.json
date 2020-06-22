@@ -10,153 +10,7 @@
       },
       "required": false,
       "type": {
-        "name": "Partial<MuiDialogProps>"
-      }
-    },
-    "okText": {
-      "defaultValue": {
-        "value": "\"OK\""
-      },
-      "description": "\"OK\" button text.",
-      "name": "okText",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/_shared/PickerModalDialog.tsx",
-        "name": "ExportedPickerModalProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ReactNode"
-      }
-    },
-    "cancelText": {
-      "defaultValue": {
-        "value": "\"CANCEL\""
-      },
-      "description": "\"CANCEL\" Text message",
-      "name": "cancelText",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/_shared/PickerModalDialog.tsx",
-        "name": "ExportedPickerModalProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ReactNode"
-      }
-    },
-    "clearText": {
-      "defaultValue": {
-        "value": "\"CLEAR\""
-      },
-      "description": "\"CLEAR\" Text message",
-      "name": "clearText",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/_shared/PickerModalDialog.tsx",
-        "name": "ExportedPickerModalProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ReactNode"
-      }
-    },
-    "todayText": {
-      "defaultValue": {
-        "value": "\"TODAY\""
-      },
-      "description": "\"TODAY\" Text message",
-      "name": "todayText",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/_shared/PickerModalDialog.tsx",
-        "name": "ExportedPickerModalProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ReactNode"
-      }
-    },
-    "clearable": {
-      "defaultValue": {
-        "value": "false"
-      },
-      "description": "If `true`, it shows the clear action in the picker dialog.",
-      "name": "clearable",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/_shared/PickerModalDialog.tsx",
-        "name": "ExportedPickerModalProps"
-      },
-      "required": false,
-      "type": {
-        "name": "boolean"
-      }
-    },
-    "showTodayButton": {
-      "defaultValue": {
-        "value": "false"
-      },
-      "description": "If `true`, the today button will be displayed. **Note** that `showClearButton` has a higher priority.",
-      "name": "showTodayButton",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/_shared/PickerModalDialog.tsx",
-        "name": "ExportedPickerModalProps"
-      },
-      "required": false,
-      "type": {
-        "name": "boolean"
-      }
-    },
-    "PopoverProps": {
-      "defaultValue": null,
-      "description": "Popover props passed to material-ui Popover.",
-      "name": "PopoverProps",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/DesktopWrapper.tsx",
-        "name": "InnerDesktopWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "Partial<PopoverProps>"
-      }
-    },
-    "displayStaticWrapperAs": {
-      "defaultValue": {
-        "value": "\"static\""
-      },
-      "description": "Force static wrapper inner components to be rendered in mobile or desktop mode",
-      "name": "displayStaticWrapperAs",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/StaticWrapper.tsx",
-        "name": "StaticWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "\"desktop\" | \"mobile\" | \"static\""
-      }
-    }
-  },
-  "DesktopWrapper": {
-    "PopoverProps": {
-      "defaultValue": null,
-      "description": "Popover props passed to material-ui Popover.",
-      "name": "PopoverProps",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/DesktopWrapper.tsx",
-        "name": "InnerDesktopWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "Partial<PopoverProps>"
-      }
-    },
-    "DialogProps": {
-      "defaultValue": null,
-      "description": "Props to be passed directly to material-ui Dialog",
-      "name": "DialogProps",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
-        "name": "InnerMobileWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "Partial<MuiDialogProps>"
+        "name": "{Partial<MuiDialogProps>}"
       }
     },
     "okText": {
@@ -251,11 +105,11 @@
     },
     "PopperProps": {
       "defaultValue": null,
-      "description": "Popper props passed to material-ui [Popper](https://material-ui.com/api/popper/#popper-api).",
+      "description": "Popper props passed down to material-ui [Popper](https://material-ui.com/api/popper/#popper-api) component.",
       "name": "PopperProps",
       "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/DesktopPopperWrapper.tsx",
-        "name": "InnerDesktopPopperWrapperProps"
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerPopper.tsx",
+        "name": "ExportedPickerPopperProps"
       },
       "required": false,
       "type": {
@@ -264,15 +118,161 @@
     },
     "TransitionComponent": {
       "defaultValue": null,
-      "description": "Custom component for [transition](https://material-ui.com/components/transitions/#transitioncomponent-prop).",
+      "description": "Custom component for [Transition](https://material-ui.com/components/transitions/#transitioncomponent-prop).",
       "name": "TransitionComponent",
       "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/DesktopPopperWrapper.tsx",
-        "name": "InnerDesktopPopperWrapperProps"
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerPopper.tsx",
+        "name": "ExportedPickerPopperProps"
       },
       "required": false,
       "type": {
         "name": "ComponentClass<TransitionProps, any> | FunctionComponent<TransitionProps>"
+      }
+    },
+    "displayStaticWrapperAs": {
+      "defaultValue": {
+        "value": "\"static\""
+      },
+      "description": "Force static wrapper inner components to be rendered in mobile or desktop mode",
+      "name": "displayStaticWrapperAs",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/wrappers/StaticWrapper.tsx",
+        "name": "StaticWrapperProps"
+      },
+      "required": false,
+      "type": {
+        "name": "\"desktop\" | \"mobile\" | \"static\""
+      }
+    }
+  },
+  "DesktopWrapper": {
+    "PopperProps": {
+      "defaultValue": null,
+      "description": "Popper props passed down to material-ui [Popper](https://material-ui.com/api/popper/#popper-api) component.",
+      "name": "PopperProps",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerPopper.tsx",
+        "name": "ExportedPickerPopperProps"
+      },
+      "required": false,
+      "type": {
+        "name": "Partial<PopperProps>"
+      }
+    },
+    "TransitionComponent": {
+      "defaultValue": null,
+      "description": "Custom component for [Transition](https://material-ui.com/components/transitions/#transitioncomponent-prop).",
+      "name": "TransitionComponent",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerPopper.tsx",
+        "name": "ExportedPickerPopperProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ComponentClass<TransitionProps, any> | FunctionComponent<TransitionProps>"
+      }
+    },
+    "DialogProps": {
+      "defaultValue": null,
+      "description": "Props to be passed directly to material-ui Dialog",
+      "name": "DialogProps",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
+        "name": "InnerMobileWrapperProps"
+      },
+      "required": false,
+      "type": {
+        "name": "{Partial<MuiDialogProps>}"
+      }
+    },
+    "okText": {
+      "defaultValue": {
+        "value": "\"OK\""
+      },
+      "description": "\"OK\" button text.",
+      "name": "okText",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "cancelText": {
+      "defaultValue": {
+        "value": "\"CANCEL\""
+      },
+      "description": "\"CANCEL\" Text message",
+      "name": "cancelText",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "clearText": {
+      "defaultValue": {
+        "value": "\"CLEAR\""
+      },
+      "description": "\"CLEAR\" Text message",
+      "name": "clearText",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "todayText": {
+      "defaultValue": {
+        "value": "\"TODAY\""
+      },
+      "description": "\"TODAY\" Text message",
+      "name": "todayText",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "clearable": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "If `true`, it shows the clear action in the picker dialog.",
+      "name": "clearable",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "showTodayButton": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "If `true`, the today button will be displayed. **Note** that `showClearButton` has a higher priority.",
+      "name": "showTodayButton",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
       }
     },
     "displayStaticWrapperAs": {
@@ -397,7 +397,7 @@
       },
       "required": false,
       "type": {
-        "name": "Partial<IconButtonProps>"
+        "name": "{Partial<IconButtonProps>}"
       }
     },
     "rightArrowButtonProps": {
@@ -410,7 +410,7 @@
       },
       "required": false,
       "type": {
-        "name": "Partial<IconButtonProps>"
+        "name": "{Partial<IconButtonProps>}"
       }
     },
     "leftArrowButtonText": {
@@ -482,7 +482,7 @@
     },
     "maxDate": {
       "defaultValue": {
-        "value": "Date(2100-01-01)"
+        "value": "Date(2099-31-12)"
       },
       "description": "Max selectable date.",
       "name": "maxDate",
@@ -523,36 +523,6 @@
       "required": false,
       "type": {
         "name": "boolean"
-      }
-    },
-    "loading": {
-      "defaultValue": {
-        "value": "false"
-      },
-      "description": "If `true` renders `LoadingComponent` in calendar instead of calendar view.\nCan be used to preload information and show it in calendar.",
-      "name": "loading",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Calendar/CalendarView.tsx",
-        "name": "CalendarViewProps"
-      },
-      "required": false,
-      "type": {
-        "name": "boolean"
-      }
-    },
-    "renderLoading": {
-      "defaultValue": {
-        "value": "() => \"...\""
-      },
-      "description": "Component displaying when passed `loading` true.",
-      "name": "renderLoading",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Calendar/CalendarView.tsx",
-        "name": "CalendarViewProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ComponentClass<{}, any> | FunctionComponent<{}>"
       }
     },
     "reduceAnimations": {
@@ -609,6 +579,36 @@
       "required": false,
       "type": {
         "name": "boolean"
+      }
+    },
+    "loading": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "If `true` renders `LoadingComponent` in calendar instead of calendar view.\nCan be used to preload information and show it in calendar.",
+      "name": "loading",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
+        "name": "ExportedCalendarProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "renderLoading": {
+      "defaultValue": {
+        "value": "() => \"...\""
+      },
+      "description": "Component displaying when passed `loading` true.",
+      "name": "renderLoading",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
+        "name": "ExportedCalendarProps"
+      },
+      "required": false,
+      "type": {
+        "name": "() => ReactNode"
       }
     },
     "onYearChange": {
@@ -928,7 +928,7 @@
       },
       "required": false,
       "type": {
-        "name": "Partial<InputAdornmentProps>"
+        "name": "{Partial<InputAdornmentProps>}"
       }
     },
     "OpenPickerButtonProps": {
@@ -941,7 +941,7 @@
       },
       "required": false,
       "type": {
-        "name": "Partial<IconButtonProps>"
+        "name": "{Partial<IconButtonProps>}"
       }
     },
     "rifmFormatter": {
@@ -1025,7 +1025,7 @@
       },
       "required": false,
       "type": {
-        "name": "Partial<MuiDialogProps>"
+        "name": "{Partial<MuiDialogProps>}"
       }
     },
     "okText": {
@@ -1120,11 +1120,11 @@
     },
     "PopperProps": {
       "defaultValue": null,
-      "description": "Popper props passed to material-ui [Popper](https://material-ui.com/api/popper/#popper-api).",
+      "description": "Popper props passed down to material-ui [Popper](https://material-ui.com/api/popper/#popper-api) component.",
       "name": "PopperProps",
       "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/DesktopPopperWrapper.tsx",
-        "name": "InnerDesktopPopperWrapperProps"
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerPopper.tsx",
+        "name": "ExportedPickerPopperProps"
       },
       "required": false,
       "type": {
@@ -1133,11 +1133,11 @@
     },
     "TransitionComponent": {
       "defaultValue": null,
-      "description": "Custom component for [transition](https://material-ui.com/components/transitions/#transitioncomponent-prop).",
+      "description": "Custom component for [Transition](https://material-ui.com/components/transitions/#transitioncomponent-prop).",
       "name": "TransitionComponent",
       "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/DesktopPopperWrapper.tsx",
-        "name": "InnerDesktopPopperWrapperProps"
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerPopper.tsx",
+        "name": "ExportedPickerPopperProps"
       },
       "required": false,
       "type": {
@@ -1157,19 +1157,6 @@
       "required": false,
       "type": {
         "name": "\"desktop\" | \"mobile\" | \"static\""
-      }
-    },
-    "PopoverProps": {
-      "defaultValue": null,
-      "description": "Popover props passed to material-ui Popover.",
-      "name": "PopoverProps",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/DesktopWrapper.tsx",
-        "name": "InnerDesktopWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "Partial<PopoverProps>"
       }
     },
     "desktopModeMediaQuery": {
@@ -1633,7 +1620,7 @@
       },
       "required": false,
       "type": {
-        "name": "Partial<InputAdornmentProps>"
+        "name": "{Partial<InputAdornmentProps>}"
       }
     },
     "OpenPickerButtonProps": {
@@ -1646,7 +1633,7 @@
       },
       "required": false,
       "type": {
-        "name": "Partial<IconButtonProps>"
+        "name": "{Partial<IconButtonProps>}"
       }
     },
     "rifmFormatter": {
@@ -1730,7 +1717,7 @@
       },
       "required": false,
       "type": {
-        "name": "Partial<MuiDialogProps>"
+        "name": "{Partial<MuiDialogProps>}"
       }
     },
     "okText": {
@@ -1825,11 +1812,11 @@
     },
     "PopperProps": {
       "defaultValue": null,
-      "description": "Popper props passed to material-ui [Popper](https://material-ui.com/api/popper/#popper-api).",
+      "description": "Popper props passed down to material-ui [Popper](https://material-ui.com/api/popper/#popper-api) component.",
       "name": "PopperProps",
       "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/DesktopPopperWrapper.tsx",
-        "name": "InnerDesktopPopperWrapperProps"
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerPopper.tsx",
+        "name": "ExportedPickerPopperProps"
       },
       "required": false,
       "type": {
@@ -1838,11 +1825,11 @@
     },
     "TransitionComponent": {
       "defaultValue": null,
-      "description": "Custom component for [transition](https://material-ui.com/components/transitions/#transitioncomponent-prop).",
+      "description": "Custom component for [Transition](https://material-ui.com/components/transitions/#transitioncomponent-prop).",
       "name": "TransitionComponent",
       "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/DesktopPopperWrapper.tsx",
-        "name": "InnerDesktopPopperWrapperProps"
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerPopper.tsx",
+        "name": "ExportedPickerPopperProps"
       },
       "required": false,
       "type": {
@@ -1862,19 +1849,6 @@
       "required": false,
       "type": {
         "name": "\"desktop\" | \"mobile\" | \"static\""
-      }
-    },
-    "PopoverProps": {
-      "defaultValue": null,
-      "description": "Popover props passed to material-ui Popover.",
-      "name": "PopoverProps",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/DesktopWrapper.tsx",
-        "name": "InnerDesktopWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "Partial<PopoverProps>"
       }
     },
     "desktopModeMediaQuery": {
@@ -2191,7 +2165,7 @@
       },
       "required": false,
       "type": {
-        "name": "Partial<IconButtonProps>"
+        "name": "{Partial<IconButtonProps>}"
       }
     },
     "rightArrowButtonProps": {
@@ -2204,7 +2178,7 @@
       },
       "required": false,
       "type": {
-        "name": "Partial<IconButtonProps>"
+        "name": "{Partial<IconButtonProps>}"
       }
     },
     "leftArrowButtonText": {
@@ -2276,7 +2250,7 @@
     },
     "maxDate": {
       "defaultValue": {
-        "value": "Date(2100-01-01)"
+        "value": "Date(2099-31-12)"
       },
       "description": "Max selectable date.",
       "name": "maxDate",
@@ -2319,36 +2293,6 @@
         "name": "boolean"
       }
     },
-    "loading": {
-      "defaultValue": {
-        "value": "false"
-      },
-      "description": "If `true` renders `LoadingComponent` in calendar instead of calendar view.\nCan be used to preload information and show it in calendar.",
-      "name": "loading",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Calendar/CalendarView.tsx",
-        "name": "CalendarViewProps"
-      },
-      "required": false,
-      "type": {
-        "name": "boolean"
-      }
-    },
-    "renderLoading": {
-      "defaultValue": {
-        "value": "() => \"...\""
-      },
-      "description": "Component displaying when passed `loading` true.",
-      "name": "renderLoading",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Calendar/CalendarView.tsx",
-        "name": "CalendarViewProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ComponentClass<{}, any> | FunctionComponent<{}>"
-      }
-    },
     "reduceAnimations": {
       "defaultValue": {
         "value": "/(android)/i.test(window.navigator.userAgent)."
@@ -2388,6 +2332,36 @@
       "required": false,
       "type": {
         "name": "(day: DateIOType, selectedDates: DateIOType[], DayComponentProps: DayProps) => Element"
+      }
+    },
+    "loading": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "If `true` renders `LoadingComponent` in calendar instead of calendar view.\nCan be used to preload information and show it in calendar.",
+      "name": "loading",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
+        "name": "ExportedCalendarProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "renderLoading": {
+      "defaultValue": {
+        "value": "() => \"...\""
+      },
+      "description": "Component displaying when passed `loading` true.",
+      "name": "renderLoading",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
+        "name": "ExportedCalendarProps"
+      },
+      "required": false,
+      "type": {
+        "name": "() => ReactNode"
       }
     },
     "onYearChange": {
@@ -2694,7 +2668,7 @@
       },
       "required": false,
       "type": {
-        "name": "Partial<InputAdornmentProps>"
+        "name": "{Partial<InputAdornmentProps>}"
       }
     },
     "OpenPickerButtonProps": {
@@ -2707,7 +2681,7 @@
       },
       "required": false,
       "type": {
-        "name": "Partial<IconButtonProps>"
+        "name": "{Partial<IconButtonProps>}"
       }
     },
     "rifmFormatter": {
@@ -2791,7 +2765,7 @@
       },
       "required": false,
       "type": {
-        "name": "Partial<MuiDialogProps>"
+        "name": "{Partial<MuiDialogProps>}"
       }
     },
     "okText": {
@@ -2886,11 +2860,11 @@
     },
     "PopperProps": {
       "defaultValue": null,
-      "description": "Popper props passed to material-ui [Popper](https://material-ui.com/api/popper/#popper-api).",
+      "description": "Popper props passed down to material-ui [Popper](https://material-ui.com/api/popper/#popper-api) component.",
       "name": "PopperProps",
       "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/DesktopPopperWrapper.tsx",
-        "name": "InnerDesktopPopperWrapperProps"
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerPopper.tsx",
+        "name": "ExportedPickerPopperProps"
       },
       "required": false,
       "type": {
@@ -2899,11 +2873,11 @@
     },
     "TransitionComponent": {
       "defaultValue": null,
-      "description": "Custom component for [transition](https://material-ui.com/components/transitions/#transitioncomponent-prop).",
+      "description": "Custom component for [Transition](https://material-ui.com/components/transitions/#transitioncomponent-prop).",
       "name": "TransitionComponent",
       "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/DesktopPopperWrapper.tsx",
-        "name": "InnerDesktopPopperWrapperProps"
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerPopper.tsx",
+        "name": "ExportedPickerPopperProps"
       },
       "required": false,
       "type": {
@@ -2923,19 +2897,6 @@
       "required": false,
       "type": {
         "name": "\"desktop\" | \"mobile\" | \"static\""
-      }
-    },
-    "PopoverProps": {
-      "defaultValue": null,
-      "description": "Popover props passed to material-ui Popover.",
-      "name": "PopoverProps",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/DesktopWrapper.tsx",
-        "name": "InnerDesktopWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "Partial<PopoverProps>"
       }
     },
     "desktopModeMediaQuery": {
@@ -3066,7 +3027,7 @@
       },
       "required": false,
       "type": {
-        "name": "Partial<IconButtonProps>"
+        "name": "{Partial<IconButtonProps>}"
       }
     },
     "rightArrowButtonProps": {
@@ -3079,7 +3040,7 @@
       },
       "required": false,
       "type": {
-        "name": "Partial<IconButtonProps>"
+        "name": "{Partial<IconButtonProps>}"
       }
     },
     "leftArrowButtonText": {
@@ -3151,7 +3112,7 @@
     },
     "maxDate": {
       "defaultValue": {
-        "value": "Date(2100-01-01)"
+        "value": "Date(2099-31-12)"
       },
       "description": "Max selectable date.",
       "name": "maxDate",
@@ -3192,36 +3153,6 @@
       "required": false,
       "type": {
         "name": "boolean"
-      }
-    },
-    "loading": {
-      "defaultValue": {
-        "value": "false"
-      },
-      "description": "If `true` renders `LoadingComponent` in calendar instead of calendar view.\nCan be used to preload information and show it in calendar.",
-      "name": "loading",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Calendar/CalendarView.tsx",
-        "name": "CalendarViewProps"
-      },
-      "required": false,
-      "type": {
-        "name": "boolean"
-      }
-    },
-    "renderLoading": {
-      "defaultValue": {
-        "value": "() => \"...\""
-      },
-      "description": "Component displaying when passed `loading` true.",
-      "name": "renderLoading",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/views/Calendar/CalendarView.tsx",
-        "name": "CalendarViewProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ComponentClass<{}, any> | FunctionComponent<{}>"
       }
     },
     "reduceAnimations": {
@@ -3278,6 +3209,36 @@
       "required": false,
       "type": {
         "name": "boolean"
+      }
+    },
+    "loading": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "If `true` renders `LoadingComponent` in calendar instead of calendar view.\nCan be used to preload information and show it in calendar.",
+      "name": "loading",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
+        "name": "ExportedCalendarProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "renderLoading": {
+      "defaultValue": {
+        "value": "() => \"...\""
+      },
+      "description": "Component displaying when passed `loading` true.",
+      "name": "renderLoading",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
+        "name": "ExportedCalendarProps"
+      },
+      "required": false,
+      "type": {
+        "name": "() => ReactNode"
       }
     },
     "shouldDisableYear": {
@@ -3612,7 +3573,7 @@
       },
       "required": false,
       "type": {
-        "name": "Partial<InputAdornmentProps>"
+        "name": "{Partial<InputAdornmentProps>}"
       }
     },
     "OpenPickerButtonProps": {
@@ -3625,7 +3586,7 @@
       },
       "required": false,
       "type": {
-        "name": "Partial<IconButtonProps>"
+        "name": "{Partial<IconButtonProps>}"
       }
     },
     "rifmFormatter": {
@@ -3709,7 +3670,7 @@
       },
       "required": false,
       "type": {
-        "name": "Partial<MuiDialogProps>"
+        "name": "{Partial<MuiDialogProps>}"
       }
     },
     "okText": {
@@ -3804,11 +3765,11 @@
     },
     "PopperProps": {
       "defaultValue": null,
-      "description": "Popper props passed to material-ui [Popper](https://material-ui.com/api/popper/#popper-api).",
+      "description": "Popper props passed down to material-ui [Popper](https://material-ui.com/api/popper/#popper-api) component.",
       "name": "PopperProps",
       "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/DesktopPopperWrapper.tsx",
-        "name": "InnerDesktopPopperWrapperProps"
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerPopper.tsx",
+        "name": "ExportedPickerPopperProps"
       },
       "required": false,
       "type": {
@@ -3817,11 +3778,11 @@
     },
     "TransitionComponent": {
       "defaultValue": null,
-      "description": "Custom component for [transition](https://material-ui.com/components/transitions/#transitioncomponent-prop).",
+      "description": "Custom component for [Transition](https://material-ui.com/components/transitions/#transitioncomponent-prop).",
       "name": "TransitionComponent",
       "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/DesktopPopperWrapper.tsx",
-        "name": "InnerDesktopPopperWrapperProps"
+        "fileName": "material-ui-pickers/lib/src/_shared/PickerPopper.tsx",
+        "name": "ExportedPickerPopperProps"
       },
       "required": false,
       "type": {
@@ -3841,19 +3802,6 @@
       "required": false,
       "type": {
         "name": "\"desktop\" | \"mobile\" | \"static\""
-      }
-    },
-    "PopoverProps": {
-      "defaultValue": null,
-      "description": "Popover props passed to material-ui Popover.",
-      "name": "PopoverProps",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/DesktopWrapper.tsx",
-        "name": "InnerDesktopWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "Partial<PopoverProps>"
       }
     },
     "desktopModeMediaQuery": {
@@ -3927,6 +3875,36 @@
       "required": false,
       "type": {
         "name": "boolean"
+      }
+    },
+    "loading": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "If `true` renders `LoadingComponent` in calendar instead of calendar view.\nCan be used to preload information and show it in calendar.",
+      "name": "loading",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
+        "name": "ExportedCalendarProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "renderLoading": {
+      "defaultValue": {
+        "value": "() => \"...\""
+      },
+      "description": "Component displaying when passed `loading` true.",
+      "name": "renderLoading",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/Calendar.tsx",
+        "name": "ExportedCalendarProps"
+      },
+      "required": false,
+      "type": {
+        "name": "() => ReactNode"
       }
     },
     "disableHighlightToday": {
@@ -4402,7 +4380,7 @@
       },
       "required": false,
       "type": {
-        "name": "Partial<IconButtonProps>"
+        "name": "{Partial<IconButtonProps>}"
       }
     },
     "rightArrowButtonProps": {
@@ -4415,7 +4393,7 @@
       },
       "required": false,
       "type": {
-        "name": "Partial<IconButtonProps>"
+        "name": "{Partial<IconButtonProps>}"
       }
     }
   }
