@@ -1,10 +1,7 @@
 import * as React from 'react';
 import { useOpenState } from './useOpenState';
-import { WrapperVariant } from '../../wrappers/Wrapper';
 import { BasePickerProps } from '../../typings/BasePicker';
 import { useUtils, useNow, MuiPickersAdapter } from './useUtils';
-
-export const FORCE_FINISH_PICKER = Symbol('Force closing picker, useful for accessibility');
 
 export interface PickerStateValueManager<TInput, TDateValue> {
   parseInput: (utils: MuiPickersAdapter, props: BasePickerProps<TInput, TDateValue>) => TDateValue;
@@ -15,6 +12,8 @@ export interface PickerStateValueManager<TInput, TDateValue> {
     valueRight: TDateValue
   ) => boolean;
 }
+
+export type PickerSelectionState = 'partial' | 'shallow' | 'finish' | 'forceFinish';
 
 export function usePickerState<TInput, TDateValue>(
   props: BasePickerProps<TInput, TDateValue>,
@@ -89,24 +88,19 @@ export function usePickerState<TInput, TDateValue>(
 
         setMobileKeyboardViewOpen(!isMobileKeyboardViewOpen);
       },
-      onDateChange: (
-        newDate: TDateValue,
-        currentVariant: WrapperVariant,
-        isFinish: boolean | symbol = true
-      ) => {
+      onDateChange: (newDate: TDateValue, selectionState: PickerSelectionState = 'partial') => {
         setPickerDate(newDate);
-        const isFinishing =
-          typeof isFinish === 'boolean' ? isFinish : isFinish === FORCE_FINISH_PICKER;
 
-        if (isFinishing) {
-          const autoAcceptRequested = Boolean(autoOk) || isFinish === FORCE_FINISH_PICKER;
-          if (currentVariant === 'mobile' && autoAcceptRequested) {
-            acceptDate(newDate, true);
-          }
+        if (selectionState === 'partial') {
+          acceptDate(newDate, false);
+        }
 
-          if (currentVariant !== 'mobile') {
-            acceptDate(newDate, autoAcceptRequested);
-          }
+        if (selectionState == 'finish') {
+          acceptDate(newDate, Boolean(autoOk));
+        }
+
+        if (selectionState == 'forceFinish') {
+          acceptDate(newDate, true);
         }
       },
     }),

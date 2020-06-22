@@ -1,6 +1,7 @@
 import * as React from 'react';
 import clsx from 'clsx';
 import Typography from '@material-ui/core/Typography';
+import { useForkRef } from '@material-ui/core';
 import { onSpaceOrEnter } from '../../_helpers/utils';
 import { makeStyles, fade } from '@material-ui/core/styles';
 import { WrapperVariantContext } from '../../wrappers/WrapperVariantContext';
@@ -27,6 +28,14 @@ export const useStyles = makeStyles(
       display: 'flex',
       justifyContent: 'center',
       padding: '8px 0',
+      '&:focus, &:hover': {
+        '& $yearButton': {
+          backgroundColor: fade(theme.palette.action.active, theme.palette.action.hoverOpacity),
+        },
+        '& $yearSelected': {
+          backgroundColor: theme.palette.primary.dark,
+        },
+      },
     },
     yearButtonContainerDesktop: {
       flexBasis: '25%',
@@ -40,16 +49,10 @@ export const useStyles = makeStyles(
       justifyContent: 'center',
       cursor: 'pointer',
       outline: 'none',
-      '&:focus, &:hover': {
-        backgroundColor: fade(theme.palette.action.active, theme.palette.action.hoverOpacity),
-      },
     },
     yearSelected: {
       color: theme.palette.getContrastText(theme.palette.primary.main),
       backgroundColor: theme.palette.primary.main,
-      '&:focus, &:hover': {
-        backgroundColor: theme.palette.primary.dark,
-      },
     },
     yearDisabled: {
       pointerEvents: 'none',
@@ -71,7 +74,9 @@ export const Year: React.FC<YearProps> = ({
   ...other
 }) => {
   const classes = useStyles();
-  const ref = React.useRef<HTMLSpanElement>(null);
+  const ref = React.useRef<HTMLButtonElement>(null);
+  const rootRef = useForkRef(ref, forwardedRef as React.Ref<HTMLButtonElement>);
+
   const wrapperVariant = React.useContext(WrapperVariantContext);
 
   React.useEffect(() => {
@@ -82,21 +87,20 @@ export const Year: React.FC<YearProps> = ({
 
   return (
     <button
-      ref={forwardedRef}
+      ref={rootRef}
       disabled={disabled}
       data-mui-test="year"
       onClick={() => onSelect(value)}
+      onKeyDown={onSpaceOrEnter(() => onSelect(value))}
       className={clsx(classes.yearButtonContainer, {
         [classes.yearButtonContainerDesktop]: wrapperVariant === 'desktop',
       })}
     >
       <Typography
-        ref={ref}
         variant="subtitle1"
         data-mui-test={`year-${children}`}
         tabIndex={selected ? 0 : -1}
         color={selected ? 'primary' : undefined}
-        onKeyDown={onSpaceOrEnter(() => onSelect(value))}
         className={clsx(classes.yearButton, {
           [classes.yearSelected]: selected,
           [classes.yearDisabled]: disabled,

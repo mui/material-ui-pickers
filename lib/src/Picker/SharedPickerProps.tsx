@@ -2,9 +2,10 @@ import { DateTimePickerView } from '../DateTimePicker';
 import { ParsableDate } from '../constants/prop-types';
 import { BasePickerProps } from '../typings/BasePicker';
 import { MaterialUiPickersDate } from '../typings/date';
+import { DateInputPropsLike } from '../wrappers/Wrapper';
+import { PickerOnChangeFn } from '../_shared/hooks/useViews';
 import { ExportedDateInputProps } from '../_shared/PureDateInput';
 import { WithDateAdapterProps } from '../_shared/withDateAdapterProp';
-import { WrapperVariant, DateInputPropsLike } from '../wrappers/Wrapper';
 
 export type AnyPickerView = DateTimePickerView;
 
@@ -24,11 +25,7 @@ export interface SharedPickerProps<
   toggleMobileKeyboardView: () => void;
   DateInputProps: TInputProps;
   date: TDateValue;
-  onDateChange: (
-    date: TDateValue,
-    currentVariant: WrapperVariant,
-    isFinish?: boolean | symbol
-  ) => void;
+  onDateChange: PickerOnChangeFn;
 }
 
 export interface WithViewsProps<T extends AnyPickerView> {

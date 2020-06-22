@@ -1,6 +1,5 @@
 import * as React from 'react';
 import clsx from 'clsx';
-import { useViews } from '../_shared/hooks/useViews';
 import { makeStyles } from '@material-ui/core/styles';
 import { DateTimePickerView } from '../DateTimePicker';
 import { ParsableDate } from '../constants/prop-types';
@@ -11,6 +10,7 @@ import { withDefaultProps } from '../_shared/withDefaultProps';
 import { KeyboardDateInput } from '../_shared/KeyboardDateInput';
 import { useIsLandscape } from '../_shared/hooks/useIsLandscape';
 import { DIALOG_WIDTH, VIEW_HEIGHT } from '../constants/dimensions';
+import { useViews, PickerOnChangeFn } from '../_shared/hooks/useViews';
 import { WrapperVariantContext } from '../wrappers/WrapperVariantContext';
 import { MobileKeyboardInputView } from '../views/MobileKeyboardInputView';
 import { ClockView, ExportedClockViewProps } from '../views/Clock/ClockView';
@@ -31,7 +31,7 @@ export type ToolbarComponentProps<
   hideTabs?: boolean;
   isLandscape: boolean;
   isMobileKeyboardViewOpen: boolean;
-  onChange: (date: TDate, isFinish?: boolean) => void;
+  onChange: PickerOnChangeFn;
   openView: TView;
   setOpenView: (view: TView) => void;
   timeIcon?: React.ReactNode;
@@ -109,12 +109,6 @@ function Picker({
   const classes = useStyles();
   const isLandscape = useIsLandscape(views, orientation);
   const wrapperVariant = React.useContext(WrapperVariantContext);
-  const handleDateChange = React.useCallback(
-    (date: MaterialUiPickersDate, isFinish?: boolean | symbol) => {
-      onDateChange(date, wrapperVariant, isFinish);
-    },
-    [onDateChange, wrapperVariant]
-  );
 
   const toShowToolbar =
     typeof showToolbar === 'undefined' ? wrapperVariant !== 'desktop' : showToolbar;
@@ -122,7 +116,7 @@ function Picker({
   const { openView, nextView, previousView, setOpenView, handleChangeAndOpenNext } = useViews({
     views,
     openTo,
-    onChange: handleDateChange,
+    onChange: onDateChange,
     isMobileKeyboardViewOpen,
     toggleMobileKeyboardView,
   });
@@ -139,7 +133,7 @@ function Picker({
           views={views}
           isLandscape={isLandscape}
           date={date}
-          onChange={handleDateChange}
+          onChange={onDateChange}
           setOpenView={setOpenView}
           openView={openView}
           toolbarTitle={toolbarTitle}
@@ -183,7 +177,7 @@ function Picker({
                 {...other}
                 date={date}
                 type={openView as 'hours' | 'minutes' | 'seconds'}
-                onDateChange={handleDateChange}
+                onDateChange={onDateChange}
                 onChange={handleChangeAndOpenNext}
                 openNextView={() => setOpenView(nextView)}
                 openPreviousView={() => setOpenView(previousView)}

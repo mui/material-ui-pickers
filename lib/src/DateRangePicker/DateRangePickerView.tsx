@@ -9,7 +9,6 @@ import { SharedPickerProps } from '../Picker/SharedPickerProps';
 import { DateRangePickerToolbar } from './DateRangePickerToolbar';
 import { useParsedDate } from '../_shared/hooks/date-helpers-hooks';
 import { useCalendarState } from '../views/Calendar/useCalendarState';
-import { FORCE_FINISH_PICKER } from '../_shared/hooks/usePickerState';
 import { DateRangePickerViewMobile } from './DateRangePickerViewMobile';
 import { defaultMaxDate, defaultMinDate } from '../constants/prop-types';
 import { WrapperVariantContext } from '../wrappers/WrapperVariantContext';
@@ -148,16 +147,10 @@ export const DateRangePickerView: React.FC<DateRangePickerViewProps> = ({
 
       const isFullRangeSelected =
         currentlySelectingRangeEnd === 'end' && isRangeValid(utils, newRange);
-      onDateChange(newRange, wrapperVariant, isFullRangeSelected ? FORCE_FINISH_PICKER : true);
+
+      onDateChange(newRange, isFullRangeSelected ? 'forceFinish' : 'finish');
     },
-    [
-      currentlySelectingRangeEnd,
-      date,
-      onDateChange,
-      setCurrentlySelectingRangeEnd,
-      utils,
-      wrapperVariant,
-    ]
+    [currentlySelectingRangeEnd, date, onDateChange, setCurrentlySelectingRangeEnd, utils]
   );
 
   const renderView = () => {

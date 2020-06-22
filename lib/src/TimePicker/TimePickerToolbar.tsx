@@ -7,6 +7,7 @@ import { arrayIncludes } from '../_helpers/utils';
 import { useUtils } from '../_shared/hooks/useUtils';
 import { MaterialUiPickersDate } from '../typings/date';
 import { ToolbarComponentProps } from '../Picker/Picker';
+import { PickerOnChangeFn } from '../_shared/hooks/useViews';
 import { withDefaultProps } from '../_shared/withDefaultProps';
 import { useTheme, makeStyles } from '@material-ui/core/styles';
 import { convertToMeridiem, getMeridiem } from '../_helpers/time-utils';
@@ -56,7 +57,7 @@ export const useStyles = makeStyles(
 export function useMeridiemMode(
   date: MaterialUiPickersDate,
   ampm: boolean | undefined,
-  onChange: (date: MaterialUiPickersDate, isFinished?: boolean) => void
+  onChange: PickerOnChangeFn
 ) {
   const utils = useUtils();
   const meridiemMode = getMeridiem(date, utils);
@@ -64,7 +65,7 @@ export function useMeridiemMode(
   const handleMeridiemChange = React.useCallback(
     (mode: 'am' | 'pm') => {
       const timeWithMeridiem = convertToMeridiem(date, mode, Boolean(ampm), utils);
-      onChange(timeWithMeridiem, false);
+      onChange(timeWithMeridiem, 'partial');
     },
     [ampm, date, onChange, utils]
   );

@@ -3,6 +3,8 @@ import Year from './Year';
 import { MaterialUiPickersDate } from '../../typings/date';
 import { useUtils, useNow } from '../../_shared/hooks/useUtils';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { PickerOnChangeFn } from '../../_shared/hooks/useViews';
+import { PickerSelectionState } from '../../_shared/hooks/usePickerState';
 import { WrapperVariantContext } from '../../wrappers/WrapperVariantContext';
 import { useGlobalKeyDown, keycode as keys } from '../../_shared/hooks/useKeyDown';
 
@@ -22,7 +24,7 @@ export interface YearSelectionProps extends ExportedYearSelectionProps {
   date: MaterialUiPickersDate;
   minDate: MaterialUiPickersDate;
   maxDate: MaterialUiPickersDate;
-  onChange: (date: MaterialUiPickersDate, isFinish: boolean) => void;
+  onChange: PickerOnChangeFn;
   disablePast?: boolean | null | undefined;
   disableFuture?: boolean | null | undefined;
   allowKeyboardControl?: boolean;
@@ -79,7 +81,7 @@ export const YearSelection: React.FC<YearSelectionProps> = ({
   }, []); // eslint-disable-line
 
   const handleYearSelection = React.useCallback(
-    (year: number, isFinish = true) => {
+    (year: number, isFinish: PickerSelectionState = 'finish') => {
       const newDate = utils.setYear(selectedDate, year);
       if (isDateDisabled(newDate)) {
         return;
