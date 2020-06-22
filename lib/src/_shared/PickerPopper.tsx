@@ -107,14 +107,14 @@ export const PickerPopper: React.FC<PickerPopperProps> = ({
       {({ TransitionProps, placement }) => (
         <TrapFocus
           open={open}
-          disableRestoreFocus={false}
           disableAutoFocus={role === 'tooltip'}
           disableEnforceFocus={role === 'tooltip'}
           isEnabled={() => true}
           getDoc={() => paperRef.current?.ownerDocument ?? document}
         >
-          <TransitionComponent {...TransitionProps} timeout={350}>
+          <TransitionComponent {...TransitionProps}>
             <Paper
+              role="dialog"
               tabIndex={-1}
               elevation={8}
               ref={handlePopperRef}
