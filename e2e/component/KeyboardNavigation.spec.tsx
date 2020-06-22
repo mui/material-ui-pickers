@@ -74,7 +74,7 @@ describe('Keyboard navigation', () => {
     });
   });
 
-  context('TimePicker', () => {
+  context.skip('TimePicker', () => {
     it('Allows keyboard control on hours view', () => {
       mountPickerWithState(props => <TimePicker {...props} open />);
 
