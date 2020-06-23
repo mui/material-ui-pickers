@@ -14,13 +14,13 @@ export * from './DateRangePicker/DateRangePicker';
 
 export { DateRangePickerToolbar } from './DateRangePicker/DateRangePickerToolbar';
 
-export { Calendar as PickersCalendar } from './views/Calendar/Calendar';
+export { default as PickersCalendar } from './views/Calendar/Calendar';
 
-export { CalendarView as PickersCalendarView } from './views/Calendar/CalendarView';
+export { default as PickersCalendarView } from './views/Calendar/CalendarView';
 
-export { Day as PickersDay } from './views/Calendar/Day';
+export { default as PickersDay } from './views/Calendar/Day';
 
-export { ClockView as PickersClockView } from './views/Clock/ClockView';
+export { default as PickersClockView } from './views/Clock/ClockView';
 
 export { Clock as PickersClock } from './views/Clock/Clock';
 

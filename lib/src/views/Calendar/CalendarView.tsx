@@ -1,16 +1,15 @@
 import * as React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 import { MonthSelection } from './MonthSelection';
 import { DatePickerView } from '../../DatePicker';
 import { useCalendarState } from './useCalendarState';
-import { makeStyles } from '@material-ui/core/styles';
 import { useUtils } from '../../_shared/hooks/useUtils';
-
 import { FadeTransitionGroup } from './FadeTransitionGroup';
-import { Calendar, ExportedCalendarProps } from './Calendar';
+import Calendar, { ExportedCalendarProps } from './Calendar';
 import { PickerOnChangeFn } from '../../_shared/hooks/useViews';
 import { withDefaultProps } from '../../_shared/withDefaultProps';
 import { DAY_SIZE, DAY_MARGIN } from '../../constants/dimensions';
-import { CalendarHeader, CalendarHeaderProps } from './CalendarHeader';
+import CalendarHeader, { CalendarHeaderProps } from './CalendarHeader';
 import { YearSelection, ExportedYearSelectionProps } from './YearSelection';
 import { defaultMinDate, defaultMaxDate } from '../../constants/prop-types';
 import { IsStaticVariantContext } from '../../wrappers/WrapperVariantContext';
@@ -75,7 +74,7 @@ export const useStyles = makeStyles(
 export const defaultReduceAnimations =
   typeof navigator !== 'undefined' && /(android)/i.test(navigator.userAgent);
 
-export const CalendarView: React.FC<CalendarViewProps> = withDefaultProps(
+const CalendarView: React.FC<CalendarViewProps> = withDefaultProps(
   muiComponentConfig,
   ({
     allowKeyboardControl: __allowKeyboardControlProp,
@@ -212,3 +211,5 @@ export const CalendarView: React.FC<CalendarViewProps> = withDefaultProps(
     );
   }
 );
+
+export default CalendarView;

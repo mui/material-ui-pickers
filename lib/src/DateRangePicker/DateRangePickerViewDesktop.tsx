@@ -1,9 +1,9 @@
 import * as React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 import { DateRange } from './RangeTypes';
 import { useUtils } from '../_shared/hooks/useUtils';
-import { makeStyles } from '@material-ui/core/styles';
 import { calculateRangePreview } from './date-range-manager';
-import { Calendar, CalendarProps } from '../views/Calendar/Calendar';
+import Calendar, { CalendarProps } from '../views/Calendar/Calendar';
 import { DateRangeDay, DateRangeDayProps } from './DateRangePickerDay';
 import { defaultMinDate, defaultMaxDate } from '../constants/prop-types';
 import { ArrowSwitcher, ExportedArrowSwitcherProps } from '../_shared/ArrowSwitcher';
@@ -171,7 +171,6 @@ export const DateRangePickerViewDesktop: React.FC<DesktopDateRangeCalendarProps>
               rightArrowIcon={rightArrowIcon}
               text={utils.format(monthOnIteration, 'monthAndYear')}
             />
-
             <Calendar
               {...other}
               key={index}
@@ -180,7 +179,7 @@ export const DateRangePickerViewDesktop: React.FC<DesktopDateRangeCalendarProps>
               onChange={handleDayChange}
               currentMonth={monthOnIteration}
               TransitionProps={CalendarTransitionProps}
-              renderDay={(day, _, DayProps) =>
+              renderDay={(day, __, DayProps) =>
                 renderDay(day, {
                   isPreviewing: isWithinRange(utils, day, previewingRange),
                   isStartOfPreviewing: isStartOfRange(utils, day, previewingRange),

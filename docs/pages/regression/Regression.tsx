@@ -1,8 +1,8 @@
-import React, { useState, useContext } from 'react';
+import * as React from 'react';
 import LeftArrowIcon from '@material-ui/icons/KeyboardArrowLeft';
 import RightArrowIcon from '@material-ui/icons/KeyboardArrowRight';
 import { Grid, Typography } from '@material-ui/core';
-import { TextField, TextFieldProps } from '@material-ui/core';
+import TextField, { TextFieldProps } from '@material-ui/core/TextField';
 import { createRegressionDay as createRegressionDayRenderer } from './RegressionDay';
 import { MuiPickersContext, DateRangePicker, DateRangeDelimiter } from '@material-ui/pickers';
 import {
@@ -17,9 +17,9 @@ const makeRenderInputProp = (overrideProps: Omit<Partial<TextFieldProps>, 'varia
 });
 
 function Regression() {
-  const utils = useContext(MuiPickersContext);
-  const [range, changeRange] = useState<any>([new Date('2019-01-01T00:00:00.000'), null]);
-  const [date, changeDate] = useState<any>(new Date('2019-01-01T00:00:00.000'));
+  const utils = React.useContext(MuiPickersContext);
+  const [range, changeRange] = React.useState<any>([new Date('2019-01-01T00:00:00.000'), null]);
+  const [date, changeDate] = React.useState<any>(new Date('2019-01-01T00:00:00.000'));
 
   const sharedProps = {
     value: date,

@@ -86,24 +86,26 @@ export const useStyles = makeStyles(
   { name: 'MuiPickersModalDialog' }
 );
 
-export const PickersModalDialog: React.FC<PickerModalDialogProps> = ({
-  cancelText = 'Cancel',
-  children,
-  classes: MuiDialogClasses,
-  clearable = false,
-  clearText = 'Clear',
-  okText = 'OK',
-  onAccept,
-  onClear,
-  onDismiss,
-  onSetToday,
-  showTabs,
-  showTodayButton = false,
-  todayText = 'Today',
-  wider,
-  ...other
-}) => {
+const PickersModalDialog: React.FC<PickerModalDialogProps> = (props) => {
+  const {
+    cancelText = 'Cancel',
+    children,
+    classes: MuiDialogClasses,
+    clearable = false,
+    clearText = 'Clear',
+    okText = 'OK',
+    onAccept,
+    onClear,
+    onDismiss,
+    onSetToday,
+    showTabs,
+    showTodayButton = false,
+    todayText = 'Today',
+    wider,
+    ...other
+  } = props;
   const classes = useStyles();
+
   return (
     <Dialog
       onClose={onDismiss}
@@ -116,8 +118,7 @@ export const PickersModalDialog: React.FC<PickerModalDialogProps> = ({
       }}
       {...other}
     >
-      <DialogContent children={children} className={classes.dialog} />
-
+      <DialogContent className={classes.dialog}>{children}</DialogContent>
       <DialogActions
         className={clsx(classes.dialogAction, {
           [classes.withAdditionalAction]: clearable || showTodayButton,
@@ -128,19 +129,16 @@ export const PickersModalDialog: React.FC<PickerModalDialogProps> = ({
             {clearText}
           </Button>
         )}
-
         {showTodayButton && (
           <Button data-mui-test="today-action-button" color="primary" onClick={onSetToday}>
             {todayText}
           </Button>
         )}
-
         {cancelText && (
           <Button color="primary" onClick={onDismiss}>
             {cancelText}
           </Button>
         )}
-
         {okText && (
           <Button color="primary" onClick={onAccept}>
             {okText}
@@ -150,3 +148,5 @@ export const PickersModalDialog: React.FC<PickerModalDialogProps> = ({
     </Dialog>
   );
 };
+
+export default PickersModalDialog;

@@ -1,11 +1,10 @@
 import * as React from 'react';
 import clsx from 'clsx';
 import Typography from '@material-ui/core/Typography';
-import { Day, DayProps } from './Day';
-
+import { makeStyles, useTheme } from '@material-ui/core/styles';
+import Day, { DayProps } from './Day';
 import { useUtils, useNow } from '../../_shared/hooks/useUtils';
 import { PickerOnChangeFn } from '../../_shared/hooks/useViews';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { DAY_SIZE, DAY_MARGIN } from '../../constants/dimensions';
 import { withDefaultProps } from '../../_shared/withDefaultProps';
 import { PickerSelectionState } from '../../_shared/hooks/usePickerState';
@@ -103,7 +102,7 @@ export const useStyles = makeStyles((theme) => {
   };
 }, muiComponentConfig);
 
-export const Calendar: React.FC<CalendarProps> = withDefaultProps(
+const Calendar: React.FC<CalendarProps> = withDefaultProps(
   muiComponentConfig,
   ({
     date,
@@ -171,8 +170,9 @@ export const Calendar: React.FC<CalendarProps> = withDefaultProps(
               key={day + i.toString()}
               variant="caption"
               className={classes.weekDayLabel}
-              children={day.charAt(0).toUpperCase()}
-            />
+            >
+              {day.charAt(0).toUpperCase()}
+            </Typography>
           ))}
         </div>
 
@@ -196,7 +196,7 @@ export const Calendar: React.FC<CalendarProps> = withDefaultProps(
 
                     const dayProps: DayProps = {
                       key: (day as any)?.toString(),
-                      day: day,
+                      day,
                       role: 'cell',
                       isAnimating: isMonthSwitchingAnimating,
                       disabled: disabled,
@@ -238,3 +238,5 @@ export const Calendar: React.FC<CalendarProps> = withDefaultProps(
 );
 
 Calendar.displayName = 'Calendar';
+
+export default Calendar;

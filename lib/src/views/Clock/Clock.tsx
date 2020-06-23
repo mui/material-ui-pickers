@@ -1,14 +1,12 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
 import clsx from 'clsx';
-import ClockPointer from './ClockPointer';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import ClockPointer from './ClockPointer';
 import { useUtils } from '../../_shared/hooks/useUtils';
 import { VIEW_HEIGHT } from '../../constants/dimensions';
 import { ClockViewType } from '../../constants/ClockType';
-
 import { PickerOnChangeFn } from '../../_shared/hooks/useViews';
 import { getHours, getMinutes } from '../../_helpers/time-utils';
 import { withDefaultProps } from '../../_shared/withDefaultProps';
@@ -260,9 +258,6 @@ export const Clock: React.FC<ClockProps> = withDefaultProps(
   }
 );
 
-Clock.defaultProps = {
-  ampm: PropTypes.bool,
-  minutesStep: PropTypes.number,
-} as any;
-
 Clock.displayName = 'Clock';
+
+export default Clock;

@@ -106,7 +106,7 @@ describe('DatePicker - different props', () => {
             renderInput={(props) => <TextField id="focusing-picker" {...props} />}
           />
 
-          <button id="focus-picker" onClick={focusPicker} />
+          <button type="button" id="focus-picker" onClick={focusPicker} />
         </React.Fragment>
       );
     };

@@ -1,12 +1,12 @@
 import * as React from 'react';
 import clsx from 'clsx';
-import { useViews } from '../_shared/hooks/useViews';
-import { ClockView } from '../views/Clock/ClockView';
 import { makeStyles } from '@material-ui/core/styles';
+import { useViews } from '../_shared/hooks/useViews';
+import ClockView from '../views/Clock/ClockView';
 import { DateTimePickerView } from '../DateTimePicker';
 import { BasePickerProps } from '../typings/BasePicker';
 import { DatePickerView } from '../DatePicker/DatePicker';
-import { CalendarView } from '../views/Calendar/CalendarView';
+import CalendarView from '../views/Calendar/CalendarView';
 import { withDefaultProps } from '../_shared/withDefaultProps';
 import { KeyboardDateInput } from '../_shared/KeyboardDateInput';
 import { useIsLandscape } from '../_shared/hooks/useIsLandscape';
@@ -167,8 +167,8 @@ function Picker({
                 onChange={handleChangeAndOpenNext}
                 openNextView={() => setOpenView(nextView)}
                 openPreviousView={() => setOpenView(previousView)}
-                nextViewAvailable={!Boolean(nextView)}
-                previousViewAvailable={!Boolean(previousView) || isDatePickerView(previousView)}
+                nextViewAvailable={!nextView}
+                previousViewAvailable={!previousView || isDatePickerView(previousView)}
                 showViewSwitcher={wrapperVariant === 'desktop'}
               />
             )}

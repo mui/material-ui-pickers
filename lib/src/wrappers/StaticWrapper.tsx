@@ -24,16 +24,15 @@ export interface StaticWrapperProps {
   displayStaticWrapperAs?: 'desktop' | 'mobile' | 'static';
 }
 
-export const StaticWrapper: React.FC<StaticWrapperProps> = ({
-  displayStaticWrapperAs = 'static',
-  children,
-}) => {
+export const StaticWrapper: React.FC<StaticWrapperProps> = (props) => {
+  const { displayStaticWrapperAs = 'static', children } = props;
   const classes = useStyles();
+  const isStatic = true;
 
   return (
-    <IsStaticVariantContext.Provider value={true}>
+    <IsStaticVariantContext.Provider value={isStatic}>
       <WrapperVariantContext.Provider value={displayStaticWrapperAs}>
-        <div className={classes.root} children={children} />
+        <div className={classes.root}>{children}</div>
       </WrapperVariantContext.Provider>
     </IsStaticVariantContext.Provider>
   );

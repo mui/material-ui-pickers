@@ -2,10 +2,10 @@ import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import clsx from 'clsx';
 import ButtonBase, { ButtonBaseProps } from '@material-ui/core/ButtonBase';
+import { makeStyles, fade } from '@material-ui/core/styles';
 import { ExtendMui } from '../../typings/helpers';
 import { onSpaceOrEnter } from '../../_helpers/utils';
 import { useUtils } from '../../_shared/hooks/useUtils';
-import { makeStyles, fade } from '@material-ui/core/styles';
 import { DAY_SIZE, DAY_MARGIN } from '../../constants/dimensions';
 import { withDefaultProps } from '../../_shared/withDefaultProps';
 import { useCanAutoFocus } from '../../_shared/hooks/useCanAutoFocus';
@@ -138,7 +138,7 @@ const PureDay: React.FC<DayProps> = ({
   allowSameDateSelection = false,
   className,
   day,
-  disabled,
+  disabled = false,
   disableHighlightToday = false,
   disableMargin = false,
   focusable = false,
@@ -151,9 +151,9 @@ const PureDay: React.FC<DayProps> = ({
   onDaySelect,
   onFocus,
   onKeyDown,
-  selected,
+  selected = false,
   showDaysOutsideCurrentMonth = false,
-  today: isToday,
+  today: isToday = false,
   ...other
 }) => {
   const utils = useUtils();
@@ -257,18 +257,14 @@ export const areDayPropsEqual = (prevProps: DayProps, nextProps: DayProps) => {
   );
 };
 
-export const Day = withDefaultProps(muiComponentConfig, React.memo(PureDay, areDayPropsEqual));
-
 PureDay.displayName = 'PickersDay';
 
 PureDay.propTypes = {
-  today: PropTypes.bool,
   disabled: PropTypes.bool,
   selected: PropTypes.bool,
+  today: PropTypes.bool,
 };
 
-PureDay.defaultProps = {
-  disabled: false,
-  today: false,
-  selected: false,
-};
+const Day = withDefaultProps(muiComponentConfig, React.memo(PureDay, areDayPropsEqual));
+
+export default Day;
