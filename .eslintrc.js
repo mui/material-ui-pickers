@@ -1,43 +1,96 @@
+const confusingBrowserGlobals = require('confusing-browser-globals');
+const path = require('path');
+
 module.exports = {
-  parser: '@typescript-eslint/parser',
+  root: true, // So parent files don't get applied
+  globals: {
+    preval: false, // Used in the documentation
+  },
+  env: {
+    es6: true,
+    browser: true,
+    node: true,
+  },
+  extends: ['airbnb', 'prettier', 'prettier/react'],
+  parser: 'babel-eslint',
   parserOptions: {
-    ecmaVersion: 6,
+    ecmaVersion: 7,
     sourceType: 'module',
-    ecmaFeatures: {
-      jsx: true,
-    },
   },
-  settings: {
-    react: {
-      version: 'detect',
-    },
-  },
-  extends: [
-    'plugin:@typescript-eslint/recommended',
-    'prettier',
-    'prettier/react',
-    'prettier/@typescript-eslint',
-  ],
-  plugins: ['react', 'react-hooks', 'pretty-imports', '@typescript-eslint'],
+  plugins: ['babel', 'react-hooks'],
+  settings: {},
+  /**
+   * Sorted alphanumerically within each group. built-in and each plugin form
+   * their own groups.
+   */
   rules: {
-    '@typescript-eslint/explicit-function-return-type': 0,
-    '@typescript-eslint/explicit-member-accessibility': 0,
-    '@typescript-eslint/no-non-null-assertion': 0,
-    '@typescript-eslint/no-explicit-any': 0,
-    // in scripts and config files it's required to use dynamic require
-    '@typescript-eslint/no-var-requires': 0,
-    'react/no-children-prop': 0,
-    'react/jsx-uses-vars': 2,
-    'react/jsx-uses-react': 2,
-    'pretty-imports/sorted': 'warn',
-    '@typescript-eslint/no-use-before-define': 'warn',
-    'react-hooks/rules-of-hooks': 'error',
-    'react-hooks/exhaustive-deps': 'warn',
-    '@typescript-eslint/no-namespace': 'off',
-    '@typescript-eslint/no-empty-interface': 'off',
-    '@typescript-eslint/no-unused-vars': [
+    'consistent-this': ['error', 'self'],
+    'linebreak-style': 'off', // Doesn't play nicely with Windows
+    // just as bad as "max components per file"
+    'max-classes-per-file': 'off',
+    'no-alert': 'error',
+    // Strict, airbnb is using warn; allow warn and error for dev environments
+    'no-console': ['error', { allow: ['warn', 'error'] }],
+    'no-constant-condition': 'error',
+    // Airbnb use error
+    'no-param-reassign': 'off',
+    'no-prototype-builtins': 'off',
+    'no-restricted-imports': [
       'error',
-      { vars: 'all', args: 'after-used', argsIgnorePattern: '^_', ignoreRestSiblings: true },
+      {
+        patterns: [
+          '@material-ui/*/*/*',
+          '!@material-ui/core/test-utils/*',
+          '!@material-ui/utils/macros/*.macro',
+        ],
+      },
     ],
+    'nonblock-statement-body-position': 'error',
+    // Airbnb restricts isNaN and isFinite which are necessary for IE 11
+    // we have to be disciplined about the usage and ensure the Number type for its
+    // arguments
+    'no-restricted-globals': ['error'].concat(confusingBrowserGlobals),
+    'no-underscore-dangle': 'error',
+    'prefer-arrow-callback': ['error', { allowNamedFunctions: true }],
+    'prefer-destructuring': 'off', // Destructuring harm grep potential.
+
+    'jsx-a11y/label-has-associated-control': 'off',
+    'jsx-a11y/label-has-for': 'off', // deprecated
+    'jsx-a11y/no-autofocus': 'off', // We are a library, people do what they want.
+
+    // This rule is great for raising people awareness of what a key is and how it works.
+    'react/no-array-index-key': 'off',
+    'react/destructuring-assignment': 'off',
+    // It's buggy
+    'react/forbid-prop-types': 'off',
+    'react/jsx-curly-brace-presence': 'off',
+    // prefer <React.Fragment> over <>. The former allows `key` while the latter doesn't
+    'react/jsx-fragments': ['error', 'element'],
+    'react/jsx-filename-extension': ['error', { extensions: ['.js'] }], // airbnb is using .jsx
+    'react/jsx-handler-names': [
+      'error',
+      {
+        // airbnb is disabling this rule
+        eventHandlerPrefix: 'handle',
+        eventHandlerPropPrefix: 'on',
+      },
+    ],
+    // not a good rule for components close to the DOM
+    'react/jsx-props-no-spreading': 'off',
+    'react/no-danger': 'error',
+    // Strict, airbnb is using off
+    'react/no-direct-mutation-state': 'error',
+    'react/no-find-dom-node': 'off',
+    'react/no-multi-comp': 'off',
+    'react/require-default-props': 'off',
+    'react/sort-prop-types': 'error',
+    // This depends entirely on what you're doing. There's no universal pattern
+    'react/state-in-constructor': 'off',
+    // stylistic opinion. For conditional assignment we want it outside, otherwise as static
+    'react/static-property-placement': 'off',
+
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': ['error', { additionalHooks: 'useEnhancedEffect' }],
   },
+  overrides: [],
 };
