@@ -28,6 +28,7 @@ export interface PickerPopperProps extends ExportedPickerPopperProps, PaperProps
   anchorEl: PopperProps['anchorEl'];
   open: PopperProps['open'];
   onClose: () => void;
+  onOpen: () => void;
 }
 
 export const useStyles = makeStyles(
@@ -61,6 +62,7 @@ export const PickerPopper: React.FC<PickerPopperProps> = ({
   anchorEl,
   children,
   onClose,
+  onOpen,
   ...other
 }) => {
   const classes = useStyles();
@@ -73,6 +75,10 @@ export const PickerPopper: React.FC<PickerPopperProps> = ({
   });
 
   React.useEffect(() => {
+    if (role === 'tooltip') {
+      return;
+    }
+
     if (open) {
       lastFocusedElementRef.current = document.activeElement;
     } else if (
@@ -81,9 +87,13 @@ export const PickerPopper: React.FC<PickerPopperProps> = ({
     ) {
       lastFocusedElementRef.current.focus();
     }
-  }, [open]);
+  }, [open, role]);
 
   const handleBlur = () => {
+    if (!open) {
+      return;
+    }
+
     // document.activeElement is updating on the next tick after `blur` called
     executeInTheNextEventLoopTick(() => {
       if (paperRef.current?.contains(document.activeElement)) {
@@ -107,14 +117,14 @@ export const PickerPopper: React.FC<PickerPopperProps> = ({
       {({ TransitionProps, placement }) => (
         <TrapFocus
           open={open}
-          disableAutoFocus={role === 'tooltip'}
+          disableAutoFocus
           disableEnforceFocus={role === 'tooltip'}
           isEnabled={() => true}
           getDoc={() => paperRef.current?.ownerDocument ?? document}
         >
-          <TransitionComponent {...TransitionProps}>
+          <TransitionComponent {...TransitionProps} onEntered={onOpen}>
             <Paper
-              role="dialog"
+              role={role}
               tabIndex={-1}
               elevation={8}
               ref={handlePopperRef}

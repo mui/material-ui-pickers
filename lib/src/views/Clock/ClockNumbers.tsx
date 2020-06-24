@@ -73,13 +73,7 @@ export const getMinutesNumbers = ({
   onChange,
   isDisabled,
   getClockNumberText,
-}: {
-  value: number;
-  utils: IUtils<MaterialUiPickersDate>;
-  onChange: (value: number, isFinish?: boolean | symbol) => void;
-  getClockNumberText: (hour: string) => string;
-  isDisabled: (value: number) => boolean;
-}) => {
+}: Omit<GetHourNumbersOptions, 'ampm' | 'date'> & { value: number }) => {
   const f = utils.formatNumber;
 
   return ([

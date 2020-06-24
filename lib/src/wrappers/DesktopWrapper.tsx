@@ -5,6 +5,7 @@ import { StaticWrapperProps } from './StaticWrapper';
 import { InnerMobileWrapperProps } from './MobileWrapper';
 import { WrapperVariantContext } from './WrapperVariantContext';
 import { KeyboardDateInput } from '../_shared/KeyboardDateInput';
+import { CanAutoFocusContext } from '../_shared/CanAutoFocusContext';
 import { InnerDesktopTooltipWrapperProps } from './DesktopTooltipWrapper';
 import { PickerPopper, ExportedPickerPopperProps } from '../_shared/PickerPopper';
 
@@ -24,26 +25,34 @@ export const DesktopWrapper: React.FC<DesktopWrapperProps> = ({
   TransitionComponent,
   PopperProps,
 }) => {
-  const isFocusedRef = React.useRef(false);
+  const [canAutoFocus, setCanAutoFocus] = React.useState(false);
   const dialogRef = React.useRef<HTMLDivElement>(null);
   const inputRef = React.useRef<HTMLDivElement>(null);
 
+  React.useEffect(() => {
+    if (!open) {
+      setCanAutoFocus(false);
+    }
+  }, [open]);
+
   return (
     <WrapperVariantContext.Provider value="desktop">
-      <KeyboardDateInputComponent {...DateInputProps} containerRef={inputRef} />
+      <CanAutoFocusContext.Provider value={canAutoFocus}>
+        <KeyboardDateInputComponent {...DateInputProps} containerRef={inputRef} />
 
-      <PickerPopper
-        role="dialog"
-        open={open}
-        innerRef={dialogRef}
-        anchorEl={inputRef.current}
-        TransitionComponent={TransitionComponent}
-        PopperProps={PopperProps}
-        onFocus={() => (isFocusedRef.current = true)}
-        onClose={onDismiss}
-      >
-        {children}
-      </PickerPopper>
+        <PickerPopper
+          role="dialog"
+          open={open}
+          innerRef={dialogRef}
+          anchorEl={inputRef.current}
+          TransitionComponent={TransitionComponent}
+          PopperProps={PopperProps}
+          onClose={onDismiss}
+          onOpen={() => setCanAutoFocus(true)}
+        >
+          {children}
+        </PickerPopper>
+      </CanAutoFocusContext.Provider>
     </WrapperVariantContext.Provider>
   );
 };

@@ -53,6 +53,7 @@ export function usePickerState<TInput, TDateValue>(
 
       if (needClosePicker) {
         setIsOpen(false);
+        setCanAutoFocus(false);
 
         if (onAccept) {
           onAccept(acceptedDate);
@@ -79,6 +80,7 @@ export function usePickerState<TInput, TDateValue>(
 
   const pickerProps = React.useMemo(
     () => ({
+      // canAutoFocus,
       date: pickerDate,
       isMobileKeyboardViewOpen,
       toggleMobileKeyboardView: () => {
