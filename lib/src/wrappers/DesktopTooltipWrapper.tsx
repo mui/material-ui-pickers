@@ -7,6 +7,7 @@ import { WrapperVariantContext } from './WrapperVariantContext';
 import { KeyboardDateInput } from '../_shared/KeyboardDateInput';
 import { executeInTheNextEventLoopTick } from '../_helpers/utils';
 import { ExportedPickerPopperProps, PickerPopper } from '../_shared/PickerPopper';
+import { CanAutoFocusContext, useAutoFocusControl } from '../_shared/hooks/useCanAutoFocus';
 
 export interface InnerDesktopTooltipWrapperProps extends ExportedPickerPopperProps {}
 
@@ -26,6 +27,7 @@ export const DesktopTooltipWrapper: React.FC<DesktopTooltipWrapperProps> = ({
 }) => {
   const inputRef = React.useRef<HTMLDivElement>(null);
   const popperRef = React.useRef<HTMLElement>(null);
+  const { canAutoFocus, onOpen } = useAutoFocusControl(open);
 
   const handleBlur = () => {
     executeInTheNextEventLoopTick(() => {
@@ -42,20 +44,27 @@ export const DesktopTooltipWrapper: React.FC<DesktopTooltipWrapperProps> = ({
 
   return (
     <WrapperVariantContext.Provider value="desktop">
-      <KeyboardDateInputComponent {...DateInputProps} containerRef={inputRef} onBlur={handleBlur} />
+      <CanAutoFocusContext.Provider value={canAutoFocus}>
+        <KeyboardDateInputComponent
+          {...DateInputProps}
+          containerRef={inputRef}
+          onBlur={handleBlur}
+        />
 
-      <PickerPopper
-        role="tooltip"
-        open={open}
-        innerRef={popperRef}
-        anchorEl={inputRef.current}
-        TransitionComponent={TransitionComponent}
-        PopperProps={PopperProps}
-        onBlur={handleBlur}
-        onClose={onDismiss}
-      >
-        {children}
-      </PickerPopper>
+        <PickerPopper
+          role="tooltip"
+          open={open}
+          innerRef={popperRef}
+          anchorEl={inputRef.current}
+          TransitionComponent={TransitionComponent}
+          PopperProps={PopperProps}
+          onBlur={handleBlur}
+          onClose={onDismiss}
+          onOpen={onOpen}
+        >
+          {children}
+        </PickerPopper>
+      </CanAutoFocusContext.Provider>
     </WrapperVariantContext.Provider>
   );
 };

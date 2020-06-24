@@ -4,7 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import { onSpaceOrEnter } from '../../_helpers/utils';
 import { makeStyles, fade } from '@material-ui/core/styles';
-import { useCanAutoFocus } from '../../_shared/CanAutoFocusContext';
+import { useCanAutoFocus } from '../../_shared/hooks/useCanAutoFocus';
 import { FORCE_FINISH_PICKER } from '../../_shared/hooks/usePickerState';
 
 const positions: Record<number, [number, number]> = {

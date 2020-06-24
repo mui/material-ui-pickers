@@ -9,7 +9,7 @@ import { MaterialUiPickersDate } from '../../typings/date';
 import { makeStyles, fade } from '@material-ui/core/styles';
 import { DAY_SIZE, DAY_MARGIN } from '../../constants/dimensions';
 import { withDefaultProps } from '../../_shared/withDefaultProps';
-import { useCanAutoFocus } from '../../_shared/CanAutoFocusContext';
+import { useCanAutoFocus } from '../../_shared/hooks/useCanAutoFocus';
 import { FORCE_FINISH_PICKER } from '../../_shared/hooks/usePickerState';
 
 const muiComponentConfig = { name: 'MuiPickersDay' };

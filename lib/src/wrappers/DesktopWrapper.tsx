@@ -5,9 +5,9 @@ import { StaticWrapperProps } from './StaticWrapper';
 import { InnerMobileWrapperProps } from './MobileWrapper';
 import { WrapperVariantContext } from './WrapperVariantContext';
 import { KeyboardDateInput } from '../_shared/KeyboardDateInput';
-import { CanAutoFocusContext } from '../_shared/CanAutoFocusContext';
 import { InnerDesktopTooltipWrapperProps } from './DesktopTooltipWrapper';
 import { PickerPopper, ExportedPickerPopperProps } from '../_shared/PickerPopper';
+import { CanAutoFocusContext, useAutoFocusControl } from '../_shared/hooks/useCanAutoFocus';
 
 export interface InnerDesktopWrapperProps extends ExportedPickerPopperProps {}
 
@@ -25,15 +25,9 @@ export const DesktopWrapper: React.FC<DesktopWrapperProps> = ({
   TransitionComponent,
   PopperProps,
 }) => {
-  const [canAutoFocus, setCanAutoFocus] = React.useState(false);
   const dialogRef = React.useRef<HTMLDivElement>(null);
   const inputRef = React.useRef<HTMLDivElement>(null);
-
-  React.useEffect(() => {
-    if (!open) {
-      setCanAutoFocus(false);
-    }
-  }, [open]);
+  const { canAutoFocus, onOpen } = useAutoFocusControl(open)
 
   return (
     <WrapperVariantContext.Provider value="desktop">
@@ -48,7 +42,7 @@ export const DesktopWrapper: React.FC<DesktopWrapperProps> = ({
           TransitionComponent={TransitionComponent}
           PopperProps={PopperProps}
           onClose={onDismiss}
-          onOpen={() => setCanAutoFocus(true)}
+          onOpen={onOpen}
         >
           {children}
         </PickerPopper>

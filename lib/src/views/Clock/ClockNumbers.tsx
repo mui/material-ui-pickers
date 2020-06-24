@@ -7,7 +7,7 @@ interface GetHourNumbersOptions {
   ampm: boolean;
   utils: IUtils<MaterialUiPickersDate>;
   date: MaterialUiPickersDate;
-  onChange: (value: number, isFinish?: boolean) => void;
+  onChange: (value: number, isFinish?: boolean | symbol) => void;
   getClockNumberText: (hour: string) => string;
   isDisabled: (value: number) => boolean;
 }

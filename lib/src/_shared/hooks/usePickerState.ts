@@ -53,7 +53,6 @@ export function usePickerState<TInput, TDateValue>(
 
       if (needClosePicker) {
         setIsOpen(false);
-        setCanAutoFocus(false);
 
         if (onAccept) {
           onAccept(acceptedDate);

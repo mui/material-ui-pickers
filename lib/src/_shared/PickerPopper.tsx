@@ -124,7 +124,6 @@ export const PickerPopper: React.FC<PickerPopperProps> = ({
         >
           <TransitionComponent {...TransitionProps} onEntered={onOpen}>
             <Paper
-              role={role}
               tabIndex={-1}
               elevation={8}
               ref={handlePopperRef}

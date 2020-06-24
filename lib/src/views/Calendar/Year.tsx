@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import Typography from '@material-ui/core/Typography';
 import { onSpaceOrEnter } from '../../_helpers/utils';
 import { makeStyles, fade } from '@material-ui/core/styles';
-import { useCanAutoFocus } from '../../_shared/CanAutoFocusContext';
+import { useCanAutoFocus } from '../../_shared/hooks/useCanAutoFocus';
 import { WrapperVariantContext } from '../../wrappers/WrapperVariantContext';
 
 export interface YearProps {
