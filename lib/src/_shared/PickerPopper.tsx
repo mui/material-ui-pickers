@@ -49,7 +49,7 @@ export const useStyles = makeStyles(
       transformOrigin: 'bottom center',
     },
   }),
-  { name: 'MuiPickerPopper' }
+  { name: 'MuiPickersPopper' }
 );
 
 export const PickerPopper: React.FC<PickerPopperProps> = ({
