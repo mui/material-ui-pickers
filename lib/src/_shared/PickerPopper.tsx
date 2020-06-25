@@ -63,7 +63,6 @@ export const PickerPopper: React.FC<PickerPopperProps> = ({
   children,
   onClose,
   onOpen,
-  ...other
 }) => {
   const classes = useStyles();
   const lastFocusedElementRef = React.useRef<Element | null>(null);
@@ -120,6 +119,7 @@ export const PickerPopper: React.FC<PickerPopperProps> = ({
           disableEnforceFocus={role === 'tooltip'}
           isEnabled={() => true}
           getDoc={() => paperRef.current?.ownerDocument ?? document}
+          {...TrapFocusProps}
         >
           <TransitionComponent {...TransitionProps} onEntered={onOpen}>
             <Paper

@@ -12,7 +12,7 @@ const defaultRangeRenderInput = (startProps: TextFieldProps, endProps: TextField
   </>
 );
 
-describe('<DatePicker />', () => {
+describe('<DateRangePicker />', () => {
   const render = createClientRender({ strict: false });
 
   it(`doesn't crashes if opening picker with invalid date input`, async () => {
@@ -27,8 +27,7 @@ describe('<DatePicker />', () => {
     );
 
     fireEvent.focus(getByMuiTest('start-input'));
-    const el = await screen.findAllByRole('tooltip')
-    screen.debug(el[1]);
-    // expect(screen.getByRole('tooltip')).toBeInTheDocument();
+
+    expect(screen.getByRole('tooltip')).toBeInTheDocument();
   });
 });
