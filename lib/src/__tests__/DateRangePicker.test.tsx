@@ -7,8 +7,8 @@ import { createClientRender, fireEvent } from './createClientRender';
 
 const defaultRangeRenderInput = (startProps: TextFieldProps, endProps: TextFieldProps) => (
   <>
-    <TextField data-mui-test="start-input" {...startProps} />
-    <TextField data-mui-test="end-input" {...endProps} />
+    <TextField {...startProps} />
+    <TextField {...endProps} />
   </>
 );
 

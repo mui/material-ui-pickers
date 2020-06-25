@@ -22,7 +22,8 @@ export const DesktopWrapper: React.FC<DesktopWrapperProps> = ({
   KeyboardDateInputComponent = KeyboardDateInput,
   onDismiss,
   open,
-  PopoverProps,
+  PopperProps,
+  TransitionComponent,
 }) => {
   const dialogRef = React.useRef<HTMLDivElement>(null);
   const inputRef = React.useRef<HTMLDivElement>(null);

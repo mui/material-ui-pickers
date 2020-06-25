@@ -68,6 +68,10 @@ export const getHourNumbers = ({
 };
 
 export const getMinutesNumbers = ({
+  utils,
+  value,
+  onChange,
+  isDisabled,
   getClockNumberText,
 }: Omit<GetHourNumbersOptions, 'ampm' | 'date'> & { value: number }) => {
   const f = utils.formatNumber;
