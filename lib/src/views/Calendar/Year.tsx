@@ -1,7 +1,7 @@
 import * as React from 'react';
 import clsx from 'clsx';
 import Typography from '@material-ui/core/Typography';
-import { useForkRef } from '@material-ui/core';
+import { useForkRef } from '@material-ui/core/utils';
 import { onSpaceOrEnter } from '../../_helpers/utils';
 import { makeStyles, fade } from '@material-ui/core/styles';
 import { WrapperVariantContext } from '../../wrappers/WrapperVariantContext';
