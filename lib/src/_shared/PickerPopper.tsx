@@ -33,7 +33,7 @@ export interface PickerPopperProps extends ExportedPickerPopperProps, PaperProps
 
 export const useStyles = makeStyles(
   theme => ({
-    popper: {
+    root: {
       zIndex: theme.zIndex.modal,
     },
     paper: {
@@ -110,7 +110,7 @@ export const PickerPopper: React.FC<PickerPopperProps> = ({
       role={role}
       open={open}
       anchorEl={anchorEl}
-      className={clsx(classes.popper, PopperProps?.className)}
+      className={clsx(classes.root, PopperProps?.className)}
       {...PopperProps}
     >
       {({ TransitionProps, placement }) => (
@@ -130,7 +130,6 @@ export const PickerPopper: React.FC<PickerPopperProps> = ({
                 [classes.topTransition]: placement === 'top',
               })}
               onBlur={handleBlur}
-              {...other}
             >
               {children}
             </Paper>
