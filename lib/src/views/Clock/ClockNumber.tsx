@@ -35,13 +35,13 @@ const positions: Record<number, [number, number]> = {
 };
 
 export interface ClockNumberProps {
-  index: number;
-  label: string;
-  selected: boolean;
   disabled: boolean;
-  onSelect: (isFinish: boolean | symbol) => void;
-  isInner?: boolean;
   getClockNumberText: (currentItemText: string) => string;
+  index: number;
+  isInner?: boolean;
+  label: string;
+  onSelect: (isFinish: boolean | symbol) => void;
+  selected: boolean;
 }
 
 export const useStyles = makeStyles(
@@ -80,13 +80,13 @@ export const useStyles = makeStyles(
 );
 
 export const ClockNumber: React.FC<ClockNumberProps> = ({
-  selected,
-  label,
-  index,
-  onSelect,
-  isInner,
   disabled,
   getClockNumberText,
+  index,
+  isInner,
+  label,
+  onSelect,
+  selected,
 }) => {
   const classes = useStyles();
   const canAutoFocus = useCanAutoFocus();

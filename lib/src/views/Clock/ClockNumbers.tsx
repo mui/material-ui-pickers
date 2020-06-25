@@ -5,20 +5,20 @@ import { MaterialUiPickersDate } from '../../typings/date';
 
 interface GetHourNumbersOptions {
   ampm: boolean;
-  utils: IUtils<MaterialUiPickersDate>;
   date: MaterialUiPickersDate;
-  onChange: (value: number, isFinish?: boolean | symbol) => void;
   getClockNumberText: (hour: string) => string;
   isDisabled: (value: number) => boolean;
+  onChange: (value: number, isFinish?: boolean | symbol) => void;
+  utils: IUtils<MaterialUiPickersDate>;
 }
 
 export const getHourNumbers = ({
   ampm,
   date,
-  utils,
-  onChange,
-  isDisabled,
   getClockNumberText,
+  isDisabled,
+  onChange,
+  utils,
 }: GetHourNumbersOptions) => {
   const currentHours = date ? utils.getHours(date) : null;
 
@@ -68,10 +68,6 @@ export const getHourNumbers = ({
 };
 
 export const getMinutesNumbers = ({
-  value,
-  utils,
-  onChange,
-  isDisabled,
   getClockNumberText,
 }: Omit<GetHourNumbersOptions, 'ampm' | 'date'> & { value: number }) => {
   const f = utils.formatNumber;

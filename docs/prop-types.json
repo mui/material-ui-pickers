@@ -363,7 +363,7 @@
     },
     "leftArrowIcon": {
       "defaultValue": null,
-      "description": "Left arrow icon",
+      "description": "Left arrow icon.",
       "name": "leftArrowIcon",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/ArrowSwitcher.tsx",
@@ -376,7 +376,7 @@
     },
     "rightArrowIcon": {
       "defaultValue": null,
-      "description": "Right arrow icon",
+      "description": "Right arrow icon.",
       "name": "rightArrowIcon",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/ArrowSwitcher.tsx",
@@ -389,7 +389,7 @@
     },
     "leftArrowButtonProps": {
       "defaultValue": null,
-      "description": "Props to pass to left arrow button",
+      "description": "Props to pass to left arrow button.",
       "name": "leftArrowButtonProps",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/ArrowSwitcher.tsx",
@@ -402,7 +402,7 @@
     },
     "rightArrowButtonProps": {
       "defaultValue": null,
-      "description": "Props to pass to right arrow button",
+      "description": "Props to pass to right arrow button.",
       "name": "rightArrowButtonProps",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/ArrowSwitcher.tsx",
@@ -415,7 +415,7 @@
     },
     "leftArrowButtonText": {
       "defaultValue": null,
-      "description": "Left arrow icon aria-label text",
+      "description": "Left arrow icon aria-label text.",
       "name": "leftArrowButtonText",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/ArrowSwitcher.tsx",
@@ -428,7 +428,7 @@
     },
     "rightArrowButtonText": {
       "defaultValue": null,
-      "description": "Right arrow icon aria-label text",
+      "description": "Right arrow icon aria-label text.",
       "name": "rightArrowButtonText",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/ArrowSwitcher.tsx",
@@ -1279,7 +1279,7 @@
       "defaultValue": {
         "value": "false"
       },
-      "description": "Do not ignore date part when validating min/max time",
+      "description": "Do not ignore date part when validating min/max time.",
       "name": "disableIgnoringDatePartForTimeValidation",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_helpers/time-utils.ts",
@@ -2088,7 +2088,7 @@
       "defaultValue": {
         "value": "false"
       },
-      "description": "Do not ignore date part when validating min/max time",
+      "description": "Do not ignore date part when validating min/max time.",
       "name": "disableIgnoringDatePartForTimeValidation",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_helpers/time-utils.ts",
@@ -2131,7 +2131,7 @@
     },
     "leftArrowIcon": {
       "defaultValue": null,
-      "description": "Left arrow icon",
+      "description": "Left arrow icon.",
       "name": "leftArrowIcon",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/ArrowSwitcher.tsx",
@@ -2144,7 +2144,7 @@
     },
     "rightArrowIcon": {
       "defaultValue": null,
-      "description": "Right arrow icon",
+      "description": "Right arrow icon.",
       "name": "rightArrowIcon",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/ArrowSwitcher.tsx",
@@ -2157,7 +2157,7 @@
     },
     "leftArrowButtonProps": {
       "defaultValue": null,
-      "description": "Props to pass to left arrow button",
+      "description": "Props to pass to left arrow button.",
       "name": "leftArrowButtonProps",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/ArrowSwitcher.tsx",
@@ -2170,7 +2170,7 @@
     },
     "rightArrowButtonProps": {
       "defaultValue": null,
-      "description": "Props to pass to right arrow button",
+      "description": "Props to pass to right arrow button.",
       "name": "rightArrowButtonProps",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/ArrowSwitcher.tsx",
@@ -2183,7 +2183,7 @@
     },
     "leftArrowButtonText": {
       "defaultValue": null,
-      "description": "Left arrow icon aria-label text",
+      "description": "Left arrow icon aria-label text.",
       "name": "leftArrowButtonText",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/ArrowSwitcher.tsx",
@@ -2196,7 +2196,7 @@
     },
     "rightArrowButtonText": {
       "defaultValue": null,
-      "description": "Right arrow icon aria-label text",
+      "description": "Right arrow icon aria-label text.",
       "name": "rightArrowButtonText",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/ArrowSwitcher.tsx",
@@ -2993,7 +2993,7 @@
     },
     "leftArrowIcon": {
       "defaultValue": null,
-      "description": "Left arrow icon",
+      "description": "Left arrow icon.",
       "name": "leftArrowIcon",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/ArrowSwitcher.tsx",
@@ -3006,7 +3006,7 @@
     },
     "rightArrowIcon": {
       "defaultValue": null,
-      "description": "Right arrow icon",
+      "description": "Right arrow icon.",
       "name": "rightArrowIcon",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/ArrowSwitcher.tsx",
@@ -3019,7 +3019,7 @@
     },
     "leftArrowButtonProps": {
       "defaultValue": null,
-      "description": "Props to pass to left arrow button",
+      "description": "Props to pass to left arrow button.",
       "name": "leftArrowButtonProps",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/ArrowSwitcher.tsx",
@@ -3032,7 +3032,7 @@
     },
     "rightArrowButtonProps": {
       "defaultValue": null,
-      "description": "Props to pass to right arrow button",
+      "description": "Props to pass to right arrow button.",
       "name": "rightArrowButtonProps",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/ArrowSwitcher.tsx",
@@ -3045,7 +3045,7 @@
     },
     "leftArrowButtonText": {
       "defaultValue": null,
-      "description": "Left arrow icon aria-label text",
+      "description": "Left arrow icon aria-label text.",
       "name": "leftArrowButtonText",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/ArrowSwitcher.tsx",
@@ -3058,7 +3058,7 @@
     },
     "rightArrowButtonText": {
       "defaultValue": null,
-      "description": "Right arrow icon aria-label text",
+      "description": "Right arrow icon aria-label text.",
       "name": "rightArrowButtonText",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/ArrowSwitcher.tsx",
@@ -3258,7 +3258,7 @@
       "defaultValue": {
         "value": "2"
       },
-      "description": "How many calendars render on **desktop** DateRangePicker",
+      "description": "How many calendars render on **desktop** DateRangePicker.",
       "name": "calendars",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/DateRangePicker/DateRangePickerViewDesktop.tsx",
@@ -4307,7 +4307,7 @@
       "defaultValue": {
         "value": "false"
       },
-      "description": "Do not ignore date part when validating min/max time",
+      "description": "Do not ignore date part when validating min/max time.",
       "name": "disableIgnoringDatePartForTimeValidation",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_helpers/time-utils.ts",
@@ -4320,7 +4320,7 @@
     },
     "leftArrowIcon": {
       "defaultValue": null,
-      "description": "Left arrow icon",
+      "description": "Left arrow icon.",
       "name": "leftArrowIcon",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/ArrowSwitcher.tsx",
@@ -4333,7 +4333,7 @@
     },
     "rightArrowIcon": {
       "defaultValue": null,
-      "description": "Right arrow icon",
+      "description": "Right arrow icon.",
       "name": "rightArrowIcon",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/ArrowSwitcher.tsx",
@@ -4346,7 +4346,7 @@
     },
     "leftArrowButtonText": {
       "defaultValue": null,
-      "description": "Left arrow icon aria-label text",
+      "description": "Left arrow icon aria-label text.",
       "name": "leftArrowButtonText",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/ArrowSwitcher.tsx",
@@ -4359,7 +4359,7 @@
     },
     "rightArrowButtonText": {
       "defaultValue": null,
-      "description": "Right arrow icon aria-label text",
+      "description": "Right arrow icon aria-label text.",
       "name": "rightArrowButtonText",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/ArrowSwitcher.tsx",
@@ -4372,7 +4372,7 @@
     },
     "leftArrowButtonProps": {
       "defaultValue": null,
-      "description": "Props to pass to left arrow button",
+      "description": "Props to pass to left arrow button.",
       "name": "leftArrowButtonProps",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/ArrowSwitcher.tsx",
@@ -4385,7 +4385,7 @@
     },
     "rightArrowButtonProps": {
       "defaultValue": null,
-      "description": "Props to pass to right arrow button",
+      "description": "Props to pass to right arrow button.",
       "name": "rightArrowButtonProps",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/ArrowSwitcher.tsx",

@@ -17,17 +17,16 @@ export interface DesktopWrapperProps
     Partial<InnerMobileWrapperProps & InnerDesktopTooltipWrapperProps & StaticWrapperProps> {}
 
 export const DesktopWrapper: React.FC<DesktopWrapperProps> = ({
-  open,
   children,
-  onDismiss,
   DateInputProps,
   KeyboardDateInputComponent = KeyboardDateInput,
-  TransitionComponent,
-  PopperProps,
+  onDismiss,
+  open,
+  PopoverProps,
 }) => {
   const dialogRef = React.useRef<HTMLDivElement>(null);
   const inputRef = React.useRef<HTMLDivElement>(null);
-  const { canAutoFocus, onOpen } = useAutoFocusControl(open)
+  const { canAutoFocus, onOpen } = useAutoFocusControl(open);
 
   return (
     <WrapperVariantContext.Provider value="desktop">
