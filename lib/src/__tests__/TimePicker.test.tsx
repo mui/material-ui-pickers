@@ -139,6 +139,7 @@ describe('e2e - TimePicker with seconds', () => {
   });
 });
 
+// FIXME: Investigate heap overhead GC issue, looks like related to the enzyme or jest error
 describe.skip('e2e - Timepicker view navigation', () => {
   let component: ReactWrapper<TimePickerProps>;
 

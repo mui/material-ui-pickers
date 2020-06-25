@@ -110,7 +110,6 @@ export const PickerPopper: React.FC<PickerPopperProps> = ({
       role={role}
       open={open}
       anchorEl={anchorEl}
-      placement="bottom"
       className={clsx(classes.popper, PopperProps?.className)}
       {...PopperProps}
     >
