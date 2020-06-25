@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { DIALOG_WIDTH } from '../../lib/src/constants/dimensions';
 import { mountPickerWithState, mountStaticPicker } from '../test-utils';
 import { StaticDateTimePicker, MobileDateTimePicker } from '@material-ui/pickers';
 
@@ -10,7 +11,9 @@ describe('<DateTimePicker />', () => {
     cy.contains('Oct 7');
     cy.contains('07:36');
 
-    cy.percySnapshot('<DateTimePicker />');
+    cy.percySnapshot('<DateTimePicker />', {
+      widths: [DIALOG_WIDTH],
+    });
   });
 
   it('Proper flow for date & time picking', () => {
