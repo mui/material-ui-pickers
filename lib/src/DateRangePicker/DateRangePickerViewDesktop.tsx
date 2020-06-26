@@ -17,6 +17,7 @@ import {
   isEndOfRange,
   DateValidationProps,
 } from '../_helpers/date-utils';
+import { DayProps as CalendarDayProps } from "../views/Calendar/Day";
 
 export interface ExportedDesktopDateRangeCalendarProps<TDate> {
   /**
@@ -30,6 +31,19 @@ export interface ExportedDesktopDateRangeCalendarProps<TDate> {
    * @example (date, DateRangeDayProps) => <DateRangePickerDay {...DateRangeDayProps} />
    */
   renderDay?: (date: TDate, DateRangeDayProps: DateRangeDayProps<TDate>) => JSX.Element;
+  /**
+   * Custom components. We currently only support Calendar to customize its rendering.
+   */
+  slotComponents?: {
+    Calendar?: React.ElementType;
+  };
+  /**
+   * Extra props passed to the custom components. You can use this to override any props
+   * on the base component too.
+   */
+  slotProps?: {
+    Calendar?: CalendarProps<TDate>;
+  };
 }
 
 interface DesktopDateRangeCalendarProps<TDate>
@@ -102,6 +116,8 @@ export function DateRangePickerViewDesktop<TDate>(props: DesktopDateRangeCalenda
     currentlySelectingRangeEnd,
     currentMonth,
     renderDay = (_, dateRangeProps) => <DateRangeDay {...dateRangeProps} />,
+    slotComponents = { Calendar },
+    slotProps = {},
     ...other
   } = props;
 
@@ -153,6 +169,27 @@ export function DateRangePickerViewDesktop<TDate>(props: DesktopDateRangeCalenda
     changeMonth(utils.getPreviousMonth(currentMonth));
   }, [changeMonth, currentMonth, utils]);
 
+  const CalendarComponent = slotComponents.Calendar || Calendar;
+  const calendarProps = {
+    ...other,
+    date,
+    className: classes.calendar,
+    onChange: handleDayChange,
+    TransitionProps: CalendarTransitionProps,
+    renderDay: (day: TDate, __: TDate | null, DayProps: CalendarDayProps<TDate>) =>
+      renderDay(day, {
+        isPreviewing: isWithinRange(utils, day, previewingRange),
+        isStartOfPreviewing: isStartOfRange(utils, day, previewingRange),
+        isEndOfPreviewing: isEndOfRange(utils, day, previewingRange),
+        isHighlighting: isWithinRange(utils, day, date),
+        isStartOfHighlighting: isStartOfRange(utils, day, date),
+        isEndOfHighlighting: isEndOfRange(utils, day, date),
+        onMouseEnter: () => handlePreviewDayChange(day),
+        ...DayProps,
+      }),
+    ...slotProps.Calendar,
+  };
+
   return (
     <div className={classes.root}>
       {getCalendarsArray(calendars).map((_, index) => {
@@ -176,27 +213,7 @@ export function DateRangePickerViewDesktop<TDate>(props: DesktopDateRangeCalenda
               rightArrowIcon={rightArrowIcon}
               text={utils.format(monthOnIteration, 'monthAndYear')}
             />
-            <Calendar<TDate>
-              {...other}
-              key={index}
-              date={date}
-              className={classes.calendar}
-              onChange={handleDayChange}
-              currentMonth={monthOnIteration}
-              TransitionProps={CalendarTransitionProps}
-              renderDay={(day, __, DayProps) =>
-                renderDay(day, {
-                  isPreviewing: isWithinRange(utils, day, previewingRange),
-                  isStartOfPreviewing: isStartOfRange(utils, day, previewingRange),
-                  isEndOfPreviewing: isEndOfRange(utils, day, previewingRange),
-                  isHighlighting: isWithinRange(utils, day, date),
-                  isStartOfHighlighting: isStartOfRange(utils, day, date),
-                  isEndOfHighlighting: isEndOfRange(utils, day, date),
-                  onMouseEnter: () => handlePreviewDayChange(day),
-                  ...DayProps,
-                })
-              }
-            />
+            <CalendarComponent key={index} currentMonth={monthOnIteration} {...calendarProps} />
           </div>
         );
       })}

@@ -12,9 +12,24 @@ import {
   isEndOfRange,
   DateValidationProps,
 } from '../_helpers/date-utils';
+import { DayProps as CalendarDayProps } from "../views/Calendar/Day";
 
 export interface ExportedMobileDateRangeCalendarProps<TDate>
-  extends Pick<ExportedDesktopDateRangeCalendarProps<TDate>, 'renderDay'> {}
+  extends Pick<ExportedDesktopDateRangeCalendarProps<TDate>, 'renderDay'> {
+  /**
+   * Custom components. We currently only support Calendar to customize its rendering.
+   */
+  slotComponents?: {
+    Calendar?: React.ElementType;
+  };
+  /**
+   * Extra props passed to the custom components. You can use this to override any props
+   * on the base component too.
+   */
+  slotProps?: {
+    Calendar?: CalendarProps<TDate>;
+  };
+}
 
 interface DesktopDateRangeCalendarProps<TDate>
   extends ExportedMobileDateRangeCalendarProps<TDate>,
@@ -43,12 +58,31 @@ export function DateRangePickerViewMobile<TDate>(props: DesktopDateRangeCalendar
     rightArrowButtonText,
     rightArrowIcon,
     renderDay = (_, props) => <DateRangeDay<TDate> {...props} />,
+    slotComponents = { Calendar },
+    slotProps = { Calendar: {} },
     ...other
   } = props;
 
   const utils = useUtils();
   const minDate = __minDate || utils.date(defaultMinDate);
   const maxDate = __maxDate || utils.date(defaultMaxDate);
+  const CalendarComponent = slotComponents.Calendar || Calendar;
+  const calendarProps = {
+    ...other,
+    date,
+    onChange,
+    renderDay: (day: TDate, _: TDate | null, DayProps: CalendarDayProps<TDate>) =>
+      renderDay(day, {
+        isPreviewing: false,
+        isStartOfPreviewing: false,
+        isEndOfPreviewing: false,
+        isHighlighting: isWithinRange(utils, day, date),
+        isStartOfHighlighting: isStartOfRange(utils, day, date),
+        isEndOfHighlighting: isEndOfRange(utils, day, date),
+        ...DayProps,
+      }),
+      ...slotProps.Calendar,
+  };
 
   return (
     <React.Fragment>
@@ -67,22 +101,7 @@ export function DateRangePickerViewMobile<TDate>(props: DesktopDateRangeCalendar
         maxDate={maxDate}
         {...other}
       />
-      <Calendar<TDate>
-        {...other}
-        date={date}
-        onChange={onChange}
-        renderDay={(day, _, DayProps) =>
-          renderDay(day, {
-            isPreviewing: false,
-            isStartOfPreviewing: false,
-            isEndOfPreviewing: false,
-            isHighlighting: isWithinRange(utils, day, date),
-            isStartOfHighlighting: isStartOfRange(utils, day, date),
-            isEndOfHighlighting: isEndOfRange(utils, day, date),
-            ...DayProps,
-          })
-        }
-      />
+      <CalendarComponent {...calendarProps} />
     </React.Fragment>
   );
 }

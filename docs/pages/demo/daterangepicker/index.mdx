@@ -10,6 +10,7 @@ import * as MinMaxDateRangePicker from './MinMaxDateRangePicker.example';
 import * as CalendarsDateRangePicker from './CalendarsDateRangePicker.example';
 import * as StaticDateRangePicker from './StaticDateRangePicker.example';
 import * as CustomRangeInputs from './CustomRangeInputs.example';
+import * as CustomCalendarRender from "./CustomCalendarRender.example";
 
 <PageMeta component="DateRangePicker" />
 
@@ -68,6 +69,12 @@ It is possible to render any picker without modal or popper. For that use `Stati
 <Hidden smDown>
   <Example paddingBottom source={StaticDateRangePicker} />
 </Hidden>
+
+#### Customize calendar rendering
+
+It is also possible to use a custom component as `Calendar` to customize its rendering.
+
+<Example source={CustomCalendarRender} />
 
 #### API
 
