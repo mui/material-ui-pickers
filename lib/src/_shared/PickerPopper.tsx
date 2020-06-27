@@ -65,9 +65,10 @@ export const PickerPopper: React.FC<PickerPopperProps> = ({
   onOpen,
 }) => {
   const classes = useStyles();
-  const lastFocusedElementRef = React.useRef<Element | null>(null);
   const paperRef = React.useRef<HTMLElement>(null);
   const handlePopperRef = useForkRef(paperRef, innerRef);
+  const lastFocusedElementRef = React.useRef<Element | null>(null);
+  const popperOptions = React.useMemo(() => ({ onCreate: onOpen }), [onOpen]);
 
   useGlobalKeyDown(open, {
     [keycode.Esc]: onClose,
@@ -110,6 +111,7 @@ export const PickerPopper: React.FC<PickerPopperProps> = ({
       open={open}
       anchorEl={anchorEl}
       className={clsx(classes.root, PopperProps?.className)}
+      popperOptions={popperOptions}
       {...PopperProps}
     >
       {({ TransitionProps, placement }) => (
@@ -121,7 +123,7 @@ export const PickerPopper: React.FC<PickerPopperProps> = ({
           getDoc={() => paperRef.current?.ownerDocument ?? document}
           {...TrapFocusProps}
         >
-          <TransitionComponent {...TransitionProps} onEntered={onOpen}>
+          <TransitionComponent {...TransitionProps}>
             <Paper
               tabIndex={-1}
               elevation={8}
