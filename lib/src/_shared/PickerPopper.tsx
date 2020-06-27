@@ -13,7 +13,7 @@ import { TransitionProps } from '@material-ui/core/transitions/transition';
 
 export interface ExportedPickerPopperProps {
   /**
-   * Popper props passed down to material-ui [Popper](https://material-ui.com/api/popper/#popper-api) component.
+   * Popper props passed down to [Popper](https://material-ui.com/api/popper/) component.
    */
   PopperProps?: Partial<PopperProps>;
   /**
