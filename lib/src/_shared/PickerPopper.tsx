@@ -39,7 +39,6 @@ export const useStyles = makeStyles(
     paper: {
       transformOrigin: 'top center',
       '&:focus': {
-        outline: 'auto',
         [IS_TOUCH_DEVICE_MEDIA]: {
           outline: 0,
         },
@@ -53,16 +52,16 @@ export const useStyles = makeStyles(
 );
 
 export const PickerPopper: React.FC<PickerPopperProps> = ({
-  role,
-  PopperProps,
-  TrapFocusProps,
-  TransitionComponent = Grow,
-  open,
-  innerRef = null,
   anchorEl,
   children,
+  innerRef = null,
   onClose,
   onOpen,
+  open,
+  PopperProps,
+  role,
+  TransitionComponent = Grow,
+  TrapFocusProps,
 }) => {
   const classes = useStyles();
   const paperRef = React.useRef<HTMLElement>(null);
