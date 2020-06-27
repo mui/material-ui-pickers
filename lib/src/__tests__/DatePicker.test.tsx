@@ -21,7 +21,6 @@ describe('e2e - DatePicker default year format', () => {
     component = mount(
       <DatePicker
         renderInput={props => <TextField {...props} />}
-        DialogProps={{}}
         PopperProps={{}}
         desktopModeMediaQuery="(min-width:720px)"
         value={utilsToUse.date('2018-01-01T00:00:00.000')}
