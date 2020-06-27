@@ -25,19 +25,17 @@ export const DesktopWrapper: React.FC<DesktopWrapperProps> = ({
   PopperProps,
   TransitionComponent,
 }) => {
-  const dialogRef = React.useRef<HTMLDivElement>(null);
-  const inputRef = React.useRef<HTMLDivElement>(null);
+  const inputRef = React.useRef<HTMLInputElement>(null);
   const { canAutoFocus, onOpen } = useAutoFocusControl(open);
 
   return (
     <WrapperVariantContext.Provider value="desktop">
       <CanAutoFocusContext.Provider value={canAutoFocus}>
-        <KeyboardDateInputComponent {...DateInputProps} containerRef={inputRef} />
+        <KeyboardDateInputComponent {...DateInputProps} inputRef={inputRef} />
 
         <PickerPopper
           role="dialog"
           open={open}
-          innerRef={dialogRef}
           anchorEl={inputRef.current}
           TransitionComponent={TransitionComponent}
           PopperProps={PopperProps}
