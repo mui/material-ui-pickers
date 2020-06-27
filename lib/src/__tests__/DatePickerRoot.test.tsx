@@ -45,7 +45,7 @@ describe('e2e - DatePicker', () => {
     expect(component.find('[data-mui-test="year"]').length).toBe(200);
 
     component
-      .find('[data-mui-test="year"]')
+      .find('[data-mui-test="year"] button')
       .at(1)
       .simulate('click');
 
@@ -77,7 +77,7 @@ describe('e2e -- DatePicker views year', () => {
     expect(component.find('[data-mui-test="year"]').length).toBe(200);
 
     component
-      .find('[data-mui-test="year"]')
+      .find('[data-mui-test="year"] button')
       .at(1)
       .simulate('click');
 

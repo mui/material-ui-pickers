@@ -129,7 +129,7 @@ describe('DatePicker - different props', () => {
     );
 
     const getYearButton = (year: number) =>
-      component.find(`[data-mui-test='year'] > [data-mui-test='year-${year}']`).parent();
+      component.find(`[data-mui-test='year'] > [data-mui-test='year-${year}']`);
 
     expect(getYearButton(2029).prop('disabled')).toBeFalsy();
     expect(getYearButton(2030).prop('disabled')).toBeTruthy();
