@@ -105,7 +105,7 @@
     },
     "PopperProps": {
       "defaultValue": null,
-      "description": "Popper props passed down to material-ui [Popper](https://material-ui.com/api/popper/#popper-api) component.",
+      "description": "Popper props passed down to [Popper](https://material-ui.com/api/popper/) component.",
       "name": "PopperProps",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/PickerPopper.tsx",
@@ -148,7 +148,7 @@
   "DesktopWrapper": {
     "PopperProps": {
       "defaultValue": null,
-      "description": "Popper props passed down to material-ui [Popper](https://material-ui.com/api/popper/#popper-api) component.",
+      "description": "Popper props passed down to [Popper](https://material-ui.com/api/popper/) component.",
       "name": "PopperProps",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/PickerPopper.tsx",
@@ -1120,7 +1120,7 @@
     },
     "PopperProps": {
       "defaultValue": null,
-      "description": "Popper props passed down to material-ui [Popper](https://material-ui.com/api/popper/#popper-api) component.",
+      "description": "Popper props passed down to [Popper](https://material-ui.com/api/popper/) component.",
       "name": "PopperProps",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/PickerPopper.tsx",
@@ -1812,7 +1812,7 @@
     },
     "PopperProps": {
       "defaultValue": null,
-      "description": "Popper props passed down to material-ui [Popper](https://material-ui.com/api/popper/#popper-api) component.",
+      "description": "Popper props passed down to [Popper](https://material-ui.com/api/popper/) component.",
       "name": "PopperProps",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/PickerPopper.tsx",
@@ -2860,7 +2860,7 @@
     },
     "PopperProps": {
       "defaultValue": null,
-      "description": "Popper props passed down to material-ui [Popper](https://material-ui.com/api/popper/#popper-api) component.",
+      "description": "Popper props passed down to [Popper](https://material-ui.com/api/popper/) component.",
       "name": "PopperProps",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/PickerPopper.tsx",
@@ -3765,7 +3765,7 @@
     },
     "PopperProps": {
       "defaultValue": null,
-      "description": "Popper props passed down to material-ui [Popper](https://material-ui.com/api/popper/#popper-api) component.",
+      "description": "Popper props passed down to [Popper](https://material-ui.com/api/popper/) component.",
       "name": "PopperProps",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/PickerPopper.tsx",
