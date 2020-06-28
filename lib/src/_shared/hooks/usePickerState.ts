@@ -96,11 +96,11 @@ export function usePickerState<TInput, TDateValue>(
           acceptDate(newDate, false);
         }
 
-        if (selectionState == 'finish') {
+        if (selectionState === 'finish') {
           acceptDate(newDate, Boolean(autoOk));
         }
 
-        if (selectionState == 'forceFinish') {
+        if (selectionState === 'forceFinish') {
           acceptDate(newDate, true);
         }
       },
