@@ -5,7 +5,6 @@ import { DesktopDatePicker, MobileDatePicker, TimePicker } from '@material-ui/pi
 describe('Keyboard navigation', () => {
   context('DatePicker', () => {
     function testCalendarKeyboardNavigation() {
-      console.log(document.activeElement);
       cy.get('body').type('{rightarrow}');
       cy.findByLabelText('Oct 8, 2017').should('be.focused');
 
