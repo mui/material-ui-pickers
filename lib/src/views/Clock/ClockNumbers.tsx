@@ -69,18 +69,12 @@ export const getHourNumbers = ({
 };
 
 export const getMinutesNumbers = ({
-  getClockNumberText,
-  isDisabled,
-  onChange,
   utils,
   value,
-}: {
-  value: number;
-  utils: IUtils<MaterialUiPickersDate>;
-  onChange: (value: number, isFinish?: PickerSelectionState) => void;
-  getClockNumberText: (hour: string) => string;
-  isDisabled: (value: number) => boolean;
-}) => {
+  onChange,
+  isDisabled,
+  getClockNumberText,
+}: Omit<GetHourNumbersOptions, 'ampm' | 'date'> & { value: number }) => {
   const f = utils.formatNumber;
 
   return ([

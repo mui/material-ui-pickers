@@ -72,6 +72,7 @@ describe('Keyboard navigation', () => {
     });
   });
 
+  // TODO fix on CI
   context.skip('TimePicker', () => {
     it('Allows keyboard control on hours view', () => {
       mountPickerWithState(props => <TimePicker {...props} open />);

@@ -61,25 +61,13 @@ export const YearSelection: React.FC<YearSelectionProps> = ({
   const theme = useTheme();
   const utils = useUtils();
   const classes = useStyles();
+  const rootRef = React.useRef(null);
 
   const selectedDate = __dateOrNull || now;
   const currentYear = utils.getYear(selectedDate);
   const wrapperVariant = React.useContext(WrapperVariantContext);
   const selectedYearRef = React.useRef<HTMLButtonElement>(null);
   const [focusedYear, setFocusedYear] = React.useState<number | null>(currentYear);
-
-  React.useEffect(() => {
-    if (allowKeyboardControl && selectedYearRef.current && selectedYearRef.current.scrollIntoView) {
-      try {
-        selectedYearRef.current.scrollIntoView({
-          block: wrapperVariant === 'static' ? 'nearest' : 'center',
-        });
-      } catch (e) {
-        // call without arguments in case when scrollIntoView works improperly (e.g. Firefox 52-57)
-        selectedYearRef.current.scrollIntoView();
-      }
-    }
-  }, []); // eslint-disable-line
 
   const handleYearSelection = React.useCallback(
     (year: number, isFinish: PickerSelectionState = 'finish') => {
