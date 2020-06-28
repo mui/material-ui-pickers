@@ -1514,10 +1514,10 @@
   resolved "https://registry.yarnpkg.com/@date-io/core/-/core-2.6.0.tgz#01efa47b225d1a94d3138583588b919442149ee8"
   integrity sha512-GkM3jTlh9r3MfZEuFKV4g1JSbxz1G0Or1CBKkhPcw7UCJRjjsk5mLVYZYtUQEsOY8rCSFUTdCOm63ulWzAC/pw==
 
-"@date-io/date-fns@^2.6.0":
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/@date-io/date-fns/-/date-fns-2.6.0.tgz#c877afa904c5e0f1cd5cfaa7a930a9358914958a"
-  integrity sha512-ZedVQwbbjqTZj+kTimCfuEto0QLliqE1uCMuzb1Xi/yRfar4nMjc5orl/PJC2pkXXJC8jyL6ZCGXI9FQSgeAjQ==
+"@date-io/date-fns@^2.6.2":
+  version "2.6.2"
+  resolved "https://registry.yarnpkg.com/@date-io/date-fns/-/date-fns-2.6.2.tgz#231e075b0ac18beb3654cbd3d4ae09e91846fafa"
+  integrity sha512-LJnNxYhGihB1h503yRLj9s36a9bSF/NOyIbHDp7Bev2lmKn8c2zjoX9u0p5i3WV7z2nujBW1oDR/h+VfzjFkvg==
   dependencies:
     "@date-io/core" "^2.6.0"
 
