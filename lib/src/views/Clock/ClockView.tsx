@@ -254,7 +254,7 @@ export const ClockView: React.FC<ClockViewProps> = withDefaultProps(
     ]);
 
     return (
-      <>
+      <React.Fragment>
         {showViewSwitcher && (
           <ArrowSwitcher
             className={classes.arrowSwitcher}
@@ -284,7 +284,7 @@ export const ClockView: React.FC<ClockViewProps> = withDefaultProps(
           handleMeridiemChange={handleMeridiemChange}
           {...viewProps}
         />
-      </>
+      </React.Fragment>
     );
   }
 );

@@ -6,10 +6,10 @@ import { TextField, TextFieldProps } from '@material-ui/core';
 import { DesktopDateRangePicker } from '../DateRangePicker/DateRangePicker';
 
 const defaultRangeRenderInput = (startProps: TextFieldProps, endProps: TextFieldProps) => (
-  <>
+  <React.Fragment>
     <TextField {...startProps} />
     <TextField {...endProps} />
-  </>
+  </React.Fragment>
 );
 
 describe('DateRangePicker', () => {

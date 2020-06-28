@@ -2,7 +2,7 @@ import * as React from 'react';
 import Picker from '../Picker/Picker';
 import CalendarSkeleton from '../CalendarSkeleton';
 import { ReactWrapper } from 'enzyme';
-import { TextField } from '@material-ui/core';
+import TextField from '@material-ui/core/TextField';
 import { MaterialUiPickersDate } from '../typings/date';
 import { mount, utilsToUse, mountPickerWithState } from './test-utils';
 import {
