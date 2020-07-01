@@ -212,7 +212,7 @@ export const Clock: React.FC<ClockProps> = withDefaultProps(
           />
 
           {!isSelectedTimeDisabled && (
-            <>
+            <React.Fragment>
               <div className={classes.pin} />
 
               {date && (
@@ -225,14 +225,14 @@ export const Clock: React.FC<ClockProps> = withDefaultProps(
                   aria-label={`Selected time ${utils.format(date, 'fullTime')}`}
                 />
               )}
-            </>
+            </React.Fragment>
           )}
 
           {numbersElementsArray}
         </div>
 
         {ampm && (wrapperVariant === 'desktop' || ampmInClock) && (
-          <>
+          <React.Fragment>
             <IconButton
               data-mui-test="in-clock-am-btn"
               onClick={() => handleMeridiemChange('am')}
@@ -253,7 +253,7 @@ export const Clock: React.FC<ClockProps> = withDefaultProps(
             >
               <Typography variant="caption">PM</Typography>
             </IconButton>
-          </>
+          </React.Fragment>
         )}
       </div>
     );

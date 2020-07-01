@@ -159,7 +159,7 @@ function Picker({
             />
           </MobileKeyboardInputView>
         ) : (
-          <>
+          <React.Fragment>
             {(openView === 'year' || openView === 'month' || openView === 'date') && (
               <CalendarView
                 date={date}
@@ -186,7 +186,7 @@ function Picker({
                 showViewSwitcher={isTimePickerByViews(views) && wrapperVariant === 'desktop'}
               />
             )}
-          </>
+          </React.Fragment>
         )}
       </div>
     </div>
