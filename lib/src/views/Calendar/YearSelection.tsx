@@ -61,7 +61,6 @@ export const YearSelection: React.FC<YearSelectionProps> = ({
   const theme = useTheme();
   const utils = useUtils();
   const classes = useStyles();
-  const rootRef = React.useRef(null);
 
   const selectedDate = __dateOrNull || now;
   const currentYear = utils.getYear(selectedDate);
