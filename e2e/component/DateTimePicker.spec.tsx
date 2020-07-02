@@ -17,9 +17,7 @@ describe('<DateTimePicker />', () => {
   });
 
   it('Proper flow for date & time picking', () => {
-    mountPickerWithState(defaultProps => (
-      <MobileDateTimePicker autoOk openTo="year" {...defaultProps} />
-    ));
+    mountPickerWithState(defaultProps => <MobileDateTimePicker openTo="year" {...defaultProps} />);
 
     cy.get('input').click();
 

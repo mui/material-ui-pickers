@@ -69,7 +69,6 @@ describe('DatePicker - different props', () => {
     const component = mount(
       <MobileDatePicker
         renderInput={props => <TextField {...props} />}
-        autoOk
         showTodayButton
         cancelText="stream"
         onClose={onCloseMock}
