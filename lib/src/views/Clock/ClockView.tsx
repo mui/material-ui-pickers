@@ -81,8 +81,8 @@ export const useStyles = makeStyles(
   () => ({
     arrowSwitcher: {
       position: 'absolute',
-      right: 8,
-      top: 8,
+      right: 12,
+      top: 15,
     },
   }),
   muiPickersComponentConfig

@@ -189,7 +189,7 @@ function Picker({
                 openPreviousView={() => setOpenView(previousView)}
                 nextViewAvailable={!Boolean(nextView)}
                 previousViewAvailable={!Boolean(previousView)}
-                showViewSwitcher={isTimePickerByViews(views) && wrapperVariant === 'desktop'}
+                showViewSwitcher={wrapperVariant === 'desktop'}
               />
             )}
           </React.Fragment>
