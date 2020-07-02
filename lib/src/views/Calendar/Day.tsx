@@ -191,7 +191,7 @@ const PureDay: React.FC<DayProps> = ({
 
   const handleKeyDown = onSpaceOrEnter(() => {
     if (!disabled) {
-      onDaySelect(day, 'forceFinish');
+      onDaySelect(day, 'finish');
     }
   }, onKeyDown);
 
