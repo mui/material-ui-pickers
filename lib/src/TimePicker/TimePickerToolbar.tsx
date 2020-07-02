@@ -6,10 +6,10 @@ import PickerToolbar from '../_shared/PickerToolbar';
 import { arrayIncludes } from '../_helpers/utils';
 import { useUtils } from '../_shared/hooks/useUtils';
 import { MaterialUiPickersDate } from '../typings/date';
-import { ToolbarComponentProps } from '../Picker/Picker';
 import { PickerOnChangeFn } from '../_shared/hooks/useViews';
 import { withDefaultProps } from '../_shared/withDefaultProps';
 import { useTheme, makeStyles } from '@material-ui/core/styles';
+import { ToolbarComponentProps } from '../Picker/SharedPickerProps';
 import { convertToMeridiem, getMeridiem } from '../_helpers/time-utils';
 
 const muiComponentConfig = { name: 'MuiPickersTimePickerToolbar' };
@@ -89,6 +89,7 @@ export const TimePickerToolbar: React.FC<ToolbarComponentProps> = withDefaultPro
     toggleMobileKeyboardView,
     toolbarTitle = 'SELECT TIME',
     views,
+    ...other
   }) => {
     const utils = useUtils();
     const theme = useTheme();
@@ -117,6 +118,7 @@ export const TimePickerToolbar: React.FC<ToolbarComponentProps> = withDefaultPro
         isMobileKeyboardViewOpen={isMobileKeyboardViewOpen}
         toggleMobileKeyboardView={toggleMobileKeyboardView}
         penIconClassName={clsx({ [classes.penIconLandscape]: isLandscape })}
+        {...other}
       >
         <div
           className={clsx(classes.hourMinuteLabel, {

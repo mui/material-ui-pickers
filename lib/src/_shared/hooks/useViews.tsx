@@ -6,7 +6,7 @@ import { AnyPickerView } from '../../Picker/SharedPickerProps';
 
 export type PickerOnChangeFn<TDate = MaterialUiPickersDate> = (
   date: TDate,
-  isFinish?: PickerSelectionState
+  selectionState?: PickerSelectionState
 ) => void;
 
 export function useViews({

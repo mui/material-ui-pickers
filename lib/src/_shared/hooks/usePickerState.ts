@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useOpenState } from './useOpenState';
+import { WrapperVariant } from '../../wrappers/Wrapper';
 import { BasePickerProps } from '../../typings/BasePicker';
 import { useUtils, useNow, MuiPickersAdapter } from './useUtils';
 
@@ -89,7 +90,11 @@ export function usePickerState<TInput, TDateValue>(
 
         setMobileKeyboardViewOpen(!isMobileKeyboardViewOpen);
       },
-      onDateChange: (newDate: TDateValue, selectionState: PickerSelectionState = 'partial') => {
+      onDateChange: (
+        newDate: TDateValue,
+        wrapperVariant: WrapperVariant,
+        selectionState: PickerSelectionState = 'partial'
+      ) => {
         setPickerDate(newDate);
 
         if (selectionState === 'partial') {
