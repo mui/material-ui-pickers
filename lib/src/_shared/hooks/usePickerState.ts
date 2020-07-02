@@ -14,7 +14,7 @@ export interface PickerStateValueManager<TInput, TDateValue> {
   ) => boolean;
 }
 
-export type PickerSelectionState = 'partial' | 'shallow' | 'finish' | 'forceFinish';
+export type PickerSelectionState = 'partial' | 'shallow' | 'finish';
 
 export function usePickerState<TInput, TDateValue>(
   props: BasePickerProps<TInput, TDateValue>,
@@ -110,15 +110,14 @@ export function usePickerState<TInput, TDateValue>(
         }
 
         if (selectionState === 'finish') {
-          acceptDate(newDate, Boolean(autoOk));
+          const shouldCloseOnSelect = !(disableCloseOnSelect ?? wrapperVariant === 'mobile');
+          acceptDate(newDate, shouldCloseOnSelect);
         }
 
-        if (selectionState === 'forceFinish') {
-          acceptDate(newDate, true);
-        }
+        // if selectionState === "shallow" do nothing (we already update picker state)
       },
     }),
-    [acceptDate, isMobileKeyboardViewOpen, pickerDate]
+    [acceptDate, disableCloseOnSelect, isMobileKeyboardViewOpen, pickerDate]
   );
 
   const inputProps = React.useMemo(

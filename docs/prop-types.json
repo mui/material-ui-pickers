@@ -665,7 +665,7 @@
     },
     "disableCloseOnSelect": {
       "defaultValue": {
-        "value": "`true` for Desktop, `false` for Mobile (based on `desktopModeMediaQuery` prop)."
+        "value": "`true` for Desktop, `false` for Mobile (based on the chosen wrapper and `desktopModeMediaQuery` prop)."
       },
       "description": "If `true` picker will immediately close after submitting full date.",
       "name": "disableCloseOnSelect",
@@ -1357,7 +1357,7 @@
     },
     "disableCloseOnSelect": {
       "defaultValue": {
-        "value": "`true` for Desktop, `false` for Mobile (based on `desktopModeMediaQuery` prop)."
+        "value": "`true` for Desktop, `false` for Mobile (based on the chosen wrapper and `desktopModeMediaQuery` prop)."
       },
       "description": "If `true` picker will immediately close after submitting full date.",
       "name": "disableCloseOnSelect",
@@ -2418,7 +2418,7 @@
     },
     "disableCloseOnSelect": {
       "defaultValue": {
-        "value": "`true` for Desktop, `false` for Mobile (based on `desktopModeMediaQuery` prop)."
+        "value": "`true` for Desktop, `false` for Mobile (based on the chosen wrapper and `desktopModeMediaQuery` prop)."
       },
       "description": "If `true` picker will immediately close after submitting full date.",
       "name": "disableCloseOnSelect",
@@ -3297,7 +3297,7 @@
     },
     "disableCloseOnSelect": {
       "defaultValue": {
-        "value": "`true` for Desktop, `false` for Mobile (based on `desktopModeMediaQuery` prop)."
+        "value": "`true` for Desktop, `false` for Mobile (based on the chosen wrapper and `desktopModeMediaQuery` prop)."
       },
       "description": "If `true` picker will immediately close after submitting full date.",
       "name": "disableCloseOnSelect",

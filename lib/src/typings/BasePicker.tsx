@@ -16,7 +16,7 @@ export interface BasePickerProps<
   onChange: (date: TDateValue, keyboardInputValue?: string) => void;
   /**
    * If `true` picker will immediately close after submitting full date.
-   * @default `true` for Desktop, `false` for Mobile (based on `desktopModeMediaQuery` prop).
+   * @default `true` for Desktop, `false` for Mobile (based on the chosen wrapper and `desktopModeMediaQuery` prop).
    */
   disableCloseOnSelect?: boolean;
   /**
