@@ -23,7 +23,7 @@ describe('<DatePicker />', () => {
     expect(screen.getByRole('button', { name: '2010' })).toBeDisabled();
   });
 
-  it("Doesn't close picker on selection in Mobile mode", async () => {
+  it("Doesn't close picker on selection in Mobile mode", () => {
     render(
       <MobileDatePicker
         value={utilsToUse.date('2018-01-01T00:00:00.000Z')}
