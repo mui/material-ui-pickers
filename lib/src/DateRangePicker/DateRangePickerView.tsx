@@ -150,7 +150,7 @@ export const DateRangePickerView: React.FC<DateRangePickerViewProps> = ({
       const isFullRangeSelected =
         currentlySelectingRangeEnd === 'end' && isRangeValid(utils, newRange);
 
-      onDateChange(newRange, wrapperVariant, isFullRangeSelected ? 'forceFinish' : 'finish');
+      onDateChange(newRange, wrapperVariant, isFullRangeSelected ? 'finish' : 'partial');
     },
     [
       currentlySelectingRangeEnd,
