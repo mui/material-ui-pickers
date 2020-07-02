@@ -8,7 +8,6 @@ import { LocalizationProvider, StaticDatePickerProps } from '@material-ui/picker
 
 // Time of the first commit to the pickers ❤️
 const momentInTime = parse('2017-10-07T19:36:00.000');
-parse;
 const mockRequiredProps = {
   reduceAnimations: true, // speedup tests
   value: momentInTime,
