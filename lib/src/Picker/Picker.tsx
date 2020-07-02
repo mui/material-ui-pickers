@@ -86,8 +86,8 @@ export const useStyles = makeStyles(
 
 const MobileKeyboardTextFieldProps = { fullWidth: true };
 
-const isTimePickerByViews = (views: DateTimePickerView[]) =>
-  !views.some(view => view === 'year' || view === 'month' || view === 'date');
+const isDatePickerView = (view: DateTimePickerView) =>
+  view === 'year' || view === 'month' || view === 'date';
 
 function Picker({
   className,
@@ -188,7 +188,7 @@ function Picker({
                 openNextView={() => setOpenView(nextView)}
                 openPreviousView={() => setOpenView(previousView)}
                 nextViewAvailable={!Boolean(nextView)}
-                previousViewAvailable={!Boolean(previousView)}
+                previousViewAvailable={!Boolean(previousView) || isDatePickerView(previousView)}
                 showViewSwitcher={wrapperVariant === 'desktop'}
               />
             )}
