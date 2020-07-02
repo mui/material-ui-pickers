@@ -15,10 +15,10 @@ export interface BasePickerProps<
    */
   onChange: (date: TDateValue, keyboardInputValue?: string) => void;
   /**
-   * Auto accept date on selection.
-   * @default false
+   * If `true` picker will immediately close after submitting full date.
+   * @default `true` for Desktop, `false` for Mobile (based on `desktopModeMediaQuery` prop).
    */
-  autoOk?: boolean;
+  disableCloseOnSelect?: boolean;
   /**
    * Format string.
    */

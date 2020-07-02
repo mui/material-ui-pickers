@@ -20,7 +20,15 @@ export function usePickerState<TInput, TDateValue>(
   props: BasePickerProps<TInput, TDateValue>,
   valueManager: PickerStateValueManager<TInput, TDateValue>
 ) {
-  const { autoOk, inputFormat, disabled, readOnly, onAccept, onChange, value } = props;
+  const {
+    inputFormat,
+    disabled,
+    readOnly,
+    onAccept,
+    onChange,
+    disableCloseOnSelect,
+    value,
+  } = props;
 
   if (!inputFormat) {
     throw new Error('inputFormat prop is required');
@@ -71,10 +79,10 @@ export function usePickerState<TInput, TDateValue>(
       onSetToday: () => {
         // TODO FIX ME
         setPickerDate(now as any);
-        acceptDate(now as any, Boolean(autoOk));
+        acceptDate(now as any, !disableCloseOnSelect);
       },
     }),
-    [acceptDate, autoOk, isOpen, now, pickerDate, setIsOpen, valueManager.emptyValue]
+    [acceptDate, disableCloseOnSelect, isOpen, now, pickerDate, setIsOpen, valueManager.emptyValue]
   );
 
   const pickerProps = React.useMemo(
@@ -110,7 +118,7 @@ export function usePickerState<TInput, TDateValue>(
         }
       },
     }),
-    [acceptDate, autoOk, isMobileKeyboardViewOpen, pickerDate]
+    [acceptDate, isMobileKeyboardViewOpen, pickerDate]
   );
 
   const inputProps = React.useMemo(

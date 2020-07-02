@@ -663,12 +663,12 @@
         "name": "(date: DateIOType, keyboardInputValue?: string) => void"
       }
     },
-    "autoOk": {
+    "disableCloseOnSelect": {
       "defaultValue": {
-        "value": "false"
+        "value": "`true` for Desktop, `false` for Mobile (based on `desktopModeMediaQuery` prop)."
       },
-      "description": "Auto accept date on selection.",
-      "name": "autoOk",
+      "description": "If `true` picker will immediately close after submitting full date.",
+      "name": "disableCloseOnSelect",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
         "name": "BasePickerProps"
@@ -1355,12 +1355,12 @@
         "name": "(date: DateIOType, keyboardInputValue?: string) => void"
       }
     },
-    "autoOk": {
+    "disableCloseOnSelect": {
       "defaultValue": {
-        "value": "false"
+        "value": "`true` for Desktop, `false` for Mobile (based on `desktopModeMediaQuery` prop)."
       },
-      "description": "Auto accept date on selection.",
-      "name": "autoOk",
+      "description": "If `true` picker will immediately close after submitting full date.",
+      "name": "disableCloseOnSelect",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
         "name": "BasePickerProps"
@@ -2416,12 +2416,12 @@
         "name": "(date: DateIOType, keyboardInputValue?: string) => void"
       }
     },
-    "autoOk": {
+    "disableCloseOnSelect": {
       "defaultValue": {
-        "value": "false"
+        "value": "`true` for Desktop, `false` for Mobile (based on `desktopModeMediaQuery` prop)."
       },
-      "description": "Auto accept date on selection.",
-      "name": "autoOk",
+      "description": "If `true` picker will immediately close after submitting full date.",
+      "name": "disableCloseOnSelect",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
         "name": "BasePickerProps"
@@ -3295,12 +3295,12 @@
         "name": "boolean"
       }
     },
-    "autoOk": {
+    "disableCloseOnSelect": {
       "defaultValue": {
-        "value": "false"
+        "value": "`true` for Desktop, `false` for Mobile (based on `desktopModeMediaQuery` prop)."
       },
-      "description": "Auto accept date on selection.",
-      "name": "autoOk",
+      "description": "If `true` picker will immediately close after submitting full date.",
+      "name": "disableCloseOnSelect",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/typings/BasePicker.tsx",
         "name": "BasePickerProps"
