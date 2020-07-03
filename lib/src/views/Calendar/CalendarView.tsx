@@ -53,7 +53,7 @@ export type ExportedCalendarViewProps = Omit<
   'date' | 'view' | 'views' | 'onChange' | 'changeView' | 'slideDirection' | 'currentMonth'
 >;
 
-const muiComponentConfig = { name: 'MuiPickersCalendarView' };
+const muiComponentConfig = { name: 'MuiPickerCalendarView' };
 
 export const useStyles = makeStyles(
   {

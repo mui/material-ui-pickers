@@ -28,7 +28,7 @@ export const useStyles = makeStyles(
       },
     },
   }),
-  { name: 'MuiPickersDateRangePickerInput' }
+  { name: 'MuiPickerDateRangePickerInput' }
 );
 
 export interface ExportedDateRangePickerInputProps {

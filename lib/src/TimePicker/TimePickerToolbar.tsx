@@ -11,7 +11,7 @@ import { withDefaultProps } from '../_shared/withDefaultProps';
 import { useTheme, makeStyles } from '@material-ui/core/styles';
 import { convertToMeridiem, getMeridiem } from '../_helpers/time-utils';
 
-const muiComponentConfig = { name: 'MuiPickersTimePickerToolbar' };
+const muiComponentConfig = { name: 'MuiPickerTimePickerToolbar' };
 
 export const useStyles = makeStyles(
   {

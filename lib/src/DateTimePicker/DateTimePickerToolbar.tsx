@@ -11,7 +11,7 @@ import { ToolbarComponentProps } from '../Picker/Picker';
 import { withDefaultProps } from '../_shared/withDefaultProps';
 import { WrapperVariantContext } from '../wrappers/WrapperVariantContext';
 
-const muiComponentConfig = { name: 'MuiPickersDateTimePickerToolbar' };
+const muiComponentConfig = { name: 'MuiPickerDateTimePickerToolbar' };
 
 export const useStyles = makeStyles(
   {

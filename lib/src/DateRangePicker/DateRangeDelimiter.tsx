@@ -3,7 +3,7 @@ import { styled } from '@material-ui/core/styles';
 import { withDefaultProps } from '../_shared/withDefaultProps';
 
 export const DateRangeDelimiter = withDefaultProps(
-  { name: 'MuiPickersDateRangeDelimiter' },
+  { name: 'MuiPickerDateRangeDelimiter' },
   styled(Typography)({
     margin: '0 16px',
   })

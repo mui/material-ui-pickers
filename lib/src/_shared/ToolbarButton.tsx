@@ -22,7 +22,7 @@ export const useStyles = makeStyles(
       textTransform: 'none',
     },
   },
-  { name: 'MuiPickersToolbarButton' }
+  { name: 'MuiPickerToolbarButton' }
 );
 
 export const ToolbarButton: React.FunctionComponent<ToolbarButtonProps> = ({

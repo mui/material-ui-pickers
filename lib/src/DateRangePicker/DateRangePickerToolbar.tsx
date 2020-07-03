@@ -8,7 +8,7 @@ import { ToolbarButton } from '../_shared/ToolbarButton';
 import { withDefaultProps } from '../_shared/withDefaultProps';
 import { DateRange, CurrentlySelectingRangeEndProps } from './RangeTypes';
 
-const muiComponentConfig = { name: 'MuiPickersDateRangePickerToolbarProps' };
+const muiComponentConfig = { name: 'MuiPickerDateRangePickerToolbarProps' };
 export const useStyles = makeStyles(
   {
     penIcon: {

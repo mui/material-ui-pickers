@@ -76,7 +76,7 @@ export const useStyles = makeStyles(
       },
     };
   },
-  { name: 'MuiPickersClockNumber' }
+  { name: 'MuiPickerClockNumber' }
 );
 
 export const ClockNumber: React.FC<ClockNumberProps> = ({

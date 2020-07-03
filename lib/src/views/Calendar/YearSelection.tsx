@@ -40,7 +40,7 @@ export const useStyles = makeStyles(
       height: '100%',
     },
   },
-  { name: 'MuiPickersYearSelection' }
+  { name: 'MuiPickerYearSelection' }
 );
 
 export const YearSelection: React.FC<YearSelectionProps> = ({

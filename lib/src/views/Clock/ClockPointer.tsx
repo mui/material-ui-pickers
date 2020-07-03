@@ -102,5 +102,5 @@ export const styles = (theme: Theme) =>
   });
 
 export default withStyles(styles, {
-  name: 'MuiPickersClockPointer',
+  name: 'MuiPickerClockPointer',
 })(ClockPointer as React.ComponentType<ClockPointerProps>);

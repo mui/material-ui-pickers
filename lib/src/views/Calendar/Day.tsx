@@ -12,7 +12,7 @@ import { withDefaultProps } from '../../_shared/withDefaultProps';
 import { useCanAutoFocus } from '../../_shared/hooks/useCanAutoFocus';
 import { FORCE_FINISH_PICKER } from '../../_shared/hooks/usePickerState';
 
-const muiComponentConfig = { name: 'MuiPickersDay' };
+const muiComponentConfig = { name: 'MuiPickerDay' };
 
 export const useStyles = makeStyles(
   theme => ({

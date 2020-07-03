@@ -155,29 +155,26 @@ export function makeRangePicker<TWrapper extends SomeWrapper>(name: string, Wrap
 // TODO replace with new export type syntax
 export type DateRange = DateRangeType;
 
-export const DateRangePicker = makeRangePicker(
-  'MuiPickersDateRangePicker',
-  ResponsivePopperWrapper
-);
+export const DateRangePicker = makeRangePicker('MuiPickerDateRangePicker', ResponsivePopperWrapper);
 
 export type DateRangePickerProps = React.ComponentProps<typeof DateRangePicker>;
 
 export const DesktopDateRangePicker = makeRangePicker(
-  'MuiPickersDesktopDateRangePicker',
+  'MuiPickerDesktopDateRangePicker',
   DesktopTooltipWrapper
 );
 
 export type DesktopDateRangePickerProps = React.ComponentProps<typeof DesktopDateRangePicker>;
 
 export const MobileDateRangePicker = makeRangePicker(
-  'MuiPickersMobileDateRangePicker',
+  'MuiPickerMobileDateRangePicker',
   MobileWrapper
 );
 
 export type MobileDateRangePickerProps = React.ComponentProps<typeof MobileDateRangePicker>;
 
 export const StaticDateRangePicker = makeRangePicker(
-  'MuiPickersStaticDateRangePicker',
+  'MuiPickerStaticDateRangePicker',
   StaticWrapper
 );
 

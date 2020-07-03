@@ -75,7 +75,7 @@ export interface ClockViewProps extends ExportedClockViewProps, ExportedArrowSwi
   showViewSwitcher?: boolean;
 }
 
-const muiPickersComponentConfig = { name: 'MuiPickersClockView' };
+const muiPickersComponentConfig = { name: 'MuiPickerClockView' };
 
 export const useStyles = makeStyles(
   () => ({
