@@ -25,6 +25,10 @@ export const useStyles = makeStyles(
       // background required here to prevent collides with the other days when animating with transition group
       backgroundColor: theme.palette.background.paper,
       color: theme.palette.text.primary,
+      '&:disabled': {
+        pointerEvents: 'none',
+        color: theme.palette.text.hint,
+      },
       '&:hover': {
         backgroundColor: fade(theme.palette.action.active, theme.palette.action.hoverOpacity),
       },
@@ -61,10 +65,6 @@ export const useStyles = makeStyles(
         willChange: 'background-color',
         backgroundColor: theme.palette.primary.dark,
       },
-    },
-    dayDisabled: {
-      pointerEvents: 'none',
-      color: theme.palette.text.hint,
     },
     dayLabel: {
       // need for overrides
@@ -199,7 +199,6 @@ const PureDay: React.FC<DayProps> = ({
     classes.root,
     {
       [classes.daySelected]: selected,
-      [classes.dayDisabled]: disabled,
       [classes.dayWithMargin]: !disableMargin,
       [classes.today]: !disableHighlightToday && isToday,
       [classes.dayOutsideMonth]: !isInCurrentMonth && showDaysOutsideCurrentMonth,
@@ -217,6 +216,7 @@ const PureDay: React.FC<DayProps> = ({
       ref={ref}
       centerRipple
       data-mui-test="day"
+      disabled={disabled}
       aria-label={utils.format(day, 'fullDate')}
       tabIndex={focused || focusable ? 0 : -1}
       className={dayClassName}

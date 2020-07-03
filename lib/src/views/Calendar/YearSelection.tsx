@@ -32,7 +32,7 @@ export interface YearSelectionProps extends ExportedYearSelectionProps {
 
 export const useStyles = makeStyles(
   {
-    container: {
+    root: {
       display: 'flex',
       flexDirection: 'row',
       flexWrap: 'wrap',
@@ -102,7 +102,7 @@ export const YearSelection: React.FC<YearSelectionProps> = ({
   });
 
   return (
-    <div ref={rootRef} className={classes.container}>
+    <div ref={rootRef} className={classes.root}>
       {utils.getYearRange(minDate, maxDate).map(year => {
         const yearNumber = utils.getYear(year);
         const selected = yearNumber === currentYear;

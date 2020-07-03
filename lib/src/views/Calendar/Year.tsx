@@ -19,7 +19,7 @@ export interface YearProps {
 
 export const useStyles = makeStyles(
   theme => ({
-    yearButtonContainer: {
+    root: {
       color: 'unset',
       backgroundColor: 'transparent',
       border: 'none',
@@ -28,8 +28,12 @@ export const useStyles = makeStyles(
       display: 'flex',
       justifyContent: 'center',
       padding: '8px 0',
+      '&:disabled': {
+        pointerEvents: 'none',
+        color: theme.palette.text.hint,
+      },
     },
-    yearButtonContainerDesktop: {
+    rootDesktop: {
       flexBasis: '25%',
     },
     yearButton: {
@@ -51,10 +55,6 @@ export const useStyles = makeStyles(
       '&:focus, &:hover': {
         backgroundColor: theme.palette.primary.dark,
       },
-    },
-    yearDisabled: {
-      pointerEvents: 'none',
-      color: theme.palette.text.hint,
     },
   }),
   { name: 'MuiPickerYear' }
@@ -88,8 +88,8 @@ export const Year: React.FC<YearProps> = ({
       disabled={disabled}
       data-mui-test="year"
       onClick={() => onSelect(value)}
-      className={clsx(classes.yearButtonContainer, {
-        [classes.yearButtonContainerDesktop]: wrapperVariant === 'desktop',
+      className={clsx(classes.root, {
+        [classes.rootDesktop]: wrapperVariant === 'desktop',
       })}
     >
       <Typography

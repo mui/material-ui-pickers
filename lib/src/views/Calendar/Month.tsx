@@ -27,14 +27,14 @@ export const useStyles = makeStyles(
         color: theme.palette.primary.main,
         fontWeight: theme.typography.fontWeightMedium,
       },
+      '&:disabled': {
+        pointerEvents: 'none',
+        color: theme.palette.text.hint,
+      },
     },
     monthSelected: {
       color: theme.palette.primary.main,
       fontWeight: theme.typography.fontWeightMedium,
-    },
-    monthDisabled: {
-      pointerEvents: 'none',
-      color: theme.palette.text.hint,
     },
   }),
   { name: 'MuiPickerMonth' }
@@ -60,7 +60,6 @@ export const Month: React.FC<MonthProps> = ({
       component="div"
       className={clsx(classes.root, {
         [classes.monthSelected]: selected,
-        [classes.monthDisabled]: disabled,
       })}
       tabIndex={disabled ? -1 : 0}
       onClick={handleSelection}
