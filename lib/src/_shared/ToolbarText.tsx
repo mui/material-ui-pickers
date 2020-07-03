@@ -17,7 +17,7 @@ export const useStyles = makeStyles(
         : theme.palette.getContrastText(theme.palette.background.default);
 
     return {
-      toolbarTxt: {
+      root: {
         transition: theme.transitions.create('color'),
         color: fade(textColor, 0.54),
       },
@@ -39,7 +39,7 @@ const ToolbarText: React.FC<ToolbarTextProps> = ({
   return (
     <Typography
       children={label}
-      className={clsx(classes.toolbarTxt, className, {
+      className={clsx(classes.root, className, {
         [classes.toolbarBtnSelected]: selected,
       })}
       {...other}

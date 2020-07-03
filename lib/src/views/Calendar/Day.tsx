@@ -16,7 +16,7 @@ const muiComponentConfig = { name: 'MuiPickerDay' };
 
 export const useStyles = makeStyles(
   theme => ({
-    day: {
+    root: {
       ...theme.typography.caption,
       width: DAY_SIZE,
       height: DAY_SIZE,
@@ -196,7 +196,7 @@ const PureDay: React.FC<DayProps> = ({
   }, onKeyDown);
 
   const dayClassName = clsx(
-    classes.day,
+    classes.root,
     {
       [classes.daySelected]: selected,
       [classes.dayDisabled]: disabled,

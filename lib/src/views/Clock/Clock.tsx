@@ -36,7 +36,7 @@ const muiComponentConfig = {
 
 export const useStyles = makeStyles(
   theme => ({
-    container: {
+    root: {
       display: 'flex',
       justifyContent: 'center',
       position: 'relative',
@@ -198,7 +198,7 @@ export const Clock: React.FC<ClockProps> = withDefaultProps(
     );
 
     return (
-      <div className={classes.container}>
+      <div className={classes.root}>
         <div className={classes.clock}>
           <div
             role="menu"

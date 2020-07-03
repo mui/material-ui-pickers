@@ -13,6 +13,7 @@ const muiPickersComponentConfig = { name: 'MuiPickerDatePickerToolbar' };
 
 export const useStyles = makeStyles(
   {
+    root: {},
     dateTitleLandscape: {
       margin: 'auto 16px auto auto',
     },
@@ -66,6 +67,7 @@ export const DatePickerToolbar: React.FC<ToolbarComponentProps> = withDefaultPro
 
     return (
       <PickerToolbar
+        className={classes.root}
         toolbarTitle={toolbarTitle}
         isMobileKeyboardViewOpen={isMobileKeyboardViewOpen}
         toggleMobileKeyboardView={toggleMobileKeyboardView}

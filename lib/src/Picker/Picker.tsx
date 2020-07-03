@@ -62,11 +62,11 @@ const muiComponentConfig = { name: 'MuiPickerBasePicker' };
 
 export const useStyles = makeStyles(
   {
-    container: {
+    root: {
       display: 'flex',
       flexDirection: 'column',
     },
-    containerLandscape: {
+    rootLandscape: {
       flexDirection: 'row',
     },
     pickerView: {
@@ -129,8 +129,8 @@ function Picker({
 
   return (
     <div
-      className={clsx(classes.container, className, {
-        [classes.containerLandscape]: isLandscape,
+      className={clsx(classes.root, className, {
+        [classes.rootLandscape]: isLandscape,
       })}
     >
       {toShowToolbar && (

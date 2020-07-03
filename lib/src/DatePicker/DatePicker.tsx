@@ -53,7 +53,7 @@ export const DatePicker = makePickerWithStateAndWrapper<BaseDatePickerProps>(Res
 export type DatePickerProps = React.ComponentProps<typeof DatePicker>;
 
 export const MobileDatePicker = makePickerWithStateAndWrapper<BaseDatePickerProps>(MobileWrapper, {
-  name: 'MuiPickerMobileDatePicker',
+  name: 'MuiMobileDatePicker',
   ...datePickerConfig,
 });
 
@@ -62,7 +62,7 @@ export type MobileDatePickerProps = React.ComponentProps<typeof MobileDatePicker
 export const DesktopDatePicker = makePickerWithStateAndWrapper<BaseDatePickerProps>(
   DesktopWrapper,
   {
-    name: 'MuiPickerDesktopDatePicker',
+    name: 'MuiDesktopDatePicker',
     ...datePickerConfig,
   }
 );
@@ -70,7 +70,7 @@ export const DesktopDatePicker = makePickerWithStateAndWrapper<BaseDatePickerPro
 export type DesktopDatePickerProps = React.ComponentProps<typeof DesktopDatePicker>;
 
 export const StaticDatePicker = makePickerWithStateAndWrapper<BaseDatePickerProps>(StaticWrapper, {
-  name: 'MuiPickerStaticDatePicker',
+  name: 'MuiStaticDatePicker',
   ...datePickerConfig,
 });
 

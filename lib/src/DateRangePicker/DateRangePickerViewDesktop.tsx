@@ -39,7 +39,7 @@ interface DesktopDateRangeCalendarProps
 
 export const useStyles = makeStyles(
   theme => ({
-    dateRangeContainer: {
+    root: {
       display: 'flex',
       flexDirection: 'row',
     },
@@ -144,7 +144,7 @@ export const DateRangePickerViewDesktop: React.FC<DesktopDateRangeCalendarProps>
   }, [changeMonth, currentMonth, utils]);
 
   return (
-    <div className={classes.dateRangeContainer}>
+    <div className={classes.root}>
       {getCalendarsArray(calendars).map((_, index) => {
         const monthOnIteration = utils.setMonth(currentMonth, utils.getMonth(currentMonth) + index);
 
