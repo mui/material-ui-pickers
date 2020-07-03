@@ -3264,7 +3264,7 @@
         "fileName": "material-ui-pickers/lib/src/DateRangePicker/DateRangePickerViewDesktop.tsx",
         "name": "ExportedDesktopDateRangeCalendarProps"
       },
-      "required": true,
+      "required": false,
       "type": {
         "name": "(date: any, DateRangeDayProps: DateRangeDayProps) => Element"
       }
