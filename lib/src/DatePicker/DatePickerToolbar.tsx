@@ -33,6 +33,7 @@ export const DatePickerToolbar: React.FC<ToolbarComponentProps> = withDefaultPro
     isMobileKeyboardViewOpen,
     toggleMobileKeyboardView,
     toolbarFormat,
+    onChange,
     toolbarPlaceholder = '––',
     toolbarTitle = 'SELECT DATE',
     ...other

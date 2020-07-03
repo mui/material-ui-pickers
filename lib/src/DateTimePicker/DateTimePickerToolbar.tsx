@@ -53,6 +53,7 @@ export const DateTimePickerToolbar: React.FC<ToolbarComponentProps> = withDefaul
     openView,
     setOpenView,
     timeIcon,
+    onChange,
     toggleMobileKeyboardView,
     toolbarFormat,
     toolbarPlaceholder = '––',
