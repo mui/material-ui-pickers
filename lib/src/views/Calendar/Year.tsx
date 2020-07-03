@@ -30,7 +30,7 @@ export const useStyles = makeStyles(
       padding: '8px 0',
       '&:disabled': {
         pointerEvents: 'none',
-        color: theme.palette.text.hint,
+        color: theme.palette.text.secondary,
       },
     },
     rootDesktop: {

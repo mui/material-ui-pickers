@@ -27,7 +27,7 @@ export const useStyles = makeStyles(
       color: theme.palette.text.primary,
       '&:disabled': {
         pointerEvents: 'none',
-        color: theme.palette.text.hint,
+        color: theme.palette.text.secondary,
       },
       '&:hover': {
         backgroundColor: fade(theme.palette.action.active, theme.palette.action.hoverOpacity),
@@ -44,14 +44,14 @@ export const useStyles = makeStyles(
       margin: `0 ${DAY_MARGIN}px`,
     },
     dayOutsideMonth: {
-      color: theme.palette.text.hint,
+      color: theme.palette.text.secondary,
     },
     hiddenDaySpacingFiller: {
       visibility: 'hidden',
     },
     today: {
       '&:not($daySelected)': {
-        border: `1px solid ${theme.palette.text.hint}`,
+        border: `1px solid ${theme.palette.text.secondary}`,
       },
     },
     daySelected: {
