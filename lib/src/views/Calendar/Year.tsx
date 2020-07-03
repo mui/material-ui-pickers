@@ -101,7 +101,6 @@ export const Year: React.FC<YearProps> = ({
         onKeyDown={onSpaceOrEnter(() => onSelect(value))}
         className={clsx(classes.yearButton, {
           [classes.yearSelected]: selected,
-          [classes.yearDisabled]: disabled,
         })}
         {...other}
       >
