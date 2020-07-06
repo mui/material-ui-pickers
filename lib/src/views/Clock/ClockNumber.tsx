@@ -5,7 +5,7 @@ import ButtonBase from '@material-ui/core/ButtonBase';
 import { onSpaceOrEnter } from '../../_helpers/utils';
 import { makeStyles, fade } from '@material-ui/core/styles';
 import { useCanAutoFocus } from '../../_shared/hooks/useCanAutoFocus';
-import { FORCE_FINISH_PICKER } from '../../_shared/hooks/usePickerState';
+import { PickerSelectionState } from '../../_shared/hooks/usePickerState';
 
 const positions: Record<number, [number, number]> = {
   0: [0, 40],
@@ -40,7 +40,7 @@ export interface ClockNumberProps {
   index: number;
   isInner?: boolean;
   label: string;
-  onSelect: (isFinish: boolean | symbol) => void;
+  onSelect: (isFinish: PickerSelectionState) => void;
   selected: boolean;
 }
 
@@ -48,7 +48,7 @@ export const useStyles = makeStyles(
   theme => {
     const size = 32;
     const clockNumberColor =
-      theme.palette.type === 'light' ? theme.palette.text.primary : theme.palette.text.hint;
+      theme.palette.type === 'light' ? theme.palette.text.primary : theme.palette.text.secondary;
 
     return {
       clockNumber: {
@@ -121,7 +121,7 @@ export const ClockNumber: React.FC<ClockNumberProps> = ({
       className={className}
       style={transformStyle}
       aria-label={getClockNumberText(label)}
-      onKeyDown={onSpaceOrEnter(() => onSelect(FORCE_FINISH_PICKER))}
+      onKeyDown={onSpaceOrEnter(() => onSelect('finish'))}
     >
       <Typography variant={isInner ? 'body2' : 'body1'}>{label}</Typography>
     </ButtonBase>
