@@ -71,6 +71,15 @@ export const YearSelection: React.FC<YearSelectionProps> = ({
 
   const handleYearSelection = React.useCallback(
     (year: number, isFinish = true) => {
+      const submitDate = (newDate: MaterialUiPickersDate) => {
+        onChange(newDate, isFinish);
+        changeFocusedDay(newDate);
+
+        if (onYearChange) {
+          onYearChange(newDate);
+        }
+      };
+
       const newDate = utils.setYear(selectedDate, year);
       if (isDateDisabled(newDate)) {
         const closestEnabledDate = findClosestEnabledDate({
@@ -83,28 +92,18 @@ export const YearSelection: React.FC<YearSelectionProps> = ({
           shouldDisableDate: isDateDisabled,
         });
 
-        onChange(closestEnabledDate, isFinish);
-        if (onYearChange) {
-          onYearChange(newDate);
-        }
-
-        return;
+        submitDate(closestEnabledDate);
+      } else {
+        submitDate(newDate);
       }
-
-      if (onYearChange) {
-        onYearChange(newDate);
-      }
-
-      onChange(newDate, isFinish);
-      changeFocusedDay(newDate);
     },
     [
       utils,
       selectedDate,
       isDateDisabled,
-      onYearChange,
       onChange,
       changeFocusedDay,
+      onYearChange,
       minDate,
       maxDate,
       disablePast,
