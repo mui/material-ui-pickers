@@ -15,7 +15,7 @@ import { ParsableDate, defaultMinDate, defaultMaxDate } from '../constants/prop-
 export type DateTimePickerView = 'year' | 'date' | 'month' | 'hours' | 'minutes' | 'seconds';
 
 export interface BaseDateTimePickerProps
-  extends WithViewsProps<'year' | 'date' | 'month' | 'hours' | 'minutes'>,
+  extends WithViewsProps<'year' | 'date' | 'month' | 'hours' | 'minutes' | 'seconds'>,
     ValidationProps<DateAndTimeValidationError, ParsableDate>,
     ExportedClockViewProps,
     ExportedCalendarViewProps {

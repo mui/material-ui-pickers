@@ -52,6 +52,17 @@ function CustomDateTimePicker(props) {
         onChange={handleClearedDateChange}
         renderInput={props => <TextField {...props} helperText="Clear Initial State" />}
       />
+
+      <DateTimePicker
+        value={selectedDate}
+        onChange={handleDateChange}
+        renderInput={props => <TextField {...props} helperText="With Seconds" />}
+        views={['year', 'month', 'date', 'hours', 'minutes', 'seconds']}
+        inputFormat={props.__willBeReplacedGetFormatString({
+          moment: 'YYYY/MM/DD HH:mm:ss A',
+          dateFns: 'yyyy/MM/dd HH:mm:ss a',
+        })}
+      />
     </React.Fragment>
   );
 }

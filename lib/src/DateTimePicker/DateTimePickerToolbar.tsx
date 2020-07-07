@@ -10,6 +10,8 @@ import { MaterialUiPickersDate } from '../typings/date';
 import { withDefaultProps } from '../_shared/withDefaultProps';
 import { ToolbarComponentProps } from '../Picker/SharedPickerProps';
 import { WrapperVariantContext } from '../wrappers/WrapperVariantContext';
+import { useMemo } from 'react';
+import { arrayIncludes } from '../_helpers/utils';
 
 const muiComponentConfig = { name: 'MuiPickersDateTimePickerToolbar' };
 
@@ -58,6 +60,7 @@ export const DateTimePickerToolbar: React.FC<ToolbarComponentProps> = withDefaul
     toolbarFormat,
     toolbarPlaceholder = '––',
     toolbarTitle = 'SELECT DATE & TIME',
+    views,
     ...other
   }) => {
     const utils = useUtils();
@@ -82,6 +85,9 @@ export const DateTimePickerToolbar: React.FC<ToolbarComponentProps> = withDefaul
 
       return utils.format(date, 'shortDate');
     }, [date, toolbarFormat, toolbarPlaceholder, utils]);
+
+    const hasSeconds = useMemo(() => arrayIncludes(views, 'seconds'), [views]);
+    const timeTypographyText = hasSeconds ? 'h4' : 'h3';
 
     return (
       <React.Fragment>
@@ -117,7 +123,7 @@ export const DateTimePickerToolbar: React.FC<ToolbarComponentProps> = withDefaul
             <div className={classes.timeContainer}>
               <ToolbarButton
                 tabIndex={-1}
-                variant="h3"
+                variant={timeTypographyText}
                 data-mui-test="hours"
                 onClick={() => setOpenView('hours')}
                 selected={openView === 'hours'}
@@ -125,17 +131,37 @@ export const DateTimePickerToolbar: React.FC<ToolbarComponentProps> = withDefaul
                 typographyClassName={classes.timeTypography}
               />
 
-              <ToolbarText variant="h3" value=":" className={classes.separator} />
+              <ToolbarText variant={timeTypographyText} value=":" className={classes.separator} />
 
               <ToolbarButton
                 tabIndex={-1}
-                variant="h3"
+                variant={timeTypographyText}
                 data-mui-test="minutes"
                 onClick={() => setOpenView('minutes')}
                 selected={openView === 'minutes'}
                 value={date ? utils.format(date, 'minutes') : '--'}
                 typographyClassName={classes.timeTypography}
               />
+
+              {hasSeconds && (
+                <>
+                  <ToolbarText
+                    variant={timeTypographyText}
+                    value=":"
+                    className={classes.separator}
+                  />
+
+                  <ToolbarButton
+                    tabIndex={-1}
+                    variant={timeTypographyText}
+                    data-mui-test="seconds"
+                    onClick={() => setOpenView('seconds')}
+                    selected={openView === 'seconds'}
+                    value={date ? utils.format(date, 'seconds') : '--'}
+                    typographyClassName={classes.timeTypography}
+                  />
+                </>
+              )}
             </div>
           </PickerToolbar>
         )}

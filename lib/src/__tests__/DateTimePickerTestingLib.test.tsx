@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { utilsToUse } from './test-utils';
+import { getByMuiTest, utilsToUse } from './test-utils';
 import TextField from '@material-ui/core/TextField';
-import { DesktopDateTimePicker } from '../DateTimePicker';
+import { DesktopDateTimePicker, MobileDateTimePicker } from '../DateTimePicker';
 import { createClientRender } from './createClientRender';
-import { fireEvent, screen, waitFor } from '@testing-library/react';
+import { fireEvent, getByText, screen, waitFor } from '@testing-library/react';
 
 describe('<DateTimePicker />', () => {
   const render = createClientRender({ strict: false });
@@ -62,5 +62,42 @@ describe('<DateTimePicker />', () => {
 
     await waitFor(() => screen.getByRole('dialog'));
     expect(screen.getByLabelText('11 hours').getAttribute('aria-disabled')).toBe('true');
+  });
+
+  it('prop: views – seconds is visible', async () => {
+    render(
+      <MobileDateTimePicker
+        open
+        onChange={() => {}}
+        ampm={false}
+        renderInput={props => <TextField {...props} />}
+        value={utilsToUse.date('2018-01-02T03:04:05.000Z')}
+        views={['year', 'month', 'date', 'hours', 'minutes', 'seconds']}
+      />
+    );
+
+    await waitFor(() => screen.getByRole('dialog'));
+    expect(getByMuiTest('seconds').firstChild?.textContent).toBe('05');
+  });
+
+  it('views: clicking on seconds opens seconds view', async () => {
+    render(
+      <MobileDateTimePicker
+        open
+        onChange={() => {}}
+        ampm={false}
+        renderInput={props => <TextField {...props} />}
+        value={utilsToUse.date('2018-01-02T03:04:05.000Z')}
+        views={['year', 'month', 'date', 'hours', 'minutes', 'seconds']}
+      />
+    );
+
+    await waitFor(() => screen.getByRole('dialog'));
+
+    fireEvent.click(getByMuiTest('seconds'));
+
+    expect(getByText(getByMuiTest('seconds'), '05')).toHaveClass(
+      'MuiPickersToolbarText-toolbarBtnSelected'
+    );
   });
 });
