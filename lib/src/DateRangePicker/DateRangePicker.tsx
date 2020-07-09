@@ -53,13 +53,10 @@ export const useDateRangeValidation = makeValidationHook<
 });
 
 export function makeRangePicker<TWrapper extends SomeWrapper>(name: string, Wrapper: TWrapper) {
-  const WrapperComponent = makeWrapperComponent<DateRangeInputProps, RangeInput, DateRange>(
-    Wrapper,
-    {
-      KeyboardDateInputComponent: DateRangePickerInput,
-      PureDateInputComponent: DateRangePickerInput,
-    }
-  );
+  const WrapperComponent = makeWrapperComponent<DateRangeInputProps>(Wrapper, {
+    KeyboardDateInputComponent: DateRangePickerInput,
+    PureDateInputComponent: DateRangePickerInput,
+  });
 
   const rangePickerValueManager: PickerStateValueManager<RangeInput, DateRange> = {
     emptyValue: [null, null],

@@ -1,9 +1,8 @@
 import { useContext, useRef } from 'react';
 import { IUtils } from '@date-io/core/IUtils';
-import { MaterialUiPickersDate } from '../../typings/date';
 import { MuiPickersAdapterContext } from '../../LocalizationProvider';
 
-export type MuiPickersAdapter = IUtils<MaterialUiPickersDate>;
+export type MuiPickersAdapter<TDate = unknown> = IUtils<TDate>;
 
 // TODO uncomment when syntax will be allowed by next babel
 function checkUtils(utils: MuiPickersAdapter | null) /* : asserts utils is MuiPickersUtils */ {

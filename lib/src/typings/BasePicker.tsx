@@ -2,10 +2,7 @@ import { MaterialUiPickersDate } from './date';
 import { ParsableDate } from '../constants/prop-types';
 import { ToolbarComponentProps } from '../Picker/SharedPickerProps';
 
-export interface BasePickerProps<
-  TInputValue = ParsableDate,
-  TDateValue = MaterialUiPickersDate | null
-> {
+export interface BasePickerProps<TInputValue = ParsableDate, TDateValue = MaterialUiPickersDate> {
   /**
    * Picker value.
    */
@@ -13,7 +10,7 @@ export interface BasePickerProps<
   /**
    * onChange callback @DateIOType.
    */
-  onChange: (date: TDateValue, keyboardInputValue?: string) => void;
+  onChange: (date: TDateValue | null, keyboardInputValue?: string) => void;
   /**
    * If `true` picker will immediately close after submitting full date.
    * @default `true` for Desktop, `false` for Mobile (based on the chosen wrapper and `desktopModeMediaQuery` prop).
@@ -34,7 +31,7 @@ export interface BasePickerProps<
   /**
    * Callback fired when date is accepted @DateIOType.
    */
-  onAccept?: (date: TDateValue) => void;
+  onAccept?: (date: TDateValue | null) => void;
   /**
    * On open callback.
    */

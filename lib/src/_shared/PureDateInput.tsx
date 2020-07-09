@@ -11,7 +11,7 @@ import { getDisplayDate, getTextFieldAriaText } from '../_helpers/text-field-hel
 
 export type MuiTextFieldProps = TextFieldProps | Omit<TextFieldProps, 'variant'>;
 
-export interface DateInputProps<TInputValue = ParsableDate, TDateValue = MaterialUiPickersDate> {
+export interface DateInputProps<TInputValue = ParsableDate<unknown>, TDateValue = unknown> {
   open: boolean;
   rawValue: TInputValue;
   inputFormat: string;
