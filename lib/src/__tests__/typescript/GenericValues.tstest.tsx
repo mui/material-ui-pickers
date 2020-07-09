@@ -13,6 +13,14 @@ import { DatePicker } from '@material-ui/pickers';
   renderInput={props => <TextField {...props} />}
 />;
 
+// Throws error if passed value is invalid
+<DatePicker<Date>
+  // @ts-expect-error Value is invalid
+  value={new DateTime()}
+  onChange={date => date?.getDate()}
+  renderInput={props => <TextField {...props} />}
+/>;
+
 // Inference from the state
 const InferTest = () => {
   const [date, setDate] = React.useState<DateTime | null>(new DateTime());
@@ -50,4 +58,14 @@ const InferTest = () => {
   renderInput={props => <TextField {...props} />}
   // @ts-expect-error
   dateAdapter={new LuxonAdapter()}
+/>;
+
+// Edge case and known issue. When the passed `value` is not a date type
+// We cannot infer the type properly without explicit generic type or `dateAdapter` prop
+// So in this case it is expected that type will be `null` as for now
+<DatePicker
+  value={null}
+  // @ts-expect-error `Property 'getDate' does not exist on type 'never'.`
+  onChange={date => date?.getDate()}
+  renderInput={props => <TextField {...props} />}
 />;
