@@ -45,7 +45,7 @@ type PickerComponent<
 > = <TDate>(
   props: TViewProps &
     ExtendWrapper<TWrapper> &
-    AllSharedPickerProps<ParsableDate<TDate>, TDate> &
+    AllSharedPickerProps<ParsableDate<TDate>, TDate | null> &
     React.RefAttributes<HTMLInputElement>
 ) => JSX.Element;
 

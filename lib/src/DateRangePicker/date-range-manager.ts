@@ -1,4 +1,4 @@
-import { DateRange } from './DateRangePicker';
+import { DateRange } from './RangeTypes';
 import { MuiPickersAdapter } from '../_shared/hooks/useUtils';
 
 interface CalculateRangeChangeOptions {

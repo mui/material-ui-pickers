@@ -73,7 +73,7 @@ export interface DateInputProps<TInputValue = ParsableDate<unknown>, TDateValue 
    */
   disableMaskedInput?: boolean;
   /**
-   * Get aria-label text for control that opens picker dialog. Aria-label text must include selected date.
+   * Get aria-label text for control that opens picker dialog. Aria-label text must include selected date. @DateIOType
    * @default (value, utils) => `Choose date, selected date is ${utils.format(utils.date(value), 'fullDate')}`
    */
   getOpenDialogAriaText?: (value: ParsableDate, utils: MuiPickersAdapter) => string;

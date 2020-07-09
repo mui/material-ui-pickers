@@ -57,7 +57,7 @@ export interface DateRangeInputProps
   extends ExportedDateRangePickerInputProps,
     CurrentlySelectingRangeEndProps,
     Omit<
-      DateInputProps<RangeInput, DateRange>,
+      DateInputProps<RangeInput<any>, DateRange<any>>,
       'validationError' | 'renderInput' | 'forwardedRef'
     > {
   startText: React.ReactNode;

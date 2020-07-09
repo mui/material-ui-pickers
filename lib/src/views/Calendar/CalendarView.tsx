@@ -43,7 +43,7 @@ export interface CalendarViewProps
    */
   reduceAnimations?: boolean;
   /**
-   * Callback firing on month change.
+   * Callback firing on month change. @DateIOType
    */
   onMonthChange?: (date: unknown) => void;
 }

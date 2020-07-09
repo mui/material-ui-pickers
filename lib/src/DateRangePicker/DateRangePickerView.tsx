@@ -34,16 +34,16 @@ export interface ExportedDateRangePickerViewProps
   disableAutoMonthSwitching?: boolean;
 }
 
-interface DateRangePickerViewProps
+interface DateRangePickerViewProps<TDate = unknown>
   extends ExportedDateRangePickerViewProps,
     CurrentlySelectingRangeEndProps,
-    SharedPickerProps<RangeInput, DateRange, DateRangeInputProps> {
+    SharedPickerProps<RangeInput<TDate>, DateRange<TDate>, DateRangeInputProps> {
   open: boolean;
   startText: React.ReactNode;
   endText: React.ReactNode;
 }
 
-export const DateRangePickerView: React.FC<DateRangePickerViewProps> = ({
+export const DateRangePickerView = <TDate extends unknown>({
   calendars = 2,
   className,
   currentlySelectingRangeEnd,
@@ -69,7 +69,7 @@ export const DateRangePickerView: React.FC<DateRangePickerViewProps> = ({
   toolbarFormat,
   toolbarTitle,
   ...other
-}) => {
+}: DateRangePickerViewProps<TDate>) => {
   const now = useNow();
   const utils = useUtils();
   const wrapperVariant = React.useContext(WrapperVariantContext);
@@ -150,7 +150,11 @@ export const DateRangePickerView: React.FC<DateRangePickerViewProps> = ({
       const isFullRangeSelected =
         currentlySelectingRangeEnd === 'end' && isRangeValid(utils, newRange);
 
-      onDateChange(newRange, wrapperVariant, isFullRangeSelected ? 'finish' : 'partial');
+      onDateChange(
+        newRange as DateRange<TDate>,
+        wrapperVariant,
+        isFullRangeSelected ? 'finish' : 'partial'
+      );
     },
     [
       currentlySelectingRangeEnd,

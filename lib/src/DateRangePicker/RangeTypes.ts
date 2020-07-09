@@ -2,12 +2,12 @@ import { ParsableDate } from '../constants/prop-types';
 import { AllSharedPickerProps } from '../Picker/SharedPickerProps';
 import { ExportedDateRangePickerInputProps } from './DateRangePickerInput';
 
-export type RangeInput = [ParsableDate, ParsableDate];
-export type DateRange = [unknown, unknown];
+export type RangeInput<TDate = unknown> = [ParsableDate<TDate>, ParsableDate<TDate>];
+export type DateRange<TDate = unknown> = [TDate | null, TDate | null];
 
-export type AllSharedDateRangePickerProps = Omit<
-  AllSharedPickerProps<RangeInput, DateRange>,
-  'renderInput'
+export type AllSharedDateRangePickerProps<TDate> = Omit<
+  AllSharedPickerProps<RangeInput<TDate>, DateRange<TDate>>,
+  'renderInput' | 'orientation'
 > &
   ExportedDateRangePickerInputProps;
 

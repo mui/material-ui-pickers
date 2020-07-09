@@ -5,11 +5,19 @@ import LuxonAdapter from '@material-ui/pickers/adapter/luxon';
 import { DateTime } from 'luxon';
 import { TextField } from '@material-ui/core';
 import { DatePicker } from '@material-ui/pickers';
+import { DateRangePicker } from '../../DateRangePicker/DateRangePicker';
 
 // Allows to set date type right with generic JSX syntax
 <DatePicker<Date>
   value={new Date()}
   onChange={date => date?.getDate()}
+  renderInput={props => <TextField {...props} />}
+/>;
+
+// Also works for DateRangePicker
+<DateRangePicker<DateTime>
+  value={[new DateTime(), new DateTime()]}
+  onChange={date => date[0]?.set({ second: 15 })}
   renderInput={props => <TextField {...props} />}
 />;
 

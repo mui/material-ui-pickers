@@ -9,7 +9,7 @@ export interface BasePickerProps<TInputValue = ParsableDate, TDateValue = unknow
   /**
    * onChange callback @DateIOType.
    */
-  onChange: (date: TDateValue | null, keyboardInputValue?: string) => void;
+  onChange: (date: TDateValue, keyboardInputValue?: string) => void;
   /**
    * If `true` picker will immediately close after submitting full date.
    * @default `true` for Desktop, `false` for Mobile (based on the chosen wrapper and `desktopModeMediaQuery` prop).
