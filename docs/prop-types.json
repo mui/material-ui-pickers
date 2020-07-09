@@ -328,7 +328,7 @@
       },
       "required": false,
       "type": {
-        "name": "(reason: \"shouldDisableDate\" | \"invalidDate\" | \"disableFuture\" | \"disablePast\" | \"minDate\" | \"maxDate\" | null, value: DateIOType) => void"
+        "name": "(reason: \"shouldDisableDate\" | \"invalidDate\" | \"disableFuture\" | \"disablePast\" | \"minDate\" | \"maxDate\" | null, value: unknown) => void"
       }
     },
     "disableHighlightToday": {
@@ -1158,7 +1158,7 @@
       },
       "required": false,
       "type": {
-        "name": "(value: any, utils: MuiPickersAdapter<unknown>) => string"
+        "name": "(value: unknown, utils: MuiPickersAdapter<unknown>) => string"
       }
     },
     "dateAdapter": {
@@ -1300,7 +1300,7 @@
       },
       "required": false,
       "type": {
-        "name": "(reason: \"invalidDate\" | \"minTime\" | \"maxTime\" | \"shouldDisableTime-hours\" | \"shouldDisableTime-minutes\" | \"shouldDisableTime-seconds\" | null, value: DateIOType) => void"
+        "name": "(reason: \"invalidDate\" | \"minTime\" | \"maxTime\" | \"shouldDisableTime-hours\" | \"shouldDisableTime-minutes\" | \"shouldDisableTime-seconds\" | null, value: unknown) => void"
       }
     },
     "views": {
@@ -1850,7 +1850,7 @@
       },
       "required": false,
       "type": {
-        "name": "(value: any, utils: MuiPickersAdapter<unknown>) => string"
+        "name": "(value: unknown, utils: MuiPickersAdapter<unknown>) => string"
       }
     },
     "dateAdapter": {
@@ -1917,7 +1917,7 @@
       },
       "required": false,
       "type": {
-        "name": "any"
+        "name": "unknown"
       }
     },
     "maxDateTime": {
@@ -1930,7 +1930,7 @@
       },
       "required": false,
       "type": {
-        "name": "any"
+        "name": "unknown"
       }
     },
     "toolbarFormat": {
@@ -1982,7 +1982,7 @@
       },
       "required": false,
       "type": {
-        "name": "(reason: \"shouldDisableDate\" | \"invalidDate\" | \"disableFuture\" | \"disablePast\" | \"minDate\" | \"maxDate\" | \"minTime\" | \"maxTime\" | \"shouldDisableTime-hours\" | \"shouldDisableTime-minutes\" | \"shouldDisableTime-seconds\" | null, value: DateIOType) => void"
+        "name": "(reason: \"shouldDisableDate\" | \"invalidDate\" | \"disableFuture\" | \"disablePast\" | \"minDate\" | \"maxDate\" | \"minTime\" | \"maxTime\" | \"shouldDisableTime-hours\" | \"shouldDisableTime-minutes\" | \"shouldDisableTime-seconds\" | null, value: unknown) => void"
       }
     },
     "ampm": {
@@ -2898,7 +2898,7 @@
       },
       "required": false,
       "type": {
-        "name": "(value: any, utils: MuiPickersAdapter<unknown>) => string"
+        "name": "(value: unknown, utils: MuiPickersAdapter<unknown>) => string"
       }
     },
     "dateAdapter": {
@@ -3644,7 +3644,7 @@
       },
       "required": false,
       "type": {
-        "name": "(value: any, utils: MuiPickersAdapter<unknown>) => string"
+        "name": "(value: unknown, utils: MuiPickersAdapter<unknown>) => string"
       }
     },
     "dateAdapter": {
