@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
+
 import { isRangeValid } from '../_helpers/date-utils';
-import { MaterialUiPickersDate } from '../typings/date';
 import { BasePickerProps } from '../typings/BasePicker';
 import { calculateRangeChange } from './date-range-manager';
 import { useUtils, useNow } from '../_shared/hooks/useUtils';
@@ -97,7 +97,7 @@ export const DateRangePickerView: React.FC<DateRangePickerViewProps> = ({
 
   const toShowToolbar = showToolbar ?? wrapperVariant !== 'desktop';
 
-  const scrollToDayIfNeeded = (day: MaterialUiPickersDate) => {
+  const scrollToDayIfNeeded = (day: unknown) => {
     if (!utils.isValid(day) || isDateDisabled(day)) {
       return;
     }
@@ -137,7 +137,7 @@ export const DateRangePickerView: React.FC<DateRangePickerViewProps> = ({
   }, [currentlySelectingRangeEnd, date]); // eslint-disable-line
 
   const handleChange = React.useCallback(
-    (newDate: MaterialUiPickersDate) => {
+    (newDate: unknown) => {
       const { nextSelection, newRange } = calculateRangeChange({
         newDate,
         utils,

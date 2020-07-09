@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Picker, { ExportedPickerProps } from './Picker';
+
 import { ParsableDate } from '../constants/prop-types';
-import { MaterialUiPickersDate } from '../typings/date';
 import { MuiPickersAdapter } from '../_shared/hooks/useUtils';
 import { parsePickerInputValue } from '../_helpers/date-utils';
 import { withDefaultProps } from '../_shared/withDefaultProps';
@@ -36,8 +36,7 @@ export interface MakePickerOptions<T extends unknown> {
 const valueManager: PickerStateValueManager<unknown, unknown> = {
   emptyValue: null,
   parseInput: parsePickerInputValue,
-  areValuesEqual: (utils: MuiPickersAdapter, a: MaterialUiPickersDate, b: MaterialUiPickersDate) =>
-    utils.isEqual(a, b),
+  areValuesEqual: (utils: MuiPickersAdapter, a: unknown, b: unknown) => utils.isEqual(a, b),
 };
 
 type PickerComponent<

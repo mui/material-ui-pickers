@@ -1,8 +1,7 @@
 import * as React from 'react';
 import CalendarSkeleton from '../CalendarSkeleton';
-import { ReactWrapper } from 'enzyme';
 import TextField from '@material-ui/core/TextField';
-import { MaterialUiPickersDate } from '../typings/date';
+import { ReactWrapper } from 'enzyme';
 import { mount, utilsToUse, mountPickerWithState } from './test-utils';
 import {
   DatePicker,
@@ -178,7 +177,7 @@ it('Selected date is disabled', () => {
 });
 
 it('Should not add to loading queue when synchronous', () => {
-  const component = mountPickerWithState(null as MaterialUiPickersDate, props => (
+  const component = mountPickerWithState(null, props => (
     <StaticDatePicker toolbarPlaceholder="Enter Date" {...props} />
   ));
 

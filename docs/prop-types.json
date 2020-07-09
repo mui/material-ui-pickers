@@ -462,7 +462,7 @@
       },
       "required": false,
       "type": {
-        "name": "(day: DateIOType) => boolean"
+        "name": "(day: unknown) => boolean"
       }
     },
     "minDate": {
@@ -477,7 +477,7 @@
       },
       "required": false,
       "type": {
-        "name": "any"
+        "name": "unknown"
       }
     },
     "maxDate": {
@@ -492,7 +492,7 @@
       },
       "required": false,
       "type": {
-        "name": "any"
+        "name": "unknown"
       }
     },
     "disablePast": {
@@ -550,7 +550,7 @@
       },
       "required": false,
       "type": {
-        "name": "(date: any) => void"
+        "name": "(date: unknown) => void"
       }
     },
     "renderDay": {
@@ -563,7 +563,7 @@
       },
       "required": false,
       "type": {
-        "name": "(day: DateIOType, selectedDates: DateIOType[], DayComponentProps: DayProps) => Element"
+        "name": "(day: unknown, selectedDates: unknown[], DayComponentProps: DayProps) => Element"
       }
     },
     "allowKeyboardControl": {
@@ -621,7 +621,7 @@
       },
       "required": false,
       "type": {
-        "name": "(date: DateIOType) => void"
+        "name": "(date: unknown) => void"
       }
     },
     "shouldDisableYear": {
@@ -634,7 +634,7 @@
       },
       "required": false,
       "type": {
-        "name": "(day: DateIOType) => boolean"
+        "name": "(day: unknown) => boolean"
       }
     },
     "DialogProps": {
@@ -964,7 +964,7 @@
       },
       "required": false,
       "type": {
-        "name": "ComponentClass<ToolbarComponentProps<any, DateTimePickerView>, any> | FunctionComponent<ToolbarComponentProps<any, DateTimePickerView>>"
+        "name": "ComponentClass<ToolbarComponentProps<unknown, DateTimePickerView>, any> | FunctionComponent<ToolbarComponentProps<unknown, DateTimePickerView>>"
       }
     },
     "toolbarTitle": {
@@ -1246,7 +1246,7 @@
       },
       "required": false,
       "type": {
-        "name": "any"
+        "name": "unknown"
       }
     },
     "maxTime": {
@@ -1259,7 +1259,7 @@
       },
       "required": false,
       "type": {
-        "name": "any"
+        "name": "unknown"
       }
     },
     "shouldDisableTime": {
@@ -1656,7 +1656,7 @@
       },
       "required": false,
       "type": {
-        "name": "ComponentClass<ToolbarComponentProps<any, DateTimePickerView>, any> | FunctionComponent<ToolbarComponentProps<any, DateTimePickerView>>"
+        "name": "ComponentClass<ToolbarComponentProps<unknown, DateTimePickerView>, any> | FunctionComponent<ToolbarComponentProps<unknown, DateTimePickerView>>"
       }
     },
     "toolbarTitle": {
@@ -2055,7 +2055,7 @@
       },
       "required": false,
       "type": {
-        "name": "any"
+        "name": "unknown"
       }
     },
     "maxTime": {
@@ -2068,7 +2068,7 @@
       },
       "required": false,
       "type": {
-        "name": "any"
+        "name": "unknown"
       }
     },
     "shouldDisableTime": {
@@ -2230,7 +2230,7 @@
       },
       "required": false,
       "type": {
-        "name": "(day: DateIOType) => boolean"
+        "name": "(day: unknown) => boolean"
       }
     },
     "minDate": {
@@ -2245,7 +2245,7 @@
       },
       "required": false,
       "type": {
-        "name": "any"
+        "name": "unknown"
       }
     },
     "maxDate": {
@@ -2260,7 +2260,7 @@
       },
       "required": false,
       "type": {
-        "name": "any"
+        "name": "unknown"
       }
     },
     "disablePast": {
@@ -2318,7 +2318,7 @@
       },
       "required": false,
       "type": {
-        "name": "(date: any) => void"
+        "name": "(date: unknown) => void"
       }
     },
     "renderDay": {
@@ -2331,7 +2331,7 @@
       },
       "required": false,
       "type": {
-        "name": "(day: DateIOType, selectedDates: DateIOType[], DayComponentProps: DayProps) => Element"
+        "name": "(day: unknown, selectedDates: unknown[], DayComponentProps: DayProps) => Element"
       }
     },
     "loading": {
@@ -2374,7 +2374,7 @@
       },
       "required": false,
       "type": {
-        "name": "(date: DateIOType) => void"
+        "name": "(date: unknown) => void"
       }
     },
     "shouldDisableYear": {
@@ -2387,7 +2387,7 @@
       },
       "required": false,
       "type": {
-        "name": "(day: DateIOType) => boolean"
+        "name": "(day: unknown) => boolean"
       }
     },
     "DialogProps": {
@@ -2717,7 +2717,7 @@
       },
       "required": false,
       "type": {
-        "name": "ComponentClass<ToolbarComponentProps<any, DateTimePickerView>, any> | FunctionComponent<ToolbarComponentProps<any, DateTimePickerView>>"
+        "name": "ComponentClass<ToolbarComponentProps<unknown, DateTimePickerView>, any> | FunctionComponent<ToolbarComponentProps<unknown, DateTimePickerView>>"
       }
     },
     "toolbarTitle": {
@@ -3092,7 +3092,7 @@
       },
       "required": false,
       "type": {
-        "name": "(day: DateIOType) => boolean"
+        "name": "(day: unknown) => boolean"
       }
     },
     "minDate": {
@@ -3107,7 +3107,7 @@
       },
       "required": false,
       "type": {
-        "name": "any"
+        "name": "unknown"
       }
     },
     "maxDate": {
@@ -3122,7 +3122,7 @@
       },
       "required": false,
       "type": {
-        "name": "any"
+        "name": "unknown"
       }
     },
     "disablePast": {
@@ -3180,7 +3180,7 @@
       },
       "required": false,
       "type": {
-        "name": "(date: any) => void"
+        "name": "(date: unknown) => void"
       }
     },
     "renderDay": {
@@ -3193,7 +3193,7 @@
       },
       "required": false,
       "type": {
-        "name": "(day: DateIOType, selectedDates: DateIOType[], DayComponentProps: DayProps) => Element"
+        "name": "(day: unknown, selectedDates: unknown[], DayComponentProps: DayProps) => Element"
       }
     },
     "allowKeyboardControl": {
@@ -3251,7 +3251,7 @@
       },
       "required": false,
       "type": {
-        "name": "(day: DateIOType) => boolean"
+        "name": "(day: unknown) => boolean"
       }
     },
     "calendars": {
@@ -3346,7 +3346,7 @@
       },
       "required": false,
       "type": {
-        "name": "(date: DateIOType) => void) | ((date: DateRange | null) => void"
+        "name": "(date: unknown) => void) | ((date: DateRange | null) => void"
       }
     },
     "onOpen": {
@@ -3424,7 +3424,7 @@
       },
       "required": false,
       "type": {
-        "name": "ComponentClass<ToolbarComponentProps<any, DateTimePickerView>, any> | FunctionComponent<ToolbarComponentProps<any, DateTimePickerView>>"
+        "name": "ComponentClass<ToolbarComponentProps<unknown, DateTimePickerView>, any> | FunctionComponent<ToolbarComponentProps<unknown, DateTimePickerView>>"
       }
     },
     "toolbarTitle": {
@@ -3846,7 +3846,7 @@
       },
       "required": true,
       "type": {
-        "name": "PickerOnChangeFn<any>"
+        "name": "PickerOnChangeFn<unknown>"
       }
     },
     "renderDay": {
@@ -3859,7 +3859,7 @@
       },
       "required": false,
       "type": {
-        "name": "(day: DateIOType, selectedDates: DateIOType[], DayComponentProps: DayProps) => Element"
+        "name": "(day: unknown, selectedDates: unknown[], DayComponentProps: DayProps) => Element"
       }
     },
     "allowKeyboardControl": {
@@ -3949,7 +3949,7 @@
       },
       "required": true,
       "type": {
-        "name": "any"
+        "name": "unknown"
       }
     },
     "focused": {
@@ -4123,7 +4123,7 @@
       },
       "required": true,
       "type": {
-        "name": "DateIOType"
+        "name": "unknown"
       }
     },
     "type": {
@@ -4149,7 +4149,7 @@
       },
       "required": true,
       "type": {
-        "name": "PickerOnChangeFn<DateIOType>"
+        "name": "PickerOnChangeFn<unknown>"
       }
     },
     "onChange": {
@@ -4162,7 +4162,7 @@
       },
       "required": true,
       "type": {
-        "name": "PickerOnChangeFn<DateIOType>"
+        "name": "PickerOnChangeFn<unknown>"
       }
     },
     "getHoursClockNumberText": {
@@ -4280,7 +4280,7 @@
       },
       "required": false,
       "type": {
-        "name": "any"
+        "name": "unknown"
       }
     },
     "maxTime": {
@@ -4293,7 +4293,7 @@
       },
       "required": false,
       "type": {
-        "name": "any"
+        "name": "unknown"
       }
     },
     "shouldDisableTime": {

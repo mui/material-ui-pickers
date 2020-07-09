@@ -1,9 +1,9 @@
 import * as React from 'react';
 import CalendarHeader from '../views/Calendar/CalendarHeader';
 import { DateRange } from './RangeTypes';
+
 import { DateRangeDay } from './DateRangePickerDay';
 import { useUtils } from '../_shared/hooks/useUtils';
-import { MaterialUiPickersDate } from '../typings/date';
 import { Calendar, CalendarProps } from '../views/Calendar/Calendar';
 import { ExportedArrowSwitcherProps } from '../_shared/ArrowSwitcher';
 import { defaultMinDate, defaultMaxDate } from '../constants/prop-types';
@@ -22,7 +22,7 @@ interface DesktopDateRangeCalendarProps
     DateValidationProps,
     ExportedArrowSwitcherProps {
   date: DateRange;
-  changeMonth: (date: MaterialUiPickersDate) => void;
+  changeMonth: (date: unknown) => void;
 }
 
 const onlyDateView = ['date'] as ['date'];

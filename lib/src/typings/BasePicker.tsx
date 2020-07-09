@@ -1,8 +1,7 @@
-import { MaterialUiPickersDate } from './date';
 import { ParsableDate } from '../constants/prop-types';
 import { ToolbarComponentProps } from '../Picker/SharedPickerProps';
 
-export interface BasePickerProps<TInputValue = ParsableDate, TDateValue = MaterialUiPickersDate> {
+export interface BasePickerProps<TInputValue = ParsableDate, TDateValue = unknown> {
   /**
    * Picker value.
    */

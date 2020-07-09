@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { utilsToUse } from './test-utils';
 import TextField from '@material-ui/core/TextField';
+import { utilsToUse } from './test-utils';
 import { DesktopDateTimePicker } from '../DateTimePicker';
 import { createClientRender } from './createClientRender';
 import { fireEvent, screen, waitFor } from '@testing-library/react';

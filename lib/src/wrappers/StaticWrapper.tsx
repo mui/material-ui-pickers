@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { WrapperProps } from './Wrapper';
 import { makeStyles } from '@material-ui/core/styles';
 import { DIALOG_WIDTH } from '../constants/dimensions';
 import { WrapperVariantContext, IsStaticVariantContext } from './WrapperVariantContext';

@@ -2,13 +2,13 @@ import * as React from 'react';
 import { CalendarViewProps } from './CalendarView';
 import { SlideDirection } from './SlideTransition';
 import { validateDate } from '../../_helpers/date-utils';
-import { MaterialUiPickersDate } from '../../typings/date';
+
 import { MuiPickersAdapter, useUtils, useNow } from '../../_shared/hooks/useUtils';
 
 interface CalendarState {
   isMonthSwitchingAnimating: boolean;
-  currentMonth: MaterialUiPickersDate;
-  focusedDay: MaterialUiPickersDate | null;
+  currentMonth: unknown;
+  focusedDay: unknown | null;
   slideDirection: SlideDirection;
 }
 
@@ -16,7 +16,7 @@ type ReducerAction<TType, TAdditional = {}> = { type: TType } & TAdditional;
 
 interface ChangeMonthPayload {
   direction: SlideDirection;
-  newMonth: MaterialUiPickersDate;
+  newMonth: unknown;
 }
 
 export const createCalendarStateReducer = (
@@ -28,7 +28,7 @@ export const createCalendarStateReducer = (
   action:
     | ReducerAction<'finishMonthSwitchingAnimation'>
     | ReducerAction<'changeMonth', ChangeMonthPayload>
-    | ReducerAction<'changeFocusedDay', { focusedDay: MaterialUiPickersDate }>
+    | ReducerAction<'changeFocusedDay', { focusedDay: unknown }>
 ): CalendarState => {
   switch (action.type) {
     case 'changeMonth': {
@@ -72,8 +72,8 @@ type CalendarStateInput = Pick<
   | 'reduceAnimations'
   | 'onMonthChange'
 > & {
-  minDate: MaterialUiPickersDate;
-  maxDate: MaterialUiPickersDate;
+  minDate: unknown;
+  maxDate: unknown;
   disableSwitchToMonthOnDayFocus?: boolean;
 };
 
@@ -117,7 +117,7 @@ export function useCalendarState({
   );
 
   const changeMonth = React.useCallback(
-    (newDate: MaterialUiPickersDate) => {
+    (newDate: unknown) => {
       const newDateRequested = newDate ?? now;
       if (utils.isSameMonth(newDateRequested, calendarState.currentMonth)) {
         return;
@@ -134,7 +134,7 @@ export function useCalendarState({
   );
 
   const isDateDisabled = React.useCallback(
-    (day: MaterialUiPickersDate) =>
+    (day: unknown) =>
       validateDate(utils, day, {
         disablePast,
         disableFuture,
@@ -150,7 +150,7 @@ export function useCalendarState({
   }, []);
 
   const changeFocusedDay = React.useCallback(
-    (newFocusedDate: MaterialUiPickersDate) => {
+    (newFocusedDate: unknown) => {
       if (!isDateDisabled(newFocusedDate)) {
         dispatch({ type: 'changeFocusedDay', focusedDay: newFocusedDate });
       }

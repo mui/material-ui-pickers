@@ -3,10 +3,10 @@ import ToolbarText from '../_shared/ToolbarText';
 import PickerToolbar from '../_shared/PickerToolbar';
 import ToolbarButton from '../_shared/ToolbarButton';
 import DateTimePickerTabs from './DateTimePickerTabs';
+
 import { useUtils } from '../_shared/hooks/useUtils';
 import { DateTimePickerView } from './DateTimePicker';
 import { makeStyles } from '@material-ui/core/styles';
-import { MaterialUiPickersDate } from '../typings/date';
 import { withDefaultProps } from '../_shared/withDefaultProps';
 import { ToolbarComponentProps } from '../Picker/SharedPickerProps';
 import { WrapperVariantContext } from '../wrappers/WrapperVariantContext';
@@ -68,7 +68,7 @@ export const DateTimePickerToolbar: React.FC<ToolbarComponentProps> = withDefaul
         ? true
         : !hideTabs && typeof window !== 'undefined' && window.innerHeight > 667;
 
-    const formatHours = (time: MaterialUiPickersDate) =>
+    const formatHours = (time: unknown) =>
       ampm ? utils.format(time, 'hours12h') : utils.format(time, 'hours24h');
 
     const dateText = React.useMemo(() => {
