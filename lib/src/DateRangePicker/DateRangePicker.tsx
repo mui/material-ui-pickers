@@ -65,6 +65,7 @@ export function makeRangePicker<TWrapper extends SomeWrapper>(name: string, Wrap
     emptyValue: [null, null],
     parseInput: parseRangeInputValue,
     areValuesEqual: (utils, a, b) => utils.isEqual(a[0], b[0]) && utils.isEqual(a[1], b[1]),
+    areDaysEqual: (utils, a, b) => utils.isSameDay(a[0], b[0]) && utils.isSameDay(a[1], b[1]),
   };
 
   function RangePickerWithStateAndWrapper({

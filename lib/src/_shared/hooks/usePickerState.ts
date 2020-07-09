@@ -12,6 +12,11 @@ export interface PickerStateValueManager<TInput, TDateValue> {
     valueLeft: TDateValue,
     valueRight: TDateValue
   ) => boolean;
+  areDaysEqual: (
+    utils: MuiPickersAdapter,
+    valueLeft: TDateValue,
+    valueRight: TDateValue
+  ) => boolean;
 }
 
 export type PickerSelectionState = 'partial' | 'shallow' | 'finish';
@@ -103,8 +108,9 @@ export function usePickerState<TInput, TDateValue>(
         wrapperVariant: WrapperVariant,
         selectionState: PickerSelectionState = 'partial'
       ) => {
-        setPickerDate(newDate);
-
+        if (!valueManager.areDaysEqual(utils, newDate, pickerDate)) {
+          setPickerDate(newDate);
+        }
         if (selectionState === 'partial') {
           acceptDate(newDate, false);
         }
@@ -117,7 +123,7 @@ export function usePickerState<TInput, TDateValue>(
         // if selectionState === "shallow" do nothing (we already update picker state)
       },
     }),
-    [acceptDate, disableCloseOnSelect, isMobileKeyboardViewOpen, pickerDate]
+    [acceptDate, disableCloseOnSelect, isMobileKeyboardViewOpen, pickerDate, utils, valueManager]
   );
 
   const inputProps = React.useMemo(

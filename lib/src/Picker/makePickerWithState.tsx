@@ -38,6 +38,8 @@ const valueManager: PickerStateValueManager<ParsableDate, MaterialUiPickersDate>
   parseInput: parsePickerInputValue,
   areValuesEqual: (utils: MuiPickersAdapter, a: MaterialUiPickersDate, b: MaterialUiPickersDate) =>
     utils.isEqual(a, b),
+  areDaysEqual: (utils: MuiPickersAdapter, a: MaterialUiPickersDate, b: MaterialUiPickersDate) =>
+    utils.isSameDay(a, b),
 };
 
 export function makePickerWithStateAndWrapper<
