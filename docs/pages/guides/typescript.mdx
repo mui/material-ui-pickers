@@ -32,7 +32,7 @@ const MyComponent = () => {
 
 #### Generics
 
-We don't really know which adapter you will pass to the `<LocalizationProvider />`. So any picker component is generic by default.
+The components don't know which adapter you will pass to the `<LocalizationProvider />`. So any picker component is generic by default.
 It means that it will try to infer the `value` and `onChange` type from the passed props.
 
 ```tsx
