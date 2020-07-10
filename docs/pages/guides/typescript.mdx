@@ -17,13 +17,13 @@ Here is some information about how to achive better experience with typescript.
 Any picker can return null in the `onChange` argument so if you are using `React.useState`, you **must** manually cast your default value as nullable. (e.g. `Date | null`)
 
 ```tsx
-function MyComponent() {
-  const [date, setDate] = React.useState<Date | null>(new Date());
+const MyComponent = () => {
+  const [value, setValue] = React.useState<Date | null>(new Date());
 
   return (
     <DatePicker
-      value={date}
-      onChange={date => setDate(date)}
+      value={value}
+      onChange={newValue => setValue(newValue)}
       renderInput={props => <TextField {...props} />}
     />
   );
@@ -39,7 +39,7 @@ It means that it will try to infer the `value` and `onChange` type from the pass
 <DatePicker
   value={new Date()}
   // date will be inferred as `Date | null`
-  onChange={date => date?.getDate()}
+  onChange={newValue => newValue?.getDate()}
 />
 ```
 
@@ -49,7 +49,7 @@ It also means that you can manually set value type thanks to the generic JSX syt
 <DatePicker<Date>
   // You can pass any value right here that can be parsed
   value={new Date()}
-  onChange={date => date?.getDate()}
+  onChange={newValue => newValue?.getDate()}
 />
 ```
 
@@ -61,7 +61,7 @@ If you are passing not typed value to the picker (such like `null`) we cannot pr
 <DatePicker
   value={null}
   // @ts-expect-error `Property 'getDate' does not exist on type 'never'.`
-  onChange={date => date?.getDate()}
+  onChange={newValue => newValue?.getDate()}
 />
 ```
 
@@ -70,7 +70,7 @@ In this case it is required to manually set proper [generic type manually](#gene
 ```tsx
 <DatePicker<Date>
   value={null}
-  onChange={date => date?.getDate()}
+  onChange={newValue => newValue?.getDate()}
 />
 
 // Or cast the type for the `value` or `onChange` prop.
@@ -78,6 +78,6 @@ In this case it is required to manually set proper [generic type manually](#gene
 <DatePicker
   value={null as Date | null}
   // @ts-expect-error `Property 'getDate' does not exist on type 'never'.`
-  onChange={date => date?.getDate()}
+  onChange={newValue => newValue?.getDate()}
 />
 ```
