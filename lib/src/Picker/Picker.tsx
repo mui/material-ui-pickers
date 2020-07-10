@@ -1,6 +1,5 @@
 import * as React from 'react';
 import clsx from 'clsx';
-
 import { useViews } from '../_shared/hooks/useViews';
 import { ClockView } from '../views/Clock/ClockView';
 import { makeStyles } from '@material-ui/core/styles';
