@@ -5,7 +5,6 @@ import ButtonBase, { ButtonBaseProps } from '@material-ui/core/ButtonBase';
 import { ExtendMui } from '../../typings/helpers';
 import { onSpaceOrEnter } from '../../_helpers/utils';
 import { useUtils } from '../../_shared/hooks/useUtils';
-
 import { makeStyles, fade } from '@material-ui/core/styles';
 import { DAY_SIZE, DAY_MARGIN } from '../../constants/dimensions';
 import { withDefaultProps } from '../../_shared/withDefaultProps';
