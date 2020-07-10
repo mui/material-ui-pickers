@@ -17,7 +17,7 @@ Here is some information about how to achive better experience with typescript.
 Any picker can return null in the `onChange` argument so if you are using `React.useState`, you **must** manually cast your default value as nullable. (e.g. `Date | null`)
 
 ```tsx
-const MyComponent = () => {
+function MyComponent() {
   const [date, setDate] = React.useState<Date | null>(new Date());
 
   return (
