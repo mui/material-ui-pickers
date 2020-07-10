@@ -1,6 +1,5 @@
 import * as React from 'react';
 import Picker, { ExportedPickerProps } from './Picker';
-
 import { ParsableDate } from '../constants/prop-types';
 import { MuiPickersAdapter } from '../_shared/hooks/useUtils';
 import { parsePickerInputValue } from '../_helpers/date-utils';
