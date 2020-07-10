@@ -2,7 +2,6 @@ import * as React from 'react';
 import { CalendarViewProps } from './CalendarView';
 import { SlideDirection } from './SlideTransition';
 import { validateDate } from '../../_helpers/date-utils';
-
 import { MuiPickersAdapter, useUtils, useNow } from '../../_shared/hooks/useUtils';
 
 interface CalendarState {
