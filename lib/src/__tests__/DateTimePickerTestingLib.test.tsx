@@ -1,9 +1,13 @@
 import * as React from 'react';
 import TextField from '@material-ui/core/TextField';
 import { utilsToUse } from './test-utils';
-import { DesktopDateTimePicker } from '../DateTimePicker';
 import { createClientRender } from './createClientRender';
 import { fireEvent, screen, waitFor } from '@testing-library/react';
+import {
+  DesktopDateTimePicker,
+  StaticDateTimePicker,
+  MobileDateTimePicker,
+} from '../DateTimePicker';
 
 describe('<DateTimePicker />', () => {
   const render = createClientRender({ strict: false });
@@ -62,5 +66,37 @@ describe('<DateTimePicker />', () => {
 
     await waitFor(() => screen.getByRole('dialog'));
     expect(screen.getByLabelText('11 hours').getAttribute('aria-disabled')).toBe('true');
+  });
+
+  it('shows ArrowSwitcher on ClockView disabled and not allows to return back to the date', async () => {
+    render(
+      <DesktopDateTimePicker
+        open
+        openTo="hours"
+        onChange={() => {}}
+        renderInput={props => <TextField {...props} />}
+        value={utilsToUse.date('2018-01-01T00:00:00.000Z')}
+      />
+    );
+
+    await waitFor(() => screen.getByRole('dialog'));
+    expect(screen.getByLabelText('open previous view')).toBeDisabled();
+  });
+
+  it('allows to switch using ArrowSwitcher on ClockView', async () => {
+    render(
+      <DesktopDateTimePicker
+        open
+        openTo="hours"
+        onChange={() => {}}
+        renderInput={props => <TextField {...props} />}
+        value={utilsToUse.date('2018-01-01T00:00:00.000Z')}
+      />
+    );
+
+    await waitFor(() => screen.getByRole('dialog'));
+
+    fireEvent.click(screen.getByLabelText('open next view'));
+    expect(screen.getByLabelText('open next view')).toBeDisabled();
   });
 });
