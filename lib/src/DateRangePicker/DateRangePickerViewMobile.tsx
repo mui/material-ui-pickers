@@ -1,7 +1,6 @@
 import * as React from 'react';
 import CalendarHeader from '../views/Calendar/CalendarHeader';
 import { DateRange } from './RangeTypes';
-
 import { DateRangeDay } from './DateRangePickerDay';
 import { useUtils } from '../_shared/hooks/useUtils';
 import { Calendar, CalendarProps } from '../views/Calendar/Calendar';
