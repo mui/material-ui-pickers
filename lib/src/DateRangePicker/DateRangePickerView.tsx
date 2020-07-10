@@ -20,7 +20,7 @@ import {
   ExportedDesktopDateRangeCalendarProps,
 } from './DateRangePickerViewDesktop';
 
-type BaseCalendarPropsToReuse = Omit<ExportedCalendarViewProps, 'onYearChange'>;
+type BaseCalendarPropsToReuse = Omit<ExportedCalendarViewProps, 'onYearChange' | 'renderDay'>;
 
 export interface ExportedDateRangePickerViewProps
   extends BaseCalendarPropsToReuse,
