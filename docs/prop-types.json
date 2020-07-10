@@ -3266,7 +3266,7 @@
       },
       "required": false,
       "type": {
-        "name": "(date: any, DateRangeDayProps: DateRangeDayProps) => Element"
+        "name": "(date: DateIOType, DateRangeDayProps: DateRangeDayProps) => Element"
       }
     },
     "className": {
