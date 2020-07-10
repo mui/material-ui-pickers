@@ -1,6 +1,5 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
-
 import { isRangeValid } from '../_helpers/date-utils';
 import { BasePickerProps } from '../typings/BasePicker';
 import { calculateRangeChange } from './date-range-manager';
