@@ -126,14 +126,14 @@ export const CalendarView: React.FC<CalendarViewProps> = withDefaultProps(
         const closestEnabledDate = findClosestEnabledDate({
           utils,
           date,
-          minDate: utils.date(minDate),
-          maxDate: utils.date(maxDate),
+          minDate,
+          maxDate,
           disablePast: Boolean(disablePast),
           disableFuture: Boolean(disableFuture),
           shouldDisableDate: isDateDisabled,
         });
 
-        onChange(closestEnabledDate, false);
+        onChange(closestEnabledDate, 'partial');
       }
       // This call is too expensive to run it on each prop change.
       // So just ensure that we are not rendering disabled as selected on mount.

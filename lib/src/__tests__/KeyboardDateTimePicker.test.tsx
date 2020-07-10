@@ -16,7 +16,6 @@ describe('e2e - DesktopDateTimePicker', () => {
     jest.clearAllMocks();
     component = mount(
       <DesktopDateTimePicker
-        autoOk
         onChange={onChangeMock}
         onClose={onCloseMock}
         onOpen={onOpenMock}

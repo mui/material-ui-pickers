@@ -10,7 +10,7 @@ import { makeStyles, fade } from '@material-ui/core/styles';
 import { DAY_SIZE, DAY_MARGIN } from '../../constants/dimensions';
 import { withDefaultProps } from '../../_shared/withDefaultProps';
 import { useCanAutoFocus } from '../../_shared/hooks/useCanAutoFocus';
-import { FORCE_FINISH_PICKER } from '../../_shared/hooks/usePickerState';
+import { PickerSelectionState } from '../../_shared/hooks/usePickerState';
 
 const muiComponentConfig = { name: 'MuiPickersDay' };
 
@@ -40,14 +40,14 @@ export const useStyles = makeStyles(
       margin: `0 ${DAY_MARGIN}px`,
     },
     dayOutsideMonth: {
-      color: theme.palette.text.hint,
+      color: theme.palette.text.secondary,
     },
     hiddenDaySpacingFiller: {
       visibility: 'hidden',
     },
     today: {
       '&:not($daySelected)': {
-        border: `1px solid ${theme.palette.text.hint}`,
+        border: `1px solid ${theme.palette.text.secondary}`,
       },
     },
     daySelected: {
@@ -64,7 +64,7 @@ export const useStyles = makeStyles(
     },
     dayDisabled: {
       pointerEvents: 'none',
-      color: theme.palette.text.hint,
+      color: theme.palette.text.secondary,
     },
     dayLabel: {
       // need for overrides
@@ -125,7 +125,7 @@ export interface DayProps extends ExtendMui<ButtonBaseProps> {
    */
   disableHighlightToday?: boolean;
   onDayFocus: (day: MaterialUiPickersDate) => void;
-  onDaySelect: (day: MaterialUiPickersDate, isFinish: boolean | symbol) => void;
+  onDaySelect: (day: MaterialUiPickersDate, isFinish: PickerSelectionState) => void;
 }
 
 const PureDay: React.FC<DayProps> = ({
@@ -181,7 +181,7 @@ const PureDay: React.FC<DayProps> = ({
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     if (!disabled) {
-      onDaySelect(day, true);
+      onDaySelect(day, 'finish');
     }
 
     if (onClick) {
@@ -191,7 +191,7 @@ const PureDay: React.FC<DayProps> = ({
 
   const handleKeyDown = onSpaceOrEnter(() => {
     if (!disabled) {
-      onDaySelect(day, FORCE_FINISH_PICKER);
+      onDaySelect(day, 'finish');
     }
   }, onKeyDown);
 

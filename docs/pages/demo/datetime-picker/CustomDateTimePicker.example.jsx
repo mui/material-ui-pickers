@@ -12,7 +12,6 @@ function CustomDateTimePicker(props) {
   return (
     <React.Fragment>
       <DateTimePicker
-        autoOk
         disableFuture
         hideTabs
         showTodayButton
