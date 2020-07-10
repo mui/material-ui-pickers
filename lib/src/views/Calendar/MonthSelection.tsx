@@ -3,7 +3,6 @@ import Month from './Month';
 import { makeStyles } from '@material-ui/core/styles';
 import { useUtils } from '../../_shared/hooks/useUtils';
 import { ParsableDate } from '../../constants/prop-types';
-
 import { PickerOnChangeFn } from '../../_shared/hooks/useViews';
 
 export interface MonthSelectionProps {
