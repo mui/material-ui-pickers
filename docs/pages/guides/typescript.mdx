@@ -1,14 +1,14 @@
 import PageMeta from '_shared/PageMeta';
 
 <PageMeta
-  title="Typescript – @material-ui/pickers"
-  description="A guide of how to use @material-ui/pickers with typescript"
+  title="TypeScript – @material-ui/pickers"
+  description="A guide of how to use @material-ui/pickers with TypeScript"
 />
 
 ## TypeScript guide
 
 The date picker components come with built-in TypeScript definitions.
-Here is some information about how to achive better experience with typescript.
+Here is some information about how to achive better experience with TypeScript.
 
 <!-- https://stackoverflow.com/questions/62452160/material-datetimepicker-onchange-typescript-mismatch-error/62471345 -->
 
@@ -17,7 +17,7 @@ Here is some information about how to achive better experience with typescript.
 Any picker can return null in the `onChange` argument so if you are using `React.useState`, you **must** manually cast your default value as nullable. (e.g. `Date | null`)
 
 ```tsx
-const MyComponent = () => {
+function MyComponent() {
   const [value, setValue] = React.useState<Date | null>(new Date());
 
   return (
@@ -27,7 +27,7 @@ const MyComponent = () => {
       renderInput={props => <TextField {...props} />}
     />
   );
-};
+}
 ```
 
 #### Generics
