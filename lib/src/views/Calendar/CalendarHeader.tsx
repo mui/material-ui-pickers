@@ -8,7 +8,6 @@ import { DatePickerView } from '../../DatePicker';
 import { SlideDirection } from './SlideTransition';
 import { makeStyles } from '@material-ui/core/styles';
 import { useUtils } from '../../_shared/hooks/useUtils';
-
 import { FadeTransitionGroup } from './FadeTransitionGroup';
 import { DateValidationProps } from '../../_helpers/date-utils';
 import { ArrowDropDownIcon } from '../../_shared/icons/ArrowDropDownIcon';
