@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { DateRange } from './RangeTypes';
-
 import { DateRangeDay } from './DateRangePickerDay';
 import { useUtils } from '../_shared/hooks/useUtils';
 import { makeStyles } from '@material-ui/core/styles';
