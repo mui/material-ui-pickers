@@ -39,7 +39,7 @@ export const navItems = [
   {
     title: 'Guides',
     children: [
-      { title: 'Typescript', href: '/guides/typescript' },
+      { title: 'TypeScript', href: '/guides/typescript' },
       { title: 'Accessibility', href: '/guides/accessibility' },
       { title: 'Form integration', href: '/guides/forms' },
       { title: 'CSS overrides', href: '/guides/css-overrides' },
