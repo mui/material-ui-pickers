@@ -66,7 +66,7 @@ module.exports = {
     'react/jsx-curly-brace-presence': 'off',
     // prefer <React.Fragment> over <>. The former allows `key` while the latter doesn't
     'react/jsx-fragments': ['error', 'element'],
-    'react/jsx-filename-extension': ['error', { extensions: ['.js'] }], // airbnb is using .jsx
+    'react/jsx-filename-extension': ['error', { extensions: ['.js', '.tsx'] }], // airbnb is using .jsx
     'react/jsx-handler-names': [
       'error',
       {
