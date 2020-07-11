@@ -1,9 +1,18 @@
 import * as React from 'react';
+import deLocale from 'date-fns/locale/de';
+import enLocale from 'date-fns/locale/en-US';
+import 'dayjs/locale/de';
 import TextField from '@material-ui/core/TextField';
 import { screen, waitFor } from '@testing-library/react';
-import { getByMuiTest, utilsToUse, FakeTransitionComponent } from './test-utils';
+import { DateAdapter, getByMuiTest, utilsToUse, FakeTransitionComponent } from './test-utils';
 import { createClientRender, fireEvent } from './createClientRender';
-import { DatePicker, MobileDatePicker, DesktopDatePicker } from '../index';
+import {
+  DatePicker,
+  DatePickerProps,
+  DesktopDatePicker,
+  LocalizationProvider,
+  MobileDatePicker,
+} from '../index';
 
 describe('<DatePicker />', () => {
   const render = createClientRender({ strict: false });
@@ -95,5 +104,78 @@ describe('<DatePicker />', () => {
 
     fireEvent.click(screen.getByLabelText('Jan 1, 2018'));
     expect(onChangeMock).not.toHaveBeenCalled();
+  });
+
+  describe('input validation', () => {
+    const locales = {
+      en: {
+        valid: 'January 2020',
+        invalid: 'Januar 2020',
+        dateFns: enLocale,
+      },
+      de: {
+        valid: 'Januar 2020',
+        invalid: 'Janua 2020',
+        dateFns: deLocale,
+      },
+    };
+
+    interface FormProps {
+      locale: any;
+      Picker: React.ElementType<DatePickerProps>;
+      PickerProps: Partial<DatePickerProps>;
+    }
+    const Form = (props: FormProps) => {
+      const { locale, Picker, PickerProps } = props;
+      const [value, setValue] = React.useState<unknown>(new Date('01/01/2020'));
+
+      return (
+        <LocalizationProvider dateAdapter={DateAdapter} locale={locale}>
+          <Picker
+            onChange={setValue}
+            renderInput={(props) => <TextField {...props} />}
+            value={value}
+            {...PickerProps}
+          />
+        </LocalizationProvider>
+      );
+    };
+
+    Object.keys(locales).forEach((locale2) => {
+      const { valid, invalid } = locales[locale2];
+      const locale = process.env.UTILS === 'date-fns' ? locales[locale2].dateFns : locale2;
+
+      it(`${locale2}: should set invalid`, () => {
+        render(
+          <Form
+            locale={locale}
+            Picker={DesktopDatePicker}
+            PickerProps={{ views: ['month', 'year'] }}
+          />
+        );
+        const input = screen.getByRole('textbox');
+        fireEvent.change(input, { target: { value: invalid } });
+        expect(input).toBeInvalid();
+      });
+
+      // Need to run with ICU loaded https://moment.github.io/luxon/docs/manual/install.html#node
+      if (process.env.UTILS === 'luxon') {
+        return;
+      }
+
+      it(`${locale2}: should set to valid when was invalid`, () => {
+        render(
+          <Form
+            locale={locale}
+            Picker={DesktopDatePicker}
+            PickerProps={{ views: ['month', 'year'] }}
+          />
+        );
+        const input = screen.getByRole('textbox');
+        fireEvent.change(input, { target: { value: invalid } });
+        fireEvent.change(input, { target: { value: valid } });
+        expect(input).toBeValid();
+      });
+    });
   });
 });
