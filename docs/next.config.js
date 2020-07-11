@@ -59,7 +59,7 @@ module.exports = withBundleAnalyzer(
               return config;
             },
             target: process.env.IS_NOW ? 'serverless' : 'server',
-            pageExtensions: ['ts', 'tsx', 'md', 'mdx'],
+            pageExtensions: ['js', 'ts', 'tsx', 'md', 'mdx'],
             transpileModules: ['@material-ui/pickers'],
             analyzeServer: ['server', 'both'].includes(process.env.BUNDLE_ANALYZE),
             analyzeBrowser: ['browser', 'both'].includes(process.env.BUNDLE_ANALYZE),
