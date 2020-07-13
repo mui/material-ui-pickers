@@ -9,7 +9,7 @@ import { useStyles as useCalendarStyles } from './views/Calendar/Calendar';
 export interface CalendarSkeletonProps extends React.HTMLProps<HTMLDivElement> {}
 
 const muiComponentConfig = {
-  name: 'MuiPickerCalendarSkeleton',
+  name: 'MuiPickersCalendarSkeleton',
 };
 
 export const useStyles = makeStyles(

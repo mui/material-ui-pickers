@@ -21,7 +21,7 @@ export const useStyles = makeStyles(
         transition: theme.transitions.create('color'),
         color: fade(textColor, 0.54),
       },
-      toolbarBtnSelected: {
+      selected: {
         color: textColor,
       },
     };
@@ -40,7 +40,7 @@ const ToolbarText: React.FC<ToolbarTextProps> = ({
     <Typography
       children={label}
       className={clsx(classes.root, className, {
-        [classes.toolbarBtnSelected]: selected,
+        [classes.selected]: selected,
       })}
       {...other}
     />

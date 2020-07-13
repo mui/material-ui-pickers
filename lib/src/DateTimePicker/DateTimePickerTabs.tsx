@@ -41,7 +41,7 @@ export const useStyles = makeStyles(
 
     return {
       root: {},
-      tabsDesktop: {
+      modeDesktop: {
         order: 1,
       },
       tabs: {

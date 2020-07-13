@@ -21,12 +21,12 @@ const materialTheme = createMuiTheme({
     MuiPickersDay: {
       root: {
         color: lightBlue.A700,
-        '&:disabled': {
+        '&$disabled': {
           color: lightBlue['100'],
         },
-      },
-      daySelected: {
-        backgroundColor: lightBlue['400'],
+        '&$selected': {
+          backgroundColor: lightBlue['400'],
+        },
       },
       today: {
         color: lightBlue['900'],
