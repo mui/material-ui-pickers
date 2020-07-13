@@ -51,6 +51,7 @@ const Ad: React.FC = () => {
   useStyles();
 
   React.useEffect(() => {
+    // @ts-expect-error Need to extend window
     if (window && window.Cypress) {
       return;
     }
