@@ -3,7 +3,7 @@ import getThemeProps from '@material-ui/styles/getThemeProps';
 import { useTheme } from '@material-ui/core/styles';
 
 export function withDefaultProps<T>(
-  { name }: { name: string; skipDisplayName?: boolean },
+  { name }: { name: string },
   Component: React.ComponentType<T>
 ): React.FC<T> {
   const componentName = name.replace('Mui', '');
