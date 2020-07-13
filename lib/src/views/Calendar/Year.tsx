@@ -43,7 +43,10 @@ export const useStyles = makeStyles(
         backgroundColor: fade(theme.palette.action.active, theme.palette.action.hoverOpacity),
       },
     },
-    yearSelected: {
+    disabled: {
+      color: theme.palette.text.secondary,
+    },
+    selected: {
       color: theme.palette.getContrastText(theme.palette.primary.main),
       backgroundColor: theme.palette.primary.main,
       '&:focus, &:hover': {
@@ -91,7 +94,8 @@ export const Year: React.FC<YearProps> = ({
         onClick={() => onSelect(value)}
         onKeyDown={onSpaceOrEnter(() => onSelect(value))}
         className={clsx(classes.yearButton, {
-          [classes.yearSelected]: selected,
+          [classes.disabled]: disabled,
+          [classes.selected]: selected,
         })}
       >
         {children}

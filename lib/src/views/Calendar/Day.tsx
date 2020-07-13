@@ -24,16 +24,12 @@ export const useStyles = makeStyles(
       // background required here to prevent collides with the other days when animating with transition group
       backgroundColor: theme.palette.background.paper,
       color: theme.palette.text.primary,
-      '&:disabled': {
-        pointerEvents: 'none',
-        color: theme.palette.text.hint,
-      },
       '&:hover': {
         backgroundColor: fade(theme.palette.action.active, theme.palette.action.hoverOpacity),
       },
       '&:focus': {
         backgroundColor: fade(theme.palette.action.active, theme.palette.action.hoverOpacity),
-        '&$daySelected': {
+        '&$selected': {
           willChange: 'background-color',
           backgroundColor: theme.palette.primary.dark,
         },
@@ -53,7 +49,10 @@ export const useStyles = makeStyles(
         border: `1px solid ${theme.palette.text.secondary}`,
       },
     },
-    daySelected: {
+    dayLabel: {
+      // need for overrides
+    },
+    selected: {
       color: theme.palette.primary.contrastText,
       backgroundColor: theme.palette.primary.main,
       fontWeight: theme.typography.fontWeightMedium,
@@ -65,8 +64,8 @@ export const useStyles = makeStyles(
         backgroundColor: theme.palette.primary.dark,
       },
     },
-    dayLabel: {
-      // need for overrides
+    disabled: {
+      color: theme.palette.text.secondary,
     },
   }),
   muiComponentConfig
@@ -197,7 +196,7 @@ const PureDay: React.FC<DayProps> = ({
   const dayClassName = clsx(
     classes.root,
     {
-      [classes.daySelected]: selected,
+      [classes.selected]: selected,
       [classes.dayWithMargin]: !disableMargin,
       [classes.today]: !disableHighlightToday && isToday,
       [classes.dayOutsideMonth]: !isInCurrentMonth && showDaysOutsideCurrentMonth,
