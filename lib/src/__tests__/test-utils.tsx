@@ -7,9 +7,9 @@ import TextField from '@material-ui/core/TextField';
 import LocalizationProvider from '../LocalizationProvider';
 import { IUtils } from '@date-io/core/IUtils';
 import { DatePickerProps } from '../DatePicker';
-import { MaterialUiPickersDate } from '../typings/date';
 import { BasePickerProps } from '../typings/BasePicker';
 import { createClientRender } from './createClientRender';
+import { TransitionProps } from '@material-ui/core/transitions/transition';
 import { queryHelpers, Matcher, MatcherOptions } from '@testing-library/react/pure';
 
 export const queryByMuiTest = queryHelpers.queryByAttribute.bind(null, 'data-mui-test');
@@ -42,8 +42,14 @@ export function getByMuiTest(...args: Parameters<typeof getAllByMuiTest>): Eleme
   );
 }
 
+export const FakeTransitionComponent = React.forwardRef<HTMLDivElement, TransitionProps>(
+  function FakeTransitionComponent({ children }, ref) {
+    return <div ref={ref}>{children}</div>;
+  }
+);
+
 interface WithUtilsProps {
-  utils: IUtils<MaterialUiPickersDate>;
+  utils: IUtils<any>;
 }
 
 const getUtilClass = () => {
@@ -60,7 +66,7 @@ const getUtilClass = () => {
 };
 
 export const UtilClassToUse: any = getUtilClass();
-export const utilsToUse: IUtils<MaterialUiPickersDate> = new UtilClassToUse();
+export const utilsToUse: IUtils<any> = new UtilClassToUse();
 
 const getComponentWithUtils = <P extends WithUtilsProps>(element: React.ReactElement<P>) =>
   React.cloneElement(element, { utils: utilsToUse } as any);

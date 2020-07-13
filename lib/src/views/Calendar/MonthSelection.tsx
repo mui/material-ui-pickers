@@ -3,16 +3,16 @@ import Month from './Month';
 import { makeStyles } from '@material-ui/core/styles';
 import { useUtils } from '../../_shared/hooks/useUtils';
 import { ParsableDate } from '../../constants/prop-types';
-import { MaterialUiPickersDate } from '../../typings/date';
+import { PickerOnChangeFn } from '../../_shared/hooks/useViews';
 
 export interface MonthSelectionProps {
-  date: MaterialUiPickersDate;
+  date: unknown;
   minDate?: ParsableDate;
   maxDate?: ParsableDate;
-  onChange: (date: MaterialUiPickersDate, isFinish: boolean) => void;
+  onChange: PickerOnChangeFn;
   disablePast?: boolean | null | undefined;
   disableFuture?: boolean | null | undefined;
-  onMonthChange?: (date: MaterialUiPickersDate) => void | Promise<void>;
+  onMonthChange?: (date: unknown) => void | Promise<void>;
 }
 
 export const useStyles = makeStyles(
@@ -40,7 +40,7 @@ export const MonthSelection: React.FC<MonthSelectionProps> = ({
   const classes = useStyles();
   const currentMonth = utils.getMonth(date);
 
-  const shouldDisableMonth = (month: MaterialUiPickersDate) => {
+  const shouldDisableMonth = (month: unknown) => {
     const now = utils.date();
     const utilMinDate = utils.date(minDate);
     const utilMaxDate = utils.date(maxDate);
@@ -63,7 +63,7 @@ export const MonthSelection: React.FC<MonthSelectionProps> = ({
     (month: number) => {
       const newDate = utils.setMonth(date, month);
 
-      onChange(newDate, true);
+      onChange(newDate, 'finish');
       if (onMonthChange) {
         onMonthChange(newDate);
       }

@@ -1,7 +1,6 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import { isRangeValid } from '../_helpers/date-utils';
-import { MaterialUiPickersDate } from '../typings/date';
 import { BasePickerProps } from '../typings/BasePicker';
 import { calculateRangeChange } from './date-range-manager';
 import { useUtils, useNow } from '../_shared/hooks/useUtils';
@@ -9,7 +8,6 @@ import { SharedPickerProps } from '../Picker/SharedPickerProps';
 import { DateRangePickerToolbar } from './DateRangePickerToolbar';
 import { useParsedDate } from '../_shared/hooks/date-helpers-hooks';
 import { useCalendarState } from '../views/Calendar/useCalendarState';
-import { FORCE_FINISH_PICKER } from '../_shared/hooks/usePickerState';
 import { DateRangePickerViewMobile } from './DateRangePickerViewMobile';
 import { defaultMaxDate, defaultMinDate } from '../constants/prop-types';
 import { WrapperVariantContext } from '../wrappers/WrapperVariantContext';
@@ -22,7 +20,7 @@ import {
   ExportedDesktopDateRangeCalendarProps,
 } from './DateRangePickerViewDesktop';
 
-type BaseCalendarPropsToReuse = Omit<ExportedCalendarViewProps, 'onYearChange'>;
+type BaseCalendarPropsToReuse = Omit<ExportedCalendarViewProps, 'onYearChange' | 'renderDay'>;
 
 export interface ExportedDateRangePickerViewProps
   extends BaseCalendarPropsToReuse,
@@ -35,16 +33,16 @@ export interface ExportedDateRangePickerViewProps
   disableAutoMonthSwitching?: boolean;
 }
 
-interface DateRangePickerViewProps
+interface DateRangePickerViewProps<TDate = unknown>
   extends ExportedDateRangePickerViewProps,
     CurrentlySelectingRangeEndProps,
-    SharedPickerProps<RangeInput, DateRange, DateRangeInputProps> {
+    SharedPickerProps<RangeInput<TDate>, DateRange<TDate>, DateRangeInputProps> {
   open: boolean;
   startText: React.ReactNode;
   endText: React.ReactNode;
 }
 
-export const DateRangePickerView: React.FC<DateRangePickerViewProps> = ({
+export const DateRangePickerView = <TDate extends unknown>({
   calendars = 2,
   className,
   currentlySelectingRangeEnd,
@@ -70,7 +68,7 @@ export const DateRangePickerView: React.FC<DateRangePickerViewProps> = ({
   toolbarFormat,
   toolbarTitle,
   ...other
-}) => {
+}: DateRangePickerViewProps<TDate>) => {
   const now = useNow();
   const utils = useUtils();
   const wrapperVariant = React.useContext(WrapperVariantContext);
@@ -98,7 +96,7 @@ export const DateRangePickerView: React.FC<DateRangePickerViewProps> = ({
 
   const toShowToolbar = showToolbar ?? wrapperVariant !== 'desktop';
 
-  const scrollToDayIfNeeded = (day: MaterialUiPickersDate) => {
+  const scrollToDayIfNeeded = (day: unknown) => {
     if (!utils.isValid(day) || isDateDisabled(day)) {
       return;
     }
@@ -138,7 +136,7 @@ export const DateRangePickerView: React.FC<DateRangePickerViewProps> = ({
   }, [currentlySelectingRangeEnd, date]); // eslint-disable-line
 
   const handleChange = React.useCallback(
-    (newDate: MaterialUiPickersDate) => {
+    (newDate: unknown) => {
       const { nextSelection, newRange } = calculateRangeChange({
         newDate,
         utils,
@@ -150,7 +148,12 @@ export const DateRangePickerView: React.FC<DateRangePickerViewProps> = ({
 
       const isFullRangeSelected =
         currentlySelectingRangeEnd === 'end' && isRangeValid(utils, newRange);
-      onDateChange(newRange, wrapperVariant, isFullRangeSelected ? FORCE_FINISH_PICKER : true);
+
+      onDateChange(
+        newRange as DateRange<TDate>,
+        wrapperVariant,
+        isFullRangeSelected ? 'finish' : 'partial'
+      );
     },
     [
       currentlySelectingRangeEnd,
