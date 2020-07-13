@@ -78,7 +78,7 @@ const PickerToolbar: React.SFC<PickerToolbarProps> = ({
   return (
     <Toolbar
       data-mui-test="picker-toolbar"
-      className={clsx(classes.toolbar, { [classes.toolbarLandscape]: isLandscape }, className)}
+      className={clsx(classes.root, { [classes.toolbarLandscape]: isLandscape }, className)}
     >
       <Typography data-mui-test="picker-toolbar-title" color="inherit" variant="overline">
         {toolbarTitle}

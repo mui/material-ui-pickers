@@ -14,17 +14,17 @@ export * from './DateRangePicker/DateRangePicker';
 
 export { DateRangePickerToolbar } from './DateRangePicker/DateRangePickerToolbar';
 
-export { Calendar as MuiPickersCalendar } from './views/Calendar/Calendar';
+export { Calendar as PickersCalendar } from './views/Calendar/Calendar';
 
-export { CalendarView as MuiPickersCalendarView } from './views/Calendar/CalendarView';
+export { CalendarView as PickersCalendarView } from './views/Calendar/CalendarView';
 
-export { Day as MuiPickersDay } from './views/Calendar/Day';
+export { Day as PickersDay } from './views/Calendar/Day';
 
-export { ClockView as MuiPickersClockView } from './views/Clock/ClockView';
+export { ClockView as PickersClockView } from './views/Clock/ClockView';
 
-export { Clock as MuiPickersView } from './views/Clock/Clock';
+export { Clock as PickersView } from './views/Clock/Clock';
 
-export { default as MuiPickersBasePickers } from './Picker/Picker';
+export { default as PickersBasePickers } from './Picker/Picker';
 
 export { useUtils } from './_shared/hooks/useUtils';
 
