@@ -32,7 +32,7 @@ export interface ClockProps extends ReturnType<typeof useMeridiemMode> {
 }
 
 const muiComponentConfig = {
-  name: 'MuiPickerClock',
+  name: 'MuiPickersClock',
 };
 
 export const useStyles = makeStyles(
