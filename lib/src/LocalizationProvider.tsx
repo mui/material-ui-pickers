@@ -38,4 +38,4 @@ LocalizationProvider.propTypes = {
   children: PropTypes.node.isRequired,
 } as any;
 
-export default withDefaultProps({ name: 'MuiPickerLocalizationProvider' }, LocalizationProvider);
+export default withDefaultProps({ name: 'MuiPickersLocalizationProvider' }, LocalizationProvider);

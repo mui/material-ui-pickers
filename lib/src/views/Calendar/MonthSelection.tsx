@@ -24,7 +24,7 @@ export const useStyles = makeStyles(
       alignContent: 'stretch',
     },
   },
-  { name: 'MuiPickerMonthSelection' }
+  { name: 'MuiPickersMonthSelection' }
 );
 
 export const MonthSelection: React.FC<MonthSelectionProps> = ({

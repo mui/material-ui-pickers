@@ -63,7 +63,7 @@ export const useStyles = makeStyles(
       justifyContent: 'space-between',
     },
   }),
-  { name: 'MuiPickerDesktopDateRangeCalendar' }
+  { name: 'MuiPickersDesktopDateRangeCalendar' }
 );
 
 function getCalendarsArray(calendars: ExportedDesktopDateRangeCalendarProps['calendars']) {

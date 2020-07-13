@@ -37,7 +37,7 @@ export const useStyles = makeStyles(
       fontWeight: theme.typography.fontWeightMedium,
     },
   }),
-  { name: 'MuiPickerMonth' }
+  { name: 'MuiPickersMonth' }
 );
 
 export const Month: React.FC<MonthProps> = ({

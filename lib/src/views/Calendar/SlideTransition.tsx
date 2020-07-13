@@ -64,7 +64,7 @@ export const useStyles = makeStyles(
       },
     };
   },
-  { name: 'MuiPickerSlideTransition' }
+  { name: 'MuiPickersSlideTransition' }
 );
 
 export const SlideTransition: React.SFC<SlideTransitionProps> = ({

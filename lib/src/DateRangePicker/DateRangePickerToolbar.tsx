@@ -8,7 +8,7 @@ import { withDefaultProps } from '../_shared/withDefaultProps';
 import { ToolbarComponentProps } from '../Picker/SharedPickerProps';
 import { DateRange, CurrentlySelectingRangeEndProps } from './RangeTypes';
 
-const muiComponentConfig = { name: 'MuiPickerDateRangePickerToolbarProps' };
+const muiComponentConfig = { name: 'MuiPickersDateRangePickerToolbarProps' };
 export const useStyles = makeStyles(
   {
     root: {},

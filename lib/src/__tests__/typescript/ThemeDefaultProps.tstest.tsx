@@ -3,16 +3,16 @@ import { createMuiTheme } from '@material-ui/core';
 
 createMuiTheme({
   props: {
-    MuiPickerDatePicker: {
+    MuiPickersDatePicker: {
       disableMaskedInput: true,
     },
-    MuiPickerTimePicker: {
+    MuiPickersTimePicker: {
       ampmInClock: true,
     },
-    MuiPickerDay: {
+    MuiPickersDay: {
       showDaysOutsideCurrentMonth: true,
     },
-    MuiPickerCalendarView: {
+    MuiPickersCalendarView: {
       reduceAnimations: true,
     },
   },
@@ -21,7 +21,7 @@ createMuiTheme({
 // Allows to mix overrides for both pickers and core components
 createMuiTheme({
   props: {
-    MuiPickerCalendarView: {
+    MuiPickersCalendarView: {
       reduceAnimations: true,
     },
     MuiPopover: {
@@ -33,11 +33,11 @@ createMuiTheme({
 // Throws error if class key is invalid
 createMuiTheme({
   props: {
-    MuiPickerCalendarView: {
+    MuiPickersCalendarView: {
       // @ts-expect-error: Throws error if class key is invalid
       somethingInvalid: 123,
     },
-    MuiPickerDay: {
+    MuiPickersDay: {
       onSuspend: () => {},
       // @ts-expect-error: Throws error if class key is invalid
       showDaysOutsideCurrentMonthTypo: false,

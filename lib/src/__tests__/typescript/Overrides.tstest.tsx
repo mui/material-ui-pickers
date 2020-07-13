@@ -4,12 +4,12 @@ import { createMuiTheme } from '@material-ui/core';
 
 createMuiTheme({
   overrides: {
-    MuiPickerClock: {
+    MuiPickersClock: {
       clock: {
         display: 'flex',
       },
     },
-    MuiPickerMonth: {
+    MuiPickersMonth: {
       root: {
         color: 'red',
       },
@@ -20,7 +20,7 @@ createMuiTheme({
 // Allows to mix overrides for both pickers and core components
 createMuiTheme({
   overrides: {
-    MuiPickerClock: {
+    MuiPickersClock: {
       clock: {
         display: 'flex',
       },
@@ -36,13 +36,13 @@ createMuiTheme({
 // Throws error if class key is invalid
 createMuiTheme({
   overrides: {
-    MuiPickerClock: {
+    MuiPickersClock: {
       // @ts-expect-error: Throws error if class key is invalid
       click: {
         display: 'flex',
       },
     },
-    MuiPickerCalendarView: {
+    MuiPickersCalendarView: {
       viewTransitionContainer: {
         marginRight: 15,
       },

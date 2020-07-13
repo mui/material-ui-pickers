@@ -4,5 +4,5 @@ export const MobileKeyboardInputView = styled('div')(
   {
     padding: '16px 24px',
   },
-  { name: 'MuiPickerMobileKeyboardInputView' }
+  { name: 'MuiPickersMobileKeyboardInputView' }
 );

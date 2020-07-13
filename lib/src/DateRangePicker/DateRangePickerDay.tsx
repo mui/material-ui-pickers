@@ -93,7 +93,7 @@ const useStyles = makeStyles(
     rangeIntervalDayPreviewStart: {},
     rangeIntervalDayPreviewEnd: {},
   }),
-  { name: 'MuiPickerDateRangeDay' }
+  { name: 'MuiPickersDateRangeDay' }
 );
 
 export const PureDateRangeDay = ({

@@ -11,7 +11,7 @@ import { withDefaultProps } from '../../_shared/withDefaultProps';
 import { useCanAutoFocus } from '../../_shared/hooks/useCanAutoFocus';
 import { PickerSelectionState } from '../../_shared/hooks/usePickerState';
 
-const muiComponentConfig = { name: 'MuiPickerDay' };
+const muiComponentConfig = { name: 'MuiPickersDay' };
 
 export const useStyles = makeStyles(
   theme => ({

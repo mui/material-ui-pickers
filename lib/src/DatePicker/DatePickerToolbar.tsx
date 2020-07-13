@@ -9,7 +9,7 @@ import { withDefaultProps } from '../_shared/withDefaultProps';
 import { ToolbarComponentProps } from '../Picker/SharedPickerProps';
 import { isYearAndMonthViews, isYearOnlyView } from '../_helpers/date-utils';
 
-const muiPickersComponentConfig = { name: 'MuiPickerDatePickerToolbar' };
+const muiPickersComponentConfig = { name: 'MuiPickersDatePickerToolbar' };
 
 export const useStyles = makeStyles(
   {

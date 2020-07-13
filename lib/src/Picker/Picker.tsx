@@ -37,7 +37,7 @@ export type PickerProps<
   TDateValue = any
 > = ExportedPickerProps<TView> & SharedPickerProps<TInputValue, TDateValue>;
 
-const muiComponentConfig = { name: 'MuiPickerBasePicker' };
+const muiComponentConfig = { name: 'MuiPickersBasePicker' };
 
 export const useStyles = makeStyles(
   {

@@ -54,7 +54,7 @@ export interface CalendarProps extends ExportedCalendarProps {
   className?: string;
 }
 
-const muiComponentConfig = { name: 'MuiPickerCalendar' };
+const muiComponentConfig = { name: 'MuiPickersCalendar' };
 export const useStyles = makeStyles(theme => {
   const weeksContainerHeight = (DAY_SIZE + DAY_MARGIN * 4) * 6;
   return {
