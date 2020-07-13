@@ -51,8 +51,11 @@ const Ad: React.FC = () => {
   useStyles();
 
   React.useEffect(() => {
-    const adScriptPosition = document.querySelector('#ad-script-position');
+    if (window && window.Cypress) {
+      return;
+    }
 
+    const adScriptPosition = document.querySelector('#ad-script-position');
     if (adScriptPosition) {
       let script = loadScript(
         'https://cdn.carbonads.com/carbon.js?serve=CKYIL27L&placement=material-uicom',
