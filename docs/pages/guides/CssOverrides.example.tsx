@@ -7,18 +7,18 @@ import { DatePicker, DatePickerProps } from '@material-ui/pickers';
 
 const materialTheme = createMuiTheme({
   overrides: {
-    MuiPickerToolbar: {
+    MuiPickersToolbar: {
       root: {
         backgroundColor: lightBlue.A200,
       },
     },
-    MuiPickerCalendarHeader: {
+    MuiPickersCalendarHeader: {
       root: {
         // backgroundColor: lightBlue.A200,
         // color: 'white',
       },
     },
-    MuiPickerDay: {
+    MuiPickersDay: {
       root: {
         color: lightBlue.A700,
         '&:disabled': {
@@ -32,7 +32,7 @@ const materialTheme = createMuiTheme({
         color: lightBlue['900'],
       },
     },
-    MuiPickerModalDialog: {
+    MuiPickersModalDialog: {
       dialogAction: {
         color: lightBlue['400'],
       },
