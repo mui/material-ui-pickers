@@ -1,11 +1,6 @@
 import { stringToTestId } from '../../docs/utils/helpers';
 import { navItems } from '../../docs/layout/components/navigationMap';
 
-Cypress.on('uncaught:exception', (err, runnable) => {
-  console.log(err);
-  return false;
-});
-
 describe('App navigation', () => {
   before(() => {
     cy.visit('/getting-started/installation');
