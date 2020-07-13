@@ -49,7 +49,7 @@ export interface MuiPickersComponentsToClassName {
   MuiPickersToolbarText: Classes<typeof MuiPickersToolbarTextStyles>;
   MuiPickersDatePickerRoot: Classes<typeof DatePickerRootStyles>;
   MuiPickersBasePicker: Classes<typeof MuiBasePickerStyles>;
-  MuiPickersModalDialog: Classes<typeof import('../_shared/PickerModalDialog').useStyles>;
+  MuiPickersModalDialog: Classes<typeof import('../_shared/PickersModalDialog').useStyles>;
   MuiDateTimePickerTabs: Classes<typeof import('../DateTimePicker/DateTimePickerTabs').useStyles>;
   MuiDateTimePickerToolbar: Classes<
     typeof import('../DateTimePicker/DateTimePickerToolbar').useStyles
@@ -63,5 +63,5 @@ export interface MuiPickersComponentsToClassName {
     typeof import('../DateRangePicker/DateRangePickerInput').useStyles
   >;
   MuiPickersCalendarSkeleton: Classes<typeof import('../CalendarSkeleton').useStyles>;
-  MuiPickersPopper: Classes<typeof import('../_shared/PickerPopper').useStyles>;
+  MuiPickersPopper: Classes<typeof import('../_shared/PickersPopper').useStyles>;
 }

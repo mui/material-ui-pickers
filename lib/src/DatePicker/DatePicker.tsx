@@ -46,7 +46,7 @@ const datePickerConfig = {
 };
 
 export const DatePicker = makePickerWithStateAndWrapper<BaseDatePickerProps>(ResponsiveWrapper, {
-  name: 'MuiPickerDatePicker',
+  name: 'MuiDatePicker',
   ...datePickerConfig,
 });
 

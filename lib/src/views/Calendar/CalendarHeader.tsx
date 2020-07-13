@@ -189,7 +189,7 @@ export const CalendarHeader: React.SFC<CalendarHeaderProps> = ({
   );
 };
 
-CalendarHeader.displayName = 'CalendarHeader';
+CalendarHeader.displayName = 'PickersCalendarHeader';
 
 CalendarHeader.propTypes = {
   leftArrowIcon: PropTypes.node,

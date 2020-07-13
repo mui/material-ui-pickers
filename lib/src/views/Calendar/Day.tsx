@@ -249,7 +249,7 @@ export const areDayPropsEqual = (prevProps: DayProps, nextProps: DayProps) => {
 
 export const Day = withDefaultProps(muiComponentConfig, React.memo(PureDay, areDayPropsEqual));
 
-PureDay.displayName = 'Day';
+PureDay.displayName = 'PickersDay';
 
 PureDay.propTypes = {
   today: PropTypes.bool,
