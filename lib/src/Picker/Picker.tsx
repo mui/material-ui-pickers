@@ -45,7 +45,7 @@ export const useStyles = makeStyles(
       display: 'flex',
       flexDirection: 'column',
     },
-    rootLandscape: {
+    landscape: {
       flexDirection: 'row',
     },
     pickerView: {
