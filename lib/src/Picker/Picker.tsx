@@ -110,7 +110,7 @@ function Picker({
   return (
     <div
       className={clsx(classes.root, className, {
-        [classes.rootLandscape]: isLandscape,
+        [classes.landscape]: isLandscape,
       })}
     >
       {toShowToolbar && (

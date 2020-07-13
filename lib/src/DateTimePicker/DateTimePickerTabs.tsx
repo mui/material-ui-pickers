@@ -71,7 +71,7 @@ export const DateTimePickerTabs: React.FC<DateTimePickerTabsProps> = ({
   };
 
   return (
-    <Paper className={clsx(classes.root, { [classes.tabsDesktop]: wrapperVariant === 'desktop' })}>
+    <Paper className={clsx(classes.root, { [classes.modeDesktop]: wrapperVariant === 'desktop' })}>
       <Tabs
         variant="fullWidth"
         value={viewToTabIndex(view)}

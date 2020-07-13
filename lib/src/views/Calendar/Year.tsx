@@ -25,7 +25,7 @@ export const useStyles = makeStyles(
       alignItems: 'center',
       justifyContent: 'center',
     },
-    rootDesktop: {
+    modeDesktop: {
       flexBasis: '25%',
     },
     yearButton: {
@@ -83,7 +83,7 @@ export const Year: React.FC<YearProps> = ({
     <div
       data-mui-test="year"
       className={clsx(classes.root, {
-        [classes.rootDesktop]: wrapperVariant === 'desktop',
+        [classes.modeDesktop]: wrapperVariant === 'desktop',
       })}
     >
       <button
