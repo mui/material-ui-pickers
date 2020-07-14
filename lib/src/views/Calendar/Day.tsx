@@ -180,7 +180,7 @@ const PureDay: React.FC<DayProps> = ({
   };
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    if (!disabled) {
+    if (!disabled && !selected) {
       onDaySelect(day, 'finish');
     }
 

@@ -78,4 +78,22 @@ describe('<DatePicker />', () => {
 
     expect(screen.queryByRole('dialog')).toBeInTheDocument();
   });
+
+  it('Does not call onChange if same date selected', async () => {
+    render(
+      <DesktopDatePicker
+        TransitionComponent={FakeTransitionComponent}
+        disableCloseOnSelect
+        value={utilsToUse.date('2018-01-01T00:00:00.000Z')}
+        onChange={jest.fn()}
+        renderInput={props => <TextField {...props} />}
+      />
+    );
+
+    fireEvent.click(screen.getByLabelText('Choose date, selected date is Jan 1, 2018'));
+    await waitFor(() => screen.getByRole('dialog'));
+
+    fireEvent.click(screen.getByLabelText('Jan 1, 2018'));
+    expect(screen.queryByRole('dialog')).toBeInTheDocument();
+  });
 });

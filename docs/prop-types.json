@@ -320,7 +320,7 @@
     },
     "onError": {
       "defaultValue": null,
-      "description": "Callback that fired when input value or new `value` prop validation returns **new** validation error (or value is valid after error).\nIn case of validation error detected `reason` prop return non-null value and `TextField` must be displayed in `error` state.\nThis can be used to render appropriate form error.\n\n[Read the guide](https://next.material-ui-pickers.dev/guides/forms) about form integration and error displaying.\n@DateIOType",
+      "description": "Callback that fired when input value or new `value` prop validation returns **new** validation error (or value is valid after error).\nIn case of validation error detected `reason` prop return non-null value and `TextField` must be displayed in `error` state.\r\nThis can be used to render appropriate form error.\r\n\r\n[Read the guide](https://next.material-ui-pickers.dev/guides/forms) about form integration and error displaying.\n@DateIOType",
       "name": "onError",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/hooks/useValidation.ts",
@@ -879,7 +879,7 @@
     },
     "renderInput": {
       "defaultValue": null,
-      "description": "The `renderInput` prop allows you to customize the rendered input.\nThe `props` argument of this render prop contains props of [TextField](https://material-ui.com/api/text-field/#textfield-api) that you need to forward.\nPay specific attention to the `ref` and `inputProps` keys.\n@example ```jsx\nrenderInput={props => <TextField {...props} />}\n````",
+      "description": "The `renderInput` prop allows you to customize the rendered input.\nThe `props` argument of this render prop contains props of [TextField](https://material-ui.com/api/text-field/#textfield-api) that you need to forward.\r\nPay specific attention to the `ref` and `inputProps` keys.\n@example ```jsx\rrenderInput={props => <TextField {...props} />}\r````",
       "name": "renderInput",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
@@ -1004,7 +1004,7 @@
     },
     "dateAdapter": {
       "defaultValue": null,
-      "description": "Allows to pass configured date-io adapter directly. More info [here](https://material-ui-pickers.dev/guides/date-adapter-passing)\n```jsx\ndateAdapter={new DateFnsAdapter({ locale: ruLocale })}\n```",
+      "description": "Allows to pass configured date-io adapter directly. More info [here](https://material-ui-pickers.dev/guides/date-adapter-passing)\n```jsx\r\ndateAdapter={new DateFnsAdapter({ locale: ruLocale })}\r\n```",
       "name": "dateAdapter",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/withDateAdapterProp.tsx",
@@ -1292,7 +1292,7 @@
     },
     "onError": {
       "defaultValue": null,
-      "description": "Callback that fired when input value or new `value` prop validation returns **new** validation error (or value is valid after error).\nIn case of validation error detected `reason` prop return non-null value and `TextField` must be displayed in `error` state.\nThis can be used to render appropriate form error.\n\n[Read the guide](https://next.material-ui-pickers.dev/guides/forms) about form integration and error displaying.\n@DateIOType",
+      "description": "Callback that fired when input value or new `value` prop validation returns **new** validation error (or value is valid after error).\nIn case of validation error detected `reason` prop return non-null value and `TextField` must be displayed in `error` state.\r\nThis can be used to render appropriate form error.\r\n\r\n[Read the guide](https://next.material-ui-pickers.dev/guides/forms) about form integration and error displaying.\n@DateIOType",
       "name": "onError",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/hooks/useValidation.ts",
@@ -1571,7 +1571,7 @@
     },
     "renderInput": {
       "defaultValue": null,
-      "description": "The `renderInput` prop allows you to customize the rendered input.\nThe `props` argument of this render prop contains props of [TextField](https://material-ui.com/api/text-field/#textfield-api) that you need to forward.\nPay specific attention to the `ref` and `inputProps` keys.\n@example ```jsx\nrenderInput={props => <TextField {...props} />}\n````",
+      "description": "The `renderInput` prop allows you to customize the rendered input.\nThe `props` argument of this render prop contains props of [TextField](https://material-ui.com/api/text-field/#textfield-api) that you need to forward.\r\nPay specific attention to the `ref` and `inputProps` keys.\n@example ```jsx\rrenderInput={props => <TextField {...props} />}\r````",
       "name": "renderInput",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
@@ -1696,7 +1696,7 @@
     },
     "dateAdapter": {
       "defaultValue": null,
-      "description": "Allows to pass configured date-io adapter directly. More info [here](https://material-ui-pickers.dev/guides/date-adapter-passing)\n```jsx\ndateAdapter={new DateFnsAdapter({ locale: ruLocale })}\n```",
+      "description": "Allows to pass configured date-io adapter directly. More info [here](https://material-ui-pickers.dev/guides/date-adapter-passing)\n```jsx\r\ndateAdapter={new DateFnsAdapter({ locale: ruLocale })}\r\n```",
       "name": "dateAdapter",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/withDateAdapterProp.tsx",
@@ -1974,7 +1974,7 @@
     },
     "onError": {
       "defaultValue": null,
-      "description": "Callback that fired when input value or new `value` prop validation returns **new** validation error (or value is valid after error).\nIn case of validation error detected `reason` prop return non-null value and `TextField` must be displayed in `error` state.\nThis can be used to render appropriate form error.\n\n[Read the guide](https://next.material-ui-pickers.dev/guides/forms) about form integration and error displaying.\n@DateIOType",
+      "description": "Callback that fired when input value or new `value` prop validation returns **new** validation error (or value is valid after error).\nIn case of validation error detected `reason` prop return non-null value and `TextField` must be displayed in `error` state.\r\nThis can be used to render appropriate form error.\r\n\r\n[Read the guide](https://next.material-ui-pickers.dev/guides/forms) about form integration and error displaying.\n@DateIOType",
       "name": "onError",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/hooks/useValidation.ts",
@@ -2619,7 +2619,7 @@
     },
     "renderInput": {
       "defaultValue": null,
-      "description": "The `renderInput` prop allows you to customize the rendered input.\nThe `props` argument of this render prop contains props of [TextField](https://material-ui.com/api/text-field/#textfield-api) that you need to forward.\nPay specific attention to the `ref` and `inputProps` keys.\n@example ```jsx\nrenderInput={props => <TextField {...props} />}\n````",
+      "description": "The `renderInput` prop allows you to customize the rendered input.\nThe `props` argument of this render prop contains props of [TextField](https://material-ui.com/api/text-field/#textfield-api) that you need to forward.\r\nPay specific attention to the `ref` and `inputProps` keys.\n@example ```jsx\rrenderInput={props => <TextField {...props} />}\r````",
       "name": "renderInput",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/PureDateInput.tsx",
@@ -2744,7 +2744,7 @@
     },
     "dateAdapter": {
       "defaultValue": null,
-      "description": "Allows to pass configured date-io adapter directly. More info [here](https://material-ui-pickers.dev/guides/date-adapter-passing)\n```jsx\ndateAdapter={new DateFnsAdapter({ locale: ruLocale })}\n```",
+      "description": "Allows to pass configured date-io adapter directly. More info [here](https://material-ui-pickers.dev/guides/date-adapter-passing)\n```jsx\r\ndateAdapter={new DateFnsAdapter({ locale: ruLocale })}\r\n```",
       "name": "dateAdapter",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/withDateAdapterProp.tsx",
@@ -3472,7 +3472,7 @@
     },
     "onError": {
       "defaultValue": null,
-      "description": "Callback that fired when input value or new `value` prop validation returns **new** validation error (or value is valid after error).\nIn case of validation error detected `reason` prop return non-null value and `TextField` must be displayed in `error` state.\nThis can be used to render appropriate form error.\n\n[Read the guide](https://next.material-ui-pickers.dev/guides/forms) about form integration and error displaying.\n@DateIOType",
+      "description": "Callback that fired when input value or new `value` prop validation returns **new** validation error (or value is valid after error).\nIn case of validation error detected `reason` prop return non-null value and `TextField` must be displayed in `error` state.\r\nThis can be used to render appropriate form error.\r\n\r\n[Read the guide](https://next.material-ui-pickers.dev/guides/forms) about form integration and error displaying.\n@DateIOType",
       "name": "onError",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/hooks/useValidation.ts",
@@ -3485,7 +3485,7 @@
     },
     "renderInput": {
       "defaultValue": null,
-      "description": "The `renderInput` prop allows you to customize the rendered input.\nThe `startProps` and `endProps` arguments of this render prop contains props of [TextField](https://material-ui.com/api/text-field/#textfield-api),\nthat you need to forward to the range start/end inputs respectively.\nPay specific attention to the `ref` and `inputProps` keys.\n@example ```jsx\n<DateRangePicker\nrenderInput={(startProps, endProps) => (\n  <React.Fragment>\n    <TextField {...startProps} />\n    <Typography> to <Typography>\n    <TextField {...endProps} />\n  </React.Fragment>;\n)}\n/>\n````",
+      "description": "The `renderInput` prop allows you to customize the rendered input.\nThe `startProps` and `endProps` arguments of this render prop contains props of [TextField](https://material-ui.com/api/text-field/#textfield-api),\r\nthat you need to forward to the range start/end inputs respectively.\r\nPay specific attention to the `ref` and `inputProps` keys.\n@example ```jsx\r<DateRangePicker\rrenderInput={(startProps, endProps) => (\r  <React.Fragment>\r    <TextField {...startProps} />\r    <Typography> to <Typography>\r    <TextField {...endProps} />\r  </React.Fragment>;\r)}\r/>\r````",
       "name": "renderInput",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/DateRangePicker/DateRangePickerInput.tsx",
@@ -3649,7 +3649,7 @@
     },
     "dateAdapter": {
       "defaultValue": null,
-      "description": "Allows to pass configured date-io adapter directly. More info [here](https://material-ui-pickers.dev/guides/date-adapter-passing)\n```jsx\ndateAdapter={new DateFnsAdapter({ locale: ruLocale })}\n```",
+      "description": "Allows to pass configured date-io adapter directly. More info [here](https://material-ui-pickers.dev/guides/date-adapter-passing)\n```jsx\r\ndateAdapter={new DateFnsAdapter({ locale: ruLocale })}\r\n```",
       "name": "dateAdapter",
       "parent": {
         "fileName": "material-ui-pickers/lib/src/_shared/withDateAdapterProp.tsx",
