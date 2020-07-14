@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as enzyme from 'enzyme';
+import DayjsUtils from '@date-io/dayjs';
 import LuxonUtils from '@date-io/luxon';
 import MomentUtils from '@date-io/moment';
 import DateFnsUtils from '@date-io/date-fns';
@@ -7,7 +8,6 @@ import TextField from '@material-ui/core/TextField';
 import LocalizationProvider from '../LocalizationProvider';
 import { IUtils } from '@date-io/core/IUtils';
 import { DatePickerProps } from '../DatePicker';
-import { MaterialUiPickersDate } from '../typings/date';
 import { BasePickerProps } from '../typings/BasePicker';
 import { createClientRender } from './createClientRender';
 import { TransitionProps } from '@material-ui/core/transitions/transition';
@@ -50,24 +50,26 @@ export const FakeTransitionComponent = React.forwardRef<HTMLDivElement, Transiti
 );
 
 interface WithUtilsProps {
-  utils: IUtils<MaterialUiPickersDate>;
+  utils: IUtils<any>;
 }
 
 const getUtilClass = () => {
   switch (process.env.UTILS) {
-    case 'moment':
-      return MomentUtils;
     case 'date-fns':
       return DateFnsUtils;
+    case 'dayjs':
+      return DayjsUtils;
     case 'luxon':
       return LuxonUtils;
+    case 'moment':
+      return MomentUtils;
     default:
       return DateFnsUtils;
   }
 };
 
 export const UtilClassToUse: any = getUtilClass();
-export const utilsToUse: IUtils<MaterialUiPickersDate> = new UtilClassToUse();
+export const utilsToUse: IUtils<any> = new UtilClassToUse();
 
 const getComponentWithUtils = <P extends WithUtilsProps>(element: React.ReactElement<P>) =>
   React.cloneElement(element, { utils: utilsToUse } as any);
