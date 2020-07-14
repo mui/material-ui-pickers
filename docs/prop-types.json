@@ -4110,6 +4110,21 @@
       "type": {
         "name": "boolean"
       }
+    },
+    "allowSameDateSelection": {
+      "defaultValue": {
+        "value": false
+      },
+      "description": "Allow selecting the same date (fire onChange even if same date is selected).",
+      "name": "allowSameDateSelection",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/views/Calendar/Day.tsx",
+        "name": "DayProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
     }
   },
   "ClockView": {

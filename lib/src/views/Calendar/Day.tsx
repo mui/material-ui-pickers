@@ -123,6 +123,11 @@ export interface DayProps extends ExtendMui<ButtonBaseProps> {
    * @default false
    */
   disableHighlightToday?: boolean;
+  /**
+   * Allow selecting the same date (fire onChange even if same date is selected).
+   * @default false
+   */
+  allowSameDateSelection?: boolean;
   onDayFocus: (day: unknown) => void;
   onDaySelect: (day: unknown, isFinish: PickerSelectionState) => void;
 }
@@ -132,6 +137,7 @@ const PureDay: React.FC<DayProps> = ({
   className,
   day,
   disabled,
+  allowSameDateSelection = false,
   disableHighlightToday = false,
   disableMargin = false,
   focusable = false,
@@ -179,7 +185,9 @@ const PureDay: React.FC<DayProps> = ({
   };
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    if (!disabled && !selected) {
+    if (!allowSameDateSelection && selected) return;
+
+    if (!disabled) {
       onDaySelect(day, 'finish');
     }
 

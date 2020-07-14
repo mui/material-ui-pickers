@@ -80,12 +80,14 @@ describe('<DatePicker />', () => {
   });
 
   it('Does not call onChange if same date selected', async () => {
+    const onChangeMock = jest.fn();
+
     render(
       <DesktopDatePicker
         TransitionComponent={FakeTransitionComponent}
         disableCloseOnSelect
         value={utilsToUse.date('2018-01-01T00:00:00.000Z')}
-        onChange={jest.fn()}
+        onChange={onChangeMock}
         renderInput={props => <TextField {...props} />}
       />
     );
@@ -94,6 +96,6 @@ describe('<DatePicker />', () => {
     await waitFor(() => screen.getByRole('dialog'));
 
     fireEvent.click(screen.getByLabelText('Jan 1, 2018'));
-    expect(screen.queryByRole('dialog')).toBeInTheDocument();
+    expect(onChangeMock).toBe(undefined);
   });
 });
