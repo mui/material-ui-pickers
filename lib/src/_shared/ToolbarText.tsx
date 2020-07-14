@@ -20,10 +20,11 @@ export const useStyles = makeStyles(
       root: {
         transition: theme.transitions.create('color'),
         color: fade(textColor, 0.54),
+        '&$selected': {
+          color: textColor,
+        },
       },
-      selected: {
-        color: textColor,
-      },
+      selected: {},
     };
   },
   { name: 'MuiPickersToolbarText' }

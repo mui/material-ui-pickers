@@ -24,6 +24,16 @@ export const useStyles = makeStyles(
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
+      '&$disabled': {
+        color: theme.palette.text.secondary,
+      },
+      '&$selected': {
+        color: theme.palette.getContrastText(theme.palette.primary.main),
+        backgroundColor: theme.palette.primary.main,
+        '&:focus, &:hover': {
+          backgroundColor: theme.palette.primary.dark,
+        },
+      },
     },
     modeDesktop: {
       flexBasis: '25%',
@@ -43,16 +53,8 @@ export const useStyles = makeStyles(
         backgroundColor: fade(theme.palette.action.active, theme.palette.action.hoverOpacity),
       },
     },
-    disabled: {
-      color: theme.palette.text.secondary,
-    },
-    selected: {
-      color: theme.palette.getContrastText(theme.palette.primary.main),
-      backgroundColor: theme.palette.primary.main,
-      '&:focus, &:hover': {
-        backgroundColor: theme.palette.primary.dark,
-      },
-    },
+    disabled: {},
+    selected: {},
   }),
   { name: 'MuiPickersYear' }
 );

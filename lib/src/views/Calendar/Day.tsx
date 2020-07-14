@@ -34,6 +34,21 @@ export const useStyles = makeStyles(
           backgroundColor: theme.palette.primary.dark,
         },
       },
+      '&$selected': {
+        color: theme.palette.primary.contrastText,
+        backgroundColor: theme.palette.primary.main,
+        fontWeight: theme.typography.fontWeightMedium,
+        transition: theme.transitions.create('background-color', {
+          duration: theme.transitions.duration.short,
+        }),
+        '&:hover': {
+          willChange: 'background-color',
+          backgroundColor: theme.palette.primary.dark,
+        },
+      },
+      '&$disabled': {
+        color: theme.palette.text.secondary,
+      },
     },
     dayWithMargin: {
       margin: `0 ${DAY_MARGIN}px`,
@@ -52,21 +67,8 @@ export const useStyles = makeStyles(
     dayLabel: {
       // need for overrides
     },
-    selected: {
-      color: theme.palette.primary.contrastText,
-      backgroundColor: theme.palette.primary.main,
-      fontWeight: theme.typography.fontWeightMedium,
-      transition: theme.transitions.create('background-color', {
-        duration: theme.transitions.duration.short,
-      }),
-      '&:hover': {
-        willChange: 'background-color',
-        backgroundColor: theme.palette.primary.dark,
-      },
-    },
-    disabled: {
-      color: theme.palette.text.secondary,
-    },
+    selected: {},
+    disabled: {},
   }),
   muiComponentConfig
 );
