@@ -45,7 +45,7 @@ export const useStyles = makeStyles(
       visibility: 'hidden',
     },
     today: {
-      '&:not($daySelected)': {
+      '&:not($selected)': {
         border: `1px solid ${theme.palette.text.secondary}`,
       },
     },
