@@ -96,6 +96,6 @@ describe('<DatePicker />', () => {
     await waitFor(() => screen.getByRole('dialog'));
 
     fireEvent.click(screen.getByLabelText('Jan 1, 2018'));
-    expect(onChangeMock).toBe(undefined);
+    expect(onChangeMock).not.toHaveBeenCalled();
   });
 });
