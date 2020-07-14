@@ -29,7 +29,7 @@ export const useStyles = makeStyles(
       },
       '&:disabled': {
         pointerEvents: 'none',
-        color: theme.palette.text.hint,
+        color: theme.palette.text.secondary,
       },
       '&$selected': {
         color: theme.palette.primary.main,
