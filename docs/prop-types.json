@@ -1329,135 +1329,6 @@
         "name": "\"hours\" | \"minutes\" | \"seconds\""
       }
     },
-    "DialogProps": {
-      "defaultValue": null,
-      "description": "Props to be passed directly to material-ui Dialog",
-      "name": "DialogProps",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
-        "name": "InnerMobileWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "{Partial<MuiDialogProps>}"
-      }
-    },
-    "okText": {
-      "defaultValue": {
-        "value": "\"OK\""
-      },
-      "description": "\"OK\" button text.",
-      "name": "okText",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/_shared/PickersModalDialog.tsx",
-        "name": "ExportedPickerModalProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ReactNode"
-      }
-    },
-    "cancelText": {
-      "defaultValue": {
-        "value": "\"CANCEL\""
-      },
-      "description": "\"CANCEL\" Text message",
-      "name": "cancelText",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/_shared/PickersModalDialog.tsx",
-        "name": "ExportedPickerModalProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ReactNode"
-      }
-    },
-    "clearText": {
-      "defaultValue": {
-        "value": "\"CLEAR\""
-      },
-      "description": "\"CLEAR\" Text message",
-      "name": "clearText",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/_shared/PickersModalDialog.tsx",
-        "name": "ExportedPickerModalProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ReactNode"
-      }
-    },
-    "todayText": {
-      "defaultValue": {
-        "value": "\"TODAY\""
-      },
-      "description": "\"TODAY\" Text message",
-      "name": "todayText",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/_shared/PickersModalDialog.tsx",
-        "name": "ExportedPickerModalProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ReactNode"
-      }
-    },
-    "clearable": {
-      "defaultValue": {
-        "value": "false"
-      },
-      "description": "If `true`, it shows the clear action in the picker dialog.",
-      "name": "clearable",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/_shared/PickersModalDialog.tsx",
-        "name": "ExportedPickerModalProps"
-      },
-      "required": false,
-      "type": {
-        "name": "boolean"
-      }
-    },
-    "showTodayButton": {
-      "defaultValue": {
-        "value": "false"
-      },
-      "description": "If `true`, the today button will be displayed. **Note** that `showClearButton` has a higher priority.",
-      "name": "showTodayButton",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/_shared/PickersModalDialog.tsx",
-        "name": "ExportedPickerModalProps"
-      },
-      "required": false,
-      "type": {
-        "name": "boolean"
-      }
-    },
-    "PopperProps": {
-      "defaultValue": null,
-      "description": "Popper props passed down to [Popper](https://material-ui.com/api/popper/) component.",
-      "name": "PopperProps",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/_shared/PickersPopper.tsx",
-        "name": "ExportedPickerPopperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "Partial<PopperProps>"
-      }
-    },
-    "TransitionComponent": {
-      "defaultValue": null,
-      "description": "Custom component for [Transition](https://material-ui.com/components/transitions/#transitioncomponent-prop).",
-      "name": "TransitionComponent",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/_shared/PickersPopper.tsx",
-        "name": "ExportedPickerPopperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ComponentClass<TransitionProps, any> | FunctionComponent<TransitionProps>"
-      }
-    },
     "displayStaticWrapperAs": {
       "defaultValue": {
         "value": "\"static\""
@@ -1471,21 +1342,6 @@
       "required": false,
       "type": {
         "name": "\"desktop\" | \"mobile\" | \"static\""
-      }
-    },
-    "desktopModeMediaQuery": {
-      "defaultValue": {
-        "value": "\""
-      },
-      "description": "CSS media query when `Mobile` mode will be changed to `Desktop`.\n@media (pointer: fine)\"\n@example \"\n@media (min-width: 720px)\" or theme.breakpoints.up(\"sm\")",
-      "name": "desktopModeMediaQuery",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/ResponsiveWrapper.tsx",
-        "name": "ResponsiveWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "string"
       }
     },
     "value": {
@@ -1864,6 +1720,150 @@
       "required": false,
       "type": {
         "name": "MuiPickersAdapter<TDate | null>"
+      }
+    },
+    "DialogProps": {
+      "defaultValue": null,
+      "description": "Props to be passed directly to material-ui Dialog",
+      "name": "DialogProps",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
+        "name": "InnerMobileWrapperProps"
+      },
+      "required": false,
+      "type": {
+        "name": "{Partial<MuiDialogProps>}"
+      }
+    },
+    "okText": {
+      "defaultValue": {
+        "value": "\"OK\""
+      },
+      "description": "\"OK\" button text.",
+      "name": "okText",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickersModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "cancelText": {
+      "defaultValue": {
+        "value": "\"CANCEL\""
+      },
+      "description": "\"CANCEL\" Text message",
+      "name": "cancelText",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickersModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "clearText": {
+      "defaultValue": {
+        "value": "\"CLEAR\""
+      },
+      "description": "\"CLEAR\" Text message",
+      "name": "clearText",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickersModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "todayText": {
+      "defaultValue": {
+        "value": "\"TODAY\""
+      },
+      "description": "\"TODAY\" Text message",
+      "name": "todayText",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickersModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "clearable": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "If `true`, it shows the clear action in the picker dialog.",
+      "name": "clearable",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickersModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "showTodayButton": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "If `true`, the today button will be displayed. **Note** that `showClearButton` has a higher priority.",
+      "name": "showTodayButton",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickersModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "PopperProps": {
+      "defaultValue": null,
+      "description": "Popper props passed down to [Popper](https://material-ui.com/api/popper/) component.",
+      "name": "PopperProps",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickersPopper.tsx",
+        "name": "ExportedPickerPopperProps"
+      },
+      "required": false,
+      "type": {
+        "name": "Partial<PopperProps>"
+      }
+    },
+    "TransitionComponent": {
+      "defaultValue": null,
+      "description": "Custom component for [Transition](https://material-ui.com/components/transitions/#transitioncomponent-prop).",
+      "name": "TransitionComponent",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickersPopper.tsx",
+        "name": "ExportedPickerPopperProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ComponentClass<TransitionProps, any> | FunctionComponent<TransitionProps>"
+      }
+    },
+    "desktopModeMediaQuery": {
+      "defaultValue": {
+        "value": "\""
+      },
+      "description": "CSS media query when `Mobile` mode will be changed to `Desktop`.\n@media (pointer: fine)\"\n@example \"\n@media (min-width: 720px)\" or theme.breakpoints.up(\"sm\")",
+      "name": "desktopModeMediaQuery",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/wrappers/ResponsiveWrapper.tsx",
+        "name": "ResponsiveWrapperProps"
+      },
+      "required": false,
+      "type": {
+        "name": "string"
       }
     }
   },
@@ -2390,135 +2390,6 @@
         "name": "(day: DateIOType) => boolean"
       }
     },
-    "DialogProps": {
-      "defaultValue": null,
-      "description": "Props to be passed directly to material-ui Dialog",
-      "name": "DialogProps",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
-        "name": "InnerMobileWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "{Partial<MuiDialogProps>}"
-      }
-    },
-    "okText": {
-      "defaultValue": {
-        "value": "\"OK\""
-      },
-      "description": "\"OK\" button text.",
-      "name": "okText",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/_shared/PickersModalDialog.tsx",
-        "name": "ExportedPickerModalProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ReactNode"
-      }
-    },
-    "cancelText": {
-      "defaultValue": {
-        "value": "\"CANCEL\""
-      },
-      "description": "\"CANCEL\" Text message",
-      "name": "cancelText",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/_shared/PickersModalDialog.tsx",
-        "name": "ExportedPickerModalProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ReactNode"
-      }
-    },
-    "clearText": {
-      "defaultValue": {
-        "value": "\"CLEAR\""
-      },
-      "description": "\"CLEAR\" Text message",
-      "name": "clearText",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/_shared/PickersModalDialog.tsx",
-        "name": "ExportedPickerModalProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ReactNode"
-      }
-    },
-    "todayText": {
-      "defaultValue": {
-        "value": "\"TODAY\""
-      },
-      "description": "\"TODAY\" Text message",
-      "name": "todayText",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/_shared/PickersModalDialog.tsx",
-        "name": "ExportedPickerModalProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ReactNode"
-      }
-    },
-    "clearable": {
-      "defaultValue": {
-        "value": "false"
-      },
-      "description": "If `true`, it shows the clear action in the picker dialog.",
-      "name": "clearable",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/_shared/PickersModalDialog.tsx",
-        "name": "ExportedPickerModalProps"
-      },
-      "required": false,
-      "type": {
-        "name": "boolean"
-      }
-    },
-    "showTodayButton": {
-      "defaultValue": {
-        "value": "false"
-      },
-      "description": "If `true`, the today button will be displayed. **Note** that `showClearButton` has a higher priority.",
-      "name": "showTodayButton",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/_shared/PickersModalDialog.tsx",
-        "name": "ExportedPickerModalProps"
-      },
-      "required": false,
-      "type": {
-        "name": "boolean"
-      }
-    },
-    "PopperProps": {
-      "defaultValue": null,
-      "description": "Popper props passed down to [Popper](https://material-ui.com/api/popper/) component.",
-      "name": "PopperProps",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/_shared/PickersPopper.tsx",
-        "name": "ExportedPickerPopperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "Partial<PopperProps>"
-      }
-    },
-    "TransitionComponent": {
-      "defaultValue": null,
-      "description": "Custom component for [Transition](https://material-ui.com/components/transitions/#transitioncomponent-prop).",
-      "name": "TransitionComponent",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/_shared/PickersPopper.tsx",
-        "name": "ExportedPickerPopperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "ComponentClass<TransitionProps, any> | FunctionComponent<TransitionProps>"
-      }
-    },
     "displayStaticWrapperAs": {
       "defaultValue": {
         "value": "\"static\""
@@ -2532,21 +2403,6 @@
       "required": false,
       "type": {
         "name": "\"desktop\" | \"mobile\" | \"static\""
-      }
-    },
-    "desktopModeMediaQuery": {
-      "defaultValue": {
-        "value": "\""
-      },
-      "description": "CSS media query when `Mobile` mode will be changed to `Desktop`.\n@media (pointer: fine)\"\n@example \"\n@media (min-width: 720px)\" or theme.breakpoints.up(\"sm\")",
-      "name": "desktopModeMediaQuery",
-      "parent": {
-        "fileName": "material-ui-pickers/lib/src/wrappers/ResponsiveWrapper.tsx",
-        "name": "ResponsiveWrapperProps"
-      },
-      "required": false,
-      "type": {
-        "name": "string"
       }
     },
     "value": {
@@ -2912,6 +2768,150 @@
       "required": false,
       "type": {
         "name": "MuiPickersAdapter<TDate | null>"
+      }
+    },
+    "DialogProps": {
+      "defaultValue": null,
+      "description": "Props to be passed directly to material-ui Dialog",
+      "name": "DialogProps",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/wrappers/MobileWrapper.tsx",
+        "name": "InnerMobileWrapperProps"
+      },
+      "required": false,
+      "type": {
+        "name": "{Partial<MuiDialogProps>}"
+      }
+    },
+    "okText": {
+      "defaultValue": {
+        "value": "\"OK\""
+      },
+      "description": "\"OK\" button text.",
+      "name": "okText",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickersModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "cancelText": {
+      "defaultValue": {
+        "value": "\"CANCEL\""
+      },
+      "description": "\"CANCEL\" Text message",
+      "name": "cancelText",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickersModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "clearText": {
+      "defaultValue": {
+        "value": "\"CLEAR\""
+      },
+      "description": "\"CLEAR\" Text message",
+      "name": "clearText",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickersModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "todayText": {
+      "defaultValue": {
+        "value": "\"TODAY\""
+      },
+      "description": "\"TODAY\" Text message",
+      "name": "todayText",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickersModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ReactNode"
+      }
+    },
+    "clearable": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "If `true`, it shows the clear action in the picker dialog.",
+      "name": "clearable",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickersModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "showTodayButton": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "If `true`, the today button will be displayed. **Note** that `showClearButton` has a higher priority.",
+      "name": "showTodayButton",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickersModalDialog.tsx",
+        "name": "ExportedPickerModalProps"
+      },
+      "required": false,
+      "type": {
+        "name": "boolean"
+      }
+    },
+    "PopperProps": {
+      "defaultValue": null,
+      "description": "Popper props passed down to [Popper](https://material-ui.com/api/popper/) component.",
+      "name": "PopperProps",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickersPopper.tsx",
+        "name": "ExportedPickerPopperProps"
+      },
+      "required": false,
+      "type": {
+        "name": "Partial<PopperProps>"
+      }
+    },
+    "TransitionComponent": {
+      "defaultValue": null,
+      "description": "Custom component for [Transition](https://material-ui.com/components/transitions/#transitioncomponent-prop).",
+      "name": "TransitionComponent",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/_shared/PickersPopper.tsx",
+        "name": "ExportedPickerPopperProps"
+      },
+      "required": false,
+      "type": {
+        "name": "ComponentClass<TransitionProps, any> | FunctionComponent<TransitionProps>"
+      }
+    },
+    "desktopModeMediaQuery": {
+      "defaultValue": {
+        "value": "\""
+      },
+      "description": "CSS media query when `Mobile` mode will be changed to `Desktop`.\n@media (pointer: fine)\"\n@example \"\n@media (min-width: 720px)\" or theme.breakpoints.up(\"sm\")",
+      "name": "desktopModeMediaQuery",
+      "parent": {
+        "fileName": "material-ui-pickers/lib/src/wrappers/ResponsiveWrapper.tsx",
+        "name": "ResponsiveWrapperProps"
+      },
+      "required": false,
+      "type": {
+        "name": "string"
       }
     }
   },

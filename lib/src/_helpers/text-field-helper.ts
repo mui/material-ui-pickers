@@ -25,7 +25,7 @@ export const getDisplayDate = (
 export function pick12hOr24hFormat(
   userFormat: string | undefined,
   ampm: boolean | undefined,
-  formats: { localized: string; '12h': string; '24h': string }
+  formats: { localized?: string; '12h': string; '24h': string }
 ) {
   if (userFormat) {
     return userFormat;

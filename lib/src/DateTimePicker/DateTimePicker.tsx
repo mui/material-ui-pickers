@@ -88,7 +88,7 @@ function useInterceptProps({
     disableIgnoringDatePartForTimeValidation: Boolean(minDateTime || maxDateTime),
     acceptRegex: willUseAmPm ? /[\dap]/gi : /\d/gi,
     mask: mask || (willUseAmPm ? '__/__/____ __:__ _M' : '__/__/____ __:__'),
-    inputFormat: pick12hOr24hFormat(inputFormat, ampm, {
+    inputFormat: pick12hOr24hFormat(inputFormat, willUseAmPm, {
       localized: utils.formats.keyboardDateTime,
       '12h': utils.formats.keyboardDateTime12h,
       '24h': utils.formats.keyboardDateTime24h,
