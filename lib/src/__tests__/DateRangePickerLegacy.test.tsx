@@ -29,28 +29,6 @@ describe('DateRangePicker', () => {
     expect(component.find('[data-mui-test="DateRangeHighlight"]').length).toBe(31);
   });
 
-  it('allows disabling dates', () => {
-    const component = mount(
-      <DesktopDateRangePicker
-        open
-        renderInput={defaultRangeRenderInput}
-        minDate={new Date('2005-01-01')}
-        shouldDisableDate={date => isWeekend(utilsToUse.toJsDate(date))}
-        onChange={jest.fn()}
-        value={[
-          utilsToUse.date('2018-01-01T00:00:00.000'),
-          utilsToUse.date('2018-01-31T00:00:00.000'),
-        ]}
-      />
-    );
-
-    expect(
-      component
-        .find('button[data-mui-test="DateRangeDay"]')
-        .filterWhere(wrapper => !wrapper.prop('disabled')).length
-    ).toBe(59);
-  });
-
   it('prop: calendars', () => {
     const component = mount(
       <DesktopDateRangePicker
