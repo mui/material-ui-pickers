@@ -134,10 +134,10 @@ export interface DayProps extends ExtendMui<ButtonBaseProps> {
 
 const PureDay: React.FC<DayProps> = ({
   allowKeyboardControl,
+  allowSameDateSelection = false,
   className,
   day,
   disabled,
-  allowSameDateSelection = false,
   disableHighlightToday = false,
   disableMargin = false,
   focusable = false,
