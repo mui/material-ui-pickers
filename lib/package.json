@@ -1,6 +1,6 @@
 {
   "name": "@material-ui/pickers",
-  "version": "4.0.0-alpha.8",
+  "version": "4.0.0-alpha.9",
   "private": true,
   "description": "React components, that implements material design pickers for material-ui v4",
   "main": "./src/index.ts",
@@ -60,6 +60,7 @@
     "test": "jest",
     "test:typescript": "rimraf src/__tests__/dist && tsc -p src/__tests__/tsconfig.json",
     "test:date-fns": "UTILS=date-fns yarn test",
+    "test:dayjs": "UTILS=datejs yarn test",
     "test:luxon": "UTILS=luxon yarn test",
     "test:moment": "UTILS=moment yarn test",
     "start": "rollup --config rollup.config.dev.js --watch & npx tsc --watch",
@@ -82,12 +83,12 @@
     "@babel/preset-react": "^7.9.4",
     "@babel/runtime": "^7.9.6",
     "@cypress/webpack-preprocessor": "^4.1.1",
-    "@material-ui/core": "^4.9.14",
+    "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
     "@rollup/plugin-babel": "^5.0.3",
     "@rollup/plugin-commonjs": "^13.0.0",
     "@rollup/plugin-node-resolve": "^8.0.0",
-    "@testing-library/jest-dom": "^5.10.1",
+    "@testing-library/jest-dom": "^5.11.0",
     "@types/enzyme": "^3.10.5",
     "@types/enzyme-adapter-react-16": "^1.0.3",
     "@types/fs-extra": "^8.1.0",
@@ -122,6 +123,6 @@
     "rollup-plugin-size-snapshot": "^0.12.0",
     "rollup-plugin-terser": "^6.1.0",
     "ts-jest": "^25.5.1",
-    "typescript": "^3.8.3"
+    "typescript": "^3.9.6"
   }
 }

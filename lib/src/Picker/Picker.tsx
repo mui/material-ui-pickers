@@ -4,9 +4,7 @@ import { useViews } from '../_shared/hooks/useViews';
 import { ClockView } from '../views/Clock/ClockView';
 import { makeStyles } from '@material-ui/core/styles';
 import { DateTimePickerView } from '../DateTimePicker';
-import { ParsableDate } from '../constants/prop-types';
 import { BasePickerProps } from '../typings/BasePicker';
-import { MaterialUiPickersDate } from '../typings/date';
 import { DatePickerView } from '../DatePicker/DatePicker';
 import { CalendarView } from '../views/Calendar/CalendarView';
 import { withDefaultProps } from '../_shared/withDefaultProps';
@@ -35,8 +33,8 @@ export interface ExportedPickerProps<TView extends AnyPickerView>
 
 export type PickerProps<
   TView extends AnyPickerView,
-  TInputValue = ParsableDate,
-  TDateValue = MaterialUiPickersDate
+  TInputValue = any,
+  TDateValue = any
 > = ExportedPickerProps<TView> & SharedPickerProps<TInputValue, TDateValue>;
 
 const muiComponentConfig = { name: 'MuiPickersBasePicker' };
@@ -67,8 +65,8 @@ export const useStyles = makeStyles(
 
 const MobileKeyboardTextFieldProps = { fullWidth: true };
 
-const isTimePickerByViews = (views: DateTimePickerView[]) =>
-  !views.some(view => view === 'year' || view === 'month' || view === 'date');
+const isDatePickerView = (view: DateTimePickerView) =>
+  view === 'year' || view === 'month' || view === 'date';
 
 function Picker({
   className,
@@ -95,7 +93,7 @@ function Picker({
     typeof showToolbar === 'undefined' ? wrapperVariant !== 'desktop' : showToolbar;
 
   const handleDateChange = React.useCallback(
-    (date: MaterialUiPickersDate, selectionState?: PickerSelectionState) => {
+    (date: unknown, selectionState?: PickerSelectionState) => {
       onDateChange(date, wrapperVariant, selectionState);
     },
     [onDateChange, wrapperVariant]
@@ -170,8 +168,8 @@ function Picker({
                 openNextView={() => setOpenView(nextView)}
                 openPreviousView={() => setOpenView(previousView)}
                 nextViewAvailable={!Boolean(nextView)}
-                previousViewAvailable={!Boolean(previousView)}
-                showViewSwitcher={isTimePickerByViews(views) && wrapperVariant === 'desktop'}
+                previousViewAvailable={!Boolean(previousView) || isDatePickerView(previousView)}
+                showViewSwitcher={wrapperVariant === 'desktop'}
               />
             )}
           </React.Fragment>
