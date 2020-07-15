@@ -47,7 +47,8 @@ function useInterceptProps({
     maxTime,
     ampm: willUseAmPm,
     acceptRegex: willUseAmPm ? /[\dapAP]/gi : /\d/gi,
-    mask: mask || (willUseAmPm ? '__:__ _M' : '__:__'),
+    mask: '__:__',
+    disableMaskedInput: willUseAmPm,
     getOpenDialogAriaText: getTextFieldAriaText,
     openPickerIcon: <ClockIcon />,
     inputFormat: pick12hOr24hFormat(inputFormat, willUseAmPm, {
