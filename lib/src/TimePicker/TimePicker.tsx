@@ -27,7 +27,6 @@ export function getTextFieldAriaText(value: ParsableDate, utils: MuiPickersAdapt
 function useInterceptProps({
   ampm,
   inputFormat,
-  mask,
   maxTime: __maxTime,
   minTime: __minTime,
   openTo = 'hours',

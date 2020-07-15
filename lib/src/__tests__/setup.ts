@@ -33,7 +33,10 @@ console.error = (...args: any[]) => {
   logAndThrowArgs(...args);
 };
 
-console.warn = (...args: any[]) => {
-  consoleWarn.apply(console, args as any);
-  logAndThrowArgs(...args);
-};
+// Waiting to fix https://github.com/mui-org/material-ui-pickers/issues/1924
+if (process.env.UTILS !== 'moment') {
+  console.warn = (...args: any[]) => {
+    consoleWarn.apply(console, args as any);
+    logAndThrowArgs(...args);
+  };
+}

@@ -58,7 +58,7 @@
   },
   "scripts": {
     "test": "jest",
-    "test:typescript": "rimraf src/__tests__/dist && tsc -p src/__tests__/tsconfig.json",
+    "test:typescript": "yarn rimraf src/__tests__/dist && tsc -p src/__tests__/tsconfig.json",
     "test:date-fns": "UTILS=date-fns yarn test",
     "test:dayjs": "UTILS=datejs yarn test",
     "test:luxon": "UTILS=luxon yarn test",

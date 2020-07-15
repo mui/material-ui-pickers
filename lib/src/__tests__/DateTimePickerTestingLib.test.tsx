@@ -8,29 +8,27 @@ import { fireEvent, screen, waitFor } from '@testing-library/react';
 describe('<DateTimePicker />', () => {
   const render = createClientRender({ strict: false });
 
-  itOnlyIf(utilsToUse.lib !== 'luxon')(
-    'prop: mask – should take the mask prop into account',
-    () => {
-      render(
-        <DesktopDateTimePicker
-          renderInput={props => <TextField autoFocus {...props} />}
-          inputFormat="mm.dd.yyyy hh:mm"
-          mask="__.__.____ __:__"
-          onChange={() => {}}
-          value={null}
-        />
-      );
+  it('prop: mask – should take the mask prop into account', () => {
+    render(
+      <DesktopDateTimePicker
+        renderInput={props => <TextField autoFocus {...props} />}
+        ampm={false}
+        inputFormat={utilsToUse.moment ? "MM.DD.YYYY HH:mm" : "mm.dd.yyyy hh:mm"}
+        mask="__.__.____ __:__"
+        onChange={() => {}}
+        value={null}
+      />
+    );
 
-      const textbox = screen.getByRole('textbox') as HTMLInputElement;
-      fireEvent.change(textbox, {
-        target: {
-          value: '12',
-        },
-      });
+    const textbox = screen.getByRole('textbox') as HTMLInputElement;
+    fireEvent.change(textbox, {
+      target: {
+        value: '12',
+      },
+    });
 
-      expect(textbox.value).toBe('12.');
-    }
-  );
+    expect(textbox.value).toBe('12.');
+  });
 
   it('prop: maxDateTime – minutes is disabled by date part', async () => {
     render(

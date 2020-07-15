@@ -48,7 +48,6 @@ export interface BaseDateTimePickerProps
 function useInterceptProps({
   ampm,
   inputFormat,
-  mask,
   maxDate: __maxDate = defaultMaxDate,
   maxDateTime: __maxDateTime,
   maxTime: __maxTime,
