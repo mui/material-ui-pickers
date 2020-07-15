@@ -1,6 +1,6 @@
 import * as React from 'react';
 import TextField from '@material-ui/core/TextField';
-import { utilsToUse } from './test-utils';
+import { utilsToUse, itOnlyIf } from './test-utils';
 import { createClientRender } from './createClientRender';
 import { DesktopDateTimePicker } from '../DateTimePicker';
 import { fireEvent, screen, waitFor } from '@testing-library/react';
@@ -8,26 +8,29 @@ import { fireEvent, screen, waitFor } from '@testing-library/react';
 describe('<DateTimePicker />', () => {
   const render = createClientRender({ strict: false });
 
-  it('prop: mask – should take the mask prop into account', () => {
-    render(
-      <DesktopDateTimePicker
-        renderInput={props => <TextField autoFocus {...props} />}
-        inputFormat="mm.dd.yyyy hh:mm"
-        mask="__.__.____ __:__"
-        onChange={() => {}}
-        value={null}
-      />
-    );
+  itOnlyIf(utilsToUse.lib !== 'luxon')(
+    'prop: mask – should take the mask prop into account',
+    () => {
+      render(
+        <DesktopDateTimePicker
+          renderInput={props => <TextField autoFocus {...props} />}
+          inputFormat="mm.dd.yyyy hh:mm"
+          mask="__.__.____ __:__"
+          onChange={() => {}}
+          value={null}
+        />
+      );
 
-    const textbox = screen.getByRole('textbox') as HTMLInputElement;
-    fireEvent.change(textbox, {
-      target: {
-        value: '12',
-      },
-    });
+      const textbox = screen.getByRole('textbox') as HTMLInputElement;
+      fireEvent.change(textbox, {
+        target: {
+          value: '12',
+        },
+      });
 
-    expect(textbox.value).toBe('12.');
-  });
+      expect(textbox.value).toBe('12.');
+    }
+  );
 
   it('prop: maxDateTime – minutes is disabled by date part', async () => {
     render(
