@@ -1,6 +1,6 @@
 import * as React from 'react';
 import TextField from '@material-ui/core/TextField';
-import { utilsToUse, itOnlyIf } from './test-utils';
+import { utilsToUse } from './test-utils';
 import { createClientRender } from './createClientRender';
 import { DesktopDateTimePicker } from '../DateTimePicker';
 import { fireEvent, screen, waitFor } from '@testing-library/react';
@@ -13,7 +13,7 @@ describe('<DateTimePicker />', () => {
       <DesktopDateTimePicker
         renderInput={props => <TextField autoFocus {...props} />}
         ampm={false}
-        inputFormat={utilsToUse.moment ? "MM.DD.YYYY HH:mm" : "mm.dd.yyyy hh:mm"}
+        inputFormat={utilsToUse.moment ? 'MM.DD.YYYY HH:mm' : 'mm.dd.yyyy hh:mm'}
         mask="__.__.____ __:__"
         onChange={() => {}}
         value={null}
