@@ -136,10 +136,10 @@ export const PureDateRangeDay = ({
         })}
       >
         <Day
+          {...other}
           disableMargin
           allowSameDateSelection
           allowKeyboardControl={false}
-          {...other}
           day={day}
           selected={selected}
           inCurrentMonth={inCurrentMonth}
