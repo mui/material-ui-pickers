@@ -53,7 +53,7 @@ jobs:
           command: yarn lint:ci
       - run:
           name: Ensure prettier was run
-          command: yarn prettier --check './**/*.{ts,tsx,js,jsx,json,md,mdx,html,css}'
+          command: npx prettier --check './**/*.{ts,tsx,js,jsx,json,md,mdx,html,css}'
 
   build:
     <<: *js_defaults

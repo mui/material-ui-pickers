@@ -5,3 +5,4 @@ coverage/
 .next
 docs/prop-types.json
 .github/
+dist/
