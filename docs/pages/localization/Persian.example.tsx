@@ -1,6 +1,6 @@
-import moment from 'moment';
+import * as React from 'react';
 import jMoment from 'moment-jalaali';
-import React, { useState } from 'react';
+import moment, { Moment } from 'moment';
 import JalaliAdapter from '@date-io/jalaali';
 import TextField from '@material-ui/core/TextField';
 import { TimePicker, DateTimePicker, DatePicker, LocalizationProvider } from '@material-ui/pickers';
@@ -8,10 +8,10 @@ import { TimePicker, DateTimePicker, DatePicker, LocalizationProvider } from '@m
 jMoment.loadPersian({ dialect: 'persian-modern', usePersianDigits: true });
 
 function PersianExample() {
-  const [selectedDate, handleDateChange] = useState(moment());
+  const [selectedDate, handleDateChange] = React.useState<Moment | null>(moment());
 
   return (
-    <LocalizationProvider dateAdapter={JalaliAdapter} locale="fa">
+    <LocalizationProvider dateAdapter={JalaliAdapter as any} locale="fa">
       <DatePicker
         renderInput={(props) => <TextField {...props} />}
         clearable
