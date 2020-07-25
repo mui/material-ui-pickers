@@ -4,9 +4,9 @@ import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import { TimeIcon } from '../_shared/icons/TimeIcon';
+import { TimeIcon } from '../_shared/icons/Time';
 import { DateTimePickerView } from './DateTimePicker';
-import { DateRangeIcon } from '../_shared/icons/DateRangeIcon';
+import { DateRangeIcon } from '../_shared/icons/DateRange';
 import { WrapperVariantContext } from '../wrappers/WrapperVariantContext';
 
 const viewToTabIndex = (openView: DateTimePickerView) => {

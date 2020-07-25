@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { DateRange } from './RangeTypes';
 import { useUtils } from '../_shared/hooks/useUtils';
 import { calculateRangePreview } from './date-range-manager';
-import Calendar, { CalendarProps } from '../views/Calendar/Calendar';
+import { Calendar, CalendarProps } from '../views/Calendar/Calendar';
 import { DateRangeDay, DateRangeDayProps } from './DateRangePickerDay';
 import { defaultMinDate, defaultMaxDate } from '../constants/prop-types';
 import { ArrowSwitcher, ExportedArrowSwitcherProps } from '../_shared/ArrowSwitcher';
@@ -21,6 +21,7 @@ import {
 export interface ExportedDesktopDateRangeCalendarProps {
   /**
    * How many calendars render on **desktop** DateRangePicker.
+   *
    * @default 2
    */
   calendars?: 1 | 2 | 3;

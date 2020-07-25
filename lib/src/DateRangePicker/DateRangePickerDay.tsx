@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import { makeStyles, fade } from '@material-ui/core/styles';
 import { DAY_MARGIN } from '../constants/dimensions';
 import { useUtils } from '../_shared/hooks/useUtils';
-import Day, { DayProps, areDayPropsEqual } from '../views/Calendar/Day';
+import { Day, DayProps, areDayPropsEqual } from '../views/Calendar/Day';
 
 export interface DateRangeDayProps extends DayProps {
   isHighlighting: boolean;

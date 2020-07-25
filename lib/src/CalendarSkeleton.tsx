@@ -35,7 +35,7 @@ const monthMap = [
   [1, 1, 1, 1, 0, 0, 0],
 ];
 
-const CalendarSkeleton: React.FC<CalendarSkeletonProps> = withDefaultProps(
+export const CalendarSkeleton: React.FC<CalendarSkeletonProps> = withDefaultProps(
   muiComponentConfig,
   (props) => {
     const { className, ...other } = props;

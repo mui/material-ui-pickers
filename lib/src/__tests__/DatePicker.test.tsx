@@ -8,7 +8,7 @@ import {
   DatePickerProps,
   StaticDatePicker,
 } from '../DatePicker/DatePicker';
-import CalendarSkeleton from '../CalendarSkeleton';
+import { CalendarSkeleton } from '../CalendarSkeleton';
 
 describe('e2e - DatePicker default year format', () => {
   let component: ReactWrapper<DatePickerProps>;

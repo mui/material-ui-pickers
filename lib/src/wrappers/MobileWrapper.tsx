@@ -21,33 +21,33 @@ export interface MobileWrapperProps
     WrapperProps,
     Partial<InnerDesktopWrapperProps & StaticWrapperProps> {}
 
-export const MobileWrapper: React.FC<MobileWrapperProps> = ({
-  cancelText,
-  children,
-  clearable,
-  clearText,
-  DateInputProps,
-  DialogProps,
-  displayStaticWrapperAs,
-  KeyboardDateInputComponent,
-  okText,
-  onAccept,
-  onClear,
-  onDismiss,
-  onSetToday,
-  open,
-  PopperProps,
-  PureDateInputComponent = PureDateInput,
-  showTabs,
-  showTodayButton,
-  todayText,
-  wider,
-  ...other
-}) => {
+export const MobileWrapper: React.FC<MobileWrapperProps> = (props) => {
+  const {
+    cancelText,
+    children,
+    clearable,
+    clearText,
+    DateInputProps,
+    DialogProps,
+    displayStaticWrapperAs,
+    KeyboardDateInputComponent,
+    okText,
+    onAccept,
+    onClear,
+    onDismiss,
+    onSetToday,
+    open,
+    PopperProps,
+    PureDateInputComponent = PureDateInput,
+    showTabs,
+    showTodayButton,
+    todayText,
+    wider,
+    ...other
+  } = props;
   return (
     <WrapperVariantContext.Provider value="mobile">
       <PureDateInputComponent {...other} {...DateInputProps} />
-
       <PickersModalDialog
         wider={wider}
         showTabs={showTabs}

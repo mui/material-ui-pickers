@@ -116,16 +116,19 @@ export interface DayProps extends ExtendMui<ButtonBaseProps> {
   disableMargin?: boolean;
   /**
    * Display disabled dates outside the current month.
+   *
    * @default false
    */
   showDaysOutsideCurrentMonth?: boolean;
   /**
    * Disable highlighting today date with a circle.
+   *
    * @default false
    */
   disableHighlightToday?: boolean;
   /**
    * Allow selecting the same date (fire onChange even if same date is selected).
+   *
    * @default false
    */
   allowSameDateSelection?: boolean;
@@ -133,29 +136,30 @@ export interface DayProps extends ExtendMui<ButtonBaseProps> {
   onDaySelect: (day: unknown, isFinish: PickerSelectionState) => void;
 }
 
-const PureDay: React.FC<DayProps> = ({
-  allowKeyboardControl,
-  allowSameDateSelection = false,
-  className,
-  day,
-  disabled = false,
-  disableHighlightToday = false,
-  disableMargin = false,
-  focusable = false,
-  focused = false,
-  hidden,
-  inCurrentMonth: isInCurrentMonth,
-  isAnimating,
-  onClick,
-  onDayFocus,
-  onDaySelect,
-  onFocus,
-  onKeyDown,
-  selected = false,
-  showDaysOutsideCurrentMonth = false,
-  today: isToday = false,
-  ...other
-}) => {
+const PureDay: React.FC<DayProps> = (props) => {
+  const {
+    allowKeyboardControl,
+    allowSameDateSelection = false,
+    className,
+    day,
+    disabled = false,
+    disableHighlightToday = false,
+    disableMargin = false,
+    focusable = false,
+    focused = false,
+    hidden,
+    inCurrentMonth: isInCurrentMonth,
+    isAnimating,
+    onClick,
+    onDayFocus,
+    onDaySelect,
+    onFocus,
+    onKeyDown,
+    selected = false,
+    showDaysOutsideCurrentMonth = false,
+    today: isToday = false,
+    ...other
+  } = props;
   const utils = useUtils();
   const classes = useStyles();
   const canAutoFocus = useCanAutoFocus();
@@ -265,6 +269,4 @@ PureDay.propTypes = {
   today: PropTypes.bool,
 };
 
-const Day = withDefaultProps(muiComponentConfig, React.memo(PureDay, areDayPropsEqual));
-
-export default Day;
+export const Day = withDefaultProps(muiComponentConfig, React.memo(PureDay, areDayPropsEqual));

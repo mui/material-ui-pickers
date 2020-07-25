@@ -3,8 +3,8 @@ import clsx from 'clsx';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import IconButton, { IconButtonProps } from '@material-ui/core/IconButton';
-import { ArrowLeftIcon } from './icons/ArrowLeftIcon';
-import { ArrowRightIcon } from './icons/ArrowRightIcon';
+import { ArrowLeftIcon } from './icons/ArrowLeft';
+import { ArrowRightIcon } from './icons/ArrowRight';
 
 export interface ExportedArrowSwitcherProps {
   /**
@@ -62,23 +62,24 @@ export const useStyles = makeStyles(
   { name: 'MuiPickersArrowSwitcher' }
 );
 
-const PureArrowSwitcher: React.FC<ArrowSwitcherProps> = ({
-  className,
-  isLeftDisabled,
-  isLeftHidden,
-  isRightDisabled,
-  isRightHidden,
-  leftArrowButtonProps,
-  leftArrowButtonText,
-  leftArrowIcon = <ArrowLeftIcon />,
-  onLeftClick,
-  onRightClick,
-  rightArrowButtonProps,
-  rightArrowButtonText,
-  rightArrowIcon = <ArrowRightIcon />,
-  text,
-  ...other
-}) => {
+const PureArrowSwitcher: React.FC<ArrowSwitcherProps> = (props) => {
+  const {
+    className,
+    isLeftDisabled,
+    isLeftHidden,
+    isRightDisabled,
+    isRightHidden,
+    leftArrowButtonProps,
+    leftArrowButtonText,
+    leftArrowIcon = <ArrowLeftIcon />,
+    onLeftClick,
+    onRightClick,
+    rightArrowButtonProps,
+    rightArrowButtonText,
+    rightArrowIcon = <ArrowRightIcon />,
+    text,
+    ...other
+  } = props;
   const classes = useStyles();
   const theme = useTheme();
   const isRtl = theme.direction === 'rtl';
@@ -99,13 +100,11 @@ const PureArrowSwitcher: React.FC<ArrowSwitcherProps> = ({
       >
         {isRtl ? rightArrowIcon : leftArrowIcon}
       </IconButton>
-
       {text && (
         <Typography variant="subtitle1" display="inline">
           {text}
         </Typography>
       )}
-
       <IconButton
         data-mui-test="next-arrow-button"
         size="small"

@@ -59,16 +59,17 @@ export const useStyles = makeStyles(
   { name: 'MuiPickersYear' }
 );
 
-const Year: React.FC<YearProps> = ({
-  allowKeyboardControl,
-  children,
-  disabled,
-  focused,
-  forwardedRef,
-  onSelect,
-  selected,
-  value,
-}) => {
+export const Year: React.FC<YearProps> = (props) => {
+  const {
+    allowKeyboardControl,
+    children,
+    disabled,
+    focused,
+    forwardedRef,
+    onSelect,
+    selected,
+    value,
+  } = props;
   const classes = useStyles();
   const ref = React.useRef<HTMLButtonElement>(null);
   const refHandle = useForkRef(ref, forwardedRef as React.Ref<HTMLButtonElement>);

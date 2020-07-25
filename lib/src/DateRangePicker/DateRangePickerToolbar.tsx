@@ -3,7 +3,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import PickerToolbar from '../_shared/PickerToolbar';
 import { useUtils } from '../_shared/hooks/useUtils';
-import ToolbarButton from '../_shared/ToolbarButton';
+import { ToolbarButton } from '../_shared/ToolbarButton';
 import { withDefaultProps } from '../_shared/withDefaultProps';
 import { ToolbarComponentProps } from '../Picker/SharedPickerProps';
 import { DateRange, CurrentlySelectingRangeEndProps } from './RangeTypes';

@@ -1,9 +1,7 @@
 import * as React from 'react';
 import clsx from 'clsx';
-import Code from './Code';
 import FuzzySearch from 'fuzzy-search';
 import ReactMarkdown from 'react-markdown';
-import PropTypesDoc from '../prop-types.json';
 import SearchBar from 'material-ui-search-bar';
 import {
   Table,
@@ -16,6 +14,8 @@ import {
   Typography,
   Grid,
 } from '@material-ui/core';
+import PropTypesDoc from '../prop-types.json';
+import Code from './Code';
 
 const useStyles = makeStyles((theme) => ({
   header: {
@@ -104,7 +104,6 @@ const PropTypesTableLazy: React.FC<PropTypesTableProps> = ({ disableHeader, src 
           </Grid>
         </Grid>
       )}
-
       <Paper className={classes.tableWrapper}>
         <Table>
           <TableHead>
@@ -115,7 +114,6 @@ const PropTypesTableLazy: React.FC<PropTypesTableProps> = ({ disableHeader, src 
               <TableCell> Description </TableCell>
             </TableRow>
           </TableHead>
-
           <TableBody>
             {propsToShow.map((prop) => (
               <TableRow key={prop.name}>
@@ -128,19 +126,16 @@ const PropTypesTableLazy: React.FC<PropTypesTableProps> = ({ disableHeader, src 
                     {prop.required ? `${prop.name} *` : prop.name}{' '}
                   </Typography>
                 </TableCell>
-
                 <TableCell>
                   <Code inline language="typescript">
                     {prop.type.name}
                   </Code>
                 </TableCell>
-
                 <TableCell className={classes.defaultValue}>
                   <Typography align="center" variant="body1" component="span">
                     {prop.defaultValue && prop.defaultValue.value}
                   </Typography>
                 </TableCell>
-
                 <TableCell className={classes.description}>
                   <ReactMarkdown source={prop.description} />
                 </TableCell>

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ReactWrapper } from 'enzyme';
-import Month from '../../views/Calendar/Month';
+import { Month } from '../../views/Calendar/Month';
 import { mount, utilsToUse } from '../test-utils';
 import { MonthSelection, MonthSelectionProps } from '../../views/Calendar/MonthSelection';
 

@@ -79,15 +79,8 @@ export const useStyles = makeStyles(
   { name: 'MuiPickersClockNumber' }
 );
 
-const ClockNumber: React.FC<ClockNumberProps> = ({
-  disabled,
-  getClockNumberText,
-  index,
-  isInner,
-  label,
-  onSelect,
-  selected,
-}) => {
+export const ClockNumber: React.FC<ClockNumberProps> = (props) => {
+  const { disabled, getClockNumberText, index, isInner, label, onSelect, selected } = props;
   const classes = useStyles();
   const canAutoFocus = useCanAutoFocus();
   const ref = React.useRef<HTMLSpanElement>(null);

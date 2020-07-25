@@ -2,7 +2,7 @@ import * as React from 'react';
 import clsx from 'clsx';
 import { useTheme, makeStyles } from '@material-ui/core/styles';
 import ToolbarText from '../_shared/ToolbarText';
-import ToolbarButton from '../_shared/ToolbarButton';
+import { ToolbarButton } from '../_shared/ToolbarButton';
 import PickerToolbar from '../_shared/PickerToolbar';
 import { arrayIncludes } from '../_helpers/utils';
 import { useUtils } from '../_shared/hooks/useUtils';

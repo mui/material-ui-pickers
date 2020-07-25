@@ -105,7 +105,6 @@ describe('DatePicker - different props', () => {
             onChange={jest.fn()}
             renderInput={(props) => <TextField id="focusing-picker" {...props} />}
           />
-
           <button type="button" id="focus-picker" onClick={focusPicker} />
         </React.Fragment>
       );

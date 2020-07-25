@@ -1,9 +1,9 @@
 import * as React from 'react';
-import CalendarHeader from '../views/Calendar/CalendarHeader';
+import { CalendarHeader } from '../views/Calendar/CalendarHeader';
 import { DateRange } from './RangeTypes';
 import { DateRangeDay } from './DateRangePickerDay';
 import { useUtils } from '../_shared/hooks/useUtils';
-import Calendar, { CalendarProps } from '../views/Calendar/Calendar';
+import { Calendar, CalendarProps } from '../views/Calendar/Calendar';
 import { ExportedArrowSwitcherProps } from '../_shared/ArrowSwitcher';
 import { defaultMinDate, defaultMaxDate } from '../constants/prop-types';
 import { ExportedDesktopDateRangeCalendarProps } from './DateRangePickerViewDesktop';

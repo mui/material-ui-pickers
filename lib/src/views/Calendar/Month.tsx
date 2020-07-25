@@ -41,7 +41,7 @@ export const useStyles = makeStyles(
   { name: 'MuiPickersMonth' }
 );
 
-const Month: React.FC<MonthProps> = (props) => {
+export const Month: React.FC<MonthProps> = (props) => {
   const { disabled, onSelect, selected, value, ...other } = props;
   const classes = useStyles();
   const handleSelection = () => {

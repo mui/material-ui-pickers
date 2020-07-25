@@ -28,6 +28,7 @@ export interface ExportedDateRangePickerViewProps
     Omit<BasePickerProps, 'value' | 'onChange'> {
   /**
    * if `true` after selecting `start` date  calendar will not automatically switch to the month of `end` date
+   *
    * @default false
    */
   disableAutoMonthSwitching?: boolean;

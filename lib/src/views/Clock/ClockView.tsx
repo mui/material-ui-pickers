@@ -19,21 +19,25 @@ import {
 export interface ExportedClockViewProps extends TimeValidationProps {
   /**
    * 12h/24h view for hour selection clock.
+   *
    * @default true
    */
   ampm?: boolean;
   /**
    * Step over minutes.
+   *
    * @default 1
    */
   minutesStep?: number;
   /**
    * Display ampm controls under the clock (instead of in the toolbar).
+   *
    * @default false
    */
   ampmInClock?: boolean;
   /**
    * Enables keyboard listener for moving between days in calendar.
+   *
    * @default currentWrapper !== 'static'
    */
   allowKeyboardControl?: boolean;
@@ -100,7 +104,7 @@ function getSecondsAriaText(seconds: string) {
   return `${seconds} seconds`;
 }
 
-function ClockView(props: ClockViewProps) {
+function ClockViewRaw(props: ClockViewProps) {
   const {
     allowKeyboardControl,
     ampm,
@@ -300,9 +304,9 @@ function ClockView(props: ClockViewProps) {
   );
 }
 
-const ClockViewWithDefault = withDefaultProps(muiPickersComponentConfig, ClockView);
+export const ClockView = withDefaultProps(muiPickersComponentConfig, ClockViewRaw);
 
-ClockViewWithDefault.propTypes = {
+ClockView.propTypes = {
   ampm: PropTypes.bool,
   date: PropTypes.object,
   minutesStep: PropTypes.number,
@@ -310,6 +314,4 @@ ClockViewWithDefault.propTypes = {
   type: PropTypes.oneOf(['minutes', 'hours', 'seconds']).isRequired,
 } as any;
 
-ClockViewWithDefault.displayName = 'ClockView';
-
-export default ClockViewWithDefault;
+ClockView.displayName = 'ClockView';

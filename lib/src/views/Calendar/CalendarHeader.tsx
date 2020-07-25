@@ -10,7 +10,7 @@ import { SlideDirection } from './SlideTransition';
 import { useUtils } from '../../_shared/hooks/useUtils';
 import { FadeTransitionGroup } from './FadeTransitionGroup';
 import { DateValidationProps } from '../../_helpers/date-utils';
-import { ArrowDropDownIcon } from '../../_shared/icons/ArrowDropDownIcon';
+import { ArrowDropDownIcon } from '../../_shared/icons/ArrowDropDown';
 import { ArrowSwitcher, ExportedArrowSwitcherProps } from '../../_shared/ArrowSwitcher';
 import {
   usePreviousMonthDisabled,
@@ -81,7 +81,7 @@ function getSwitchingViewAriaText(view: DatePickerView) {
     : 'calendar view is open, switch to year view';
 }
 
-const CalendarHeader: React.SFC<CalendarHeaderProps> = ({
+export const CalendarHeader: React.SFC<CalendarHeaderProps> = ({
   view: currentView,
   views,
   currentMonth: month,

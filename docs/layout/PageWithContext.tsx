@@ -112,7 +112,6 @@ export const PageWithContexts: React.SFC<Props> = ({
               <UtilsContext.Provider value={createUtilsService(lib)}>
                 <CssBaseline />
                 <NotificationManager />
-
                 <Layout
                   children={children}
                   onChangeUtils={setLib}

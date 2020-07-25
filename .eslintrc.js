@@ -40,16 +40,6 @@ module.exports = {
     'no-alert': 'error', // Too much interruptive
     'no-console': ['error', { allow: ['warn', 'error'] }], // Allow warn and error for production events
     'no-param-reassign': 'off', // It's fine.
-    'no-restricted-imports': [
-      'error',
-      {
-        patterns: [
-          '@material-ui/*/*/*',
-          '!@material-ui/core/test-utils/*',
-          '!@material-ui/utils/macros/*.macro',
-        ],
-      },
-    ],
     'no-constant-condition': 'error',
     'no-prototype-builtins': 'off', // Use the proptype inheritance chain
     'no-underscore-dangle': 'error',
@@ -84,13 +74,23 @@ module.exports = {
 
     // TODO
     'import/no-cycle': 'warn',
-    'import/prefer-default-export': 'warn',
+    'import/prefer-default-export': 'off',
     'jsx-a11y/click-events-have-key-events': 'warn',
     'jsx-a11y/control-has-associated-label': 'warn',
     'jsx-a11y/no-static-element-interactions': 'warn',
     'no-nested-ternary': 'warn',
     'no-shadow': 'warn',
     'react/prop-types': 'off', // For public API
+    'no-restricted-imports': [
+      'warn',
+      {
+        patterns: [
+          '@material-ui/*/*/*',
+          '!@material-ui/core/test-utils/*',
+          '!@material-ui/utils/macros/*.macro',
+        ],
+      },
+    ],
   },
   overrides: [
     {

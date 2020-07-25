@@ -66,6 +66,8 @@
     "**/coverage",
     "videos/",
     "/docs/layout",
+    "/docs/pages/index",
+    "/docs/_shared",
     "/e2e/",
     "**/build"
   ]

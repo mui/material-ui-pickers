@@ -26,7 +26,7 @@ export default function MomentLocalizationExample() {
   const [locale, setLocale] = React.useState<keyof typeof maskMap>('fr');
   const [selectedDate, handleDateChange] = React.useState<Moment | null>(moment());
 
-  const selectLocale = (newLocale) => {
+  const selectLocale = (newLocale: any) => {
     moment.locale(newLocale);
 
     setLocale(newLocale);
@@ -42,8 +42,12 @@ export default function MomentLocalizationExample() {
       />
       <ButtonGroup>
         {Object.keys(localeMap).map((localeItem) => (
-          <Button key={localeItem} onClick={() => {
-            selectLocale(localeItem)}}>
+          <Button
+            key={localeItem}
+            onClick={() => {
+              selectLocale(localeItem);
+            }}
+          >
             {localeItem}
           </Button>
         ))}

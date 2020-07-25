@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
+// eslint-disable-next-line import/no-named-as-default
 import Year from './Year';
 import { useUtils, useNow } from '../../_shared/hooks/useUtils';
 import { PickerOnChangeFn } from '../../_shared/hooks/useViews';

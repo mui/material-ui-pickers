@@ -25,15 +25,8 @@ export const useStyles = makeStyles(
   { name: 'MuiPickersToolbarButton' }
 );
 
-const ToolbarButton: React.FunctionComponent<ToolbarButtonProps> = ({
-  align,
-  className,
-  selected,
-  typographyClassName,
-  value,
-  variant,
-  ...other
-}) => {
+export const ToolbarButton: React.FunctionComponent<ToolbarButtonProps> = (props) => {
+  const { align, className, selected, typographyClassName, value, variant, ...other } = props;
   const classes = useStyles();
 
   return (

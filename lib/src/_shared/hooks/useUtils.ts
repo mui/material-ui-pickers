@@ -22,7 +22,7 @@ export function useUtils(): MuiPickersAdapter {
 
 export function useNow() {
   const utils = useUtils();
-  const now = Reac.useRef(utils.date());
+  const now = React.useRef(utils.date());
 
   return now.current;
 }
