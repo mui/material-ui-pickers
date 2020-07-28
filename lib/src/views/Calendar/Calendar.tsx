@@ -6,24 +6,24 @@ import { Day, DayProps } from './Day';
 import { useUtils, useNow } from '../../_shared/hooks/useUtils';
 import { PickerOnChangeFn } from '../../_shared/hooks/useViews';
 import { DAY_SIZE, DAY_MARGIN } from '../../constants/dimensions';
-import { withDefaultProps } from '../../_shared/withDefaultProps';
+import { useDefaultProps } from '../../_shared/withDefaultProps';
 import { PickerSelectionState } from '../../_shared/hooks/usePickerState';
 import { useGlobalKeyDown, keycode } from '../../_shared/hooks/useKeyDown';
 import { SlideTransition, SlideDirection, SlideTransitionProps } from './SlideTransition';
 
-export interface ExportedCalendarProps
+export interface ExportedCalendarProps<TDate>
   extends Pick<
-    DayProps,
+    DayProps<TDate>,
     'disableHighlightToday' | 'showDaysOutsideCurrentMonth' | 'allowSameDateSelection'
   > {
   /**
    * Calendar onChange.
    */
-  onChange: PickerOnChangeFn;
+  onChange: PickerOnChangeFn<TDate>;
   /**
    * Custom renderer for day. Check [DayComponentProps api](https://material-ui-pickers.dev/api/Day) @DateIOType.
    */
-  renderDay?: (day: unknown, selectedDates: unknown[], DayComponentProps: DayProps) => JSX.Element;
+  renderDay?: (day: TDate, selectedDates: TDate[], DayComponentProps: DayProps<TDate>) => JSX.Element;
   /**
    * Enables keyboard listener for moving between days in calendar.
    *
@@ -45,14 +45,14 @@ export interface ExportedCalendarProps
   renderLoading?: () => React.ReactNode;
 }
 
-export interface CalendarProps extends ExportedCalendarProps {
-  date: unknown | unknown[];
-  isDateDisabled: (day: unknown) => boolean;
+export interface CalendarProps<TDate> extends ExportedCalendarProps<TDate> {
+  date: TDate | TDate[];
+  isDateDisabled: (day: TDate) => boolean;
   slideDirection: SlideDirection;
-  currentMonth: unknown;
+  currentMonth: TDate;
   reduceAnimations: boolean;
-  focusedDay: unknown | null;
-  changeFocusedDay: (newFocusedDay: unknown) => void;
+  focusedDay: TDate | null;
+  changeFocusedDay: (newFocusedDay: TDate) => void;
   isMonthSwitchingAnimating: boolean;
   onMonthSwitchingAnimationEnd: () => void;
   TransitionProps?: Partial<SlideTransitionProps>;
@@ -105,7 +105,7 @@ export const useStyles = makeStyles((theme) => {
   };
 }, muiComponentConfig);
 
-export const Calendar: React.FC<CalendarProps> = withDefaultProps(muiComponentConfig, (props) => {
+export function Calendar<TDate>(props: CalendarProps<TDate>) {
   const {
     allowKeyboardControl,
     allowSameDateSelection,
@@ -126,14 +126,15 @@ export const Calendar: React.FC<CalendarProps> = withDefaultProps(muiComponentCo
     showDaysOutsideCurrentMonth,
     slideDirection,
     TransitionProps,
-  } = props;
-  const now = useNow();
-  const utils = useUtils();
+  } = useDefaultProps(props, muiComponentConfig);
+
+  const now = useNow<TDate>();
+  const utils = useUtils<TDate>();
   const theme = useTheme();
   const classes = useStyles();
 
   const handleDaySelect = React.useCallback(
-    (day: unknown, isFinish: PickerSelectionState = 'finish') => {
+    (day: TDate, isFinish: PickerSelectionState = 'finish') => {
       // TODO possibly buggy line figure out and add tests
       const finalDate = Array.isArray(date) ? day : utils.mergeDateAndTime(day, date || now);
 
@@ -195,7 +196,7 @@ export const Calendar: React.FC<CalendarProps> = withDefaultProps(muiComponentCo
                   const disabled = isDateDisabled(day);
                   const isDayInCurrentMonth = utils.getMonth(day) === currentMonthNumber;
 
-                  const dayProps: DayProps = {
+                  const dayProps: DayProps<TDate> = {
                     key: (day as any)?.toString(),
                     day,
                     role: 'cell',
@@ -206,7 +207,7 @@ export const Calendar: React.FC<CalendarProps> = withDefaultProps(muiComponentCo
                     focused:
                       allowKeyboardControl &&
                       Boolean(focusedDay) &&
-                      utils.isSameDay(day, focusedDay),
+                      utils.isSameDay(day, nowFocusedDay),
                     today: utils.isSameDay(day, now),
                     inCurrentMonth: isDayInCurrentMonth,
                     selected: selectedDates.some((selectedDate) =>
@@ -235,6 +236,6 @@ export const Calendar: React.FC<CalendarProps> = withDefaultProps(muiComponentCo
       )}
     </React.Fragment>
   );
-});
+}
 
 Calendar.displayName = 'Calendar';

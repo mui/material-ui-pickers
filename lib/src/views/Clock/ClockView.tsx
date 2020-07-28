@@ -98,8 +98,7 @@ function getMinutesAriaText(minute: string) {
   return `${minute} minutes`;
 }
 
-
-const getHoursAriaText = (hour: string) => `${hour} hours`
+const getHoursAriaText = (hour: string) => `${hour} hours`;
 
 const getSecondsAriaText = (seconds: string) => `${seconds} seconds`;
 
@@ -137,6 +136,7 @@ export function ClockView<TDate>(props: ClockViewProps<TDate>) {
   const utils = useUtils<TDate>();
   const classes = useStyles();
   const dateOrNow = date || now;
+
   const { meridiemMode, handleMeridiemChange } = useMeridiemMode<TDate>(
     dateOrNow,
     ampm,
@@ -149,7 +149,7 @@ export function ClockView<TDate>(props: ClockViewProps<TDate>) {
         return false;
       }
 
-      const validateTimeValue = (getRequestedTimePoint: (when: 'start' | 'end') => unknown) => {
+      const validateTimeValue = (getRequestedTimePoint: (when: 'start' | 'end') => TDate) => {
         const isAfterComparingFn = createIsAfterIgnoreDatePart(
           Boolean(disableIgnoringDatePartForTimeValidation),
           utils
@@ -295,9 +295,11 @@ export function ClockView<TDate>(props: ClockViewProps<TDate>) {
           isRightDisabled={nextViewAvailable}
         />
       )}
+
       <Clock
         date={date}
         ampmInClock={ampmInClock}
+        // @ts-expect-error FIX ME
         onDateChange={onDateChange}
         type={type}
         ampm={ampm}
