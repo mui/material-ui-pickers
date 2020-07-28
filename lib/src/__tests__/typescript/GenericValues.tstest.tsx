@@ -4,7 +4,9 @@ import moment, { Moment } from 'moment';
 import LuxonAdapter from '@material-ui/pickers/adapter/luxon';
 import { DateTime } from 'luxon';
 import { TextField } from '@material-ui/core';
+import { TimePicker } from '../../TimePicker';
 import { DatePicker } from '@material-ui/pickers';
+import { ClockView } from '../../views/Clock/ClockView';
 import { DateRangePicker } from '../../DateRangePicker/DateRangePicker';
 
 // Allows to set date type right with generic JSX syntax
@@ -76,4 +78,35 @@ const InferTest = () => {
   // @ts-expect-error `Property 'getDate' does not exist on type 'never'.`
   onChange={(date) => date?.getDate()}
   renderInput={(props) => <TextField {...props} />}
+/>;
+
+/*********************/
+/* TimePicker */
+/*********************/
+
+<TimePicker
+  value={new DateTime()}
+  onChange={(date) => date?.set({ second: 0 })}
+  renderInput={(props) => <TextField {...props} />}
+/>;
+
+// Allows inferring for side props
+<TimePicker
+  value={null}
+  minTime={new DateTime()}
+  onChange={(date) => date?.set({ second: 0 })}
+  renderInput={(props) => <TextField {...props} />}
+/>;
+
+// External components are generic as well
+<ClockView<Date>
+  type="hours"
+  date={null}
+  onChange={(date) => date.getDate()}
+  // TODO cleanup public clock view props
+  nextViewAvailable
+  previousViewAvailable
+  openNextView={console.log}
+  openPreviousView={console.log}
+  onDateChange={console.log}
 />;

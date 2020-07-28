@@ -3,10 +3,9 @@ import * as PropTypes from 'prop-types';
 import { Clock } from './Clock';
 import { pipe } from '../../_helpers/utils';
 import { makeStyles } from '@material-ui/core/styles';
-
 import { useUtils, useNow } from '../../_shared/hooks/useUtils';
 import { PickerOnChangeFn } from '../../_shared/hooks/useViews';
-import { withDefaultProps } from '../../_shared/withDefaultProps';
+import { useDefaultProps } from '../../_shared/withDefaultProps';
 import { getHourNumbers, getMinutesNumbers } from './ClockNumbers';
 import { useMeridiemMode } from '../../TimePicker/TimePickerToolbar';
 import { PickerSelectionState } from '../../_shared/hooks/usePickerState';
@@ -17,7 +16,7 @@ import {
   TimeValidationProps,
 } from '../../_helpers/time-utils';
 
-export interface ExportedClockViewProps extends TimeValidationProps {
+export interface ExportedClockViewProps<TDate> extends TimeValidationProps<TDate> {
   /**
    * 12h/24h view for hour selection clock
    * @default true
@@ -40,11 +39,13 @@ export interface ExportedClockViewProps extends TimeValidationProps {
   allowKeyboardControl?: boolean;
 }
 
-export interface ClockViewProps extends ExportedClockViewProps, ExportedArrowSwitcherProps {
+export interface ClockViewProps<TDate>
+  extends ExportedClockViewProps<TDate>,
+    ExportedArrowSwitcherProps {
   /**
    * Selected date @DateIOType.
    */
-  date: unknown;
+  date: TDate | null;
   /**
    * Clock type.
    */
@@ -52,11 +53,11 @@ export interface ClockViewProps extends ExportedClockViewProps, ExportedArrowSwi
   /**
    * On change date without moving between views @DateIOType.
    */
-  onDateChange: PickerOnChangeFn;
+  onDateChange: PickerOnChangeFn<TDate>;
   /**
    * On change callback @DateIOType.
    */
-  onChange: PickerOnChangeFn;
+  onChange: PickerOnChangeFn<TDate>;
   /**
    * Get clock number aria-text for hours.
    */
@@ -93,41 +94,52 @@ const getMinutesAriaText = (minute: string) => `${minute} minutes`;
 const getHoursAriaText = (hour: string) => `${hour} hours`;
 const getSecondsAriaText = (seconds: string) => `${seconds} seconds`;
 
-const _ClockView: React.FC<ClockViewProps> = ({
-  type,
-  onDateChange,
-  onChange,
-  ampm,
-  date,
-  minutesStep = 1,
-  ampmInClock,
-  minTime,
-  maxTime,
-  allowKeyboardControl,
-  shouldDisableTime,
-  getHoursClockNumberText = getHoursAriaText,
-  getMinutesClockNumberText = getMinutesAriaText,
-  getSecondsClockNumberText = getSecondsAriaText,
-  leftArrowButtonProps,
-  rightArrowButtonProps,
-  leftArrowIcon,
-  rightArrowIcon,
-  leftArrowButtonText = 'open previous view',
-  rightArrowButtonText = 'open next view',
-  openNextView,
-  openPreviousView,
-  nextViewAvailable,
-  showViewSwitcher,
-  previousViewAvailable,
-  disableIgnoringDatePartForTimeValidation,
-}) => {
-  const now = useNow();
-  const utils = useUtils();
+export function ClockView<TDate>(props: ClockViewProps<TDate>) {
+  const {
+    type,
+    onDateChange,
+    onChange,
+    ampm,
+    date,
+    minutesStep = 1,
+    ampmInClock,
+    minTime,
+    maxTime,
+    allowKeyboardControl,
+    shouldDisableTime,
+    getHoursClockNumberText = getHoursAriaText,
+    getMinutesClockNumberText = getMinutesAriaText,
+    getSecondsClockNumberText = getSecondsAriaText,
+    leftArrowButtonProps,
+    rightArrowButtonProps,
+    leftArrowIcon,
+    rightArrowIcon,
+    leftArrowButtonText = 'open previous view',
+    rightArrowButtonText = 'open next view',
+    openNextView,
+    openPreviousView,
+    nextViewAvailable,
+    showViewSwitcher,
+    previousViewAvailable,
+    disableIgnoringDatePartForTimeValidation,
+  } = useDefaultProps(props, muiPickersComponentConfig);
+
+  const now = useNow<TDate>();
+  const utils = useUtils<TDate>();
   const classes = useStyles();
-  const { meridiemMode, handleMeridiemChange } = useMeridiemMode(date, ampm, onDateChange);
+  const dateOrNow = date || now;
+  const { meridiemMode, handleMeridiemChange } = useMeridiemMode<TDate>(
+    dateOrNow,
+    ampm,
+    onDateChange
+  );
 
   const isTimeDisabled = React.useCallback(
     (rawValue: number, type: 'hours' | 'minutes' | 'seconds') => {
+      if (date === null) {
+        return false;
+      }
+
       const validateTimeValue = (getRequestedTimePoint: (when: 'start' | 'end') => unknown) => {
         const isAfterComparingFn = createIsAfterIgnoreDatePart(
           Boolean(disableIgnoringDatePartForTimeValidation),
@@ -176,7 +188,6 @@ const _ClockView: React.FC<ClockViewProps> = ({
     ]
   );
 
-  const dateOrNow = date || now;
   const viewProps = React.useMemo(() => {
     switch (type) {
       case 'hours':
@@ -284,9 +295,7 @@ const _ClockView: React.FC<ClockViewProps> = ({
       />
     </>
   );
-};
-
-export const ClockView = withDefaultProps(muiPickersComponentConfig, _ClockView);
+}
 
 ClockView.propTypes = {
   ampm: PropTypes.bool,

@@ -22,11 +22,11 @@ export const convertValueToMeridiem = (value: number, meridiem: Meridiem, ampm: 
   return value;
 };
 
-export const convertToMeridiem = (
-  time: unknown,
+export const convertToMeridiem = <TDate>(
+  time: TDate,
   meridiem: 'am' | 'pm',
   ampm: boolean,
-  utils: MuiPickersAdapter
+  utils: MuiPickersAdapter<TDate>
 ) => {
   const newHoursAmount = convertValueToMeridiem(utils.getHours(time), meridiem, ampm);
   return utils.setHours(time, newHoursAmount);
@@ -103,17 +103,17 @@ export const createIsAfterIgnoreDatePart = (
   return getSecondsInDay(dateLeft, utils) > getSecondsInDay(dateRight, utils);
 };
 
-export interface TimeValidationProps {
+export interface TimeValidationProps<TDate> {
   /**
    * Min time acceptable time.
    * For input validation date part of passed object will be ignored if `disableIgnoringDatePartForTimeValidation` not specified.
    */
-  minTime?: unknown;
+  minTime?: ParsableDate<TDate>;
   /**
    * Max time acceptable time.
    * For input validation date part of passed object will be ignored if `disableIgnoringDatePartForTimeValidation` not specified.
    */
-  maxTime?: unknown;
+  maxTime?:  ParsableDate<TDate>;
   /**
    * Dynamically check if time is disabled or not.
    * If returns `false` appropriate time point will ot be acceptable.
@@ -134,7 +134,7 @@ export const validateTime = (
     maxTime,
     shouldDisableTime,
     disableIgnoringDatePartForTimeValidation,
-  }: TimeValidationProps
+  }: TimeValidationProps<unknown>
 ) => {
   const date = utils.date(value);
   const isAfterComparingFn = createIsAfterIgnoreDatePart(

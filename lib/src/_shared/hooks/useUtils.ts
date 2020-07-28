@@ -13,16 +13,16 @@ function checkUtils(utils: MuiPickersAdapter | null): asserts utils is MuiPicker
   }
 }
 
-export function useUtils() {
+export function useUtils<T = unknown>() {
   const utils = useContext(MuiPickersAdapterContext);
   checkUtils(utils);
 
-  return utils;
+  return utils as MuiPickersAdapter<T>;
 }
 
-export function useNow() {
-  const utils = useUtils();
+export function useNow<TDate = unknown>() {
+  const utils = useUtils<TDate>();
   const now = useRef(utils.date());
 
-  return now.current;
+  return now.current!;
 }
