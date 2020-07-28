@@ -20,23 +20,22 @@ const maskMap = {
   ru: '__.__.____',
 };
 
-function DateFnsLocalizationExample() {
-  const [locale, setLocale] = React.useState('ru');
-  const [selectedDate, handleDateChange] = React.useState(new Date());
+export default function DateFnsLocalizationExample() {
+  const [locale, setLocale] = React.useState<keyof typeof maskMap>('ru');
+  const [selectedDate, handleDateChange] = React.useState<Date | null>(new Date());
 
-  const selectLocale = React.useCallback((newLocale) => {
+  const selectLocale = (newLocale: any) => {
     setLocale(newLocale);
-  }, []);
+  };
 
   return (
     <LocalizationProvider dateAdapter={DateFnsAdapter} locale={localeMap[locale]}>
       <DatePicker
-        renderInput={(props) => <TextField {...props} />}
         mask={maskMap[locale]}
         value={selectedDate}
-        onChange={handleDateChange}
+        onChange={(date) => handleDateChange(date)}
+        renderInput={(props) => <TextField {...props} />}
       />
-
       <ButtonGroup>
         {Object.keys(localeMap).map((localeItem) => (
           <Button key={localeItem} onClick={() => selectLocale(localeItem)}>
@@ -47,5 +46,3 @@ function DateFnsLocalizationExample() {
     </LocalizationProvider>
   );
 }
-
-export default DateFnsLocalizationExample;

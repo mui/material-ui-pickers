@@ -1,15 +1,15 @@
 import 'moment/locale/ar-sa';
-import moment from 'moment';
-import React, { useState } from 'react';
+import * as React from 'react';
+import moment, { Moment } from 'moment';
 import HijriAdapter from '@date-io/hijri';
 import TextField from '@material-ui/core/TextField';
 import { TimePicker, DateTimePicker, DatePicker, LocalizationProvider } from '@material-ui/pickers';
 
-function HijriExample() {
-  const [selectedDate, handleDateChange] = useState(moment());
+export default function HijriExample() {
+  const [selectedDate, handleDateChange] = React.useState<Moment | null>(moment());
 
   return (
-    <LocalizationProvider dateAdapter={HijriAdapter} locale="ar-SA">
+    <LocalizationProvider dateAdapter={HijriAdapter as any} locale="ar-SA">
       <DatePicker
         clearable
         renderInput={(props) => <TextField {...props} />}
@@ -22,7 +22,6 @@ function HijriExample() {
         minDate={moment('1937-03-14')}
         maxDate={moment('2076-11-26')}
       />
-
       <TimePicker
         clearable
         renderInput={(props) => <TextField {...props} />}
@@ -33,7 +32,6 @@ function HijriExample() {
         value={selectedDate}
         onChange={(date) => handleDateChange(date)}
       />
-
       <DateTimePicker
         renderInput={(props) => <TextField {...props} />}
         okText="موافق"
@@ -47,5 +45,3 @@ function HijriExample() {
     </LocalizationProvider>
   );
 }
-
-export default HijriExample;

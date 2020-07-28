@@ -1,11 +1,11 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import * as React from 'react';
 import moment, { Moment } from 'moment';
+// eslint-disable-next-line no-restricted-imports
 import LuxonAdapter from '@material-ui/pickers/adapter/luxon';
 import { DateTime } from 'luxon';
 import { TextField } from '@material-ui/core';
-import { TimePicker } from '../../TimePicker';
 import { DatePicker } from '@material-ui/pickers';
+import { TimePicker } from '../../TimePicker';
 import { ClockView } from '../../views/Clock/ClockView';
 import { DateRangePicker } from '../../DateRangePicker/DateRangePicker';
 
@@ -80,9 +80,9 @@ const InferTest = () => {
   renderInput={(props) => <TextField {...props} />}
 />;
 
-/*********************/
+/** ****************** */
 /* TimePicker */
-/*********************/
+/** ****************** */
 
 <TimePicker
   value={new DateTime()}

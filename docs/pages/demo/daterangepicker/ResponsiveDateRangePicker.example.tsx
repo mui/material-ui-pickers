@@ -7,15 +7,15 @@ import {
   DateRange,
 } from '@material-ui/pickers';
 
-function ResponsiveDateRangePicker() {
-  const [selectedDate, handleDateChange] = React.useState<DateRange<Date>>([null, null]);
+export default function ResponsiveDateRangePicker() {
+  const [value, setValue] = React.useState<DateRange<Date>>([null, null]);
 
   return (
     <React.Fragment>
       <MobileDateRangePicker
         startText="Mobile start"
-        value={selectedDate}
-        onChange={(date) => handleDateChange(date)}
+        value={value}
+        onChange={(newValue) => setValue(newValue)}
         renderInput={(startProps, endProps) => (
           <React.Fragment>
             <TextField {...startProps} />
@@ -24,11 +24,10 @@ function ResponsiveDateRangePicker() {
           </React.Fragment>
         )}
       />
-
       <DesktopDateRangePicker
         startText="Desktop start"
-        value={selectedDate}
-        onChange={(date) => handleDateChange(date)}
+        value={value}
+        onChange={(newValue) => setValue(newValue)}
         renderInput={(startProps, endProps) => (
           <React.Fragment>
             <TextField {...startProps} />
@@ -40,5 +39,3 @@ function ResponsiveDateRangePicker() {
     </React.Fragment>
   );
 }
-
-export default ResponsiveDateRangePicker;

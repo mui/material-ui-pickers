@@ -1,10 +1,10 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
+import * as PropTypes from 'prop-types'
 import clsx from 'clsx';
-import ClockPointer from './ClockPointer';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import ClockPointer from './ClockPointer';
 import { useUtils } from '../../_shared/hooks/useUtils';
 import { VIEW_HEIGHT } from '../../constants/dimensions';
 import { ClockViewType } from '../../constants/ClockType';
@@ -209,11 +209,9 @@ export function Clock<TDate>(props: ClockProps<TDate>) {
           onMouseUp={handleMouseUp}
           onMouseMove={handleMouseMove}
         />
-
         {!isSelectedTimeDisabled && (
           <React.Fragment>
             <div className={classes.pin} />
-
             {date && (
               <ClockPointer
                 type={type}
@@ -226,10 +224,8 @@ export function Clock<TDate>(props: ClockProps<TDate>) {
             )}
           </React.Fragment>
         )}
-
         {numbersElementsArray}
       </div>
-
       {ampm && (wrapperVariant === 'desktop' || ampmInClock) && (
         <React.Fragment>
           <IconButton
@@ -258,7 +254,7 @@ export function Clock<TDate>(props: ClockProps<TDate>) {
   );
 };
 
-Clock.defaultProps = {
+Clock.propTypes = {
   ampm: PropTypes.bool,
   minutesStep: PropTypes.number,
 } as any;
