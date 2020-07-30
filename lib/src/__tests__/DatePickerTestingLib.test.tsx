@@ -4,7 +4,7 @@ import enLocale from 'date-fns/locale/en-US';
 import 'dayjs/locale/de';
 import TextField from '@material-ui/core/TextField';
 import { screen, waitFor } from '@testing-library/react';
-import { DateAdapter, getByMuiTest, utilsToUse, FakeTransitionComponent } from './test-utils';
+import { UtilClassToUse, getByMuiTest, utilsToUse, FakeTransitionComponent } from './test-utils';
 import { createClientRender, fireEvent } from './createClientRender';
 import {
   DatePicker,
@@ -130,10 +130,10 @@ describe('<DatePicker />', () => {
       const [value, setValue] = React.useState<unknown>(new Date('01/01/2020'));
 
       return (
-        <LocalizationProvider dateAdapter={DateAdapter} locale={locale}>
+        <LocalizationProvider dateAdapter={UtilClassToUse} locale={locale}>
           <Picker
             onChange={setValue}
-            renderInput={(props) => <TextField {...props} />}
+            renderInput={(props2) => <TextField {...props2} />}
             value={value}
             {...PickerProps}
           />
