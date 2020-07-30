@@ -7,6 +7,7 @@ import { DesktopDatePicker, DatePickerProps } from '../DatePicker/DatePicker';
 describe('e2e -- DatePicker keyboard input', () => {
   // Doesn't work
   if (process.env.UTILS === 'dayjs') {
+    it('noop', () => {});
     return;
   }
 

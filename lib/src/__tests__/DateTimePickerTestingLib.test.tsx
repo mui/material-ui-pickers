@@ -8,6 +8,7 @@ import { DesktopDateTimePicker, StaticDateTimePicker } from '../DateTimePicker';
 describe('<DateTimePicker />', () => {
   // Doesn't work
   if (process.env.UTILS === 'dayjs') {
+    it('noop', () => {});
     return;
   }
 
