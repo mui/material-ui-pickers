@@ -107,19 +107,6 @@ describe('<DatePicker />', () => {
   });
 
   describe('input validation', () => {
-    const locales = {
-      en: {
-        valid: 'January 2020',
-        invalid: 'Januar 2020',
-        dateFns: enLocale,
-      },
-      de: {
-        valid: 'Januar 2020',
-        invalid: 'Janua 2020',
-        dateFns: deLocale,
-      },
-    };
-
     interface FormProps {
       locale: any;
       Picker: React.ElementType<DatePickerProps>;
@@ -141,11 +128,26 @@ describe('<DatePicker />', () => {
       );
     };
 
-    Object.keys(locales).forEach((locale2) => {
-      const { valid, invalid } = locales[locale2];
-      const locale = process.env.UTILS === 'date-fns' ? locales[locale2].dateFns : locale2;
+    const tests = [
+      {
+        locale: 'en',
+        valid: 'January 2020',
+        invalid: 'Januar 2020',
+        dateFns: enLocale,
+      },
+      {
+        locale: 'de',
+        valid: 'Januar 2020',
+        invalid: 'Janua 2020',
+        dateFns: deLocale,
+      },
+    ];
 
-      it(`${locale2}: should set invalid`, () => {
+    tests.forEach((test) => {
+      const { valid, invalid } = test;
+      const locale = process.env.UTILS === 'date-fns' ? test.dateFns : test.locale;
+
+      it(`${test.locale}: should set invalid`, () => {
         render(
           <Form
             locale={locale}
@@ -163,7 +165,7 @@ describe('<DatePicker />', () => {
         return;
       }
 
-      it(`${locale2}: should set to valid when was invalid`, () => {
+      it(`${test.locale}: should set to valid when was invalid`, () => {
         render(
           <Form
             locale={locale}
