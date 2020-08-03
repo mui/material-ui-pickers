@@ -5,7 +5,7 @@ import { mount, utilsToUse } from '../test-utils';
 import { MonthSelection, MonthSelectionProps } from '../../views/Calendar/MonthSelection';
 
 describe('MonthSelection', () => {
-  let component: ReactWrapper<MonthSelectionProps>;
+  let component: ReactWrapper<MonthSelectionProps<any>>;
 
   beforeEach(() => {
     component = mount(
