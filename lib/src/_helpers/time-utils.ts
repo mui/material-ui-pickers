@@ -108,12 +108,12 @@ export interface TimeValidationProps<TDate> {
    * Min time acceptable time.
    * For input validation date part of passed object will be ignored if `disableIgnoringDatePartForTimeValidation` not specified.
    */
-  minTime?: ParsableDate<TDate>;
+  minTime?: TDate;
   /**
    * Max time acceptable time.
    * For input validation date part of passed object will be ignored if `disableIgnoringDatePartForTimeValidation` not specified.
    */
-  maxTime?:  ParsableDate<TDate>;
+  maxTime?: TDate;
   /**
    * Dynamically check if time is disabled or not.
    * If returns `false` appropriate time point will ot be acceptable.
@@ -127,15 +127,15 @@ export interface TimeValidationProps<TDate> {
   disableIgnoringDatePartForTimeValidation?: boolean;
 }
 
-export const validateTime = (
+export const validateTime = <TDate>(
   utils: MuiPickersAdapter,
-  value: unknown | ParsableDate,
+  value: TDate | ParsableDate<TDate>,
   {
     minTime,
     maxTime,
     shouldDisableTime,
     disableIgnoringDatePartForTimeValidation,
-  }: TimeValidationProps<unknown>
+  }: TimeValidationProps<TDate>
 ) => {
   const date = utils.date(value);
   const isAfterComparingFn = createIsAfterIgnoreDatePart(

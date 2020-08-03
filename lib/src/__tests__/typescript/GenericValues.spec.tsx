@@ -10,6 +10,7 @@ import { ClockView } from '../../views/Clock/ClockView';
 import { DateRangePicker } from '../../DateRangePicker/DateRangePicker';
 import { CalendarView } from '../../views/Calendar/CalendarView';
 import { Day } from '../../views/Calendar/Day';
+import { DateTimePicker } from '../../DateTimePicker';
 
 // Allows to set date type right with generic JSX syntax
 <DatePicker<Date>
@@ -138,4 +139,14 @@ const InferTest = () => {
   openNextView={console.log}
   openPreviousView={console.log}
   onDateChange={console.log}
+/>;
+
+/** ****************** */
+/* DateTimePicker */
+/** ****************** */
+
+<DateTimePicker
+  value={new DateTime()}
+  onChange={(date) => date?.set({ second: 0 })}
+  renderInput={(props) => <TextField {...props} />}
 />;

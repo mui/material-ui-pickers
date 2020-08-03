@@ -35,8 +35,8 @@ export interface CalendarViewProps<TDate>
    * Callback firing on month change. @DateIOType
    */
   onMonthChange?: (date: TDate) => void;
-  minDate: TDate;
-  maxDate: TDate;
+  minDate: TDate | null;
+  maxDate: TDate | null;
 }
 
 export type ExportedCalendarViewProps<TDate> = Omit<

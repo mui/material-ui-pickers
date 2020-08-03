@@ -5,7 +5,7 @@ import { TimePickerToolbar } from './TimePickerToolbar';
 import { ExportedClockViewProps } from '../views/Clock/ClockView';
 import { ResponsiveWrapper } from '../wrappers/ResponsiveWrapper';
 import { pick12hOr24hFormat } from '../_helpers/text-field-helper';
-import { useParsedDate } from '../_shared/hooks/date-helpers-hooks';
+import { useParsedDate, OverrideParsableDateProps } from '../_shared/hooks/date-helpers-hooks';
 import { useUtils, MuiPickersAdapter } from '../_shared/hooks/useUtils';
 import { validateTime, TimeValidationError } from '../_helpers/time-utils';
 import { WithViewsProps, AllSharedPickerProps } from '../Picker/SharedPickerProps';
@@ -14,9 +14,9 @@ import { MobileWrapper, DesktopWrapper, StaticWrapper, SomeWrapper } from '../wr
 import { SharedPickerProps, makePickerWithStateAndWrapper } from '../Picker/makePickerWithState';
 
 export interface BaseTimePickerProps<TDate = unknown>
-  extends ExportedClockViewProps<TDate>,
-    ValidationProps<TimeValidationError, ParsableDate<TDate>>,
-    WithViewsProps<'hours' | 'minutes' | 'seconds'> {}
+  extends ValidationProps<TimeValidationError, ParsableDate<TDate>>,
+    WithViewsProps<'hours' | 'minutes' | 'seconds'>,
+    OverrideParsableDateProps<TDate, ExportedClockViewProps<TDate>, 'minTime' | 'maxTime'> {}
 
 export function getTextFieldAriaText(value: ParsableDate, utils: MuiPickersAdapter) {
   return value && utils.isValid(utils.date(value))
@@ -61,9 +61,11 @@ function useInterceptProps({
 
 const timePickerConfig = {
   useInterceptProps,
-  useValidation: makeValidationHook<TimeValidationError, ParsableDate, BaseTimePickerProps>(
-    validateTime
-  ),
+  useValidation: makeValidationHook<
+    TimeValidationError,
+    ParsableDate,
+    BaseTimePickerProps<unknown>
+  >(validateTime),
   DefaultToolbarComponent: TimePickerToolbar,
 };
 
