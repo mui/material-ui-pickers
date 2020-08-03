@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types'
+import * as PropTypes from 'prop-types';
 import clsx from 'clsx';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
@@ -252,7 +252,7 @@ export function Clock<TDate>(props: ClockProps<TDate>) {
       )}
     </div>
   );
-};
+}
 
 Clock.propTypes = {
   ampm: PropTypes.bool,

@@ -44,7 +44,8 @@ export interface WithViewsProps<T extends AnyPickerView> {
   openTo?: T;
 }
 
-export type CalendarAndClockProps<TDate> = ExportedCalendarViewProps<TDate> & ExportedClockViewProps<TDate>;
+export type CalendarAndClockProps<TDate> = ExportedCalendarViewProps<TDate> &
+  ExportedClockViewProps<TDate>;
 
 export type ToolbarComponentProps<
   TDate = unknown,

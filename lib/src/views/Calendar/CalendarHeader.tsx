@@ -198,7 +198,7 @@ export function CalendarHeader<TDate>(props: CalendarHeaderProps<TDate>) {
       </div>
     </React.Fragment>
   );
-};
+}
 
 CalendarHeader.displayName = 'PickersCalendarHeader';
 
