@@ -107,7 +107,8 @@ export function DateRangePickerView<TDate>(props: DateRangePickerViewProps<TDate
       return;
     }
 
-    if (start === null || end === null) {
+    const currentlySelectedDate = currentlySelectingRangeEnd === 'start' ? start : end;
+    if (currentlySelectedDate === null) {
       // do not scroll if one of ages is not selected
       return;
     }
@@ -123,9 +124,9 @@ export function DateRangePickerView<TDate>(props: DateRangePickerViewProps<TDate
     ) {
       const newMonth =
         currentlySelectingRangeEnd === 'start'
-          ? start
+          ? currentlySelectedDate
           : // If need to focus end, scroll to the state when "end" is displaying in the last calendar
-            utils.addMonths(end, -displayingMonthRange);
+            utils.addMonths(currentlySelectedDate, -displayingMonthRange);
 
       changeMonth(newMonth);
     }
