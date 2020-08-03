@@ -17,7 +17,7 @@ export function useViews({
 }: {
   views: AnyPickerView[];
   openTo: AnyPickerView;
-  onChange: PickerOnChangeFn;
+  onChange: PickerOnChangeFn<unknown>;
   isMobileKeyboardViewOpen: boolean;
   toggleMobileKeyboardView: () => void;
 }) {

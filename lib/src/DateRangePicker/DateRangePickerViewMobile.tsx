@@ -42,7 +42,7 @@ export function DateRangePickerViewMobile<TDate>(props: DesktopDateRangeCalendar
     rightArrowButtonProps,
     rightArrowButtonText,
     rightArrowIcon,
-    renderDay = (_, props) => <DateRangeDay {...props} />,
+    renderDay = (_, props) => <DateRangeDay<TDate> {...props} />,
     ...other
   } = props;
 

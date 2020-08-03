@@ -219,10 +219,10 @@ export type DateRangeValidationError = [
   DateRangeValidationErrorValue
 ];
 
-export const validateDateRange = (
-  utils: MuiPickersAdapter,
-  value: RangeInput,
-  dateValidationProps: DateValidationProps
+export const validateDateRange = <TDate>(
+  utils: MuiPickersAdapter<TDate>,
+  value: RangeInput<TDate>,
+  dateValidationProps: DateValidationProps<TDate>
 ): [DateRangeValidationErrorValue, DateRangeValidationErrorValue] => {
   const [start, end] = value;
 

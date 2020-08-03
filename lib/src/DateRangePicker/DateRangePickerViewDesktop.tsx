@@ -29,7 +29,7 @@ export interface ExportedDesktopDateRangeCalendarProps<TDate> {
    * Custom renderer for `<DateRangePicker />` days. @DateIOType
    * @example (date, DateRangeDayProps) => <DateRangePickerDay {...DateRangeDayProps} />
    */
-  renderDay?: (date: TDate, DateRangeDayProps: DateRangeDayProps) => JSX.Element;
+  renderDay?: (date: TDate, DateRangeDayProps: DateRangeDayProps<TDate>) => JSX.Element;
 }
 
 interface DesktopDateRangeCalendarProps<TDate>

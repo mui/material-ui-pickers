@@ -25,7 +25,7 @@ export interface ExportedCalendarProps<TDate>
    */
   renderDay?: (
     day: TDate,
-    selectedDates: TDate[],
+    selectedDates: (TDate | null)[],
     DayComponentProps: DayProps<TDate>
   ) => JSX.Element;
   /**
@@ -166,7 +166,7 @@ export function Calendar<TDate>(props: CalendarProps<TDate>) {
   const currentMonthNumber = utils.getMonth(currentMonth);
   const selectedDates = (Array.isArray(date) ? date : [date])
     .filter(Boolean)
-    .map((selectedDateItem) => utils.startOfDay(selectedDateItem));
+    .map((selectedDateItem) => selectedDateItem && utils.startOfDay(selectedDateItem));
 
   return (
     <React.Fragment>
@@ -214,8 +214,8 @@ export function Calendar<TDate>(props: CalendarProps<TDate>) {
                       utils.isSameDay(day, nowFocusedDay),
                     today: utils.isSameDay(day, now),
                     inCurrentMonth: isDayInCurrentMonth,
-                    selected: selectedDates.some((selectedDate) =>
-                      utils.isSameDay(selectedDate, day)
+                    selected: selectedDates.some(
+                      (selectedDate) => selectedDate && utils.isSameDay(selectedDate, day)
                     ),
                     disableHighlightToday,
                     showDaysOutsideCurrentMonth,

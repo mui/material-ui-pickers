@@ -53,7 +53,7 @@ type RangePickerComponent<TWrapper extends SomeWrapper> = <TDate>(
 export const useDateRangeValidation = makeValidationHook<
   DateRangeValidationError,
   RangeInput,
-  BaseDateRangePickerProps<unknown>
+  BaseDateRangePickerProps<any>
 >(validateDateRange, {
   defaultValidationError: [null, null],
   isSameError: (a, b) => a[1] === b[1] && a[0] === b[0],
@@ -128,7 +128,7 @@ export function makeRangePicker<TWrapper extends SomeWrapper>(
 
     return (
       <WrapperComponent wrapperProps={wrapperProps} DateInputProps={DateInputProps} {...restProps}>
-        <DateRangePickerView
+        <DateRangePickerView<any>
           open={wrapperProps.open}
           DateInputProps={DateInputProps}
           calendars={calendars}

@@ -44,12 +44,12 @@ export interface WithViewsProps<T extends AnyPickerView> {
   openTo?: T;
 }
 
-export type CalendarAndClockProps = ExportedCalendarViewProps & ExportedClockViewProps;
+export type CalendarAndClockProps<TDate> = ExportedCalendarViewProps<TDate> & ExportedClockViewProps<TDate>;
 
 export type ToolbarComponentProps<
   TDate = unknown,
   TView extends AnyPickerView = AnyPickerView
-> = CalendarAndClockProps & {
+> = CalendarAndClockProps<TDate> & {
   ampmInClock?: boolean;
   date: TDate;
   dateRangeIcon?: React.ReactNode;
