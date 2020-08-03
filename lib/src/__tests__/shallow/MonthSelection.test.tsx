@@ -10,8 +10,8 @@ describe('MonthSelection', () => {
   beforeEach(() => {
     component = mount(
       <MonthSelection
-        minDate={new Date('03-01-2017')}
-        maxDate={new Date('05-01-2017')}
+        minDate={utilsToUse.date('03-01-2017')}
+        maxDate={utilsToUse.date('05-01-2017')}
         date={utilsToUse.date('04-01-2017')}
         onChange={jest.fn()}
       />
