@@ -23,6 +23,7 @@ import { DateTimePicker } from '../../DateTimePicker';
 <DateRangePicker<DateTime>
   value={[new DateTime(), new DateTime()]}
   onChange={(date) => date[0]?.set({ second: 15 })}
+  renderDay={(day) => <span>{day.toFormat('dd')}  </span>}
   renderInput={(props) => <TextField {...props} />}
 />;
 

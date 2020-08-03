@@ -84,6 +84,7 @@ const PickerToolbar: React.SFC<PickerToolbarProps> = ({
         {toolbarTitle}
       </Typography>
       <Grid
+        component="div"
         container
         justify="space-between"
         className={classes.dateTitleContainer}

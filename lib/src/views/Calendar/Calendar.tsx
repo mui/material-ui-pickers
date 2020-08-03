@@ -23,7 +23,11 @@ export interface ExportedCalendarProps<TDate>
   /**
    * Custom renderer for day. Check [DayComponentProps api](https://material-ui-pickers.dev/api/Day) @DateIOType.
    */
-  renderDay?: (day: TDate, selectedDates: TDate[], DayComponentProps: DayProps<TDate>) => JSX.Element;
+  renderDay?: (
+    day: TDate,
+    selectedDates: TDate[],
+    DayComponentProps: DayProps<TDate>
+  ) => JSX.Element;
   /**
    * Enables keyboard listener for moving between days in calendar.
    *
@@ -46,7 +50,7 @@ export interface ExportedCalendarProps<TDate>
 }
 
 export interface CalendarProps<TDate> extends ExportedCalendarProps<TDate> {
-  date: TDate | TDate[];
+  date: TDate | null | Array<TDate | null>;
   isDateDisabled: (day: TDate) => boolean;
   slideDirection: SlideDirection;
   currentMonth: TDate;

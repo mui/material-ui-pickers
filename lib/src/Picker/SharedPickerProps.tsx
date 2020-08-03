@@ -58,7 +58,7 @@ export type ToolbarComponentProps<
   hideTabs?: boolean;
   isLandscape: boolean;
   isMobileKeyboardViewOpen: boolean;
-  onChange: PickerOnChangeFn;
+  onChange: PickerOnChangeFn<TDate>;
   openView: TView;
   setOpenView: (view: TView) => void;
   timeIcon?: React.ReactNode;
