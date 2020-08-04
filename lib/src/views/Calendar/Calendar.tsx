@@ -178,7 +178,7 @@ export function Calendar<TDate>(props: CalendarProps<TDate>) {
             variant="caption"
             className={classes.weekDayLabel}
           >
-            {day.charAt(0).toUpperCase()}
+            {day}
           </Typography>
         ))}
       </div>
