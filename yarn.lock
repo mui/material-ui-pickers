@@ -10661,10 +10661,10 @@ rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-docgen-typescript@^1.17.0:
-  version "1.17.0"
-  resolved "https://registry.yarnpkg.com/react-docgen-typescript/-/react-docgen-typescript-1.17.0.tgz#c3d9d12b83fb7b6cd295ea95d9592c17a8d69d68"
-  integrity sha512-9/HKEoVFRfhQgvxMDylmmgU8ouImt2LfI5eS9ZbSIlCPk1IZTetYY+nWli4lPw2mH2Two/iRiKwlydyx6FafgQ==
+react-docgen-typescript@^1.20.1:
+  version "1.20.1"
+  resolved "https://registry.yarnpkg.com/react-docgen-typescript/-/react-docgen-typescript-1.20.1.tgz#774ed8b4a7111acaaa536cad4cfd61c504a46f7e"
+  integrity sha512-vU6puLsSwfCS+nI/6skQ52sJIx/uW7+9aMI/V/zPHAXr6s8OQzD5LeL9rXx/Hdt2aNfm4yTX9oJ8ClH/5PKQNg==
 
 react-dom@^16.13.0, react-dom@^16.13.1:
   version "16.13.1"
