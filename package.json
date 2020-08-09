@@ -45,7 +45,7 @@
     "babel-loader": "^8.1.0",
     "cypress": "4.11.0",
     "cypress-plugin-tab": "^1.0.5",
-    "cypress-react-unit-test": "^4.7.2",
+    "cypress-react-unit-test": "^4.11.2",
     "eslint": "^7.4.0",
     "eslint-config-airbnb-typescript": "^8.0.2",
     "eslint-config-prettier": "^6.11.0",
