@@ -50,8 +50,7 @@ it('Should render without crash with props setup', () => {
       />
     </ThemeProvider>
   );
-  // eslint-disable-next-line
-  console.log(component, 'my test');
+
   expect(component).toBeTruthy();
 });
 
