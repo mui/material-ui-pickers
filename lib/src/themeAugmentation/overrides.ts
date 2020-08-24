@@ -66,3 +66,10 @@ export interface MuiPickersComponentsToClassName {
   MuiPickersCalendarSkeleton: Classes<typeof import('../CalendarSkeleton').useStyles>;
   MuiPickersPopper: Classes<typeof import('../_shared/PickersPopper').useStyles>;
 }
+
+declare module '@material-ui/core/styles/overrides' {
+  interface ComponentNameToClassKey extends MuiPickersComponentsToClassName {}
+}
+
+// disable automatic export
+export {};

@@ -58,3 +58,10 @@ export interface MuiPickersComponentsPropsList {
   MuiPickersDateRangeDelimiter: DateRangeDelimiterProps;
   MuiPickersCalendarSkeleton: CalendarSkeletonProps;
 }
+
+declare module '@material-ui/core/styles/props' {
+  interface ComponentsPropsList extends MuiPickersComponentsPropsList {}
+}
+
+// disable automatic export
+export {};
