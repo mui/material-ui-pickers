@@ -4,9 +4,9 @@ import { useTheme } from '@material-ui/core/styles';
 
 export function useDefaultProps<T>(props: T, { name }: { name: string }) {
   const theme = useTheme();
-
+  const localProps = { ...props };
   return getThemeProps<any, T, string>({
-    props,
+    props: localProps,
     theme,
     name,
   });
