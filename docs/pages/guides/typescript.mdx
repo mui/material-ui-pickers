@@ -81,3 +81,24 @@ In this case it is required to manually set proper [generic type manually](#gene
   onChange={newValue => newValue?.getDate()}
 />
 ```
+
+#### Theme augmentation
+
+In order to benefit from the [CSS overrides](https://material-ui.com/customization/globals/#css) and
+[default prop customization](https://material-ui.com/customization/globals/#default-props) with the theme,
+TypeScript users need to import the following types. Internally, it uses [module augmentation](https://material-ui.com/guides/typescript/#customization-of-theme)
+to extend the default theme structure with the extension components available in the pickers.
+
+```tsx
+import type '@material-ui/pickers/themeAugmentation';
+
+const theme = createMuiTheme({
+  overrides: {
+    MuiDatePicker: {
+      root: {
+        backgroundColor: 'red',
+      },
+    },
+  },
+});
+```
