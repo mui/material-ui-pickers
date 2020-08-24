@@ -74,7 +74,7 @@ type TimePickerComponent<TWrapper extends SomeWrapper> = <TDate>(
 ) => JSX.Element;
 
 export const TimePicker = makePickerWithStateAndWrapper<BaseTimePickerProps>(ResponsiveWrapper, {
-  name: 'MuiTimePicker',
+  name: 'MuiPickersTimePicker',
   ...timePickerConfig,
 }) as TimePickerComponent<typeof ResponsiveWrapper>;
 
@@ -83,7 +83,7 @@ export type TimePickerProps = React.ComponentProps<typeof TimePicker>;
 export const DesktopTimePicker = makePickerWithStateAndWrapper<BaseTimePickerProps>(
   DesktopWrapper,
   {
-    name: 'MuiDesktopTimePicker',
+    name: 'MuiPickersDesktopTimePicker',
     ...timePickerConfig,
   }
 ) as TimePickerComponent<typeof DesktopWrapper>;
@@ -91,14 +91,14 @@ export const DesktopTimePicker = makePickerWithStateAndWrapper<BaseTimePickerPro
 export type DesktopTimePickerProps = React.ComponentProps<typeof DesktopTimePicker>;
 
 export const MobileTimePicker = makePickerWithStateAndWrapper<BaseTimePickerProps>(MobileWrapper, {
-  name: 'MuiMobileTimePicker',
+  name: 'MuiPickersMobileTimePicker',
   ...timePickerConfig,
 }) as TimePickerComponent<typeof MobileWrapper>;
 
 export type MobileTimePickerProps = React.ComponentProps<typeof MobileTimePicker>;
 
 export const StaticTimePicker = makePickerWithStateAndWrapper<BaseTimePickerProps>(StaticWrapper, {
-  name: 'MuiStaticTimePicker',
+  name: 'MuiPickersStaticTimePicker',
   ...timePickerConfig,
 });
 

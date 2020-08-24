@@ -122,7 +122,7 @@ type DateTimePickerComponent<TWrapper extends SomeWrapper> = <TDate>(
 export const DateTimePicker = makePickerWithStateAndWrapper<BaseDateTimePickerProps<unknown>>(
   ResponsiveWrapper,
   {
-    name: 'MuiDateTimePicker',
+    name: 'MuiPickersDateTimePicker',
     ...dateTimePickerConfig,
   }
 ) as DateTimePickerComponent<typeof ResponsiveWrapper>;
@@ -132,7 +132,7 @@ export type DateTimePickerProps = React.ComponentProps<typeof DateTimePicker>;
 export const DesktopDateTimePicker = makePickerWithStateAndWrapper<
   BaseDateTimePickerProps<unknown>
 >(DesktopWrapper, {
-  name: 'MuiDesktopDateTimePicker',
+  name: 'MuiPickersDesktopDateTimePicker',
   ...dateTimePickerConfig,
 }) as DateTimePickerComponent<typeof DesktopWrapper>;
 
@@ -141,7 +141,7 @@ export type DesktopDateTimePickerProps = React.ComponentProps<typeof DesktopDate
 export const MobileDateTimePicker = makePickerWithStateAndWrapper<BaseDateTimePickerProps<unknown>>(
   MobileWrapper,
   {
-    name: 'MuiMobileDateTimePicker',
+    name: 'MuiPickersMobileDateTimePicker',
     ...dateTimePickerConfig,
   }
 ) as DateTimePickerComponent<typeof MobileWrapper>;
@@ -151,7 +151,7 @@ export type MobileDateTimePickerProps = React.ComponentProps<typeof MobileDateTi
 export const StaticDateTimePicker = makePickerWithStateAndWrapper<BaseDateTimePickerProps<unknown>>(
   StaticWrapper,
   {
-    name: 'MuiStaticDateTimePicker',
+    name: 'MuiPickersStaticDateTimePicker',
     ...dateTimePickerConfig,
   }
 ) as DateTimePickerComponent<typeof StaticWrapper>;

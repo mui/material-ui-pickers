@@ -51,8 +51,10 @@ export interface MuiPickersComponentsToClassName {
   MuiPickersDatePickerRoot: Classes<typeof DatePickerRootStyles>;
   MuiPickersBasePicker: Classes<typeof MuiBasePickerStyles>;
   MuiPickersModalDialog: Classes<typeof import('../_shared/PickersModalDialog').useStyles>;
-  MuiDateTimePickerTabs: Classes<typeof import('../DateTimePicker/DateTimePickerTabs').useStyles>;
-  MuiDateTimePickerToolbar: Classes<
+  MuiPickersDateTimePickerTabs: Classes<
+    typeof import('../DateTimePicker/DateTimePickerTabs').useStyles
+  >;
+  MuiPickersDateTimePickerToolbar: Classes<
     typeof import('../DateTimePicker/DateTimePickerToolbar').useStyles
   >;
   // consider using inline import type notation

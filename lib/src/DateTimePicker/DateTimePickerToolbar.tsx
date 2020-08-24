@@ -10,7 +10,7 @@ import { withDefaultProps } from '../_shared/withDefaultProps';
 import { ToolbarComponentProps } from '../Picker/SharedPickerProps';
 import { WrapperVariantContext } from '../wrappers/WrapperVariantContext';
 
-const muiComponentConfig = { name: 'MuiDateTimePickerToolbar' };
+const muiComponentConfig = { name: 'MuiPickersDateTimePickerToolbar' };
 
 export const useStyles = makeStyles(
   {
