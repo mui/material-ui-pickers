@@ -1,12 +1,21 @@
 import * as React from 'react';
-import { DateRangePicker, DateRange, DateRangeDelimiter, PickersCalendar, PickersCalendarProps } from '@material-ui/pickers';
-import TextField from "@material-ui/core/TextField";
+import {
+  DateRangePicker,
+  DateRange,
+  DateRangeDelimiter,
+  PickersCalendar,
+  PickersCalendarProps,
+} from '@material-ui/pickers';
+import TextField from '@material-ui/core/TextField';
 
 interface CalendarWithValidationButtonProps extends PickersCalendarProps<Date> {
   validateCustomPeriod: () => void;
 }
 
-function CalendarWithValidationButton ({ validateCustomPeriod, ...pickersCalendarProps }: CalendarWithValidationButtonProps) {
+function CalendarWithValidationButton({
+  validateCustomPeriod,
+  ...pickersCalendarProps
+}: CalendarWithValidationButtonProps) {
   return (
     <React.Fragment>
       <PickersCalendar {...pickersCalendarProps} />

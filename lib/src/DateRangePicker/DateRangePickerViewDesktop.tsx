@@ -17,7 +17,7 @@ import {
   isEndOfRange,
   DateValidationProps,
 } from '../_helpers/date-utils';
-import { DayProps as CalendarDayProps } from "../views/Calendar/Day";
+import { DayProps as CalendarDayProps } from '../views/Calendar/Day';
 
 export interface ExportedDesktopDateRangeCalendarProps<TDate> {
   /**

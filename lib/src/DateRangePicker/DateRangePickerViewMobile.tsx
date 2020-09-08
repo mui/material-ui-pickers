@@ -12,7 +12,7 @@ import {
   isEndOfRange,
   DateValidationProps,
 } from '../_helpers/date-utils';
-import { DayProps as CalendarDayProps } from "../views/Calendar/Day";
+import { DayProps as CalendarDayProps } from '../views/Calendar/Day';
 
 export interface ExportedMobileDateRangeCalendarProps<TDate>
   extends Pick<ExportedDesktopDateRangeCalendarProps<TDate>, 'renderDay'> {
@@ -81,7 +81,7 @@ export function DateRangePickerViewMobile<TDate>(props: DesktopDateRangeCalendar
         isEndOfHighlighting: isEndOfRange(utils, day, date),
         ...DayProps,
       }),
-      ...slotProps.Calendar,
+    ...slotProps.Calendar,
   };
 
   return (
