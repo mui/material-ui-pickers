@@ -30,6 +30,7 @@ export interface YearSelectionProps<TDate> extends ExportedYearSelectionProps<TD
   isDateDisabled: (day: TDate) => boolean;
   maxDate: TDate;
   minDate: TDate;
+  order: 'asc' | 'desc';
   onChange: PickerOnChangeFn<TDate>;
 }
 
@@ -56,6 +57,7 @@ export function YearSelection<TDate>({
   minDate,
   disableFuture,
   disablePast,
+  order,
   onChange,
   onYearChange,
   shouldDisableYear,
@@ -132,31 +134,33 @@ export function YearSelection<TDate>({
     [keys.ArrowRight]: () => focusYear(nowFocusedYear + (theme.direction === 'ltr' ? 1 : -1)),
   });
 
-  return (
-    <div className={classes.root}>
-      {utils.getYearRange(minDate, maxDate).map((year) => {
-        const yearNumber = utils.getYear(year);
-        const selected = yearNumber === currentYear;
+  let yearList = utils.getYearRange(minDate, maxDate).map((year) => {
+    const yearNumber = utils.getYear(year);
+    const selected = yearNumber === currentYear;
 
-        return (
-          <Year
-            key={utils.format(year, 'year')}
-            selected={selected}
-            value={yearNumber}
-            onSelect={handleYearSelection}
-            allowKeyboardControl={allowKeyboardControl}
-            focused={yearNumber === focusedYear}
-            ref={selected ? selectedYearRef : undefined}
-            disabled={
-              (disablePast && utils.isBeforeYear(year, now)) ||
-              (disableFuture && utils.isAfterYear(year, now)) ||
-              (shouldDisableYear && shouldDisableYear(year))
-            }
-          >
-            {utils.format(year, 'year')}
-          </Year>
-        );
-      })}
-    </div>
-  );
+    return (
+      <Year
+        key={utils.format(year, 'year')}
+        selected={selected}
+        value={yearNumber}
+        onSelect={handleYearSelection}
+        allowKeyboardControl={allowKeyboardControl}
+        focused={yearNumber === focusedYear}
+        ref={selected ? selectedYearRef : undefined}
+        disabled={
+          (disablePast && utils.isBeforeYear(year, now)) ||
+          (disableFuture && utils.isAfterYear(year, now)) ||
+          (shouldDisableYear && shouldDisableYear(year))
+        }
+      >
+        {utils.format(year, 'year')}
+      </Year>
+    );
+  });
+
+  if (order === 'desc') {
+    yearList = yearList.reverse();
+  }
+
+  return <div className={classes.root}>{yearList}</div>;
 }

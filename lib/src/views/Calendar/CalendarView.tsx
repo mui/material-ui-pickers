@@ -24,6 +24,7 @@ export interface CalendarViewProps<TDate>
   view: DatePickerView;
   views: DatePickerView[];
   changeView: (view: DatePickerView) => void;
+  order: 'asc' | 'desc';
   onChange: PickerOnChangeFn<TDate>;
   /**
    * Disable heavy animations.
@@ -75,6 +76,7 @@ export function CalendarView<TDate>(props: CalendarViewProps<TDate>) {
     maxDate: maxDateProp,
     minDate: minDateProp,
     onChange,
+    order,
     onMonthChange,
     reduceAnimations = defaultReduceAnimations,
     renderLoading,
@@ -156,6 +158,7 @@ export function CalendarView<TDate>(props: CalendarViewProps<TDate>) {
             <YearSelection
               {...other}
               date={date}
+              order={order}
               onChange={onChange}
               minDate={minDate}
               maxDate={maxDate}
