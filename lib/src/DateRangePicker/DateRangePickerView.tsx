@@ -72,6 +72,7 @@ export function DateRangePickerView<TDate>(props: DateRangePickerViewProps<TDate
     toggleMobileKeyboardView,
     toolbarFormat,
     toolbarTitle,
+    allowSameDateSelection,
     ...other
   } = props;
 
@@ -152,7 +153,8 @@ export function DateRangePickerView<TDate>(props: DateRangePickerViewProps<TDate
       setCurrentlySelectingRangeEnd(nextSelection);
 
       const isFullRangeSelected =
-        currentlySelectingRangeEnd === 'end' && isRangeValid(utils, newRange);
+        currentlySelectingRangeEnd === 'end' &&
+        isRangeValid(utils, newRange, allowSameDateSelection);
 
       onDateChange(
         newRange as DateRange<TDate>,
@@ -167,6 +169,7 @@ export function DateRangePickerView<TDate>(props: DateRangePickerViewProps<TDate
       setCurrentlySelectingRangeEnd,
       utils,
       wrapperVariant,
+      allowSameDateSelection,
     ]
   );
 
@@ -185,6 +188,7 @@ export function DateRangePickerView<TDate>(props: DateRangePickerViewProps<TDate
       disablePast,
       minDate,
       maxDate,
+      allowSameDateSelection,
       ...calendarState,
       ...other,
     };

@@ -102,6 +102,7 @@ export function DateRangePickerViewDesktop<TDate>(props: DesktopDateRangeCalenda
     currentlySelectingRangeEnd,
     currentMonth,
     renderDay = (_, dateRangeProps) => <DateRangeDay {...dateRangeProps} />,
+    allowSameDateSelection,
     ...other
   } = props;
 
@@ -131,7 +132,7 @@ export function DateRangePickerViewDesktop<TDate>(props: DesktopDateRangeCalenda
   );
 
   const handlePreviewDayChange = (newPreviewRequest: TDate) => {
-    if (!isWithinRange(utils, newPreviewRequest, date)) {
+    if (!isWithinRange(utils, newPreviewRequest, date, allowSameDateSelection)) {
       setRangePreviewDay(newPreviewRequest);
     } else {
       setRangePreviewDay(null);
@@ -186,12 +187,22 @@ export function DateRangePickerViewDesktop<TDate>(props: DesktopDateRangeCalenda
               TransitionProps={CalendarTransitionProps}
               renderDay={(day, __, DayProps) =>
                 renderDay(day, {
-                  isPreviewing: isWithinRange(utils, day, previewingRange),
-                  isStartOfPreviewing: isStartOfRange(utils, day, previewingRange),
-                  isEndOfPreviewing: isEndOfRange(utils, day, previewingRange),
-                  isHighlighting: isWithinRange(utils, day, date),
-                  isStartOfHighlighting: isStartOfRange(utils, day, date),
-                  isEndOfHighlighting: isEndOfRange(utils, day, date),
+                  isPreviewing: isWithinRange(utils, day, previewingRange, allowSameDateSelection),
+                  isStartOfPreviewing: isStartOfRange(
+                    utils,
+                    day,
+                    previewingRange,
+                    allowSameDateSelection
+                  ),
+                  isEndOfPreviewing: isEndOfRange(
+                    utils,
+                    day,
+                    previewingRange,
+                    allowSameDateSelection
+                  ),
+                  isHighlighting: isWithinRange(utils, day, date, allowSameDateSelection),
+                  isStartOfHighlighting: isStartOfRange(utils, day, date, allowSameDateSelection),
+                  isEndOfHighlighting: isEndOfRange(utils, day, date, allowSameDateSelection),
                   onMouseEnter: () => handlePreviewDayChange(day),
                   ...DayProps,
                 })

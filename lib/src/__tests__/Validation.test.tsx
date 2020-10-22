@@ -116,6 +116,7 @@ describe('validation', () => {
       ${{ disablePast: true }}                  | ${'01/01/1800'} | ${'01/01/2090'} | ${['disablePast', null]}
       ${{ disableFuture: true }}                | ${'01/01/2010'} | ${'01/01/2050'} | ${[null, 'disableFuture']}
       ${{ shouldDisableDate: disableWeekends }} | ${'04/25/2020'} | ${'06/25/2020'} | ${['shouldDisableDate', null]}
+      ${{ allowSameDateSelection: false }}      | ${'04/25/2020'} | ${'04/25/2020'} | ${['invalidRange', 'invalidRange']}
     `(
       'Should dispatch onError $expectedError',
       ({ props, startInput, endInput, expectedError }) => {

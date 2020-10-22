@@ -126,21 +126,44 @@ export function parseRangeInputValue(
 
 export const isRangeValid = (
   utils: MuiPickersAdapter,
-  range: DateRange | null
+  range: DateRange | null,
+  allowSameDateSelection: boolean = false
 ): range is DateRange => {
-  return Boolean(range && range[0] && range[1] && utils.isBefore(range[0], range[1]));
+  return Boolean(
+    range &&
+      range[0] &&
+      range[1] &&
+      (allowSameDateSelection
+        ? !utils.isBefore(range[1], range[0])
+        : utils.isBefore(range[0], range[1]))
+  );
 };
 
-export const isWithinRange = (utils: MuiPickersAdapter, day: unknown, range: DateRange | null) => {
-  return isRangeValid(utils, range) && utils.isWithinRange(day, range);
+export const isWithinRange = (
+  utils: MuiPickersAdapter,
+  day: unknown,
+  range: DateRange | null,
+  allowSameDateSelection: boolean = false
+) => {
+  return isRangeValid(utils, range, allowSameDateSelection) && utils.isWithinRange(day, range);
 };
 
-export const isStartOfRange = (utils: MuiPickersAdapter, day: unknown, range: DateRange | null) => {
-  return isRangeValid(utils, range) && utils.isSameDay(day, range[0]);
+export const isStartOfRange = (
+  utils: MuiPickersAdapter,
+  day: unknown,
+  range: DateRange | null,
+  allowSameDateSelection: boolean = false
+) => {
+  return isRangeValid(utils, range, allowSameDateSelection) && utils.isSameDay(day, range[0]);
 };
 
-export const isEndOfRange = (utils: MuiPickersAdapter, day: unknown, range: DateRange | null) => {
-  return isRangeValid(utils, range) && utils.isSameDay(day, range[1]);
+export const isEndOfRange = (
+  utils: MuiPickersAdapter,
+  day: unknown,
+  range: DateRange | null,
+  allowSameDateSelection: boolean = false
+) => {
+  return isRangeValid(utils, range, allowSameDateSelection) && utils.isSameDay(day, range[1]);
 };
 
 export interface DateValidationProps<TDate> {
@@ -172,6 +195,12 @@ export interface DateValidationProps<TDate> {
    * @default false
    */
   disableFuture?: boolean;
+  /**
+   * Allow selecting the same date (fire onChange even if same date is selected).
+   *
+   * @default false
+   */
+  allowSameDateSelection?: boolean;
 }
 
 export const validateDate = <TDate>(
@@ -240,7 +269,13 @@ export const validateDateRange = <TDate>(
     return dateValidations;
   }
 
-  if (!isRangeValid(utils, [utils.date(start), utils.date(end)])) {
+  if (
+    !isRangeValid(
+      utils,
+      [utils.date(start), utils.date(end)],
+      dateValidationProps.allowSameDateSelection
+    )
+  ) {
     return ['invalidRange', 'invalidRange'];
   }
 

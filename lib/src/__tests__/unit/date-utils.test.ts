@@ -1,5 +1,5 @@
 import { utilsToUse } from '../test-utils';
-import { findClosestEnabledDate } from '../../_helpers/date-utils';
+import { findClosestEnabledDate, isRangeValid } from '../../_helpers/date-utils';
 
 describe('findClosestEnabledDate', () => {
   const day18thText = utilsToUse.format(utilsToUse.date('2018-08-18'), 'dayOfMonth');
@@ -175,5 +175,24 @@ describe('findClosestEnabledDate', () => {
     });
 
     expect(utilsToUse.isEqual(result, utilsToUse.date()));
+  });
+
+  it('Should validate two days range', () => {
+    const result = isRangeValid(utilsToUse, [
+      utilsToUse.date('2000-01-01'),
+      utilsToUse.date('2000-01-02'),
+    ]);
+
+    expect(result).toBeTruthy();
+  });
+
+  it('Should validate one day range', () => {
+    const result = isRangeValid(
+      utilsToUse,
+      [utilsToUse.date('2000-01-01'), utilsToUse.date('2000-01-01')],
+      true
+    );
+
+    expect(result).toBeTruthy();
   });
 });

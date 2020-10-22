@@ -43,6 +43,7 @@ export function DateRangePickerViewMobile<TDate>(props: DesktopDateRangeCalendar
     rightArrowButtonText,
     rightArrowIcon,
     renderDay = (_, props) => <DateRangeDay<TDate> {...props} />,
+    allowSameDateSelection,
     ...other
   } = props;
 
@@ -76,9 +77,9 @@ export function DateRangePickerViewMobile<TDate>(props: DesktopDateRangeCalendar
             isPreviewing: false,
             isStartOfPreviewing: false,
             isEndOfPreviewing: false,
-            isHighlighting: isWithinRange(utils, day, date),
-            isStartOfHighlighting: isStartOfRange(utils, day, date),
-            isEndOfHighlighting: isEndOfRange(utils, day, date),
+            isHighlighting: isWithinRange(utils, day, date, allowSameDateSelection),
+            isStartOfHighlighting: isStartOfRange(utils, day, date, allowSameDateSelection),
+            isEndOfHighlighting: isEndOfRange(utils, day, date, allowSameDateSelection),
             ...DayProps,
           })
         }
