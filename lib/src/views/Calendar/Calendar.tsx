@@ -29,6 +29,11 @@ export interface ExportedCalendarProps<TDate>
     DayComponentProps: DayProps<TDate>
   ) => JSX.Element;
   /**
+   * Custom weekday header format
+   * @param day
+   */
+  formatWeekdayHeader?: (weekday: String) => String,
+  /**
    * Enables keyboard listener for moving between days in calendar.
    *
    * @default currentWrapper !== 'static'
@@ -119,6 +124,7 @@ export function Calendar<TDate>(props: CalendarProps<TDate>) {
     date,
     disableHighlightToday,
     focusedDay,
+    formatWeekdayHeader,
     isDateDisabled,
     isMonthSwitchingAnimating,
     loading,
@@ -171,14 +177,14 @@ export function Calendar<TDate>(props: CalendarProps<TDate>) {
   return (
     <React.Fragment>
       <div className={classes.daysHeader}>
-        {utils.getWeekdays().map((day, i) => (
+        {utils.getWeekdays().map((weekday, i) => (
           <Typography
             aria-hidden
-            key={day + i.toString()}
+            key={weekday + i.toString()}
             variant="caption"
             className={classes.weekDayLabel}
           >
-            {day.charAt(0).toUpperCase()}
+            {formatWeekdayHeader ? formatWeekdayHeader(weekday) : weekday.charAt(0).toUpperCase()}
           </Typography>
         ))}
       </div>
