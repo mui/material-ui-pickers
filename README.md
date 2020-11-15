@@ -19,6 +19,10 @@ Accessible, customizable, delightful date & time pickers for [@material-ui/core]
 
 </div>
 
+## This project is not lobger supported 
+
+See #2157 for more details
+
 ### Installation
 
 Note that this package requires `@material-ui/core` **v4**. It will not work with the old v3. Please read the [migration guide](https://material-ui-pickers.dev/guides/upgrading-to-v3) if you are updating from v2
