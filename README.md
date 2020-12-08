@@ -19,9 +19,9 @@ Accessible, customizable, delightful date & time pickers for [@material-ui/core]
 
 </div>
 
-## This project is not lobger supported 
+## This project is not longer supported 
 
-See #2157 for more details
+See [#2157](https://github.com/mui-org/material-ui-pickers/issues/2157) for more details
 
 ### Installation
 
