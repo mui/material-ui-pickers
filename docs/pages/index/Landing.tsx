@@ -102,7 +102,7 @@ function Landing() {
   return (
     <div>
       <PageMeta
-        title="Material-UI Pickers"
+        title="Material UI Pickers"
         description="Accessible, customizable, delightful date & time pickers for @material-ui/core"
       />
       <Toolbar color="primary" className={classes.appToolbar}>
@@ -116,7 +116,7 @@ function Landing() {
           </Grid>
           <Grid item md={7} xs={12}>
             <Typography variant="h3" className={classes.landingTypography} gutterBottom>
-              Material-UI Pickers
+              Material UI Pickers
             </Typography>
             <Typography variant="h5" className={classes.landingTypography} gutterBottom>
               Date & Time pickers, built with ❤️ for @material-ui/core

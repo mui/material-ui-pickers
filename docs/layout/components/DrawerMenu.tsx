@@ -32,7 +32,7 @@ const DrawerMenu: React.SFC<WithStyles<typeof styles>> = ({ classes }) => (
     <Toolbar className={classes.drawerToolbar}>
       <Link prefetch href="/">
         <Typography variant="subtitle1" className={classes.headerLink}>
-          Material-UI pickers
+          Material UI Pickers
         </Typography>
       </Link>
       <Link href="/releases">
