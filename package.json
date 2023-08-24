@@ -23,7 +23,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mui-org/material-ui-pickers.git"
+    "url": "git+https://github.com/mui/material-ui-pickers.git"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^1.6.0",
